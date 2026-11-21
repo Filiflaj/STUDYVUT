@@ -1,0 +1,10 @@
+<svg viewBox="0 0 220 200" width="220" class="fig" role="img" aria-label="Dvě soustředné slupky o poloměrech R a 4R kolem náboje q">
+<circle cx="110" cy="100" r="25" class="d"/>
+<circle cx="110" cy="100" r="85" class="d"/>
+<circle cx="110" cy="100" r="4" class="ptA"/>
+<text x="110" y="92" class="it acc" text-anchor="middle">q</text>
+<line x1="110" y1="100" x2="135" y2="100" class="s1"/>
+<text x="124" y="114" class="it sm" text-anchor="middle">R</text>
+<line x1="110" y1="100" x2="170" y2="160" class="s1"/>
+<text x="160" y="140" class="it sm" text-anchor="end">4R</text>
+</svg>

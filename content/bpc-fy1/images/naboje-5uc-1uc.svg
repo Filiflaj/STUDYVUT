@@ -1,0 +1,8 @@
+<svg viewBox="0 0 340 80" width="340" class="fig" role="img" aria-label="Náboje +5 µC a −1 µC ve vzdálenosti L">
+<line x1="40" y1="40" x2="300" y2="40" class="d"/>
+<circle cx="40" cy="40" r="8" class="pt"/>
+<circle cx="300" cy="40" r="8" class="pt"/>
+<text x="40" y="70" class="it" text-anchor="middle">+5 µC</text>
+<text x="300" y="70" class="it" text-anchor="middle">−1 µC</text>
+<text x="170" y="30" class="it sm" text-anchor="middle">L</text>
+</svg>

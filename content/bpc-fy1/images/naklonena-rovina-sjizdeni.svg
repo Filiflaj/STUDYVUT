@@ -1,0 +1,11 @@
+<svg viewBox="0 0 210 135" width="210" class="fig" role="img" aria-label="Kvádr sjíždějící po nakloněné rovině rychlostí v">
+<polygon points="10,125 200,125 200,48" class="gf"/>
+<path d="M52.0,125.0 A42,42 0 0 0 48.9,109.3" class="s1"/>
+<text x="62" y="119" class="it sm" text-anchor="middle">α</text>
+<g transform="translate(105,86.5) rotate(-22.06)">
+<rect x="-26" y="-34" width="52" height="34" class="blk"/>
+<text x="0" y="-11" class="it" text-anchor="middle">m</text>
+<line x1="30" y1="-46" x2="-14" y2="-46" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="-42" class="it sm" text-anchor="middle">v</text>
+</g>
+</svg>

@@ -1,0 +1,11 @@
+<svg viewBox="0 0 340 195" width="340" class="fig" role="img" aria-label="Souřadnicové osy a plocha">
+<line x1="150" y1="125" x2="322" y2="125" class="v" marker-end="url(#m-v)"/>
+<line x1="150" y1="125" x2="150" y2="14" class="v" marker-end="url(#m-v)"/>
+<line x1="150" y1="125" x2="72" y2="178" class="v" marker-end="url(#m-v)"/>
+<text x="330" y="130" class="it" text-anchor="start">y</text>
+<text x="140" y="20" class="it" text-anchor="end">z</text>
+<text x="62" y="180" class="it" text-anchor="end">x</text>
+<polygon points="150,125 250,125 206,155 106,155" class="pl"/>
+<line x1="178" y1="140" x2="178" y2="92" class="f" marker-end="url(#m-f)"/>
+<text x="256" y="152" class="sm" text-anchor="start">S = 3 m²</text>
+</svg>

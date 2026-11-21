@@ -1,0 +1,11 @@
+<svg viewBox="0 0 380 100" width="380" class="fig" role="img" aria-label="Tři kovové koule: A s nábojem Q, B a C bez náboje">
+<circle cx="70" cy="45" r="26" class="gf"/>
+<text x="70" y="51" class="" text-anchor="middle">A</text>
+<circle cx="190" cy="45" r="26" class="gf"/>
+<text x="190" y="51" class="" text-anchor="middle">B</text>
+<circle cx="310" cy="45" r="26" class="gf"/>
+<text x="310" y="51" class="" text-anchor="middle">C</text>
+<text x="70" y="92" class="sm" text-anchor="middle">náboj Q</text>
+<text x="190" y="92" class="sm" text-anchor="middle">0</text>
+<text x="310" y="92" class="sm" text-anchor="middle">0</text>
+</svg>

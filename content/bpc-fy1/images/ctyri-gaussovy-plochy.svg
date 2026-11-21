@@ -1,0 +1,12 @@
+<svg viewBox="0 0 400 182" width="400" class="fig" role="img" aria-label="Čtyři Gaussovy plochy">
+<line x1="25" y1="150" x2="25" y2="30" class="v" marker-end="url(#m-v)"/>
+<text x="14" y="96" class="it" text-anchor="middle">E</text>
+<path d="M65,55 L65,125 A25,25 0 0 0 115,125 L115,55 A25,25 0 0 0 65,55 Z" class="gf"/>
+<path d="M155,55 Q180,82 205,55 L205,125 Q180,98 155,125 Z" class="gf"/>
+<path d="M245,55 L270,27 L295,55 L295,125 L270,153 L245,125 Z" class="gf"/>
+<rect x="335" y="55" width="50" height="70" class="gf"/>
+<text x="90" y="175" class="" text-anchor="middle">S1</text>
+<text x="180" y="175" class="" text-anchor="middle">S2</text>
+<text x="270" y="175" class="" text-anchor="middle">S3</text>
+<text x="360" y="175" class="" text-anchor="middle">S4</text>
+</svg>

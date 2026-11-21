@@ -1,0 +1,28 @@
+[package]
+name = "studyvut-core"
+description = "STUDYVUT content model (subjects, chapters, quizzes), its loader and checker, quiz evaluation, spaced repetition and the progress store"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[features]
+default = []
+store = ["dep:rusqlite"]
+
+[dependencies]
+fastrand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toml.workspace = true
+
+rusqlite = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,8 @@
+<svg viewBox="0 0 310 160" width="310" class="fig" role="img" aria-label="Dvě siločáry, které se navzájem kříží">
+<path d="M30,130 Q90,95 152.5,72.5" class="fl" marker-end="url(#m-fl)"/>
+<path d="M152.5,72.5 Q215,50 280,40" class="fl"/>
+<path d="M30,40 Q90,55 152.5,77.5" class="fl" marker-end="url(#m-fl)"/>
+<path d="M152.5,77.5 Q215,100 280,130" class="fl"/>
+<circle cx="152" cy="75" r="16" class="badl"/>
+<text x="152" y="48" class="bt" text-anchor="middle">?</text>
+</svg>

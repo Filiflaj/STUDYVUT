@@ -1,0 +1,25 @@
+[package]
+name = "studyvut-service"
+description = "What the STUDYVUT app and its CLI share: the data folder, settings, the loaded content and the progress store, and the actions on them"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+studyvut-core = { workspace = true, features = ["store"] }
+dirs.workspace = true
+fastrand.workspace = true
+parking_lot.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

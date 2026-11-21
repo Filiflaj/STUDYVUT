@@ -1,0 +1,15 @@
+/target
+/node_modules
+/dist
+/src-tauri/gen
+CLAUDE.md
+.claude/
+.DS_Store
+*.log
+
+# Originals of the study materials stay on the disk: the repository is public.
+# Only the folder structure and its README are committed.
+/inbox/**
+!/inbox/*/
+!/inbox/README.md
+!/inbox/*/.gitkeep

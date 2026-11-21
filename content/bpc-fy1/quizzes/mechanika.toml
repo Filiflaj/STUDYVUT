@@ -1,0 +1,1230 @@
+name = 'Mechanika'
+description = 'vše z mechaniky, zamíchané'
+
+[[question]]
+id = 'A1'
+topic = 'Newtonovy zákony'
+source = 'Test A (2014) · A1'
+tags = ["old"]
+text = '''
+Tři kvádry (A, B, C), každý o stejné hmotnosti $M$, jsou spojeny lankem. Kvádr C je tažen doprava silou $T$, která působí tak, že celý systém zrychluje. Zanedbáme-li tření, je **výsledná** síla působící na kvádr B rovna:
+'''
+figure = 'images/tri-kvadry.svg'
+options = [
+  'nule',
+  '$T/2$',
+  '$T/3$',
+  '$2T/3$',
+  '$T$',
+]
+answer = 2
+explanation = '''
+Celý systém má hmotnost $3M$ a všechny kvádry mají stejné zrychlení:
+
+$$a = \frac{T}{3M}$$
+
+Výsledná síla na B je podle 2. Newtonova zákona $M \cdot a = T/3$. Pro kontrolu: lanko B–C táhne B doprava silou $2T/3$ (táhne A i B), lanko A–B ho brzdí silou $T/3$ (táhne jen A). Rozdíl je $T/3$.
+'''
+notes = [
+  'Nula by vyšla jen při rovnoměrném pohybu ($a = 0$). Systém ale zrychluje.',
+  'T/2 neodpovídá žádnému rozdělení hmotnosti, tady jsou tři stejné díly.',
+  '',
+  '2T/3 je síla v lanku mezi B a C (to táhne A+B). Na B ale zároveň působí lanko A–B opačným směrem.',
+  'T je výsledná síla na celý systém, ne na jeden kvádr.',
+]
+warning = 'Na naskenovaném listu je označena možnost e). To je chyba, správně je c) T/3.'
+
+[[question]]
+id = 'A3'
+topic = 'Normálová síla'
+source = 'Test A (2014) · A3'
+tags = ["old"]
+text = '''
+Dřevěný kvádr je tažen silou $F$ po drsné podložce ve dvou různých případech (viz obrázek). Velikost síly je pro oba případy stejná. Normálová síla, kterou působí podložka na kvádr v situaci (b), je ve srovnání se situací (a):
+'''
+figure = 'images/kvadr-vodorovne-a-na-naklonene-rovine.svg'
+options = [
+  'stejná.',
+  'větší.',
+  'menší.',
+  'menší pro některé úhly $\alpha$ a větší pro úhly ostatní.',
+  'menší nebo větší v závislosti na velikosti síly $F$.',
+]
+answer = 2
+explanation = '''
+(a) Síla $F$ je vodorovná, nemá svislou složku, proto $N = mg$.
+
+(b) Na nakloněné rovině vyrovnává normálová síla jen složku tíhy kolmou k podložce. Síla $F$ míří podél podložky, do kolmého směru nepřispívá:
+
+$$N = mg \cdot \cos\alpha < mg$$
+'''
+notes = [
+  'Stejná by byla jen pro $\alpha = 0$ (vodorovná podložka).',
+  '$\cos \alpha$ nikdy nepřesáhne 1, normálová síla nemůže být větší.',
+  '',
+  '$\cos \alpha < 1$ pro všechny úhly 0° až 90°, výsledek na úhlu nezávisí.',
+  'F je rovnoběžná s podložkou, normálovou sílu vůbec neovlivní.',
+]
+
+[[question]]
+id = 'A4'
+topic = 'Newtonovy zákony'
+source = 'Test A (2014) · A4'
+tags = ["old"]
+text = '''
+Stejné síly $F$ působí na tělesa A a B. Hmotnost B je třikrát větší než hmotnost A. Velikost zrychlení tělesa A je:
+'''
+figure = 'images/telesa-a-b-stejna-sila.svg'
+options = [
+  'třikrát větší než zrychlení tělesa B.',
+  '1/3 zrychlení tělesa B.',
+  'devětkrát větší než zrychlení tělesa B.',
+  'stejné jako zrychlení tělesa B.',
+  '1/9 zrychlení tělesa B.',
+]
+answer = 0
+explanation = '''
+Z 2. Newtonova zákona $a = F/m$. Při stejné síle je zrychlení nepřímo úměrné hmotnosti:
+
+$$a_A = \frac{F}{m_A} = 3 \cdot \frac{F}{m_B} = 3 \cdot a_B$$
+'''
+notes = [
+  '',
+  'Obrácený poměr. Lehčí těleso A má větší zrychlení, ne menší.',
+  'Devítka by vyšla pro závislost 1/m². Zrychlení je úměrné 1/m.',
+  'Stejné zrychlení by vyžadovalo stejné hmotnosti.',
+  'Devítka by vyšla pro závislost 1/m², navíc obráceně.',
+]
+
+[[question]]
+id = 'A7'
+topic = 'Energie'
+source = 'Test A (2014) · A7'
+tags = ["old"]
+text = '''
+Aby se kostka o hmotnosti $m$ dostala sklouznutím po dokonale hladkém povrchu nahoru na plošinu ve výšce $h$, musí mít počáteční kinetickou energii minimálně:
+'''
+figure = 'images/kostka-plosina-h.svg'
+options = [
+  '$gh$',
+  '$gh/2$',
+  '$mgh/2$',
+  '$mgh$',
+  '$2mgh$',
+]
+answer = 3
+explanation = '''
+Povrch je hladký, takže se mechanická energie zachovává:
+
+$$E_{k0} = mgh + E_k(\text{nahoře})$$
+
+Minimum nastane, když kostka dorazí nahoru s nulovou rychlostí: $E_{k0} = mgh$.
+'''
+notes = [
+  'gh nemá jednotku energie (J), chybí hmotnost. Rozměrová kontrola ji hned vyřadí.',
+  'Chybí hmotnost, nejde o energii.',
+  'Energie mgh/2 by stačila jen do výšky h/2.',
+  '',
+  '2mgh stačí, ale není to minimum.',
+]
+
+[[question]]
+id = 'A10a'
+topic = 'Tření a rozklad sil'
+source = 'Test A (2014) · A10 (přepsáno na výběr)'
+tags = ["old"]
+text = '''
+Bedna o tíze $G$ je vlečena lanem silou $F$. Lano svírá s vodorovným směrem úhel $\alpha$, koeficient dynamického tření je $f_d$. Jak velká je třecí síla?
+'''
+figure = 'images/bedna-tah-sikmo-nahoru-g.svg'
+options = [
+  '$f_d \cdot G$',
+  '$f_d \cdot (G - F \sin \alpha)$',
+  '$f_d \cdot (G + F \sin \alpha)$',
+  '$f_d \cdot F \cos \alpha$',
+  '$F \cos \alpha$',
+]
+answer = 1
+explanation = '''
+Rozlož sílu lana: $F_x = F \cos \alpha$ (ve směru pohybu), $F_y = F \sin \alpha$ (nahoru, bednu nadlehčuje). Svisle se bedna nepohybuje:
+
+$$N + F\sin\alpha - G = 0 \quad\Rightarrow\quad N = G - F\sin\alpha$$
+
+Třecí síla: $F_t = f_d \cdot N = f_d(G - F \sin \alpha)$.
+'''
+notes = [
+  'Platí jen pro vodorovné lano. Šikmé lano bednu nadlehčuje.',
+  '',
+  'Plus by platilo, kdyby síla tlačila šikmo dolů.',
+  'Tření závisí na normálové síle, ne na vodorovné složce F.',
+  '$F \cos \alpha$ je tažná složka. Třecí síle by se rovnala jen při rovnoměrném pohybu.',
+]
+
+[[question]]
+id = 'A10b'
+topic = 'Tření a rozklad sil'
+source = 'Test A (2014) · A10 (pokračování)'
+tags = ["old"]
+text = '''
+Stejná bedna (tíha $G$, síla $F$ pod úhlem $\alpha$, koeficient $f_d$). Pohybová rovnice ve směru osy $x$ (směr pohybu) je:
+'''
+figure = 'images/bedna-tah-sikmo-nahoru-g.svg'
+options = [
+  '$(G/g) \cdot a = F - f_dG$',
+  '$(G/g) \cdot a = F \cos \alpha - f_d(G - F \sin \alpha)$',
+  '$(G/g) \cdot a = F \sin \alpha - f_d(G - F \cos \alpha)$',
+  '$G \cdot a = F \cos \alpha - f_dG$',
+  '$(G/g) \cdot a = F \cos \alpha + f_d(G - F \sin \alpha)$',
+]
+answer = 1
+explanation = '''
+Hmotnost bedny je $m = G/g$. Ve směru $x$ táhne $F \cos \alpha$ a proti pohybu brzdí tření:
+
+$$m \cdot a = F\cos\alpha - f_d\,(G - F\sin\alpha)$$
+
+Postup u každé takové úlohy: nakresli síly (G dolů, N kolmo od podložky, F po laně, tření proti pohybu), zvol osy, rozlož F na složky, napiš rovnici pro osu y (z ní N) a pro osu x (z ní a).
+'''
+notes = [
+  'Zapomíná na úhel: tažná je jen složka $F \cos \alpha$ a tření je menší kvůli nadlehčení.',
+  '',
+  'Prohozené sin a cos. Vodorovná složka je $F \cos \alpha$.',
+  'G je tíha (N), ne hmotnost. $m = G/g$. Tření je navíc bez nadlehčení.',
+  'Tření působí proti pohybu, musí se odečíst.',
+]
+
+[[question]]
+id = 'B3'
+topic = 'Energie'
+source = 'Test B (2015) · B3'
+tags = ["old"]
+text = '''
+Aby se kostka o hmotnosti $m$ dostala sklouznutím po dokonale hladkém povrchu nahoru na plošinu ve výšce $d$, musí mít počáteční kinetickou energii minimálně:
+'''
+figure = 'images/kostka-plosina-d.svg'
+options = [
+  '$2mdg$',
+  '$mdg$',
+  '$mdg/2$',
+  '$dg$',
+  '$dg/2$',
+]
+answer = 1
+explanation = '''
+Stejná úloha jako A7, jen s výškou $d$. Bez tření se veškerá kinetická energie přemění na potenciální:
+
+$$E_{k0} \geq m g d$$
+'''
+notes = [
+  'Stačí, ale není minimum.',
+  '',
+  'Dostane se jen do poloviční výšky.',
+  'Chybí hmotnost, nemá jednotku joule.',
+  'Chybí hmotnost, nemá jednotku joule.',
+]
+
+[[question]]
+id = 'B5'
+topic = 'Rovnováha sil'
+source = 'Test B (2015) · B5'
+tags = ["old"]
+text = '''
+Závaží kyvadla, jehož tíha je 1 N, je vodorovnou silou o velikosti $F = 2\,\mathrm{N}$ vychýleno o úhel $\theta$ od vertikály. Síla v newtonech, napínající závěs kyvadla, je:
+'''
+figure = 'images/kyvadlo-2n-1n.svg'
+options = [
+  '$l \cos \theta$',
+  '$2 l \cos \theta$',
+  '$\sqrt{5}$',
+  '$l \sin \theta$',
+  '1',
+]
+answer = 2
+explanation = '''
+Závaží je v klidu, takže tah lanka $T$ musí vyrovnat výslednici tíhy (1 N dolů) a síly $F$ (2 N vodorovně). Tyto dvě síly jsou na sebe kolmé:
+
+$$T = \sqrt{G^2 + F^2} = \sqrt{1^2 + 2^2} = \sqrt{5} \approx 2{,}24\,\mathrm{N}$$
+
+Navíc platí $\operatorname{tg} \theta = F/G = 2$.
+'''
+notes = [
+  'Obsahuje délku l v metrech. Síla v newtonech na délce záviset nemůže (rozměrová kontrola).',
+  'Obsahuje délku l, rozměrově špatně.',
+  '',
+  'Obsahuje délku l, rozměrově špatně.',
+  '1 N je jen tíha. Lanko musí vyrovnat i vodorovnou sílu F.',
+]
+
+[[question]]
+id = 'B7'
+topic = 'Normálová síla'
+source = 'Test B (2015) · B7'
+tags = ["old"]
+text = '''
+Krabice o hmotnosti $m$ leží na podlaze. Na krabici působí síla $F$ tak, jak je to vidět na obrázku. Velikost normálové síly $N$, kterou působí podlaha na krabici, je:
+'''
+figure = 'images/krabice-tah-sikmo-nahoru.svg'
+options = [
+  '$N = F \cdot \cos \theta$',
+  '$N > mg$',
+  '$N = mg$',
+  '$N < mg$',
+  '$N = F \cdot \sin \theta$',
+]
+answer = 3
+explanation = '''
+Síla $F$ míří šikmo nahoru a její svislá složka $F \sin \theta$ krabici nadlehčuje. Ve svislém směru je rovnováha:
+
+$$N + F\sin\theta = mg \quad\Rightarrow\quad N = mg - F\sin\theta < mg$$
+'''
+notes = [
+  'Normálová síla musí obsahovat tíhu mg.',
+  'Větší by byla, kdyby F tlačila šikmo dolů.',
+  '$N = mg$ platí jen pro vodorovnou sílu.',
+  '',
+  'Normálová síla musí obsahovat tíhu mg.',
+]
+warning = 'Na fotce je zakroužkována c) $N = mg$. To je chyba, správně je d).'
+
+[[question]]
+id = 'B9'
+topic = 'Vrhy'
+source = 'Test B (2015) · B9'
+tags = ["old"]
+text = '''
+Která z uvedených křivek nejlépe charakterizuje závislost svislé složky rychlosti $v_y$ na čase $t$ u projektilu, který byl vystřelen vzhůru pod úhlem 45° od vodorovného směru?
+'''
+figure = 'images/graf-krivek.svg'
+options = [
+  'AB',
+  'AP',
+  'AF',
+  'DE',
+  'OC',
+]
+answer = 1
+explanation = '''
+Svislý pohyb je rovnoměrně zpomalený se zrychlením $-g$:
+
+$$v_y = v_0 \sin 45^\circ - g \cdot t$$
+
+To je lineární funkce se zápornou směrnicí. Začíná kladnou hodnotou (bod A), v nejvyšším bodě dráhy protne osu $t$ ($v_y = 0$) a pak je záporná (projektil padá). To je přímka AP.
+'''
+notes = [
+  'Konstantní, takhle se chová vodorovná složka $v_x$.',
+  '',
+  'Rostoucí, to by vyžadovalo zrychlení nahoru.',
+  'Konstantní záporná, to je pád stálou rychlostí.',
+  'Začíná nulou a je zakřivená, takhle vypadá spíš výška y(t).',
+]
+warning = 'Na fotce je zakroužkována e), správně je b) AP (dopsáno červeně).'
+
+[[question]]
+id = 'T12'
+topic = 'Tření'
+source = 'Starší test · 12'
+tags = ["old"]
+text = '''
+Objekt je tažen po vodorovné podložce horizontální silou velikosti $F$. Koeficient dynamického tření je $f_d$. Objekt se pohybuje **konstantní rychlostí**. Vyjádřete velikost normálové síly $N$, kterou působí podložka na pohybující se objekt.
+'''
+figure = 'images/kvadr-vodorovna-sila.svg'
+options = [
+  'Žádný z následujících výrazů není správný',
+  '$N = 0$',
+  '$N = F / f_d$',
+  '$N = F \cdot f_d$',
+  '$N = f_d / F$',
+]
+answer = 2
+explanation = '''
+Konstantní rychlost znamená nulovou výslednici (1. Newtonův zákon). Tažná síla se tedy rovná třecí:
+
+$$F = F_t = f_d \cdot N \quad\Rightarrow\quad N = \frac{F}{f_d}$$
+'''
+notes = [
+  'Správný výraz mezi možnostmi je.',
+  'Objekt leží na podložce, $N = mg \neq 0$.',
+  '',
+  'Špatně vyjádřeno z $F = f_d \cdot N$.',
+  'Převrácená hodnota, vyšla by jednotka 1/N.',
+]
+
+[[question]]
+id = 'E1'
+topic = 'Volný pád a vrhy'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Ze stejného okna jsou ve stejném čase objekt **A** upuštěn a padá dolů, objekt **B** je vržen směrem dolů a objekt **C** vržen směrem nahoru. Které z tvrzení je poté, co objekty opustí výchozí pozici, pravdivé? Odpor vzduchu lze zanedbat.
+'''
+options = [
+  'V určitém okamžiku je zrychlení objektu C nulové.',
+  'Všechny objekty dopadnou na zem ve stejném čase.',
+  'Všechny objekty mají v každém čase stejnou rychlost.',
+  'Všechny objekty mají v každém čase stejné zrychlení.',
+  'Všechny objekty dopadnou na zem stejnou rychlostí.',
+]
+answer = 3
+explanation = '''
+Po opuštění ruky působí na každý objekt jen tíhová síla, takže všechny mají po celou dobu zrychlení $g$ svisle dolů. Liší se jen počáteční rychlostí: A má nulovou, B míří dolů, C nahoru.
+'''
+notes = [
+  'V nejvyšším bodě je nulová rychlost C, zrychlení je pořád g.',
+  'B dopadne první, A druhý, C poslední.',
+  'Počáteční rychlosti jsou různé, tak se liší i později.',
+  '',
+  'A (upuštěný) dopadne pomaleji než B a C. Stejnou rychlostí dopadnou jen B a C, pokud byly vrženy stejně rychle.',
+]
+
+[[question]]
+id = 'E2'
+topic = 'Volný pád a vrhy'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Při zanedbání odporu vzduchu kulka vystřelená ze zbraně horizontálně:
+'''
+options = [
+  'dopadne na zem později než stejná kulka upuštěná ve stejném čase ze stejného místa.',
+  'nikdy nedopadne na zem.',
+  'dopadne na zem ve stejném čase jako stejná kulka upuštěná ve stejném čase ze stejného místa.',
+  'se pohybuje po přímce.',
+  'dopadne na zem dříve než stejná kulka upuštěná ze stejného místa ve stejném čase.',
+]
+answer = 2
+explanation = '''
+Vodorovný a svislý pohyb jsou nezávislé. Ve svislém směru mají obě kulky nulovou počáteční rychlost a zrychlení $g$, takže padají stejně dlouho:
+
+$$t = \sqrt{\frac{2h}{g}}$$
+
+Vodorovná rychlost jen určuje, jak daleko kulka doletí.
+'''
+notes = [
+  'Vodorovná rychlost pád nezpomalí.',
+  'Tíha působí vždy, kulka spadne.',
+  '',
+  'Dráha je parabola (vodorovný vrh).',
+  'Vodorovná rychlost pád nezrychlí.',
+]
+
+[[question]]
+id = 'E3'
+topic = 'Normálová síla'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Ve které zobrazené situaci je velikost normálové síly $N$ působící na kvádr o hmotnosti $M$ rovna $N = Mg + F\sin\theta$?
+'''
+figure = 'images/tri-situace-kvadru.svg'
+options = [
+  'V situaci 2',
+  'V situaci 1',
+  'V situacích 1 a 2',
+  'V situacích 2 a 3',
+  'V situacích 1, 2 a 3',
+]
+answer = 1
+explanation = '''
+**Situace 1:** síla tlačí šikmo dolů, její svislá složka $F \sin \theta$ kvádr přitlačuje: $N = Mg + F \sin \theta$.
+
+**Situace 2:** síla táhne šikmo nahoru a nadlehčuje: $N = Mg - F \sin \theta$.
+
+**Situace 3:** nakloněná rovina, $F$ je rovnoběžná s podložkou: $N = Mg \cos \theta$.
+'''
+notes = [
+  'Ve 2 síla nadlehčuje, je tam minus.',
+  '',
+  'Ve 2 je minus, ne plus.',
+  'Ve 2 je minus, ve 3 je $Mg \cos \theta$.',
+  'Platí jen pro situaci 1.',
+]
+
+[[question]]
+id = 'E4'
+topic = 'Práce'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Na tělesa, která se pohybují po vodorovné podlaze (doprava, o dráhu $s$), působí síly stejné velikosti $F$, ale různých směrů. Která síla vykoná **nejmenší** práci?
+'''
+options = [
+  '![](images/prace-sila-a.svg)',
+  '![](images/prace-sila-b.svg)',
+  '![](images/prace-sila-c.svg)',
+  '![](images/prace-sila-d.svg)',
+  '![](images/prace-sila-e.svg)',
+]
+answer = 3
+layout = "grid"
+explanation = '''
+Práce stálé síly je skalár se znaménkem:
+
+$$W = F \cdot s \cdot \cos\varphi$$
+
+kde $\varphi$ je úhel mezi silou a posunutím. a) $\varphi = 0^\circ$: $W = Fs$. b) $\varphi = \alpha$: $W = Fs \cos \alpha$. c) $\varphi = 90^\circ$: $W = 0$. e) $\varphi = 180^\circ - \alpha$: $W = -Fs \cos \alpha$. d) $\varphi = 180^\circ$: $W = -Fs$, to je **nejmenší (nejzápornější)** hodnota.
+
+Pozor na zadání: kdyby se ptali na sílu, která *nekoná žádnou práci*, je to F₃ (kolmá k pohybu).
+'''
+notes = [
+  'Největší práce, $W = Fs$.',
+  '$W = Fs \cos \alpha$, kladná.',
+  '$W = 0$. Je to nejmenší velikost práce, ale ne nejmenší hodnota, protože d) a e) jsou záporné.',
+  '',
+  '$W = -Fs \cos \alpha$ je záporná, ale v absolutní hodnotě menší než Fs.',
+]
+warning = 'Ve screenshotu je vybrána c). Podle ustálené formulace (Halliday) se myslí nejmenší hodnota práce se znaménkem, tedy d). Pokud chceš mít jistotu, zeptej se vyučujícího, jak to myslí.'
+
+[[question]]
+id = 'E5'
+topic = 'Síly na nakloněné rovině'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Bedna, jejíž tíha je $G$, je spouštěna na laně dolů po nakloněné rovině silou o velikosti $F$. Úhel nakloněné roviny je $\alpha$, koeficient dynamického tření $f_d$. Jakým směrem míří tíhová síla $G$ zakreslená do těžiště?
+'''
+figure = 'images/naklonena-rovina-spousteni-na-lane.svg'
+options = [
+  '![](images/sipka-nahoru.svg) svisle nahoru',
+  '![](images/sipka-doprava.svg) vodorovně doprava',
+  '![](images/sipka-doleva.svg) vodorovně doleva',
+  '![](images/sipka-dolu.svg) svisle dolů',
+  '![](images/sipka-podel-roviny-nahoru.svg) podél roviny nahoru',
+  '![](images/sipka-kolmo-od-roviny.svg) kolmo od roviny',
+]
+answer = 3
+explanation = '''
+Tíhová síla míří **vždy svisle dolů** (do středu Země), bez ohledu na sklon podložky, lano nebo směr pohybu. Na nakloněné rovině ji teprve pro výpočet rozkládáš na složku podél roviny ($G \sin \alpha$) a kolmo k rovině ($G \cos \alpha$).
+'''
+notes = [
+  'Nahoru nemíří žádná tíha.',
+  'Tíha nemá vodorovný směr.',
+  'Tíha nemá vodorovný směr.',
+  '',
+  'Tímto směrem táhne lano (síla F).',
+  'Takto míří normálová síla N.',
+]
+
+[[question]]
+id = 'E6'
+kind = "numeric"
+topic = 'Vrhy'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Při sněhové bitvě se dítě chystá hodit sněhovou kouli na další dítě, které je vzdálené $d = 8\,\mathrm{m}$ na vyvýšenině (1 m nad úrovní prvního dítěte). Určete počáteční rychlost sněhové koule při elevačním úhlu $\alpha = 30^\circ$ tak, aby zasáhla druhé dítě. ($g = 9{,}81\,\mathrm{m/s^2}$)
+'''
+figure = 'images/snehova-koule.svg'
+value = 10.8
+tolerance = 0.2
+unit = 'm/s'
+explanation = '''
+Rozlož pohyb na vodorovný (rovnoměrný) a svislý (rovnoměrně zrychlený):
+
+$$x = v_0 \cos\alpha \cdot t, \qquad y = v_0 \sin\alpha \cdot t - \tfrac{1}{2} g t^2$$
+
+Z první rovnice $t = d / (v_0 \cos \alpha)$, dosaď do druhé s $y = 1\,\mathrm{m}$:
+
+$$1 = d \cdot \operatorname{tg}\alpha - \frac{g d^2}{2 v_0^2 \cos^2\alpha}$$
+
+$$1 = 4{,}619 - \frac{9{,}81 \cdot 64}{1{,}5 \cdot v_0^2} \quad\Rightarrow\quad v_0^2 = \frac{627{,}8}{5{,}428} = 115{,}7$$
+
+$$v_0 \approx 10{,}8\,\mathrm{m/s}$$
+'''
+
+[[question]]
+id = 'E7'
+topic = 'Pohybová rovnice'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Helikoptéra zvedá na laně astronauta o hmotnosti $m = 80\,\mathrm{kg}$ z hladiny oceánu do výšky 10 m se zrychlením $g/5$. Jaká je tahová síla lana $T$?
+'''
+figure = 'images/helikoptera.svg'
+options = [
+  '$T = mg$',
+  '$T = m(g + a) = 1{,}2 mg$',
+  '$T = m(g - a) = 0{,}8 mg$',
+  '$T = ma = 0{,}2 mg$',
+  '$T = mg/5$',
+]
+answer = 1
+explanation = '''
+Na astronauta působí tah lana $T$ (nahoru) a tíha $mg$ (dolů). Vektorově $m\mathbf{a} = \mathbf{T} + m\mathbf{g}$, ve velikostech (osa nahoru):
+
+$$m \cdot a = T - m \cdot g \quad\Rightarrow\quad T = m(g + a) = 1{,}2 \cdot m \cdot g = 1{,}2 \cdot 80 \cdot 9{,}81 \approx 941{,}8\,\mathrm{N}$$
+
+Lano musí tíhu vyrovnat a navíc astronauta urychlovat.
+'''
+notes = [
+  'Platí jen pro zvedání konstantní rychlostí ($a = 0$).',
+  '',
+  'Takhle by to vyšlo při zrychlení dolů (spouštění se zrychlením).',
+  'Zapomíná na tíhu.',
+  'Nesmysl, zrychlení není síla.',
+]
+
+[[question]]
+id = 'E8'
+kind = "numeric"
+topic = 'Práce a energie'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Helikoptéra zvedá astronauta (80 kg) do výšky 10 m se zrychlením $g/5$ ($g = 9{,}81\,\mathrm{m/s^2}$). a) Určete práci, kterou vykonala síla helikoptéry (lana) $W_{FH}$.
+'''
+figure = 'images/helikoptera.svg'
+value = 9418
+tolerance = 12
+unit = 'J'
+explanation = '''
+Síla lana je stálá a míří ve směru pohybu:
+
+$$T = m(g + g/5) = 1{,}2 \cdot 80 \cdot 9{,}81 = 941{,}76\,\mathrm{N}$$
+
+$$W = T \cdot h = 941{,}76 \cdot 10 \approx 9418\,\mathrm{J}$$
+'''
+
+[[question]]
+id = 'E9'
+kind = "numeric"
+topic = 'Práce a energie'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Stejná situace (80 kg, výška 10 m, zrychlení $g/5$, $g = 9{,}81\,\mathrm{m/s^2}$). b) Jakou kinetickou energii astronaut získal?
+'''
+figure = 'images/helikoptera.svg'
+value = 1570
+tolerance = 3
+unit = 'J'
+explanation = '''
+Kinetickou energii zvyšuje **výsledná** síla $ma$ (věta o kinetické energii):
+
+$$E_k = m \cdot a \cdot h = 80 \cdot 1{,}962 \cdot 10 \approx 1570\,\mathrm{J}$$
+
+Kontrola energií: $W_{FH} = E_p + E_k = 80 \cdot 9{,}81 \cdot 10 + 1570 = 7848 + 1570 = 9418\,\mathrm{J}$.
+'''
+
+[[question]]
+id = 'E10'
+kind = "numeric"
+topic = 'Práce a energie'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Stejná situace (80 kg, výška 10 m, zrychlení $g/5$, $g = 9{,}81\,\mathrm{m/s^2}$). c) Jakou rychlost astronaut získal?
+'''
+figure = 'images/helikoptera.svg'
+value = 6.26
+tolerance = 0.03
+unit = 'm/s'
+explanation = '''
+Buď z kinetické energie, nebo z rovnoměrně zrychleného pohybu:
+
+$$v = \sqrt{2 a h} = \sqrt{2 \cdot 1{,}962 \cdot 10} = \sqrt{39{,}24} \approx 6{,}26\,\mathrm{m/s}$$
+'''
+
+[[question]]
+id = 'M1'
+topic = 'Newtonovy zákony'
+source = 'Procvičování'
+text = '''
+Tři kvádry A, B, C, každý o hmotnosti $M$, jsou spojeny lanky a kvádr C je tažen silou $T$ (bez tření). Jak velká síla napíná lanko mezi B a C?
+'''
+figure = 'images/tri-kvadry.svg'
+options = [
+  '$T/3$',
+  '$T/2$',
+  '$2T/3$',
+  '$T$',
+  '$3T/2$',
+]
+answer = 2
+explanation = '''
+Zrychlení systému je $a = T/(3M)$. Lanko B–C táhne za sebou kvádry A a B (hmotnost $2M$):
+
+$$T_{BC} = 2M \cdot a = \frac{2T}{3}$$
+
+Trik: síla v lanku = (hmotnost všeho, co lanko táhne za sebou) × $a$.
+'''
+notes = [
+  'T/3 je napětí v lanku A–B (táhne jen A), nebo výslednice na B.',
+  'Neodpovídá žádnému rozdělení.',
+  '',
+  'T táhne všechny tři kvádry, lanko B–C jen dva.',
+  'Větší než vnější síla být nemůže.',
+]
+
+[[question]]
+id = 'M2'
+topic = 'Newtonovy zákony'
+source = 'Procvičování'
+text = '''
+Kvádr A (2 kg) je tažen silou 20 N a za sebou táhne na lanku kvádr B (3 kg). Tření zanedbej. Jak velká síla napíná lanko?
+'''
+figure = 'images/dva-kvadry-na-lanku.svg'
+options = [
+  '20 N',
+  '12 N',
+  '8 N',
+  '10 N',
+  '4 N',
+]
+answer = 1
+explanation = '''
+$$a = \frac{F}{m_A + m_B} = \frac{20}{5} = 4\,\mathrm{m/s^2}$$
+
+Lanko urychluje jen kvádr B: $T = m_B \cdot a = 3 \cdot 4$ = **12 N**. Kontrola na A: 20 − 12 = 8 N = 2·4. Sedí.
+'''
+notes = [
+  '20 N je celková vnější síla. Lanko ale táhne jen B.',
+  '',
+  '8 N je výsledná síla na A.',
+  'To by platilo jen pro stejné hmotnosti.',
+  '4 je zrychlení v m/s², ne síla.',
+]
+
+[[question]]
+id = 'M3'
+topic = 'Newtonovy zákony'
+source = 'Procvičování'
+text = '''
+Dva kvádry A ($m$) a B ($2m$) se dotýkají a leží na hladké podložce. Silou $F$ tlačíme na kvádr A. Jakou silou působí A na B?
+'''
+figure = 'images/dva-kvadry-dotyk.svg'
+options = [
+  '$F$',
+  '$F/3$',
+  '$2F/3$',
+  '$F/2$',
+  '0',
+]
+answer = 2
+explanation = '''
+Společné zrychlení $a = F/(3m)$. Kvádr B je urychlován jen silou od A:
+
+$$F_{AB} = 2m \cdot a = \frac{2F}{3}$$
+
+Podle 3. Newtonova zákona tlačí B zpět na A stejně velkou silou $2F/3$.
+'''
+notes = [
+  'F působí na A, část síly „spotřebuje“ urychlení samotného A.',
+  'F/3 je výsledná síla na A.',
+  '',
+  'Hmotnosti nejsou stejné.',
+  'B se zrychluje, něco ho musí tlačit.',
+]
+
+[[question]]
+id = 'M4'
+topic = 'Newtonovy zákony'
+source = 'Procvičování'
+text = '''
+Na těleso působí síla $F$ a uděluje mu zrychlení $a$. Sílu zdvojnásobíme a hmotnost tělesa zmenšíme na polovinu. Nové zrychlení je:
+'''
+options = [
+  '$a/4$',
+  '$a$',
+  '$2a$',
+  '$4a$',
+  '$8a$',
+]
+answer = 3
+explanation = '''
+$$a' = \frac{2F}{m/2} = 4 \cdot \frac{F}{m} = 4a$$
+'''
+notes = [
+  'Obráceně.',
+  'Obě změny působí stejným směrem, nevyruší se.',
+  'Zohledňuje jen jednu změnu.',
+  '',
+  'Žádná druhá mocnina tu není.',
+]
+
+[[question]]
+id = 'M5'
+topic = 'Normálová síla'
+source = 'Procvičování'
+text = '''
+Krabici o hmotnosti $m$ tlačíme po podlaze silou $F$, která míří šikmo dolů pod úhlem $\theta$ pod vodorovnou rovinou. Normálová síla podlahy je:
+'''
+figure = 'images/krabice-tlak-sikmo-dolu.svg'
+options = [
+  '$N = mg$',
+  '$N = mg - F \sin \theta$',
+  '$N = mg + F \sin \theta$',
+  '$N = F \cos \theta$',
+  '$N = mg + F \cos \theta$',
+]
+answer = 2
+explanation = '''
+Svislá složka síly $F \sin \theta$ míří dolů a krabici přitlačuje k podlaze:
+
+$$N = mg + F\sin\theta$$
+
+Proto je těžší krabici tlačit šikmo dolů než ji táhnout šikmo nahoru (větší $N$ znamená větší tření).
+'''
+notes = [
+  'Ignoruje svislou složku F.',
+  'Minus platí pro tah šikmo nahoru.',
+  '',
+  '$\cos \theta$ je vodorovná složka.',
+  'Svislá složka je $F \sin \theta$, ne $\cos \theta$.',
+]
+
+[[question]]
+id = 'M6'
+topic = 'Síly na nakloněné rovině'
+source = 'Procvičování'
+text = '''
+Kvádr o hmotnosti $m$ leží v klidu na nakloněné rovině se sklonem $\alpha$. Velikost normálové síly je:
+'''
+figure = 'images/naklonena-rovina-tiha.svg'
+options = [
+  '$mg$',
+  '$mg \sin \alpha$',
+  '$mg \cos \alpha$',
+  '$mg \operatorname{tg} \alpha$',
+  '$mg / \cos \alpha$',
+]
+answer = 2
+explanation = '''
+Tíhu rozložíme na složku podél roviny $mg \sin \alpha$ (táhne kvádr dolů po rovině) a kolmou k rovině $mg \cos \alpha$ (tlačí do podložky). Normálová síla vyrovnává kolmou složku:
+
+$$N = mg\cos\alpha$$
+
+Kontrola krajních případů: $\alpha = 0$ → $N = mg$ ✓, $\alpha = 90^\circ$ → $N = 0$ ✓.
+'''
+notes = [
+  'Platí jen pro vodorovnou podložku.',
+  'To je složka tíhy podél roviny.',
+  '',
+  'Pro $\alpha$ → 90° by šla do nekonečna.',
+  'Pro $\alpha$ → 90° by šla do nekonečna.',
+]
+
+[[question]]
+id = 'M7'
+topic = 'Tření'
+source = 'Procvičování'
+text = '''
+Kvádr sjíždí po nakloněné rovině se sklonem $\alpha$ **konstantní rychlostí**. Koeficient dynamického tření je:
+'''
+figure = 'images/naklonena-rovina-sjizdeni.svg'
+options = [
+  '$\sin \alpha$',
+  '$\cos \alpha$',
+  '$\operatorname{tg} \alpha$',
+  '$1 / \operatorname{tg} \alpha$',
+  'nelze určit bez hmotnosti',
+]
+answer = 2
+explanation = '''
+Konstantní rychlost znamená nulovou výslednici. Podél roviny:
+
+$$mg\sin\alpha = f \cdot mg\cos\alpha \quad\Rightarrow\quad f = \operatorname{tg}\alpha$$
+
+Hmotnost se vykrátí.
+'''
+notes = [
+  'Chybí dělení $\cos \alpha$.',
+  'Převrácený vztah.',
+  '',
+  'Převrácená hodnota.',
+  'Hmotnost se vykrátí.',
+]
+
+[[question]]
+id = 'M8'
+topic = 'Tření'
+source = 'Procvičování'
+text = '''
+Krabice (10 kg) stojí na podlaze, koeficient statického tření je 0,5 ($g = 10\,\mathrm{m/s^2}$). Tlačíme na ni vodorovně silou 20 N a krabice se nepohne. Jak velká je třecí síla?
+'''
+options = [
+  '0 N',
+  '20 N',
+  '50 N',
+  '100 N',
+  '70 N',
+]
+answer = 1
+explanation = '''
+Statické tření je jen tak velké, jak je potřeba k udržení klidu. Maximálně může být $f \cdot mg = 50\,\mathrm{N}$. Krabice stojí, takže výslednice je nulová a tření přesně vyrovnává tlačnou sílu: **20 N**.
+'''
+notes = [
+  'Kdyby bylo tření nulové, krabice by se rozjela.',
+  '',
+  '50 N je maximální možné statické tření, ne skutečné.',
+  '100 N je tíha.',
+  'Nesmysl, výslednice by nebyla nulová.',
+]
+
+[[question]]
+id = 'M9'
+topic = 'Newtonovy zákony'
+source = 'Procvičování'
+text = '''
+Puk klouže po dokonale hladkém ledu po úderu hokejkou. Které síly na něj během klouzání působí?
+'''
+options = [
+  'tíha, normálová síla a síla ve směru pohybu',
+  'tíha a normálová síla',
+  'jen síla ve směru pohybu',
+  'žádné',
+  'tíha, normálová síla a síla hokejky',
+]
+answer = 1
+explanation = '''
+1\. Newtonův zákon: k udržení rovnoměrného pohybu žádná síla potřeba není. Po odtržení od hokejky působí jen tíha (dolů) a normálová síla ledu (nahoru), které se vyruší. Puk proto jede stálou rychlostí.
+'''
+notes = [
+  '„Síla pohybu“ neexistuje. To je častá chyba.',
+  '',
+  'Tíha působí vždy.',
+  'Tíha a podložka působí vždy.',
+  'Hokejka působila jen při úderu.',
+]
+
+[[question]]
+id = 'M10'
+topic = 'Energie'
+source = 'Procvičování'
+text = '''
+Kostka sjede z klidu po dokonale hladké skluzavce z výšky $h = 5\,\mathrm{m}$ ($g = 10\,\mathrm{m/s^2}$). Jakou rychlostí dorazí dolů?
+'''
+figure = 'images/skluzavka-5m.svg'
+options = [
+  '5 m/s',
+  '10 m/s',
+  '50 m/s',
+  '100 m/s',
+  '$\sqrt{50}\,\mathrm{m/s}$',
+]
+answer = 1
+explanation = '''
+$$mgh = \tfrac{1}{2} m v^2 \quad\Rightarrow\quad v = \sqrt{2gh} = \sqrt{2 \cdot 10 \cdot 5} = \sqrt{100} = 10\,\mathrm{m/s}$$
+
+Na tvaru skluzavky ani na hmotnosti nezáleží, když není tření.
+'''
+notes = [
+  'Neodpovídá vzorci.',
+  '',
+  'Chybí odmocnina a dvojka.',
+  'To je v², ne v.',
+  'Chybí dvojka: $v = \sqrt{2gh}$.',
+]
+
+[[question]]
+id = 'M11'
+topic = 'Energie'
+source = 'Procvičování'
+text = '''
+Kostka má po hladké podložce vyjet na plošinu ve výšce $h$. Kostku nahradíme dvakrát těžší. Minimální potřebná počáteční **rychlost** bude:
+'''
+figure = 'images/kostka-plosina-h.svg'
+options = [
+  'stejná',
+  'dvojnásobná',
+  '$\sqrt{2}$-násobná',
+  'poloviční',
+  'čtyřnásobná',
+]
+answer = 0
+explanation = '''
+$$\tfrac{1}{2} m v^2 = mgh \quad\Rightarrow\quad v = \sqrt{2gh}$$
+
+Hmotnost se vykrátí, rychlost nezávisí na $m$. Potřebná **kinetická energie** $mgh$ se ale zdvojnásobí, na to pozor v zadání.
+'''
+notes = [
+  '',
+  'Zdvojnásobí se energie, ne rychlost.',
+  'Hmotnost se vykrátí úplně.',
+  'Hmotnost se vykrátí úplně.',
+  'Hmotnost se vykrátí úplně.',
+]
+
+[[question]]
+id = 'M12'
+topic = 'Energie'
+source = 'Procvičování'
+text = '''
+Kostka o hmotnosti 2 kg má po hladkém povrchu vyjet na plošinu ve výšce 3 m ($g = 10\,\mathrm{m/s^2}$). Minimální počáteční kinetická energie je:
+'''
+figure = 'images/kostka-plosina-3m.svg'
+options = [
+  '30 J',
+  '60 J',
+  '6 J',
+  '15 J',
+  '120 J',
+]
+answer = 1
+explanation = '''
+$$E_{k,\mathrm{min}} = m g h = 2 \cdot 10 \cdot 3 = 60\,\mathrm{J}$$
+'''
+notes = [
+  'Chybí hmotnost nebo dvojka.',
+  '',
+  '$6 = m \cdot h$, chybí g.',
+  'Poloviční, vyjede jen do 1,5 m.',
+  'Dvojnásobek, zbytečně mnoho.',
+]
+
+[[question]]
+id = 'M13'
+topic = 'Vrhy'
+source = 'Procvičování'
+text = '''
+Projektil je vystřelen pod úhlem 45°. Která křivka v grafu nejlépe popisuje **vodorovnou** složku rychlosti $v_x$ v závislosti na čase? (Svislá osa teď ukazuje $v_x$.)
+'''
+figure = 'images/graf-krivek.svg'
+options = [
+  'AB',
+  'AP',
+  'AF',
+  'DE',
+  'OC',
+]
+answer = 0
+explanation = '''
+Ve vodorovném směru nepůsobí žádná síla (odpor vzduchu zanedbáváme), takže $v_x = v_0 \cos 45^\circ$ je **konstantní**. To je vodorovná přímka AB. Při 45° navíc platí $v_0 \cos 45^\circ = v_0 \sin 45^\circ$, proto začíná ve stejném bodě A jako $v_y$.
+'''
+notes = [
+  '',
+  'Tak vypadá $v_y$.',
+  'Vodorovná rychlost neroste.',
+  'Nemůže být záporná, projektil letí dopředu.',
+  'Nezačíná nulou.',
+]
+
+[[question]]
+id = 'M14'
+topic = 'Vrhy'
+source = 'Procvičování'
+text = '''
+Projektil je vystřelen šikmo vzhůru. Co platí v **nejvyšším bodě** dráhy?
+'''
+options = [
+  '$v = 0$, $a = 0$',
+  '$v = 0$, $a = g$ dolů',
+  '$v = v_0 \cos \alpha$ vodorovně, $a = g$ dolů',
+  '$v = v_0 \cos \alpha$ vodorovně, $a = 0$',
+  '$v = v_0$, $a = g$ dolů',
+]
+answer = 2
+explanation = '''
+V nejvyšším bodě je nulová jen **svislá** složka rychlosti, vodorovná $v_0 \cos \alpha$ zůstává. Zrychlení je po celou dobu letu $g$ svisle dolů, i v nejvyšším bodě.
+'''
+notes = [
+  'Vodorovná rychlost zůstává a zrychlení je pořád g.',
+  'Nulová je jen svislá složka rychlosti.',
+  '',
+  'Gravitace v nejvyšším bodě nezmizí.',
+  'Rychlost je menší než v₀, svislá složka je nulová.',
+]
+
+[[question]]
+id = 'M15'
+topic = 'Vrhy'
+source = 'Procvičování'
+text = '''
+Která křivka v grafu nejlépe popisuje **výšku** $y(t)$ šikmo vystřeleného projektilu? (Svislá osa teď ukazuje $y$.)
+'''
+figure = 'images/graf-krivek.svg'
+options = [
+  'AB',
+  'AP',
+  'AF',
+  'DE',
+  'OC',
+]
+answer = 4
+explanation = '''
+$$y = v_0 \sin\alpha \cdot t - \tfrac{1}{2} g t^2$$
+
+Je to kvadratická funkce, tedy parabola otevřená dolů. Začíná v nule (bod O), stoupá, dosáhne maxima a klesá. To je křivka OC.
+'''
+notes = [
+  'Konstantní výška znamená, že projektil neletí nahoru.',
+  'Lineární pokles, tak vypadá $v_y$.',
+  'Výška neroste lineárně.',
+  'Konstantní záporná výška nedává smysl.',
+  '',
+]
+
+[[question]]
+id = 'M16'
+topic = 'Rovnováha sil'
+source = 'Procvičování'
+text = '''
+Závaží kyvadla o tíze 3 N je vychýleno vodorovnou silou 4 N a je v klidu. Jak velká síla napíná závěs?
+'''
+figure = 'images/kyvadlo-4n-3n.svg'
+options = [
+  '7 N',
+  '1 N',
+  '5 N',
+  '12 N',
+  '$\sqrt{7}\,\mathrm{N}$',
+]
+answer = 2
+explanation = '''
+Tah závěsu vyrovnává výslednici dvou kolmých sil:
+
+$$T = \sqrt{3^2 + 4^2} = \sqrt{25} = 5\,\mathrm{N}$$
+
+Pythagorova trojice 3-4-5 se v testech objevuje často.
+'''
+notes = [
+  'Síly jsou kolmé, nesčítají se algebraicky.',
+  'Rozdíl nedává smysl.',
+  '',
+  'Součin nedává smysl.',
+  'Musí se umocnit obě síly: $\sqrt{9+16}$.',
+]
+
+[[question]]
+id = 'M17'
+topic = 'Rovnováha sil'
+source = 'Procvičování'
+text = '''
+Závaží kyvadla o tíze $G$ je vychýleno vodorovnou silou $F = G$. O jaký úhel $\theta$ se vychýlí od svislice?
+'''
+figure = 'images/kyvadlo-f-g.svg'
+options = [
+  '30°',
+  '45°',
+  '60°',
+  '90°',
+  'závisí na délce závěsu',
+]
+answer = 1
+explanation = '''
+Z rozkladu tahu závěsu: $T \sin \theta = F$, $T \cos \theta = G$, takže
+
+$$\operatorname{tg}\theta = \frac{F}{G} = 1 \quad\Rightarrow\quad \theta = 45^\circ$$
+'''
+notes = [
+  '$\operatorname{tg} 30^\circ \approx 0{,}58$.',
+  '',
+  '$\operatorname{tg} 60^\circ \approx 1{,}73$.',
+  'To by vyžadovalo nekonečnou sílu.',
+  'Délka se v rovnováze sil neuplatní.',
+]
+
+[[question]]
+id = 'M18'
+topic = 'Tření a rozklad sil'
+source = 'Procvičování'
+text = '''
+Bednu táhneme lanem pod úhlem $\alpha$ nad vodorovnou rovinou a bedna se pohybuje **rovnoměrně** (konstantní rychlostí). Jak velká je třecí síla?
+'''
+figure = 'images/bedna-tah-sikmo-nahoru-m.svg'
+options = [
+  '$f \cdot mg$',
+  '$F$',
+  '$F \cos \alpha$',
+  '$F \sin \alpha$',
+  '$f \cdot F$',
+]
+answer = 2
+explanation = '''
+Rovnoměrný pohyb znamená nulovou výslednici. Ve vodorovném směru se třecí síla rovná vodorovné složce tahu:
+
+$$F_t = F\cos\alpha$$
+
+(Zároveň platí $F_t = f(mg - F \sin \alpha)$.)
+'''
+notes = [
+  'Normálová síla je zmenšená o $F \sin \alpha$.',
+  'Celá síla F nemíří vodorovně.',
+  '',
+  'To je svislá složka.',
+  'Tření závisí na N, ne na F.',
+]
+
+[[question]]
+id = 'M19'
+topic = 'Síly na nakloněné rovině'
+source = 'Procvičování'
+text = '''
+Bedna je vlečena lanem **nahoru** po nakloněné rovině. Kterým směrem míří třecí síla?
+'''
+figure = 'images/naklonena-rovina-vlecena-nahoru.svg'
+options = [
+  '![](images/sipka-podel-roviny-nahoru.svg) podél roviny nahoru',
+  '![](images/sipka-podel-roviny-dolu.svg) podél roviny dolů',
+  '![](images/sipka-dolu.svg) svisle dolů',
+  '![](images/sipka-kolmo-od-roviny.svg) kolmo od roviny',
+  '![](images/sipka-doprava.svg) vodorovně',
+]
+answer = 1
+explanation = '''
+Dynamické tření míří vždy **proti směru pohybu** (proti relativní rychlosti vůči podložce). Bedna jede nahoru, tření míří podél roviny dolů. Při spouštění dolů by tření mířilo nahoru po rovině.
+'''
+notes = [
+  'Takto míří tah lana.',
+  '',
+  'Takto míří tíha G.',
+  'Takto míří normálová síla N.',
+  'Tření je rovnoběžné s podložkou, ne s vodorovnou rovinou.',
+]
+
+[[question]]
+id = 'M20'
+topic = 'Práce'
+source = 'Procvičování'
+text = '''
+Která ze sil (stejné velikosti, těleso se posouvá doprava o $s$) **nekoná žádnou práci**?
+'''
+options = [
+  '![](images/prace-sila-a.svg)',
+  '![](images/prace-sila-b.svg)',
+  '![](images/prace-sila-c.svg)',
+  '![](images/prace-sila-d.svg)',
+  '![](images/prace-sila-e.svg)',
+]
+answer = 2
+layout = "grid"
+explanation = '''
+$$W = F s \cos\varphi$$
+
+Síla kolmá k posunutí ($\varphi = 90^\circ$) nekoná práci, $\cos 90^\circ = 0$. Proto práci nekoná ani normálová síla nebo tíha při vodorovném pohybu.
+'''
+notes = [
+  '$W = Fs$.',
+  '$W = Fs \cos \alpha$.',
+  '',
+  '$W = -Fs$, záporná práce (brzdí).',
+  '$W = -Fs \cos \alpha$.',
+]
+
+[[question]]
+id = 'M21'
+topic = 'Pohybová rovnice'
+source = 'Procvičování'
+text = '''
+Člověk o hmotnosti 60 kg stojí ve výtahu na váze. Výtah se rozjíždí **dolů** se zrychlením 2 m/s² ($g = 10\,\mathrm{m/s^2}$). Jakou sílou tlačí na váhu?
+'''
+options = [
+  '600 N',
+  '720 N',
+  '480 N',
+  '120 N',
+  '0 N',
+]
+answer = 2
+explanation = '''
+Na člověka působí tíha $mg$ dolů a normálová síla váhy $N$ nahoru. Osa dolů (ve směru zrychlení):
+
+$$m a = m g - N \quad\Rightarrow\quad N = m(g - a) = 60 \cdot 8 = 480\,\mathrm{N}$$
+
+Stejný typ jako astronaut na laně, jen se zrychlením opačným směrem.
+'''
+notes = [
+  'Platí jen bez zrychlení.',
+  'm(g + a) platí pro zrychlení nahoru.',
+  '',
+  'Jen ma, chybí tíha.',
+  'Nulová by byla jen při volném pádu ($a = g$).',
+]

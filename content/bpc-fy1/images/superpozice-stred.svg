@@ -1,0 +1,21 @@
+<svg viewBox="0 0 420 150" width="420" class="fig" role="img" aria-label="Intenzita uprostřed mezi dvěma náboji">
+<circle cx="40" cy="40" r="8" class="pt"/>
+<text x="40" y="68" class="it sm" text-anchor="middle">+q</text>
+<circle cx="300" cy="40" r="8" class="pt"/>
+<text x="300" y="68" class="it sm" text-anchor="middle">+q</text>
+<circle cx="170" cy="40" r="4" class="ptA"/>
+<line x1="170" y1="40" x2="228" y2="40" class="f" marker-end="url(#m-f)"/>
+<line x1="170" y1="40" x2="112" y2="40" class="f" marker-end="url(#m-f)"/>
+<text x="200" y="30" class="it acc sm" text-anchor="middle">E₁</text>
+<text x="140" y="30" class="it acc sm" text-anchor="middle">E₂</text>
+<text x="330" y="45" class="it" text-anchor="start">E = 0</text>
+<circle cx="40" cy="115" r="8" class="pt"/>
+<text x="40" y="143" class="it sm" text-anchor="middle">+q</text>
+<circle cx="300" cy="115" r="8" class="pt"/>
+<text x="300" y="143" class="it sm" text-anchor="middle">−q</text>
+<circle cx="170" cy="115" r="4" class="ptA"/>
+<line x1="170" y1="109" x2="228" y2="109" class="f" marker-end="url(#m-f)"/>
+<line x1="170" y1="121" x2="228" y2="121" class="f" marker-end="url(#m-f)"/>
+<text x="200" y="100" class="it acc sm" text-anchor="middle">E₁ + E₂</text>
+<text x="330" y="120" class="it sm" text-anchor="start">E = 8kq/d²</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg viewBox="0 0 450 145" width="450" class="fig" role="img" aria-label="Tok při různých úhlech">
+<line x1="5" y1="25" x2="135" y2="25" class="fl" marker-end="url(#m-fl)"/>
+<line x1="5" y1="50" x2="135" y2="50" class="fl" marker-end="url(#m-fl)"/>
+<line x1="5" y1="75" x2="135" y2="75" class="fl" marker-end="url(#m-fl)"/>
+<line x1="5" y1="100" x2="135" y2="100" class="fl" marker-end="url(#m-fl)"/>
+<line x1="70" y1="15" x2="70" y2="110" class="plateA"/>
+<line x1="70" y1="62" x2="110" y2="62" class="v" marker-end="url(#m-v)"/>
+<text x="70" y="135" class="sm" text-anchor="middle">α = 0° → Φ = ES (max.)</text>
+<line x1="160" y1="25" x2="290" y2="25" class="fl" marker-end="url(#m-fl)"/>
+<line x1="160" y1="50" x2="290" y2="50" class="fl" marker-end="url(#m-fl)"/>
+<line x1="160" y1="75" x2="290" y2="75" class="fl" marker-end="url(#m-fl)"/>
+<line x1="160" y1="100" x2="290" y2="100" class="fl" marker-end="url(#m-fl)"/>
+<line x1="195" y1="105" x2="255" y2="20" class="plateA"/>
+<line x1="225" y1="62" x2="259" y2="86" class="v" marker-end="url(#m-v)"/>
+<text x="225" y="135" class="sm" text-anchor="middle">α ≈ 55° → Φ = ES cos α</text>
+<line x1="315" y1="25" x2="445" y2="25" class="fl" marker-end="url(#m-fl)"/>
+<line x1="315" y1="50" x2="445" y2="50" class="fl" marker-end="url(#m-fl)"/>
+<line x1="315" y1="75" x2="445" y2="75" class="fl" marker-end="url(#m-fl)"/>
+<line x1="315" y1="100" x2="445" y2="100" class="fl" marker-end="url(#m-fl)"/>
+<line x1="330" y1="62" x2="430" y2="62" class="plateA"/>
+<line x1="380" y1="62" x2="380" y2="22" class="v" marker-end="url(#m-v)"/>
+<text x="380" y="135" class="sm" text-anchor="middle">α = 90° → Φ = 0</text>
+</svg>

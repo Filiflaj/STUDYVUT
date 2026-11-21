@@ -1,0 +1,42 @@
+<svg viewBox="0 0 430 260" width="430" class="fig" role="img" aria-label="Pět grafů E(r)">
+<line x1="28" y1="100" x2="28" y2="13" class="v" marker-end="url(#m-v)"/>
+<line x1="28" y1="100" x2="146" y2="100" class="v" marker-end="url(#m-v)"/>
+<text x="19" y="25" class="it sm" text-anchor="middle">E</text>
+<text x="142" y="115" class="it sm" text-anchor="middle">r</text>
+<text x="73" y="116" class="it sm" text-anchor="middle">R</text>
+<line x1="73" y1="97" x2="73" y2="103" class="s1"/>
+<text x="122" y="29" class="" text-anchor="middle">a)</text>
+<path d="M28,30 L73,94 M73,98.5 L138,98.5" class="f"/>
+<line x1="168" y1="100" x2="168" y2="13" class="v" marker-end="url(#m-v)"/>
+<line x1="168" y1="100" x2="286" y2="100" class="v" marker-end="url(#m-v)"/>
+<text x="159" y="25" class="it sm" text-anchor="middle">E</text>
+<text x="282" y="115" class="it sm" text-anchor="middle">r</text>
+<text x="213" y="116" class="it sm" text-anchor="middle">R</text>
+<line x1="213" y1="97" x2="213" y2="103" class="s1"/>
+<text x="262" y="29" class="" text-anchor="middle">b)</text>
+<path d="M168,38 L213,38 M213.0,38.0 L215.7,44.8 L218.4,50.6 L221.1,55.5 L223.8,59.7 L226.5,63.3 L229.2,66.5 L231.9,69.3 L234.6,71.7 L237.3,73.9 L240.0,75.8 L242.7,77.5 L245.4,79.0 L248.1,80.4 L250.8,81.7 L253.5,82.8 L256.2,83.9 L258.9,84.8 L261.6,85.7 L264.3,86.5 L267.0,87.2 L269.7,87.9 L272.4,88.5 L275.1,89.1" class="f"/>
+<line x1="308" y1="100" x2="308" y2="13" class="v" marker-end="url(#m-v)"/>
+<line x1="308" y1="100" x2="426" y2="100" class="v" marker-end="url(#m-v)"/>
+<text x="299" y="25" class="it sm" text-anchor="middle">E</text>
+<text x="422" y="115" class="it sm" text-anchor="middle">r</text>
+<text x="353" y="116" class="it sm" text-anchor="middle">R</text>
+<line x1="353" y1="97" x2="353" y2="103" class="s1"/>
+<text x="402" y="29" class="" text-anchor="middle">c)</text>
+<path d="M309,97.5 L353,97.5 M353,97.5 L353,38 M353.0,38.0 L355.7,44.8 L358.4,50.6 L361.1,55.5 L363.8,59.7 L366.5,63.3 L369.2,66.5 L371.9,69.3 L374.6,71.7 L377.3,73.9 L380.0,75.8 L382.7,77.5 L385.4,79.0 L388.1,80.4 L390.8,81.7 L393.5,82.8 L396.2,83.9 L398.9,84.8 L401.6,85.7 L404.3,86.5 L407.0,87.2 L409.7,87.9 L412.4,88.5 L415.1,89.1" class="f"/>
+<line x1="28" y1="225" x2="28" y2="138" class="v" marker-end="url(#m-v)"/>
+<line x1="28" y1="225" x2="146" y2="225" class="v" marker-end="url(#m-v)"/>
+<text x="19" y="150" class="it sm" text-anchor="middle">E</text>
+<text x="142" y="240" class="it sm" text-anchor="middle">r</text>
+<text x="73" y="241" class="it sm" text-anchor="middle">R</text>
+<line x1="73" y1="222" x2="73" y2="228" class="s1"/>
+<text x="122" y="154" class="" text-anchor="middle">d)</text>
+<path d="M28,225 L73,163 M73.0,163.0 L75.7,169.8 L78.4,175.6 L81.1,180.5 L83.8,184.7 L86.5,188.3 L89.2,191.5 L91.9,194.3 L94.6,196.7 L97.3,198.9 L100.0,200.8 L102.7,202.5 L105.4,204.0 L108.1,205.4 L110.8,206.7 L113.5,207.8 L116.2,208.9 L118.9,209.8 L121.6,210.7 L124.3,211.5 L127.0,212.2 L129.7,212.9 L132.4,213.5 L135.1,214.1" class="f"/>
+<line x1="168" y1="225" x2="168" y2="138" class="v" marker-end="url(#m-v)"/>
+<line x1="168" y1="225" x2="286" y2="225" class="v" marker-end="url(#m-v)"/>
+<text x="159" y="150" class="it sm" text-anchor="middle">E</text>
+<text x="282" y="240" class="it sm" text-anchor="middle">r</text>
+<text x="213" y="241" class="it sm" text-anchor="middle">R</text>
+<line x1="213" y1="222" x2="213" y2="228" class="s1"/>
+<text x="262" y="154" class="" text-anchor="middle">e)</text>
+<path d="M168,225 Q205,225 213,163 M213.0,163.0 L215.7,169.8 L218.4,175.6 L221.1,180.5 L223.8,184.7 L226.5,188.3 L229.2,191.5 L231.9,194.3 L234.6,196.7 L237.3,198.9 L240.0,200.8 L242.7,202.5 L245.4,204.0 L248.1,205.4 L250.8,206.7 L253.5,207.8 L256.2,208.9 L258.9,209.8 L261.6,210.7 L264.3,211.5 L267.0,212.2 L269.7,212.9 L272.4,213.5 L275.1,214.1" class="f"/>
+</svg>

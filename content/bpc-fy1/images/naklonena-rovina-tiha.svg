@@ -1,0 +1,11 @@
+<svg viewBox="0 0 210 135" width="210" class="fig" role="img" aria-label="Kvádr na nakloněné rovině se sklonem α a jeho tíha G">
+<polygon points="10,125 200,125 200,48" class="gf"/>
+<path d="M52.0,125.0 A42,42 0 0 0 48.9,109.3" class="s1"/>
+<text x="62" y="119" class="it sm" text-anchor="middle">α</text>
+<g transform="translate(105,86.5) rotate(-22.06)">
+<rect x="-26" y="-34" width="52" height="34" class="blk"/>
+<text x="0" y="-11" class="it" text-anchor="middle">m</text>
+</g>
+<line x1="98" y1="70" x2="98" y2="120" class="f" marker-end="url(#m-f)"/>
+<text x="88" y="118" class="it acc" text-anchor="end">G</text>
+</svg>

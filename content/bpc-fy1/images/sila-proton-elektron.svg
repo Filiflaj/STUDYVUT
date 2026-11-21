@@ -1,0 +1,29 @@
+<svg viewBox="0 0 380 190" width="380" class="fig" role="img" aria-label="Síla na proton a elektron v poli">
+<line x1="30" y1="30" x2="350" y2="30" class="plate"/>
+<line x1="30" y1="160" x2="350" y2="160" class="plate"/>
+<line x1="60" y1="158" x2="60" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="60" y1="95" x2="60" y2="32" class="fl"/>
+<line x1="100" y1="158" x2="100" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="100" y1="95" x2="100" y2="32" class="fl"/>
+<line x1="160" y1="158" x2="160" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="160" y1="95" x2="160" y2="32" class="fl"/>
+<line x1="200" y1="158" x2="200" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="200" y1="95" x2="200" y2="32" class="fl"/>
+<line x1="260" y1="158" x2="260" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="260" y1="95" x2="260" y2="32" class="fl"/>
+<line x1="300" y1="158" x2="300" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="300" y1="95" x2="300" y2="32" class="fl"/>
+<line x1="340" y1="158" x2="340" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="340" y1="95" x2="340" y2="32" class="fl"/>
+<text x="18" y="165" class="" text-anchor="middle">+</text>
+<text x="18" y="36" class="" text-anchor="middle">−</text>
+<circle cx="130" cy="95" r="10" class="gf"/>
+<text x="130" y="100" class="sm" text-anchor="middle">p⁺</text>
+<line x1="130" y1="84" x2="130" y2="48" class="f" marker-end="url(#m-f)"/>
+<text x="140" y="60" class="it acc sm" text-anchor="start">F</text>
+<circle cx="230" cy="95" r="10" class="gf"/>
+<text x="230" y="100" class="sm" text-anchor="middle">e⁻</text>
+<line x1="230" y1="106" x2="230" y2="142" class="f" marker-end="url(#m-f)"/>
+<text x="240" y="136" class="it acc sm" text-anchor="start">F</text>
+<text x="372" y="100" class="it flt" text-anchor="end">E</text>
+</svg>

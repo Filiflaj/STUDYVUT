@@ -1,0 +1,58 @@
+<svg viewBox="0 0 450 190" width="450" class="fig" role="img" aria-label="Šikmý vrh s rozkladem rychlosti">
+<path d="M30,170.0 L40,155.2 L50,141.2 L60,128.2 L70,116.0 L80,104.8 L90,94.4 L100,85.0 L110,76.4 L120,68.8 L130,62.0 L140,56.2 L150,51.2 L160,47.2 L170,44.0 L180,41.8 L190,40.4 L200,40.0 L210,40.4 L220,41.8 L230,44.0 L240,47.2 L250,51.2 L260,56.2 L270,62.0 L280,68.8 L290,76.4 L300,85.0 L310,94.4 L320,104.8 L330,116.0 L340,128.2 L350,141.2 L360,155.2 L370,170.0" class="s1"/>
+<line x1="10" y1="172" x2="390" y2="172" class="s"/>
+<line x1="18" y1="173" x2="11" y2="180" class="h"/>
+<line x1="28" y1="173" x2="21" y2="180" class="h"/>
+<line x1="38" y1="173" x2="31" y2="180" class="h"/>
+<line x1="48" y1="173" x2="41" y2="180" class="h"/>
+<line x1="58" y1="173" x2="51" y2="180" class="h"/>
+<line x1="68" y1="173" x2="61" y2="180" class="h"/>
+<line x1="78" y1="173" x2="71" y2="180" class="h"/>
+<line x1="88" y1="173" x2="81" y2="180" class="h"/>
+<line x1="98" y1="173" x2="91" y2="180" class="h"/>
+<line x1="108" y1="173" x2="101" y2="180" class="h"/>
+<line x1="118" y1="173" x2="111" y2="180" class="h"/>
+<line x1="128" y1="173" x2="121" y2="180" class="h"/>
+<line x1="138" y1="173" x2="131" y2="180" class="h"/>
+<line x1="148" y1="173" x2="141" y2="180" class="h"/>
+<line x1="158" y1="173" x2="151" y2="180" class="h"/>
+<line x1="168" y1="173" x2="161" y2="180" class="h"/>
+<line x1="178" y1="173" x2="171" y2="180" class="h"/>
+<line x1="188" y1="173" x2="181" y2="180" class="h"/>
+<line x1="198" y1="173" x2="191" y2="180" class="h"/>
+<line x1="208" y1="173" x2="201" y2="180" class="h"/>
+<line x1="218" y1="173" x2="211" y2="180" class="h"/>
+<line x1="228" y1="173" x2="221" y2="180" class="h"/>
+<line x1="238" y1="173" x2="231" y2="180" class="h"/>
+<line x1="248" y1="173" x2="241" y2="180" class="h"/>
+<line x1="258" y1="173" x2="251" y2="180" class="h"/>
+<line x1="268" y1="173" x2="261" y2="180" class="h"/>
+<line x1="278" y1="173" x2="271" y2="180" class="h"/>
+<line x1="288" y1="173" x2="281" y2="180" class="h"/>
+<line x1="298" y1="173" x2="291" y2="180" class="h"/>
+<line x1="308" y1="173" x2="301" y2="180" class="h"/>
+<line x1="318" y1="173" x2="311" y2="180" class="h"/>
+<line x1="328" y1="173" x2="321" y2="180" class="h"/>
+<line x1="338" y1="173" x2="331" y2="180" class="h"/>
+<line x1="348" y1="173" x2="341" y2="180" class="h"/>
+<line x1="358" y1="173" x2="351" y2="180" class="h"/>
+<line x1="368" y1="173" x2="361" y2="180" class="h"/>
+<line x1="378" y1="173" x2="371" y2="180" class="h"/>
+<line x1="388" y1="173" x2="381" y2="180" class="h"/>
+<line x1="30" y1="170" x2="70" y2="170" class="v" marker-end="url(#m-v)"/>
+<line x1="30" y1="170" x2="30" y2="115" class="f" marker-end="url(#m-f)"/>
+<circle cx="30" cy="170" r="3.5" class="pt"/>
+<line x1="115" y1="72.5" x2="155" y2="72.5" class="v" marker-end="url(#m-v)"/>
+<line x1="115" y1="72.5" x2="115" y2="45.5" class="f" marker-end="url(#m-f)"/>
+<circle cx="115" cy="72.5" r="3.5" class="pt"/>
+<line x1="200" y1="40" x2="240" y2="40" class="v" marker-end="url(#m-v)"/>
+<circle cx="200" cy="40" r="3.5" class="pt"/>
+<line x1="285" y1="72.5" x2="325" y2="72.5" class="v" marker-end="url(#m-v)"/>
+<line x1="285" y1="72.5" x2="285" y2="99.5" class="f" marker-end="url(#m-f)"/>
+<circle cx="285" cy="72.5" r="3.5" class="pt"/>
+<text x="76" y="162"><tspan class="it">v</tspan><tspan class="sm" dy="4">x</tspan><tspan dy="-4"></tspan></text>
+<text x="10" y="135" class="acc"><tspan class="it">v</tspan><tspan class="sm" dy="4">y</tspan><tspan dy="-4"></tspan></text>
+<text x="200" y="26" text-anchor="middle"><tspan class="it">v</tspan><tspan class="sm" dy="4">y</tspan><tspan dy="-4"></tspan> = 0, <tspan class="it">a</tspan> = <tspan class="it">g</tspan></text>
+<line x1="420" y1="60" x2="420" y2="115" class="f" marker-end="url(#m-f)"/>
+<text x="428" y="95" class="it acc" text-anchor="start">g</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg viewBox="0 0 360 160" width="360" class="fig" role="img" aria-label="Krychle v homogenním poli E">
+<line x1="15" y1="70" x2="95" y2="70" class="fl" marker-end="url(#m-fl)"/>
+<line x1="240" y1="70" x2="325" y2="70" class="fl" marker-end="url(#m-fl)"/>
+<line x1="15" y1="95" x2="95" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="240" y1="95" x2="325" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="15" y1="120" x2="95" y2="120" class="fl" marker-end="url(#m-fl)"/>
+<line x1="240" y1="120" x2="325" y2="120" class="fl" marker-end="url(#m-fl)"/>
+<rect x="110" y="60" width="80" height="80" class="gf"/>
+<line x1="110" y1="60" x2="145" y2="30" class="s"/>
+<line x1="190" y1="60" x2="225" y2="30" class="s"/>
+<line x1="145" y1="30" x2="225" y2="30" class="s"/>
+<line x1="225" y1="30" x2="225" y2="110" class="s"/>
+<line x1="190" y1="140" x2="225" y2="110" class="s"/>
+<line x1="110" y1="140" x2="145" y2="110" class="d"/>
+<line x1="145" y1="110" x2="225" y2="110" class="d"/>
+<line x1="145" y1="30" x2="145" y2="110" class="d"/>
+<text x="332" y="100" class="it flt" text-anchor="start">E</text>
+</svg>

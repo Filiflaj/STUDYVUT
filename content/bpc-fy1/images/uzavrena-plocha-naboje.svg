@@ -1,0 +1,10 @@
+<svg viewBox="0 0 400 200" width="400" class="fig" role="img" aria-label="Uzavřená plocha s náboji +3q a −q uvnitř a nábojem +5q vně">
+<path d="M60,40 C150,0 280,30 290,100 C300,170 160,190 90,160 C30,135 20,60 60,40 Z" class="pl"/>
+<circle cx="120" cy="90" r="5" class="pt"/>
+<text x="120" y="78" class="it sm" text-anchor="middle">+3q</text>
+<circle cx="210" cy="120" r="5" class="pt"/>
+<text x="210" y="108" class="it sm" text-anchor="middle">−q</text>
+<circle cx="345" cy="70" r="5" class="pt"/>
+<text x="345" y="58" class="it sm" text-anchor="middle">+5q</text>
+<text x="250" y="175" class="sm mut" text-anchor="middle">uzavřená plocha</text>
+</svg>

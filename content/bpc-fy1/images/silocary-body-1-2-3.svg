@@ -1,0 +1,15 @@
+<svg viewBox="0 0 360 210" width="360" class="fig" role="img" aria-label="Siločáry s body 1, 2, 3">
+<line x1="30" y1="70" x2="330" y2="-2" class="fl" marker-end="url(#m-fl)"/>
+<line x1="30" y1="80" x2="330" y2="32" class="fl" marker-end="url(#m-fl)"/>
+<line x1="30" y1="90" x2="330" y2="66" class="fl" marker-end="url(#m-fl)"/>
+<line x1="30" y1="100" x2="330" y2="100" class="fl" marker-end="url(#m-fl)"/>
+<line x1="30" y1="110" x2="330" y2="134" class="fl" marker-end="url(#m-fl)"/>
+<line x1="30" y1="120" x2="330" y2="168" class="fl" marker-end="url(#m-fl)"/>
+<line x1="30" y1="130" x2="330" y2="202" class="fl" marker-end="url(#m-fl)"/>
+<circle cx="55" cy="106" r="4.5" class="ptB"/>
+<text x="55" y="98" class="sm bt" text-anchor="middle">1</text>
+<circle cx="180" cy="111" r="4.5" class="ptB"/>
+<text x="180" y="101" class="sm bt" text-anchor="middle">2</text>
+<circle cx="305" cy="116" r="4.5" class="ptB"/>
+<text x="305" y="106" class="sm bt" text-anchor="middle">3</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg viewBox="0 0 370 150" width="370" class="fig" role="img" aria-label="Polarizace izolantu u nabitého tělesa">
+<circle cx="55" cy="75" r="32" class="gf"/>
+<text x="73" y="79" class="sm" text-anchor="middle">+</text>
+<text x="64" y="63.411542731880104" class="sm" text-anchor="middle">+</text>
+<text x="46" y="63.411542731880104" class="sm" text-anchor="middle">+</text>
+<text x="37" y="79" class="sm" text-anchor="middle">+</text>
+<text x="45.99999999999999" y="94.5884572681199" class="sm" text-anchor="middle">+</text>
+<text x="64" y="94.5884572681199" class="sm" text-anchor="middle">+</text>
+<rect x="120" y="25" width="230" height="100" class="gf"/>
+<ellipse cx="160" cy="50" rx="22" ry="10" class="s1" fill="none"/>
+<text x="149" y="54" class="sm" text-anchor="middle">−</text>
+<text x="171" y="54" class="sm" text-anchor="middle">+</text>
+<ellipse cx="230" cy="50" rx="22" ry="10" class="s1" fill="none"/>
+<text x="219" y="54" class="sm" text-anchor="middle">−</text>
+<text x="241" y="54" class="sm" text-anchor="middle">+</text>
+<ellipse cx="300" cy="50" rx="22" ry="10" class="s1" fill="none"/>
+<text x="289" y="54" class="sm" text-anchor="middle">−</text>
+<text x="311" y="54" class="sm" text-anchor="middle">+</text>
+<ellipse cx="160" cy="100" rx="22" ry="10" class="s1" fill="none"/>
+<text x="149" y="104" class="sm" text-anchor="middle">−</text>
+<text x="171" y="104" class="sm" text-anchor="middle">+</text>
+<ellipse cx="230" cy="100" rx="22" ry="10" class="s1" fill="none"/>
+<text x="219" y="104" class="sm" text-anchor="middle">−</text>
+<text x="241" y="104" class="sm" text-anchor="middle">+</text>
+<ellipse cx="300" cy="100" rx="22" ry="10" class="s1" fill="none"/>
+<text x="289" y="104" class="sm" text-anchor="middle">−</text>
+<text x="311" y="104" class="sm" text-anchor="middle">+</text>
+<text x="55" y="128" class="sm mut" text-anchor="middle">nabité těleso</text>
+<text x="235" y="143" class="sm mut" text-anchor="middle">izolant: molekuly se natočí</text>
+</svg>

@@ -1,0 +1,23 @@
+[package]
+name = "studyvut-cli"
+description = "Command line for STUDYVUT: checks the content, lists it and shows the progress recorded by the app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "studyvut-cli"
+path = "src/main.rs"
+
+[dependencies]
+studyvut-core = { workspace = true, features = ["store"] }
+studyvut-service.workspace = true
+anyhow.workspace = true
+clap = { workspace = true, features = ["env"] }
+serde_json.workspace = true
+
+[lints]
+workspace = true

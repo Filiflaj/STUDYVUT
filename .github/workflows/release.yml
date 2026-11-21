@@ -1,0 +1,150 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  # A dry run: everything is built and checked, nothing is published.
+  workflow_dispatch:
+
+# Read-only by default; only the final job writes the release.
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      # The tag must match every version (a dry run checks only that they agree).
+      - run: node scripts/check-version.mjs
+      # Every version change is one "Release vX.Y.Z" commit with its tag.
+      - name: The tag points at its release commit
+        if: github.ref_type == 'tag'
+        run: |
+          if [ "$(git log -1 --format=%s)" != "Release ${GITHUB_REF_NAME}" ]; then
+            echo "::error::${GITHUB_REF_NAME} does not point at its Release ${GITHUB_REF_NAME} commit"; exit 1
+          fi
+      - run: node --test scripts/release.test.mjs
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev librsvg2-dev patchelf
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: stable
+      # No rust-cache in releases: a tag cannot read another tag's caches.
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: cargo test --workspace --all-features
+      - run: cargo run -q -p studyvut-cli -- check
+
+  build:
+    name: Build (${{ matrix.name }})
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macos
+            os: macos-latest
+            rust-targets: aarch64-apple-darwin,x86_64-apple-darwin
+            args: --target universal-apple-darwin --bundles dmg
+          - name: linux
+            os: ubuntu-22.04
+            rust-targets: ""
+            args: --bundles appimage
+          - name: windows
+            os: windows-latest
+            rust-targets: ""
+            args: --bundles nsis
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: stable
+          targets: ${{ matrix.rust-targets }}
+      - name: Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev librsvg2-dev patchelf libfuse2
+      # Not signed: the macOS app is ad-hoc signed (right-click → Open the
+      # first time), the Windows installer unsigned (SmartScreen: More info →
+      # Run anyway). See README.
+      - name: Build
+        env:
+          APPIMAGE_EXTRACT_AND_RUN: 1
+          MACOSX_DEPLOYMENT_TARGET: "11.0"
+        run: npx tauri build ${{ matrix.args }}
+      - name: Collect artifacts
+        run: |
+          set -euo pipefail
+          v="${GITHUB_REF_NAME#v}"
+          v="${v//\//-}"  # a dry run on feature/x
+          mkdir -p out
+          case "${{ matrix.name }}" in
+            macos)   cp target/universal-apple-darwin/release/bundle/dmg/*.dmg "out/studyvut-$v-macos-universal.dmg" ;;
+            linux)   cp target/release/bundle/appimage/*.AppImage "out/studyvut-$v-linux-x86_64.AppImage" ;;
+            windows) cp target/release/bundle/nsis/*-setup.exe "out/studyvut-$v-windows-x64-setup.exe" ;;
+          esac
+          cd out
+          for f in studyvut-*; do
+            if command -v sha256sum >/dev/null; then sha256sum "$f" > "$f.sha256"; else shasum -a 256 "$f" > "$f.sha256"; fi
+          done
+          ls -la
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ matrix.name }}
+          path: out/*
+
+  publish:
+    name: Draft release
+    needs: build
+    # Only a pushed tag: a dry run started on a tag must not replace the
+    # assets of its release.
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          path: artifacts
+      - name: Collect the release files
+        run: |
+          set -euo pipefail
+          mkdir out
+          cp artifacts/*/* out/
+          ls -la out
+      - name: Release notes from the changelog
+        run: node scripts/release.mjs --notes "${GITHUB_REF_NAME#v}" > release-notes.md
+      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          draft: true
+          name: STUDYVUT ${{ github.ref_name }}
+          body_path: release-notes.md
+          files: out/*

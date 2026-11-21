@@ -1,0 +1,613 @@
+/* Inter (UI) and Roboto Mono (values, codes), both SIL OFL 1.1, see
+   assets/fonts/OFL-*.txt. Variable weight (Inter also optical size). Latin,
+   Latin Extended, Greek and Cyrillic subsets cover all official EU languages
+   (Greek and Bulgarian included). Browsers load a subset only when the page
+   contains characters from its unicode-range. */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./assets/fonts/inter-latin-ext-opsz-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./assets/fonts/inter-latin-opsz-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./assets/fonts/inter-greek-opsz-normal.woff2") format("woff2-variations");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./assets/fonts/inter-cyrillic-opsz-normal.woff2") format("woff2-variations");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Roboto Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 700;
+  src: url("./assets/fonts/roboto-mono-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Roboto Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 700;
+  src: url("./assets/fonts/roboto-mono-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Roboto Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 700;
+  src: url("./assets/fonts/roboto-mono-greek-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+
+@font-face {
+  font-family: "Roboto Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 700;
+  src: url("./assets/fonts/roboto-mono-cyrillic-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+:root {
+  color-scheme: light dark;
+  --bg: #f4f4f6;
+  --sidebar: #ececef;
+  --surface: #ffffff;
+  --surface-2: #f8f8fa;
+  --border: rgba(37, 37, 50, 0.1);
+  --border-strong: rgba(37, 37, 50, 0.18);
+  --text: #252532;
+  --text-2: #55555f;
+  --text-muted: #6a6a74;
+  --accent: #2b55d0;
+  --on-accent: #ffffff;
+  --accent-hover: #2147b8;
+  --accent-weak: rgba(43, 85, 208, 0.08);
+  --series: #2a78d6;
+  --series-band: rgba(42, 120, 214, 0.1);
+  --grid: #ececef;
+  --axis: #c9c9cf;
+  --critical: #d03b3b;
+  --critical-weak: rgba(208, 59, 59, 0.1);
+  --good: #0ca30c;
+  --warning: #b77900;
+  --warning-weak: rgba(250, 178, 25, 0.14);
+  --focus: #2a78d6;
+  /* Hover: neutral, quieter than the selected item. */
+  --hover: rgba(37, 37, 50, 0.06);
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236a6a74' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  /* Status colours as text: darker than the dots, for contrast on white. */
+  --good-text: #087a08;
+  --good-weak: rgba(12, 163, 12, 0.1);
+  --warning-text: #8f5f00;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(20, 20, 30, 0.04), 0 1px 1px rgba(20, 20, 30, 0.02);
+  --font: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Roboto Mono Variable", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+/* Dark palette: follows the system unless the user picked a theme
+   (data-theme on <html>, set by the app). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121216;
+    --sidebar: #17171c;
+    --surface: #1b1b21;
+    --surface-2: #202027;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --text: #ececf1;
+    --text-2: #b4b4be;
+    --text-muted: #85858f;
+    --accent: #7b97ff;
+    --on-accent: #0d1430;
+    --accent-hover: #9ab0ff;
+    --accent-weak: rgba(123, 151, 255, 0.14);
+    --series: #3987e5;
+    --series-band: rgba(57, 135, 229, 0.14);
+    --grid: #26262e;
+    --axis: #3a3a44;
+    --critical: #e66767;
+    --critical-weak: rgba(230, 103, 103, 0.14);
+    --good: #0ca30c;
+    --warning: #fab219;
+    --warning-weak: rgba(250, 178, 25, 0.12);
+    --good-text: #3cbf3c;
+    --good-weak: rgba(12, 163, 12, 0.14);
+    --warning-text: #fab219;
+    --focus: #5a9be6;
+    --hover: rgba(255, 255, 255, 0.06);
+    --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a0a0aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    --shadow: none;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121216;
+  --sidebar: #17171c;
+  --surface: #1b1b21;
+  --surface-2: #202027;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text: #ececf1;
+  --text-2: #b4b4be;
+  --text-muted: #85858f;
+  --accent: #7b97ff;
+  --on-accent: #0d1430;
+  --accent-hover: #9ab0ff;
+  --accent-weak: rgba(123, 151, 255, 0.14);
+  --series: #3987e5;
+  --series-band: rgba(57, 135, 229, 0.14);
+  --grid: #26262e;
+  --axis: #3a3a44;
+  --critical: #e66767;
+  --critical-weak: rgba(230, 103, 103, 0.14);
+  --good: #0ca30c;
+  --warning: #fab219;
+  --warning-weak: rgba(250, 178, 25, 0.12);
+  --good-text: #3cbf3c;
+  --good-weak: rgba(12, 163, 12, 0.14);
+  --warning-text: #fab219;
+  --focus: #5a9be6;
+  --hover: rgba(255, 255, 255, 0.06);
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a0a0aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --shadow: none;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.45;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#app {
+  height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn.ghost {
+  border-color: transparent;
+  background: transparent;
+}
+
+.btn.ghost:hover:not(:disabled) {
+  background: var(--accent-weak);
+}
+
+.input,
+.select {
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  min-width: 0;
+}
+
+/* Drawn by the app, so every select looks the same in Chromium (Windows)
+   and WebKit (macOS, Linux). The explicit line box keeps WebKit from
+   setting the text low. */
+.select {
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 28px;
+  padding: 0 28px 0 10px;
+  background: var(--surface) var(--chevron) no-repeat right 8px center;
+  color: var(--text);
+}
+
+.input:disabled,
+.select:disabled {
+  opacity: 0.55;
+}
+
+.input.num {
+  width: 92px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+code,
+.mono {
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* ---------------------------------------------------------------------------
+   STUDYVUT: study texts, figures and math.
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Figures (docs/content.md): ink, a muted helper colour, the accent for
+     forces, a teal for fields and a red for wrong directions. */
+  --fig-ink: var(--text);
+  --fig-muted: var(--text-muted);
+  --fig-accent: #2b55d0;
+  --fig-accent-bg: #e3eafb;
+  --fig-field: #0b7f70;
+  --fig-field-bg: #dcf0eb;
+  --fig-bad: #c0392b;
+  --fig-fill: #e6e9ef;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fig-accent: #7b97ff;
+    --fig-accent-bg: #1d2a4a;
+    --fig-field: #3fc2ad;
+    --fig-field-bg: #12302b;
+    --fig-bad: #ff7b6e;
+    --fig-fill: #2a2f3a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fig-accent: #7b97ff;
+  --fig-accent-bg: #1d2a4a;
+  --fig-field: #3fc2ad;
+  --fig-field-bg: #12302b;
+  --fig-bad: #ff7b6e;
+  --fig-fill: #2a2f3a;
+}
+
+/* Study texts and questions can be selected and copied. */
+.selectable {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: auto;
+}
+
+/* The figure vocabulary of the original BFY1 trainer, scoped to figures. */
+svg.fig {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.fig text {
+  font-family: "KaTeX_Main", "Times New Roman", serif;
+  fill: var(--fig-ink);
+  font-size: 16px;
+}
+.fig .it {
+  font-family: "KaTeX_Math", "KaTeX_Main", "Times New Roman", serif;
+  font-style: italic;
+}
+.fig .sm { font-size: 13px; }
+.fig .mut { fill: var(--fig-muted); }
+.fig .acc { fill: var(--fig-accent); }
+.fig .flt { fill: var(--fig-field); }
+.fig .bt { fill: var(--fig-bad); }
+.fig .s { stroke: var(--fig-ink); stroke-width: 2; fill: none; }
+.fig .s1 { stroke: var(--fig-ink); stroke-width: 1.3; fill: none; }
+.fig .d { stroke: var(--fig-muted); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.fig .h { stroke: var(--fig-muted); stroke-width: 1; }
+.fig .f { stroke: var(--fig-accent); stroke-width: 2.4; fill: none; }
+.fig .fl { stroke: var(--fig-field); stroke-width: 1.6; fill: none; }
+.fig .v { stroke: var(--fig-ink); stroke-width: 1.8; fill: none; }
+.fig .badl { stroke: var(--fig-bad); stroke-width: 2; fill: none; }
+.fig .blk { fill: var(--fig-fill); stroke: var(--fig-ink); stroke-width: 1.8; }
+.fig .gf { fill: var(--fig-fill); stroke: var(--fig-ink); stroke-width: 1.6; }
+.fig .lq { fill: var(--fig-field-bg); stroke: none; }
+.fig .pl { fill: var(--fig-accent-bg); stroke: var(--fig-accent); stroke-width: 1.4; }
+.fig .pt { fill: var(--fig-ink); }
+.fig .ptA { fill: var(--fig-accent); }
+.fig .ptB { fill: var(--fig-bad); }
+.fig .plate { stroke: var(--fig-ink); stroke-width: 4; fill: none; }
+.fig .plateA { stroke: var(--fig-accent); stroke-width: 4; fill: none; }
+.mkI { fill: var(--fig-ink); }
+.mkA { fill: var(--fig-accent); }
+.mkF { fill: var(--fig-field); }
+.mkB { fill: var(--fig-bad); }
+
+/* Rendered Markdown: chapters, the manual, question texts. */
+.prose {
+  line-height: 1.6;
+  font-size: 14.5px;
+}
+.prose h2 {
+  margin: 28px 0 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 16px;
+}
+.prose h2:first-child {
+  border-top: none;
+  margin-top: 12px;
+}
+.prose h3 {
+  margin: 22px 0 6px;
+  font-size: 15px;
+  scroll-margin-top: 16px;
+}
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 0 0 10px;
+  color: var(--text-2);
+}
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+}
+.prose li {
+  margin: 3px 0;
+}
+.prose li > ul,
+.prose li > ol {
+  margin: 3px 0 0;
+}
+.prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.prose :not(pre) > code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.prose pre {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.prose table {
+  margin: 4px 0 14px;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  display: block;
+  overflow-x: auto;
+}
+.prose th,
+.prose td {
+  padding: 7px 14px 7px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  color: var(--text-2);
+}
+.prose th {
+  color: var(--text);
+  font-weight: 600;
+}
+.prose a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.prose a:hover {
+  text-decoration: underline;
+}
+.prose kbd {
+  display: inline-block;
+  min-width: 20px;
+  padding: 0 6px;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--surface-2);
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: var(--text);
+}
+.prose figure {
+  margin: 14px 0 16px;
+  padding: 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  overflow-x: auto;
+}
+.prose figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  cursor: zoom-in;
+}
+.prose figcaption {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.prose .katex-display {
+  margin: 10px 0;
+  padding: 6px 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.prose .katex {
+  font-size: 1.08em;
+}
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
+/* Callouts: > [!key] Title */
+.callout {
+  margin: 12px 0 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+  background: var(--accent-weak);
+}
+.callout > :last-child {
+  margin-bottom: 0;
+}
+.callout .callout-title {
+  margin: 0 0 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.callout.trap {
+  border-left-color: var(--warning);
+  background: var(--warning-weak);
+}
+.callout.trap .callout-title {
+  color: var(--warning-text);
+}
+.callout.example {
+  border-left-color: var(--border-strong);
+  background: var(--surface-2);
+}
+.callout.example .callout-title {
+  color: var(--text-muted);
+}
+.callout.note {
+  border-left-color: var(--fig-field);
+  background: color-mix(in srgb, var(--fig-field) 9%, transparent);
+}
+.callout.note .callout-title {
+  color: var(--fig-field);
+}

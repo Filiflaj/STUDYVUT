@@ -1,0 +1,22 @@
+<svg viewBox="0 0 380 190" width="380" class="fig" role="img" aria-label="Siločáry mezi deskami">
+<line x1="40" y1="30" x2="340" y2="30" class="plate"/>
+<line x1="40" y1="160" x2="340" y2="160" class="plate"/>
+<line x1="110" y1="32" x2="110" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="110" y1="95" x2="110" y2="158" class="fl"/>
+<line x1="150" y1="32" x2="150" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="150" y1="95" x2="150" y2="158" class="fl"/>
+<line x1="190" y1="32" x2="190" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="190" y1="95" x2="190" y2="158" class="fl"/>
+<line x1="230" y1="32" x2="230" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="230" y1="95" x2="230" y2="158" class="fl"/>
+<line x1="270" y1="32" x2="270" y2="95" class="fl" marker-end="url(#m-fl)"/>
+<line x1="270" y1="95" x2="270" y2="158" class="fl"/>
+<path d="M78,32 Q68,63.5 68,95" class="fl" marker-end="url(#m-fl)"/>
+<path d="M68,95 Q68,126.5 78,158" class="fl"/>
+<path d="M302,32 Q312,63.5 312,95" class="fl" marker-end="url(#m-fl)"/>
+<path d="M312,95 Q312,126.5 302,158" class="fl"/>
+<path d="M52,32 Q40,63.5 40,95" class="fl" marker-end="url(#m-fl)"/>
+<path d="M40,95 Q40,126.5 52,158" class="fl"/>
+<path d="M328,32 Q340,63.5 340,95" class="fl" marker-end="url(#m-fl)"/>
+<path d="M340,95 Q340,126.5 328,158" class="fl"/>
+</svg>

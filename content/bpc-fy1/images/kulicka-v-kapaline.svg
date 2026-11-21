@@ -1,0 +1,20 @@
+<svg viewBox="0 0 340 180" width="340" class="fig" role="img" aria-label="Nabitá kulička v kapalině a bod P ve vzdálenosti ℓ od jejího středu">
+<rect x="10" y="10" width="320" height="160" class="lq"/>
+<circle cx="110" cy="90" r="38" class="gf"/>
+<text x="158" y="95" class="sm" text-anchor="middle">+</text>
+<text x="143.94112549695427" y="61.05887450304572" class="sm" text-anchor="middle">+</text>
+<text x="110" y="47" class="sm" text-anchor="middle">+</text>
+<text x="76.05887450304573" y="61.058874503045715" class="sm" text-anchor="middle">+</text>
+<text x="62" y="95" class="sm" text-anchor="middle">+</text>
+<text x="76.05887450304571" y="128.94112549695427" class="sm" text-anchor="middle">+</text>
+<text x="109.99999999999999" y="143" class="sm" text-anchor="middle">+</text>
+<text x="143.94112549695427" y="128.94112549695427" class="sm" text-anchor="middle">+</text>
+<line x1="110" y1="90" x2="280" y2="90" class="d"/>
+<circle cx="110" cy="90" r="3" class="pt"/>
+<circle cx="280" cy="90" r="4" class="ptA"/>
+<text x="290" y="95" class="" text-anchor="start">P</text>
+<text x="195" y="82" class="it" text-anchor="middle">ℓ</text>
+<text x="30" y="36" class="it" text-anchor="start">ε</text>
+<text x="42" y="40" class="sm" text-anchor="start">r</text>
+<text x="110" y="78" class="it sm" text-anchor="middle">σ, S</text>
+</svg>

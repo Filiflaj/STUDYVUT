@@ -1,0 +1,41 @@
+[workspace]
+resolver = "3"
+members = ["crates/studyvut-core", "crates/studyvut-service", "crates/studyvut-cli", "src-tauri"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+authors = ["Filiflaj"]
+repository = "https://github.com/Filiflaj/STUDYVUT"
+rust-version = "1.90"
+
+[workspace.dependencies]
+studyvut-core = { path = "crates/studyvut-core" }
+studyvut-service = { path = "crates/studyvut-service" }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+dirs = "7"
+fastrand = "2"
+parking_lot = "0.12"
+rusqlite = { version = "0.43", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+thiserror = "2"
+toml = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = "s"
+strip = true

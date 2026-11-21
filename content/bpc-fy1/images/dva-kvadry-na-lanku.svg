@@ -1,0 +1,50 @@
+<svg viewBox="0 0 400 110" width="400" class="fig" role="img" aria-label="Kvádr A (2 kg) tažený silou 20 N, za ním na lanku kvádr B (3 kg)">
+<line x1="20" y1="95" x2="400" y2="95" class="s"/>
+<line x1="28" y1="96" x2="21" y2="103" class="h"/>
+<line x1="38" y1="96" x2="31" y2="103" class="h"/>
+<line x1="48" y1="96" x2="41" y2="103" class="h"/>
+<line x1="58" y1="96" x2="51" y2="103" class="h"/>
+<line x1="68" y1="96" x2="61" y2="103" class="h"/>
+<line x1="78" y1="96" x2="71" y2="103" class="h"/>
+<line x1="88" y1="96" x2="81" y2="103" class="h"/>
+<line x1="98" y1="96" x2="91" y2="103" class="h"/>
+<line x1="108" y1="96" x2="101" y2="103" class="h"/>
+<line x1="118" y1="96" x2="111" y2="103" class="h"/>
+<line x1="128" y1="96" x2="121" y2="103" class="h"/>
+<line x1="138" y1="96" x2="131" y2="103" class="h"/>
+<line x1="148" y1="96" x2="141" y2="103" class="h"/>
+<line x1="158" y1="96" x2="151" y2="103" class="h"/>
+<line x1="168" y1="96" x2="161" y2="103" class="h"/>
+<line x1="178" y1="96" x2="171" y2="103" class="h"/>
+<line x1="188" y1="96" x2="181" y2="103" class="h"/>
+<line x1="198" y1="96" x2="191" y2="103" class="h"/>
+<line x1="208" y1="96" x2="201" y2="103" class="h"/>
+<line x1="218" y1="96" x2="211" y2="103" class="h"/>
+<line x1="228" y1="96" x2="221" y2="103" class="h"/>
+<line x1="238" y1="96" x2="231" y2="103" class="h"/>
+<line x1="248" y1="96" x2="241" y2="103" class="h"/>
+<line x1="258" y1="96" x2="251" y2="103" class="h"/>
+<line x1="268" y1="96" x2="261" y2="103" class="h"/>
+<line x1="278" y1="96" x2="271" y2="103" class="h"/>
+<line x1="288" y1="96" x2="281" y2="103" class="h"/>
+<line x1="298" y1="96" x2="291" y2="103" class="h"/>
+<line x1="308" y1="96" x2="301" y2="103" class="h"/>
+<line x1="318" y1="96" x2="311" y2="103" class="h"/>
+<line x1="328" y1="96" x2="321" y2="103" class="h"/>
+<line x1="338" y1="96" x2="331" y2="103" class="h"/>
+<line x1="348" y1="96" x2="341" y2="103" class="h"/>
+<line x1="358" y1="96" x2="351" y2="103" class="h"/>
+<line x1="368" y1="96" x2="361" y2="103" class="h"/>
+<line x1="378" y1="96" x2="371" y2="103" class="h"/>
+<line x1="388" y1="96" x2="381" y2="103" class="h"/>
+<line x1="398" y1="96" x2="391" y2="103" class="h"/>
+<rect x="60" y="40" width="90" height="55" class="blk"/>
+<text x="105" y="66" class="" text-anchor="middle">B</text>
+<text x="105" y="86" class="sm" text-anchor="middle">3 kg</text>
+<rect x="210" y="50" width="64" height="45" class="blk"/>
+<text x="242" y="72" class="" text-anchor="middle">A</text>
+<text x="242" y="88" class="sm" text-anchor="middle">2 kg</text>
+<line x1="150" y1="72" x2="210" y2="72" class="s1"/>
+<line x1="274" y1="72" x2="345" y2="72" class="f" marker-end="url(#m-f)"/>
+<text x="310" y="60" class="it acc sm" text-anchor="middle">F = 20 N</text>
+</svg>

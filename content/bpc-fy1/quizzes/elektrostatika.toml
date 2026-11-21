@@ -1,0 +1,1305 @@
+name = 'Elektrostatika'
+description = 'vše z elektrostatiky, zamíchané'
+
+[[question]]
+id = 'A2'
+topic = 'Siločáry'
+source = 'Test A (2014) · A2'
+tags = ["old"]
+text = '''
+Učebnice fyziky ukazuje oblast prostoru, v němž se dvě elektrické siločáry navzájem kříží. Z obrázku usuzujeme, že
+'''
+figure = 'images/krizici-se-silocary.svg'
+options = [
+  'v daném prostoru jsou nejméně dva bodové náboje.',
+  'v daném prostoru je elektrický vodič.',
+  'v daném prostoru je izolant.',
+  'autor učebnice udělal chybu.',
+  'v daném prostoru existuje bod, v němž je elektrické pole orientováno do dvou směrů.',
+]
+answer = 3
+explanation = '''
+Tečna k siločáře ukazuje směr vektoru $E$. V každém bodě je intenzita jen jeden vektor: příspěvky všech nábojů se sečtou (princip superpozice) do jediné výslednice. Bodem proto prochází jen jedna siločára a **siločáry se nikdy nekříží**. Obrázek je chybný.
+'''
+notes = [
+  'I mnoho nábojů dá v každém bodě jedinou výslednou intenzitu, ke křížení nedojde.',
+  'Vodič pole deformuje, ale křížení siločar nezpůsobí.',
+  'Izolant (dielektrikum) pole zeslabí, ale křížení nezpůsobí.',
+  '',
+  'Pole má v bodě jediný směr. Právě proto se siločáry nekříží.',
+]
+
+[[question]]
+id = 'A5'
+topic = 'Náboj a vodiče'
+source = 'Test A (2014) · A5'
+tags = ["old"]
+text = '''
+Kladně nabitou kovovou kouli A uvedeme do kontaktu s nenabitou kovovou koulí B. Po tomto kontaktu zjistíme, že
+'''
+options = [
+  'A má kladný náboj a B zůstává nenabitá.',
+  'A má kladný náboj a B má záporný náboj.',
+  'obě koule mají kladný náboj.',
+  'A je nenabitá a B má kladný náboj.',
+  'A je nenabitá a B má záporný náboj.',
+]
+answer = 2
+explanation = '''
+Dva vodiče v kontaktu tvoří jeden vodič, náboj se rozprostře po povrchu obou. Ve skutečnosti přejdou elektrony z B na A, takže B má nedostatek elektronů, tedy kladný náboj. Celkový náboj se zachovává a obě koule skončí kladné (u stejných koulí každá $Q/2$).
+'''
+notes = [
+  'Náboj přeteče, vodiče se vyrovnají na stejný potenciál.',
+  'Opačný náboj vzniká indukcí bez dotyku, ne dotykem.',
+  '',
+  'A neztratí všechen náboj, jen se rozdělí.',
+  'Celkový náboj je kladný, nemůže z něj vzniknout jen záporný.',
+]
+
+[[question]]
+id = 'A6'
+topic = 'Tok a Gaussův zákon'
+source = 'Test A (2014) · A6'
+tags = ["old"]
+text = '''
+Na obrázku jsou čtyři válcové Gaussovy plochy se stejným pláštěm a podstavami různého tvaru. Plochy se nacházejí v homogenním elektrickém poli o intenzitě $E$, která je rovnoběžná s osou válcových ploch. Seřaďte sestupně tyto plochy podle velikosti celkového toku intenzity elektrického pole těmito plochami.
+'''
+figure = 'images/ctyri-gaussovy-plochy.svg'
+options = [
+  'Tok je všemi plochami nulový.',
+  'S1, S3, S4, S2',
+  'Tok je všemi plochami stejný, ale nenulový.',
+  'S2, S4, S3, S1',
+  'S3, S1, S4, S2',
+]
+answer = 0
+explanation = '''
+Gaussův zákon: tok **uzavřenou** plochou je
+
+$$\Phi = \frac{Q_{\text{uvnitř}}}{\varepsilon_0}$$
+
+Žádná plocha neobsahuje náboj, proto $\Phi = 0$ pro všechny. Názorně: kolik siločar vstoupí spodní podstavou, tolik jich vystoupí horní. Plášť je rovnoběžný s $E$, prochází jím nulový tok. Tvar podstav nehraje roli.
+'''
+notes = [
+  '',
+  'Pořadí by mělo smysl jen u neuzavřených ploch. Tady jsou všechny uzavřené a bez náboje.',
+  'Stejný tok ano, ale nenulový by byl jen s nábojem uvnitř.',
+  'Tvar podstav tok uzavřenou plochou nemění.',
+  'Tvar podstav tok uzavřenou plochou nemění.',
+]
+
+[[question]]
+id = 'A8'
+topic = 'Tok a Gaussův zákon'
+source = 'Test A (2014) · A8'
+tags = ["old"]
+text = '''
+Intenzita elektrického pole je dána vektorem $E = (24\,\mathrm{N/C}) i + (30\,\mathrm{N/C}) j + (24\,\mathrm{N/C}) k$. Tok vektoru intenzity tohoto elektrického pole částí roviny $yz$ o velikosti 2 m² je roven
+'''
+figure = 'images/osy-plocha-yz-2m2.svg'
+options = [
+  '60 N·m²/C',
+  '48 N·m²/C',
+  '42 N·m²/C',
+  '34 N·m²/C',
+  '32 N·m²/C',
+]
+answer = 1
+explanation = '''
+Rovina $yz$ je kolmá k ose $x$, její normála míří ve směru $i$. Plochou „prochází“ jen složka kolmá k ploše:
+
+$$\Phi = E_x \cdot S = 24 \cdot 2 = 48\,\mathrm{N \cdot m^2/C}$$
+
+Složky $E_y$ a $E_z$ leží v rovině a k toku nepřispívají.
+'''
+notes = [
+  '$60 = E_y \cdot S$. To by byl tok rovinou xz (normála ve směru j).',
+  '',
+  'Neodpovídá žádné složce.',
+  'Neodpovídá žádné složce.',
+  'Neodpovídá žádné složce.',
+]
+
+[[question]]
+id = 'A9'
+topic = 'Intenzita E(r)'
+source = 'Test A (2014) · A9'
+tags = ["old"]
+text = '''
+Na kterém z grafů je zobrazena velikost intenzity elektrického pole jako funkce vzdálenosti $r$ od středu nabité duté tenké vodivé kulové vrstvy (slupky) o poloměru $R$?
+'''
+figure = 'images/grafy-e-r.svg'
+options = [
+  'graf a)',
+  'graf b)',
+  'graf c)',
+  'graf d)',
+  'graf e)',
+]
+answer = 2
+explanation = '''
+**Uvnitř** ($r < R$): Gaussova koule menší než slupka neobsahuje žádný náboj (ten je celý na povrchu), takže $E = 0$.
+
+**Vně** ($r > R$): slupka působí jako bodový náboj ve středu:
+
+$$E = \frac{Q}{4\pi\varepsilon_0 r^2}$$
+
+Na poloměru $R$ je skok z nuly na maximum, pak pokles s $1/r^2$.
+'''
+notes = [
+  'Uvnitř nemůže být pole největší, je tam nulové.',
+  'Konstantní nenulové pole uvnitř by vyžadovalo náboj uvnitř.',
+  '',
+  'Lineární růst uvnitř platí pro rovnoměrně nabitou plnou nevodivou kouli.',
+  'Růst uvnitř by vyžadoval náboj uvnitř.',
+]
+
+[[question]]
+id = 'B1'
+topic = 'Siločáry'
+source = 'Test B (2015) · B1'
+tags = ["old"]
+text = '''
+Obrázek zobrazuje elektrické siločáry vytvořené dvěma nabitými rovnoběžnými kovovými deskami. Z následujících výroků vyberte ten, který je pravdivý.
+'''
+figure = 'images/desky-silocary-nahoru-body-xyz.svg'
+options = [
+  'Horní deska je kladná, spodní záporná.',
+  'Tíhu elektronu umístěného v bodě X lze vykompenzovat silou elektrickou.',
+  'Tíhu protonu umístěného v bodě Y lze vykompenzovat silou elektrickou.',
+  'Na proton v bodě X působí menší síla, než když byl v bodě Z.',
+  'Na proton v bodě X působí větší síla, než když byl v bodě Z.',
+]
+answer = 2
+explanation = '''
+Siločáry vycházejí z kladného náboje a končí na záporném. Šipky míří nahoru, takže **spodní deska je kladná** a $E$ míří nahoru.
+
+Proton (+): $F = qE$ míří ve směru $E$, tedy nahoru, a může vyrovnat tíhu, která míří dolů.
+
+Elektron (−): síla míří proti $E$, tedy dolů, stejně jako tíha. Vyrovnat ji nelze.
+
+Body X a Z leží ve střední části, kde jsou siločáry rovnoběžné a stejně husté. Pole je tam homogenní a síla je v obou bodech stejná.
+'''
+notes = [
+  'Opačně. Siločáry míří od + k −, šipky jdou ode spodní desky.',
+  'Na elektron působí elektrická síla dolů (proti E), stejně jako tíha.',
+  '',
+  'Stejná hustota siločar znamená stejné E, tedy stejnou sílu.',
+  'Stejná hustota siločar znamená stejné E, tedy stejnou sílu.',
+]
+warning = 'Na fotce byla zakroužkována e). Opravené správné řešení je c).'
+
+[[question]]
+id = 'B2'
+topic = 'Kondenzátory'
+source = 'Test B (2015) · B2'
+tags = ["old"]
+text = '''
+Každý ze čtyř kondenzátorů má kapacitu 0,2 mF. Voltmetr ukazuje 1000 V. Velikost elektrického náboje na každém kondenzátoru je:
+'''
+figure = 'images/ctyri-kondenzatory-paralelne.svg'
+options = [
+  '50 C',
+  '20 C',
+  'nic z uvedeného',
+  '0,2 C',
+  '0,5 C',
+]
+answer = 3
+explanation = '''
+Kondenzátory jsou zapojeny paralelně, na každém je tedy celé napětí 1000 V.
+
+$$Q = C \cdot U = 0{,}2 \cdot 10^{-3}\,\mathrm{F} \cdot 1000\,\mathrm{V} = 0{,}2\,\mathrm{C}$$
+
+Pozor na předponu: 1 mF = 10⁻³ F.
+'''
+notes = [
+  'Nesmyslně velký náboj, vzniká špatným převodem jednotek.',
+  'Vychází z chyby v předponě (0,02 F místo 0,0002 F).',
+  'Správná hodnota mezi možnostmi je.',
+  '',
+  'Neodpovídá $Q = CU$.',
+]
+
+[[question]]
+id = 'B4'
+topic = 'Náboj a vodiče'
+source = 'Test B (2015) · B4'
+tags = ["old"]
+text = '''
+Jednu stěnu nenabité kovové krychle B uvedeme do těsného kontaktu s libovolnou stěnou kladně nabité kovové krychle A. Po tomto kontaktu zjistíme, že
+'''
+options = [
+  'A má kladný náboj a B zůstává nenabitá.',
+  'A je nenabitá a B má kladný náboj.',
+  'A je nenabitá a B má záporný náboj.',
+  'obě krychle mají kladný náboj.',
+  'A má kladný náboj a B má záporný náboj.',
+]
+answer = 3
+explanation = '''
+Stejný princip jako u koulí (A5): vodiče v kontaktu sdílí náboj. Část elektronů přejde z B na A a obě krychle jsou pak kladně nabité. Na tvaru tělesa ani na tom, kterou stěnou se dotknou, nezáleží.
+'''
+notes = [
+  'Náboj se rozdělí, B nezůstane neutrální.',
+  'A nepředá celý svůj náboj.',
+  'Celkový náboj je kladný, záporný náboj vzniknout nemůže.',
+  '',
+  'Opačné náboje vznikají indukcí bez dotyku.',
+]
+
+[[question]]
+id = 'B6'
+topic = 'Coulombův zákon'
+source = 'Test B (2015) · B6'
+tags = ["old"]
+text = '''
+Dva náboje $Q_1$ a $Q_2$ odděluje vzdálenost $L$. Pokud se velikosti $Q_1$, $Q_2$ **a** $L$ zdvojnásobí, velikost síly působící mezi oběma náboji:
+'''
+figure = 'images/naboje-q1-q2.svg'
+options = [
+  'vzroste na dvojnásobek.',
+  'zůstane stejná.',
+  'klesne na čtvrtinu.',
+  'klesne na polovinu.',
+  'vzroste na čtyřnásobek.',
+]
+answer = 1
+explanation = '''
+$$F = k \cdot \frac{Q_1 Q_2}{L^2} \quad\to\quad k \cdot \frac{(2Q_1)(2Q_2)}{(2L)^2} = k \cdot \frac{4Q_1 Q_2}{4L^2} = F$$
+
+Čtyřnásobek v čitateli se vykrátí se čtyřnásobkem ve jmenovateli.
+'''
+notes = [
+  'Zapomíná na druhou mocninu L nebo na jeden z nábojů.',
+  '',
+  'Takhle by to vyšlo, kdyby se zdvojnásobila jen vzdálenost L.',
+  'Neodpovídá žádné kombinaci.',
+  'Takhle by to vyšlo, kdyby se zdvojnásobily jen náboje.',
+]
+warning = 'Na fotce je zakroužkována c), ta platí jen pro změnu samotné vzdálenosti. Správně je b).'
+
+[[question]]
+id = 'B8'
+topic = 'Tok a Gaussův zákon'
+source = 'Test B (2015) · B8'
+tags = ["old"]
+text = '''
+Na obrázku je znázorněno elektrické pole o intenzitě 1000 N/C, které protíná plochu o velikosti $S = 100\,\mathrm{cm^2}$. Vektor plochy $S$ svírá s intenzitou obecně úhel $\alpha$. Jaký bude tok vektoru intenzity touto plochou, pokud úhel $\alpha$ bude 90°?
+'''
+figure = 'images/plocha-v-homogennim-poli.svg'
+options = [
+  '0 N·m²/C',
+  '10 N·m²/C',
+  '100 N·m²/C',
+  '1000 N·m²/C',
+  '10 000 N·m²/C',
+]
+answer = 0
+explanation = '''
+Tok rovinnou plochou:
+
+$$\Phi = E \cdot S \cdot \cos\alpha$$
+
+$\alpha$ je úhel mezi **vektorem plochy** (normálou) a $E$. Pro $\alpha = 90^\circ$ je $\cos \alpha = 0$, takže $\Phi = 0$. Plocha je pak rovnoběžná se siločárami a žádná jí neprochází.
+'''
+notes = [
+  '',
+  '10 by vyšlo pro $\alpha = 0^\circ$: 1000 · 0,01 = 10. Pozor, 100 cm² = 0,01 m².',
+  'Chybný převod cm² na m².',
+  'Vychází z dosazení $S = 1\,\mathrm{m^2}$ a $\alpha = 0$.',
+  'Chybný převod cm² na m².',
+]
+warning = 'Na fotce je zakroužkována d). Správně je a), jak je dopsáno červeně.'
+
+[[question]]
+id = 'B10'
+topic = 'Gaussův zákon'
+source = 'Test B (2015) · B10 (přepsáno na výběr)'
+tags = ["old"]
+text = '''
+Nabitá kovová kulička se nachází v kapalině (petroleji) o relativní permitivitě $\varepsilon_r$. Má povrch o velikosti $S$ a náboj je po něm rozprostřen s hustotou $\sigma$. Jaká je intenzita pole v bodě v kapalině, mimo kuličku, ve vzdálenosti $\ell$ od jejího středu?
+'''
+figure = 'images/kulicka-v-kapaline.svg'
+options = [
+  '$\sigma / (\varepsilon_0\varepsilon_r)$',
+  '$\sigma S / (4\pi \varepsilon_0 \varepsilon_r \ell^2)$',
+  '$\sigma S / (4\pi \varepsilon_0 \ell^2)$',
+  '$\sigma / (4\pi \varepsilon_0 \varepsilon_r \ell^2)$',
+  '0',
+]
+answer = 1
+explanation = '''
+Celkový náboj kuličky je $Q = \sigma \cdot S$. Gaussův zákon pro kouli o poloměru $\ell$ v dielektriku:
+
+$$\oint E \cdot dS = \frac{Q}{\varepsilon_0 \varepsilon_r} \quad\Rightarrow\quad E \cdot 4\pi\ell^2 = \frac{\sigma S}{\varepsilon_0 \varepsilon_r}$$
+
+$$E = \frac{\sigma S}{4\pi \varepsilon_0 \varepsilon_r \ell^2}$$
+'''
+notes = [
+  'Takhle vypadá intenzita těsně u povrchu vodiče, ne ve vzdálenosti $\ell$.',
+  '',
+  'Chybí $\varepsilon_r$. Dielektrikum pole $\varepsilon_r$-krát zeslabí.',
+  '$\sigma$ je plošná hustota, ne náboj. Chybí S a rozměr nesedí.',
+  'Nulová intenzita je uvnitř vodivé kuličky, ne vně.',
+]
+
+[[question]]
+id = 'T8'
+topic = 'Tok a Gaussův zákon'
+source = 'Starší test · 8'
+tags = ["old"]
+text = '''
+Dvě tenké kulové slupky (duté koule), jedna o poloměru $R$ a druhá o poloměru $4R$, obklopují izolovanou nabitou částici. Podíl toku vektoru intenzity elektrického pole větší slupkou a toku menší slupkou je
+'''
+figure = 'images/dve-slupky.svg'
+options = [
+  '1/16',
+  '1/8',
+  '1',
+  '8',
+  '16',
+]
+answer = 2
+explanation = '''
+Tok uzavřenou plochou závisí **jen na uzavřeném náboji**: $\Phi = q/\varepsilon_0$. Obě slupky uzavírají stejnou částici, takže toky jsou stejné a poměr je 1.
+
+Názorně: plocha větší koule je 16× větší, ale intenzita tam je 16× menší ($1/r^2$). Součin zůstane stejný.
+'''
+notes = [
+  '1/16 je poměr intenzit E na povrchu slupek, ne toků.',
+  'Neodpovídá žádné veličině.',
+  '',
+  'Neodpovídá žádné veličině.',
+  '16 je poměr ploch, ne toků.',
+]
+
+[[question]]
+id = 'T9'
+topic = 'Síla v el. poli'
+source = 'Starší test · 9'
+tags = ["old"]
+text = '''
+Elektron vletí horizontálně do oblasti homogenního elektrického pole, které směřuje vertikálně nahoru. Jakým směrem působí na elektron síla, jakmile vstoupí do oblasti elektrického pole?
+'''
+figure = 'images/elektron-vleta-do-pole.svg'
+options = [
+  'dovnitř tohoto listu, kolmo k jeho rovině, tj. od pozorovatele',
+  'ven z tohoto listu, kolmo k jeho rovině, tj. k pozorovateli',
+  'nahoru',
+  'dolů',
+  'proti pohybu elektronu, bude z oblasti vypuzován',
+]
+answer = 3
+explanation = '''
+$$F = q \cdot E, \qquad q = -e$$
+
+Záporný náboj, proto síla míří **proti** $E$, tedy dolů. Elektrická síla nezávisí na rychlosti částice. Elektron se bude pohybovat po parabole dolů, podobně jako vodorovně hozený kámen.
+'''
+notes = [
+  'Kolmo k listu by mohla působit magnetická síla (v × B), elektrická míří podél E.',
+  'Kolmo k listu by mohla působit magnetická síla (v × B), elektrická míří podél E.',
+  'Nahoru by síla mířila u protonu (kladný náboj).',
+  '',
+  'Elektrická síla nezávisí na směru pohybu.',
+]
+
+[[question]]
+id = 'T13'
+topic = 'Polarizace'
+source = 'Starší test · 13'
+tags = ["old"]
+text = '''
+Nabitý vodivý objekt je umístěn velmi blízko nenabitého izolátoru. Které z následujících tvrzení je pravdivé?
+'''
+options = [
+  'Oba objekty se budou odpuzovat.',
+  'Oba objekty se budou přitahovat.',
+  'Na žádný z objektů nebude od toho druhého objektu působit elektrická síla.',
+  'Objekty se budou odpuzovat, pokud je vodivý objekt nabit záporně.',
+  'Objekty se budou přitahovat, pokud je vodivý objekt nabit kladně.',
+]
+answer = 1
+explanation = '''
+Izolant (dielektrikum) se v poli **polarizuje**: jeho molekuly se zorientují tak, že k nabitému objektu míří opačně nabité konce. Bližší opačný náboj přitahuje silněji, než vzdálenější souhlasný odpuzuje. Výsledkem je **přitahování, nezávisle na znaménku** náboje. Proto třeba nabitý hřeben přitahuje papírky.
+'''
+notes = [
+  'Polarizace vždy vede k přitahování.',
+  '',
+  'Nenabitý izolant se polarizuje, síla působí.',
+  'Znaménko nerozhoduje, přitahování nastane vždy.',
+  'Platí, ale neúplně. Přitahují se i při záporném náboji, proto je obecně správně b).',
+]
+warning = 'V klíči pod fotkou je uvedeno 13-c. To je chyba, správně je b).'
+
+[[question]]
+id = 'T15'
+topic = 'Coulombův zákon'
+source = 'Starší test · 15'
+tags = ["old"]
+text = '''
+Jedna ze dvou identických vodivých koulí má náboj +5 µC, druhá −1 µC. Středy obou koulí jsou ve vzdálenosti $L$. Koule jsou uvedeny do kontaktu, pak zaujmou původní polohu. Jaký je podíl velikostí elektrických sil mezi nimi v situaci po návratu do původní polohy k situaci před dotykem?
+'''
+figure = 'images/naboje-5uc-1uc.svg'
+options = [
+  '1/1',
+  '4/5',
+  '9/5',
+  '5/1',
+  '4/9',
+]
+answer = 1
+explanation = '''
+Po dotyku se celkový náboj rozdělí rovným dílem (koule jsou identické):
+
+$$\frac{+5 + (-1)}{2} = +2\,\mu\mathrm{C}\ \text{na každé}$$
+
+Před dotykem: $F \propto 5 \cdot 1 = 5$. Po dotyku: $F \propto 2 \cdot 2 = 4$. Poměr po/před = **4/5**. Navíc se změní charakter síly: předtím se koule přitahovaly, potom se odpuzují.
+'''
+notes = [
+  'Náboje se změnily, síla tedy také.',
+  '',
+  'Vyjde, když sečteš absolutní hodnoty: (5+1)/2 = 3 → 9/5. Znaménka se ale musí sčítat i s mínusem.',
+  'Převrácený a navíc špatný poměr.',
+  'Prohozená čísla.',
+]
+
+[[question]]
+id = 'E11'
+topic = 'Coulombův zákon'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Dva opačné, různě velké elektrické náboje $+Q$ a $-2Q$ se nacházejí v určité vzdálenosti od sebe. Velikost síly, jakou kladný náboj působí na náboj záporný, je
+'''
+figure = 'images/naboje-q-minus-2q.svg'
+options = [
+  'rovna polovině síly, jakou záporný náboj působí na náboj kladný.',
+  'dvakrát větší než síla, jakou záporný náboj působí na náboj kladný.',
+  'úměrná rozdílu velikostí obou nábojů.',
+  'rovna velikosti síly, jakou záporný náboj působí na náboj kladný.',
+  'úměrná součtu velikostí obou nábojů.',
+]
+answer = 3
+explanation = '''
+Podle 3. Newtonova zákona (akce a reakce) působí tělesa na sebe navzájem stejně velkými silami opačného směru. Coulombova síla $F = k \cdot |Q \cdot 2Q|/r^2$ je pro oba náboje stejná. Větší náboj nepůsobí větší silou.
+'''
+notes = [
+  'Síly akce a reakce jsou vždy stejně velké.',
+  'Síly akce a reakce jsou vždy stejně velké.',
+  'Síla je úměrná součinu nábojů, ne rozdílu.',
+  '',
+  'Síla je úměrná součinu nábojů, ne součtu.',
+]
+
+[[question]]
+id = 'E12'
+topic = 'Náboj a vodiče'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Vodivá kulová vrstva má náboj −4,8·10⁻¹⁷ C. O kolik je ve vrstvě více elektronů než kladných nábojů?
+'''
+options = [
+  'o 100',
+  'o 200',
+  'o 300',
+  'o 400',
+  'o 500',
+]
+answer = 2
+explanation = '''
+Náboj je kvantovaný, je to násobek elementárního náboje $e = 1{,}6 \cdot 10^{-19}\,\mathrm{C}$:
+
+$$n = \frac{|Q|}{e} = \frac{4{,}8 \cdot 10^{-17}}{1{,}6 \cdot 10^{-19}} = 300$$
+'''
+notes = [
+  '4,8 / 1,6 = 3, ne 1.',
+  '4,8 / 1,6 = 3, ne 2.',
+  '',
+  '4,8 / 1,6 = 3, ne 4.',
+  '4,8 / 1,6 = 3, ne 5.',
+]
+
+[[question]]
+id = 'E13'
+topic = 'Tok a Gaussův zákon'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Intenzita elektrického pole je dána vektorem $E = (24\,\mathrm{N/C}) i + (30\,\mathrm{N/C}) j + (24\,\mathrm{N/C}) k$. Tok vektoru intenzity tohoto pole částí roviny $xy$ o velikosti 3 m² je roven
+'''
+figure = 'images/osy-plocha-xy-3m2.svg'
+options = [
+  '72 N·m²/C',
+  '60 N·m²/C',
+  '32 N·m²/C',
+  '34 N·m²/C',
+  '48 N·m²/C',
+]
+answer = 0
+explanation = '''
+Rovina $xy$ má normálu ve směru osy $z$ (vektor $k$), plochou tedy prochází jen složka $E_z$:
+
+$$\Phi = E_z \cdot S = 24 \cdot 3 = 72\,\mathrm{N \cdot m^2/C}$$
+
+Trik: rovina $xy$ → bereš složku $z$, rovina $yz$ → složku $x$, rovina $xz$ → složku $y$.
+'''
+notes = [
+  '',
+  'Odpovídá $E_y \cdot 2$ nebo $E_x \cdot S$ pro jinou plochu, tady ne.',
+  'Neodpovídá žádné složce.',
+  'Neodpovídá žádné složce.',
+  '48 = 24·2, to je výsledek A8 (plocha 2 m²). Tady je plocha 3 m².',
+]
+
+[[question]]
+id = 'E14'
+kind = "numeric"
+topic = 'Tok a Gaussův zákon'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Intenzita elektrického pole je dána vektorem $E = (24\,\mathrm{N/C}) i + (21\,\mathrm{N/C}) j + (24\,\mathrm{N/C}) k$. Tok vektoru intenzity tohoto pole částí roviny $xy$ o velikosti 5,8 m² je roven
+'''
+figure = 'images/osy-plocha-xy-5-8m2.svg'
+value = 139.2
+tolerance = 0.1
+unit = 'N·m²/C'
+explanation = '''
+Rovina $xy$ → normála ve směru $z$ → bereš složku $E_z$:
+
+$$\Phi = E_z \cdot S = 24 \cdot 5{,}8 = 139{,}2\,\mathrm{N \cdot m^2/C}$$
+'''
+
+[[question]]
+id = 'E15'
+kind = "numeric"
+topic = 'Tok a Gaussův zákon'
+source = 'E-learning'
+tags = ["old"]
+text = '''
+Jehlan, jehož základnou je čtverec o straně $a$, neobklopuje žádný elektrický náboj. Je vložen do homogenního elektrického pole $E$ kolmého k jeho základně. Siločáry do jehlanu vstupují pláštěm a vystupují základnou. Vypočtěte tok elektrické intenzity **pláštěm** jehlanu $\Phi_{\text{plášť}}$ (na dvě desetinná místa) pro $a = 1{,}7\,\mathrm{m}$ a $E = 57{,}8\,\mathrm{V/m}$.
+'''
+figure = 'images/jehlan-v-poli.svg'
+value = -167.04
+tolerance = 0.1
+unit = 'V·m'
+sign_hint = 'Tok, který do uzavřené plochy vstupuje, je záporný.'
+explanation = '''
+Jehlan je uzavřená plocha bez náboje, celkový tok je tedy podle Gaussova zákona nulový:
+
+$$\Phi_{\text{plášť}} + \Phi_{\text{základna}} = 0$$
+
+Základnou siločáry vystupují kolmo: $\Phi_{\text{základna}} = +E \cdot a^2 = 57{,}8 \cdot 2{,}89 = 167{,}04\,\mathrm{V \cdot m}$. Pláštěm vstupují, tok je záporný:
+
+$$\Phi_{\text{plášť}} = -E \cdot a^2 = -167{,}04\,\mathrm{V \cdot m}$$
+
+Znaménko: vystupující tok je kladný, vstupující záporný (normála uzavřené plochy míří ven).
+'''
+
+[[question]]
+id = 'X1'
+topic = 'Coulombův zákon'
+source = 'Procvičování'
+text = '''
+Náboj $Q_1$ zdvojnásobíme a vzdálenost $L$ mezi náboji zmenšíme na polovinu. Síla mezi náboji:
+'''
+figure = 'images/naboje-q1-q2.svg'
+options = [
+  'vzroste 2×',
+  'vzroste 4×',
+  'vzroste 8×',
+  'vzroste 16×',
+  'zůstane stejná',
+]
+answer = 2
+explanation = '''
+$$F' = k \cdot \frac{2Q_1 \cdot Q_2}{(L/2)^2} = k \cdot \frac{2Q_1 Q_2 \cdot 4}{L^2} = 8F$$
+'''
+notes = [
+  'Zapomíná na vzdálenost.',
+  'Zapomíná na změnu náboje.',
+  '',
+  'Náboj se zdvojnásobil jen jeden.',
+  'Obě změny sílu zvětšují.',
+]
+
+[[question]]
+id = 'X2'
+topic = 'Coulombův zákon'
+source = 'Procvičování'
+text = '''
+Vzdálenost dvou bodových nábojů ztrojnásobíme. Síla mezi nimi:
+'''
+options = [
+  'klesne na 1/3',
+  'klesne na 1/9',
+  'vzroste 3×',
+  'vzroste 9×',
+  'klesne na 1/6',
+]
+answer = 1
+explanation = '''
+$$F \propto \frac{1}{r^2} \quad\Rightarrow\quad F' = \frac{F}{3^2} = \frac{F}{9}$$
+'''
+notes = [
+  'Zapomíná na druhou mocninu.',
+  '',
+  'Síla se vzdáleností klesá.',
+  'Síla se vzdáleností klesá.',
+  'Mocnina, ne násobek dvěma.',
+]
+
+[[question]]
+id = 'X3'
+topic = 'Coulombův zákon'
+source = 'Procvičování'
+text = '''
+Dvě identické vodivé koule mají náboje +6 µC a −2 µC. Dotknou se a vrátí na původní místa. Poměr velikosti síly po dotyku k síle před dotykem je:
+'''
+figure = 'images/naboje-6uc-2uc.svg'
+options = [
+  '1/3',
+  '3',
+  '4/3',
+  '1',
+  '2/3',
+]
+answer = 0
+explanation = '''
+Po dotyku má každá koule (6 − 2)/2 = +2 µC.
+
+$$\text{před: } 6 \cdot 2 = 12, \qquad \text{po: } 2 \cdot 2 = 4, \qquad \text{poměr } 4/12 = 1/3$$
+
+Síla se navíc změní z přitažlivé na odpudivou.
+'''
+notes = [
+  '',
+  'Převrácený poměr.',
+  'Vyjde, když zapomeneš na znaménko (6+2)/2 = 4 → 16/12.',
+  'Náboje se změnily.',
+  'Neodpovídá.',
+]
+
+[[question]]
+id = 'X4'
+topic = 'Náboj a vodiče'
+source = 'Procvičování'
+text = '''
+Tři identické kovové koule: A má náboj $Q$, B a C jsou nenabité. Koule A se dotkne koule B, oddálí se a pak se A dotkne koule C. Jaký náboj má na konci koule C?
+'''
+figure = 'images/tri-koule.svg'
+options = [
+  '$Q/2$',
+  '$Q/3$',
+  '$Q/4$',
+  '$Q/8$',
+  '$Q$',
+]
+answer = 2
+explanation = '''
+1\. dotyk A+B: každá $Q/2$.
+
+2\. dotyk A+C: A má $Q/2$, C má 0 → každá $Q/4$.
+
+Na konci: A = $Q/4$, B = $Q/2$, C = $Q/4$ (součet $Q$, náboj se zachoval).
+'''
+notes = [
+  'Q/2 má po prvním dotyku B.',
+  'To by platilo, kdyby se dotkly všechny tři najednou.',
+  '',
+  'Byly jen dva dotyky.',
+  'Náboj se vždy dělí.',
+]
+
+[[question]]
+id = 'X5'
+topic = 'Siločáry'
+source = 'Procvičování'
+text = '''
+Na obrázku jsou siločáry pole dvou bodových nábojů 1 a 2. Jaká jsou jejich znaménka?
+'''
+figure = 'images/dipol-silocary.svg'
+options = [
+  '1 kladný, 2 záporný',
+  '1 záporný, 2 kladný',
+  'oba kladné',
+  'oba záporné',
+  'nelze určit',
+]
+answer = 0
+explanation = '''
+Siločáry **vycházejí z kladného** náboje a **končí v záporném**. Šipky míří od náboje 1 k náboji 2, takže 1 je kladný a 2 záporný. Tomuto uspořádání se říká elektrický dipól.
+'''
+notes = [
+  '',
+  'Obráceně, šipky míří od 1.',
+  'U dvou kladných by siločáry mezi náboji nevedly z jednoho do druhého.',
+  'U dvou záporných by šipky mířily do obou nábojů.',
+  'Ze směru šipek se to určit dá.',
+]
+
+[[question]]
+id = 'X6'
+topic = 'Siločáry'
+source = 'Procvičování'
+text = '''
+Ve kterém z bodů 1, 2, 3 má elektrické pole největší intenzitu?
+'''
+figure = 'images/silocary-body-1-2-3.svg'
+options = [
+  'v bodě 1',
+  'v bodě 2',
+  'v bodě 3',
+  've všech stejnou',
+  'nelze určit',
+]
+answer = 0
+explanation = '''
+Velikost intenzity odpovídá **hustotě siločar**: kde jsou siločáry blíž u sebe, je pole silnější. U bodu 1 jsou nejhustší.
+'''
+notes = [
+  '',
+  'Siločáry jsou tu řidší než u bodu 1.',
+  'Tady jsou siločáry nejřidší, pole je nejslabší.',
+  'Hustota siločar se mění, pole není homogenní.',
+  'Z hustoty siločar se to určit dá.',
+]
+
+[[question]]
+id = 'X7'
+topic = 'Siločáry'
+source = 'Procvičování'
+text = '''
+Siločáry mezi dvěma deskami míří **dolů** (od horní desky ke spodní). Který výrok je pravdivý?
+'''
+figure = 'images/desky-silocary-dolu.svg'
+options = [
+  'Horní deska je záporná.',
+  'Na elektron mezi deskami působí elektrická síla dolů.',
+  'Tíhu elektronu mezi deskami lze vykompenzovat elektrickou silou.',
+  'Tíhu protonu mezi deskami lze vykompenzovat elektrickou silou.',
+  'Uprostřed mezi deskami je pole slabší než u desek.',
+]
+answer = 2
+explanation = '''
+Šipky míří dolů → $E$ dolů → horní deska je kladná. Elektron (záporný) cítí sílu proti $E$, tedy **nahoru**, a ta může vyrovnat jeho tíhu. Proton by cítil sílu dolů, stejně jako tíha.
+'''
+notes = [
+  'Siločáry vychází z kladné desky, horní je kladná.',
+  'Elektron má sílu proti E, tedy nahoru.',
+  '',
+  'Proton má sílu ve směru E, tedy dolů, stejně jako tíha.',
+  'Mezi deskami je pole homogenní.',
+]
+
+[[question]]
+id = 'X8'
+topic = 'Síla v el. poli'
+source = 'Procvičování'
+text = '''
+Proton a elektron jsou ve stejném homogenním elektrickém poli. Co platí?
+'''
+options = [
+  'Působí na ně stejná síla a mají stejné zrychlení.',
+  'Síly mají stejnou velikost a opačný směr, elektron má mnohem větší zrychlení.',
+  'Síly mají stejnou velikost i směr.',
+  'Na proton působí větší síla, protože je těžší.',
+  'Síly jsou opačné, proton má větší zrychlení.',
+]
+answer = 1
+explanation = '''
+$$F = qE$$
+
+Oba mají náboj stejné velikosti $e$, ale opačného znaménka, takže síly jsou stejně velké a opačně orientované. Zrychlení $a = F/m$: elektron je asi 1836× lehčí, proto má asi 1836× větší zrychlení.
+'''
+notes = [
+  'Směry jsou opačné a hmotnosti různé.',
+  '',
+  'Opačné znaménko náboje znamená opačný směr.',
+  'Elektrická síla nezávisí na hmotnosti.',
+  'Proton je těžší, má menší zrychlení.',
+]
+
+[[question]]
+id = 'X9'
+topic = 'Síla v el. poli'
+source = 'Procvičování'
+text = '''
+Kapička oleje o hmotnosti 2·10⁻¹⁴ kg se vznáší v klidu v homogenním poli $E = 5 \cdot 10^{4}\,\mathrm{N/C}$, které míří svisle **nahoru** ($g = 10\,\mathrm{m/s^2}$). Jaký je její náboj?
+'''
+figure = 'images/desky-silocary-nahoru.svg'
+options = [
+  '+4·10⁻¹⁸ C',
+  '−4·10⁻¹⁸ C',
+  '+1·10⁻⁸ C',
+  '+4·10⁻¹⁹ C',
+  '0 C',
+]
+answer = 0
+explanation = '''
+Rovnováha: elektrická síla nahoru vyrovná tíhu.
+
+$$qE = mg \quad\Rightarrow\quad q = \frac{mg}{E} = \frac{2 \cdot 10^{-14} \cdot 10}{5 \cdot 10^4} = 4 \cdot 10^{-18}\,\mathrm{C}$$
+
+Síla míří nahoru, ve směru $E$, takže náboj je **kladný**. (Jde o 25 elementárních nábojů, to je princip Millikanova pokusu.)
+'''
+notes = [
+  '',
+  'Záporný náboj by měl sílu dolů, kapka by spadla.',
+  'Vynásobeno E místo dělení.',
+  'Zapomenuté g.',
+  'Bez náboje by kapka spadla.',
+]
+
+[[question]]
+id = 'X10'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Homogenní pole $E = 500\,\mathrm{N/C}$ prochází plochou $S = 200\,\mathrm{cm^2}$. Vektor plochy svírá s $E$ úhel $\alpha = 60^\circ$. Tok plochou je:
+'''
+figure = 'images/plocha-v-homogennim-poli.svg'
+options = [
+  '5 N·m²/C',
+  '8,66 N·m²/C',
+  '50 000 N·m²/C',
+  '10 N·m²/C',
+  '0 N·m²/C',
+]
+answer = 0
+explanation = '''
+$$\Phi = E S \cos\alpha = 500 \cdot 0{,}02 \cdot \cos 60^\circ = 500 \cdot 0{,}02 \cdot 0{,}5 = 5\,\mathrm{N \cdot m^2/C}$$
+
+Nezapomeň převést 200 cm² = 0,02 m² (1 m² = 10 000 cm²).
+'''
+notes = [
+  '',
+  'Použit sin místo cos. $\alpha$ je úhel s normálou, proto cos.',
+  'Plocha nepřevedena z cm² na m².',
+  'Ignoruje úhel ($\cos \alpha = 1$).',
+  'Nula by byla pro $\alpha = 90^\circ$.',
+]
+
+[[question]]
+id = 'X11'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Stejná situace jako v B8 ($E = 1000\,\mathrm{N/C}$, $S = 100\,\mathrm{cm^2}$), ale tentokrát $\alpha = 0^\circ$. Tok plochou je:
+'''
+figure = 'images/plocha-v-homogennim-poli.svg'
+options = [
+  '0 N·m²/C',
+  '10 N·m²/C',
+  '100 N·m²/C',
+  '1000 N·m²/C',
+  '10 000 N·m²/C',
+]
+answer = 1
+explanation = '''
+$\alpha = 0^\circ$ znamená, že normála je rovnoběžná s $E$ a plocha stojí kolmo k siločárám. Tok je maximální:
+
+$$\Phi = E \cdot S = 1000 \cdot 0{,}01 = 10\,\mathrm{N \cdot m^2/C}$$
+'''
+notes = [
+  'Nula je pro $\alpha = 90^\circ$.',
+  '',
+  'Chyba v převodu cm².',
+  '$S = 1\,\mathrm{m^2}$ je špatný převod.',
+  'Chyba v převodu cm².',
+]
+
+[[question]]
+id = 'X12'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Intenzita $E = (10\,i + 20\,j + 30\,k)\,\mathrm{N/C}$. Tok částí roviny $xz$ o velikosti 4 m² je:
+'''
+options = [
+  '40 N·m²/C',
+  '80 N·m²/C',
+  '120 N·m²/C',
+  '240 N·m²/C',
+  '150 N·m²/C',
+]
+answer = 1
+explanation = '''
+Rovina $xz$ má normálu ve směru osy $y$, bereš složku $E_y$:
+
+$$\Phi = E_y \cdot S = 20 \cdot 4 = 80\,\mathrm{N \cdot m^2/C}$$
+'''
+notes = [
+  '$E_x \cdot S$, to je rovina yz.',
+  '',
+  '$E_z \cdot S$, to je rovina xy.',
+  'Součet složek, nesmysl.',
+  '|E|·S, ignoruje směr.',
+]
+
+[[question]]
+id = 'X13'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Uzavřená plocha obsahuje náboje $+3q$ a $-q$. Vně plochy je náboj $+5q$. Celkový tok intenzity plochou je:
+'''
+figure = 'images/uzavrena-plocha-naboje.svg'
+options = [
+  '0',
+  '$2q/\varepsilon_0$',
+  '$4q/\varepsilon_0$',
+  '$7q/\varepsilon_0$',
+  '$3q/\varepsilon_0$',
+]
+answer = 1
+explanation = '''
+Gaussův zákon počítá **jen náboj uvnitř**, se znaménkem:
+
+$$\Phi = \frac{3q - q}{\varepsilon_0} = \frac{2q}{\varepsilon_0}$$
+
+Vnější náboj pole uvnitř mění, ale celkový tok uzavřenou plochou neovlivní: kolik jeho siločar vstoupí, tolik vystoupí.
+'''
+notes = [
+  'Uvnitř je nenulový náboj.',
+  '',
+  'Nepočítej −q jako +q.',
+  'Vnější náboj se nezapočítává.',
+  'Zapomenutý záporný náboj.',
+]
+
+[[question]]
+id = 'X14'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Bodový náboj $Q$ je přesně ve středu krychle. Tok intenzity **jednou stěnou** krychle je:
+'''
+figure = 'images/krychle-naboj-ve-stredu.svg'
+options = [
+  '$Q/\varepsilon_0$',
+  '$Q/(6\varepsilon_0)$',
+  '$Q/(4\varepsilon_0)$',
+  '0',
+  '$6Q/\varepsilon_0$',
+]
+answer = 1
+explanation = '''
+Celkový tok krychlí je $Q/\varepsilon_0$. Ze symetrie se rozdělí rovnoměrně na 6 stejných stěn:
+
+$$\Phi_{\text{stěna}} = \frac{Q}{6\varepsilon_0}$$
+'''
+notes = [
+  'To je tok celou krychlí.',
+  '',
+  'Krychle má 6 stěn, ne 4.',
+  'Uvnitř je náboj, tok je nenulový.',
+  'Šestinásobek místo šestiny.',
+]
+
+[[question]]
+id = 'X15'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Krychle o hraně 1 m leží v homogenním elektrickém poli 5·10³ N/C, které míří kolmo na dvě její stěny. Celkový tok intenzity povrchem krychle je:
+'''
+figure = 'images/krychle-v-homogennim-poli.svg'
+options = [
+  '5·10³ N·m²/C',
+  '3·10⁴ N·m²/C',
+  '1·10⁴ N·m²/C',
+  '0',
+  '2,5·10³ N·m²/C',
+]
+answer = 3
+explanation = '''
+Krychle je uzavřená plocha bez náboje, takže $\Phi = 0$. Levou stěnou vstupuje tok −5·10³, pravou vystupuje +5·10³ a boční stěny jsou rovnoběžné s polem (tok 0). Součet je nula.
+'''
+notes = [
+  'To je tok jednou stěnou, ne celkový.',
+  'Šest stěn × E·S, ale u čtyř stěn je tok nulový a u dvou mají opačná znaménka.',
+  'Sečteny dvě stěny bez znaménka.',
+  '',
+  'Neodpovídá.',
+]
+
+[[question]]
+id = 'X16'
+topic = 'Intenzita E(r)'
+source = 'Procvičování'
+text = '''
+Který graf odpovídá velikosti intenzity $E(r)$ rovnoměrně nabité **plné nevodivé** koule o poloměru $R$?
+'''
+figure = 'images/grafy-e-r.svg'
+options = [
+  'graf a)',
+  'graf b)',
+  'graf c)',
+  'graf d)',
+  'graf e)',
+]
+answer = 3
+explanation = '''
+Uvnitř plné nevodivé koule obsahuje Gaussova koule o poloměru $r$ náboj $Q \cdot (r/R)^3$:
+
+$$E \cdot 4\pi r^2 = \frac{Q r^3}{\varepsilon_0 R^3} \quad\Rightarrow\quad E = \frac{Q r}{4\pi \varepsilon_0 R^3} \propto r$$
+
+Uvnitř tedy $E$ roste lineárně, vně klesá jako $1/r^2$. Maximum je na povrchu.
+'''
+notes = [
+  'Uvnitř nemůže klesat od středu, ve středu je $E = 0$.',
+  'Uvnitř není konstantní.',
+  'Nula uvnitř platí pro vodivou kouli nebo slupku.',
+  '',
+  'Uvnitř roste lineárně, ne kvadraticky.',
+]
+
+[[question]]
+id = 'X17'
+topic = 'Náboj a vodiče'
+source = 'Procvičování'
+text = '''
+Kde se nachází přebytečný náboj na vodiči v elektrostatické rovnováze?
+'''
+options = [
+  'rovnoměrně v celém objemu',
+  'jen na povrchu, uvnitř je $E = 0$',
+  'soustředí se ve středu',
+  'na povrchu, uvnitř je pole maximální',
+  'závisí na znaménku náboje',
+]
+answer = 1
+explanation = '''
+Ve vodiči se volné náboje pohybují, dokud na ně působí síla. V rovnováze proto musí být uvnitř vodiče $E = 0$. Z Gaussova zákona pak plyne, že uvnitř není žádný náboj a veškerý přebytek sedí **na povrchu**. Proto je pole nabité vodivé koule stejné jako pole slupky (graf c).
+'''
+notes = [
+  'Tak je to u nevodivé (izolační) koule.',
+  '',
+  'Souhlasné náboje se odpuzují co nejdál od sebe.',
+  'Uvnitř vodiče je pole nulové.',
+  'Platí pro oba typy náboje.',
+]
+
+[[question]]
+id = 'X18'
+topic = 'Intenzita E(r)'
+source = 'Procvičování'
+text = '''
+Intenzita pole bodového náboje ve vzdálenosti $r$ je $E$. Jaká je ve vzdálenosti $2r$?
+'''
+options = [
+  '$E/2$',
+  '$E/4$',
+  '$2E$',
+  '$4E$',
+  '$E/\sqrt{2}$',
+]
+answer = 1
+explanation = '''
+$$E = \frac{kQ}{r^2} \quad\Rightarrow\quad E(2r) = \frac{kQ}{4r^2} = \frac{E}{4}$$
+'''
+notes = [
+  'Zapomenutá druhá mocnina.',
+  '',
+  'Pole s rostoucí vzdáleností klesá.',
+  'Pole s rostoucí vzdáleností klesá.',
+  'Žádná odmocnina tu není.',
+]
+
+[[question]]
+id = 'X19'
+topic = 'Intenzita E(r)'
+source = 'Procvičování'
+text = '''
+Dva stejné kladné náboje $+q$ jsou ve vzdálenosti $d$. Jaká je intenzita uprostřed mezi nimi (bod M)?
+'''
+figure = 'images/naboje-q-q-bod-m.svg'
+options = [
+  '0',
+  '$kq/d^2$',
+  '$2kq/d^2$',
+  '$8kq/d^2$',
+  '$4kq/d^2$',
+]
+answer = 0
+explanation = '''
+Každý náboj vytváří v bodě M pole velikosti $kq/(d/2)^2 = 4kq/d^2$, ale **opačného směru**: obě míří od svého náboje. Vektorově se vyruší a výsledek je 0.
+'''
+notes = [
+  '',
+  'Intenzity jsou vektory, mají opačný směr.',
+  'Intenzity jsou vektory, mají opačný směr.',
+  'Tak by to vyšlo pro náboje opačných znamének.',
+  'To je pole jen od jednoho náboje.',
+]
+
+[[question]]
+id = 'X20'
+topic = 'Intenzita E(r)'
+source = 'Procvičování'
+text = '''
+Náboje $+q$ a $-q$ jsou ve vzdálenosti $d$. Jaká je velikost intenzity uprostřed mezi nimi?
+'''
+figure = 'images/naboje-q-minus-q-bod-m.svg'
+options = [
+  '0',
+  '$kq/d^2$',
+  '$2kq/d^2$',
+  '$8kq/d^2$',
+  '$4kq/d^2$',
+]
+answer = 3
+explanation = '''
+Každý náboj dává v bodě M pole $4kq/d^2$ (vzdálenost je $d/2$). Obě míří **stejným směrem**, od + a k −, takže se sčítají:
+
+$$E = 2 \cdot \frac{kq}{(d/2)^2} = \frac{8kq}{d^2}$$
+'''
+notes = [
+  'To platí pro stejná znaménka.',
+  'Zapomenuto, že vzdálenost je d/2.',
+  'Zapomenuto, že vzdálenost je d/2.',
+  '',
+  'To je pole jen od jednoho náboje.',
+]
+
+[[question]]
+id = 'X21'
+topic = 'Tok a Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Dvě soustředné slupky o poloměrech $R$ a $4R$. Uvnitř malé slupky je náboj $q$ a mezi slupkami je další náboj $q$. Poměr toku větší slupkou k toku menší slupkou je:
+'''
+figure = 'images/dve-slupky-dva-naboje.svg'
+options = [
+  '1',
+  '2',
+  '1/2',
+  '16',
+  '1/16',
+]
+answer = 1
+explanation = '''
+Malá slupka uzavírá $q$ → $\Phi = q/\varepsilon_0$. Velká slupka uzavírá oba náboje → $\Phi = 2q/\varepsilon_0$. Poměr je **2**. Velikost plochy nehraje roli, rozhoduje jen uzavřený náboj.
+'''
+notes = [
+  'To by platilo bez náboje mezi slupkami (viz T8).',
+  '',
+  'Obráceně.',
+  'Poměr ploch, ten nerozhoduje.',
+  'Poměr intenzit, ten nerozhoduje.',
+]
+
+[[question]]
+id = 'X22'
+topic = 'Polarizace'
+source = 'Procvičování'
+text = '''
+K nenabité kovové kouli na izolačním stojanu přiblížíme (bez dotyku) kladně nabitou tyč. Co se stane?
+'''
+figure = 'images/tyc-a-kovova-koule.svg'
+options = [
+  'koule se k tyči přitáhne',
+  'koule se odpudí',
+  'žádná síla nepůsobí',
+  'koule získá celkový záporný náboj',
+  'přitáhne se, jen pokud je tyč záporná',
+]
+answer = 0
+explanation = '''
+**Elektrostatická indukce**: volné elektrony v kouli se přesunou blíž k tyči, takže bližší strana je záporná a vzdálenější kladná. Bližší opačný náboj je přitahován silněji, než je vzdálenější souhlasný odpuzován. Výsledkem je přitažení. Celkový náboj koule zůstává nulový.
+'''
+notes = [
+  '',
+  'Bližší je opačný náboj, převažuje přitahování.',
+  'Indukce rozdělí náboje, síla působí.',
+  'Bez dotyku nebo uzemnění se celkový náboj nemění.',
+  'Znaménko tyče nerozhoduje.',
+]
+
+[[question]]
+id = 'X23'
+topic = 'Kondenzátory'
+source = 'Procvičování'
+text = '''
+Kondenzátor o kapacitě 5 µF je připojen na napětí 200 V. Jaký náboj je na něm?
+'''
+options = [
+  '1·10⁻³ C',
+  '40 C',
+  '1000 C',
+  '25 µC',
+  '1 µC',
+]
+answer = 0
+explanation = '''
+$$Q = C \cdot U = 5 \cdot 10^{-6} \cdot 200 = 1 \cdot 10^{-3}\,\mathrm{C} = 1\,\mathrm{mC}$$
+'''
+notes = [
+  '',
+  'U/C, a to ještě bez převodu jednotek.',
+  'Bez převodu µF.',
+  'C/U.',
+  'Špatný řád.',
+]
+
+[[question]]
+id = 'X24'
+topic = 'Kondenzátory'
+source = 'Procvičování'
+text = '''
+Dva kondenzátory, každý 0,2 mF, jsou zapojeny **sériově** na napětí 1000 V. Jaký náboj je na každém z nich?
+'''
+figure = 'images/kondenzatory-serie.svg'
+options = [
+  '0,2 C',
+  '0,1 C',
+  '0,4 C',
+  '0,05 C',
+  '100 C',
+]
+answer = 1
+explanation = '''
+Sériově: $1/C = 1/C_1 + 1/C_2$, takže pro dva stejné kondenzátory $C = 0{,}1\,\mathrm{mF}$. Při sériovém zapojení mají všechny kondenzátory **stejný náboj**:
+
+$$Q = C \cdot U = 0{,}1 \cdot 10^{-3} \cdot 1000 = 0{,}1\,\mathrm{C}$$
+
+Na každém je napětí 500 V. Srovnej s B2, kde je zapojení paralelní a na každém je 0,2 C.
+'''
+notes = [
+  'To by bylo při paralelním zapojení (celé napětí na každém).',
+  '',
+  'Kapacity se v sérii nesčítají.',
+  'Neodpovídá.',
+  'Bez převodu mF.',
+]
+
+[[question]]
+id = 'X25'
+topic = 'Gaussův zákon'
+source = 'Procvičování'
+text = '''
+Nabitou kuličku přeneseme z vakua do oleje s relativní permitivitou $\varepsilon_r = 2$. Intenzita pole v daném místě vedle kuličky:
+'''
+options = [
+  'se zdvojnásobí',
+  'klesne na polovinu',
+  'zůstane stejná',
+  'klesne na čtvrtinu',
+  'bude nulová',
+]
+answer = 1
+explanation = '''
+$$E = \frac{Q}{4\pi \varepsilon_0 \varepsilon_r r^2}$$
+
+Dielektrikum se polarizuje a pole zeslabí $\varepsilon_r$-krát. Stejně tak klesne i Coulombova síla mezi náboji v tomto prostředí.
+'''
+notes = [
+  'Dielektrikum pole zeslabuje.',
+  '',
+  'Prostředí pole ovlivňuje.',
+  '$\varepsilon_r$ je v prvním řádu, ne na druhou.',
+  'Nulové pole je jen uvnitř vodiče.',
+]

@@ -1,0 +1,13 @@
+<svg viewBox="0 0 360 160" width="360" class="fig" role="img" aria-label="Krychle s nábojem Q ve středu">
+<rect x="110" y="60" width="80" height="80" class="gf"/>
+<line x1="110" y1="60" x2="145" y2="30" class="s"/>
+<line x1="190" y1="60" x2="225" y2="30" class="s"/>
+<line x1="145" y1="30" x2="225" y2="30" class="s"/>
+<line x1="225" y1="30" x2="225" y2="110" class="s"/>
+<line x1="190" y1="140" x2="225" y2="110" class="s"/>
+<line x1="110" y1="140" x2="145" y2="110" class="d"/>
+<line x1="145" y1="110" x2="225" y2="110" class="d"/>
+<line x1="145" y1="30" x2="145" y2="110" class="d"/>
+<circle cx="167" cy="85" r="5" class="ptA"/>
+<text x="167" y="76" class="it acc" text-anchor="middle">Q</text>
+</svg>

@@ -1,0 +1,8 @@
+# Text files are LF everywhere; the content is compared byte for byte by the check.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary
+*.icns binary
+*.ico binary

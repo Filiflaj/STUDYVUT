@@ -1,0 +1,13 @@
+<svg viewBox="0 0 300 140" width="300" class="fig" role="img" aria-label="Kladně nabitá tyč u kovové koule na izolačním stojanu">
+<rect x="20" y="40" width="140" height="22" class="gf"/>
+<text x="40" y="56" class="sm" text-anchor="middle">+</text>
+<text x="65" y="56" class="sm" text-anchor="middle">+</text>
+<text x="90" y="56" class="sm" text-anchor="middle">+</text>
+<text x="115" y="56" class="sm" text-anchor="middle">+</text>
+<text x="140" y="56" class="sm" text-anchor="middle">+</text>
+<circle cx="240" cy="51" r="30" class="gf"/>
+<line x1="240" y1="81" x2="240" y2="128" class="s"/>
+<line x1="212" y1="128" x2="268" y2="128" class="s"/>
+<text x="90" y="90" class="sm mut" text-anchor="middle">nabitá tyč</text>
+<text x="240" y="30" class="sm mut" text-anchor="middle">kovová koule</text>
+</svg>

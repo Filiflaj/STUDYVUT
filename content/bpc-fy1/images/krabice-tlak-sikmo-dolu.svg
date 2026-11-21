@@ -1,0 +1,29 @@
+<svg viewBox="0 0 200 130" width="200" class="fig" role="img" aria-label="Krabice o hmotnosti m tlačená silou F šikmo dolů pod úhlem θ">
+<line x1="5" y1="110" x2="195" y2="110" class="s"/>
+<line x1="13" y1="111" x2="6" y2="118" class="h"/>
+<line x1="23" y1="111" x2="16" y2="118" class="h"/>
+<line x1="33" y1="111" x2="26" y2="118" class="h"/>
+<line x1="43" y1="111" x2="36" y2="118" class="h"/>
+<line x1="53" y1="111" x2="46" y2="118" class="h"/>
+<line x1="63" y1="111" x2="56" y2="118" class="h"/>
+<line x1="73" y1="111" x2="66" y2="118" class="h"/>
+<line x1="83" y1="111" x2="76" y2="118" class="h"/>
+<line x1="93" y1="111" x2="86" y2="118" class="h"/>
+<line x1="103" y1="111" x2="96" y2="118" class="h"/>
+<line x1="113" y1="111" x2="106" y2="118" class="h"/>
+<line x1="123" y1="111" x2="116" y2="118" class="h"/>
+<line x1="133" y1="111" x2="126" y2="118" class="h"/>
+<line x1="143" y1="111" x2="136" y2="118" class="h"/>
+<line x1="153" y1="111" x2="146" y2="118" class="h"/>
+<line x1="163" y1="111" x2="156" y2="118" class="h"/>
+<line x1="173" y1="111" x2="166" y2="118" class="h"/>
+<line x1="183" y1="111" x2="176" y2="118" class="h"/>
+<line x1="193" y1="111" x2="186" y2="118" class="h"/>
+<rect x="102" y="65" width="70" height="45" class="blk"/>
+<text x="137" y="93" class="it" text-anchor="middle">m</text>
+<line x1="15" y1="85" x2="100" y2="85" class="d"/>
+<line x1="25" y1="50" x2="100" y2="84" class="f" marker-end="url(#m-f)"/>
+<path d="M69.2,70.6 A34,34 0 0 0 66.0,85.0" class="s1"/>
+<text x="56" y="80" class="it sm" text-anchor="middle">θ</text>
+<text x="30" y="40" class="it acc" text-anchor="middle">F</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 440 140" width="440" class="fig" role="img" aria-label="Opačné náboje se přitahují, souhlasné se odpuzují">
+<circle cx="80" cy="40" r="10" class="gf"/>
+<text x="80" y="45" class="" text-anchor="middle">+</text>
+<circle cx="260" cy="40" r="10" class="gf"/>
+<text x="260" y="45" class="" text-anchor="middle">−</text>
+<line x1="92" y1="40" x2="150" y2="40" class="f" marker-end="url(#m-f)"/>
+<line x1="248" y1="40" x2="190" y2="40" class="f" marker-end="url(#m-f)"/>
+<text x="120" y="30" class="it acc sm" text-anchor="middle">F</text>
+<text x="220" y="30" class="it acc sm" text-anchor="middle">F</text>
+<text x="300" y="45" class="sm" text-anchor="start">přitahují se</text>
+<circle cx="80" cy="110" r="10" class="gf"/>
+<text x="80" y="115" class="" text-anchor="middle">+</text>
+<circle cx="260" cy="110" r="10" class="gf"/>
+<text x="260" y="115" class="" text-anchor="middle">+</text>
+<line x1="68" y1="110" x2="12" y2="110" class="f" marker-end="url(#m-f)"/>
+<line x1="272" y1="110" x2="328" y2="110" class="f" marker-end="url(#m-f)"/>
+<text x="40" y="100" class="it acc sm" text-anchor="middle">F</text>
+<text x="300" y="100" class="it acc sm" text-anchor="middle">F</text>
+<text x="345" y="115" class="sm" text-anchor="start">odpuzují se</text>
+</svg>

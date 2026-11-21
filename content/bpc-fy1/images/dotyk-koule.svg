@@ -1,0 +1,14 @@
+<svg viewBox="0 0 400 100" width="400" class="fig" role="img" aria-label="Dotyk koulí +5 µC a −1 µC, potom mají obě +2 µC">
+<circle cx="45" cy="45" r="30" class="gf"/>
+<text x="45" y="50" class="sm" text-anchor="middle">+5 µC</text>
+<circle cx="115" cy="45" r="30" class="gf"/>
+<text x="115" y="50" class="sm" text-anchor="middle">−1 µC</text>
+<line x1="160" y1="45" x2="232" y2="45" class="v" marker-end="url(#m-v)"/>
+<text x="196" y="35" class="sm mut" text-anchor="middle">dotyk</text>
+<circle cx="285" cy="45" r="30" class="gf"/>
+<text x="285" y="50" class="sm" text-anchor="middle">+2 µC</text>
+<circle cx="355" cy="45" r="30" class="gf"/>
+<text x="355" y="50" class="sm" text-anchor="middle">+2 µC</text>
+<text x="80" y="92" class="sm mut" text-anchor="middle">před: celkem +4</text>
+<text x="320" y="92" class="sm mut" text-anchor="middle">po: +4 rozděleno napůl</text>
+</svg>

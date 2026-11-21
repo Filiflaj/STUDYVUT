@@ -1,0 +1,19 @@
+<svg viewBox="0 0 380 200" width="380" class="fig" role="img" aria-label="Graf křivek A–F, O–C, D–E">
+<line x1="60" y1="195" x2="60" y2="12" class="v" marker-end="url(#m-v)"/>
+<line x1="60" y1="110" x2="372" y2="110" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="22"><tspan class="it">v</tspan><tspan class="sm" dy="4">y</tspan><tspan dy="-4"></tspan></text>
+<text x="366" y="128" class="it" text-anchor="middle">t</text>
+<line x1="60" y1="55" x2="330" y2="55" class="s"/>
+<line x1="60" y1="55" x2="330" y2="25" class="s"/>
+<line x1="60" y1="55" x2="330" y2="165" class="s"/>
+<line x1="60" y1="182" x2="330" y2="182" class="s"/>
+<path d="M60,110 Q190,-5 330,95" class="s"/>
+<text x="50" y="60" class="" text-anchor="end">A</text>
+<text x="50" y="115" class="" text-anchor="end">O</text>
+<text x="50" y="187" class="" text-anchor="end">D</text>
+<text x="340" y="30" class="" text-anchor="start">F</text>
+<text x="340" y="60" class="" text-anchor="start">B</text>
+<text x="340" y="100" class="" text-anchor="start">C</text>
+<text x="340" y="170" class="" text-anchor="start">P</text>
+<text x="340" y="187" class="" text-anchor="start">E</text>
+</svg>

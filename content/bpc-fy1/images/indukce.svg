@@ -1,0 +1,17 @@
+<svg viewBox="0 0 310 120" width="310" class="fig" role="img" aria-label="Elektrostatická indukce: nabitá tyč a kovová koule">
+<rect x="20" y="40" width="140" height="22" class="gf"/>
+<text x="40" y="56" class="sm" text-anchor="middle">+</text>
+<text x="65" y="56" class="sm" text-anchor="middle">+</text>
+<text x="90" y="56" class="sm" text-anchor="middle">+</text>
+<text x="115" y="56" class="sm" text-anchor="middle">+</text>
+<text x="140" y="56" class="sm" text-anchor="middle">+</text>
+<circle cx="240" cy="51" r="32" class="gf"/>
+<text x="220" y="42" class="" text-anchor="middle">−</text>
+<text x="214" y="58" class="" text-anchor="middle">−</text>
+<text x="220" y="74" class="" text-anchor="middle">−</text>
+<text x="262" y="42" class="sm" text-anchor="middle">+</text>
+<text x="268" y="58" class="sm" text-anchor="middle">+</text>
+<text x="262" y="74" class="sm" text-anchor="middle">+</text>
+<text x="90" y="95" class="sm mut" text-anchor="middle">nabitá tyč</text>
+<text x="240" y="105" class="sm mut" text-anchor="middle">kov: elektrony se přesunou</text>
+</svg>

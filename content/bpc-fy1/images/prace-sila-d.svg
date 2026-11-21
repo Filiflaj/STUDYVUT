@@ -1,0 +1,9 @@
+<svg viewBox="0 0 180 108" width="180" class="fig" role="img" aria-label="Síla F₁ proti posunutí s">
+<line x1="15" y1="88" x2="165" y2="88" class="s1"/>
+<line x1="15" y1="83" x2="15" y2="93" class="s1"/>
+<line x1="165" y1="83" x2="165" y2="93" class="s1"/>
+<text x="90" y="103" class="it sm" text-anchor="middle">s</text>
+<rect x="55" y="45" width="50" height="34" class="blk"/>
+<line x1="55" y1="62" x2="8" y2="62" class="f" marker-end="url(#m-f)"/>
+<text x="28" y="52" class="it acc sm" text-anchor="middle">F₁</text>
+</svg>

@@ -1,0 +1,20 @@
+code = "BPC-FY1"
+name = "Fyzika 1"
+semester = "ZS 2026/2027"
+color = "blue"
+description = "Mechanika a elektrostatika: otázky ze starých testů, jejich nové varianty a učivo k testu."
+
+[[set]]
+id = "old"
+name = "Staré testy"
+description = "otázky z fotek a e-learningu"
+tags = ["old"]
+
+[[set]]
+id = "exam"
+name = "Test nanečisto"
+description = "15 náhodných otázek z obou témat"
+pick = [
+  { quiz = "mechanika", count = 7 },
+  { quiz = "elektrostatika", count = 8 },
+]
