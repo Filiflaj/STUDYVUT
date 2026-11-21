@@ -1,0 +1,310 @@
+name = 'Úvod do měření: veličiny a jednotky'
+description = 'druhy veličin, SI, předpony, převody a rozměry jednotek'
+
+[[question]]
+id = 'P03-01'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Kolik základních jednotek má soustava SI?
+'''
+options = ['5', '6', '7', '10']
+answer = 2
+layout = 'grid'
+explanation = '''
+Sedm: metr, kilogram, sekunda, ampér, kelvin, mol a kandela. Ostatní jednotky jsou z nich odvozené.
+'''
+notes = [
+  'Chybí dvě, třeba mol a kandela.',
+  'Chybí jedna, obvykle se zapomíná na kandelu.',
+  '',
+  'Deset jich není; newton nebo volt jsou odvozené jednotky.',
+]
+
+[[question]]
+id = 'P03-02'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Která z jednotek **není** základní jednotkou SI?
+'''
+options = ['ampér', 'kelvin', 'kandela', 'newton']
+answer = 3
+layout = 'grid'
+explanation = '''
+Newton je **odvozená** jednotka síly: z $F = ma$ je $1\ \mathrm{N} = 1\ \mathrm{kg\,m\,s^{-2}}$. Ampér, kelvin a kandela patří mezi sedm základních jednotek.
+'''
+notes = [
+  'Ampér je základní jednotka elektrického proudu.',
+  'Kelvin je základní jednotka termodynamické teploty.',
+  'Kandela je základní jednotka svítivosti.',
+  '',
+]
+
+[[question]]
+id = 'P03-03'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Která veličina je **intenzivní** (stavová)?
+'''
+options = ['hmotnost', 'elektrický náboj', 'teplota', 'teplo']
+answer = 2
+layout = 'grid'
+explanation = '''
+Intenzivní veličiny popisují stav a při spojení soustav se **vyrovnávají** (teplota, tlak, potenciál). Extenzivní veličiny se při spojení **sčítají** (hmotnost, náboj, délka, teplo).
+'''
+notes = [
+  'Hmotnosti se při spojení těles sčítají, je extenzivní.',
+  'Náboje se sčítají, náboj je extenzivní.',
+  '',
+  'Teplo je množství energie, sčítá se, je extenzivní. Pozor, nezaměnit s teplotou.',
+]
+
+[[question]]
+id = 'P03-04'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Hodnotu veličiny zapisujeme $X = \{X\}[X]$. Co se změní, když tutéž délku vyjádříte v centimetrech místo v metrech?
+'''
+options = [
+  'Jen číselná hodnota $\{X\}$, hodnota veličiny $X$ zůstane stejná.',
+  'Hodnota veličiny $X$ i číselná hodnota.',
+  'Nic, číselná hodnota na jednotce nezávisí.',
+  'Jen hodnota veličiny $X$.',
+]
+answer = 0
+explanation = '''
+**Hodnota veličiny na jednotce nezávisí, číselná hodnota ano**: $1{,}5\ \mathrm{m} = 150\ \mathrm{cm}$. Proto se k číslu vždy musí napsat jednotka.
+'''
+notes = [
+  '',
+  'Délka se tím, že ji vyjádříte v jiné jednotce, nezmění.',
+  'Číselná hodnota se s jednotkou mění: 1,5 m je 150 cm.',
+  'Naopak: veličina zůstává, mění se číslo.',
+]
+
+[[question]]
+id = 'P03-05'
+kind = 'numeric'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+tags = ["pocty"]
+text = '''
+Převeďte rychlost $72\ \mathrm{km\,h^{-1}}$ na $\mathrm{m\,s^{-1}}$.
+'''
+value = 20
+tolerance = 0.05
+unit = 'm/s'
+explanation = '''
+Za kilometr se dosadí 1000 m, za hodinu 3600 s:
+$$72\ \mathrm{km\,h^{-1}} = 72\cdot\frac{1000\ \mathrm{m}}{3600\ \mathrm{s}} = \frac{72}{3{,}6}\ \mathrm{m\,s^{-1}} = 20\ \mathrm{m\,s^{-1}}$$
+'''
+
+[[question]]
+id = 'P03-06'
+kind = 'numeric'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+tags = ["pocty"]
+text = '''
+Hustota oceli je $7{,}85\ \mathrm{g\,cm^{-3}}$. Kolik je to v $\mathrm{kg\,m^{-3}}$?
+'''
+value = 7850
+tolerance = 1
+unit = 'kg/m³'
+explanation = '''
+$1\ \mathrm{g} = 10^{-3}\ \mathrm{kg}$ a $1\ \mathrm{cm^3} = (10^{-2}\ \mathrm{m})^3 = 10^{-6}\ \mathrm{m^3}$:
+$$7{,}85\ \mathrm{g\,cm^{-3}} = 7{,}85\cdot\frac{10^{-3}\ \mathrm{kg}}{10^{-6}\ \mathrm{m^3}} = 7{,}85\cdot10^{3}\ \mathrm{kg\,m^{-3}} = 7850\ \mathrm{kg\,m^{-3}}$$
+'''
+
+[[question]]
+id = 'P03-07'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Jak zapíšete $2{,}35\cdot10^{-9}\ \mathrm{s}$ s předponou?
+'''
+options = ['$2{,}35\ \mathrm{\mu s}$', '$2{,}35\ \mathrm{ns}$', '$2{,}35\ \mathrm{ps}$', '$2{,}35\ \mathrm{ms}$']
+answer = 1
+layout = 'grid'
+explanation = '''
+Nano je $10^{-9}$: $2{,}35\cdot10^{-9}\ \mathrm{s} = 2{,}35\ \mathrm{ns}$. Mikro je $10^{-6}$, piko $10^{-12}$, mili $10^{-3}$.
+'''
+notes = [
+  'Mikro je $10^{-6}$, to je tisíckrát víc.',
+  '',
+  'Piko je $10^{-12}$, to je tisíckrát méně.',
+  'Mili je $10^{-3}$.',
+]
+
+[[question]]
+id = 'P03-08'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Jaký je rozměr ohmu vyjádřený základními jednotkami SI?
+'''
+options = [
+  '$\mathrm{kg\,m^2\,s^{-3}\,A^{-1}}$',
+  '$\mathrm{kg\,m^2\,s^{-2}}$',
+  '$\mathrm{kg\,m^2\,s^{-3}\,A^{-2}}$',
+  '$\mathrm{kg\,m\,s^{-2}\,A^{-1}}$',
+]
+answer = 2
+explanation = '''
+$\mathrm{W} = \mathrm{J/s} = \mathrm{kg\,m^2\,s^{-3}}$, volt je watt na ampér, $\mathrm{V} = \mathrm{kg\,m^2\,s^{-3}\,A^{-1}}$, a ohm je volt na ampér:
+$$\Omega = \frac{\mathrm{V}}{\mathrm{A}} = \mathrm{kg\,m^2\,s^{-3}\,A^{-2}}$$
+'''
+notes = [
+  'To je rozměr voltu, ještě je potřeba dělit ampérem.',
+  'To je rozměr joulu.',
+  '',
+  'Tento rozměr žádné z probíraných jednotek neodpovídá; newton je $\mathrm{kg\,m\,s^{-2}}$.',
+]
+
+[[question]]
+id = 'P03-09'
+kind = 'numeric'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+tags = ["pocty"]
+text = '''
+Jak dlouhý je oblouk kružnice o poloměru $0{,}40\ \mathrm{m}$, který odpovídá středovému úhlu $30^\circ$?
+'''
+value = 0.209
+tolerance = 0.002
+unit = 'm'
+explanation = '''
+Ve vztahu $\ell = r\varphi$ musí být úhel v **radiánech**: $\varphi = 30\cdot\pi/180 = 0{,}5236\ \mathrm{rad}$.
+$$\ell = r\varphi = 0{,}40\ \mathrm{m}\cdot0{,}5236 = 0{,}209\ \mathrm{m}$$
+Radián je doplňková (bezrozměrná) jednotka, při dosazení se nepíše.
+'''
+warning = 'S úhlem ve stupních by vyšlo nesmyslných 12 m.'
+
+[[question]]
+id = 'P03-10'
+kind = 'numeric'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+tags = ["pocty"]
+text = '''
+Kolik megajoulů je $1\ \mathrm{kWh}$?
+'''
+value = 3.6
+tolerance = 0.01
+unit = 'MJ'
+explanation = '''
+Kilowatthodina je vedlejší jednotka energie (hodina není jednotka SI):
+$$1\ \mathrm{kWh} = 1000\ \mathrm{W}\cdot3600\ \mathrm{s} = 3{,}6\cdot10^{6}\ \mathrm{J} = 3{,}6\ \mathrm{MJ}$$
+'''
+
+[[question]]
+id = 'P03-11'
+kind = 'numeric'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+tags = ["pocty"]
+text = '''
+Moment setrvačnosti vyšel $250\ \mathrm{g\,cm^2}$. Kolik je to v jednotkách $10^{-5}\ \mathrm{kg\,m^2}$?
+'''
+value = 2.5
+tolerance = 0.01
+unit = '× 10⁻⁵ kg·m²'
+explanation = '''
+$1\ \mathrm{g} = 10^{-3}\ \mathrm{kg}$, $1\ \mathrm{cm^2} = 10^{-4}\ \mathrm{m^2}$, tedy $1\ \mathrm{g\,cm^2} = 10^{-7}\ \mathrm{kg\,m^2}$:
+$$250\ \mathrm{g\,cm^2} = 250\cdot10^{-7}\ \mathrm{kg\,m^2} = 2{,}5\cdot10^{-5}\ \mathrm{kg\,m^2}$$
+'''
+
+[[question]]
+id = 'P03-12'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Co platí o jednotkách minuta, hodina a litr?
+'''
+options = [
+  'Jsou to základní jednotky SI.',
+  'Jsou to odvozené jednotky SI.',
+  'Jsou to doplňkové jednotky.',
+  'Jsou to vedlejší jednotky, smějí se používat, ale nejsou součástí SI.',
+]
+answer = 3
+explanation = '''
+Minuta, hodina, litr nebo tuna jsou **vedlejší jednotky**: z praktických důvodů se používat smějí, ale do soustavy SI nepatří. Do vzorců je proto převeďte na hlavní jednotky (s, m³, kg).
+'''
+notes = [
+  'Základní jednotka času je sekunda, objemu žádná základní není.',
+  'Odvozená jednotka objemu SI je $\mathrm{m^3}$, ne litr.',
+  'Doplňkové jednotky jsou radián a steradián.',
+  '',
+]
+
+[[question]]
+id = 'P03-13'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Co platí o radiánu?
+'''
+options = [
+  'Je to základní jednotka SI.',
+  'Je to jednotka bezrozměrné veličiny (rozměr 1); při dosazování do vztahů se nepíše.',
+  'Je to vedlejší jednotka jako stupeň.',
+  'Musí se vždy psát i do výsledku, jinak je výpočet špatně.',
+]
+answer = 1
+explanation = '''
+Rovinný úhel $\varphi = \ell/r$ je podíl dvou délek, jeho rozměr je $\mathrm{m}/\mathrm{m} = 1$. Radián je proto **doplňková** jednotka bezrozměrné veličiny a při dosazování se nepíše. Obdobně steradián pro prostorový úhel.
+'''
+notes = [
+  'Mezi sedm základních jednotek nepatří.',
+  '',
+  'Radián je jednotka SI (doplňková); stupeň je vedlejší.',
+  'Úvod naopak říká, že se rad při dosazování neuvádí.',
+]
+
+[[question]]
+id = 'P03-14'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1'
+text = '''
+Která předpona znamená násobek $10^{15}$?
+'''
+options = ['peta (P)', 'piko (p)', 'tera (T)', 'femto (f)']
+answer = 0
+layout = 'grid'
+explanation = '''
+Peta, značka velké **P**, je $10^{15}$. Piko (malé p) je $10^{-12}$, tera $10^{12}$, femto $10^{-15}$.
+'''
+notes = [
+  '',
+  'Piko je malé p a znamená $10^{-12}$.',
+  'Tera je $10^{12}$.',
+  'Femto je $10^{-15}$, tedy díl, ne násobek.',
+]
+
+[[question]]
+id = 'P03-15'
+topic = 'Fyzikální veličiny a jednotky'
+source = 'Úvod do měření, kap. 1 a 4'
+text = '''
+Záhlaví sloupce tabulky je „$t$ / s“. Co je ve sloupci?
+'''
+options = [
+  'Čísla: časy vydělené sekundou, tedy číselné hodnoty času v sekundách.',
+  'Časy na sekundu, tedy rychlost.',
+  'Časy, jednotku je potřeba připsat ke každému číslu.',
+  'Převrácené hodnoty časů.',
+]
+answer = 0
+explanation = '''
+Z $X = \{X\}[X]$ plyne $\{X\} = X/[X]$. Zápis „$t$ / s“ říká, že ve sloupci jsou **čísla** vzniklá vydělením času sekundou. Stejně se popisují osy grafů.
+'''
+notes = [
+  '',
+  'Lomítko tu není „za sekundu“, ale vydělení veličiny její jednotkou.',
+  'Jednotka v záhlaví platí pro celý sloupec, k číslům se nepíše.',
+  'Převrácenou hodnotu by značil zápis $1/t$.',
+]

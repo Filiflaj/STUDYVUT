@@ -5,6 +5,7 @@ year = 1
 programs = ["met"]
 color = "blue"
 description = "Mechanika a elektrostatika: otázky ze starých testů, jejich nové varianty a učivo k testu."
+info = "prakt-01-jak-projit-predmetem"
 
 [[set]]
 id = "old"
@@ -36,3 +37,27 @@ pick = [
   { quiz = "lab-17", count = 2 }, { quiz = "lab-18", count = 2 }, { quiz = "lab-21", count = 1 },
   { quiz = "lab-25", count = 1 },
 ]
+
+[[set]]
+id = "prakt-pred"
+name = "Před prvním cvičením"
+description = "hodnocení praktika, laboratorní řád, zapojování a bezpečnost"
+tags = ["pred-praktikem"]
+shuffle = true
+
+[[set]]
+id = "prakt-uvod"
+name = "Úvod do měření nanečisto"
+description = "15 náhodných otázek z veličin, metod, chyb, grafů, přístrojů a protokolu"
+pick = [
+  { quiz = "prakt-03", count = 2 }, { quiz = "prakt-04", count = 2 }, { quiz = "prakt-05", count = 4 },
+  { quiz = "prakt-06", count = 3 }, { quiz = "prakt-07", count = 2 }, { quiz = "prakt-08", count = 1 },
+  { quiz = "lab-00", count = 1 },
+]
+
+[[set]]
+id = "prakt-pocty"
+name = "Počítání chyb a závislostí"
+description = "jen výpočty: chyby, zaokrouhlení, šíření chyb, směrnice, přístroje"
+tags = ["pocty"]
+shuffle = true

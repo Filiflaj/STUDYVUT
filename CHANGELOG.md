@@ -10,6 +10,11 @@
 - BPC-FY1: 7 kapitol k laboratořím (zpracování měření a úlohy 5, 10, 17,
   18, 21 a 25) a 85 otázek ke vstupním testům, sady **Laboratoře: vstupní
   testy** a **Praktikum nanečisto**.
+- BPC-FY1: osm kapitol k praktiku: **Jak ho projít** (body, protokoly,
+  omluvy, zápočet), **Bezpečnost a laboratorní řád** a šest kapitol *Úvod do
+  měření* (veličiny, metody, chyby, závislosti a grafy, přístroje, protokol)
+  s řešenými příklady; 134 nových otázek a sady **Před prvním cvičením**,
+  **Úvod do měření nanečisto** a **Počítání chyb a závislostí**.
 - BPC-EL1: 9 kapitol k laboratořím (pracovní sešit a úlohy 1–8) a 98 otázek
   v 9 kvízech, sada **Obhajoba nanečisto**.
 - BPC-PC1M: 7 kapitol jazyka C (funkce až spojový seznam) a 76 otázek

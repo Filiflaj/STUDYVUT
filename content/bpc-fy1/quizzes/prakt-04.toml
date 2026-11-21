@@ -1,0 +1,252 @@
+name = 'Úvod do měření: měřicí metody'
+description = 'přímé a nepřímé, kompenzační, interpolace, postupná metoda'
+
+[[question]]
+id = 'P04-01'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Hustotu válečku určíte z jeho hmotnosti a rozměrů. Jaká je to metoda?
+'''
+options = ['přímá', 'nepřímá', 'kompenzační', 'substituční']
+answer = 1
+layout = 'grid'
+explanation = '''
+U **nepřímé** metody se hodnota vypočte z jiných, přímo měřených veličin: $\rho = 4m/(\pi d^2 h)$. Přímá metoda by hustotu odečetla přímo na přístroji.
+'''
+notes = [
+  'Přímo se měří hmotnost a rozměry, hustota se z nich počítá.',
+  '',
+  'Kompenzační metoda vyrovnává měřenou veličinu stejně velkou hodnotou téže veličiny.',
+  'Substituční metoda nahrazuje neznámou hodnotu řadou známých hodnot téže veličiny.',
+]
+
+[[question]]
+id = 'P04-02'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Hustotu oleje určíte porovnáním se známou hustotou vody. Jaká je to metoda?
+'''
+options = ['absolutní', 'dynamická', 'relativní', 'extrapolační']
+answer = 2
+layout = 'grid'
+explanation = '''
+**Relativní** metoda srovnává měřenou veličinu s veličinou stejného druhu o známé hodnotě. Relativní je i každé srovnání s etalonem nebo normálem.
+'''
+notes = [
+  'Absolutní metoda dává výsledek přímo v jednotce, bez srovnávací látky.',
+  'Dynamická metoda pracuje s veličinou proměnnou v čase.',
+  '',
+  'Extrapolace odhaduje hodnotu mimo změřený interval.',
+]
+
+[[question]]
+id = 'P04-03'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Proč je kompenzační metoda obvykle přesnější než substituční?
+'''
+options = [
+  'Kompenzace proběhne v jednom okamžiku, kdežto normál se při substituci hledá postupně a podmínky se mohou změnit.',
+  'Kompenzační metoda nepotřebuje žádný měřicí přístroj.',
+  'Kompenzační metoda vždy měří víc hodnot.',
+  'Substituční metoda je nepřímá, kompenzační přímá.',
+]
+answer = 0
+explanation = '''
+Při kompenzaci se měřená veličina vyrovná stejně velkou hodnotou téže veličiny **současně**. Při substituci se známé hodnoty (normály) zkoušejí **postupně** a podmínky měření se mezitím nemusí udržet.
+'''
+notes = [
+  '',
+  'Indikační přístroj (nulový indikátor) potřebuje.',
+  'Počet hodnot s principem metody nesouvisí.',
+  'Obě mohou být přímé, rozdíl je v čase vyrovnání.',
+]
+
+[[question]]
+id = 'P04-04'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Co je nulová metoda?
+'''
+options = [
+  'Metoda, při které se měří od nuly stupnice.',
+  'Metoda, při které měřená veličina musí být nulová.',
+  'Měření bez chyby měřidla.',
+  'Kompenzační metoda, při které je výchylka indikačního přístroje ve vyrovnaném stavu nulová.',
+]
+answer = 3
+explanation = '''
+Kompenzační metoda bývá **nulová**: měřená veličina je vyrovnaná, když indikační přístroj ukazuje nulu (vážení, můstek). U nulových metod je potřeba opakovaně kontrolovat nulovou polohu přístroje.
+'''
+notes = [
+  'Název nesouvisí s tím, odkud se čte stupnice.',
+  'Nulová je výchylka indikátoru, ne měřená veličina.',
+  'Každé měření má chybu, i nulová metoda.',
+  '',
+]
+
+[[question]]
+id = 'P04-05'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Měření doby kmitu kyvadla je metoda
+'''
+options = ['statická.', 'dynamická.', 'substituční.', 'interpolační.']
+answer = 1
+layout = 'grid'
+explanation = '''
+U **dynamické** metody se měřená veličina nebo veličiny, na kterých závisí, mění v čase, obvykle periodicky. I tak se měří v ustáleném stavu: amplituda nemá během měření výrazně klesat.
+'''
+notes = [
+  'Statická metoda měří veličiny, které se v čase nemění.',
+  '',
+  'Nic se tu nenahrazuje známými hodnotami.',
+  'Interpolace odhaduje hodnotu mezi změřenými body.',
+]
+
+[[question]]
+id = 'P04-06'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Proč patří velmi pomalé změny podmínek (vybíjení baterie, ohřev) k nejčastějším zdrojům chyb?
+'''
+options = [
+  'Snadno se přehlédnou a měření, které vypadá ustálené, ve skutečnosti ustálené není.',
+  'Vždy způsobí hrubou chybu, kterou nelze vyloučit.',
+  'Zvětšují náhodnou chybu, ale průměr nezmění.',
+  'Jsou zakázané laboratorním řádem.',
+]
+answer = 0
+explanation = '''
+Měří se za **ustáleného stavu**. Velmi pomalé změny se dají nechtěně přehlédnout (měření **kvazistatické**) a získané hodnoty jsou pak méně spolehlivé.
+'''
+notes = [
+  '',
+  'Pomalá změna nedá nápadně odlišnou hodnotu, a proto ji je těžké odhalit.',
+  'Pomalý drift posouvá hodnoty jedním směrem, takže ovlivní i průměr.',
+  'Řád je nezakazuje, jde o zdroj chyby, na který je třeba myslet.',
+]
+
+[[question]]
+id = 'P04-07'
+kind = 'numeric'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+tags = ["pocty"]
+text = '''
+Odpor vodiče je při $20\ ^\circ\mathrm{C}$ roven $108{,}0\ \Omega$ a při $30\ ^\circ\mathrm{C}$ $111{,}9\ \Omega$. Jaký odpor má podle lineární interpolace při $26\ ^\circ\mathrm{C}$?
+'''
+value = 110.34
+tolerance = 0.05
+unit = 'Ω'
+explanation = '''
+$$R_0 = R_1 + (t_0 - t_1)\,\frac{R_2 - R_1}{t_2 - t_1} = 108{,}0 + (26 - 20)\cdot\frac{111{,}9 - 108{,}0}{30 - 20} = 108{,}0 + 6\cdot0{,}39 = 110{,}34\ \Omega$$
+Zapsáno na desetiny jako vstupní hodnoty: $110{,}3\ \Omega$.
+'''
+
+[[question]]
+id = 'P04-08'
+kind = 'numeric'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+tags = ["pocty"]
+text = '''
+Závislost jste změřili v intervalu od $10\ ^\circ\mathrm{C}$ do $40\ ^\circ\mathrm{C}$. Do jaké nejvyšší teploty ji podle doporučení Úvodu smíte extrapolovat?
+'''
+value = 46
+tolerance = 0.1
+unit = '°C'
+explanation = '''
+Nedoporučuje se extrapolovat dál než o **20 % délky intervalu**. Interval má délku $30\ ^\circ\mathrm{C}$, 20 % z toho je $6\ ^\circ\mathrm{C}$:
+$$40 + 0{,}2\cdot(40 - 10) = 46\ ^\circ\mathrm{C}$$
+'''
+
+[[question]]
+id = 'P04-09'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Postupnou metodou zapisujete čas po každých 5 kmitech od 0 do 45 kmitů a časy rozdělíte do sloupců A (0 až 20 kmitů) a B (25 až 45 kmitů). Co dají rozdíly $B - A$?
+'''
+options = [
+  '5 hodnot doby 50 kmitů',
+  '10 hodnot doby 5 kmitů',
+  '5 hodnot doby 25 kmitů',
+  '9 hodnot doby 5 kmitů',
+]
+answer = 2
+explanation = '''
+Deset časů dá dva sloupce po pěti. Každý rozdíl $B - A$ pokrývá $25$ kmitů (0 až 25, 5 až 30, …, 20 až 45), takže dostanete **5 hodnot doby 25 kmitů** a zpracujete je jako opakované měření s $n = 5$.
+'''
+notes = [
+  'Padesát kmitů by bylo při zápisu po 10 kmitech až do 90.',
+  'Deset je počet zapsaných časů, ne rozdílů.',
+  '',
+  'Rozdíly sousedních časů nejsou nezávislé hodnoty postupné metody.',
+]
+
+[[question]]
+id = 'P04-10'
+kind = 'numeric'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2 a 3'
+tags = ["pocty"]
+text = '''
+Dvacet kmitů kyvadla trvalo podle ručních stopek $31{,}4\ \mathrm{s}$. Chyba ručních stopek je $0{,}3\ \mathrm{s}$ na odečet. Jaká je chyba doby jednoho kmitu?
+'''
+value = 0.015
+tolerance = 0.0005
+unit = 's'
+explanation = '''
+Pro $n$-násobek veličiny platí $X = X_n/n$ a $\delta(X) = \delta(X_n)/n$:
+$$T = \frac{31{,}4}{20}\ \mathrm{s} = 1{,}570\ \mathrm{s} \qquad \delta(T) = \frac{0{,}3}{20}\ \mathrm{s} = 0{,}015\ \mathrm{s}$$
+Výsledek $T = (1{,}570 \pm 0{,}015)\ \mathrm{s}$; chyba začíná jedničkou, proto dvě platné číslice.
+'''
+
+[[question]]
+id = 'P04-11'
+kind = 'numeric'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+tags = ["pocty"]
+text = '''
+Postupnou metodou vyšlo $50T = (75{,}40 \pm 0{,}06)\ \mathrm{s}$. Jaká je doba jednoho kmitu $T$?
+'''
+value = 1.508
+tolerance = 0.0005
+unit = 's'
+explanation = '''
+Hodnota i chyba se vydělí padesáti:
+$$T = \frac{75{,}40}{50}\ \mathrm{s} = 1{,}5080\ \mathrm{s} \qquad \delta(T) = \frac{0{,}06}{50}\ \mathrm{s} = 0{,}0012\ \mathrm{s}$$
+Chyba začíná jedničkou, nechají se dvě číslice: $T = (1{,}5080 \pm 0{,}0012)\ \mathrm{s}$.
+'''
+
+[[question]]
+id = 'P04-12'
+topic = 'Měřicí metody'
+source = 'Úvod do měření, kap. 2'
+text = '''
+Proč je postupná metoda při měření doby kmitu výhodná?
+'''
+options = [
+  'Čítač se nemusí vůbec spouštět.',
+  'Odpadá výpočet chyby, stačí jedno měření.',
+  'Z 90 kmitů dá stejně přesný výsledek jako pětkrát 50 kmitů a chyby odečtu se částečně ruší.',
+  'Vylučuje soustavné chyby kyvadla.',
+]
+answer = 2
+explanation = '''
+Konec jednoho úseku je začátkem dalšího, takže chybný odečet jeden úsek zvětší a sousední zmenší a chyby se částečně ruší. Z 90 kmitů dostanete 5 hodnot $50T$, tedy přesnost jako z 250 kmitů. Pomáhá to u tlumených dějů, které by se zastavily dřív.
+'''
+notes = [
+  'Čítač se spustí jednou a nezastavuje se.',
+  'Pět rozdílů se zpracuje jako opakované měření s chybou.',
+  '',
+  'Soustavné chyby (třeba vliv rozkmitu) postupná metoda neodstraní.',
+]

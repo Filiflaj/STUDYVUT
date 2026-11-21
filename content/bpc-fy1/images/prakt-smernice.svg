@@ -1,0 +1,53 @@
+<svg viewBox="0 0 545 255" width="545" class="fig" role="img" aria-label="Tatáž přímka ve dvou měřítkách svislé osy: úhly sklonu se liší, směrnice spočtená z hodnot na osách je v obou případech 25 ohmů">
+<line x1="50" y1="200" x2="235" y2="200" class="v" marker-end="url(#m-v)"/>
+<line x1="50" y1="200" x2="50" y2="25" class="v" marker-end="url(#m-v)"/>
+<line x1="90.0" y1="196" x2="90.0" y2="204" class="s1"/>
+<text x="90.0" y="218" class="sm" text-anchor="middle">0,1</text>
+<line x1="130.0" y1="196" x2="130.0" y2="204" class="s1"/>
+<text x="130.0" y="218" class="sm" text-anchor="middle">0,2</text>
+<line x1="170.0" y1="196" x2="170.0" y2="204" class="s1"/>
+<text x="170.0" y="218" class="sm" text-anchor="middle">0,3</text>
+<line x1="210.0" y1="196" x2="210.0" y2="204" class="s1"/>
+<text x="210.0" y="218" class="sm" text-anchor="middle">0,4</text>
+<line x1="46" y1="125.0" x2="54" y2="125.0" class="s1"/>
+<text x="42" y="129.0" class="sm" text-anchor="end">5</text>
+<line x1="46" y1="50.0" x2="54" y2="50.0" class="s1"/>
+<text x="42" y="54.0" class="sm" text-anchor="end">10</text>
+<line x1="50" y1="200" x2="210.0" y2="50.0" class="s"/>
+<line x1="130.0" y1="125.0" x2="210.0" y2="125.0" class="d"/>
+<line x1="210.0" y1="125.0" x2="210.0" y2="50.0" class="d"/>
+<circle cx="130.0" cy="125.0" r="4" class="ptA"/>
+<circle cx="210.0" cy="50.0" r="4" class="ptA"/>
+<text x="170.0" y="141.0" class="sm" text-anchor="middle"><tspan class="it">ΔI</tspan> = 0,20 A</text>
+<text x="216.0" y="91.5" class="sm"><tspan class="it">ΔU</tspan> = 5,0 V</text>
+<path d="M 78 200 A 28 28 0 0 0 70.4 180.8" class="s1"/>
+<text x="83" y="195" class="sm"><tspan class="it">α</tspan><tspan class="sm" dy="3">1</tspan><tspan dy="-3"></tspan></text>
+<text x="232" y="218" class="sm" text-anchor="start"><tspan class="it">I</tspan> / A</text>
+<text x="58" y="36.0" class="sm"><tspan class="it">U</tspan> / V</text>
+<line x1="300" y1="200" x2="485" y2="200" class="v" marker-end="url(#m-v)"/>
+<line x1="300" y1="200" x2="300" y2="105" class="v" marker-end="url(#m-v)"/>
+<line x1="340.0" y1="196" x2="340.0" y2="204" class="s1"/>
+<text x="340.0" y="218" class="sm" text-anchor="middle">0,1</text>
+<line x1="380.0" y1="196" x2="380.0" y2="204" class="s1"/>
+<text x="380.0" y="218" class="sm" text-anchor="middle">0,2</text>
+<line x1="420.0" y1="196" x2="420.0" y2="204" class="s1"/>
+<text x="420.0" y="218" class="sm" text-anchor="middle">0,3</text>
+<line x1="460.0" y1="196" x2="460.0" y2="204" class="s1"/>
+<text x="460.0" y="218" class="sm" text-anchor="middle">0,4</text>
+<line x1="296" y1="165.0" x2="304" y2="165.0" class="s1"/>
+<text x="292" y="169.0" class="sm" text-anchor="end">5</text>
+<line x1="296" y1="130.0" x2="304" y2="130.0" class="s1"/>
+<text x="292" y="134.0" class="sm" text-anchor="end">10</text>
+<line x1="300" y1="200" x2="460.0" y2="130.0" class="s"/>
+<line x1="380.0" y1="165.0" x2="460.0" y2="165.0" class="d"/>
+<line x1="460.0" y1="165.0" x2="460.0" y2="130.0" class="d"/>
+<circle cx="380.0" cy="165.0" r="4" class="ptA"/>
+<circle cx="460.0" cy="130.0" r="4" class="ptA"/>
+<text x="420.0" y="181.0" class="sm" text-anchor="middle"><tspan class="it">ΔI</tspan> = 0,20 A</text>
+<text x="466.0" y="151.5" class="sm"><tspan class="it">ΔU</tspan> = 5,0 V</text>
+<path d="M 328 200 A 28 28 0 0 0 325.7 188.8" class="s1"/>
+<text x="333" y="195" class="sm"><tspan class="it">α</tspan><tspan class="sm" dy="3">2</tspan><tspan dy="-3"></tspan></text>
+<text x="482" y="218" class="sm" text-anchor="start"><tspan class="it">I</tspan> / A</text>
+<text x="308" y="116.0" class="sm"><tspan class="it">U</tspan> / V</text>
+<text x="272" y="244" class="sm" text-anchor="middle">α<tspan dy="3" class="sm">1</tspan><tspan dy="-3"> ≐ 43°, α</tspan><tspan dy="3" class="sm">2</tspan><tspan dy="-3"> ≐ 24°, ale v obou grafech </tspan><tspan class="it">b</tspan> = Δ<tspan class="it">U</tspan>/Δ<tspan class="it">I</tspan> = 25 Ω</text>
+</svg>

@@ -1,0 +1,306 @@
+name = 'Úvod do měření: přístroje a zdroje'
+description = 'ampérmetr, voltmetr, bočník, předřadník, třída přesnosti, číslicové přístroje, dělič'
+
+[[question]]
+id = 'P07-01'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+text = '''
+Jak se zapojuje ampérmetr a jaký má mít vnitřní odpor?
+'''
+options = [
+  'Paralelně ke spotřebiči, co největší odpor.',
+  'Sériově se spotřebičem, co největší odpor.',
+  'Paralelně ke spotřebiči, co nejmenší odpor.',
+  'Sériově se spotřebičem, co nejmenší odpor.',
+]
+answer = 3
+explanation = '''
+Ampérmetr měří proud, který jím prochází, proto je **v sérii**. Aby proud v obvodu co nejméně změnil, musí mít **co nejmenší** vnitřní odpor.
+'''
+notes = [
+  'Takhle se zapojuje voltmetr.',
+  'Velký odpor v sérii by proud v obvodu výrazně zmenšil.',
+  'Ampérmetr s malým odporem paralelně ke zdroji je téměř zkrat.',
+  '',
+]
+
+[[question]]
+id = 'P07-02'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+text = '''
+Jak se zapojuje voltmetr a jaký má mít vnitřní odpor?
+'''
+options = [
+  'Paralelně k měřenému prvku, co největší odpor.',
+  'Sériově, co nejmenší odpor.',
+  'Paralelně, co nejmenší odpor.',
+  'Sériově, co největší odpor.',
+]
+answer = 0
+explanation = '''
+Voltmetr měří napětí mezi dvěma body, proto se připojuje **paralelně**. Aby z obvodu odebíral co nejmenší proud, musí mít **co největší** vnitřní odpor.
+'''
+notes = [
+  '',
+  'Takhle se zapojuje ampérmetr.',
+  'Voltmetr s malým odporem by měřený prvek zkratoval.',
+  'Voltmetr v sérii by obvod téměř rozpojil.',
+]
+
+[[question]]
+id = 'P07-03'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+tags = ["pocty"]
+text = '''
+Měřicí systém má vnitřní odpor $R_\mathrm{A} = 10\ \Omega$ a plnou výchylku při $6\ \mathrm{mA}$. Jaký bočník potřebujete pro rozsah $60\ \mathrm{mA}$?
+'''
+value = 1.111
+tolerance = 0.005
+unit = 'Ω'
+explanation = '''
+Rozsah se zvětší $n = 60/6 = 10$krát. Bočník se připojí paralelně:
+$$R_\mathrm{b} = \frac{R_\mathrm{A}}{n - 1} = \frac{10\ \Omega}{9} = 1{,}11\ \Omega$$
+Bočníkem teče $54\ \mathrm{mA}$, devětkrát víc než systémem, proto má devětkrát menší odpor.
+'''
+
+[[question]]
+id = 'P07-04'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+tags = ["pocty"]
+text = '''
+Měřicí systém 60 mV / 10 Ω chcete použít jako voltmetr s rozsahem $6\ \mathrm{V}$. Jaký předřadník potřebujete?
+'''
+value = 990
+tolerance = 0.5
+unit = 'Ω'
+explanation = '''
+Rozsah se zvětší $n = 6\ \mathrm{V}/0{,}060\ \mathrm{V} = 100$krát. Předřadník se zapojí sériově:
+$$R_\mathrm{p} = R_\mathrm{V}\,(n - 1) = 10\ \Omega\cdot99 = 990\ \Omega$$
+Na předřadníku zůstane $5{,}94\ \mathrm{V}$, na systému $60\ \mathrm{mV}$.
+'''
+
+[[question]]
+id = 'P07-05'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, 3.3'
+tags = ["pocty"]
+text = '''
+Voltmetr třídy přesnosti $0{,}5$ na rozsahu $15\ \mathrm{V}$ ukazuje $6{,}20\ \mathrm{V}$. Jaká je relativní mezní chyba údaje?
+'''
+value = 1.21
+tolerance = 0.01
+unit = '%'
+explanation = '''
+Třída přesnosti je procento z **rozsahu**:
+$$u = \frac{0{,}5}{100}\cdot15\ \mathrm{V} = 0{,}075\ \mathrm{V} \qquad \delta_\mathrm{r} = \frac{0{,}075}{6{,}20} = 1{,}21\ \%$$
+Výchylka je jen asi 41 % stupnice, proto je relativní chyba víc než dvakrát větší než třída přesnosti.
+'''
+warning = 'Procento třídy přesnosti se nebere z naměřené hodnoty, ale z rozsahu.'
+
+[[question]]
+id = 'P07-06'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, 3.3'
+text = '''
+Očekáváte proud asi $1{,}8\ \mathrm{A}$. Ampérmetr má rozsahy $1{,}2\ \mathrm{A}$, $3\ \mathrm{A}$, $6\ \mathrm{A}$ a $12\ \mathrm{A}$. Na kterém budete měřit?
+'''
+options = ['$1{,}2\ \mathrm{A}$', '$3\ \mathrm{A}$', '$6\ \mathrm{A}$', '$12\ \mathrm{A}$']
+answer = 1
+layout = 'grid'
+explanation = '''
+Na nejmenším rozsahu, na který se hodnota vejde: na $3\ \mathrm{A}$ je výchylka 60 % stupnice (druhá polovina). Absolutní chyba z třídy přesnosti je na rozsahu stálá, takže relativní chyba je nejmenší při velké výchylce. Začíná se ale vždy na nejvyšším rozsahu a přepíná se dolů.
+'''
+notes = [
+  'Proud 1,8 A rozsah 1,2 A překročí a přístroj se může poškodit.',
+  '',
+  'Výchylka by byla jen 30 % stupnice a relativní chyba dvakrát větší.',
+  'Výchylka 15 % stupnice, relativní chyba čtyřikrát větší.',
+]
+
+[[question]]
+id = 'P07-07'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, 3.3'
+tags = ["pocty"]
+text = '''
+Číslicový voltmetr má podle výrobce chybu $\pm(0{,}5\ \%\ \text{z hodnoty} + 0{,}1\ \%\ \text{z rozsahu})$. Na rozsahu $20\ \mathrm{V}$ ukazuje $12{,}00\ \mathrm{V}$. Jaká je mezní chyba?
+'''
+value = 0.08
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+Obě části se sečtou:
+$$u = 0{,}005\cdot12{,}00\ \mathrm{V} + 0{,}001\cdot20\ \mathrm{V} = 0{,}060 + 0{,}020 = 0{,}080\ \mathrm{V}$$
+Zapsáno $U = (12{,}00 \pm 0{,}08)\ \mathrm{V}$.
+'''
+
+[[question]]
+id = 'P07-08'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, 3.3'
+tags = ["pocty"]
+text = '''
+Multimetr na rozsahu $2\ \mathrm{V}$ (displej $1{,}999$) ukazuje $1{,}250\ \mathrm{V}$. Chyba podle výrobce je $\pm(0{,}8\ \%\ \text{z hodnoty} + 3\ \text{digity})$. Jaká je mezní chyba?
+'''
+value = 0.013
+tolerance = 0.0005
+unit = 'V'
+explanation = '''
+Digit je jednotka posledního zobrazeného místa, tady $0{,}001\ \mathrm{V}$:
+$$u = 0{,}008\cdot1{,}250\ \mathrm{V} + 3\cdot0{,}001\ \mathrm{V} = 0{,}010 + 0{,}003 = 0{,}013\ \mathrm{V}$$
+Chyba začíná jedničkou, zůstanou dvě číslice: $U = (1{,}250 \pm 0{,}013)\ \mathrm{V}$.
+'''
+
+[[question]]
+id = 'P07-09'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+tags = ["pocty"]
+text = '''
+Potenciometr jako dělič napětí je připojený ke zdroji $12\ \mathrm{V}$, jezdec ho dělí na $R_1 = 600\ \Omega$ (horní část) a $R_2 = 400\ \Omega$ (dolní část, výstup). Jaké je výstupní napětí naprázdno?
+'''
+value = 4.8
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_2 = U\,\frac{R_2}{R_1 + R_2} = 12\ \mathrm{V}\cdot\frac{400}{1000} = 4{,}8\ \mathrm{V}$$
+'''
+
+[[question]]
+id = 'P07-10'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+tags = ["pocty"]
+text = '''
+K výstupu stejného děliče ($U = 12\ \mathrm{V}$, $R_1 = 600\ \Omega$, $R_2 = 400\ \Omega$) připojíte zátěž $R_\mathrm{Z} = 400\ \Omega$. Jaké je teď výstupní napětí?
+'''
+value = 3.0
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Zátěž je paralelně k $R_2$:
+$$R_{2\mathrm{Z}} = \frac{R_2R_\mathrm{Z}}{R_2 + R_\mathrm{Z}} = \frac{400\cdot400}{800}\ \Omega = 200\ \Omega \qquad U_2 = 12\ \mathrm{V}\cdot\frac{200}{600 + 200} = 3{,}0\ \mathrm{V}$$
+Zatížením kleslo napětí ze 4,8 V na 3,0 V.
+'''
+
+[[question]]
+id = 'P07-11'
+kind = 'numeric'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+tags = ["pocty"]
+text = '''
+Potenciometr zapojený jako reostat má nastavenou část $R_1 = 50\ \Omega$, v sérii je ampérmetr s odporem $R_\mathrm{A} = 2\ \Omega$ a zátěž $R_\mathrm{Z} = 100\ \Omega$. Zdroj má $12\ \mathrm{V}$. Jaký proud teče obvodem?
+'''
+value = 78.9
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+U reostatu teče proud jen částí $R_1$, zbytek potenciometru se neuplatní:
+$$I = \frac{U}{R_1 + R_\mathrm{A} + R_\mathrm{Z}} = \frac{12\ \mathrm{V}}{(50 + 2 + 100)\ \Omega} = \frac{12}{152}\ \mathrm{A} = 0{,}0789\ \mathrm{A} = 78{,}9\ \mathrm{mA}$$
+'''
+
+[[question]]
+id = 'P07-12'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+text = '''
+K čemu slouží prostřední zelená zdířka zdroje BS 525?
+'''
+options = [
+  'Je to kladný pól výstupu.',
+  'Je to výstup měřeného proudu.',
+  'Vede jen na kostru přístroje; se dvěma rezistory připojenými zvenku se s ní dá udělat symetrické napětí.',
+  'Je to vstup pro externí voltmetr.',
+]
+answer = 2
+explanation = '''
+Výstupní napětí je mezi dvěma krajními zdířkami. Prostřední **zelená** vede **jen na kostru** přístroje. Se dvěma vnějšími rezistory se s ní dá vytvořit symetrické napětí.
+'''
+notes = [
+  'Výstupní napětí je mezi krajními zdířkami.',
+  'Proud se jen zobrazuje na vestavěném ukazateli.',
+  '',
+  'Vnější voltmetr se připojuje k výstupním svorkám.',
+]
+
+[[question]]
+id = 'P07-13'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+text = '''
+Potřebujete ze zdroje BS 525 napětí 45 V. Co je při sériovém spojení obou jednotek nutné?
+'''
+options = [
+  'Obě jednotky musí mít nastavené stejné napětí.',
+  'Jednu výstupní svorku je nutné propojit s kostrou a obě jednotky musí mít stejný omezovací proud.',
+  'Proudovou ochranu je nutné vypnout.',
+  'Zelené zdířky obou jednotek se spojí s kladnými výstupy.',
+]
+answer = 1
+explanation = '''
+Pro napětí nad 30 V se jednotky spojí do série. Jednu z výstupních svorek je pak nutné **propojit s kostrou** a obě jednotky musí mít nastavený **stejný omezovací proud**.
+'''
+notes = [
+  'Napětí se mohou lišit, sečtou se.',
+  '',
+  'Ochrana zůstává zapnutá, jen musí být stejně nastavená.',
+  'Takové zapojení návod nepředepisuje.',
+]
+
+[[question]]
+id = 'P07-14'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, 3.3'
+text = '''
+Co udává třída přesnosti ručkového přístroje?
+'''
+options = [
+  'Mezní chybu v procentech naměřené hodnoty.',
+  'Mezní chybu v procentech zvoleného rozsahu, stejnou pro všechny hodnoty na tomto rozsahu.',
+  'Počet dílků stupnice.',
+  'Nejmenší dílek stupnice v procentech.',
+]
+answer = 1
+explanation = '''
+Třída přesnosti $n$ znamená, že mezní chyba je $n$ % z **největší hodnoty zvoleného rozsahu**, ať ručka ukazuje cokoli. Do této meze se podle výrobce vejdou všechny dílčí soustavné vlivy i největší náhodná chyba.
+'''
+notes = [
+  'Tak se chová první část chyby číslicového přístroje, ne třída přesnosti.',
+  '',
+  'Počet dílků určuje konstantu rozsahu, ne přesnost.',
+  'Chyba z třídy přesnosti bývá větší než desetina nejmenšího dílku, s dílkem ale není definovaná.',
+]
+
+[[question]]
+id = 'P07-15'
+topic = 'Měřicí přístroje a zdroje'
+source = 'Úvod do měření, kap. 7'
+text = '''
+Magnetoelektrický systém je označen „60 mV / 10 Ω“. Jaký proud vyvolá plnou výchylku?
+'''
+options = ['$600\ \mathrm{mA}$', '$60\ \mathrm{mA}$', '$0{,}6\ \mathrm{mA}$', '$6\ \mathrm{mA}$']
+answer = 3
+layout = 'grid'
+explanation = '''
+Plná výchylka nastane při napětí $60\ \mathrm{mV}$ na vnitřním odporu $10\ \Omega$:
+$$I = \frac{60\ \mathrm{mV}}{10\ \Omega} = 6\ \mathrm{mA}$$
+To je nejmenší proudový rozsah systému.
+'''
+notes = [
+  'Napětí se dělí odporem, ne násobí.',
+  'To je číslo napětí v milivoltech, ještě je potřeba dělit odporem.',
+  'Výsledek je desetkrát větší.',
+  '',
+]

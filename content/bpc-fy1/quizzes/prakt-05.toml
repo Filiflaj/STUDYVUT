@@ -1,0 +1,535 @@
+name = 'Úvod do měření: chyby měření'
+description = 'druhy chyb, opakované měření, Studentův koeficient, šíření chyb, zaokrouhlování'
+
+[[question]]
+id = 'P05-01'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.2'
+text = '''
+Stupnici odečítáte zešikma, ne kolmo (paralaxa). Jaká je to chyba?
+'''
+options = [
+  'Náhodná chyba přístroje.',
+  'Osobní chyba, soustavná.',
+  'Chyba metody.',
+  'Chyba z třídy přesnosti.',
+]
+answer = 1
+explanation = '''
+Pozdě spuštěné stopky, odečet zešikma (**paralaktická chyba**) nebo hrubý odhad zlomků dílku jsou **osobní chyby**. Mají soustavný charakter a nejúčinněji je odstraní automatizace měření.
+'''
+notes = [
+  'Paralaxa nezávisí na přístroji, ale na tom, jak se díváte, a posouvá odečty stejným směrem.',
+  '',
+  'Metoda je v pořádku, chybuje pozorovatel.',
+  'Třída přesnosti zahrnuje chyby přístroje, ne chyby odečtu.',
+]
+
+[[question]]
+id = 'P05-02'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.2'
+text = '''
+Voltmetr nemá nekonečně velký vnitřní odpor. Jak to ovlivní měření napětí a co s tím?
+'''
+options = [
+  'Napětí vyjde náhodně větší i menší; stačí víc měření.',
+  'Napětí vyjde o něco větší; nic se neopravuje.',
+  'Napětí vyjde o něco menší; jde o soustavnou chybu, kterou lze opravit výpočtem nebo obejít kompenzační metodou.',
+  'Napětí vyjde správně, vnitřní odpor ovlivňuje jen ampérmetr.',
+]
+answer = 2
+explanation = '''
+Voltmetr odebírá proud, a proto ukazuje **o něco menší** napětí. Je to **soustavná** chyba metody: opakováním nezmizí, ale dá se vyloučit **početní korekcí** nebo nahradit měření **kompenzační** metodou.
+'''
+notes = [
+  'Chyba má stále stejné znaménko, opakování ji nezmenší.',
+  'Údaj je menší, ne větší, a zjištěnou soustavnou chybu je nutné opravit.',
+  '',
+  'Vlastní odpor voltmetru zatěžuje měřený obvod.',
+]
+
+[[question]]
+id = 'P05-03'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.2'
+text = '''
+Odchylky opakovaných měření od průměru mají v pořadí měření znaménka + + + + + − + + − − − − −. Co z toho usoudíte?
+'''
+options = [
+  'Měření obsahuje soustavnou složku, která se během měření měnila.',
+  'Chyby jsou čistě náhodné.',
+  'Jde o hrubou chybu v posledním měření.',
+  'Průměr je spočtený špatně.',
+]
+answer = 0
+explanation = '''
+U náhodných chyb se znaménka střídají nepravidelně. Dlouhé úseky stejných znamének prozrazují **soustavnou složku**, která se měnila z kladné na zápornou (třeba pomalý drift podmínek).
+'''
+notes = [
+  '',
+  'Náhodné chyby by znaménka střídaly bez dlouhých úseků.',
+  'Hrubá chyba je jedna nápadně odlišná hodnota, ne pravidelný sled znamének.',
+  'Kladných a záporných odchylek je zhruba stejně, průměr může být správně.',
+]
+
+[[question]]
+id = 'P05-04'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.4'
+text = '''
+Jaká část hodnot normálně rozdělené veličiny leží v intervalu $\mu \pm 2\sigma$?
+'''
+options = ['68,26 %', '95,44 %', '99,72 %', '50 %']
+answer = 1
+layout = 'grid'
+explanation = '''
+Pro Gaussovo rozdělení: $\mu \pm \sigma$ obsahuje 68,26 %, $\mu \pm 2\sigma$ **95,44 %** a $\mu \pm 3\sigma$ 99,72 % hodnot.
+'''
+notes = [
+  'To je interval $\mu \pm \sigma$.',
+  '',
+  'To je interval $\mu \pm 3\sigma$.',
+  'Polovina hodnot leží v užším intervalu (asi $\mu \pm 0{,}67\sigma$).',
+]
+
+[[question]]
+id = 'P05-05'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.4'
+text = '''
+Střední hodnota je $50{,}0$ a směrodatná odchylka $\sigma = 0{,}4$. Kterou z naměřených hodnot vyřadíte podle pravidla tří sigma jako hrubou chybu?
+'''
+options = ['51,0', '49,0', '51,5', '48,9']
+answer = 2
+layout = 'grid'
+explanation = '''
+Za největší možnou náhodnou odchylku se bere $3\sigma = 1{,}2$. Hodnoty mimo interval $48{,}8$ až $51{,}2$ se vyřadí. Mimo leží jen **51,5**.
+'''
+notes = [
+  'Odchylka 1,0 je menší než $3\sigma = 1{,}2$.',
+  'Odchylka 1,0 je menší než $3\sigma$.',
+  '',
+  'Odchylka 1,1 je ještě menší než 1,2.',
+]
+
+[[question]]
+id = 'P05-06'
+kind = 'numeric'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+tags = ["pocty"]
+text = '''
+Kalkulačka ukázala pro 10 měření výběrovou směrodatnou odchylku $\sigma_{n-1} = 0{,}0632\ \mathrm{mm}$. Jaká je výběrová směrodatná odchylka aritmetického průměru $s_{\bar x}$?
+'''
+value = 0.0200
+tolerance = 0.0003
+unit = 'mm'
+explanation = '''
+$$s_{\bar x} = \frac{\sigma_{n-1}}{\sqrt n} = \frac{0{,}0632}{\sqrt{10}}\ \mathrm{mm} = \frac{0{,}0632}{3{,}162}\ \mathrm{mm} = 0{,}0200\ \mathrm{mm}$$
+Chyba výsledku pro $P = 95\ \%$ je pak $\delta = 2{,}320\cdot0{,}0200 = 0{,}046\ \mathrm{mm}$.
+'''
+
+[[question]]
+id = 'P05-07'
+kind = 'numeric'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.4 a 6'
+tags = ["pocty"]
+text = '''
+Odpor byl změřen pětkrát: $47{,}3$; $47{,}6$; $47{,}1$; $47{,}5$; $47{,}4\ \Omega$. Jaká je chyba výsledku $\delta = t\cdot s_{\bar x}$ pro $P = 95\ \%$ před zaokrouhlením?
+'''
+value = 0.255
+tolerance = 0.004
+unit = 'Ω'
+explanation = '''
+$$\bar R = \frac{236{,}9}{5} = 47{,}38\ \Omega$$
+Odchylky: $-0{,}08$; $0{,}22$; $-0{,}28$; $0{,}12$; $0{,}02$, součet čtverců $0{,}0064 + 0{,}0484 + 0{,}0784 + 0{,}0144 + 0{,}0004 = 0{,}1480\ \Omega^2$.
+$$s_{\bar R} = \sqrt{\frac{0{,}1480}{5\cdot4}} = 0{,}0860\ \Omega \qquad \delta = 2{,}968\cdot0{,}0860 = 0{,}255\ \Omega$$
+Zapsáno: $R = (47{,}4 \pm 0{,}3)\ \Omega$, $n = 5$, $P = 95\ \%$.
+'''
+
+[[question]]
+id = 'P05-08'
+topic = 'Chyby měření'
+source = 'Úvod do měření, tab. 3.1'
+text = '''
+Jaký je koeficient Studentova rozdělení pro $n = 15$ měření a $P = 95\ \%$ (tabulka v Úvodu)?
+'''
+options = ['$2{,}320$', '$1{,}037$', '$2{,}093$', '$2{,}145$']
+answer = 3
+layout = 'grid'
+explanation = '''
+Z tabulky Úvodu pro $P = 0{,}95$: $n = 3$: 4,526; $n = 5$: 2,968; $n = 10$: 2,320; $n = 15$: **2,145**; $n = 20$: 2,093.
+'''
+notes = [
+  'To je hodnota pro $n = 10$.',
+  'To je hodnota pro $n = 15$ a $P = 68\ \%$.',
+  'To je hodnota pro $n = 20$.',
+  '',
+]
+
+[[question]]
+id = 'P05-09'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.4'
+text = '''
+Co se stane, když místo 10 měření uděláte 20 (za stejných podmínek)?
+'''
+options = [
+  'Výběrová směrodatná odchylka $s$ se zmenší na polovinu.',
+  'Chyba výsledku klesne, protože klesne $t_{n,P}$ i $s_{\bar x}$; zpřesnění je ale už pomalé.',
+  'Chyba výsledku se nezmění.',
+  'Chyba výsledku klesne na polovinu.',
+]
+answer = 1
+explanation = '''
+$s$ popisuje rozptyl jednotlivých hodnot a s počtem měření se skoro nemění. Klesá ale $s_{\bar x} = s/\sqrt n$ (asi $\sqrt2$krát) i koeficient $t$ (z 2,320 na 2,093). Při velkém $n$ chyba klesá jen pozvolna, proto se za vhodný počet považuje **10 až 20** měření.
+'''
+notes = [
+  '$s$ odhaduje rozptyl jednoho měření, ten se s počtem měření nemění.',
+  '',
+  'Chyba klesne, protože se zmenší $s_{\bar x}$ i $t$.',
+  'Pro poloviční chybu by bylo potřeba zhruba čtyřikrát víc měření.',
+]
+
+[[question]]
+id = 'P05-10'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+tags = ["pocty"]
+text = '''
+Vypočtená chyba vyšla $0{,}0567\ \mathrm{s}$. Jak ji zapíšete?
+'''
+options = ['$0{,}057\ \mathrm{s}$', '$0{,}05\ \mathrm{s}$', '$0{,}06\ \mathrm{s}$', '$0{,}1\ \mathrm{s}$']
+answer = 2
+layout = 'grid'
+explanation = '''
+Chyba se zaokrouhluje **vždy nahoru na jednu platnou číslici**: $0{,}0567 \to 0{,}06$. Dvě číslice se nechávají, jen když začíná jedničkou.
+'''
+notes = [
+  'Dvě platné číslice jen u chyby začínající jedničkou.',
+  'Chyba se nezaokrouhluje dolů, výsledek by vypadal přesnější, než je.',
+  '',
+  'Zaokrouhluje se na první platnou číslici, ne na desetiny.',
+]
+
+[[question]]
+id = 'P05-11'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+tags = ["pocty"]
+text = '''
+Vypočtená chyba vyšla $0{,}152\ \mathrm{V}$. Jak ji zapíšete?
+'''
+options = ['$0{,}2\ \mathrm{V}$', '$0{,}15\ \mathrm{V}$', '$0{,}16\ \mathrm{V}$', '$0{,}152\ \mathrm{V}$']
+answer = 2
+layout = 'grid'
+explanation = '''
+Chyba začíná jedničkou, a zaokrouhlení na jednu číslici ($0{,}2$) by ji neúměrně zvětšilo. Nechají se proto **dvě** platné číslice, zaokrouhlené **nahoru**: $0{,}152 \to 0{,}16$.
+'''
+notes = [
+  'Chyba začínající jedničkou by se tím zvětšila o třetinu, nechávají se dvě číslice.',
+  'Chyba se zaokrouhluje nahoru, ne matematicky.',
+  '',
+  'Tři platné číslice chyby nemají smysl.',
+]
+
+[[question]]
+id = 'P05-12'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+text = '''
+Který zápis výsledku je správně?
+'''
+options = [
+  '$g = (9{,}783 \pm 0{,}04)\ \mathrm{m\,s^{-2}}$',
+  '$g = (9{,}8 \pm 0{,}04)\ \mathrm{m\,s^{-2}}$',
+  '$g = (9{,}78 \pm 0{,}043)\ \mathrm{m\,s^{-2}}$',
+  '$g = (9{,}78 \pm 0{,}04)\ \mathrm{m\,s^{-2}}$',
+]
+answer = 3
+explanation = '''
+Chyba má jednu platnou číslici (nezačíná jedničkou) a poslední číslice výsledku je **stejného řádu** jako poslední číslice chyby, tedy setiny.
+'''
+notes = [
+  'Výsledek má o řád víc míst než chyba.',
+  'Výsledek je zaokrouhlený hruběji než chyba.',
+  'Chyba nezačíná jedničkou, patří jí jedna číslice: $0{,}05$ (nahoru).',
+  '',
+]
+
+[[question]]
+id = 'P05-13'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+text = '''
+V tabulce je délka zapsaná jako $2{,}50\ \mathrm{m}$, bez chyby. Jak ji máte chápat?
+'''
+options = [
+  '$(2{,}50 \pm 0{,}01)\ \mathrm{m}$',
+  '$(2{,}5 \pm 0{,}1)\ \mathrm{m}$, nula vpravo nic neznamená',
+  '$(2{,}50 \pm 0{,}005)\ \mathrm{m}$',
+  'Jako přesnou hodnotu bez chyby.',
+]
+answer = 0
+explanation = '''
+Je-li výsledek zapsaný bez chyby, považuje se za chybu **jednička na posledním zapsaném řádu**. Nuly vpravo jsou platné číslice: $2{,}50\ \mathrm{m}$ znamená přesnost na centimetry, asi 0,4 %.
+'''
+notes = [
+  '',
+  'Nula vpravo je platná číslice a vyjadřuje přesnost měření.',
+  'Úvod bere celou jednotku posledního řádu, ne polovinu.',
+  'Každá naměřená hodnota je přibližné číslo.',
+]
+
+[[question]]
+id = 'P05-14'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+text = '''
+Odpor $25\,300\ \Omega$ je určený na tři platné číslice. Jak ho zapíšete?
+'''
+options = ['$25\,300\ \Omega$', '$2{,}53\cdot10^{4}\ \Omega$', '$2{,}5300\cdot10^{4}\ \Omega$', '$25\ \mathrm{k\Omega}$']
+answer = 1
+layout = 'grid'
+explanation = '''
+Nuly vzniklé z činitele $10^n$ nejsou platné číslice, proto se píše mocnina deseti nebo předpona: $2{,}53\cdot10^{4}\ \Omega$ nebo $25{,}3\ \mathrm{k\Omega}$.
+'''
+notes = [
+  'Z tohoto zápisu není poznat, kolik číslic je platných (vypadá to na pět).',
+  '',
+  'Pět platných číslic, to je víc, než bylo změřeno.',
+  'Jen dvě platné číslice, třetí se ztratila.',
+]
+
+[[question]]
+id = 'P05-15'
+kind = 'numeric'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.5'
+tags = ["pocty"]
+text = '''
+Teploty $t_1 = (21{,}4 \pm 0{,}3)\ ^\circ\mathrm{C}$ a $t_2 = (35{,}2 \pm 0{,}3)\ ^\circ\mathrm{C}$. Jaká je chyba rozdílu $\Delta t = t_2 - t_1$ podle zjednodušeného zákona šíření chyb?
+'''
+value = 0.6
+tolerance = 0.01
+unit = '°C'
+explanation = '''
+U součtu i rozdílu se sčítají **absolutní** chyby:
+$$\delta(\Delta t) = \delta(t_1) + \delta(t_2) = 0{,}3 + 0{,}3 = 0{,}6\ ^\circ\mathrm{C}$$
+$\Delta t = (13{,}8 \pm 0{,}6)\ ^\circ\mathrm{C}$, relativní chyba asi 4,3 %, mnohem víc než u obou teplot.
+'''
+warning = 'Chyby se neodečítají, ani když se veličiny odečítají.'
+
+[[question]]
+id = 'P05-16'
+kind = 'numeric'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.5'
+tags = ["pocty"]
+text = '''
+Veličina se počítá ze vztahu $V = a\,X^2Y/Z^3$ ($a$ je konstanta). Relativní chyby jsou $\delta_\mathrm{r}(X) = 0{,}1\ \%$, $\delta_\mathrm{r}(Y) = 0{,}3\ \%$, $\delta_\mathrm{r}(Z) = 0{,}05\ \%$. Jaká je relativní chyba $V$ (zjednodušený zákon)?
+'''
+value = 0.65
+tolerance = 0.005
+unit = '%'
+explanation = '''
+U součinu a podílu mocnin se sčítají relativní chyby vynásobené absolutní hodnotou exponentu:
+$$\delta_\mathrm{r}(V) = 2\cdot0{,}1 + 1\cdot0{,}3 + 3\cdot0{,}05 = 0{,}20 + 0{,}30 + 0{,}15 = 0{,}65\ \%$$
+'''
+
+[[question]]
+id = 'P05-17'
+kind = 'numeric'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.5'
+tags = ["pocty"]
+text = '''
+Odpor $R = U/I$, relativní chyby $\delta_\mathrm{r}(U) = 0{,}5\ \%$ a $\delta_\mathrm{r}(I) = 1{,}2\ \%$. Jakou relativní chybu $R$ dá **kvadratický** (úplný) zákon šíření chyb?
+'''
+value = 1.3
+tolerance = 0.01
+unit = '%'
+explanation = '''
+Úplný zákon sčítá příspěvky kvadraticky. Pro podíl to znamená kvadratický součet relativních chyb:
+$$\delta_\mathrm{r}(R) = \sqrt{0{,}5^2 + 1{,}2^2} = \sqrt{0{,}25 + 1{,}44} = \sqrt{1{,}69} = 1{,}3\ \%$$
+Zjednodušený tvar by dal $0{,}5 + 1{,}2 = 1{,}7\ \%$, tedy o něco víc.
+'''
+
+[[question]]
+id = 'P05-18'
+kind = 'numeric'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.5'
+tags = ["pocty"]
+text = '''
+Hustota válečku $\rho = 4m/(\pi d^2 h)$. Naměřeno $m = (38{,}6 \pm 0{,}1)\ \mathrm{g}$, $d = (18{,}00 \pm 0{,}02)\ \mathrm{mm}$, $h = (19{,}50 \pm 0{,}05)\ \mathrm{mm}$. Jaká je relativní chyba hustoty (zjednodušený zákon)?
+'''
+value = 0.74
+tolerance = 0.01
+unit = '%'
+explanation = '''
+$$\delta_\mathrm{r}(m) = \frac{0{,}1}{38{,}6} = 0{,}26\ \% \qquad \delta_\mathrm{r}(d) = \frac{0{,}02}{18{,}00} = 0{,}11\ \% \qquad \delta_\mathrm{r}(h) = \frac{0{,}05}{19{,}50} = 0{,}26\ \%$$
+Průměr je ve druhé mocnině:
+$$\delta_\mathrm{r}(\rho) = 0{,}26 + 2\cdot0{,}11 + 0{,}26 = 0{,}74\ \%$$
+'''
+
+[[question]]
+id = 'P05-19'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+tags = ["pocty"]
+text = '''
+Jak zapíšete výsledek $12{,}4 + 3{,}27 + 0{,}058 - 0{,}21$?
+'''
+options = ['$15{,}518$', '$15{,}52$', '$15{,}5$', '$16$']
+answer = 2
+layout = 'grid'
+explanation = '''
+Při sčítání a odčítání se výsledek zaokrouhlí na poslední řád, který je **platný u všech sčítanců**. Číslo $12{,}4$ má jen desetiny, proto $15{,}518 \to 15{,}5$.
+'''
+notes = [
+  'Tisíciny nejsou platné u všech sčítanců.',
+  'Setiny nejsou platné u čísla $12{,}4$.',
+  '',
+  'Desetiny jsou platné u všech sčítanců, nemusí se zahodit.',
+]
+
+[[question]]
+id = 'P05-20'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+tags = ["pocty"]
+text = '''
+Jak zapíšete součin $3{,}142\cdot2{,}7$?
+'''
+options = ['$8{,}4834$', '$8{,}48$', '$8$', '$8{,}5$']
+answer = 3
+layout = 'grid'
+explanation = '''
+Při násobení a dělení má výsledek nanejvýš tolik platných číslic jako činitel s **nejmenším počtem** platných číslic. $2{,}7$ má dvě, proto $8{,}4834 \to 8{,}5$.
+'''
+notes = [
+  'Výpočtem se přesnost nezvýší.',
+  'Tři platné číslice, ale $2{,}7$ má jen dvě.',
+  'Jen jedna platná číslice, zbytečně hrubé.',
+  '',
+]
+
+[[question]]
+id = 'P05-21'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+text = '''
+Na kalkulačce ve statistickém režimu máte průměr a $\sigma_{n-1}$. Co dál, abyste dostali chybu výsledku?
+'''
+options = [
+  '$\sigma_{n-1}$ vydělit $\sqrt n$ a vynásobit koeficientem $t_{n,P}$.',
+  '$\sigma_{n-1}$ přímo vynásobit $t_{n,P}$.',
+  '$\sigma_{n-1}$ vydělit $n$.',
+  'Použít $\sigma_n$ místo $\sigma_{n-1}$ a nic dalšího.',
+]
+answer = 0
+explanation = '''
+$\sigma_{n-1}$ je směrodatná odchylka **jednoho** měření. Chyba výsledku se počítá z odchylky **průměru**:
+$$s_{\bar x} = \frac{\sigma_{n-1}}{\sqrt n} \qquad \delta(X) = t_{n,P}\cdot s_{\bar x}$$
+'''
+notes = [
+  '',
+  'Chybí dělení $\sqrt n$, chyba by vyšla několikrát větší.',
+  'Dělí se odmocninou z $n$, ne $n$, a chybí koeficient $t$.',
+  '$\sigma_n$ se v praktiku nepoužívá; jmenovatel má být $n - 1$.',
+]
+
+[[question]]
+id = 'P05-22'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.5'
+text = '''
+Délku jste určili s pravděpodobností 95 %, dobu kmitu s pravděpodobností 68 %. S jakou pravděpodobností platí chyba nepřímo měřené veličiny z obou?
+'''
+options = ['95 %', '81,5 % (průměr)', '68 %', '100 %']
+answer = 2
+layout = 'grid'
+explanation = '''
+Pravděpodobnost výsledku je **nejmenší** z pravděpodobností vstupních veličin, tedy 68 %. Řetěz je tak pevný jako jeho nejslabší článek.
+'''
+notes = [
+  'Výsledek nemůže být spolehlivější než nejslabší vstup.',
+  'Pravděpodobnosti se neprůměrují.',
+  '',
+  'Žádný interval chyby neplatí se stoprocentní jistotou.',
+]
+
+[[question]]
+id = 'P05-23'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3.5'
+text = '''
+Ve vztahu $g = 4\pi^2\ell/T^2$ je doba kmitu ve druhé mocnině. Co to znamená pro měření?
+'''
+options = [
+  'Dobu kmitu stačí měřit hruběji, mocnina chybu zmenší.',
+  'Na přesnosti doby kmitu nezáleží, rozhoduje délka.',
+  'Obě veličiny je potřeba měřit se stejnou absolutní chybou.',
+  'Relativní chyba $T$ se do výsledku započítá dvakrát, proto je potřeba $T$ měřit přesněji než délku.',
+]
+answer = 3
+explanation = '''
+$\delta_\mathrm{r}(g) = \delta_\mathrm{r}(\ell) + 2\,\delta_\mathrm{r}(T)$. Veličiny ve vyšších mocninách je třeba měřit přesněji, podle zásady stejného vlivu by relativní chyba $T$ měla být poloviční než u délky.
+'''
+notes = [
+  'Mocnina chybu násobí exponentem, nezmenšuje ji.',
+  'Doba kmitu má v chybě výsledku dvojnásobnou váhu.',
+  'U součinu a podílu rozhodují relativní chyby, ne absolutní.',
+  '',
+]
+
+[[question]]
+id = 'P05-24'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 6'
+text = '''
+Co v praktiku znamená „jedno měření“ veličiny?
+'''
+options = [
+  'Jedno měření a jedno kontrolní měření, aby šlo vyloučit hrubou chybu.',
+  'Přesně jeden odečet bez kontroly.',
+  'Deset měření, ze kterých se bere průměr.',
+  'Měření jedním přístrojem.',
+]
+answer = 0
+explanation = '''
+Pod „jedním měřením“ Úvod rozumí **jedno měření plus jedno kontrolní**, aby se dala vyloučit hrubá chyba. Přesnost se pak odhadne z třídy přesnosti, tolerance součástky a podobně.
+'''
+notes = [
+  '',
+  'Bez kontroly by hrubá chyba zůstala neodhalená.',
+  'To je opakované měření, zpracuje se statisticky.',
+  'Nejde o počet přístrojů, ale o počet odečtů.',
+]
+
+[[question]]
+id = 'P05-25'
+topic = 'Chyby měření'
+source = 'Úvod do měření, 3'
+text = '''
+Co je konvenčně pravá hodnota veličiny?
+'''
+options = [
+  'Hodnota, kterou určí vyučující.',
+  'Hodnota, která se pravé hodnotě blíží natolik, že je rozdíl pro daný účel zanedbatelný.',
+  'Hodnota naměřená nejpřesnějším přístrojem v laboratoři.',
+  'Nejčastější naměřená hodnota.',
+]
+answer = 1
+explanation = '''
+Pravá hodnota je ideál, který nejde zjistit. Nahrazuje se **konvenčně pravou hodnotou**, jejíž rozdíl od skutečné je pro daný účel zanedbatelný (Planckova konstanta jednou na dvě, jindy na pět číslic). Při opakovaném měření se za ni bere aritmetický průměr.
+'''
+notes = [
+  'Nejde o dohodu s vyučujícím, ale o hodnotu dost blízkou pravé.',
+  '',
+  'I nejpřesnější přístroj má chybu.',
+  'Pravou hodnotu odhaduje aritmetický průměr, ne nejčastější hodnota.',
+]

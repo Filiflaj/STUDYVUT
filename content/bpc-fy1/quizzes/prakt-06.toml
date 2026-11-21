@@ -1,0 +1,338 @@
+name = 'Úvod do měření: vyhodnocení závislostí'
+description = 'směrnice, metoda nejmenších čtverců, linearizace a zásady grafů'
+
+[[question]]
+id = 'P06-01'
+kind = 'numeric'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.1'
+tags = ["pocty"]
+text = '''
+Na přímce proložené voltampérovou charakteristikou odečtete body $(40\ \mathrm{mA};\ 1{,}20\ \mathrm{V})$ a $(190\ \mathrm{mA};\ 5{,}70\ \mathrm{V})$. Jaká je směrnice (odpor)?
+'''
+value = 30.0
+tolerance = 0.1
+unit = 'Ω'
+explanation = '''
+Směrnice se počítá z hodnot na osách, s jednotkami:
+$$b = \frac{U_2 - U_1}{I_2 - I_1} = \frac{5{,}70 - 1{,}20}{0{,}190 - 0{,}040}\ \frac{\mathrm{V}}{\mathrm{A}} = \frac{4{,}50\ \mathrm{V}}{0{,}150\ \mathrm{A}} = 30{,}0\ \Omega$$
+'''
+
+[[question]]
+id = 'P06-02'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.1'
+text = '''
+Proč se směrnice přímky z grafu nepočítá jako $\operatorname{tg}\alpha$ úhlu změřeného úhloměrem na papíře?
+'''
+options = [
+  'Úhloměr je nepřesný.',
+  'Tangens platí jen pro přímky procházející počátkem.',
+  'Osy mají obvykle různá měřítka, takže úhel závisí na zvoleném měřítku, směrnice z hodnot na osách ne.',
+  'Tangens dá směrnici ve stupních.',
+]
+answer = 2
+explanation = '''
+$b = \operatorname{tg}\alpha$ platí jen při **stejném měřítku obou os**. Tatáž závislost nakreslená v jiném měřítku má jiný sklon, ale $b = (y_2 - y_1)/(x_2 - x_1)$ z hodnot na osách vyjde stejně, i s jednotkou.
+'''
+notes = [
+  'Problém není přesnost úhloměru, ale měřítka os.',
+  'Na posunutí přímky sklon nezávisí; vadí různá měřítka os.',
+  '',
+  'Tangens je číslo, problém je, že úhel závisí na měřítku.',
+]
+
+[[question]]
+id = 'P06-03'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+text = '''
+Které dva body dosadíte do vzorce pro směrnici proložené přímky?
+'''
+options = [
+  'Dva dostatečně vzdálené body ležící na proložené přímce.',
+  'První a poslední naměřený bod z tabulky.',
+  'Dva sousední naměřené body.',
+  'Bod s největší hodnotou a počátek souřadnic.',
+]
+answer = 0
+explanation = '''
+Dosazují se **dva vzdálené body na proložené přímce**, ne naměřené hodnoty z tabulky. Nemusí to být krajní body: okraje měřeného intervalu bývají změřené méně přesně.
+'''
+notes = [
+  '',
+  'Krajní naměřené body nemusí ležet na přímce a bývají méně přesné.',
+  'Blízké body dají velkou chybu směrnice a nemusí ležet na přímce.',
+  'Přímka nemusí procházet počátkem.',
+]
+
+[[question]]
+id = 'P06-04'
+kind = 'numeric'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.1'
+tags = ["pocty"]
+text = '''
+Body $x = 1, 2, 3, 4, 5$ a $y = 2{,}1;\ 3{,}9;\ 6{,}2;\ 7{,}8;\ 10{,}0$ proložte přímkou $y = a + bx$ metodou nejmenších čtverců. Jaká je směrnice $b$?
+'''
+value = 1.97
+tolerance = 0.005
+explanation = '''
+$\bar x = 3$, $\bar y = 30{,}0/5 = 6{,}0$. Odchylky $x_i - \bar x$: $-2, -1, 0, 1, 2$; $y_i - \bar y$: $-3{,}9;\ -2{,}1;\ 0{,}2;\ 1{,}8;\ 4{,}0$.
+$$\sum (x_i - \bar x)(y_i - \bar y) = 7{,}8 + 2{,}1 + 0 + 1{,}8 + 8{,}0 = 19{,}7 \qquad \sum (x_i - \bar x)^2 = 10$$
+$$b = \frac{19{,}7}{10} = 1{,}97$$
+'''
+
+[[question]]
+id = 'P06-05'
+kind = 'numeric'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.1'
+tags = ["pocty"]
+text = '''
+Pro tytéž body ($x = 1, 2, 3, 4, 5$; $y = 2{,}1;\ 3{,}9;\ 6{,}2;\ 7{,}8;\ 10{,}0$) vyšla metodou nejmenších čtverců směrnice $b = 1{,}97$. Jaký je úsek $a$?
+'''
+value = 0.09
+tolerance = 0.005
+explanation = '''
+Přímka nejmenších čtverců prochází bodem $(\bar x, \bar y)$:
+$$a = \bar y - b\,\bar x = 6{,}0 - 1{,}97\cdot3 = 6{,}0 - 5{,}91 = 0{,}09$$
+'''
+
+[[question]]
+id = 'P06-06'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.1'
+text = '''
+Proč je potřeba vyřadit hrubé chyby ještě před použitím metody nejmenších čtverců?
+'''
+options = [
+  'Metoda neumí pracovat s více než deseti body.',
+  'Odchylky se v ní umocňují na druhou, takže jeden vzdálený bod přímku silně stáhne k sobě.',
+  'Hrubá chyba změní jen úsek, směrnici ne.',
+  'Metoda nejmenších čtverců hrubé chyby vyřadí sama.',
+]
+answer = 1
+explanation = '''
+Metoda minimalizuje **součet čtverců** odchylek. Bod s velkou odchylkou přispívá jejím čtvercem, a proto výsledek výrazně zkreslí. Dobré výsledky dává při normálním rozdělení chyb, hrubé chyby se vyřadí dřív.
+'''
+notes = [
+  'Počet bodů omezený není.',
+  '',
+  'Vzdálený bod změní obvykle obojí.',
+  'Metoda bere všechny body, které jí dáte, i ty špatné.',
+]
+
+[[question]]
+id = 'P06-07'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+text = '''
+Ověřujete závislost $y = a\,\mathrm{e}^{bx}$. Co vynesete do grafu s lineárními osami, aby vyšla přímka?
+'''
+options = [
+  '$\ln y$ proti $\ln x$',
+  '$y$ proti $\ln x$',
+  '$\ln y$ proti $x$',
+  '$y^2$ proti $x$',
+]
+answer = 2
+explanation = '''
+Zlogaritmováním: $\ln y = \ln a + bx$. Po dosazení $Y = \ln y$ je to přímka v proměnné $x$ se směrnicí $b$ (semilogaritmický graf).
+'''
+notes = [
+  'Logaritmus obou veličin linearizuje mocninnou závislost $y = ax^b$.',
+  'Takto by šla linearizovat závislost $y = a + b\ln x$.',
+  '',
+  'Kvadrát exponenciálu přímkou neudělá.',
+]
+
+[[question]]
+id = 'P06-08'
+kind = 'numeric'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+tags = ["pocty"]
+text = '''
+V grafu $\ln y$ proti $x$ odečtete na proložené přímce body $x_1 = 1{,}0\ \mathrm{cm}$, $\ln y_1 = 4{,}20$ a $x_2 = 6{,}0\ \mathrm{cm}$, $\ln y_2 = 1{,}50$. Jaký je koeficient $b$ v $y = a\,\mathrm{e}^{bx}$?
+'''
+value = -0.54
+tolerance = 0.005
+unit = 'cm⁻¹'
+sign_hint = 'Závislost klesá, proto je b záporné.'
+explanation = '''
+$$b = \frac{\ln y_2 - \ln y_1}{x_2 - x_1} = \frac{1{,}50 - 4{,}20}{(6{,}0 - 1{,}0)\ \mathrm{cm}} = \frac{-2{,}70}{5{,}0\ \mathrm{cm}} = -0{,}540\ \mathrm{cm^{-1}}$$
+Logaritmus je bezrozměrný, jednotka $b$ je převrácená jednotka $x$.
+'''
+
+[[question]]
+id = 'P06-09'
+kind = 'numeric'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+tags = ["pocty"]
+text = '''
+Na semilogaritmickém papíře (svislá osa v dekadických logaritmech) leží na proložené přímce body s $\log y_1 = 1{,}85$ při $t_1 = 2{,}0\ \mathrm{s}$ a $\log y_2 = 0{,}95$ při $t_2 = 8{,}0\ \mathrm{s}$. Jaký je koeficient $b$ v $y = a\,\mathrm{e}^{bt}$?
+'''
+value = -0.345
+tolerance = 0.003
+unit = 's⁻¹'
+sign_hint = 'Závislost klesá, proto je b záporné.'
+explanation = '''
+Osa je v dekadických logaritmech, exponenciála má základ $\mathrm{e}$, proto se násobí $\ln 10 \doteq 2{,}303$:
+$$b = \frac{\log y_2 - \log y_1}{t_2 - t_1}\cdot\ln 10 = \frac{0{,}95 - 1{,}85}{6{,}0\ \mathrm{s}}\cdot2{,}303 = -0{,}150\cdot2{,}303\ \mathrm{s^{-1}} = -0{,}345\ \mathrm{s^{-1}}$$
+'''
+warning = 'Bez násobení ln 10 vyjde −0,150 s⁻¹, což je špatně.'
+
+[[question]]
+id = 'P06-10'
+kind = 'numeric'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+tags = ["pocty"]
+text = '''
+V logaritmickém grafu výkonu $P$ vyzařovaného vláknem v závislosti na teplotě $T$ leží na proložené přímce body $(800\ \mathrm{K};\ 0{,}50\ \mathrm{W})$ a $(1350\ \mathrm{K};\ 4{,}0\ \mathrm{W})$. Jaký exponent $b$ v $P = a\,T^b$ z nich vyjde?
+'''
+value = 3.97
+tolerance = 0.02
+explanation = '''
+V log–log grafu je směrnice exponent:
+$$b = \frac{\log 4{,}0 - \log 0{,}50}{\log 1350 - \log 800} = \frac{\log 8}{\log 1{,}6875} = \frac{0{,}903}{0{,}227} = 3{,}97$$
+To dobře souhlasí se Stefanovým–Boltzmannovým zákonem ($P \sim T^4$).
+'''
+
+[[question]]
+id = 'P06-11'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.1'
+text = '''
+Jak se přímka najde graficky skupinovou metodou?
+'''
+options = [
+  'Spojí se první a poslední bod.',
+  'Body s hrubou chybou se vyřadí, zbytek se rozdělí na dvě skupiny a přímka se vede jejich těžišti.',
+  'Body se spojí lomenou čarou a ta se vyhladí.',
+  'Přímka se vede počátkem a nejvyšším bodem.',
+]
+answer = 1
+explanation = '''
+Skupinová metoda: vyřadit body s hrubou chybou, zbylé rozdělit na dvě skupiny, v každé najít **těžiště** (průměr $x$ a průměr $y$) a přímku vést oběma těžišti. Opakovaně naměřený bod může dostat dvojnásobnou váhu.
+'''
+notes = [
+  'Krajní body bývají nejméně přesné a ostatní body by se nevyužily.',
+  '',
+  'Lomená čára nemá fyzikální význam.',
+  'Přímka nemusí procházet počátkem.',
+]
+
+[[question]]
+id = 'P06-12'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.3'
+text = '''
+Co je v grafu do protokolu **chybně**?
+'''
+options = [
+  'Naměřené body jsou vyznačené křížky.',
+  'Osy jsou popsané „$U$ / V“ a „$I$ / mA“.',
+  'Naměřené body jsou pospojované lomenou čarou.',
+  'Stupnice svislé osy nezačíná nulou.',
+]
+answer = 2
+explanation = '''
+Body se **nespojují lomenou čarou**, spojnice bodů nemá fyzikální význam. Prokládá se hladká křivka podle teorie, s přibližně stejným počtem bodů nad i pod ní.
+'''
+notes = [
+  'Křížky jsou doporučené značky, tečky by po protažení čáry zmizely.',
+  'Popis osy veličinou a jednotkou za lomítkem je správně.',
+  '',
+  'Nula do průsečíku os patří, jen když je důležitá, jinak se stupnice začíná kousek pod nejmenší hodnotou.',
+]
+
+[[question]]
+id = 'P06-13'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.4'
+text = '''
+Jaký typ grafu zvolíte v Excelu pro naměřenou fyzikální závislost?
+'''
+options = ['Spojnicový graf.', 'XY bodový graf.', 'Sloupcový graf.', 'Plošný graf.']
+answer = 1
+layout = 'grid'
+explanation = '''
+Vždy **XY bodový** graf, body nepropojené. Křivka se přidá jako spojnice trendu a typ regrese se volí podle fyzikálního zákona.
+'''
+notes = [
+  'Spojnicový graf dá body do stejných rozestupů bez ohledu na hodnoty $x$ a propojí je.',
+  '',
+  'Sloupcový graf je pro kategorie, ne pro závislost dvou veličin.',
+  'Plošný graf se pro naměřené závislosti nehodí.',
+]
+
+[[question]]
+id = 'P06-14'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4'
+text = '''
+Teorie předpovídá lineární závislost, ale v Excelu vychází lepší shoda s parabolou. Co uděláte?
+'''
+options = [
+  'Proložím parabolu, má větší $R^2$.',
+  'Proložím polynom vyššího stupně, ten sedí nejlépe.',
+  'Vyřadím body, které do přímky nesedí, bez zdůvodnění.',
+  'Proložím přímku podle teorie a v měření hledám zdroj chyb.',
+]
+answer = 3
+explanation = '''
+Modelová funkce musí být **fyzikálně opodstatněná**. Čeká-li se přímka, neprokládá se parabola jen kvůli lepší shodě. Výsledky je potřeba rozebrat a najít možné zdroje chyb.
+'''
+notes = [
+  'Lepší číselná shoda neznamená správný model.',
+  'Polynom vysokého stupně proloží cokoli a nic nevysvětlí.',
+  'Vyřadit se smí jen hrubé chyby, a s důvodem.',
+  '',
+]
+
+[[question]]
+id = 'P06-15'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+text = '''
+V závislosti $y = a\,\mathrm{e}^{bt}$ je čas $t$ v sekundách. Jakou jednotku má $b$?
+'''
+options = ['$\mathrm{s}$', '$\mathrm{s^{-1}}$', 'bezrozměrné', 'stejnou jako $y$']
+answer = 1
+layout = 'grid'
+explanation = '''
+Exponent $bt$ musí být bezrozměrný, a protože logaritmus je bezrozměrný, má $b$ jednotku převrácenou k jednotce $t$: $\mathrm{s^{-1}}$.
+'''
+notes = [
+  'Součin $bt$ by pak měl jednotku $\mathrm{s^2}$.',
+  '',
+  'Bezrozměrný je součin $bt$, ne samotné $b$.',
+  'Jednotku $y$ nese koeficient $a$.',
+]
+
+[[question]]
+id = 'P06-16'
+topic = 'Vyhodnocení závislostí'
+source = 'Úvod do měření, 4.2'
+text = '''
+Jak poznáte z linearizovaného grafu, že naměřené body je lepší rozdělit do dvou skupin s různými koeficienty?
+'''
+options = [
+  'Podle zalomení přímky.',
+  'Podle toho, že body leží přesně na přímce.',
+  'Podle hodnoty prvního bodu.',
+  'Z linearizovaného grafu to poznat nejde.',
+]
+answer = 0
+explanation = '''
+V linearizovaném grafu se snadno pozná **zalomení přímky**: body se pak rozdělí do dvou skupin a každá dostane vlastní koeficienty. Stejně snadno se v přímce pozná hrubá chyba.
+'''
+notes = [
+  '',
+  'Body na jedné přímce naopak potvrzují jednu závislost.',
+  'Jeden bod o tvaru závislosti nerozhoduje.',
+  'Právě to je jedna z výhod linearizace.',
+]

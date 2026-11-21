@@ -590,6 +590,12 @@ svg.fig {
   text-transform: uppercase;
   color: var(--accent);
 }
+/* Upper case is for the words only: formulas and units keep their case (mV, n). */
+.callout .callout-title .katex,
+.callout .callout-title code {
+  text-transform: none;
+  letter-spacing: normal;
+}
 .callout.trap {
   border-left-color: var(--warning);
   background: var(--warning-weak);

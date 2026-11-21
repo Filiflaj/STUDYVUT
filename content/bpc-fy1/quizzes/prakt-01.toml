@@ -1,0 +1,319 @@
+name = 'Praktikum: jak ho projít'
+description = 'body, známky, protokoly, omluvy a zápočet'
+
+[[question]]
+id = 'P01-01'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Kolik nejvýš bodů lze získat za fyzikální praktikum, včetně bonifikace?
+'''
+options = ['10', '12', '14', '15']
+answer = 1
+layout = 'grid'
+explanation = '''
+Průměrná známka 1,00 až 1,10 dává 12 bodů. Bonifikace (nejvýš 2 body) a srážky za neomluvenou neúčast se k tomu přičítají a odečítají, ale výsledek je vždy **mezi 0 a 12 body**.
+'''
+notes = [
+  'Tolik je za průměr 1,51 až 1,90.',
+  '',
+  'Bonifikace maximum nezvýší, body se zastaví na 12.',
+  'Tolik se za praktikum získat nedá.',
+]
+
+[[question]]
+id = 'P01-02'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Splnili jste všechny povinnosti v praktiku. Kolik bodů za praktikum potřebujete nejméně, abyste dostali zápočet z praktika?
+'''
+options = ['0', '1', '6', '2']
+answer = 3
+layout = 'grid'
+explanation = '''
+Minimum jsou **2 body**, tedy průměrná známka nejvýš 4,10. S menším počtem bodů se zápočet z praktika neuděluje, i když jsou všechny povinnosti splněné.
+'''
+notes = [
+  'S nulou bodů zápočet z praktika nedostanete.',
+  'Jeden bod nestačí, minimum jsou 2 body.',
+  'Šest bodů je polovina maxima, minimum je nižší.',
+  '',
+]
+
+[[question]]
+id = 'P01-03'
+kind = 'numeric'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Za semestr máte známky 1, 2, 1, 3, 2, 1, 2. Kolik bodů za praktikum dostanete podle převodní tabulky (bez bonifikace a srážek)?
+'''
+value = 10
+tolerance = 0
+unit = 'bodů'
+explanation = '''
+Průměr na dvě desetinná místa:
+$$\frac{1 + 2 + 1 + 3 + 2 + 1 + 2}{7} = \frac{12}{7} = 1{,}714 \doteq 1{,}71$$
+Průměr 1,71 leží v pásmu 1,51 až 1,90, tomu odpovídá **10 bodů**.
+'''
+
+[[question]]
+id = 'P01-04'
+kind = 'numeric'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Průměrná známka vyšla 2,45. Vyučující přidal 1 bod bonifikace a jednou jste neomluveně chyběli (cvičení jste s jeho svolením nahradili). Kolik bodů za praktikum máte?
+'''
+value = 8
+tolerance = 0
+unit = 'bodů'
+explanation = '''
+Průměr 2,45 je v pásmu 2,31 až 2,60, to je 8 bodů. Bonifikace přidá 1 bod, neomluvená neúčast 1 bod ubere:
+$$8 + 1 - 1 = 8\ \text{bodů}$$
+'''
+
+[[question]]
+id = 'P01-05'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Splnili jste všechny povinnosti, ale průměrná známka vyšla 4,25. Co z toho plyne?
+'''
+options = [
+  'Máte 2 body, právě tolik, kolik je potřeba.',
+  'Máte 0 bodů a zápočet z praktika nedostanete.',
+  'Máte 1 bod a zápočet dostanete s podmínkou.',
+  'Bonifikace se v takovém případě přičte automaticky.',
+]
+answer = 1
+explanation = '''
+Průměr 4,11 až 6,00 dává **0 bodů**. Pro zápočet z praktika jsou potřeba aspoň 2 body (průměr nejvýš 4,10).
+'''
+notes = [
+  'Dva body jsou jen pro průměr 3,91 až 4,10.',
+  '',
+  'Pásmo s jedním bodem v tabulce není a zápočet „s podmínkou“ neexistuje.',
+  'Bonifikace je jen za výkon nad standardní požadavky a podle uvážení vyučujícího.',
+]
+
+[[question]]
+id = 'P01-06'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Jak se hodnotí vstupní test k úloze?
+'''
+options = [
+  'Známkou A až F, která se počítá do průměru.',
+  'Body, které se přičítají k bodům za praktikum.',
+  'Nehodnotí se, je dobrovolný.',
+  'Jen udělal / neudělal; splnit ho musíte ke každé úloze.',
+]
+answer = 3
+explanation = '''
+Vstupní test se dělá doma v e-learningu s dostatečným předstihem před cvičením a hodnotí se **binárně**. Každý student ho musí úspěšně splnit ke **každé** úloze. Okruhy látky jsou zveřejněné u úlohy.
+'''
+notes = [
+  'Známkou se hodnotí připravenost a protokol, test jen udělal / neudělal.',
+  'Za test se body nepřičítají.',
+  'Test je povinný ke každé úloze.',
+  '',
+]
+
+[[question]]
+id = 'P01-07'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Protokol jste neodevzdali v termínu a vyučující neuznal omluvu. Jak bude hodnocen?
+'''
+options = ['Známkou 6 (F), nevyhovující.', 'Známkou 3.', 'Nijak, odevzdáte ho bez sankce příště.', 'Odečtením 1 bodu, známka zůstane.']
+answer = 0
+explanation = '''
+Protokol, který není bez přijaté omluvy předložen ve stanoveném termínu, dostane **známku 6**. Termín je nejbližší následující cvičení.
+'''
+notes = [
+  '',
+  'Pozdní odevzdání se nehodnotí průměrnou známkou.',
+  'Termín je pevný: nejbližší následující cvičení.',
+  'Bod se odečítá za neomluvenou neúčast, ne za pozdní protokol.',
+]
+
+[[question]]
+id = 'P01-08'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Podmínky pro povolení zápočtu'
+tags = ["pred-praktikem"]
+text = '''
+Kdy se odevzdává protokol ze změřené úlohy (pokud úloha není z posledního týdne semestru)?
+'''
+options = ['Do konce semestru.', 'Do 14 dnů e-mailem.', 'Na nejbližším následujícím cvičení.', 'Až na zápočtovém cvičení.']
+answer = 2
+explanation = '''
+Každý student píše vlastní protokol a odevzdá ho **vždy na nejbližším následujícím cvičení**. U úlohy z posledního týdne platí pokyn vyučujícího.
+'''
+notes = [
+  'Tak dlouho čekat nelze, protokol je za 6, není-li odevzdán v termínu.',
+  'Termín i způsob odevzdání určuje cvičení, ne e-mail.',
+  '',
+  'Zápočtové cvičení je na konci semestru, protokoly se odevzdávají průběžně.',
+]
+
+[[question]]
+id = 'P01-09'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Podmínky pro povolení zápočtu'
+tags = ["pred-praktikem"]
+text = '''
+Kvůli nemoci (doložené pracovní neschopností) jste zmeškali cvičení. Co platí?
+'''
+options = [
+  'Cvičení nahradíte v domluveném termínu a body neztratíte.',
+  'Cvičení nahradíte a odečte se 1 bod.',
+  'Cvičení se nenahrazuje, úloha se nezapočítá.',
+  'Omluva nestačí, zápočet z praktika nedostanete.',
+]
+answer = 0
+explanation = '''
+Nemoc nebo úraz s pracovní neschopností je omluvitelný důvod (stejně jako pohřeb blízkého příbuzného, vlastní svatba nebo předvolání k soudu), vše se dokládá písemně. Náhradu domluví vyučující a **omluvená** neúčast body nesnižuje. Nahradit se ale musí vždy.
+'''
+notes = [
+  '',
+  'Bod se odečítá jen za neomluvenou neúčast.',
+  'Praktikum se musí absolvovat celé, zameškané cvičení se vždy nahrazuje.',
+  'Omluvenou neúčast stačí nahradit.',
+]
+
+[[question]]
+id = 'P01-10'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Podmínky pro povolení zápočtu'
+tags = ["pred-praktikem"]
+text = '''
+Neomluveně jste chyběli na cvičení. Co platí pro náhradu?
+'''
+options = [
+  'Máte na ni nárok stejně jako při omluvené neúčasti.',
+  'Úloha se nezapočítá, ale zápočet to neovlivní.',
+  'Nárok na ni nemáte; když ji vyučující umožní, odečte se 1 bod.',
+  'Odečtou se 2 body a náhrada není potřeba.',
+]
+answer = 2
+explanation = '''
+Na náhradu neomluveně zameškaného cvičení **nárok není**. Umožní-li ji vyučující, odečte se **1 bod** (a další bod za každou další neomluveně zameškanou náhradu). Bez náhrady praktikum splněné není a zápočet z něj nedostanete.
+'''
+notes = [
+  'Nárok na náhradu je jen u omluvené neúčasti.',
+  'Nenahrazená neúčast znamená, že praktikum není splněné, a bez něj není zápočet.',
+  '',
+  'Srážka je 1 bod a ztráta bodu nezbavuje povinnosti měření nahradit.',
+]
+
+[[question]]
+id = 'P01-11'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Vyučující vám vrátil protokol k opravě. Co dál?
+'''
+options = [
+  'Máte čas na opravu do konce semestru.',
+  'Opravený protokol odevzdáte na nejbližším dalším cvičení; neúplná oprava znamená známku 6.',
+  'Vrácený protokol se automaticky hodnotí známkou 6.',
+  'Oprava se nehodnotí, platí známka z prvního odevzdání.',
+]
+answer = 1
+explanation = '''
+Vrácený protokol odevzdáte znovu na **nejbližším dalším cvičení**. Když je oprava kompletní, vyučující ho přijme a oznámkuje, jinak dostane **známku 6**.
+'''
+notes = [
+  'Termín pro opravu je nejbližší další cvičení.',
+  '',
+  'Šestka hrozí jen za neúplnou opravu nebo zmeškaný termín.',
+  'Vrácený protokol známku ještě nemá, oznámkuje se až přijatý.',
+]
+
+[[question]]
+id = 'P01-12'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Podmínky pro povolení zápočtu'
+tags = ["pred-praktikem"]
+text = '''
+Kdy můžete jít ke zkoušce z Fyziky 1?
+'''
+options = [
+  'Kdykoli, zápočet a zkouška jsou nezávislé.',
+  'Po odevzdání aspoň poloviny protokolů.',
+  'Po zápočtovém cvičení, i když nemáte splněné praktikum.',
+  'Až po získání zápočtu: splněné praktikum a minimální počet bodů za semestr.',
+]
+answer = 3
+explanation = '''
+Zkoušku lze konat **teprve po získání zápočtu**. Zápočet se uděluje po splnění všech povinností v praktiku a po získání minimálního součtu bodů ze všech aktivit v semestru (stanoví ho prováděcí směrnice předmětu).
+'''
+notes = [
+  'Zápočet je podmínkou zkoušky.',
+  'Odevzdat se musí všechny protokoly.',
+  'Bez splněného praktika zápočet není.',
+  '',
+]
+
+[[question]]
+id = 'P01-13'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Laboratorní řád'
+tags = ["pred-praktikem"]
+text = '''
+Na cvičení přijdete o 10 minut později. Co vám podle laboratorního řádu hrozí?
+'''
+options = [
+  'Nic, tolerance je 15 minut.',
+  'Pozdní příchod se může počítat jako neúčast a cvičení musíte nahradit.',
+  'Automaticky známka 6 za protokol z úlohy.',
+  'Srážka 2 bodů.',
+]
+answer = 1
+explanation = '''
+Podle laboratorního řádu lze každé opoždění o **víc než 5 minut** hodnotit jako neúčast. Pak musíte cvičení vykonat v náhradním termínu.
+'''
+notes = [
+  'Hranice je 5 minut, ne 15.',
+  '',
+  'Pozdní příchod se netýká známky za protokol.',
+  'Taková srážka v pravidlech není. Neomluvená neúčast stojí 1 bod.',
+]
+
+[[question]]
+id = 'P01-14'
+topic = 'Praktikum: hodnocení a zápočet'
+source = 'Hodnocení ve Fyzikálním praktiku 1'
+tags = ["pred-praktikem"]
+text = '''
+Vyučující během měření zjistí, že o úloze nevíte nic podstatného. Co se stane?
+'''
+options = [
+  'Nedovolí vám pokračovat v měření a určí náhradní termín.',
+  'Měření smíte dokončit, jen dostanete horší známku za připravenost.',
+  'Odečte 1 bod a měříte dál.',
+  'Úlohu za vás doměří spolupracovník.',
+]
+answer = 0
+explanation = '''
+Připravenost se kontroluje namátkovými otázkami kdykoli během cvičení. Jsou-li neznalosti **zásadního rázu**, vyučující nedovolí pokračovat a stanoví náhradní termín.
+'''
+notes = [
+  '',
+  'Při drobných nedostatcích ano, při zásadní neznalosti měřit nesmíte.',
+  'Bod se odečítá za neomluvenou neúčast, ne za nepřipravenost.',
+  'Dokumentaci i měření vede každý student sám.',
+]

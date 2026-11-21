@@ -1,0 +1,427 @@
+name = 'Praktikum: bezpečnost a laboratorní řád'
+description = 'laboratorní řád, zapojování, úraz proudem, laser, dozimetrie'
+
+[[question]]
+id = 'P02-01'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Laboratorní řád'
+tags = ["pred-praktikem"]
+text = '''
+Do kdy musíte mít složenou zkoušku z bezpečnostních předpisů a první pomoci při úrazech elektrickým proudem?
+'''
+options = [
+  'Před prvním cvičením praktika.',
+  'Do konce 3. týdne prvního semestru studia.',
+  'Do konce prvního semestru.',
+  'Před zkouškou z Fyziky 1.',
+]
+answer = 1
+explanation = '''
+Podle laboratorního řádu (a směrnice děkana) musí mít všichni studenti zkoušku z bezpečnostních předpisů a z první pomoci při úrazech elektřinou **do konce 3. týdne prvního semestru**. Potvrzení musí být v informačním systému.
+'''
+notes = [
+  'Na prvních cvičeních se s předpisy teprve seznamujete, zkouška má termín později.',
+  '',
+  'Termín je mnohem dřív, do konce 3. týdne.',
+  'Bez zkoušky z bezpečnosti nesmíte v laboratoři pracovat celý semestr.',
+]
+
+[[question]]
+id = 'P02-02'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Laboratorní řád'
+tags = ["pred-praktikem"]
+text = '''
+Kdy smíte zapojený elektrický obvod připojit ke zdroji?
+'''
+options = [
+  'Kdykoli, pokud má zdroj proudovou ochranu.',
+  'Hned, jakmile je zapojený podle schématu.',
+  'Až po kontrole spolupracovníkem ze skupiny.',
+  'Až když zapojení zkontroluje a schválí vyučující.',
+]
+answer = 3
+explanation = '''
+Zapojení musí **schválit vyučující dřív, než obvod připojíte k jakémukoli zdroji**. Chrání to vás i přístroje. Kdo to poruší, riskuje, že bude platit škodu.
+'''
+notes = [
+  'Proudová ochrana nenahrazuje kontrolu zapojení vyučujícím.',
+  'I zapojení „podle schématu“ musí zkontrolovat vyučující.',
+  'Kontrolu dělá vyučující, ne spolužák.',
+  '',
+]
+
+[[question]]
+id = 'P02-03'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.4'
+tags = ["pred-praktikem"]
+text = '''
+Co rozhoduje o tom, jak nebezpečný je úraz elektrickým proudem?
+'''
+options = ['Velikost napětí zdroje.', 'Proud, který projde tělem.', 'Výkon zdroje.', 'Polarita zdroje.']
+answer = 1
+explanation = '''
+Rozhoduje **proud procházející tělem**, ne napětí. Nebezpečné napětí proto není pevné číslo (někdy 200 V, jindy 50 V): závisí na odporu kůže (s vlhkostí klesá), na objemovém odporu těla a na časovém průběhu proudu.
+'''
+notes = [
+  'Napětí rozhoduje jen nepřímo, přes odpor těla.',
+  '',
+  'Výkon zdroje neurčuje, kolik proudu projde tělem.',
+  'Polarita stejnosměrného zdroje na nebezpečnosti nic nemění.',
+]
+
+[[question]]
+id = 'P02-04'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.4'
+tags = ["pred-praktikem"]
+text = '''
+Jaký proud se podle Úvodu do měření považuje za bezpečný?
+'''
+options = [
+  'Stejnosměrný do 3,5 mA, střídavý do 10 mA.',
+  'Stejnosměrný i střídavý do 50 mA.',
+  'Stejnosměrný do 10 mA, střídavý do 100 Hz do 3,5 mA.',
+  'Jakýkoli proud ze zdroje do 230 V.',
+]
+answer = 2
+explanation = '''
+Za bezpečný se považuje **stejnosměrný proud do 10 mA** a **střídavý proud o kmitočtu do 100 Hz do 3,5 mA**. Střídavý proud síťového kmitočtu je nebezpečnější, proto je jeho mez nižší.
+'''
+notes = [
+  'Hodnoty jsou přehozené: přísnější mez platí pro střídavý proud.',
+  'Takový proud už je nebezpečný.',
+  '',
+  'Rozhoduje proud, ne napětí zdroje, a 230 V ze sítě je životu nebezpečné.',
+]
+
+[[question]]
+id = 'P02-05'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.4'
+tags = ["pred-praktikem"]
+text = '''
+Který z proudů o stejné velikosti je pro člověka nejnebezpečnější?
+'''
+options = ['Stejnosměrný.', 'Střídavý o kmitočtu 100 kHz.', 'Všechny stejně.', 'Střídavý o kmitočtu 50 Hz.']
+answer = 3
+explanation = '''
+Střídavý proud **50 Hz** je mnohem nebezpečnější než stejnosměrný proud téže velikosti. Proudy vyšších kmitočtů mají menší účinky. Kmitočty běžně používané v praxi jsou bohužel právě ty nejškodlivější.
+'''
+notes = [
+  'Stejnosměrný proud téže velikosti je méně nebezpečný než síťový střídavý.',
+  'Účinky proudů vysokých kmitočtů jsou menší.',
+  'Na časovém průběhu proudu záleží.',
+  '',
+]
+
+[[question]]
+id = 'P02-06'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.4'
+tags = ["pred-praktikem"]
+text = '''
+V jakém pořadí se postupuje při úrazu elektrickým proudem?
+'''
+options = [
+  'Vyprostit postiženého, oživovat, přivolat lékaře, ohlásit úraz.',
+  'Přivolat lékaře, vyprostit postiženého, oživovat, ohlásit úraz.',
+  'Oživovat, vyprostit postiženého, ohlásit úraz, přivolat lékaře.',
+  'Ohlásit úraz, přivolat lékaře, vyprostit postiženého, oživovat.',
+]
+answer = 0
+explanation = '''
+Nejdřív **vyprostit** postiženého z dosahu proudu (bez ohrožení sebe), pak **oživovat** (nedýchá-li, resuscitace), **přivolat lékaře** a nakonec **ohlásit úraz**. Čím dřív pomoc začne, tím větší je naděje.
+'''
+notes = [
+  '',
+  'Dokud postižený je v obvodu, pomoc nejde poskytnout a proud dál působí.',
+  'Oživovat člověka, kterým ještě teče proud, ohrožuje i zachránce.',
+  'Hlášení úrazu je až poslední krok.',
+]
+
+[[question]]
+id = 'P02-07'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.4'
+tags = ["pred-praktikem"]
+text = '''
+Jak správně vyprostit člověka, kterým prochází proud?
+'''
+options = [
+  'Odtáhnout ho holou rukou, rychlost je nejdůležitější.',
+  'Vypnout obvod, nebo vodič odsunout suchým izolantem.',
+  'Polít ho vodou, aby se proud svedl do země.',
+  'Na postiženého nesahat a čekat na lékaře.',
+]
+answer = 1
+explanation = '''
+Vyprostit co nejrychleji, ale tak, aby proud **nezasáhl zachránce**: vypnout obvod, odtáhnout postiženého nebo odsunout vodič **suchým izolantem**. V nouzi poslouží ruka obalená několika vrstvami suché látky.
+'''
+notes = [
+  'Holou rukou by proud zasáhl i vás.',
+  '',
+  'Voda je vodivá a ohrozí i zachránce.',
+  'Čekáním ztrácíte čas, vyprostit je potřeba hned.',
+]
+
+[[question]]
+id = 'P02-08'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Zásady bezpečné práce v laserové laboratoři'
+tags = ["pred-praktikem"]
+text = '''
+Kdo smí v laserové laboratoři zapnout a vypnout laser?
+'''
+options = ['Student, který úlohu měří.', 'Kdokoli ze skupiny.', 'Jen vyučující.', 'Jen ten, kdo má zkoušku z bezpečnosti.']
+answer = 2
+explanation = '''
+**Laser zapíná a vypíná jen vyučující.** Studenti smějí sahat jen na přístroje a ovládací prvky, které k úloze opravdu potřebují.
+'''
+notes = [
+  'Ani měřící student laser nezapíná.',
+  'Laser obsluhuje jen vyučující.',
+  '',
+  'Zkouška z bezpečnosti je nutná pro vstup do laboratoře, laser i tak zapíná jen učitel.',
+]
+
+[[question]]
+id = 'P02-09'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Zásady bezpečné práce v laserové laboratoři'
+tags = ["pred-praktikem"]
+text = '''
+Proč si musíte před měřením s laserem sundat hodinky a prsteny?
+'''
+options = [
+  'Mohou se v paprsku zahřát.',
+  'Rušily by citlivé měřicí přístroje.',
+  'Kvůli ochraně hodinek před zářením.',
+  'Odražený paprsek může poranit oko.',
+]
+answer = 3
+explanation = '''
+Na sítnici nesmí dopadnout paprsek laseru a oko poraní nejen přímý, ale i **difuzně odražený** paprsek. Lesklé předměty by paprsek mohly odrazit do oka.
+'''
+notes = [
+  'Důvodem je odraz paprsku, ne ohřev šperku.',
+  'Měřicí přístroje to neruší, jde o bezpečnost očí.',
+  'Nejde o hodinky, ale o oči.',
+  '',
+]
+
+[[question]]
+id = 'P02-10'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Zásady bezpečné práce v laserové laboratoři'
+tags = ["pred-praktikem"]
+text = '''
+Co platí pro stolní lampu v laserové laboratoři?
+'''
+options = [
+  'Musí svítit po celou dobu, zajišťuje nepřímé osvětlení přístrojů.',
+  'Musí být zhasnutá, aby byl paprsek dobře vidět.',
+  'Rozsvěcí se jen při poruše.',
+  'Rozsvítí se jen při odečítání hodnot.',
+]
+answer = 0
+explanation = '''
+Stolní lampa pro **nepřímé osvětlení** měřicích přístrojů musí být **neustále rozsvícená**. Při poruše nebo nejasnosti se volá vyučující.
+'''
+notes = [
+  '',
+  'Naopak, lampa musí svítit celou dobu.',
+  'Při poruše se volá vyučující, lampa svítí stále.',
+  'Lampa svítí po celou dobu, ne jen při odečtu.',
+]
+
+[[question]]
+id = 'P02-11'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Pracovní řád pro dozimetrickou laboratoř'
+tags = ["pred-praktikem"]
+text = '''
+Kdo nesmí v dozimetrické laboratoři pracovat se zářiči?
+'''
+options = [
+  'Studenti bez vlastního dozimetru.',
+  'Osoby mladší 18 let a těhotné ženy.',
+  'Všichni studenti prvního ročníku.',
+  'Jen studenti, kteří neprošli vstupním testem.',
+]
+answer = 1
+explanation = '''
+Se zdroji záření smějí pracovat jen osoby **starší 18 let**, které jsou k tomu způsobilé. **Těhotným ženám** práce se zářiči není dovolena. Zdravotní důvody se hlásí vyučujícímu s lékařským potvrzením.
+'''
+notes = [
+  'O vlastním dozimetru řád nic neříká.',
+  '',
+  'Ročník nerozhoduje, rozhoduje věk a zdravotní způsobilost.',
+  'Vstupní test se týká přípravy na úlohu, ne zákazu práce se zářiči.',
+]
+
+[[question]]
+id = 'P02-12'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Pracovní řád pro dozimetrickou laboratoř'
+tags = ["pred-praktikem"]
+text = '''
+Kdy smějí studenti opustit dozimetrickou laboratoř?
+'''
+options = [
+  'Jakmile sami doměří a vrátí svůj zářič.',
+  'Kdykoli, zářiče hlídá vyučující.',
+  'Až všichni doměří, vrátí zářiče a vyučující je zamkne do trezoru.',
+  'Po podpisu záznamu o měření, zářiče vrací poslední skupina.',
+]
+answer = 2
+explanation = '''
+Laboratoř se opouští, až když **všichni doměřili**, odevzdali zapůjčené zářiče vyučujícímu a ten je **uložil do trezoru a zamkl** ho.
+'''
+notes = [
+  'Odchází se až po vrácení všech zářičů.',
+  'Studenti odcházejí společně po uzamčení zářičů.',
+  '',
+  'Zářiče vrací každý, odchází se až po uzamčení všech.',
+]
+
+[[question]]
+id = 'P02-13'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.3'
+tags = ["pred-praktikem"]
+text = '''
+Na jaký rozsah nastavíte měřidla, než obvod poprvé připojíte ke zdroji?
+'''
+options = [
+  'Na nejmenší, aby byla dobře vidět výchylka.',
+  'Na nejvyšší.',
+  'Na střední.',
+  'Na rozsah podle očekávané hodnoty, stačí odhad.',
+]
+answer = 1
+explanation = '''
+Měřidla se přepnou na **nejvyšší rozsahy**, tím se sníží riziko poškození. Na vyšší rozsah se přepínají i při každé změně zapojení nebo podmínek. Teprve pak se rozsah zmenšuje tak, aby ručka byla v poslední třetině stupnice.
+'''
+notes = [
+  'Na nejmenším rozsahu hrozí přetížení a poškození přístroje.',
+  '',
+  'I střední rozsah může být překročen, začíná se nejvyšším.',
+  'Odhad může být špatný, bezpečný začátek je nejvyšší rozsah.',
+]
+
+[[question]]
+id = 'P02-14'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.3'
+tags = ["pred-praktikem"]
+text = '''
+Jak se při zapojování připojuje zdroj (síť, akumulátor, výstup generátoru)?
+'''
+options = [
+  'Nejdřív jen uzemněnou svorkou, živá svorka zůstane na zdroji odpojená.',
+  'Obě svorky najednou.',
+  'Nejdřív živou svorkou.',
+  'Na pořadí nezáleží.',
+]
+answer = 0
+explanation = '''
+Zdroj se zpočátku připojuje **jen jednou svorkou, uzemněnou**. Druhá („živá“) svorka zůstane přímo na zdroji odpojená a síťová vidlice se nezasouvá. Připojí se až po kontrole zapojení vyučujícím.
+'''
+notes = [
+  '',
+  'Obvod by byl pod napětím dřív, než ho vyučující zkontroluje.',
+  'Živá svorka se připojuje až nakonec, se souhlasem vyučujícího.',
+  'Pořadí je důležité kvůli bezpečnosti.',
+]
+
+[[question]]
+id = 'P02-15'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.3'
+tags = ["pred-praktikem"]
+text = '''
+Jak nastavíte regulační transformátor, potenciometr nebo reostat před připojením obvodu?
+'''
+options = ['Na maximum.', 'Na polovinu.', 'Na hodnotu z minulého měření.', 'Na minimum omezované hodnoty.']
+answer = 3
+explanation = '''
+Regulovatelné zdroje a prvky se před připojením nastaví na **minimum** omezované hodnoty (napětí, proudu). Nastavení na minimum (nebo aspoň snížení) se opakuje před každou změnou zapojení.
+'''
+notes = [
+  'Na maximu by obvodem hned po připojení tekl největší proud.',
+  'Bezpečné je začít od minima.',
+  'Minulé nastavení nemusí odpovídat novému zapojení.',
+  '',
+]
+
+[[question]]
+id = 'P02-16'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Laboratorní řád'
+tags = ["pred-praktikem"]
+text = '''
+Dokončili jste měření i zápisy. Co uděláte?
+'''
+options = [
+  'Rozpojíte úlohu, uklidíte a zavoláte vyučujícího.',
+  'Zavoláte vyučujícího k ještě zapojené úloze, zkontroluje ji i naměřené hodnoty a potvrdí to podpisem.',
+  'Odnesete si záznam a podpis přinesete s protokolem.',
+  'Kontrolu provede spolupracovník a vyučujícímu jen ohlásíte konec.',
+]
+answer = 1
+explanation = '''
+Po skončení práce zavoláte vyučujícího **k úloze, kterou ještě nemáte rozpojenou**. Zkontroluje zapojení i naměřené výsledky. Kontrolu potvrdí podpisem. Potom podepíše i vrácení inventáře a teprve pak smíte odejít.
+'''
+notes = [
+  'Po rozpojení už nejde zkontrolovat, jak bylo zapojeno.',
+  '',
+  'Záznam se podepisuje v laboratoři hned po měření.',
+  'Kontrolu dělá vyučující.',
+]
+
+[[question]]
+id = 'P02-17'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Laboratorní řád'
+tags = ["pred-praktikem"]
+text = '''
+Kdo hradí škodu na přístroji, kterou způsobil student nedbalostí nebo nedodržením pokynů?
+'''
+options = ['Student z vlastních prostředků.', 'Ústav.', 'Vyučující, který cvičení vede.', 'Nikdo, přístroje jsou pojištěné.']
+answer = 0
+explanation = '''
+Během cvičení odpovídá každý student za přístroje, se kterými pracuje. Škodu způsobenou **nedbalostí, nepřipraveností nebo nedodržením pokynů** i ztráty platí **student sám**.
+'''
+notes = [
+  '',
+  'Ústav škody z nedbalosti studenta nehradí.',
+  'Vyučující odpovídá za bezpečnost, škodu z nedbalosti platí student.',
+  'Laboratorní řád výslovně říká, že škodu hradí student.',
+]
+
+[[question]]
+id = 'P02-18'
+topic = 'Praktikum: bezpečnost a laboratorní řád'
+source = 'Úvod do měření, 5.3'
+tags = ["pred-praktikem"]
+text = '''
+Na chvíli neměříte osciloskopem. Co s ním?
+'''
+options = [
+  'Vypnout ho, šetří se tím obrazovka.',
+  'Přepnout na nejvyšší citlivost.',
+  'Nevypínat, jen úplně stáhnout jas.',
+  'Odpojit sondy a jas nechat.',
+]
+answer = 2
+explanation = '''
+Elektronické přístroje potřebují 5 až 10 minut na ustálení a časté zapínání a vypínání jim škodí. U osciloskopu se proto, když neměříte, **stáhne jas** a přístroj se nevypíná.
+'''
+notes = [
+  'Časté vypínání a zapínání elektronice škodí a přístroj se pak znovu ustaluje.',
+  'Citlivost s ochranou obrazovky nesouvisí.',
+  '',
+  'Obrazovku chrání stažený jas, ne odpojené sondy.',
+]

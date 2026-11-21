@@ -1,0 +1,33 @@
+<svg viewBox="0 0 460 215" width="460" class="fig" role="img" aria-label="Skupinová metoda: bod s hrubou chybou se vyřadí, zbylé body se rozdělí na dvě skupiny a přímka se vede jejich těžišti T1 a T2">
+<line x1="45" y1="200" x2="440" y2="200" class="v" marker-end="url(#m-v)"/>
+<line x1="45" y1="200" x2="45" y2="15" class="v" marker-end="url(#m-v)"/>
+<line x1="87.0" y1="179.2" x2="423.0" y2="32.3" class="f"/>
+<line x1="255.0" y1="200" x2="255.0" y2="25" class="d"/>
+<line x1="110.5" y1="163.5" x2="119.5" y2="172.5" class="s1"/>
+<line x1="110.5" y1="172.5" x2="119.5" y2="163.5" class="s1"/>
+<line x1="145.5" y1="143.5" x2="154.5" y2="152.5" class="s1"/>
+<line x1="145.5" y1="152.5" x2="154.5" y2="143.5" class="s1"/>
+<line x1="180.5" y1="137.5" x2="189.5" y2="146.5" class="s1"/>
+<line x1="180.5" y1="146.5" x2="189.5" y2="137.5" class="s1"/>
+<line x1="215.5" y1="113.5" x2="224.5" y2="122.5" class="s1"/>
+<line x1="215.5" y1="122.5" x2="224.5" y2="113.5" class="s1"/>
+<line x1="285.5" y1="83.5" x2="294.5" y2="92.5" class="s1"/>
+<line x1="285.5" y1="92.5" x2="294.5" y2="83.5" class="s1"/>
+<line x1="320.5" y1="75.5" x2="329.5" y2="84.5" class="s1"/>
+<line x1="320.5" y1="84.5" x2="329.5" y2="75.5" class="s1"/>
+<line x1="355.5" y1="49.5" x2="364.5" y2="58.5" class="s1"/>
+<line x1="355.5" y1="58.5" x2="364.5" y2="49.5" class="s1"/>
+<line x1="390.5" y1="43.5" x2="399.5" y2="52.5" class="s1"/>
+<line x1="390.5" y1="52.5" x2="399.5" y2="43.5" class="s1"/>
+<line x1="250.5" y1="47.5" x2="259.5" y2="56.5" class="badl"/>
+<line x1="250.5" y1="56.5" x2="259.5" y2="47.5" class="badl"/>
+<text x="245.0" y="42.0" class="sm bt" text-anchor="end">hrubá chyba: vyřadit</text>
+<circle cx="167.5" cy="144.0" r="5.5" class="ptA"/>
+<text x="177.5" y="162.0" class="acc"><tspan class="it">T</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<circle cx="342.5" cy="67.5" r="5.5" class="ptA"/>
+<text x="352.5" y="85.5" class="acc"><tspan class="it">T</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<text x="167.5" y="192" class="sm mut" text-anchor="middle">1. skupina</text>
+<text x="342.5" y="192" class="sm mut" text-anchor="middle">2. skupina</text>
+<text x="437" y="192" class="it" text-anchor="end">x</text>
+<text x="53" y="24" class="it">y</text>
+</svg>

@@ -1,0 +1,282 @@
+name = 'Praktikum: příprava, záznam a protokol'
+description = 'co patří do přípravy, záznamu z měření a protokolu, zhodnocení výsledku'
+
+[[question]]
+id = 'P08-01'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 6.2'
+text = '''
+Jak má vypadat popis metody v protokolu?
+'''
+options = [
+  'Doslovně opsané celé pasáže z návodu, aby nic nechybělo.',
+  'Jen seznam vzorců bez vysvětlení.',
+  'Teorie vlastními slovy, vztahy potřebné ke zpracování a vysvětlení všech symbolů.',
+  'Popis metody do protokolu nepatří, stačí výsledky.',
+]
+answer = 2
+explanation = '''
+Popis metody uvádí teoretický základ **vlastními slovy** (opisovat celé pasáže návodu se nemá), vztahy potřebné ke zpracování a **vysvětlení symbolů**. Rovnice je vhodné číslovat.
+'''
+notes = [
+  'Úvod výslovně žádá neopisovat doslova pasáže skripta.',
+  'Ke každému vzorci patří vysvětlení symbolů.',
+  '',
+  'Popis metody je povinná část protokolu.',
+]
+
+[[question]]
+id = 'P08-02'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 6.2'
+text = '''
+Jak má vypadat příklad výpočtu v protokolu?
+'''
+options = [
+  'Každý použitý vztah s dosazenými čísly a hned výsledek, bez dalších mezivýpočtů.',
+  'Jen výsledky v tabulce.',
+  'Všechny mezivýsledky z kalkulačky na deset míst.',
+  'Výpočet pro každý řádek tabulky zvlášť.',
+]
+answer = 0
+explanation = '''
+Uvede se **každý použitý vztah s číselným dosazením** (s jednotkami a hodnotami konstant) a hned konečný výsledek. Opakuje-li se výpočet vícekrát, stačí jeden příklad.
+'''
+notes = [
+  '',
+  'Bez dosazení nejde zkontrolovat, jak výsledek vznikl.',
+  'Mezivýpočty se vynechávají a deset míst je víc, než dovolí přesnost.',
+  'U opakovaného výpočtu stačí jeden příklad.',
+]
+
+[[question]]
+id = 'P08-03'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 6.2'
+text = '''
+Co musí mít každá tabulka v protokolu?
+'''
+options = [
+  'Barevné záhlaví.',
+  'Číslo, název a veličiny s jednotkami v záhlaví.',
+  'Jednotku u každého čísla v buňce.',
+  'Jen čísla, jednotky jsou v textu.',
+]
+answer = 1
+explanation = '''
+Tabulka má **číslo a název**, veličiny v záhlaví mají **jednotky** a rastr se rýsuje podle pravítka. U každé měřené veličiny se uvede výpočet nebo odhad chyby.
+'''
+notes = [
+  'Barva není požadavek.',
+  '',
+  'Jednotka v záhlaví platí pro celý sloupec, k číslům se nepíše.',
+  'Bez jednotek v záhlaví je tabulka neúplná.',
+]
+
+[[question]]
+id = 'P08-04'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 5.1'
+text = '''
+Jak se vede záznam o měření v laboratoři?
+'''
+options = [
+  'Na libovolný papír, doma se přepíše načisto.',
+  'Do mobilu, protokol se píše později.',
+  'Stačí zapsat výsledky, postup a přístroje se doplní doma.',
+  'Rovnou v konečné podobě současně s měřením, záznam podepisuje vyučující.',
+]
+answer = 3
+explanation = '''
+Poznámky se píšou **v konečné podobě současně s měřením** do sešitu nebo na předepsaný list a vyučující je podepíše. Přepisování „načisto“ je zbytečné. Záznam musí obsahovat všechno potřebné ke zpracování včetně přístrojů a čísel vzorků.
+'''
+notes = [
+  'Přepisování načisto Úvod označuje za zbytečné a neodpovídající praxi.',
+  'Záznam musí být hotový a podepsaný v laboratoři.',
+  'Přístroje a vzorky se zapisují hned, doma už je nezjistíte.',
+  '',
+]
+
+[[question]]
+id = 'P08-05'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 5.5'
+text = '''
+Napětí měříte ručkovým voltmetrem jen jednou. Co si kromě hodnoty musíte zapsat, abyste mohli určit chybu?
+'''
+options = [
+  'Třídu přesnosti a použitý rozsah.',
+  'Barvu přístroje.',
+  'Jen výrobce přístroje.',
+  'Nic, jedno měření chybu nemá.',
+]
+answer = 0
+explanation = '''
+Chyba se určuje i u jednorázových měření, obvykle jako mezní odhad z **třídy přesnosti** a **rozsahu**: $u = T_\mathrm{p}/100\cdot X_\text{rozsah}$. Bez nich chybu nespočítáte.
+'''
+notes = [
+  '',
+  'Barva s přesností nesouvisí.',
+  'Výrobce nestačí, potřebná je třída přesnosti a rozsah (a výrobní číslo přístroje).',
+  'Každé měření má chybu, u jednoho měření se odhadne z přístroje.',
+]
+
+[[question]]
+id = 'P08-06'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 6.2'
+text = '''
+Naměřili jste $g = (9{,}72 \pm 0{,}02)\ \mathrm{m\,s^{-2}}$, tabulková hodnota je $9{,}81\ \mathrm{m\,s^{-2}}$. Co napíšete do závěru?
+'''
+options = [
+  'Výsledek souhlasí, rozdíl je jen asi 1 %.',
+  'Rozdíl $0{,}09$ je větší než $3\delta = 0{,}06$, měření je pravděpodobně zatížené soustavnou (nebo hrubou) chybou; uvedu možnou příčinu.',
+  'Měření je neplatné a je nutné ho zopakovat.',
+  'Tabulková hodnota je pro jiné místo, porovnávat se nemá.',
+]
+answer = 1
+explanation = '''
+Rozdíl $\lvert 9{,}81 - 9{,}72\rvert = 0{,}09\ \mathrm{m\,s^{-2}}$ je větší než trojnásobek chyby $3\cdot0{,}02 = 0{,}06\ \mathrm{m\,s^{-2}}$. Podle Úvodu je pak měření pravděpodobně zatížené **soustavnou chybou** (nevhodná metoda, zanedbaný vliv) nebo hrubou chybou. V závěru se uvede možná příčina a návrh zlepšení.
+'''
+notes = [
+  'Kritériem není procento, ale trojnásobek chyby měření.',
+  '',
+  'Nesoulad není důvod měření zahodit, ale příležitost hledat příčinu.',
+  'Porovnání s tabulkovou hodnotou do zhodnocení patří.',
+]
+
+[[question]]
+id = 'P08-07'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 5.5'
+text = '''
+S jakou přesností se obvykle žádají běžná laboratorní měření v praktiku?
+'''
+options = ['do 0,01 %', 'do 1 %, někdy do 5 %', 'do 10 %', 'do 25 %']
+answer = 1
+layout = 'grid'
+explanation = '''
+Normální laboratorní měření se žádají s přesností **do 1 %**, někdy až do 5 %. Stačí na to běžné kvalitní přístroje a vhodná metoda. U orientačních měření se připouští 10 %.
+'''
+notes = [
+  'Tak přesná měření běžné laboratorní přístroje nedovolí.',
+  '',
+  'To je mez pro orientační měření.',
+  'To by bylo i na orientační měření příliš.',
+]
+
+[[question]]
+id = 'P08-08'
+topic = 'Protokol o měření'
+source = 'Hlavička protokolu'
+text = '''
+Která kolonka **není** v předepsané hlavičce protokolu?
+'''
+options = ['Měřeno dne', 'Spolupracoval', 'Číslo úlohy', 'Výsledek měření']
+answer = 3
+layout = 'grid'
+explanation = '''
+Hlavička obsahuje údaje o studentovi a skupině (jméno, ID, ročník, předmět, obor, kroužek, laboratorní skupina), **měřeno dne**, **odevzdáno dne**, **spolupracoval**, kolonky pro vyučujícího (příprava, opravy, učitel, hodnocení) a **název a číslo úlohy**. Výsledek patří do zhodnocení na konci protokolu.
+'''
+notes = [
+  'Datum měření v hlavičce je.',
+  'Spolupracovník se v hlavičce uvádí.',
+  'Číslo úlohy v hlavičce je, vedle názvu.',
+  '',
+]
+
+[[question]]
+id = 'P08-09'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 6.2'
+text = '''
+Co patří do popisu experimentu?
+'''
+options = [
+  'Schéma zapojení nebo aparatury nakreslené podle pravítka a seznam přístrojů s výrobními nebo evidenčními čísly.',
+  'Fotka stolu z mobilu.',
+  'Naměřené hodnoty.',
+  'Odvození vzorců.',
+]
+answer = 0
+explanation = '''
+Popis experimentu obsahuje **schéma** měřicího zařízení (podle pravítka, ne od ruky) a **použité přístroje a pomůcky** identifikované výrobním nebo evidenčním číslem, aby šlo měření zopakovat a odhalit vliv konkrétního přístroje.
+'''
+notes = [
+  '',
+  'Fotka nenahradí čisté schéma a nebude z ní poznat, které přístroje to byly.',
+  'Hodnoty patří do části naměřené hodnoty a zpracování.',
+  'Vztahy patří do popisu metody.',
+]
+
+[[question]]
+id = 'P08-10'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 5.1'
+text = '''
+Co je podle Úvodu nejdůležitější částí přípravy na měření?
+'''
+options = [
+  'Opsat si návod do sešitu.',
+  'Přesně si ujasnit, jaký problém se má řešit a co je hlavním cílem měření.',
+  'Připravit si tabulky s vymyšlenými hodnotami.',
+  'Zjistit, kdo bude ve skupině.',
+]
+answer = 1
+explanation = '''
+Nejdůležitější je **přesná formulace problému** a hlavního cíle měření. Pak nastudovat teorii tak, abyste věděli, jaký výsledek čekat, vypsat veličiny k měření a odhadnout rozsah a počet bodů.
+'''
+notes = [
+  'Opisování návodu není příprava, je potřeba ho pochopit.',
+  '',
+  'Tabulky si připravit můžete, ale vymyšlené hodnoty ne.',
+  'Se zaměřením přípravy to nesouvisí.',
+]
+
+[[question]]
+id = 'P08-11'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 5.5'
+text = '''
+Výsledek vám vyšel jinak, než uvádějí tabulky. Jak to chápat?
+'''
+options = [
+  'Měření je nepovedené, výsledek je potřeba upravit, aby souhlasil.',
+  'Protokol se neodevzdává.',
+  'Nesoulad není nežádoucí: je to příležitost hledat příčinu, rozebrat chyby a v závěru ji zdůvodnit.',
+  'Stačí výsledek vynechat a uvést tabulkovou hodnotu.',
+]
+answer = 2
+explanation = '''
+Nesoulad naměřené a očekávané hodnoty nemusí být neočekávaný ani nežádoucí. Je to příležitost k hledání zdrojů rozdílu. Výsledek se uvede tak, jak vyšel, porovná se s tabulkovou hodnotou s ohledem na chybu a příčina se rozebere.
+'''
+notes = [
+  'Upravovat výsledky je nepřípustné.',
+  'Protokol se odevzdává vždy.',
+  '',
+  'Výsledek měření je to, co se hodnotí, nesmí chybět.',
+]
+
+[[question]]
+id = 'P08-12'
+topic = 'Protokol o měření'
+source = 'Úvod do měření, 6'
+text = '''
+Jak správně dosadit do vztahu v příkladu výpočtu?
+'''
+options = [
+  '$R = U/I = 4{,}62/15{,}4 = 0{,}300$',
+  '$R = U/I = \dfrac{4{,}62\ \mathrm{V}}{15{,}4\cdot10^{-3}\ \mathrm{A}} = 300\ \Omega$',
+  '$R = 300$',
+  '$R = U/I = 4{,}62\ \mathrm{V}/15{,}4\ \mathrm{mA} = 0{,}300\ \Omega$',
+]
+answer = 1
+explanation = '''
+Dosadí se hodnoty **i s jednotkami** (v SI nebo s předponami, které se správně převedou) a výsledek s jednotkou. Rovnice musí být rozměrově homogenní.
+'''
+notes = [
+  'Bez jednotek nejde poznat, že proud byl v miliampérech, a výsledek je o tři řády špatně.',
+  '',
+  'Chybí dosazení i jednotka.',
+  'Volt na miliampér je kiloohm, ne ohm: chyba v převodu jednotek.',
+]
