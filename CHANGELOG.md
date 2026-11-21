@@ -25,6 +25,9 @@
 - **Kvízy** jako v trenažéru BFY1: okamžitá zpětná vazba, proč je odpověď
   špatně, rozbor všech možností, číselné otázky s tolerancí, ovládání
   klávesami, výsledek a zopakování chybných.
+- **Odevzdané práce** u předmětu (Učivo → Odevzdané práce): protokoly
+  v originále, otevření v systémovém prohlížeči, uložení kopie a procvičení
+  témat úlohy.
 - Opakování s rozestupy (1, 2, 4, 8 a 16 dní) a sady **Moje chyby**
   a **K opakování**.
 - Nastavení vzhledu, jazyka (čeština, angličtina) a zobrazených předmětů;

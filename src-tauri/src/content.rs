@@ -5,6 +5,9 @@
 //!   **Reload content**, so edits show without a rebuild;
 //! - release builds: the copy embedded at build time (`build.rs` rebuilds
 //!   when the folder changes).
+//!
+//! The submitted work (`submissions/`, docs/submissions.md) comes the same
+//! way, with `STUDYVUT_SUBMISSIONS_DIR`.
 
 use std::path::PathBuf;
 use std::sync::Arc;
@@ -14,6 +17,22 @@ use studyvut_core::content::{DirFiles, Files};
 use studyvut_service::ContentSource;
 
 static EMBEDDED: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/../content");
+static EMBEDDED_SUBMISSIONS: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/../submissions");
+
+/// The submitted work, from where the content comes from.
+pub fn submissions() -> Arc<dyn Files> {
+    let folder = std::env::var_os("STUDYVUT_SUBMISSIONS_DIR")
+        .map(PathBuf::from)
+        .or_else(|| {
+            cfg!(debug_assertions)
+                .then(|| PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../submissions"))
+                .filter(|p| p.is_dir())
+        });
+    match folder {
+        Some(path) => Arc::new(DirFiles::new(path.canonicalize().unwrap_or(path))),
+        None => Arc::new(Embedded(&EMBEDDED_SUBMISSIONS)),
+    }
+}
 
 pub fn source() -> (Arc<dyn Files>, ContentSource) {
     let folder = std::env::var_os("STUDYVUT_CONTENT_DIR")
@@ -31,23 +50,27 @@ pub fn source() -> (Arc<dyn Files>, ContentSource) {
                 ContentSource::Folder { path },
             )
         }
-        None => (Arc::new(Embedded), ContentSource::Embedded),
+        None => (Arc::new(Embedded(&EMBEDDED)), ContentSource::Embedded),
     }
 }
 
-/// The content built into the app.
-struct Embedded;
+/// A folder built into the app (the content, the submitted work).
+struct Embedded(&'static Dir<'static>);
 
 impl Files for Embedded {
     fn list(&self) -> Vec<String> {
         let mut out = Vec::new();
-        walk(&EMBEDDED, &mut out);
+        walk(self.0, &mut out);
         out.sort();
         out
     }
 
     fn read(&self, path: &str) -> Option<Vec<u8>> {
-        EMBEDDED.get_file(path).map(|f| f.contents().to_vec())
+        self.0.get_file(path).map(|f| f.contents().to_vec())
+    }
+
+    fn size(&self, path: &str) -> Option<u64> {
+        self.0.get_file(path).map(|f| f.contents().len() as u64)
     }
 }
 

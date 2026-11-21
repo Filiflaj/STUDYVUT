@@ -48,6 +48,11 @@ pub fn run() {
             commands::open_data_folder,
             commands::open_link,
             commands::open_url,
+            commands::get_submissions,
+            commands::get_submission,
+            commands::open_submission_file,
+            commands::reveal_submission_file,
+            commands::save_submission_file,
         ])
         .setup(|app| {
             if let Err(e) = setup(app) {
@@ -104,6 +109,7 @@ fn setup(app: &mut App) -> anyhow::Result<()> {
     let service = Service::start(ServiceConfig {
         paths,
         files,
+        submissions: content::submissions(),
         source,
     })?;
     app.manage(AppState { service });

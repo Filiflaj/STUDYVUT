@@ -4,7 +4,9 @@
 //!   from `content/`, and the checker behind `studyvut-cli check`;
 //! - [`quiz`]: evaluating an answer and choosing the questions of a set;
 //! - [`review`]: spaced repetition (Leitner boxes);
-//! - [`store`]: the user's progress in SQLite (feature `store`).
+//! - [`store`]: the user's progress in SQLite (feature `store`);
+//! - [`submissions`]: the user's own submitted work, as submitted
+//!   (`submissions/`, public like `content/`; docs/submissions.md).
 //!
 //! No Tauri and no UI here, so the desktop app and the CLI share it.
 
@@ -13,6 +15,7 @@ pub mod quiz;
 pub mod review;
 #[cfg(feature = "store")]
 pub mod store;
+pub mod submissions;
 
 /// Milliseconds per day.
 pub const DAY_MS: i64 = 86_400_000;

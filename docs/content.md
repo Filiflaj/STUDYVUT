@@ -11,7 +11,10 @@ the same check. Fix every error it reports before committing content.
 Every commit that adds or corrects material adds its line to `CHANGELOG.md`
 under `## Unreleased` ([versioning.md](versioning.md)).
 
-Originals (PDF, slides, photos, protocols) never go in here. They go in
+Originals (PDF, slides, photos, protocols) never go in here; a PDF, Office
+file or archive in `content/` is an error. The user's own submitted work is
+the exception: it goes, as submitted, in `submissions/`
+([submissions.md](submissions.md)). They go in
 `inbox/<subject>/`, which git ignores, since this repository is public. See
 [inbox/README.md](../inbox/README.md).
 

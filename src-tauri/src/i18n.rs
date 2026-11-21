@@ -14,6 +14,7 @@ pub struct Texts {
     pub cannot_start: &'static str,
     pub export_title: &'static str,
     pub export_name: &'static str,
+    pub save_copy_title: &'static str,
 }
 
 impl Lang {
@@ -35,11 +36,13 @@ impl Lang {
                 cannot_start: "STUDYVUT se nepodařilo spustit:\n\n{error}",
                 export_title: "Exportovat pokrok",
                 export_name: "studyvut-pokrok.json",
+                save_copy_title: "Uložit kopii",
             },
             Lang::En => &Texts {
                 cannot_start: "STUDYVUT could not start:\n\n{error}",
                 export_title: "Export progress",
                 export_name: "studyvut-progress.json",
+                save_copy_title: "Save a copy",
             },
         }
     }

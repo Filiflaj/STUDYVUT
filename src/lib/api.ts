@@ -10,6 +10,8 @@ import type {
   SetSpec,
   Settings,
   Snapshot,
+  SubmissionDetail,
+  SubmissionRow,
   Verdict,
 } from "./types";
 
@@ -35,6 +37,16 @@ export const api = {
   openLink: (target: "repository" | "releases" | "issues") => invoke<void>("open_link", { target }),
   /** An external page in the system browser (http and https only). */
   openUrl: (url: string) => invoke<void>("open_url", { url }),
+  submissions: (subject: string | null) => invoke<SubmissionRow[]>("get_submissions", { subject }),
+  submission: (subject: string, id: string) => invoke<SubmissionDetail>("get_submission", { subject, id }),
+  /** Opens a document in its system app (a copy in the cache folder). */
+  openSubmissionFile: (subject: string, id: string, file: number) =>
+    invoke<void>("open_submission_file", { subject, id, file }),
+  revealSubmissionFile: (subject: string, id: string, file: number) =>
+    invoke<void>("reveal_submission_file", { subject, id, file }),
+  /** Asks where to save; the path written, or null when cancelled. */
+  saveSubmissionFile: (subject: string, id: string, file: number, lang: string) =>
+    invoke<string | null>("save_submission_file", { subject, id, file, lang }),
 };
 
 /** URL of a raster image of the content (`bpc-fy1/images/x.png`), served by the app. */

@@ -21,6 +21,10 @@ pub fn load(files: &dyn Files) -> (Catalog, Vec<Problem>) {
     let mut by_subject: BTreeMap<&str, Vec<&str>> = BTreeMap::new();
     let mut problems = Vec::new();
     for path in &paths {
+        if is_original(path) {
+            problems.push(error(path, ORIGINAL));
+            continue;
+        }
         match path.split_once('/') {
             Some((subject, _)) => by_subject.entry(subject).or_default().push(path),
             None if path.ends_with(".md") || path == PROGRAMS => {}
@@ -93,6 +97,22 @@ fn semester_key(s: &str) -> (u32, u8, String) {
         .unwrap_or(0);
     let term = u8::from(s.trim_start().to_ascii_uppercase().starts_with("LS"));
     (year, term, s.to_owned())
+}
+
+const ORIGINAL: &str = "documents and archives never go in content/ (plain text only); \
+     the user's submitted work goes in submissions/ (docs/submissions.md), originals in inbox/";
+
+/// Documents and archives: they belong in inbox/ or submissions/, never in
+/// the content (text the app embeds).
+const DOCUMENTS: &[&str] = &[
+    "pdf", "doc", "docx", "xls", "xlsx", "xlsm", "ppt", "pptx", "odt", "ods", "odp", "zip", "7z",
+    "rar",
+];
+
+fn is_original(path: &str) -> bool {
+    let name = path.rsplit('/').next().unwrap_or(path);
+    let ext = name.rsplit_once('.').map(|(_, e)| e.to_ascii_lowercase());
+    name == "submission.toml" || ext.is_some_and(|e| DOCUMENTS.contains(&e.as_str()))
 }
 
 fn error(path: &str, message: impl Into<String>) -> Problem {
@@ -756,6 +776,26 @@ expalnation = "x"
         assert_eq!(problems, vec![]);
         let codes: Vec<_> = catalog.subjects.iter().map(|s| s.code.as_str()).collect();
         assert_eq!(codes, vec!["BPC-C", "BPC-B", "BPC-0", "BPC-A"]);
+    }
+
+    #[test]
+    fn documents_in_the_content_are_errors() {
+        let files = files()
+            .with("fy1/images/protokol.pdf", "%PDF")
+            .with("fy1/lab-10/submission.toml", "title = \"x\"")
+            .with("fy1/data.XLSX", "PK")
+            .with("prace.zip", "PK");
+        let m = messages(&files);
+        assert_eq!(m.len(), 4, "{m:?}");
+        assert!(
+            m.iter()
+                .all(|x| x.starts_with("error:") && x.contains("never go in content/")),
+            "{m:?}"
+        );
+        assert!(
+            load(&files).0.subject("fy1").is_some(),
+            "the rest still loads"
+        );
     }
 
     #[test]

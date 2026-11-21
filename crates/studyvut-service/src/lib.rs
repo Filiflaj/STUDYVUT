@@ -5,6 +5,7 @@
 pub mod paths;
 pub mod service;
 pub mod settings;
+pub mod submissions;
 pub mod views;
 
 pub use paths::Paths;

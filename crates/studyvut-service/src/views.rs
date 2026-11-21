@@ -43,6 +43,8 @@ pub struct SubjectView {
     pub questions: usize,
     /// Questions due for review today.
     pub due: usize,
+    /// Submitted work of the subject (`submissions/`), for its tab.
+    pub submissions: usize,
 }
 
 #[derive(Clone, Debug, Serialize)]

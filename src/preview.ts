@@ -22,6 +22,8 @@ import type {
   Settings,
   Snapshot,
   SubjectView,
+  SubmissionDetail,
+  SubmissionRow,
   ThemePref,
   Verdict,
 } from "./lib/types";
@@ -129,6 +131,29 @@ function subject(
       : [],
     questions,
     due: fresh || !withContent ? 0 : 5,
+    submissions: withContent ? WORKS.length : 0,
+  };
+}
+
+/** Submitted work of bpc-fy1 (made up; the real files are not in the preview). */
+const WORKS: SubmissionRow[] = [
+  { subject: "bpc-fy1", id: "lab-21", title: "Elektromagnetická indukce ve spřažených cívkách", kind: "protocol", task: "21", submitted: "2026-11-19", files: 1, size: 2_984_776 },
+  { subject: "bpc-fy1", id: "lab-10", title: "Tíhové zrychlení (reverzní kyvadlo)", kind: "protocol", task: "10", submitted: "2026-10-08", files: 1, size: 545_654 },
+];
+
+function work(id: string): SubmissionDetail {
+  const w = WORKS.find((x) => x.id === id) ?? WORKS[0];
+  return {
+    ...w,
+    measured: "2026-10-01",
+    summary: "Poloha závaží, při níž je doba kmitu kolem obou os stejná; pak $g = 4\\pi^2 \\ell_r / T^2$.",
+    files: [
+      { index: 0, path: "protokol.pdf", role: "final", label: null, size: w.size, openable: true },
+      { index: 1, path: "data/mereni.xlsx", role: "data", label: "Naměřené hodnoty (Excel)", size: 24_771, openable: true },
+    ],
+    chapters: chapters.slice(0, 1).map((c) => ({ id: c.id, title: c.title })),
+    topics: [{ topic: "Newtonovy zákony", questions: 3 }],
+    practice: QUESTIONS.slice(0, 3).map((q) => q.id),
   };
 }
 
@@ -236,6 +261,15 @@ mockIPC((cmd, args) => {
       return null;
     case "export_progress":
       return "/Users/student/Downloads/studyvut-pokrok.json";
+    case "get_submissions":
+      return a.subject === "bpc-fy1" || a.subject == null ? WORKS : [];
+    case "get_submission":
+      return work(String(a.id));
+    case "open_submission_file":
+    case "reveal_submission_file":
+      return null;
+    case "save_submission_file":
+      return "/Users/student/Downloads/protokol.pdf";
     default:
       console.warn("preview: unmocked command", cmd, a);
       return null;
@@ -246,6 +280,8 @@ const tab = params.get("tab") as Tab | null;
 if (tab) nav.go(tab);
 const chosen = params.get("subject");
 if (chosen) nav.selectSubject(chosen);
+const openWork = params.get("work");
+if (chosen && openWork) nav.work(chosen, openWork);
 
 await import("./main");
 

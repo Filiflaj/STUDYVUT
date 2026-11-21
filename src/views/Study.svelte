@@ -3,12 +3,14 @@
   import { api, errorMessage } from "../lib/api";
   import Icon from "../lib/components/Icon.svelte";
   import Prose from "../lib/components/Prose.svelte";
+  import SegmentedControl from "../lib/components/SegmentedControl.svelte";
   import SubjectSelect from "../lib/components/SubjectSelect.svelte";
+  import SubmissionPanel from "../lib/components/SubmissionPanel.svelte";
   import { fill, plural, t } from "../lib/i18n/index.svelte";
   import { live } from "../lib/live.svelte";
   import { render, type Rendered } from "../lib/markdown";
   import { nav } from "../lib/nav.svelte";
-  import type { ChapterPayload } from "../lib/types";
+  import type { ChapterPayload, SubmissionRow } from "../lib/types";
 
   /** The chosen subject, or the first visible one. */
   const subject = $derived(live.subject(nav.subject) ?? live.defaultSubject);
@@ -18,6 +20,32 @@
   );
   const index = $derived(chapters.findIndex((c) => c.id === chapterId));
 
+  /** The subject's submitted work (docs/submissions.md), listed under the chapters. */
+  let works = $state<SubmissionRow[]>([]);
+  $effect(() => {
+    const s = subject;
+    works = [];
+    if (!s || s.submissions === 0) return;
+    let cancelled = false;
+    api.submissions(s.id).then(
+      (rows) => {
+        if (!cancelled) works = rows;
+      },
+      (e) => console.error(e),
+    );
+    return () => {
+      cancelled = true;
+    };
+  });
+  /** The open work: the chosen one, or the first when the subject has no chapters. */
+  const workId = $derived(
+    works.some((w) => w.id === nav.submission)
+      ? nav.submission
+      : chapters.length === 0
+        ? (works[0]?.id ?? null)
+        : null,
+  );
+
   let chapter = $state<ChapterPayload | null>(null);
   let rendered = $state<Rendered>({ html: "", sections: [] });
   let error = $state<string | null>(null);
@@ -26,7 +54,7 @@
 
   $effect(() => {
     const s = subject?.id;
-    const c = chapterId;
+    const c = workId ? null : chapterId;
     error = null;
     if (!s || !c) {
       chapter = null;
@@ -91,7 +119,7 @@
 
   {#if !subject}
     <div class="card empty">{t().overview.hiddenAll}</div>
-  {:else if chapters.length === 0}
+  {:else if chapters.length === 0 && subject.submissions === 0}
     <div class="card empty">
       <p>{t().study.empty}</p>
       <p class="muted small">{fill(t().study.emptyHint, { id: subject.id })}</p>
@@ -99,7 +127,21 @@
   {:else}
     <div class="layout">
       <nav class="toc" aria-label={t().study.chapters}>
-        <div class="toc-title">{t().study.chapters}</div>
+        {#if works.length && chapters.length}
+          <div class="switch">
+            <SegmentedControl
+              options={[
+                { value: "chapters", label: t().study.chapters },
+                { value: "works", label: t().submissions.title },
+              ]}
+              value={workId ? "works" : "chapters"}
+              label={t().study.chapters}
+              onchange={(v) => subject && (v === "works" ? nav.work(subject.id, works[0].id) : nav.study(subject.id))}
+            />
+          </div>
+        {/if}
+        {#if !workId}
+        {#if !works.length}<div class="toc-title">{t().study.chapters}</div>{/if}
         {#each chapters as c (c.id)}
           <a
             href="#{c.id}"
@@ -125,10 +167,27 @@
             {/each}
           {/if}
         {/each}
+        {:else}
+          {#if !chapters.length}<div class="toc-title">{t().submissions.title}</div>{/if}
+          {#each works as w (w.id)}
+            <a
+              href="#{w.id}"
+              class:active={w.id === workId}
+              aria-current={w.id === workId ? "page" : undefined}
+              onclick={(e) => {
+                e.preventDefault();
+                if (subject) nav.work(subject.id, w.id);
+              }}
+              >{#if w.task}<span class="task">{w.task}</span>{/if}{w.title}</a
+            >
+          {/each}
+        {/if}
       </nav>
 
       <div class="column">
-        {#if error}
+        {#if workId && subject}
+          <SubmissionPanel subject={subject.id} id={workId} />
+        {:else if error}
           <div class="card empty">{fill(t().study.loadFailed, { error })}</div>
         {:else if chapter}
           <div class="card body">
@@ -225,6 +284,16 @@
   }
   .toc a.sub.reading {
     color: var(--accent);
+  }
+  .switch {
+    padding: 0 0 12px;
+  }
+  .task {
+    display: inline-block;
+    min-width: 2.2em;
+    margin-right: 6px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
   }
   .column {
     display: flex;

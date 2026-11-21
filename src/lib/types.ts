@@ -90,6 +90,8 @@ export interface SubjectView {
   questions: number;
   /** Questions due for review today. */
   due: number;
+  /** Submitted work of the subject (submissions/), shown on the Study page. */
+  submissions: number;
 }
 
 export interface SessionRow {
@@ -154,3 +156,48 @@ export interface Verdict {
   correct: boolean;
   sign_only: boolean;
 }
+
+export type SubmissionKind = "protocol" | "homework" | "project" | "test" | "other";
+export type FileRole = "final" | "source" | "data" | "other";
+
+/** A submitted work in a subject's list (docs/submissions.md). */
+export interface SubmissionRow {
+  subject: string;
+  id: string;
+  title: string;
+  kind: SubmissionKind;
+  task: string | null;
+  /** `YYYY-MM-DD`. */
+  submitted: string | null;
+  files: number;
+  size: number;
+}
+
+export interface SubmissionFileView {
+  /** What the file commands take. */
+  index: number;
+  path: string;
+  role: FileRole;
+  label: string | null;
+  size: number;
+  /** A document the system opens; otherwise only "show in folder" and "save a copy". */
+  openable: boolean;
+}
+
+export interface SubmissionDetail {
+  subject: string;
+  id: string;
+  title: string;
+  kind: SubmissionKind;
+  task: string | null;
+  measured: string | null;
+  submitted: string | null;
+  /** Markdown. */
+  summary: string | null;
+  files: SubmissionFileView[];
+  chapters: { id: string; title: string }[];
+  topics: { topic: string; questions: number }[];
+  /** Question ids of the topics, for `{ kind: "questions", ids }`. */
+  practice: string[];
+}
+

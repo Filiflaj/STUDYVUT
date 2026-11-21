@@ -9,6 +9,7 @@ use serde::Serialize;
 use studyvut_core::content::Problem;
 use studyvut_core::quiz::{Response, SetSpec, Verdict};
 use studyvut_core::store::SessionRow;
+use studyvut_service::submissions::{SubmissionDetail, SubmissionRow};
 use studyvut_service::views::{ChapterPayload, Overview, ProblemCount, SessionPayload};
 use studyvut_service::{ContentSource, ServiceError, Settings};
 use tauri::{AppHandle, State};
@@ -212,4 +213,86 @@ pub fn open_url(app: AppHandle, url: String) -> CmdResult<()> {
     app.opener()
         .open_url(url, None::<&str>)
         .map_err(CmdError::other)
+}
+
+/// The submitted work of a subject (or of all), newest first.
+#[tauri::command]
+pub fn get_submissions(state: State<'_, AppState>, subject: Option<String>) -> Vec<SubmissionRow> {
+    state.service.submissions(subject.as_deref())
+}
+
+#[tauri::command]
+pub fn get_submission(
+    state: State<'_, AppState>,
+    subject: String,
+    id: String,
+) -> CmdResult<SubmissionDetail> {
+    Ok(state.service.submission(&subject, &id)?)
+}
+
+/// Open a file of a submission in its system app (documents only). The
+/// window names the file by its index, never by a path; the service copies
+/// the embedded file into the cache folder and refuses scripts and programs.
+#[tauri::command]
+pub fn open_submission_file(
+    app: AppHandle,
+    state: State<'_, AppState>,
+    subject: String,
+    id: String,
+    file: usize,
+) -> CmdResult<()> {
+    let path = state.service.submission_file(&subject, &id, file, true)?;
+    app.opener()
+        .open_path(path.display().to_string(), None::<&str>)
+        .map_err(CmdError::other)
+}
+
+/// Show a file of a submission (its copy in the cache folder) in Finder,
+/// Explorer or the file manager.
+#[tauri::command]
+pub fn reveal_submission_file(
+    app: AppHandle,
+    state: State<'_, AppState>,
+    subject: String,
+    id: String,
+    file: usize,
+) -> CmdResult<()> {
+    let path = state.service.submission_file(&subject, &id, file, false)?;
+    app.opener()
+        .reveal_item_in_dir(path)
+        .map_err(CmdError::other)
+}
+
+/// Ask where to save, then write a copy of a submission's file. The path
+/// written, or `None` when cancelled.
+#[tauri::command]
+pub async fn save_submission_file(
+    app: AppHandle,
+    state: State<'_, AppState>,
+    subject: String,
+    id: String,
+    file: usize,
+    lang: Option<String>,
+) -> CmdResult<Option<String>> {
+    let (name, bytes) = state.service.submission_bytes(&subject, &id, file)?;
+    let tr = match lang.as_deref() {
+        Some("en") => Lang::En,
+        Some("cs") => Lang::Cs,
+        _ => Lang::system(),
+    }
+    .tr();
+    let (tx, rx) = std::sync::mpsc::channel();
+    app.dialog()
+        .file()
+        .set_title(tr.save_copy_title)
+        .set_file_name(&name)
+        .save_file(move |path| {
+            let _ = tx.send(path);
+        });
+    let Some(path) = rx.recv().ok().flatten() else {
+        return Ok(None);
+    };
+    let path = path.into_path().map_err(CmdError::other)?;
+    std::fs::write(&path, bytes).map_err(CmdError::other)?;
+    Ok(Some(path.display().to_string()))
 }

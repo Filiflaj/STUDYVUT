@@ -25,5 +25,8 @@ Uvnitř předmětu si soubory klidně rozděl do podsložek (např. `prednasky/`
 `cviceni/`, `testy/`). Když něco přidáš, napiš Claudovi, co to je a na co se
 má zaměřit (např. „tohle jsou okruhy ke zkoušce, udělej z nich kvíz“).
 
+Odevzdané protokoly a úkoly odsud můžou na požádání jít do aplikace v originále
+(`submissions/`, cizí jména a ID se zakryjí). Práce spolužáka nikdy.
+
 Nový předmět (další semestr): založ `inbox/<kod>/` a řekni Claudovi, ať
 k němu přidá `content/<kod>/subject.toml`.

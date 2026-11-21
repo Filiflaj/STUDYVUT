@@ -6,3 +6,14 @@
 *.woff2 binary
 *.icns binary
 *.ico binary
+# Submitted work is published as the original files: never touch their bytes.
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+*.odt binary
+*.ods binary
+*.odp binary

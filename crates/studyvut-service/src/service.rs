@@ -16,11 +16,13 @@ use studyvut_core::content::{
 };
 use studyvut_core::quiz::{self, Personal, Response, SetSpec, Verdict};
 use studyvut_core::store::{Answer, QuestionState, SessionRow, Store, StoreError};
+use studyvut_core::submissions::{self, Submission};
 use studyvut_core::{local_day, now_ms};
 use tracing::{info, warn};
 
 use crate::paths::Paths;
 use crate::settings::Settings;
+use crate::submissions::{SubmissionDetail, SubmissionRow};
 use crate::views::{
     ChapterPayload, ChapterView, Overview, ProblemCount, SessionPayload, SetView, SubjectView,
 };
@@ -35,6 +37,12 @@ pub enum ServiceError {
     UnknownChapter(String),
     #[error("the set has no questions")]
     EmptySet,
+    #[error("no submission {0:?}")]
+    UnknownSubmission(String),
+    #[error("no file {0:?}")]
+    UnknownFile(String),
+    #[error("{0} is not a document the app opens; show it in its folder instead")]
+    NotOpenable(String),
     #[error(transparent)]
     Store(#[from] StoreError),
     #[error(transparent)]
@@ -49,6 +57,9 @@ impl ServiceError {
             ServiceError::UnknownQuestion(_) => "unknown_question",
             ServiceError::UnknownChapter(_) => "unknown_chapter",
             ServiceError::EmptySet => "empty_set",
+            ServiceError::UnknownSubmission(_) => "unknown_submission",
+            ServiceError::UnknownFile(_) => "unknown_file",
+            ServiceError::NotOpenable(_) => "not_openable",
             ServiceError::Store(StoreError::NoSession(_)) => "no_session",
             ServiceError::Store(_) => "store",
             ServiceError::Io(_) => "io",
@@ -71,12 +82,16 @@ pub enum ContentSource {
 pub struct ServiceConfig {
     pub paths: Paths,
     pub files: Arc<dyn Files>,
+    /// `submissions/`, from the same kind of source as the content.
+    pub submissions: Arc<dyn Files>,
     pub source: ContentSource,
 }
 
 struct Loaded {
     catalog: Catalog,
+    /// Content and submission problems; the latter's paths start with `submissions/`.
     problems: Vec<Problem>,
+    submissions: Vec<Submission>,
 }
 
 pub struct Service {
@@ -87,6 +102,7 @@ pub struct Service {
     /// Where a damaged database was moved at the start.
     pub db_replaced: Option<PathBuf>,
     files: Arc<dyn Files>,
+    submission_files: Arc<dyn Files>,
     content: RwLock<Arc<Loaded>>,
     settings: RwLock<Settings>,
     store: Mutex<Store>,
@@ -104,13 +120,14 @@ impl Service {
                 aside.display()
             );
         }
-        let loaded = load(config.files.as_ref());
+        let loaded = load(config.files.as_ref(), config.submissions.as_ref());
         Ok(Self {
             paths: config.paths,
             source: config.source,
             first_run,
             db_replaced,
             files: config.files,
+            submission_files: config.submissions,
             content: RwLock::new(Arc::new(loaded)),
             settings: RwLock::new(settings),
             store: Mutex::new(store),
@@ -120,6 +137,11 @@ impl Service {
 
     /// A service on in-memory progress, for tests and CLI checks.
     pub fn in_memory(files: Arc<dyn Files>) -> Result<Self> {
+        Self::in_memory_with(files, Arc::new(content::MemFiles::new()))
+    }
+
+    /// [`Service::in_memory`] with submitted work.
+    pub fn in_memory_with(files: Arc<dyn Files>, submissions: Arc<dyn Files>) -> Result<Self> {
         Ok(Self {
             paths: Paths {
                 data_dir: PathBuf::new(),
@@ -128,8 +150,9 @@ impl Service {
             source: ContentSource::Embedded,
             first_run: false,
             db_replaced: None,
-            content: RwLock::new(Arc::new(load(files.as_ref()))),
+            content: RwLock::new(Arc::new(load(files.as_ref(), submissions.as_ref()))),
             files,
+            submission_files: submissions,
             settings: RwLock::new(Settings::default()),
             store: Mutex::new(Store::open_in_memory()?),
             rng: Mutex::new(fastrand::Rng::with_seed(1)),
@@ -154,7 +177,7 @@ impl Service {
 
     /// Read the content again (a folder sees edits; the embedded copy is the same).
     pub fn reload_content(&self) -> ProblemCount {
-        let loaded = load(self.files.as_ref());
+        let loaded = load(self.files.as_ref(), self.submission_files.as_ref());
         let n = count(&loaded.problems);
         *self.content.write() = Arc::new(loaded);
         n
@@ -186,7 +209,13 @@ impl Service {
             .iter()
             .map(|s| {
                 let mine = by_subject.remove(s.id.as_str()).unwrap_or_default();
-                subject_view(s, &personal(mine, today))
+                let mut view = subject_view(s, &personal(mine, today));
+                view.submissions = loaded
+                    .submissions
+                    .iter()
+                    .filter(|w| w.subject == s.id)
+                    .count();
+                view
             })
             .collect();
         Ok(Overview {
@@ -314,6 +343,72 @@ impl Service {
     }
 
     /// An image of the content (`bpc-fy1/images/x.png`) and its media type.
+    /// The submitted work of a subject, or of all, newest first.
+    pub fn submissions(&self, subject: Option<&str>) -> Vec<SubmissionRow> {
+        self.loaded()
+            .submissions
+            .iter()
+            .filter(|s| subject.is_none_or(|id| s.subject == id))
+            .map(crate::submissions::row)
+            .collect()
+    }
+
+    pub fn submission(&self, subject: &str, id: &str) -> Result<SubmissionDetail> {
+        let loaded = self.loaded();
+        let s = find_submission(&loaded, subject, id)?;
+        Ok(crate::submissions::detail(
+            s,
+            loaded.catalog.subject(subject),
+        ))
+    }
+
+    /// A file of a submission as a file on the disk (a copy in the cache
+    /// folder), for the system to open (`open`: documents only) or to show
+    /// in its folder.
+    pub fn submission_file(
+        &self,
+        subject: &str,
+        id: &str,
+        index: usize,
+        open: bool,
+    ) -> Result<PathBuf> {
+        let loaded = self.loaded();
+        let s = find_submission(&loaded, subject, id)?;
+        let f = s
+            .files
+            .get(index)
+            .ok_or_else(|| ServiceError::UnknownFile(format!("{}/{index}", s.folder())))?;
+        if open && !submissions::openable(&f.path) {
+            return Err(ServiceError::NotOpenable(f.path.clone()));
+        }
+        let cache = self.paths.cache_dir().join("submissions");
+        Ok(crate::submissions::materialize(
+            self.submission_files.as_ref(),
+            &cache,
+            s,
+            f,
+        )?)
+    }
+
+    /// A file of a submission, for "save a copy": its name and bytes.
+    pub fn submission_bytes(
+        &self,
+        subject: &str,
+        id: &str,
+        index: usize,
+    ) -> Result<(String, Vec<u8>)> {
+        let loaded = self.loaded();
+        let s = find_submission(&loaded, subject, id)?;
+        let unknown = || ServiceError::UnknownFile(format!("{}/{index}", s.folder()));
+        let f = s.files.get(index).ok_or_else(unknown)?;
+        let bytes = self
+            .submission_files
+            .read(&s.file_path(f))
+            .ok_or_else(unknown)?;
+        let name = f.path.rsplit('/').next().unwrap_or(&f.path).to_owned();
+        Ok((name, bytes))
+    }
+
     pub fn asset(&self, path: &str) -> Option<(Vec<u8>, &'static str)> {
         content::is_image(path)
             .then(|| self.files.read(path))
@@ -336,19 +431,37 @@ impl Service {
     }
 }
 
-fn load(files: &dyn Files) -> Loaded {
-    let (catalog, problems) = content::load(files);
+fn load(files: &dyn Files, submission_files: &dyn Files) -> Loaded {
+    let (catalog, mut problems) = content::load(files);
+    let (submissions, more) = submissions::load(submission_files, &catalog);
+    problems.extend(more.into_iter().map(|mut p| {
+        p.path = format!("submissions/{}", p.path);
+        p
+    }));
     let n = count(&problems);
     info!(
-        "content: {} subjects, {} errors, {} warnings",
+        "content: {} subjects, {} submissions, {} errors, {} warnings",
         catalog.subjects.len(),
+        submissions.len(),
         n.errors,
         n.warnings
     );
     for p in problems.iter().filter(|p| p.severity == Severity::Error) {
         warn!("{p}");
     }
-    Loaded { catalog, problems }
+    Loaded {
+        catalog,
+        problems,
+        submissions,
+    }
+}
+
+fn find_submission<'a>(loaded: &'a Loaded, subject: &str, id: &str) -> Result<&'a Submission> {
+    loaded
+        .submissions
+        .iter()
+        .find(|s| s.subject == subject && s.id == id)
+        .ok_or_else(|| ServiceError::UnknownSubmission(format!("{subject}/{id}")))
 }
 
 fn count(problems: &[Problem]) -> ProblemCount {
@@ -474,6 +587,7 @@ fn subject_view(s: &Subject, personal: &Personal) -> SubjectView {
         sets,
         questions,
         due,
+        submissions: 0,
     }
 }
 

@@ -13,6 +13,11 @@ pub trait Files: Send + Sync {
     fn read_string(&self, path: &str) -> Option<String> {
         self.read(path).and_then(|b| String::from_utf8(b).ok())
     }
+
+    /// The size in bytes, without reading the file where the source can.
+    fn size(&self, path: &str) -> Option<u64> {
+        self.read(path).map(|b| b.len() as u64)
+    }
 }
 
 /// A folder on the disk, read anew on every call (so a reload sees edits).
@@ -44,6 +49,16 @@ impl Files for DirFiles {
             return None;
         }
         std::fs::read(self.root.join(path)).ok()
+    }
+
+    fn size(&self, path: &str) -> Option<u64> {
+        if path.split('/').any(|p| p == ".." || p.is_empty()) {
+            return None;
+        }
+        std::fs::metadata(self.root.join(path))
+            .ok()
+            .filter(|m| m.is_file())
+            .map(|m| m.len())
     }
 }
 
@@ -102,6 +117,10 @@ impl Files for MemFiles {
     fn read(&self, path: &str) -> Option<Vec<u8>> {
         self.files.get(path).cloned()
     }
+
+    fn size(&self, path: &str) -> Option<u64> {
+        self.files.get(path).map(|b| b.len() as u64)
+    }
 }
 
 #[cfg(test)]
@@ -120,6 +139,9 @@ mod tests {
         assert_eq!(files.read_string("a/b/x.md").as_deref(), Some("x"));
         assert_eq!(files.read("../etc/passwd"), None);
         assert_eq!(files.read("a//b/x.md"), None);
+        assert_eq!(files.size("a/b/x.md"), Some(1));
+        assert_eq!(files.size("a/b"), None, "a folder has no size");
+        assert_eq!(files.size("../a/b/x.md"), None);
         Ok(())
     }
 }

@@ -53,6 +53,11 @@ impl Paths {
         self.data_dir.join("logs")
     }
 
+    /// Copies of embedded files the system opens (submitted work); safe to delete.
+    pub fn cache_dir(&self) -> PathBuf {
+        self.data_dir.join("cache")
+    }
+
     /// A WebView profile of its own for development instances (which would
     /// otherwise share the real one's local storage).
     pub fn webview_dir(&self) -> Option<PathBuf> {

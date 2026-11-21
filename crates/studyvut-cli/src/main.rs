@@ -1,7 +1,7 @@
 //! `studyvut-cli`: the app's command-line sibling.
 //!
-//! - `check`: validate `content/` (CI runs it; exit code 1 on errors);
-//! - `list`: what the content holds;
+//! - `check`: validate `content/` and `submissions/` (CI runs it; exit code 1 on errors);
+//! - `list`: what the content and the submitted work hold;
 //! - `stats`: the progress the app recorded;
 //! - `paths`: where the app keeps its data.
 
@@ -13,6 +13,7 @@ use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
 use studyvut_core::content::{self, DirFiles, QuestionKind, Severity};
 use studyvut_core::store::Store;
+use studyvut_core::submissions;
 use studyvut_service::Paths;
 
 #[derive(Parser)]
@@ -24,19 +25,24 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
-    /// Check the content folder; exit code 1 when it has errors.
+    /// Check the content and the submitted work; exit code 1 when they have errors.
     Check {
         /// The content folder.
         #[arg(long, env = "STUDYVUT_CONTENT_DIR", default_value = "content")]
         content: PathBuf,
+        /// The submitted work (docs/submissions.md); a missing folder is empty.
+        #[arg(long, env = "STUDYVUT_SUBMISSIONS_DIR", default_value = "submissions")]
+        submissions: PathBuf,
         /// Fail on warnings too.
         #[arg(long)]
         strict: bool,
     },
-    /// List the subjects, chapters, quizzes and sets.
+    /// List the subjects, chapters, quizzes, sets and submitted work.
     List {
         #[arg(long, env = "STUDYVUT_CONTENT_DIR", default_value = "content")]
         content: PathBuf,
+        #[arg(long, env = "STUDYVUT_SUBMISSIONS_DIR", default_value = "submissions")]
+        submissions: PathBuf,
         /// As JSON.
         #[arg(long)]
         json: bool,
@@ -66,8 +72,16 @@ fn main() -> ExitCode {
 
 fn run(cli: Cli) -> Result<ExitCode> {
     match cli.command {
-        Command::Check { content, strict } => check(&content, strict),
-        Command::List { content, json } => list(&content, json),
+        Command::Check {
+            content,
+            submissions,
+            strict,
+        } => check(&content, &submissions, strict),
+        Command::List {
+            content,
+            submissions,
+            json,
+        } => list(&content, &submissions, json),
         Command::Stats { data_dir } => stats(data_dir),
         Command::Paths { data_dir } => {
             let p = Paths::resolve(data_dir).context("no local data folder on this system")?;
@@ -85,9 +99,24 @@ fn content_dir(dir: &PathBuf) -> Result<DirFiles> {
     Ok(DirFiles::new(dir))
 }
 
-fn check(dir: &PathBuf, strict: bool) -> Result<ExitCode> {
+/// `submissions/` may be missing (nothing submitted yet); it is then empty.
+fn submissions_dir(dir: &PathBuf) -> Result<DirFiles> {
+    anyhow::ensure!(
+        dir.is_dir() || !dir.exists(),
+        "{} is not a folder",
+        dir.display()
+    );
+    Ok(DirFiles::new(dir))
+}
+
+fn check(dir: &PathBuf, submissions_at: &PathBuf, strict: bool) -> Result<ExitCode> {
     let files = content_dir(dir)?;
-    let (catalog, problems) = content::load(&files);
+    let (catalog, mut problems) = content::load(&files);
+    let (subs, more) = submissions::load(&submissions_dir(submissions_at)?, &catalog);
+    problems.extend(more.into_iter().map(|mut p| {
+        p.path = format!("submissions/{}", p.path);
+        p
+    }));
     for p in &problems {
         eprintln!("{p}");
     }
@@ -98,9 +127,13 @@ fn check(dir: &PathBuf, strict: bool) -> Result<ExitCode> {
     let warnings = problems.len() - errors;
     let questions: usize = catalog.subjects.iter().map(|s| s.questions().count()).sum();
     let chapters: usize = catalog.subjects.iter().map(|s| s.chapters.len()).sum();
+    let bytes: u64 = subs.iter().map(|s| s.size()).sum();
     println!(
-        "{} subjects, {chapters} chapters, {questions} questions: {errors} errors, {warnings} warnings",
-        catalog.subjects.len()
+        "{} subjects, {chapters} chapters, {questions} questions, {} submissions ({:.1} MB): \
+         {errors} errors, {warnings} warnings",
+        catalog.subjects.len(),
+        subs.len(),
+        bytes as f64 / f64::from(1 << 20)
     );
     Ok(if errors > 0 || (strict && warnings > 0) {
         ExitCode::FAILURE
@@ -109,11 +142,14 @@ fn check(dir: &PathBuf, strict: bool) -> Result<ExitCode> {
     })
 }
 
-fn list(dir: &PathBuf, json: bool) -> Result<ExitCode> {
+fn list(dir: &PathBuf, submissions_at: &PathBuf, json: bool) -> Result<ExitCode> {
     let files = content_dir(dir)?;
     let (catalog, _) = content::load(&files);
+    let sub_files = submissions_dir(submissions_at)?;
+    let (subs, _) = submissions::load(&sub_files, &catalog);
     if json {
-        let service = studyvut_service::Service::in_memory(Arc::new(files))?;
+        let service =
+            studyvut_service::Service::in_memory_with(Arc::new(files), Arc::new(sub_files))?;
         println!(
             "{}",
             serde_json::to_string_pretty(&service.overview(0)?.subjects)?
@@ -135,6 +171,15 @@ fn list(dir: &PathBuf, json: bool) -> Result<ExitCode> {
                 q.id,
                 q.name,
                 q.questions.len()
+            );
+        }
+        for w in subs.iter().filter(|w| w.subject == s.id) {
+            println!(
+                "  work     {}  {} ({} files, {:.1} MB)",
+                w.id,
+                w.title,
+                w.files.len(),
+                w.size() as f64 / f64::from(1 << 20)
             );
         }
         for set in &s.sets {

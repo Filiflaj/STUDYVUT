@@ -27,6 +27,8 @@ class Nav {
   subject = $state<string | null>(readSubject());
   /** The chapter open on the Study page. */
   chapter = $state<string | null>(null);
+  /** The submitted work open on the Study page, instead of a chapter. */
+  submission = $state<string | null>(null);
   /** A quiz to start when the Quiz page opens. */
   request = $state<QuizRequest | null>(null);
 
@@ -35,7 +37,10 @@ class Nav {
   }
 
   selectSubject(id: string) {
-    if (this.subject !== id) this.chapter = null;
+    if (this.subject !== id) {
+      this.chapter = null;
+      this.submission = null;
+    }
     this.subject = id;
     try {
       localStorage.setItem(SUBJECT_KEY, id);
@@ -48,6 +53,14 @@ class Nav {
   study(subject: string, chapter?: string) {
     this.selectSubject(subject);
     if (chapter) this.chapter = chapter;
+    this.submission = null;
+    this.tab = "study";
+  }
+
+  /** Open a subject's submitted work on the Study page. */
+  work(subject: string, id: string) {
+    this.selectSubject(subject);
+    this.submission = id;
     this.tab = "study";
   }
 
