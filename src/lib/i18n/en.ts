@@ -137,7 +137,7 @@ export const en = {
     about: "About",
     version: "Version",
     links: "Links",
-    basedOn: "Built after HARDWARIO TOWER Bridge (MIT). Fonts Inter and Roboto Mono (OFL), icons Lucide (ISC), math KaTeX (MIT).",
+    basedOn: "Fonts Inter and Roboto Mono (OFL), icons Lucide (ISC), math KaTeX (MIT).",
   },
   whatsNew: {
     title: "What's new",

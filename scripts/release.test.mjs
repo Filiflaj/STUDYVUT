@@ -129,7 +129,7 @@ describe("parseChangelog", () => {
 
   const broken = {
     "the title": ["# Změny", "", "## Unreleased"],
-    "tower-bridge's (unreleased) heading": ["# Changelog", "", "## 0.2.0 (unreleased)", "", "### Opravy", "", "- x"],
+    "an (unreleased) version heading": ["# Changelog", "", "## 0.2.0 (unreleased)", "", "### Opravy", "", "- x"],
     "a heading without a date": ["# Changelog", "", "## 0.2.0", "", "### Opravy", "", "- x"],
     "an impossible date": ["# Changelog", "", "## 0.2.0 (2026-02-30)", "", "### Opravy", "", "- x"],
     "Unreleased after a release": [

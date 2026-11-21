@@ -23,7 +23,7 @@ STUDYVUT is a desktop study app (Tauri 2, Rust, Svelte 5) for the subjects of th
 
 There are **no success statistics** (no charts, scores, best results or streaks): the user removed them as useless on 2026-11-21. Progress is kept only where it drives learning: the latest answer per question (My mistakes) and its review schedule (Due for review). The result screen at the end of a quiz stays, as in the trainer.
 
-It is modelled on [hardwario/tower-bridge](https://github.com/hardwario/tower-bridge) (MIT): the same workspace layout, the same look (sidebar, cards, settings rows), the same conventions. When in doubt, do what TOWER Bridge does. The user chose this on 2026-11-21.
+Keep its layout, look (sidebar, cards, settings rows) and conventions consistent: new code follows the patterns already here.
 
 The repository is **public** and the app is **desktop only** (both decided by the user, 2026-11-21).
 
@@ -122,8 +122,8 @@ The user drops originals into `inbox/<subject>/` (PDF, slides, photos, notes, pr
 - Code, comments, docs and content keys in English; content and the changelog in Czech; UI texts in `src/lib/i18n/` (cs and en, the same keys; TypeScript enforces it).
 - Rust: `unwrap`/`expect` denied by clippy, `unsafe` denied; errors carry a machine-readable code to the UI (`ServiceError::code`).
 - Settings use snake_case serde; `SETTINGS_VERSION` triggers upgrade steps; saves are atomic.
-- **State never changes the font weight** (from TOWER Bridge): active, current or selected items show it with colour, background, a border or an indicator.
-- Subject colours come from TOWER Bridge's validated chart palette (`src/lib/palette.ts`); status colours (good, warning, critical) are reserved for right/wrong and problems.
+- **State never changes the font weight**: active, current or selected items show it with colour, background, a border or an indicator.
+- Subject colours come from a validated palette (`src/lib/palette.ts`); status colours (good, warning, critical) are reserved for right/wrong and problems.
 - Charts follow the dataviz method: the activity chart's two steps of the accent were checked with its validator in both themes (`ActivityChart.svelte`).
 
 ## Versions and releases
@@ -167,12 +167,15 @@ One version, `X.Y.Z`, for the app and the study material; the policy is in
 
 ## Key learnings
 
-- 2026-11-21. Unlike TOWER Bridge, which raised the version with the first
-  change as `## X.Y.Z (unreleased)`, STUDYVUT collects changelog lines under
+- 2026-11-21. Rather than raising the version with the first change after a
+  release (`## X.Y.Z (unreleased)`), STUDYVUT collects changelog lines under
   `## Unreleased` and changes the version only in the tagged
   `Release vX.Y.Z` commit made by `scripts/release.mjs`: material changes
   come several times a week and the level is known only at the release, and
   the user wants every version change to be one commit with its tag.
+- 2026-11-21. The user asked that the app and its docs name no other project
+  it was derived from. The only exception is the MIT notice in
+  `THIRD-PARTY-NOTICES.md`, which the license requires; keep it there only.
 - 2026-11-21. The BFY1 trainer has 87 questions (6 numeric), not 110: a naive
   `grep "{id:'"` also counts the study-text chapters.
 - 2026-11-21. Tauri's `window.confirm` is not reliable in every webview:

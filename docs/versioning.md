@@ -24,7 +24,7 @@ app's version stays as it is.
 |---|---|
 | `package.json`, `package-lock.json` | `version`; in the lock also `packages[""].version` |
 | `Cargo.toml` | `[workspace.package] version`, which the core, service and CLI inherit (`version.workspace = true`) |
-| `src-tauri/Cargo.toml` | `[package] version`, a literal as in TOWER Bridge; the app reads it at run time (Tauri's package info) |
+| `src-tauri/Cargo.toml` | `[package] version`, a literal; the app reads it at run time (Tauri's package info) |
 | `Cargo.lock` | the workspace's own packages |
 | `CHANGELOG.md` | the newest `## X.Y.Z (YYYY-MM-DD)` heading |
 
@@ -103,7 +103,7 @@ The grammar, which the app relies on and `check:version` enforces:
   release turns it into `## X.Y.Z (YYYY-MM-DD)` (the release's local date)
   and opens a new, empty `## Unreleased` above it.
 - Releases follow newest first, `## X.Y.Z (YYYY-MM-DD)`, versions falling,
-  dates not rising. No `(unreleased)` headings as in TOWER Bridge.
+  dates not rising. No `## X.Y.Z (unreleased)` headings.
 - Within a section the groups `### Materiály`, `### Aplikace`, `### Opravy`,
   in this order, each only when it has lines.
 - Each change is a `- ` item in a group; a long one wraps onto lines indented
@@ -158,10 +158,10 @@ Through npm, the arguments go after `--`. Without it npm takes `--dry-run`
 and `--trailer` for itself; the script then still runs dry, and refuses a
 lost `--trailer`.
 
-## Why not as in TOWER Bridge
+## Why the version changes only at a release
 
-TOWER Bridge raises the version with the first change after a release, under
-a `## X.Y.Z (unreleased)` heading, and tags by hand. STUDYVUT collects lines
+Instead of raising the version with the first change after a release (under a
+`## X.Y.Z (unreleased)` heading) and tagging by hand, STUDYVUT collects lines
 under `## Unreleased` and raises the version only when releasing:
 
 - material changes come several times a week, and which number to raise is
@@ -170,10 +170,10 @@ under `## Unreleased` and raises the version only when releasing:
 - a build always carries the number of a release that exists (a build of
   `main` between releases carries the last one).
 
-Everything else follows TOWER Bridge: the same version fields, a literal
-version in `src-tauri/Cargo.toml`, none in `tauri.conf.json`, the
-`check-version.mjs` step in CI and in the release workflow, tags `v*` that
-start the release, and a draft release that a person publishes.
+The rest: a literal version in `src-tauri/Cargo.toml`, none in
+`tauri.conf.json`, the `check-version.mjs` step in CI and in the release
+workflow, tags `v*` that start the release, and a draft release that a person
+publishes.
 
 ## Scripts
 

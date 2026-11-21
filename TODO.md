@@ -11,10 +11,9 @@ Open and ongoing work. Released changes go in [CHANGELOG.md](CHANGELOG.md).
 
 ## App
 
-- [ ] UI smoke test of every page and state in the browser preview (Chrome and WebKit), as
-      TOWER Bridge's `scripts/ui-smoke.mjs`.
-- [ ] Update notices: ask GitHub's `releases/latest` once a day, as TOWER Bridge's `update.rs`.
-- [ ] Generated third-party notices of every crate and npm package (TOWER Bridge's `npm run notices`).
+- [ ] UI smoke test of every page and state in the browser preview (Chrome and WebKit).
+- [ ] Update notices: ask GitHub's `releases/latest` once a day.
+- [ ] Generated third-party notices of every crate and npm package.
 - [ ] Syntax highlighting of code blocks (BPC-PC1M).
 - [ ] Search across all study texts.
 - [ ] Import of an exported progress file (moving to another computer).

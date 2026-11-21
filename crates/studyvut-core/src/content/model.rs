@@ -80,8 +80,8 @@ impl Subject {
     }
 }
 
-/// The subject's colour, from the app's palette (the chart colours of
-/// TOWER Bridge, checked for contrast and colour blindness).
+/// The subject's colour, from the app's palette (checked for contrast and
+/// colour blindness).
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Color {

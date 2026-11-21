@@ -1,4 +1,4 @@
-//! Schema migrations (`PRAGMA user_version` ladder), as in TOWER Bridge.
+//! Schema migrations (`PRAGMA user_version` ladder).
 
 use rusqlite::Connection;
 

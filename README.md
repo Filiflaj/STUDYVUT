@@ -65,5 +65,4 @@ v [docs/versioning.md](docs/versioning.md). Nový obsah: originály do
 `inbox/<předmět>/` (git je ignoruje), zpracovaný obsah do `content/<předmět>/`
 podle [docs/content.md](docs/content.md).
 
-Aplikace je postavená podle [HARDWARIO TOWER Bridge](https://github.com/hardwario/tower-bridge)
-(MIT). Licence: [MIT](LICENSE), cizí části v [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Licence: [MIT](LICENSE), cizí části v [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

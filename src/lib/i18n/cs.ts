@@ -144,7 +144,7 @@ export const cs: Messages = {
     version: "Verze",
     links: "Odkazy",
     basedOn:
-      "Postaveno podle HARDWARIO TOWER Bridge (MIT). Písma Inter a Roboto Mono (OFL), ikony Lucide (ISC), matematika KaTeX (MIT).",
+      "Písma Inter a Roboto Mono (OFL), ikony Lucide (ISC), matematika KaTeX (MIT).",
   },
   whatsNew: {
     title: "Co je nového",

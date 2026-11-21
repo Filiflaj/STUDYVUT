@@ -4,13 +4,11 @@ STUDYVUT includes or is derived from the following works. The crates and npm
 packages it depends on carry their own licenses (see `Cargo.lock` and
 `package-lock.json`); a generated list of all of them is on the TODO list.
 
-## HARDWARIO TOWER Bridge
+## Derived code
 
-The workspace layout, parts of the Rust code (settings, paths, the SQLite
-migration ladder, the Tauri setup) and of the frontend (the stylesheet, the
-sidebar, `Icon`, `PrefsSwitcher`, `SegmentedControl`, `Section`, `Field`,
-`Toggle`, the i18n helpers, the release scripts' approach) and the subject
-colour palette are derived from https://github.com/hardwario/tower-bridge.
+Parts of the workspace layout, the Rust code, the stylesheet, some frontend
+components and the subject palette are derived from a project under this
+license, which requires the notice below.
 
 ```
 MIT License

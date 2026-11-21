@@ -1,7 +1,7 @@
 import type { Color } from "./types";
 
 /**
- * Subject colours: TOWER Bridge's chart palette. Each has a shade per theme
+ * Subject colours. Each has a shade per theme
  * with at least 3.7:1 contrast against that theme's card surface, and
  * neighbours stay apart under normal vision and protan/deutan simulation.
  * Red is left out, so a subject never looks like a mistake.

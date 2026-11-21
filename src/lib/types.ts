@@ -4,7 +4,7 @@ export type ThemePref = "system" | "light" | "dark";
 export type LanguagePref = "system" | "cs" | "en";
 export type Lang = "cs" | "en";
 
-/** Subject colours: the TOWER Bridge chart palette (palette.ts). */
+/** Subject colours (palette.ts). */
 export const COLORS = ["blue", "green", "pink", "gold", "violet", "teal", "orange", "graphite"] as const;
 export type Color = (typeof COLORS)[number];
 
