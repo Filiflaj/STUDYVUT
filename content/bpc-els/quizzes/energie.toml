@@ -1,0 +1,221 @@
+name = 'Elektrická energie'
+description = 'veličiny a jednotky, vznik a účinky proudu, výroba a spotřeba v ČR, výpočty energie'
+
+[[question]]
+id = 'EN-01'
+topic = 'Elektrická energie'
+text = '''
+Která jednotka patří k elektrické vodivosti $G$?
+'''
+options = ['siemens (S)', 'ohm (Ω)', 'henry (H)', 'farad (F)']
+answer = 0
+layout = 'grid'
+explanation = '''
+Vodivost je převrácená hodnota odporu, $G = 1/R$, jednotka **siemens**, 1 S = 1/Ω.
+'''
+notes = ['', 'Ohm je jednotka odporu.', 'Henry je jednotka indukčnosti.', 'Farad je jednotka kapacity.']
+
+[[question]]
+id = 'EN-02'
+kind = 'numeric'
+topic = 'Elektrická energie'
+text = '''
+Kolik joulů je 1 kWh? Zadej v MJ.
+'''
+value = 3.6
+tolerance = 0.001
+unit = 'MJ'
+explanation = '''
+$$1\ \text{kWh} = 1000\ \text{W}\cdot3600\ \text{s} = 3\,600\,000\ \text{J} = 3{,}6\ \text{MJ}$$
+'''
+
+[[question]]
+id = 'EN-03'
+kind = 'numeric'
+topic = 'Elektrická energie'
+text = '''
+Rychlovarná konvice s příkonem 2000 W běží 3 minuty. Kolik energie spotřebuje? Zadej v kWh.
+'''
+value = 0.1
+tolerance = 0.001
+unit = 'kWh'
+explanation = '''
+$$E = P\,t = 2\ \text{kW}\cdot\frac{3}{60}\ \text{h} = 2\cdot0{,}05 = 0{,}1\ \text{kWh}$$
+V joulech $2000\cdot180 = 360\,000$ J $= 0{,}36$ MJ.
+'''
+
+[[question]]
+id = 'EN-04'
+kind = 'numeric'
+topic = 'Elektrická energie'
+text = '''
+Set-top box má v pohotovosti (stand-by) příkon 5 W a je zapojený celý rok (8760 h). Kolik energie spotřebuje? Zadej v kWh.
+'''
+value = 43.8
+tolerance = 0.05
+unit = 'kWh'
+explanation = '''
+$$E = P\,t = 5\ \text{W}\cdot8760\ \text{h} = 43\,800\ \text{Wh} = 43{,}8\ \text{kWh}$$
+Při 6 Kč/kWh asi 263 Kč ročně za přístroj „ve spánku“.
+'''
+
+[[question]]
+id = 'EN-05'
+kind = 'numeric'
+topic = 'Elektrická energie'
+text = '''
+Instalovaný výkon elektráren v ČR je 23 823 MW, roční výroba 76,4 TWh. Na kolik procent instalovaného výkonu v průměru běží? (rok = 8760 h)
+'''
+value = 36.6
+tolerance = 0.3
+unit = '%'
+explanation = '''
+Teoretické maximum: $23\,823\ \text{MW}\cdot8760\ \text{h} = 208\,689\,480\ \text{MWh} \approx 208{,}7$ TWh.
+$$\frac{76{,}4}{208{,}7} = 0{,}366 = 36{,}6\ \%$$
+'''
+
+[[question]]
+id = 'EN-06'
+kind = 'numeric'
+topic = 'Elektrická energie'
+text = '''
+Roční spotřeba elektřiny v ČR byla 56,9 TWh. Kolik je to na jednoho obyvatele při 10,9 milionu obyvatel? Zadej v MWh.
+'''
+value = 5.22
+tolerance = 0.02
+unit = 'MWh'
+explanation = '''
+$$\frac{56{,}9\cdot10^{12}\ \text{Wh}}{10{,}9\cdot10^{6}} = 5{,}22\cdot10^{6}\ \text{Wh} = 5{,}22\ \text{MWh}$$
+Pro srovnání: prezentace uvádí 0,4 až 7,2 MWh na obyvatele podle regionu světa.
+'''
+
+[[question]]
+id = 'EN-07'
+topic = 'Elektrická energie'
+text = '''
+Které dva účinky elektrického proudu nastávají **vždy**, v každém vodiči?
+'''
+options = ['tepelný a magnetický', 'světelný a chemický', 'chemický a fyziologický', 'magnetický a světelný']
+answer = 0
+explanation = '''
+Každý proud zahřívá vodič (Jouleovo teplo) a vytváří kolem sebe magnetické pole. Světelný účinek je jen v plynech a polovodičích, chemický ve vodivých kapalinách, fyziologický na živé organismy.
+'''
+notes = ['', 'Světlo vzniká jen v plynech a polovodičích, chemie jen v elektrolytech.', 'Ani jeden nenastává vždy.', 'Světelný účinek je jen v určitém prostředí.']
+
+[[question]]
+id = 'EN-08'
+topic = 'Elektrická energie'
+text = '''
+Na jakém jevu je založený termočlánek používaný k měření teploty?
+'''
+options = ['Seebeckův jev (tepelná energie na elektrickou)', 'elektromagnetická indukce', 'fotoelektrický jev', 'elektrolýza']
+answer = 0
+explanation = '''
+Spoj dvou různých kovů zahřátý na jinou teplotu než druhý konec vytváří napětí: **Seebeckův jev**. Přeměna tepelné energie na elektrickou.
+'''
+notes = ['', 'Indukce je přeměna mechanické energie (generátor).', 'To je fotočlánek (světlo na elektřinu).', 'Elektrolýza je chemický účinek proudu, ne jeho zdroj.']
+
+[[question]]
+id = 'EN-09'
+topic = 'Elektrická energie'
+text = '''
+Proč se měděný plech nemá přišroubovat ocelovými vruty?
+'''
+options = [
+  'Dva různé kovy ve vlhku tvoří galvanický článek a méně ušlechtilá ocel koroduje.',
+  'Ocel je magnetická a přitahuje měď.',
+  'Měď je příliš měkká a vruty nedrží.',
+  'Ocel má menší vodivost, plech by se nevodivě uzemnil.',
+]
+answer = 0
+explanation = '''
+Elektrochemická koroze: měď a ocel s vlhkostí vytvoří článek, méně ušlechtilý kov se rozpouští. Na stejném principu funguje ochrana **obětovanou elektrodou** (hořčík, hliník, zinek), která koroduje místo chráněné oceli.
+'''
+notes = ['', 'Měď magnetická není; o magnetismus nejde.', 'Mechanika tu není problém.', 'Jde o korozi, ne o vodivost.']
+
+[[question]]
+id = 'EN-10'
+topic = 'Elektrická energie'
+text = '''
+Který zdroj měl v roce 2025 největší podíl na výrobě elektřiny v ČR?
+'''
+options = ['jaderné elektrárny (42 %)', 'hnědé uhlí (33 %)', 'fotovoltaika (6 %)', 'zemní plyn (5 %)']
+answer = 0
+layout = 'grid'
+explanation = '''
+Podle prezentace (EGÚ Brno, ERÚ) vyrobily v roce 2025 jaderné elektrárny 42 %, hnědé uhlí 33 %, fotovoltaika 6 % a plyn 5 %. Obnovitelné zdroje celkem 16 %.
+'''
+notes = ['', 'Hnědé uhlí je druhé.', 'Fotovoltaika roste, ale je jen 6 %.', 'Plyn je kolem 5 %.']
+
+[[question]]
+id = 'EN-11'
+topic = 'Elektrická energie'
+text = '''
+K čemu slouží přečerpávací vodní elektrárna?
+'''
+options = [
+  'Přesouvá energii v čase: v přebytku čerpá vodu nahoru, ve špičce vyrábí.',
+  'Vyrábí víc energie, než spotřebuje na čerpání.',
+  'Chladí jaderné elektrárny.',
+  'Slouží k zavlažování a elektřinu vyrábí jen vedlejším produktem.',
+]
+answer = 0
+explanation = '''
+Přečerpávací elektrárna je „baterie“ sítě: při přebytku (noc, slunečné poledne) čerpá vodu do horní nádrže, ve špičce ji pouští přes turbíny. Kvůli ztrátám vyrobí méně, než spotřebuje, ale vyrovnává výkon v síti.
+'''
+notes = ['', 'Ztráty čerpání a turbíny to nedovolí.', 'S chlazením nemá nic společného.', 'Je to energetické zařízení.']
+
+[[question]]
+id = 'EN-12'
+topic = 'Elektrická energie'
+text = '''
+Jakou soustavu zavedl v roce 1920 výnos ministra veřejných prací pro místní sítě?
+'''
+options = ['trojfázovou 50 Hz, 3 × 380/220 V', 'stejnosměrnou 220 V', 'jednofázovou 60 Hz, 110 V', 'trojfázovou 60 Hz, 3 × 400/230 V']
+answer = 0
+explanation = '''
+Od roku 1920 trojfázová soustava **50 Hz, 3 × 380/220 V** pro místní sítě a 100 kV pro dálková vedení (dnes 3 × 400/230 V).
+'''
+notes = ['', 'Stejnosměrný rozvod neuměl přenášet velké výkony.', '60 Hz a 110 V je americký standard.', '400/230 V je dnešní hodnota; kmitočet byl vždy 50 Hz.']
+
+[[question]]
+id = 'EN-13'
+topic = 'Elektrická energie'
+text = '''
+Které divadlo bylo v roce 1882 prvním plně elektrifikovaným divadlem v Evropě?
+'''
+options = ['Městské divadlo v Brně (dnes Mahenovo)', 'Národní divadlo v Praze', 'Stavovské divadlo v Praze', 'Vídeňská státní opera']
+answer = 0
+explanation = '''
+Brněnské Městské divadlo (Edisonova soustava, 1920 žárovek, vlastní parní elektrárna asi 300 m od divadla) bylo spuštěno 14. 11. 1882.
+'''
+notes = ['', 'Národní divadlo bylo dostavěné až 1881–1883 a elektrifikace v Evropě prvenství nemá.', 'Prvenství patří Brnu.', 'Prvenství patří Brnu.']
+
+[[question]]
+id = 'EN-14'
+kind = 'numeric'
+topic = 'Elektrická energie'
+text = '''
+Žárovka 60 W přemění na světlo 5 % příkonu. Kolik wattů jde do světla?
+'''
+value = 3
+tolerance = 0.01
+unit = 'W'
+explanation = '''
+$$P_\text{světlo} = \eta\,P = 0{,}05\cdot60 = 3\ \text{W}$$
+Zbylých 57 W je teplo. Proto mají klasické žárovky účinnost jen 3 až 8 % a nahrazují se LED.
+'''
+
+[[question]]
+id = 'EN-15'
+topic = 'Elektrická energie'
+text = '''
+Jakou účinnost mají podle prezentace současné komerčně dostupné fotovoltaické články?
+'''
+options = ['do 22 až 24 %', 'kolem 90 %', 'kolem 50 %', 'pod 3 %']
+answer = 0
+layout = 'grid'
+explanation = '''
+Komerční články mají účinnost do **22 až 24 %**; hustota toku sluneční energie je přitom do 1 kW/m². Energetická návratnost fotovoltaiky je asi 5 let.
+'''
+notes = ['', 'Tak účinné jsou motory nebo transformátory, ne články.', 'Tolik zatím ani laboratorní články.', 'To je spíš účinnost žárovky.']

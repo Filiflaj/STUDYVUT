@@ -23,6 +23,11 @@
   nástroje) s řešenými příklady; 203 otázek ze cvičení, ze sbírky
   a z pracovních sešitů COZ1–COZ6 a sady **Test 1 nanečisto**, **Test 2
   nanečisto** a **Zkouška nanečisto**.
+- BPC-ELS: nový předmět Elektrotechnický seminář: **Hodnocení předmětu**
+  (podmínky zápočtu, plán semestru), 11 kapitol k tématům semináře
+  a 5 k laboratorním úlohám; 276 otázek ke všem tématům a k výpočetním
+  cvičením VC1–VC6 s celým postupem a sady **Výpočetní cvičení nanečisto**,
+  **Příprava na laborky** a **Závěrečná kontrola nanečisto**.
 - BPC-PC1M: 7 kapitol jazyka C (funkce až spojový seznam) a 76 otázek
   v 7 kvízech.
 - Odevzdané práce: 6 protokolů z fyzikálních laboratoří (BPC-FY1) a 3 z MPE

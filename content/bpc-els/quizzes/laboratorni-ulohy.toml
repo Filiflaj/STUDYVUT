@@ -1,0 +1,320 @@
+name = 'Laboratorní úlohy'
+description = 'co se v LC1 až LC4 a v úloze s osciloskopem měří, jak a co má vyjít'
+
+# ---------- LC1
+[[question]]
+id = 'LAB-01'
+kind = 'numeric'
+topic = 'LC1: Děliče napětí a proudu'
+text = '''
+LC1, dělič napětí: $R_1 = 220\ \Omega$, $R_2 = 100\ \Omega$, napětí zdroje bylo nastaveno a změřeno jako 10,05 V. Jaké teoretické $U_1$ se má zapsat do řádku „vypočteno“?
+'''
+value = 6.909
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+Do výpočtu se dosazuje **skutečně naměřené** napětí zdroje:
+$$U_1 = U\,\frac{R_1}{R_1 + R_2} = 10{,}05\cdot\frac{220}{320} = 6{,}909\ \text{V}$$
+'''
+
+[[question]]
+id = 'LAB-02'
+topic = 'LC1: Děliče napětí a proudu'
+text = '''
+Jak se v LC1 nastavuje proud 100 mA do děliče proudu?
+'''
+options = ['regulátorem napětí zdroje podle ampérmetru v přívodu', 'výměnou rezistorů', 'proudovým omezením zdroje bez ampérmetru', 'podle voltmetru na 10 V']
+answer = 0
+explanation = '''
+Zdroj se reguluje tak, aby miliampérmetr v přívodu ukazoval celkový proud $I$ = 100 mA. Pak se měří $I_1$ a $I_2$.
+'''
+notes = ['', 'Rezistory jsou dané (220 Ω, 100 Ω).', 'Proud se kontroluje ampérmetrem.', 'Napětí by dalo jiný proud (100 mA odpovídá asi 6,9 V).']
+
+[[question]]
+id = 'LAB-03'
+kind = 'numeric'
+topic = 'LC1: Děliče napětí a proudu'
+text = '''
+LC1, dělič proudu: celkový proud 100 mA, $R_1 = 220\ \Omega$, $R_2 = 100\ \Omega$. Jaký proud má teoreticky téct rezistorem $R_2$?
+'''
+value = 68.75
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I_2 = I\,\frac{R_1}{R_1 + R_2} = 100\cdot\frac{220}{320} = 68{,}75\ \text{mA}$$
+'''
+
+[[question]]
+id = 'LAB-04'
+topic = 'LC1: Děliče napětí a proudu'
+text = '''
+Které zákony se v závěru LC1 ověřují kromě vztahů pro děliče?
+'''
+options = ['1. KZ v uzlu děliče proudu a 2. KZ ve smyčce děliče napětí', 'jen Ohmův zákon', 'princip superpozice', 'Théveninova věta']
+answer = 0
+explanation = '''
+$I_1 + I_2 = I$ (1. KZ) a $U_1 + U_2 = U$ (2. KZ).
+'''
+notes = ['', 'Ohmův zákon je skrytý ve vztazích děličů, ověřují se ale KZ.', 'Superpozice je LC3.', 'Thévenin je LC4.']
+
+# ---------- LC2
+[[question]]
+id = 'LAB-05'
+topic = 'LC2: Postupné zjednodušování'
+text = '''
+Podle čeho se v LC2 nastavuje proměnný rezistor, který nahrazuje dvojici rezistorů?
+'''
+options = ['aby celkový proud obvodu zůstal stejný jako před náhradou', 'na vypočtenou hodnotu ohmmetrem', 'na nejvyšší hodnotu', 'aby napětí zdroje bylo 9 V']
+answer = 0
+explanation = '''
+Náhradní rezistor má odebírat stejný proud jako nahrazovaná dvojice; nastaví se podle ampérmetru a teprve potom se (odpojený) změří ohmmetrem.
+'''
+notes = ['', 'Ohmmetrem se měří až nastavený rezistor; cílem je ověřit výpočet měřením.', 'To by změnilo proud.', 'Napětí zdroje se nemění, nastavuje se jen P.']
+
+[[question]]
+id = 'LAB-06'
+kind = 'numeric'
+topic = 'LC2: Postupné zjednodušování'
+text = '''
+LC2: $U = 9$ V, $R_1 = 220\ \Omega$ paralelně k $R_2 + R_3 = 250\ \Omega$. Jaký celkový proud $I$ má ukazovat ampérmetr?
+'''
+value = 76.9
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$I_1 = \frac{9}{220} = 40{,}9\ \text{mA}, \qquad I_2 = \frac{9}{250} = 36{,}0\ \text{mA}, \qquad I = I_1 + I_2 = 76{,}9\ \text{mA}$$
+nebo přímo $I = 9/117{,}0 = 76{,}9$ mA.
+'''
+
+[[question]]
+id = 'LAB-07'
+kind = 'numeric'
+topic = 'LC2: Postupné zjednodušování'
+text = '''
+LC2: v sériové větvi $R_2 = 100\ \Omega$, $R_3 = 150\ \Omega$ teče 36,0 mA. Jaké napětí je na $R_3$?
+'''
+value = 5.4
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_3 = R_3 I_2 = 150\cdot0{,}036 = 5{,}40\ \text{V}$$
+Na $R_2$ je 3,60 V, dohromady 9 V (2. KZ).
+'''
+
+[[question]]
+id = 'LAB-08'
+topic = 'LC2: Postupné zjednodušování'
+text = '''
+Proč se proměnný rezistor před měřením ohmmetrem odpojí z obvodu?
+'''
+options = ['Ohmmetr musí měřit jen samotný rezistor, bez paralelních cest a cizího napětí.', 'Aby se nezměnilo napětí zdroje.', 'Protože ohmmetr měří jen střídavě.', 'Odpojovat ho není potřeba.']
+answer = 0
+explanation = '''
+V obvodu by ohmmetr měřil i paralelní větve a na rezistoru by mohlo být napětí zdroje. Navíc se při odpojování nesmí pohnout jezdcem.
+'''
+notes = ['', 'Zdroj je při měření odporu vypnutý.', 'Ohmmetr měří stejnosměrně.', 'Je to podmínka správného měření.']
+
+# ---------- LC3
+[[question]]
+id = 'LAB-09'
+topic = 'LC3: Princip superpozice'
+text = '''
+Jak se v LC3 nahradí zdroj $U_\text{z2}$, když se měří příspěvek samotného $U_\text{z1}$?
+'''
+options = ['zdroj se vypne, odpojí se od něj vodiče a ty se spojí (zkrat)', 'zdroj se jen vypne vypínačem', 'zdroj se nastaví na 0 V a nechá zapojený', 'vodiče se odpojí a nechají volné']
+answer = 0
+explanation = '''
+Ideální zdroj napětí se v superpozici nahrazuje zkratem. Vypnutý laboratorní zdroj zkratem není, proto se vodiče od zdroje odpojí a spojí.
+'''
+notes = ['', 'Vypnutý zdroj není definovaný zkrat.', 'Návod chce skutečný zkrat místo zdroje.', 'Volné vodiče = rozpojení, to je náhrada zdroje proudu.']
+
+[[question]]
+id = 'LAB-10'
+kind = 'numeric'
+topic = 'LC3: Princip superpozice'
+figure = 'images/lc3-obvod.svg'
+text = '''
+LC3, oba zdroje 10 V, $R_1 = 100\ \Omega$, $R_2 = 330\ \Omega$, $R_3 = 220\ \Omega$. Jaké je napětí uzlu A (nad $R_3$)?
+'''
+value = 7.414
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+MUN pro uzel A (oba zdroje se sériovými rezistory převedené na zdroje proudu):
+$$\left(\frac{1}{100} + \frac{1}{330} + \frac{1}{220}\right)U_\text{A} = \frac{10}{100} + \frac{10}{330}$$
+$$0{,}017576\,U_\text{A} = 0{,}130303, \qquad U_\text{A} = 7{,}414\ \text{V}$$
+Proud $I_3 = 7{,}414/220 = 33{,}70$ mA, stejně jako superpozicí.
+'''
+
+[[question]]
+id = 'LAB-11'
+kind = 'numeric'
+topic = 'LC3: Princip superpozice'
+figure = 'images/lc3-obvod.svg'
+text = '''
+LC3 s oběma zdroji: $U_\text{A} = 7{,}414$ V. Jaký je proud $I_2$ (šipka od uzlu A k $U_\text{z2}$)?
+'''
+value = -7.84
+tolerance = 0.02
+unit = 'mA'
+sign_hint = 'Napětí uzlu A je menší než 10 V zdroje Uz2, proud teče proti šipce.'
+explanation = '''
+$$I_2 = \frac{U_\text{A} - U_\text{z2}}{R_2} = \frac{7{,}414 - 10}{330} = -7{,}84\ \text{mA}$$
+Superpozicí: $17{,}24 - 25{,}08 = -7{,}84$ mA.
+'''
+
+[[question]]
+id = 'LAB-12'
+topic = 'LC3: Princip superpozice'
+text = '''
+Co ukáže druhá část LC3 s nelineárním rezistorem $R_\text{2n}$?
+'''
+options = ['Součet proudů s jednotlivými zdroji se nerovná proudu s oběma zdroji: superpozice neplatí.', 'Superpozice platí stejně jako v lineárním obvodu.', 'Proudy se nedají změřit.', 'Nelineární rezistor se chová jako zkrat.']
+answer = 0
+explanation = '''
+Odpor $R_\text{2n}$ závisí na napětí na něm, a to je s jedním zdrojem jiné než se dvěma. Proto $I' + I'' \ne I$.
+'''
+notes = ['', 'Právě v tom je rozdíl proti lineárnímu obvodu.', 'Měří se stejně jako v lineární části.', 'Nelineární rezistor má konečný, proměnný odpor.']
+
+# ---------- LC4
+[[question]]
+id = 'LAB-13'
+kind = 'numeric'
+topic = 'LC4: Metoda náhradního zdroje'
+figure = 'images/lc4-obvod.svg'
+text = '''
+LC4: $U = 10$ V, $R_1 = 2{,}2$ kΩ, $R_2 = 4{,}7$ kΩ. Jaké je napětí naprázdno $U_\text{i}$ na svorkách A–B?
+'''
+value = 6.812
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$$U_\text{i} = U\,\frac{R_2}{R_1 + R_2} = 10\cdot\frac{4{,}7}{6{,}9} = 6{,}812\ \text{V}$$
+'''
+
+[[question]]
+id = 'LAB-14'
+kind = 'numeric'
+topic = 'LC4: Metoda náhradního zdroje'
+figure = 'images/lc4-obvod.svg'
+text = '''
+LC4: jaký je vnitřní odpor $R_\text{i}$ obvodu ($R_1 = 2{,}2$ kΩ, $R_2 = 4{,}7$ kΩ)? Zadej v kΩ.
+'''
+value = 1.499
+tolerance = 0.001
+unit = 'kΩ'
+explanation = '''
+Zdroj nahrazený zkratem, $R_1$ a $R_2$ jsou paralelně:
+$$R_\text{i} = \frac{2{,}2\cdot4{,}7}{2{,}2 + 4{,}7} = \frac{10{,}34}{6{,}9} = 1{,}499\ \text{k}\Omega$$
+'''
+
+[[question]]
+id = 'LAB-15'
+kind = 'numeric'
+topic = 'LC4: Metoda náhradního zdroje'
+figure = 'images/lc4-obvod.svg'
+text = '''
+LC4: náhradní zdroj $U_\text{i} = 6{,}812$ V, $R_\text{i} = 1499\ \Omega$, zátěž $R_\text{z1} = 330\ \Omega$. Jaký proud teče zátěží?
+'''
+value = 3.724
+tolerance = 0.002
+unit = 'mA'
+explanation = '''
+$$I_\text{z1} = \frac{U_\text{i}}{R_\text{i} + R_\text{z1}} = \frac{6{,}812}{1829} = 3{,}724\ \text{mA}, \qquad U_\text{z1} = 330\cdot0{,}003724 = 1{,}229\ \text{V}$$
+'''
+
+[[question]]
+id = 'LAB-16'
+kind = 'numeric'
+topic = 'LC4: Metoda náhradního zdroje'
+figure = 'images/lc4-obvod.svg'
+text = '''
+LC4: stejný náhradní zdroj, zátěž $R_\text{z2} = 680\ \Omega$. Jaké napětí je na zátěži?
+'''
+value = 2.126
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$$I_\text{z2} = \frac{6{,}812}{1499 + 680} = \frac{6{,}812}{2179} = 3{,}126\ \text{mA}, \qquad U_\text{z2} = 680\cdot0{,}003126 = 2{,}126\ \text{V}$$
+'''
+
+[[question]]
+id = 'LAB-17'
+topic = 'LC4: Metoda náhradního zdroje'
+text = '''
+Jak se v LC4 správně měří vnitřní odpor $R_\text{im}$ nahrazovaného obvodu?
+'''
+options = ['zdroj odpojit a nahradit propojkou, místo zátěže ohmmetr', 'ohmmetrem na svorkách se zapnutým zdrojem', 'zdroj jen vypnout a nechat zapojený', 'voltmetrem naprázdno']
+answer = 0
+explanation = '''
+$R_\text{i}$ se určuje se zdrojem napětí nahrazeným zkratem. Ohmmetr nesmí měřit obvod pod napětím.
+'''
+notes = ['', 'Ohmmetr na obvodu pod napětím měří špatně a může se poškodit.', 'Vypnutý zdroj není definovaný zkrat.', 'Voltmetrem naprázdno se měří $U_\text{i}$, ne $R_\text{i}$.']
+
+[[question]]
+id = 'LAB-18'
+kind = 'numeric'
+topic = 'LC4: Metoda náhradního zdroje'
+text = '''
+Autobaterie má naprázdno 12,6 V; při proudu 50 A klesne napětí na 11,6 V. Jaký proud by dodala do zkratu?
+'''
+value = 630
+tolerance = 1
+unit = 'A'
+explanation = '''
+$$R_\text{i} = \frac{12{,}6 - 11{,}6}{50} = 0{,}02\ \Omega, \qquad I_\text{k} = \frac{U_0}{R_\text{i}} = \frac{12{,}6}{0{,}02} = 630\ \text{A}$$
+'''
+
+# ---------- LC6 (v plánu LC5)
+[[question]]
+id = 'LAB-19'
+topic = 'LC6: Práce s osciloskopem'
+text = '''
+Co je v úloze s osciloskopem potřeba udělat před prvním měřením signálu z generátoru?
+'''
+options = ['nastavit poměr sondy 10× na sondě i v menu a sondu zkompenzovat na kalibračním signálu', 'nastavit 1 V/dílek a 1 µs/dílek', 'zapnout FFT', 'přepnout vazbu na DC a nic dalšího']
+answer = 0
+explanation = '''
+Postup: Default, Probe 10× (sonda i osciloskop), kompenzace na Cal, pak připojit generátor a Auto Setup.
+'''
+notes = ['', 'Měřítka nastaví Auto Setup podle signálu.', 'FFT v úloze není potřeba.', 'Vazba se naopak přepíná na AC kvůli stejnosměrné složce generátoru.']
+
+[[question]]
+id = 'LAB-20'
+topic = 'LC6: Práce s osciloskopem'
+text = '''
+Proč se v úloze přepíná vazba kanálu na AC?
+'''
+options = ['aby se odstranila stejnosměrná složka signálu z generátoru', 'aby se zvýšila šířka pásma', 'aby se zkompenzovala sonda', 'aby osciloskop měřil efektivní hodnotu']
+answer = 0
+explanation = '''
+Generátor napájený z 12 V DC má na výstupu stejnosměrnou složku; vazba AC ji odfiltruje a průběh je kolem nuly.
+'''
+notes = ['', 'Vazba šířku pásma nezvyšuje.', 'Kompenzace se dělá trimrem na sondě.', 'RMS měří osciloskop při jakékoli vazbě.']
+
+[[question]]
+id = 'LAB-21'
+kind = 'numeric'
+topic = 'LC6: Práce s osciloskopem'
+text = '''
+Na trojúhelníkovém signálu s vazbou AC naměříš $U_\text{pp} = 3{,}0$ V. Jakou efektivní hodnotu by měl osciloskop ukázat?
+'''
+value = 0.866
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+$$U_\text{rms} = \frac{U_\text{pp}}{2\sqrt{3}} = \frac{3{,}0}{3{,}464} = 0{,}866\ \text{V}$$
+'''
+
+[[question]]
+id = 'LAB-22'
+topic = 'LC6: Práce s osciloskopem'
+text = '''
+Jak se kurzory změří šířka kladného impulzu obdélníku?
+'''
+options = ['svislými kurzory X1 a X2 mezi náběžnou a sestupnou hranou v polovině výšky', 'vodorovnými kurzory Y1 a Y2 mezi vrcholem a minimem', 'svislými kurzory mezi 10 % a 90 % náběžné hrany', 'jedním kurzorem na vrcholu']
+answer = 0
+explanation = '''
+Šířka impulzu je časový údaj, měří se svislými (X) kurzory v úrovni 50 %. Mezi 10 % a 90 % se měří doba hrany, vodorovné (Y) kurzory měří napětí.
+'''
+notes = ['', 'Y kurzory měří napětí (rozkmit).', 'To je doba náběžné hrany.', 'Jeden kurzor nedá rozdíl.']

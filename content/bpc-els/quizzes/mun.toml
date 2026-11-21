@@ -1,0 +1,197 @@
+name = 'Metoda uzlových napětí'
+description = 'matice vodivostí, proudy zdrojů do uzlu a z uzlu, převod zdrojů, proudy větví'
+
+[[question]]
+id = 'MUN-01'
+topic = 'Metoda uzlových napětí'
+text = '''
+Na kterém zákoně je MUN založena a jaké zdroje smí obvod obsahovat?
+'''
+options = ['1. Kirchhoffův zákon, jen zdroje proudu', '2. Kirchhoffův zákon, jen zdroje napětí', '1. Kirchhoffův zákon, jen zdroje napětí', 'princip superpozice, libovolné zdroje']
+answer = 0
+explanation = '''
+Pro každý nezávislý uzel se napíše 1. KZ, proudy větví se vyjádří přes uzlová napětí a vodivosti. Reálné zdroje napětí se převedou na zdroje proudu ($I_\text{z} = U_\text{z}/R_\text{i}$).
+'''
+notes = ['', 'To je MSP.', 'Zdroje napětí se v MUN převádějí na zdroje proudu.', 'MUN superpozici nepotřebuje.']
+
+[[question]]
+id = 'MUN-02'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Obvod má 5 uzlů včetně referenčního. Kolik rovnic dá MUN?
+'''
+value = 4
+tolerance = 0
+explanation = '''
+Počet rovnic = uzly − 1 = 5 − 1 = **4**; referenční uzel má napětí 0.
+'''
+
+[[question]]
+id = 'MUN-03'
+topic = 'Metoda uzlových napětí'
+text = '''
+Zdroj proudu $I_\text{z}$ má šipku směrem **z** uzlu 1 do referenčního uzlu. Jak se zapíše do pravé strany rovnice uzlu 1?
+'''
+options = ['$-I_\text{z}$', '$+I_\text{z}$', '$0$', '$+I_\text{z}$ do řádku referenčního uzlu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Proud zdroje, který do uzlu **vtéká**, se píše s +, který **vytéká**, s −. Řádek referenčního uzlu v soustavě není.
+'''
+notes = ['', 'Plus je pro proud do uzlu.', 'Zdroj připojený k uzlu se vždy zapíše.', 'Referenční uzel nemá vlastní rovnici.']
+
+[[question]]
+id = 'MUN-04'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Zdroj napětí $U_\text{Z2} = 300$ V se sériovým $R_2 = 6$ kΩ se převede na zdroj proudu. Jaký má proud?
+'''
+value = 50
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I_\text{Z2} = \frac{U_\text{Z2}}{R_2} = \frac{300}{6000} = 0{,}05\ \text{A} = 50\ \text{mA}, \qquad G_2 = \frac{1}{6000} = 0{,}1667\ \text{mS}$$
+Šipka proudu míří ke svorce, která byla u zdroje napětí kladná.
+'''
+
+[[question]]
+id = 'MUN-05'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+figure = 'images/mun-priklad.svg'
+text = '''
+V obvodu na obrázku je $G_2 = 0{,}1667$ mS, $G_3 = 0{,}625$ mS, $G_4 = 0{,}2$ mS. Jaký je diagonální prvek $G_{22}$?
+'''
+value = 0.9917
+tolerance = 0.0002
+unit = 'mS'
+explanation = '''
+Diagonála = součet vodivostí všech prvků připojených k uzlu 2:
+$$G_{22} = G_2 + G_3 + G_4 = 0{,}1667 + 0{,}625 + 0{,}2 = 0{,}9917\ \text{mS}$$
+'''
+
+[[question]]
+id = 'MUN-06'
+topic = 'Metoda uzlových napětí'
+figure = 'images/mun-priklad.svg'
+text = '''
+Co je v matici vodivostí obvodu na obrázku na pozici $G_{12}$?
+'''
+options = ['$-G_3$', '$+G_3$', '$G_1 + G_3$', '$-(G_3 + G_4)$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Mimo diagonálu je se záporným znaménkem vodivost prvku **přímo mezi** uzly 1 a 2, tedy jen $G_3$. Matice je symetrická.
+'''
+notes = ['', 'Mimo diagonálu je znaménko −.', 'To je diagonální prvek uzlu 1.', '$G_4$ je mezi uzlem 2 a referenčním uzlem.']
+
+[[question]]
+id = 'MUN-07'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+figure = 'images/mun-priklad.svg'
+text = '''
+Soustava z prezentace (vodivosti v mS, proudy v mA): $\begin{bmatrix} 1{,}0417 & -0{,}625 \\ -0{,}625 & 0{,}9917 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -200 \\ -50 \end{bmatrix}$. Jaký je determinant $\Delta$?
+'''
+value = 0.64243
+tolerance = 0.0002
+unit = 'mS²'
+explanation = '''
+$$\Delta = 1{,}0417\cdot0{,}9917 - (-0{,}625)\cdot(-0{,}625) = 1{,}03305 - 0{,}390625 = 0{,}64243$$
+(v S² je to $6{,}424\cdot10^{-7}$, jak uvádí prezentace)
+'''
+
+[[question]]
+id = 'MUN-08'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+figure = 'images/mun-priklad.svg'
+text = '''
+Ve stejné soustavě jaké je uzlové napětí $U_{10}$?
+'''
+value = -357.4
+tolerance = 0.2
+unit = 'V'
+sign_hint = 'Oba zdroje proud z uzlů odebírají, uzlová napětí vyjdou záporná.'
+explanation = '''
+$$\Delta_1 = \begin{vmatrix} -200 & -0{,}625 \\ -50 & 0{,}9917 \end{vmatrix} = -198{,}34 - 31{,}25 = -229{,}59$$
+$$U_{10} = \frac{\Delta_1}{\Delta} = \frac{-229{,}59}{0{,}64243} = -357{,}38\ \text{V}$$
+'''
+
+[[question]]
+id = 'MUN-09'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+figure = 'images/mun-priklad.svg'
+text = '''
+Uzlová napětí vyšla $U_{10} = -357{,}38$ V a $U_{20} = -275{,}65$ V. Jaký proud teče rezistorem $R_3 = 1{,}6$ kΩ od uzlu 2 k uzlu 1?
+'''
+value = 51.08
+tolerance = 0.03
+unit = 'mA'
+explanation = '''
+$$I_{R3} = \frac{U_{20} - U_{10}}{R_3} = \frac{-275{,}65 + 357{,}38}{1{,}6} = \frac{81{,}73}{1{,}6} = 51{,}08\ \text{mA}$$
+(V děleno kΩ dá mA.)
+'''
+
+[[question]]
+id = 'MUN-10'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+V původním obvodu je $U_{20} = -275{,}65$ V a ve větvi z uzlu 2 do referenčního uzlu je $R_2 = 6$ kΩ v sérii se zdrojem $U_\text{Z2} = 300$ V (kladná svorka dole). Z 2. KZ vychází napětí $U_{R2} = -U_{20} - U_\text{Z2}$. Jaký proud teče rezistorem $R_2$?
+'''
+value = -4.06
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$U_{R2} = -U_{20} - U_\text{Z2} = 275{,}65 - 300 = -24{,}35\ \text{V}, \qquad I_{R2} = \frac{-24{,}35}{6} = -4{,}06\ \text{mA}$$
+Z 1. KZ vyjde $51{,}08 - 55{,}13 = -4{,}05$ mA; rozdíl v poslední číslici je zaokrouhlení vodivostí. Přesně je to −4,054 mA (viz MSP).
+'''
+
+[[question]]
+id = 'MUN-11'
+topic = 'Metoda uzlových napětí'
+text = '''
+V obvodu je **ideální** zdroj napětí bez sériového odporu mezi dvěma uzly. Co s ním v MUN?
+'''
+options = [
+  'Převést nejde; buď se referenční uzel zvolí na jeho svorce, nebo se použije modifikovaná MUN.',
+  'Převede se na zdroj proudu $U/0$.',
+  'Nahradí se rozpojením.',
+  'Zapíše se jeho napětí do pravé strany.',
+]
+answer = 0
+explanation = '''
+Převod $I_\text{z} = U_\text{z}/R_\text{i}$ potřebuje nenulový $R_\text{i}$. Když je jedna svorka ideálního zdroje referenční uzel, napětí druhé je známé a rovnice ubude; obecně se použije modifikovaná MUN.
+'''
+notes = ['', 'Dělení nulou; nekonečný proud nedává smysl.', 'Tím by zmizel zdroj.', 'Pravá strana MUN obsahuje proudy, ne napětí.']
+
+[[question]]
+id = 'MUN-12'
+topic = 'Metoda uzlových napětí'
+text = '''
+Obvod má 3 uzly a 3 oka (trojúhelník se třemi zdroji napětí, každý se sériovým rezistorem). Kterou metodu je výhodnější použít?
+'''
+options = ['MUN: 2 rovnice místo 3', 'MSP: 2 rovnice místo 3', 'obě dají 3 rovnice', 'superpozici, je vždy nejrychlejší']
+answer = 0
+explanation = '''
+MUN dá uzly − 1 = 2 rovnice, MSP počet ok = 3. Zdroje se sériovými rezistory jde snadno převést na zdroje proudu (tak je řešený VC2, příklad 4).
+'''
+notes = ['', 'MSP dá 3 rovnice (tři oka).', 'MUN dá jen dvě.', 'Se třemi zdroji by se obvod řešil třikrát.']
+
+[[question]]
+id = 'MUN-13'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Uzel 1 je spojený s uzlem 2 přes $R = 2$ kΩ. Uzlová napětí jsou $U_{10} = 8$ V a $U_{20} = 3$ V. Jaký proud teče rezistorem z uzlu 1 do uzlu 2?
+'''
+value = 2.5
+tolerance = 0.001
+unit = 'mA'
+explanation = '''
+Napětí větve je rozdíl uzlových napětí: $U_{12} = U_{10} - U_{20} = 5$ V, proud $I = U_{12}/R = 5/2 = 2{,}5$ mA (V/kΩ = mA).
+'''

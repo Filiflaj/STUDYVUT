@@ -1,0 +1,207 @@
+name = 'VC3: Metoda náhradního zdroje'
+description = 'všechny tři příklady VC3 s mezivýsledky; výsledky ze zadání ověřené výpočtem'
+
+# ---------- Příklad 1
+[[question]]
+id = 'VC3-01'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 1'
+figure = 'images/vc3-p1.svg'
+text = '''
+$U_\text{Z1} = 20$ V, $I_\text{Z2} = 25$ mA, $R_1 = 15\ \Omega$, $R_2 = 25\ \Omega$, $R_3 = 35\ \Omega$, $R_\text{Z} = 5\ \Omega$. Jaký je vnitřní odpor $R_\text{i}$ vzhledem k zátěži? (zadání: 7,391 Ω)
+'''
+value = 7.394
+tolerance = 0.005
+unit = 'Ω'
+explanation = '''
+$U_\text{Z1}$ zkratovat, $I_\text{Z2}$ rozpojit; $R_1$, $R_2$, $R_3$ jsou pak paralelně:
+$$G = \frac{1}{15} + \frac{1}{25} + \frac{1}{35} = 0{,}06667 + 0{,}04 + 0{,}02857 = 0{,}13524\ \text{S}, \qquad R_\text{i} = \frac{1}{0{,}13524} = 7{,}394\ \Omega$$
+Zadání uvádí 7,391 Ω: tak vyjde s vodivostmi zaokrouhlenými na čtyři desetinná místa (0,0667 + 0,04 + 0,0286 = 0,1353 S). Přesně je to 7,394 Ω.
+'''
+
+[[question]]
+id = 'VC3-02'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 1'
+figure = 'images/vc3-p1.svg'
+text = '''
+Jaké je napětí naprázdno $U_\text{i}$? (zadání: 10,04 V)
+'''
+value = 10.04
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Bez zátěže je to jeden uzel (MUN): zdroj $U_\text{Z1}$ s $R_1$ převedený na zdroj proudu $20/15 = 1{,}3333$ A, k tomu $I_\text{Z2} = 0{,}025$ A do uzlu.
+$$(G_1 + G_2 + G_3)\,U_\text{i} = \frac{U_\text{Z1}}{R_1} + I_\text{Z2}, \qquad 0{,}13524\,U_\text{i} = 1{,}35833, \qquad U_\text{i} = 10{,}044\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC3-03'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 1'
+figure = 'images/vc3-p1.svg'
+text = '''
+Jaký proud $I_\text{Z}$ teče zátěží $R_\text{Z} = 5\ \Omega$? (zadání: 0,8103 A)
+'''
+value = 0.8104
+tolerance = 0.0002
+unit = 'A'
+explanation = '''
+$$I_\text{Z} = \frac{U_\text{i}}{R_\text{i} + R_\text{Z}} = \frac{10{,}044}{7{,}394 + 5} = \frac{10{,}044}{12{,}394} = 0{,}8104\ \text{A}$$
+Zadání uvádí 0,8103 A; rozdíl v poslední číslici je zaokrouhlení ($R_\text{i}$ = 7,391 Ω v zadání).
+'''
+
+[[question]]
+id = 'VC3-04'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 1'
+figure = 'images/vc3-p1.svg'
+text = '''
+Jaké je napětí $U_\text{Z}$ na zátěži? (zadání: 4,052 V)
+'''
+value = 4.052
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$$U_\text{Z} = R_\text{Z} I_\text{Z} = 5\cdot0{,}8104 = 4{,}052\ \text{V}$$
+Kontrola MUN celého obvodu se zátěží: $(0{,}13524 + 0{,}2)\,U_\text{Z} = 1{,}35833$, tedy $U_\text{Z} = 4{,}052$ V.
+'''
+
+[[question]]
+id = 'VC3-05'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 1'
+figure = 'images/vc3-p1.svg'
+text = '''
+Co se při určování $R_\text{i}$ v příkladu 1 udělá se zdroji?
+'''
+options = ['$U_\text{Z1}$ se zkratuje, $I_\text{Z2}$ se rozpojí', '$U_\text{Z1}$ se rozpojí, $I_\text{Z2}$ se zkratuje', 'oba se zkratují', 'oba zůstanou v obvodu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Ideální zdroj napětí má nulový vnitřní odpor (zkrat), ideální zdroj proudu nekonečný (rozpojení).
+'''
+notes = ['', 'Obráceně.', 'Zkratovaný zdroj proudu by zkratoval svorky a odpor by vyšel nulový.', 'Se zdroji se odpor do svorek určit nedá.']
+
+# ---------- Příklad 2
+[[question]]
+id = 'VC3-06'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 2'
+figure = 'images/vc3-p2.svg'
+text = '''
+$U_\text{Z} = 36$ V, $R_1 = 22\ \Omega$, $R_2 = 33\ \Omega$, $R_3 = 15\ \Omega$. Jaký je vnitřní odpor vzhledem k zátěži $R_\text{Z}$? (zadání: 28,2 Ω)
+'''
+value = 28.2
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+Se zkratovaným zdrojem jsou $R_1$ a $R_2$ paralelně a k nim v sérii $R_3$:
+$$R_\text{i} = R_3 + \frac{R_1 R_2}{R_1 + R_2} = 15 + \frac{22\cdot33}{55} = 15 + 13{,}2 = 28{,}2\ \Omega$$
+'''
+
+[[question]]
+id = 'VC3-07'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 2'
+figure = 'images/vc3-p2.svg'
+text = '''
+Jaké je napětí naprázdno $U_\text{i}$? (zadání: 21,6 V)
+'''
+value = 21.6
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Naprázdno neteče $R_3$ proud; $U_\text{i}$ je napětí děliče $R_1$, $R_2$:
+$$U_\text{i} = U_\text{Z}\,\frac{R_2}{R_1 + R_2} = 36\cdot\frac{33}{55} = 21{,}6\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC3-08'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 2'
+figure = 'images/vc3-p2.svg'
+text = '''
+Jaký musí být odpor zátěže $R_\text{Z}$, aby se do ní dodával maximální výkon? (zadání: 28,2 Ω)
+'''
+value = 28.2
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+Výkonové přizpůsobení: $R_\text{Z} = R_\text{i} = 28{,}2\ \Omega$.
+'''
+
+[[question]]
+id = 'VC3-09'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 2'
+figure = 'images/vc3-p2.svg'
+text = '''
+Jaký je maximální výkon $P_\text{Z}$ v zátěži? (zadání: 4,137 W)
+'''
+value = 4.136
+tolerance = 0.002
+unit = 'W'
+explanation = '''
+$$P_\text{Z} = \frac{U_\text{i}^2}{4R_\text{i}} = \frac{21{,}6^2}{4\cdot28{,}2} = \frac{466{,}56}{112{,}8} = 4{,}136\ \text{W}$$
+Totéž přes proud: $I_\text{Z} = 21{,}6/56{,}4 = 0{,}383$ A, $P = 28{,}2\cdot0{,}383^2 = 4{,}136$ W. Zadání uvádí 4,137 W; přesná hodnota je 4,1362 W.
+'''
+
+# ---------- Příklad 3
+[[question]]
+id = 'VC3-10'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 3'
+figure = 'images/most.svg'
+text = '''
+Můstek: $U = 14$ V, $R_1 = 30\ \Omega$, $R_2 = 150\ \Omega$, $R_3 = 60\ \Omega$, $R_4 = 100\ \Omega$, $R_\text{G} = 5\ \Omega$. Jaký je vnitřní odpor vzhledem k $R_\text{G}$? (zadání: 62,5 Ω)
+'''
+value = 62.5
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+Zkratovaný zdroj spojí levý a pravý uzel:
+$$R_\text{i} = \frac{R_1 R_2}{R_1 + R_2} + \frac{R_3 R_4}{R_3 + R_4} = \frac{30\cdot150}{180} + \frac{60\cdot100}{160} = 25 + 37{,}5 = 62{,}5\ \Omega$$
+'''
+
+[[question]]
+id = 'VC3-11'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 3'
+figure = 'images/most.svg'
+text = '''
+Jaké je napětí naprázdno $U_\text{i} = U_\text{AB}$? (zadání: 2,917 V)
+'''
+value = 2.917
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+Dva děliče (levý uzel je kladný):
+$$U_\text{i} = U\,\frac{R_2}{R_1 + R_2} - U\,\frac{R_4}{R_3 + R_4} = 14\cdot\frac{150}{180} - 14\cdot\frac{100}{160} = 11{,}667 - 8{,}750 = 2{,}917\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC3-12'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+source = 'VC3, příklad 3'
+figure = 'images/most.svg'
+text = '''
+Jaký proud $I_\text{G}$ teče rezistorem $R_\text{G}$? (zadání: 43,21 mA)
+'''
+value = 43.21
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$I_\text{G} = \frac{U_\text{i}}{R_\text{i} + R_\text{G}} = \frac{2{,}917}{62{,}5 + 5} = \frac{2{,}917}{67{,}5} = 43{,}21\ \text{mA}$$
+'''

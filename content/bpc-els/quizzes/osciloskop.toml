@@ -1,0 +1,219 @@
+name = 'Osciloskop'
+description = 'odečítání z obrazovky, spouštění, šířka pásma, sonda 10 : 1, parametry signálu'
+
+[[question]]
+id = 'OSC-01'
+kind = 'numeric'
+topic = 'Osciloskop'
+figure = 'images/osciloskop-displej.svg'
+text = '''
+Časová základna je 1 µs/dílek a perioda signálu zabírá 5 dílků. Jaký je kmitočet signálu? Zadej v kHz.
+'''
+value = 200
+tolerance = 0.1
+unit = 'kHz'
+explanation = '''
+$$T = 5\cdot1\ \mu\text{s} = 5\ \mu\text{s}, \qquad f = \frac{1}{T} = \frac{1}{5\cdot10^{-6}} = 200\ 000\ \text{Hz} = 200\ \text{kHz}$$
+'''
+
+[[question]]
+id = 'OSC-02'
+kind = 'numeric'
+topic = 'Osciloskop'
+figure = 'images/osciloskop-displej.svg'
+text = '''
+Citlivost je 1 V/dílek. Maximum průběhu je 4 dílky nad nulou a rozkmit je 6 dílků. Jaké je minimum napětí?
+'''
+value = -2
+tolerance = 0.01
+unit = 'V'
+sign_hint = 'Minimum leží pod nulovou čarou.'
+explanation = '''
+$U_\text{max} = 4$ V, $U_\text{pp} = 6$ V, takže
+$$U_\text{min} = U_\text{max} - U_\text{pp} = 4 - 6 = -2\ \text{V}$$
+Signál má amplitudu 3 V a stejnosměrnou složku +1 V.
+'''
+
+[[question]]
+id = 'OSC-03'
+kind = 'numeric'
+topic = 'Osciloskop'
+text = '''
+Sinusový průběh zabírá na výšku 4,6 dílku při citlivosti 0,5 V/dílek. Jaký je rozkmit $U_\text{pp}$?
+'''
+value = 2.3
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_\text{pp} = 4{,}6\ \text{dílku}\cdot0{,}5\ \text{V/dílek} = 2{,}3\ \text{V}$$
+'''
+
+[[question]]
+id = 'OSC-04'
+kind = 'numeric'
+topic = 'Osciloskop'
+text = '''
+Sinusové napětí má rozkmit $U_\text{pp} = 2{,}40$ V a nulovou stejnosměrnou složku. Jaká je jeho efektivní hodnota?
+'''
+value = 0.849
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$$U_\text{m} = \frac{U_\text{pp}}{2} = 1{,}20\ \text{V}, \qquad U_\text{rms} = \frac{U_\text{m}}{\sqrt{2}} = \frac{1{,}20}{1{,}414} = 0{,}849\ \text{V}$$
+'''
+
+[[question]]
+id = 'OSC-05'
+kind = 'numeric'
+topic = 'Osciloskop'
+text = '''
+Trojúhelníkový průběh bez stejnosměrné složky má amplitudu $U_\text{m} = 1{,}5$ V. Jaká je jeho efektivní hodnota?
+'''
+value = 0.866
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+Pro trojúhelník $U_\text{rms} = U_\text{m}/\sqrt{3} = 1{,}5/1{,}732 = 0{,}866$ V (pro sinus by to bylo 1,061 V, pro obdélník 1,5 V).
+'''
+
+[[question]]
+id = 'OSC-06'
+kind = 'numeric'
+topic = 'Osciloskop'
+text = '''
+Obdélníkový signál má periodu 2 ms a kladný impulz široký 0,5 ms (měřeno v polovině výšky). Jaká je střída?
+'''
+value = 25
+tolerance = 0.01
+unit = '%'
+explanation = '''
+$$\text{střída} = \frac{+\text{šířka}}{T} = \frac{0{,}5}{2} = 0{,}25 = 25\ \%$$
+'''
+
+[[question]]
+id = 'OSC-07'
+topic = 'Osciloskop'
+figure = 'images/parametry-impulzu.svg'
+text = '''
+Mezi kterými úrovněmi se měří doba náběžné hrany $t_\text{r}$?
+'''
+options = ['z 10 % na 90 % amplitudy', 'z 0 % na 100 %', 'z 50 % na 100 %', 'z 20 % na 80 %']
+answer = 0
+layout = 'grid'
+explanation = '''
+Doba náběžné hrany (Rise) je doba růstu z **10 % na 90 %**, sestupné (Fall) z 90 % na 10 %. Šířka impulzu se měří v 50 %.
+'''
+notes = ['', 'Začátek a konec hrany se nedají přesně určit, proto 10 a 90 %.', '50 % je úroveň pro šířku impulzu.', 'Ve výuce a v osciloskopu se používá 10–90 %.']
+
+[[question]]
+id = 'OSC-08'
+topic = 'Osciloskop'
+text = '''
+Co dělá pasivní sonda 10 : 1?
+'''
+options = [
+  'zmenší amplitudu signálu 10× a zvětší vstupní impedanci 10×',
+  'zesílí signál 10×',
+  'zmenší amplitudu 10× a vstupní impedanci také 10×',
+  'jen odfiltruje stejnosměrnou složku',
+]
+answer = 0
+explanation = '''
+Je to kompenzovaný dělič: signál zeslabí desetkrát a obvod zatěžuje desetkrát méně (vyšší vstupní impedance). Poměr se musí nastavit i v osciloskopu.
+'''
+notes = ['', 'Zesilují jen aktivní sondy.', 'Impedance naopak roste.', 'To dělá vazba AC.']
+
+[[question]]
+id = 'OSC-09'
+kind = 'numeric'
+topic = 'Osciloskop'
+text = '''
+Sonda je přepnutá na 10×, ale v osciloskopu zůstalo nastavení Probe 1×. Osciloskop ukazuje $U_\text{pp} = 0{,}24$ V. Jaký je skutečný rozkmit?
+'''
+value = 2.4
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Sonda signál zeslabila 10×, ale osciloskop to nepřepočítal, takže ukazuje desetkrát méně: skutečně $0{,}24\cdot10 = 2{,}4$ V. Časové údaje jsou správně.
+'''
+
+[[question]]
+id = 'OSC-10'
+topic = 'Osciloskop'
+text = '''
+Jak se sonda kompenzuje?
+'''
+options = [
+  'hrot na kalibrační obdélník osciloskopu (asi 1 kHz) a trimrem na sondě nastavit dokonalý obdélník',
+  'hrot na zem a nastavit nulovou čáru',
+  'změnit V/dílek, dokud není průběh vidět',
+  'zapnout vazbu AC',
+]
+answer = 0
+explanation = '''
+Kompenzací se vyrovnají parazitní kapacity sondy, kabelu a vstupu. Překompenzovaná sonda dává překmity na hranách, nedokompenzovaná zaoblené hrany.
+'''
+notes = ['', 'To je nastavení polohy, ne kompenzace.', 'Měřítko na kompenzaci nemá vliv.', 'Vazba s kompenzací nesouvisí.']
+
+[[question]]
+id = 'OSC-11'
+topic = 'Osciloskop'
+text = '''
+Co znamená, že osciloskop má šířku pásma 100 MHz?
+'''
+options = [
+  'Na 100 MHz zobrazí amplitudu o 3 dB menší, tedy asi o 30 %.',
+  'Signály nad 100 MHz zobrazí s amplitudou nula.',
+  'Vzorkuje rychlostí 100 milionů vzorků za sekundu.',
+  'Zobrazí přesně jen obdélník 100 MHz.',
+]
+answer = 0
+explanation = '''
+Osciloskop se chová jako dolní propust; na mezním kmitočtu BW klesne amplituda o 3 dB (na 70,7 %). Vzorkovací rychlost má být aspoň 4 × BW. Obdélník 100 MHz by se kvůli chybějícím harmonickým zobrazil skoro jako sinus.
+'''
+notes = ['', 'Pokles je postupný, ne skokový.', 'Vzorkovací rychlost je jiný parametr (má být aspoň 4 × BW).', 'Obdélník 100 MHz by se zkreslil.']
+
+[[question]]
+id = 'OSC-12'
+kind = 'numeric'
+topic = 'Osciloskop'
+text = '''
+Osciloskop má šířku pásma 100 MHz. Jakou nejmenší vzorkovací rychlost by měl mít podle doporučení z prezentace? Zadej v miliónech vzorků za sekundu (MSa/s).
+'''
+value = 400
+tolerance = 0
+unit = 'MSa/s'
+explanation = '''
+Doporučení: vzorkovací rychlost ≥ 4 × BW = 4 · 100 MHz = 400 MSa/s.
+'''
+
+[[question]]
+id = 'OSC-13'
+topic = 'Osciloskop'
+text = '''
+Průběh na obrazovce „ujíždí“ a nedrží na místě. Co je nejpravděpodobnější příčina?
+'''
+options = ['úroveň spouštění (trigger level) je mimo rozsah signálu', 'špatně nastavená citlivost V/dílek', 'chybí kompenzace sondy', 'je zapnutá vazba AC']
+answer = 0
+explanation = '''
+Snímky se skládají na sebe jen tehdy, když každý začíná ve stejném bodě průběhu. Když úroveň spouštění signál nikdy nepřetne, osciloskop není synchronizovaný.
+'''
+notes = ['', 'Citlivost mění výšku, ne stabilitu.', 'Kompenzace mění tvar hran.', 'Vazba AC jen odstraní stejnosměrnou složku.']
+
+[[question]]
+id = 'OSC-14'
+topic = 'Osciloskop'
+text = '''
+Jak nastavit měřítka, aby byl průběh dobře čitelný?
+'''
+options = [
+  'V/dílek tak, aby průběh skoro vyplnil výšku obrazovky, s/dílek na několik málo period, trigger blízko středu',
+  'co nejmenší V/dílek, i když průběh přesahuje obrazovku',
+  's/dílek tak, aby bylo vidět co nejvíc period',
+  'na měřítkách nezáleží, osciloskop měří automaticky',
+]
+answer = 0
+explanation = '''
+Velký průběh = lepší rozlišení napětí; několik period = dobře vidět tvar i perioda; trigger uprostřed = stabilní obraz.
+'''
+notes = ['', 'Oříznutý průběh nejde odečíst ani automaticky změřit.', 'Při mnoha periodách je malé rozlišení času.', 'I automatické měření potřebuje rozumná měřítka.']

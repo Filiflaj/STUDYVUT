@@ -1,0 +1,207 @@
+name = 'Obvodové prvky a zjednodušování'
+description = 'rezistory, kondenzátory, cívky, metody analýzy, postupné zjednodušování'
+
+[[question]]
+id = 'ZJ-01'
+topic = 'Obvodové prvky'
+text = '''
+Co udává jmenovité zatížení rezistoru?
+'''
+options = ['největší výkon, kterým lze rezistor trvale zatížit', 'největší napětí, které vydrží izolace', 'toleranci odporu', 'odpor při 20 °C']
+answer = 0
+explanation = '''
+Proud v rezistoru vytváří Jouleovo teplo, které musí povrch součástky odvést. **Jmenovité zatížení** (W) je výkon, který rezistor snese trvale.
+'''
+notes = ['', 'U kondenzátoru je jmenovité napětí, u rezistoru jde o výkon.', 'Tolerance je odchylka od jmenovité hodnoty.', 'To je jmenovitý odpor.']
+
+[[question]]
+id = 'ZJ-02'
+topic = 'Obvodové prvky'
+text = '''
+Která hodnota **není** v řadě E12?
+'''
+options = ['5,0', '4,7', '3,3', '6,8']
+answer = 0
+layout = 'grid'
+explanation = '''
+Řada E12 má v dekádě hodnoty 1; 1,2; 1,5; 1,8; 2,2; 2,7; 3,3; 3,9; 4,7; 5,6; 6,8; 8,2. Hodnota 5,0 v ní není (nejbližší jsou 4,7 a 5,6).
+'''
+notes = ['', '4,7 v E12 je.', '3,3 v E12 je.', '6,8 v E12 je.']
+
+[[question]]
+id = 'ZJ-03'
+topic = 'Obvodové prvky'
+text = '''
+Který kondenzátor se **nesmí přepólovat**?
+'''
+options = ['elektrolytický', 'keramický', 'svitkový', 'vzduchový ladicí']
+answer = 0
+layout = 'grid'
+explanation = '''
+U elektrolytického kondenzátoru je dielektrikem tenká vrstva Al₂O₃ na kladné elektrodě, udržovaná elektrolytem. Při přepólování by se elektrolýzou rozložila. Proto má velkou kapacitu (1 µF až 1 F), ale polaritu.
+'''
+notes = ['', 'Keramický kondenzátor polaritu nemá.', 'Svitkový (fóliový) polaritu nemá.', 'Vzduchový polaritu nemá.']
+
+[[question]]
+id = 'ZJ-04'
+topic = 'Obvodové prvky'
+text = '''
+Který prvek je lineární?
+'''
+options = ['vzduchová cívka', 'cívka s feromagnetickým jádrem', 'varistor', 'termistor při proměnné teplotě']
+answer = 0
+explanation = '''
+Vzduchová cívka má indukčnost nezávislou na proudu. Feromagnetické jádro se sytí, takže indukčnost závisí na proudu, teplotě i kmitočtu. Varistor má odpor závislý na napětí, termistor na teplotě.
+'''
+notes = ['', 'Indukčnost závisí na proudu (sycení jádra).', 'Odpor závisí na napětí.', 'Odpor závisí na teplotě, kterou ohřívá i protékající proud.']
+
+[[question]]
+id = 'ZJ-05'
+topic = 'Obvodové prvky'
+text = '''
+K čemu se nejčastěji používá varistor?
+'''
+options = ['jako přepěťová ochrana', 'k měření teploty', 'jako senzor světla', 'k přesnému ladění rezonančního obvodu']
+answer = 0
+explanation = '''
+Varistor je nelineární polovodičová součástka, jejíž odpor závisí na napětí; při přepětí prudce klesne a svede proud. Používá se jako **přepěťová ochrana** a ke stabilizaci napětí.
+'''
+notes = ['', 'To je termistor.', 'To je fotorezistor.', 'K tomu slouží ladicí kondenzátor.']
+
+[[question]]
+id = 'ZJ-06'
+topic = 'Postupné zjednodušování'
+text = '''
+Co platí pro metodu postupného zjednodušování?
+'''
+options = [
+  'Hodí se pro obvody s jediným zdrojem; sériové a paralelní dvojice se nahrazují, až zbude zdroj a jeden rezistor.',
+  'Je univerzální, vyřeší jakýkoli obvod s libovolným počtem zdrojů.',
+  'Vede vždy na soustavu lineárních rovnic.',
+  'Vyřeší i můstek bez transfigurace.',
+]
+answer = 0
+explanation = '''
+Postupné zjednodušování je metoda pro **speciální případy**: jeden zdroj, ruční výpočet, postup je pokaždé jiný. Některé obvody (můstek) takto nejdou bez transfigurace hvězda–trojúhelník.
+'''
+notes = ['', 'Univerzální jsou MSP a MUN.', 'Soustavu rovnic dávají MSP a MUN.', 'V můstku nejsou žádné dva rezistory čistě v sérii ani paralelně.']
+
+[[question]]
+id = 'ZJ-07'
+kind = 'numeric'
+topic = 'Postupné zjednodušování'
+figure = 'images/zjednodusovani-priklad.svg'
+text = '''
+V obvodu na obrázku je $R_2 = 450\ \Omega$ a $R_3 = 370\ \Omega$. Jaký je náhradní odpor $R_{23}$?
+'''
+value = 203.0
+tolerance = 0.1
+unit = 'Ω'
+explanation = '''
+$R_2$ a $R_3$ jsou připojené ke stejné dvojici uzlů, tedy paralelně:
+$$R_{23} = \frac{450\cdot370}{450 + 370} = \frac{166\,500}{820} = 203{,}0\ \Omega$$
+'''
+
+[[question]]
+id = 'ZJ-08'
+kind = 'numeric'
+topic = 'Postupné zjednodušování'
+figure = 'images/zjednodusovani-priklad.svg'
+text = '''
+Stejný obvod: $U = 24$ V, $R_1 = 150\ \Omega$, $R_{23} = 203\ \Omega$. Jaký proud $I_1$ teče rezistorem $R_1$?
+'''
+value = 67.99
+tolerance = 0.03
+unit = 'mA'
+explanation = '''
+Větev $R_1$ + $R_{23}$ je přímo na zdroji:
+$$R_{123} = 150 + 203 = 353\ \Omega, \qquad I_1 = \frac{U}{R_{123}} = \frac{24}{353} = 67{,}99\ \text{mA}$$
+(Prezentace uvádí 67,98 mA s nezaokrouhleným $R_{23}$ = 203,05 Ω.)
+'''
+
+[[question]]
+id = 'ZJ-09'
+kind = 'numeric'
+topic = 'Postupné zjednodušování'
+figure = 'images/zjednodusovani-priklad.svg'
+text = '''
+Stejný obvod: $I_1 = 67{,}99$ mA, $R_{23} = 203\ \Omega$, $R_2 = 450\ \Omega$. Jaký proud teče rezistorem $R_2$?
+'''
+value = 30.67
+tolerance = 0.03
+unit = 'mA'
+explanation = '''
+Zpětný postup přes napětí na paralelní dvojici:
+$$U_2 = I_1 R_{23} = 0{,}06799\cdot203 = 13{,}80\ \text{V}, \qquad I_2 = \frac{U_2}{R_2} = \frac{13{,}80}{450} = 30{,}67\ \text{mA}$$
+'''
+
+[[question]]
+id = 'ZJ-10'
+kind = 'numeric'
+topic = 'Postupné zjednodušování'
+figure = 'images/zjednodusovani-priklad.svg'
+text = '''
+Stejný obvod: $U = 24$ V, $R_4 = 220\ \Omega$, $I_1 = 67{,}99$ mA. Jaký celkový proud $I$ dodává zdroj?
+'''
+value = 177.1
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$R_4$ je přímo na zdroji: $I_4 = 24/220 = 109{,}1$ mA. Z 1. KZ:
+$$I = I_1 + I_4 = 67{,}99 + 109{,}1 = 177{,}1\ \text{mA}$$
+'''
+
+[[question]]
+id = 'ZJ-11'
+topic = 'Postupné zjednodušování'
+figure = 'images/zjednodusovani-priklad.svg'
+text = '''
+Jak jsou v obvodu na obrázku zapojeny $R_4$ a větev $R_1 + R_{23}$?
+'''
+options = ['paralelně (obě jsou přímo na zdroji)', 'sériově', 'R4 je v sérii s R1', 'R4 je paralelně jen k R2']
+answer = 0
+explanation = '''
+Obě větve spojují tytéž dva uzly (svorky zdroje), mají stejné napětí $U$: jsou **paralelně**. Proto je $I_4 = U/R_4$ bez dalšího počítání.
+'''
+notes = ['', 'Netečou stejným proudem, mezi nimi je odbočka.', 'R1 je v sérii s R23, ne s R4.', 'R2 je paralelně s R3, ne s R4.']
+
+[[question]]
+id = 'ZJ-12'
+kind = 'numeric'
+topic = 'Postupné zjednodušování'
+figure = 'images/lc2-obvod.svg'
+text = '''
+Obvod úlohy LC2: $R_1 = 220\ \Omega$ paralelně k sériovým $R_2 = 100\ \Omega$ a $R_3 = 150\ \Omega$. Jaký je celkový náhradní odpor $R_{123}$?
+'''
+value = 117.0
+tolerance = 0.1
+unit = 'Ω'
+explanation = '''
+$$R_{23} = R_2 + R_3 = 250\ \Omega, \qquad R_{123} = \frac{R_1 R_{23}}{R_1 + R_{23}} = \frac{220\cdot250}{470} = 117{,}0\ \Omega$$
+'''
+
+[[question]]
+id = 'ZJ-13'
+kind = 'numeric'
+topic = 'Postupné zjednodušování'
+text = '''
+Máš jen rezistory 1 kΩ. Kolik jich nejméně potřebuješ na sestavení odporu 2500 Ω?
+'''
+value = 4
+tolerance = 0
+explanation = '''
+Dva v sérii dají 2 kΩ, dva paralelně 500 Ω; obojí do série: $1 + 1 + (1 \parallel 1) = 2{,}5$ kΩ, celkem **4 rezistory**. S třemi rezistory jde sestavit jen 3 kΩ, 1,5 kΩ, 667 Ω nebo 333 Ω.
+'''
+
+[[question]]
+id = 'ZJ-14'
+topic = 'Obvodové prvky'
+text = '''
+Které metody analýzy jsou **univerzální** (fungují pro libovolný lineární obvod)?
+'''
+options = ['MSP a MUN', 'postupné zjednodušování a superpozice', 'Théveninova věta a transfigurace', 'metoda úměrných veličin']
+answer = 0
+explanation = '''
+Univerzální jsou přímé použití Kirchhoffových zákonů, **metoda smyčkových proudů**, **metoda uzlových napětí** a modifikovaná MUN. Ostatní se hodí jen pro speciální případy.
+'''
+notes = ['', 'Obě jsou pro speciální případy.', 'Obě jsou pro speciální případy.', 'Metoda úměrných veličin je pro obvody s jedním zdrojem.']

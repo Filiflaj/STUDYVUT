@@ -4,3 +4,46 @@ semester = "ZS 2026/2027"
 year = 1
 programs = ["met"]
 color = "orange"
+info = "00-jak-na-seminar"
+description = "Seminář k Elektrotechnice 1: obvodové metody, laboratorní úlohy LC a výpočetní cvičení VC1 až VC6 s řešením."
+
+[[set]]
+id = "vc"
+name = "Výpočetní cvičení nanečisto"
+description = "příklady ze všech šesti výpočetních cvičení, zamíchané"
+pick = [
+  { quiz = "vc1", count = 3 },
+  { quiz = "vc2", count = 3 },
+  { quiz = "vc3", count = 3 },
+  { quiz = "vc4", count = 2 },
+  { quiz = "vc5", count = 2 },
+  { quiz = "vc6", count = 3 },
+]
+
+[[set]]
+id = "lab"
+name = "Příprava na laborky"
+description = "co se v laboratorních úlohách měří a počítá"
+pick = [
+  { quiz = "laboratorni-ulohy", count = 10 },
+  { quiz = "delic", count = 2 },
+  { quiz = "osciloskop", count = 3 },
+]
+
+[[set]]
+id = "zaver"
+name = "Závěrečná kontrola nanečisto"
+description = "20 náhodných otázek ze všech témat semináře"
+pick = [
+  { quiz = "delic", count = 2 },
+  { quiz = "zjednodusovani", count = 2 },
+  { quiz = "superpozice", count = 2 },
+  { quiz = "msp", count = 2 },
+  { quiz = "mun", count = 2 },
+  { quiz = "nahradni-zdroj", count = 2 },
+  { quiz = "nelinearni", count = 2 },
+  { quiz = "razitka", count = 1 },
+  { quiz = "microcap", count = 1 },
+  { quiz = "osciloskop", count = 2 },
+  { quiz = "magneticke-obvody", count = 2 },
+]

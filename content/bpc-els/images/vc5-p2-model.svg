@@ -1,0 +1,54 @@
+<svg viewBox="0 0 640 270" width="640" class="fig" role="img" aria-label="Náhradní obvod VC5 příkladu 2: uzel 1 se zdrojem I a G1, uzel 2 s G2, GBE a řízeným zdrojem gm1 U12, uzel 3 s gm2 U20 a G3">
+<circle cx="60" cy="150" r="14" class="s"/>
+<line x1="46" y1="150" x2="74" y2="150" class="s"/>
+<line x1="38" y1="168" x2="38" y2="132" class="v" marker-end="url(#m-v)"/>
+<text x="30" y="155" text-anchor="end"><tspan class="it">I</tspan></text>
+<polyline points="60,136 60,70 150,70" class="s"/>
+<polyline points="60,164 60,235 570,235" class="s"/>
+<rect x="143" y="130" width="14" height="40" class="s"/>
+<text x="163" y="155"><tspan class="it">G</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="150,70 150,130" class="s"/>
+<polyline points="150,170 150,235" class="s"/>
+<circle cx="150" cy="70" r="3.2" class="pt"/>
+<circle cx="150" cy="235" r="3.2" class="pt"/>
+<circle cx="150" cy="46" r="9" class="s1"/>
+<text x="150" y="51" class="sm" text-anchor="middle">1</text>
+<circle cx="300" cy="90" r="14" class="gf"/>
+<line x1="286" y1="90" x2="314" y2="90" class="s"/>
+<line x1="278" y1="72" x2="278" y2="108" class="v" marker-end="url(#m-v)"/>
+<text x="272" y="95" text-anchor="end"><tspan class="it">g</tspan><tspan class="sm" dy="4">m1</tspan><tspan dy="-4"> </tspan><tspan class="it">U</tspan><tspan class="sm" dy="4">12</tspan><tspan dy="-4"></tspan></text>
+<polyline points="300,40 300,76" class="s"/>
+<polyline points="300,104 300,140" class="s"/>
+<polyline points="260,140 340,140" class="s"/>
+<circle cx="300" cy="140" r="3.2" class="pt"/>
+<circle cx="300" cy="40" r="3.2" class="pt"/>
+<rect x="253" y="170" width="14" height="40" class="s"/>
+<text x="247" y="195" text-anchor="end"><tspan class="it">G</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="260,140 260,170" class="s"/>
+<polyline points="260,210 260,235" class="s"/>
+<rect x="333" y="170" width="14" height="40" class="s"/>
+<text x="353" y="195"><tspan class="it">G</tspan><tspan class="sm" dy="4">BE</tspan><tspan dy="-4"></tspan></text>
+<polyline points="340,140 340,170" class="s"/>
+<polyline points="340,210 340,235" class="s"/>
+<circle cx="300" cy="162" r="9" class="s1"/>
+<text x="300" y="167" class="sm" text-anchor="middle">2</text>
+<polyline points="300,40 570,40" class="s"/>
+<circle cx="600" cy="40" r="9" class="s1"/>
+<text x="600" y="45" class="sm" text-anchor="middle">3</text>
+<circle cx="440" cy="140" r="14" class="gf"/>
+<line x1="426" y1="140" x2="454" y2="140" class="s"/>
+<line x1="462" y1="122" x2="462" y2="158" class="v" marker-end="url(#m-v)"/>
+<text x="468" y="145"><tspan class="it">g</tspan><tspan class="sm" dy="4">m2</tspan><tspan dy="-4"> </tspan><tspan class="it">U</tspan><tspan class="sm" dy="4">20</tspan><tspan dy="-4"></tspan></text>
+<polyline points="440,40 440,126" class="s"/>
+<polyline points="440,154 440,235" class="s"/>
+<rect x="563" y="120" width="14" height="40" class="s"/>
+<text x="583" y="145"><tspan class="it">G</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="570,40 570,120" class="s"/>
+<polyline points="570,160 570,235" class="s"/>
+<circle cx="260" cy="235" r="3.2" class="pt"/>
+<circle cx="340" cy="235" r="3.2" class="pt"/>
+<circle cx="440" cy="235" r="3.2" class="pt"/>
+<circle cx="440" cy="40" r="3.2" class="pt"/>
+<circle cx="400" cy="255" r="9" class="s1"/>
+<text x="400" y="260" class="sm" text-anchor="middle">0</text>
+</svg>

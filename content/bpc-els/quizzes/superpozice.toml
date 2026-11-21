@@ -1,0 +1,186 @@
+name = 'Princip superpozice'
+description = 'náhrada zdrojů, dílčí obvody, znaménka, kdy superpozice neplatí'
+
+[[question]]
+id = 'SUP-01'
+topic = 'Princip superpozice'
+text = '''
+Čím se při superpozici nahradí ideální zdroj napětí, který zrovna „nepůsobí“?
+'''
+options = ['zkratem', 'rozpojením', 'rezistorem 1 Ω', 'zdrojem proudu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Nepůsobící zdroj se nahradí svým vnitřním odporem. Ideální zdroj napětí má $R_\text{i} = 0$, tedy **zkrat**. Ideální zdroj proudu má $R_\text{i} \to \infty$, tedy **rozpojení**.
+'''
+notes = ['', 'Rozpojuje se zdroj proudu.', 'Vnitřní odpor ideálního zdroje napětí je nulový.', 'Zdroj se nahrazuje pasivně, ne jiným zdrojem.']
+
+[[question]]
+id = 'SUP-02'
+topic = 'Princip superpozice'
+text = '''
+Ve kterém obvodu princip superpozice **neplatí**?
+'''
+options = ['v obvodu s diodou', 'v obvodu se dvěma zdroji napětí a rezistory', 'v obvodu se zdrojem proudu a zdrojem napětí', 'v obvodu s řízeným zdrojem proudu (lineárním)']
+answer = 0
+explanation = '''
+Superpozice stojí na linearitě. Dioda je nelineární prvek: zdvojnásobení napětí nezdvojnásobí proud. Lineární řízené zdroje linearitu neporušují.
+'''
+notes = ['', 'Tam superpozice platí.', 'Tam superpozice platí; druh zdroje nevadí.', 'Lineární řízený zdroj linearitu neporušuje (jen se nesmí „vypnout“ při superpozici).']
+
+[[question]]
+id = 'SUP-03'
+topic = 'Princip superpozice'
+text = '''
+Proč se pomocí superpozice nedá sečíst výkon?
+'''
+options = ['Výkon závisí na druhé mocnině proudu ($P = RI^2$), není lineární.', 'Výkon je vektor.', 'Výkon se při superpozici vždy ztrácí ve zdrojích.', 'Superpozice platí jen pro napětí, ne pro proudy.']
+answer = 0
+explanation = '''
+$(I' + I'')^2 \ne I'^2 + I''^2$. Nejdřív se sečtou proudy (napětí), výkon se spočítá až z výsledku.
+'''
+notes = ['', 'Výkon je skalár.', 'O ztráty nejde.', 'Platí pro napětí i proudy.']
+
+[[question]]
+id = 'SUP-04'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/superpozice-priklad.svg'
+text = '''
+$U_\text{z1} = 12$ V, $R_\text{i1} = 2\ \Omega$, $R_1 = 4\ \Omega$, $G_\text{i2} = 0{,}5$ S. Zdroj $I_\text{z2}$ je rozpojen. Jaké je napětí $U'_1$?
+'''
+value = 4.8
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Paralelně k $R_1$ zůstane $R_\text{i2} = 1/G_\text{i2} = 2\ \Omega$:
+$$R_1 \parallel R_\text{i2} = \frac{4\cdot2}{6} = 1{,}333\ \Omega, \qquad U'_1 = 12\cdot\frac{1{,}333}{2 + 1{,}333} = 4{,}8\ \text{V}$$
+'''
+
+[[question]]
+id = 'SUP-05'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/superpozice-priklad.svg'
+text = '''
+Stejný obvod, $I_\text{z2} = 4$ A (šipka ven z horního uzlu), $U_\text{z1}$ nahrazen zkratem. Jaké je napětí $U''_1$?
+'''
+value = -3.2
+tolerance = 0.01
+unit = 'V'
+sign_hint = 'Zdroj proud z horního uzlu odebírá, napětí vyjde záporné.'
+explanation = '''
+Zdroj proudu napájí tři paralelní vodivosti:
+$$G'' = G_\text{i1} + G_1 + G_\text{i2} = 0{,}5 + 0{,}25 + 0{,}5 = 1{,}25\ \text{S}, \qquad R'' = 0{,}8\ \Omega$$
+$$U''_1 = -I_\text{z2} R'' = -4\cdot0{,}8 = -3{,}2\ \text{V}$$
+'''
+
+[[question]]
+id = 'SUP-06'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/superpozice-priklad.svg'
+text = '''
+Dílčí proudy rezistorem $R_1$ vyšly $I'_1 = 1{,}2$ A a $I''_1 = -0{,}8$ A. Jaký je skutečný proud $I_1$?
+'''
+value = 0.4
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I_1 = I'_1 + I''_1 = 1{,}2 + (-0{,}8) = 0{,}4\ \text{A}$$
+Kontrola MUN: $1{,}25\,U_1 = 12/2 - 4 = 2$, $U_1 = 1{,}6$ V a $I_1 = 1{,}6/4 = 0{,}4$ A.
+'''
+
+[[question]]
+id = 'SUP-07'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/superpozice-priklad.svg'
+text = '''
+Ve stejném obvodu je $U_1 = 1{,}6$ V a $I_1 = 0{,}4$ A. Jaký výkon se ztrácí na $R_1$?
+'''
+value = 0.64
+tolerance = 0.001
+unit = 'W'
+explanation = '''
+$$P = U_1 I_1 = 1{,}6\cdot0{,}4 = 0{,}64\ \text{W}$$
+Součet „dílčích výkonů“ $4{,}8\cdot1{,}2 + 3{,}2\cdot0{,}8 = 8{,}32$ W je nesmysl: výkon se superpozicí nesčítá.
+'''
+
+[[question]]
+id = 'SUP-08'
+kind = 'numeric'
+topic = 'Princip superpozice'
+text = '''
+Dva zdroje napětí $U_1 = 6$ V a $U_2 = 9$ V jsou souhlasně v sérii s rezistorem 30 Ω. Jaký proud vyjde jako součet příspěvků obou zdrojů?
+'''
+value = 0.5
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I' = \frac{6}{30} = 0{,}2\ \text{A}, \qquad I'' = \frac{9}{30} = 0{,}3\ \text{A}, \qquad I = I' + I'' = 0{,}5\ \text{A} = \frac{6 + 9}{30}$$
+'''
+
+[[question]]
+id = 'SUP-09'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/lc3-obvod.svg'
+text = '''
+Obvod LC3: $U_\text{z1} = 10$ V, $R_1 = 100\ \Omega$, $R_2 = 330\ \Omega$, $R_3 = 220\ \Omega$, zdroj $U_\text{z2}$ nahrazen zkratem. Jaký je proud $I'_1$?
+'''
+value = 43.10
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+Se zkratovaným $U_\text{z2}$ jsou $R_2$ a $R_3$ paralelně (oba z uzlu A na dolní vodič):
+$$R_2 \parallel R_3 = \frac{330\cdot220}{550} = 132\ \Omega, \qquad I'_1 = \frac{10}{100 + 132} = 43{,}10\ \text{mA}$$
+'''
+
+[[question]]
+id = 'SUP-10'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/lc3-obvod.svg'
+text = '''
+Obvod LC3, působí jen $U_\text{z2} = 10$ V ($U_\text{z1}$ zkratován). Jaký je proud $I''_2$ (podle šipky na obrázku)?
+'''
+value = -25.08
+tolerance = 0.02
+unit = 'mA'
+sign_hint = 'Proud ze zdroje Uz2 teče rezistorem R2 doleva, proti šipce I2.'
+explanation = '''
+$R_1$ a $R_3$ jsou paralelně a v sérii s $R_2$:
+$$R_1 \parallel R_3 = \frac{100\cdot220}{320} = 68{,}75\ \Omega, \qquad |I''_2| = \frac{10}{330 + 68{,}75} = 25{,}08\ \text{mA}$$
+Proud teče od zdroje $U_\text{z2}$ k uzlu A, proti šipce: $I''_2 = -25{,}08$ mA.
+'''
+
+[[question]]
+id = 'SUP-11'
+kind = 'numeric'
+topic = 'Princip superpozice'
+figure = 'images/lc3-obvod.svg'
+text = '''
+Obvod LC3: dílčí proudy rezistorem $R_3$ jsou $I'_3 = 25{,}86$ mA a $I''_3 = 7{,}84$ mA. Jaký proud $I_3$ teče s oběma zdroji?
+'''
+value = 33.70
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+Oba zdroje „tlačí“ proud rezistorem $R_3$ dolů:
+$$I_3 = I'_3 + I''_3 = 25{,}86 + 7{,}84 = 33{,}70\ \text{mA}$$
+Kontrola MUN: $U_\text{A} = 0{,}130303/0{,}017576 = 7{,}414$ V, $I_3 = 7{,}414/220 = 33{,}70$ mA.
+'''
+
+[[question]]
+id = 'SUP-12'
+topic = 'Princip superpozice'
+text = '''
+Jaká je hlavní nevýhoda superpozice proti MUN nebo MSP v obvodu s mnoha zdroji?
+'''
+options = ['Obvod se musí řešit tolikrát, kolik je zdrojů.', 'Nedá se použít pro zdroje proudu.', 'Výsledky vycházejí jen přibližně.', 'Vyžaduje nelineární prvky.']
+answer = 0
+explanation = '''
+Každý dílčí obvod je jednoduchý, ale je jich tolik, kolik je zdrojů. MUN a MSP dají všechno jednou soustavou rovnic.
+'''
+notes = ['', 'Zdroje proudu se jen rozpojí, použít jde.', 'Výsledek je přesný (v lineárním obvodu).', 'Naopak, s nelineárními prvky neplatí.']

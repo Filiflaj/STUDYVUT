@@ -1,0 +1,200 @@
+name = 'Magnetické obvody'
+description = 'veličiny, analogie s elektrickým obvodem, Ampérův zákon, mezera, indukčnost, síla elektromagnetu'
+
+[[question]]
+id = 'MAG-01'
+topic = 'Magnetické obvody'
+text = '''
+Která veličina magnetického obvodu odpovídá elektrickému proudu?
+'''
+options = ['magnetický indukční tok $\Phi$', 'magnetické napětí $U_\text{m}$', 'intenzita pole $H$', 'magnetický odpor $R_\text{m}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Analogie: proud ↔ tok $\Phi$, napětí ↔ magnetické napětí $U_\text{m}$, odpor ↔ reluktance $R_\text{m}$, Ohmův zákon ↔ Hopkinsonův zákon $U_\text{m} = R_\text{m}\Phi$.
+'''
+notes = ['', 'Magnetické napětí odpovídá elektrickému napětí.', 'Intenzita je spíš obdoba intenzity elektrického pole.', 'Reluktance odpovídá odporu.']
+
+[[question]]
+id = 'MAG-02'
+topic = 'Magnetické obvody'
+text = '''
+Jakou jednotku má magnetické napětí $U_\text{m}$?
+'''
+options = ['A (ampér, případně ampérzávit)', 'V', 'T', 'Wb']
+answer = 0
+layout = 'grid'
+explanation = '''
+$U_\text{m} = H\,l$, tedy (A/m)·m = **A**. Zdroj magnetického napětí je cívka, $U_\text{mn} = NI$.
+'''
+notes = ['', 'Volt je jednotka elektrického napětí.', 'Tesla je jednotka indukce B.', 'Weber je jednotka toku.']
+
+[[question]]
+id = 'MAG-03'
+topic = 'Magnetické obvody'
+text = '''
+Jak se změní indukčnost cívky, když se při stejném jádře zdvojnásobí počet závitů?
+'''
+options = ['vzroste čtyřikrát', 'vzroste dvakrát', 'nezmění se', 'klesne na polovinu']
+answer = 0
+layout = 'grid'
+explanation = '''
+$L = N^2/R_\text{m} = A_L N^2$. Dvojnásobek závitů dá čtyřnásobnou indukčnost.
+'''
+notes = ['', 'Indukčnost roste s druhou mocninou $N$.', 'Počet závitů na indukčnost má vliv.', 'Naopak roste.']
+
+[[question]]
+id = 'MAG-04'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+Jaká je intenzita magnetického pole ve vzduchové mezeře s indukcí 0,5 T? Zadej v kA/m.
+'''
+value = 397.9
+tolerance = 0.2
+unit = 'kA/m'
+explanation = '''
+$$H_\text{v} = \frac{B_\text{v}}{\mu_0} = \frac{0{,}5}{4\pi\cdot10^{-7}} = 397\,887\ \text{A/m} \approx 397{,}9\ \text{kA/m}$$
+'''
+
+[[question]]
+id = 'MAG-05'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+Toroid má střední průměr 120 mm, cívka 200 závitů a proud 1 A, jádro bez mezery. Jaká je intenzita pole v jádře?
+'''
+value = 530.5
+tolerance = 1
+unit = 'A/m'
+explanation = '''
+$$l = \pi D_\text{s} = \pi\cdot0{,}12 = 0{,}377\ \text{m}, \qquad H = \frac{NI}{l} = \frac{200}{0{,}377} = 530{,}5\ \text{A/m}$$
+'''
+
+[[question]]
+id = 'MAG-06'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+V jádře s průřezem 4 cm² je indukce 1,12 T. Jaký je magnetický tok? Zadej v µWb.
+'''
+value = 448
+tolerance = 0.5
+unit = 'µWb'
+explanation = '''
+$$\Phi = B\,S = 1{,}12\cdot4\cdot10^{-4} = 4{,}48\cdot10^{-4}\ \text{Wb} = 448\ \mu\text{Wb}$$
+'''
+
+[[question]]
+id = 'MAG-07'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+Cívka s 200 závity má při proudu 1 A tok 448 µWb. Jaká je její indukčnost? Zadej v mH.
+'''
+value = 89.6
+tolerance = 0.1
+unit = 'mH'
+explanation = '''
+$$L = \frac{N\Phi}{I} = \frac{200\cdot448\cdot10^{-6}}{1} = 0{,}0896\ \text{H} = 89{,}6\ \text{mH}$$
+'''
+
+[[question]]
+id = 'MAG-08'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+Prstenec se středním průměrem 80 mm má mezeru 1 mm. Požadovaná indukce je 0,5 T, pro ni je v železe $H_\text{f} = 109$ A/m. Jaké magnetické napětí $NI$ je potřeba?
+'''
+value = 425.2
+tolerance = 0.3
+unit = 'A'
+explanation = '''
+$$l_\text{f} = \pi\cdot0{,}08 - 0{,}001 = 0{,}2503\ \text{m}$$
+$$NI = H_\text{f} l_\text{f} + \frac{B_\text{v}}{\mu_0}\,l_\text{v} = 109\cdot0{,}2503 + 397\,887\cdot0{,}001 = 27{,}28 + 397{,}9 = 425{,}2\ \text{A}$$
+Při proudu 5 A je to $N = 85$ závitů.
+'''
+
+[[question]]
+id = 'MAG-09'
+topic = 'Magnetické obvody'
+text = '''
+Toroid se železným jádrem má vzduchovou mezeru 1 mm. Kde je při stejném toku větší magnetické napětí?
+'''
+options = ['obvykle v mezeře, i když je o stovky milimetrů kratší', 'vždy v železe, protože je delší', 'všude stejné', 'nezáleží na materiálu']
+answer = 0
+explanation = '''
+Železo má $\mu_\text{r}$ ve stovkách až tisících, takže pro stejné $B$ je $H_\text{f}$ mnohem menší než $H_\text{v} = B/\mu_0$. V příkladu VC6 je $U_\text{mv}$ = 668,5 A a $U_\text{mf}$ = 62,8 A.
+'''
+notes = ['', 'Délka sama nerozhoduje, rozhoduje permeabilita.', 'Magnetické napětí se dělí podle reluktancí.', 'Právě materiál ($\mu_\text{r}$) rozhoduje.']
+
+[[question]]
+id = 'MAG-10'
+topic = 'Magnetické obvody'
+text = '''
+Proč je indukčnost cívky s feromagnetickým jádrem závislá na proudu?
+'''
+options = ['Jádro se sytí: s rostoucím $H$ roste $B$ stále pomaleji, $\mu$ klesá.', 'Protože se s proudem mění počet závitů.', 'Protože se s proudem zahřívá vzduch v cívce.', 'Indukčnost na proudu nezávisí nikdy.']
+answer = 0
+explanation = '''
+Magnetizační křivka je nelineární, $\mu = B/H$ s rostoucím $H$ klesá. Tok proto neroste úměrně proudu a $L = N\Phi/I$ se zmenšuje (VC6, příklad 3: 1,44 mH při 1 A, 0,828 mH při 2 A).
+'''
+notes = ['', 'Počet závitů je pevný.', 'Teplota vzduchu indukčnost neovlivní.', 'U vzduchové cívky ne, u železné ano.']
+
+[[question]]
+id = 'MAG-11'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+Jádro elektromagnetu má průřez 4 cm² a indukci 1,1 T; dvě styčné plochy. Jakou silou drží obě části u sebe? ($F = 2\cdot B^2 S/(2\mu_0)$)
+'''
+value = 385
+tolerance = 1
+unit = 'N'
+explanation = '''
+$$F = 2\cdot\frac{B^2 S}{2\mu_0} = 2\cdot\frac{1{,}1^2\cdot4\cdot10^{-4}}{2\cdot4\pi\cdot10^{-7}} = 2\cdot192{,}6 = 385\ \text{N}$$
+'''
+
+[[question]]
+id = 'MAG-12'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+text = '''
+Prstencové jádro má střední průměr 0,177 m, cívku s 210 závity a proud 0,8 A. Jaká je intenzita pole v jádře?
+'''
+value = 302
+tolerance = 1
+unit = 'A/m'
+explanation = '''
+$$l = \pi\cdot0{,}177 = 0{,}556\ \text{m}, \qquad H = \frac{NI}{l} = \frac{210\cdot0{,}8}{0{,}556} = \frac{168}{0{,}556} = 302\ \text{A/m}$$
+Z křivky oceli E11 pak $B \approx 1{,}1$ T.
+'''
+
+[[question]]
+id = 'MAG-13'
+topic = 'Magnetické obvody'
+text = '''
+Toroid má mezeru $l_\text{v}$ a střední siločáru délky $l = \pi D_\text{s}$. Jakou délku se počítá magnetické napětí v železe?
+'''
+options = ['$l_\text{f} = l - l_\text{v}$', '$l_\text{f} = l$', '$l_\text{f} = l + l_\text{v}$', '$l_\text{f} = D_\text{s}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Střední siločára prochází železem i mezerou; v železe je jen její část $l - l_\text{v}$. U jádra se dvěma mezerami se odečítají obě.
+'''
+notes = ['', 'Mezera není železo.', 'Mezera se odečítá, nepřičítá.', 'Délka siločáry je obvod, $\pi D_\text{s}$.']
+
+[[question]]
+id = 'MAG-14'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+figure = 'images/magnetizacni-krivky.svg'
+text = '''
+Odečti z grafu přibližnou indukci v oceli E11 při $H = 400$ A/m.
+'''
+value = 1.2
+tolerance = 0.03
+unit = 'T'
+explanation = '''
+Na křivce oceli E11 (modrá) je při 400 A/m indukce asi **1,2 T**. Graf je překreslený přibližně, odečtené hodnoty jsou orientační (proto tolerance ±0,03 T).
+'''

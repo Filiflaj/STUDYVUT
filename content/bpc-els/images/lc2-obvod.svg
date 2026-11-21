@@ -1,0 +1,31 @@
+<svg viewBox="0 0 400 260" width="400" class="fig" role="img" aria-label="Obvod úlohy LC2: zdroj U, větev s R1 a větev se sériovými R2 a R3">
+<circle cx="70" cy="132" r="14" class="s"/>
+<line x1="70" y1="118" x2="70" y2="146" class="s"/>
+<line x1="48" y1="114" x2="48" y2="150" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="137" text-anchor="end"><tspan class="it">U</tspan></text>
+<polyline points="70,118 70,40 310,40" class="s"/>
+<polyline points="70,146 70,225 310,225" class="s"/>
+<rect x="193" y="112" width="14" height="40" class="s"/>
+<text x="187" y="137" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="200,40 200,112" class="s"/>
+<polyline points="200,152 200,225" class="s"/>
+<rect x="303" y="70" width="14" height="40" class="s"/>
+<text x="297" y="95" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="310,40 310,70" class="s"/>
+<rect x="303" y="152" width="14" height="40" class="s"/>
+<text x="297" y="177" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="310,110 310,152" class="s"/>
+<polyline points="310,192 310,225" class="s"/>
+<line x1="334" y1="68" x2="334" y2="112" class="v" marker-end="url(#m-v)"/>
+<text x="342" y="95"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<line x1="334" y1="150" x2="334" y2="194" class="v" marker-end="url(#m-v)"/>
+<text x="342" y="177"><tspan class="it">U</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<line x1="117" y1="28" x2="143" y2="28" class="v" marker-end="url(#m-v)"/>
+<text x="130" y="16" text-anchor="middle"><tspan class="it">I</tspan></text>
+<line x1="216" y1="177" x2="216" y2="203" class="v" marker-end="url(#m-v)"/>
+<text x="224" y="195"><tspan class="it">I</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<line x1="280" y1="119" x2="280" y2="145" class="v" marker-end="url(#m-v)"/>
+<text x="272" y="137" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<circle cx="200" cy="40" r="3.2" class="pt"/>
+<circle cx="200" cy="225" r="3.2" class="pt"/>
+</svg>

@@ -1,0 +1,169 @@
+name = 'VC5: MUN, metoda razítek'
+description = 'oba příklady na metodu razítek (zdroj řízený napětím, tranzistory); výsledky ze zadání ověřené výpočtem'
+
+# ---------- Příklad 1
+[[question]]
+id = 'VC5-01'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 1'
+figure = 'images/vc5-p1.svg'
+text = '''
+$R_1 = 10$ kΩ, $R_2 = 100$ kΩ, $R_3 = 2$ kΩ, $R_\text{b} = 10$ kΩ, $g_\text{m} = 50$ mS. Řízený zdroj $g_\text{m} U_\text{A}$ (kde $U_\text{A} = U_{10} - U_{20}$) teče ze země do uzlu 2. Jak vypadá matice MUN (v mS)?
+'''
+options = [
+  '$\begin{bmatrix} 0{,}21 & -0{,}1 \\ -50{,}1 & 50{,}6 \end{bmatrix}$',
+  '$\begin{bmatrix} 0{,}21 & -0{,}1 \\ -0{,}1 & 0{,}6 \end{bmatrix}$',
+  '$\begin{bmatrix} 0{,}21 & 49{,}9 \\ -0{,}1 & 0{,}6 \end{bmatrix}$',
+  '$\begin{bmatrix} 0{,}21 & -0{,}1 \\ 49{,}9 & -49{,}4 \end{bmatrix}$',
+]
+answer = 0
+explanation = '''
+Pasivní část: $G_1 = 0{,}1$, $G_2 = 0{,}01$, $G_\text{b} = 0{,}1$, $G_3 = 0{,}5$ mS, tedy $\begin{bmatrix} 0{,}21 & -0{,}1 \\ -0{,}1 & 0{,}6 \end{bmatrix}$.
+
+Razítko: řídicí uzly 1 (+) a 2 (−); proud zdroje **vtéká** do uzlu 2 (z referenčního uzlu, jehož řádek odpadá). Do řádku 2 se přičte $-g_\text{m}$ pod uzel 1 a $+g_\text{m}$ pod uzel 2:
+$$G_{21} = -0{,}1 - 50 = -50{,}1, \qquad G_{22} = 0{,}6 + 50 = 50{,}6$$
+'''
+notes = ['', 'Chybí razítko řízeného zdroje.', 'Razítko patří do řádku uzlu 2 (výstup), ne do řádku 1.', 'Znaménka razítka jsou obrácená (to by platilo pro proud z uzlu 2 ven).']
+
+[[question]]
+id = 'VC5-02'
+kind = 'numeric'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 1'
+figure = 'images/vc5-p1.svg'
+text = '''
+Jaký je determinant matice $\begin{bmatrix} 0{,}21 & -0{,}1 \\ -50{,}1 & 50{,}6 \end{bmatrix}$ (mS²)?
+'''
+value = 5.616
+tolerance = 0.001
+unit = 'mS²'
+explanation = '''
+$$\Delta = 0{,}21\cdot50{,}6 - (-0{,}1)\cdot(-50{,}1) = 10{,}626 - 5{,}01 = 5{,}616$$
+'''
+
+[[question]]
+id = 'VC5-03'
+kind = 'numeric'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 1'
+figure = 'images/vc5-p1.svg'
+text = '''
+Jaký je napěťový přenos $K_U = U_2/U_1$? (zadání: 0,99)
+'''
+value = 0.990
+tolerance = 0.002
+explanation = '''
+S pravou stranou $(I;\ 0)$:
+$$\Delta_1 = \begin{vmatrix} I & -0{,}1 \\ 0 & 50{,}6 \end{vmatrix} = 50{,}6\,I, \qquad \Delta_2 = \begin{vmatrix} 0{,}21 & I \\ -50{,}1 & 0 \end{vmatrix} = 50{,}1\,I$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{50{,}1}{50{,}6} = 0{,}990$$
+'''
+
+[[question]]
+id = 'VC5-04'
+kind = 'numeric'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 1'
+figure = 'images/vc5-p1.svg'
+text = '''
+Jaký je vstupní odpor $R_\text{vst} = U_1/I$? Zadej v kΩ. (zadání: 9009 Ω)
+'''
+value = 9.010
+tolerance = 0.002
+unit = 'kΩ'
+explanation = '''
+$$R_\text{vst} = \frac{U_1}{I} = \frac{\Delta_1}{\Delta\,I} = \frac{50{,}6}{5{,}616} = 9{,}010\ \text{k}\Omega$$
+Zadání uvádí 9009 Ω: to vyjde, když se dosadí zaokrouhlený přenos 0,99, $R_\text{vst} = 1/(G_1 + G_2 + G_\text{b}(1 - 0{,}99)) = 1/0{,}111$ mS. Přesně je to 9010 Ω.
+'''
+
+# ---------- Příklad 2
+[[question]]
+id = 'VC5-05'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 2'
+figure = 'images/vc5-p2.svg'
+text = '''
+Proč vychází vstupní odpor obvodu z příkladu 2 rovný $R_1 = 5$ kΩ?
+'''
+options = [
+  'Hradlo unipolárního tranzistoru neodebírá proud, takže vstupní proud teče jen rezistorem $R_1$.',
+  'Protože $R_1$ je největší odpor v obvodu.',
+  'Protože bipolární tranzistor má nulový vstupní odpor.',
+  'Je to náhoda daná čísly.',
+]
+answer = 0
+explanation = '''
+V modelu FET je hradlo rozpojené, v řádku 1 matice je jen $G_1$: rovnice uzlu 1 je $G_1 U_1 = I$, tedy $R_\text{vst} = R_1 = 5$ kΩ.
+'''
+notes = ['', 'Velikost odporů s tím nesouvisí.', 'BJT je za FET a na vstup nepůsobí.', 'Je to vlastnost modelu FET.']
+
+[[question]]
+id = 'VC5-06'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 2'
+figure = 'images/vc5-p2-model.svg'
+text = '''
+Uzly: 1 = hradlo T1, 2 = source T1 a báze T2, 3 = drain T1 a kolektor T2 (výstup). Jak vypadá řádek 3 matice MUN?
+'''
+options = [
+  '$\begin{bmatrix} g_\text{m1} & g_\text{m2} - g_\text{m1} & G_3 \end{bmatrix}$',
+  '$\begin{bmatrix} 0 & 0 & G_3 \end{bmatrix}$',
+  '$\begin{bmatrix} -g_\text{m1} & g_\text{m1} - g_\text{m2} & G_3 \end{bmatrix}$',
+  '$\begin{bmatrix} g_\text{m1} & -g_\text{m1} & G_3 + g_\text{m2} \end{bmatrix}$',
+]
+answer = 0
+explanation = '''
+Z uzlu 3 vytékají oba řízené proudy: $g_\text{m1}(U_1 - U_2)$ do sourcu T1 a $g_\text{m2} U_2$ do emitoru T2 (země). V řádku 3: $+g_\text{m1}$ pod uzel 1, $-g_\text{m1} + g_\text{m2}$ pod uzel 2, a $G_3$ na diagonále.
+
+Celá matice: $\begin{bmatrix} G_1 & 0 & 0 \\ -g_\text{m1} & G_2 + G_\text{BE} + g_\text{m1} & 0 \\ g_\text{m1} & g_\text{m2} - g_\text{m1} & G_3 \end{bmatrix}$.
+'''
+notes = ['', 'Chybí razítka obou tranzistorů.', 'Znaménka patří řádku 2 (do uzlu 2 proud T1 vtéká), ne řádku 3.', 'Řídicí napětí T2 je $U_2$ (báze–emitor), ne $U_3$.']
+
+[[question]]
+id = 'VC5-07'
+kind = 'numeric'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 2'
+figure = 'images/vc5-p2-model.svg'
+text = '''
+$R_2 = 2{,}8$ kΩ, $R_\text{b2} = 2{,}5$ kΩ, $g_\text{m1} = 300$ mS. Jaký je diagonální prvek $G_{22}$ (v mS)?
+'''
+value = 300.757
+tolerance = 0.001
+unit = 'mS'
+explanation = '''
+$$G_{22} = G_2 + G_\text{BE} + g_\text{m1} = \frac{1}{2{,}8} + \frac{1}{2{,}5} + 300 = 0{,}357 + 0{,}4 + 300 = 300{,}757\ \text{mS}$$
+'''
+
+[[question]]
+id = 'VC5-08'
+kind = 'numeric'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 2'
+figure = 'images/vc5-p2-model.svg'
+text = '''
+Z rovnice uzlu 2, $-g_\text{m1} U_1 + G_{22} U_2 = 0$, urči poměr $U_2/U_1$ ($g_\text{m1} = 300$ mS, $G_{22} = 300{,}757$ mS).
+'''
+value = 0.99748
+tolerance = 0.00002
+explanation = '''
+$$\frac{U_2}{U_1} = \frac{g_\text{m1}}{G_{22}} = \frac{300}{300{,}757} = 0{,}99748$$
+Source T1 skoro kopíruje napětí hradla (sledovač).
+'''
+
+[[question]]
+id = 'VC5-09'
+kind = 'numeric'
+topic = 'Metoda razítek'
+source = 'VC5, příklad 2'
+figure = 'images/vc5-p2-model.svg'
+text = '''
+Jaký je napěťový přenos $K_U = U_3/U_1$ ($g_\text{m1} = 300$ mS, $g_\text{m2} = 400$ mS, $R_3 = 1$ kΩ, $U_2/U_1 = 0{,}99748$)? (zadání: −400)
+'''
+value = -399.7
+tolerance = 0.5
+sign_hint = 'Výstup je na kolektoru, zesilovač obrací fázi: přenos je záporný.'
+explanation = '''
+Rovnice uzlu 3: $g_\text{m1} U_1 + (g_\text{m2} - g_\text{m1})\,U_2 + G_3 U_3 = 0$, takže
+$$K_U = \frac{U_3}{U_1} = -\frac{g_\text{m1} + (g_\text{m2} - g_\text{m1})\cdot0{,}99748}{G_3} = -\frac{300 + 100\cdot0{,}99748}{1} = -399{,}7 \approx -400$$
+Cramerovým pravidlem stejně: $\Delta = G_1 G_{22} G_3 = 0{,}2\cdot300{,}757\cdot1 = 60{,}151$, $K_U = \Delta_3/\Delta_1 = -120\,227/300{,}757 = -399{,}7$.
+'''

@@ -1,0 +1,61 @@
+<svg viewBox="0 0 690 250" width="690" class="fig" role="img" aria-label="Obvod úlohy LC4: a) zdroj U, dělič R1, R2 a zátěž Rz, b) náhradní zdroj Ui, Ri se stejnou zátěží">
+<circle cx="50" cy="128" r="14" class="s"/>
+<line x1="50" y1="114" x2="50" y2="142" class="s"/>
+<line x1="28" y1="110" x2="28" y2="146" class="v" marker-end="url(#m-v)"/>
+<text x="20" y="133" text-anchor="end"><tspan class="it">U</tspan></text>
+<polyline points="50,114 50,50" class="s"/>
+<polyline points="50,142 50,205" class="s"/>
+<rect x="105" y="43" width="40" height="14" class="s"/>
+<text x="125" y="37" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="50,50 105,50" class="s"/>
+<polyline points="145,50 200,50" class="s"/>
+<rect x="193" y="108" width="14" height="40" class="s"/>
+<text x="187" y="133" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="200,50 200,108" class="s"/>
+<polyline points="200,148 200,205" class="s"/>
+<circle cx="200" cy="50" r="3.2" class="pt"/>
+<circle cx="200" cy="205" r="3.2" class="pt"/>
+<polyline points="200,50 240,50" class="s"/>
+<polyline points="50,205 240,205" class="s"/>
+<circle cx="240" cy="50" r="3.5" class="s1"/>
+<circle cx="240" cy="205" r="3.5" class="s1"/>
+<text x="240" y="38" class="sm" text-anchor="middle">A</text>
+<text x="240" y="225" class="sm" text-anchor="middle">B</text>
+<polyline points="240,50 290,50" class="s"/>
+<polyline points="240,205 290,205" class="s"/>
+<rect x="283" y="108" width="14" height="40" class="s"/>
+<text x="277" y="133" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="290,50 290,108" class="s"/>
+<polyline points="290,148 290,205" class="s"/>
+<line x1="312" y1="100" x2="312" y2="156" class="v" marker-end="url(#m-v)"/>
+<text x="318" y="133"><tspan class="it">U</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<line x1="252" y1="66" x2="278" y2="66" class="v" marker-end="url(#m-v)"/>
+<text x="265" y="88" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<circle cx="395" cy="128" r="14" class="s"/>
+<line x1="395" y1="114" x2="395" y2="142" class="s"/>
+<line x1="373" y1="110" x2="373" y2="146" class="v" marker-end="url(#m-v)"/>
+<text x="365" y="133" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="395,114 395,50" class="s"/>
+<polyline points="395,142 395,205" class="s"/>
+<rect x="470" y="43" width="40" height="14" class="s"/>
+<text x="490" y="37" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="395,50 470,50" class="s"/>
+<polyline points="510,50 585,50" class="s"/>
+<polyline points="395,205 585,205" class="s"/>
+<circle cx="585" cy="50" r="3.5" class="s1"/>
+<circle cx="585" cy="205" r="3.5" class="s1"/>
+<text x="585" y="38" class="sm" text-anchor="middle">A</text>
+<text x="585" y="225" class="sm" text-anchor="middle">B</text>
+<polyline points="585,50 635,50" class="s"/>
+<polyline points="585,205 635,205" class="s"/>
+<rect x="628" y="108" width="14" height="40" class="s"/>
+<text x="622" y="133" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="635,50 635,108" class="s"/>
+<polyline points="635,148 635,205" class="s"/>
+<line x1="657" y1="100" x2="657" y2="156" class="v" marker-end="url(#m-v)"/>
+<text x="663" y="133"><tspan class="it">U</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<line x1="597" y1="66" x2="623" y2="66" class="v" marker-end="url(#m-v)"/>
+<text x="610" y="88" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<text x="20" y="24" class="sm">a)</text>
+<text x="365" y="24" class="sm">b)</text>
+</svg>

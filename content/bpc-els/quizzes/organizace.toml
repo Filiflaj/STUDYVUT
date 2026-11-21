@@ -1,0 +1,132 @@
+name = 'Organizace předmětu'
+description = 'podmínky zápočtu, plán semestru, pravidla laboratoře'
+
+[[question]]
+id = 'ORG-01'
+kind = 'numeric'
+topic = 'Organizace předmětu'
+text = '''
+Kolik výpočetních zadání (VC) je potřeba samostatně vypracovat k zápočtu?
+'''
+value = 6
+tolerance = 0
+explanation = '''
+Podle vyhlášky předmětu je k zápočtu potřeba **6 výpočetních zadání** a **5 laboratorních úloh**. Odpadlé cvičení se automaticky uzná.
+'''
+
+[[question]]
+id = 'ORG-02'
+kind = 'numeric'
+topic = 'Organizace předmětu'
+text = '''
+Kolik laboratorních úloh (LC) je potřeba k zápočtu?
+'''
+value = 5
+tolerance = 0
+explanation = '''
+LC1 až LC5 (úloha s osciloskopem má návod označený LC6). Vedle nich 6 výpočetních zadání.
+'''
+
+[[question]]
+id = 'ORG-03'
+kind = 'numeric'
+topic = 'Organizace předmětu'
+text = '''
+Ve kterém týdnu semestru je poslední možná kontrola úloh?
+'''
+value = 13
+tolerance = 0
+explanation = '''
+Poslední kontrola je ve **13. týdnu** (7. 12. – 11. 12.), kdy je závěrečná kontrola a zápočet.
+'''
+
+[[question]]
+id = 'ORG-04'
+topic = 'Organizace předmětu'
+text = '''
+Jak se předmět BPC-ELS ukončuje?
+'''
+options = ['zápočtem', 'zkouškou', 'klasifikovaným zápočtem s písemkou', 'zápočtem a zkouškou']
+answer = 0
+explanation = '''
+Předmět končí **zápočtem**. Ve vyhlášce nejsou písemky ani body: stačí mít vypracované a zkontrolované všechny úlohy LC a zadání VC.
+'''
+notes = ['', 'Zkouška v předmětu není.', 'Písemky ani body vyhláška nestanoví.', 'Jen zápočet.']
+
+[[question]]
+id = 'ORG-05'
+topic = 'Organizace předmětu'
+text = '''
+Cvičení odpadlo kvůli státnímu svátku. Co to znamená pro úlohu, která se měla ten týden dělat?
+'''
+options = ['Úloha se automaticky uzná a nenahrazuje se.', 'Úlohu je nutné nahradit s jinou skupinou.', 'Úloha propadá a zápočet nelze získat.', 'Úloha se musí vypracovat doma a odevzdat do týdne.']
+answer = 0
+explanation = '''
+Odpadlá výuka se **automaticky uznává**. Kdo chce látku slyšet, může se podívat na záznam z loňska nebo přijít s jinou skupinou, ale povinné to není.
+'''
+notes = ['', 'Přijít s jinou skupinou je možnost, ne povinnost.', 'Naopak, úloha se uzná.', 'Nic takového vyhláška nepožaduje.']
+
+[[question]]
+id = 'ORG-06'
+topic = 'Organizace předmětu'
+text = '''
+Kdy nejpozději musí být vypracovaná laboratorní úloha zkontrolovaná?
+'''
+options = ['na následujícím laboratorním cvičení', 'do konce semestru, kdykoli', 'hned na konci téhož cvičení', 'do zkouškového období']
+answer = 0
+explanation = '''
+Vypracované úlohy se kontrolují **na dalším laboratorním cvičení**. Stejně tak výpočetní příklady musí být zkontrolované nejpozději na další hodině. Absolutně poslední termín je 13. týden.
+'''
+notes = ['', 'Úlohy se kontrolují průběžně, ne až na konci.', 'Zpracování (výpočty, závěr) se může dokončit doma.', 'Poslední kontrola je ve 13. týdnu.']
+
+[[question]]
+id = 'ORG-07'
+topic = 'Organizace předmětu'
+text = '''
+V jakém pořadí se zapojuje obvod v laboratoři?
+'''
+options = [
+  'proudový (sériový) obvod, pak napěťové větve s voltmetry, zdroj (vypnutý) nakonec',
+  'nejdřív zdroj, pak voltmetry, pak ampérmetry',
+  'voltmetry, pak sériový obvod, zdroj kdykoli',
+  'na pořadí nezáleží, hlavně zkontrolovat polaritu',
+]
+answer = 0
+explanation = '''
+Nejdřív se zapojí vše, co je v sérii se zdrojem (včetně ampérmetrů), pak paralelní větve s voltmetry a **zdroj se připojuje jako poslední, vypnutý**. Před zapnutím zapojení kontroluje vyučující.
+'''
+notes = ['', 'Zdroj patří naopak na konec.', 'Voltmetry se připojují až k hotovému sériovému obvodu.', 'Pořadí je pravidlo laboratoře, chrání před chybou i úrazem.']
+
+[[question]]
+id = 'ORG-08'
+topic = 'Organizace předmětu'
+text = '''
+Co patří do domácí přípravy laboratorní úlohy v sešitu?
+'''
+options = [
+  'název, stručný teoretický úvod (vzorce, definice), schéma měření, prázdné tabulky',
+  'opis celého návodu',
+  'naměřené hodnoty z loňska',
+  'jen závěr, ostatní se dopíše v laboratoři',
+]
+answer = 0
+explanation = '''
+Do laboratoře se chodí s připravenou kostrou: název, velmi stručná teorie, schéma a tabulky. V laboratoři se doplní naměřené hodnoty a výpočty, nakonec závěr. Bez základní znalosti úlohy nesmí student měřit.
+'''
+notes = ['', 'Teorie má být velmi stručná, ne opis.', 'Měří se vlastní hodnoty, osobně.', 'Závěr se píše až po měření.']
+
+[[question]]
+id = 'ORG-09'
+kind = 'numeric'
+topic = 'Organizace předmětu'
+text = '''
+Naměřené napětí je $U_\text{M} = 6{,}82$ V, vypočtené (správné) $U_\text{S} = 6{,}875$ V. Jaká je relativní odchylka podle vztahu z prezentace semináře (vztaženo k naměřené hodnotě)?
+'''
+value = -0.81
+tolerance = 0.01
+unit = '%'
+sign_hint = 'Naměřená hodnota je menší než správná, odchylka je záporná.'
+explanation = '''
+$$\delta = \frac{X_\text{M} - X_\text{S}}{X_\text{M}}\cdot100\ \% = \frac{6{,}82 - 6{,}875}{6{,}82}\cdot100\ \% = \frac{-0{,}055}{6{,}82}\cdot100\ \% = -0{,}81\ \%$$
+'''
+warning = 'Seminář dělí naměřenou hodnotou; v laboratořích EL1 se dělí teoretickou (vyšlo by −0,80 %).'

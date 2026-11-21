@@ -1,0 +1,37 @@
+<svg viewBox="0 0 470 290" width="470" class="fig" role="img" aria-label="Grafické řešení: AV charakteristika nelineárního rezistoru a zatěžovací přímka náhradního zdroje, průsečík je pracovní bod">
+<line x1="70" y1="250" x2="466" y2="250" class="s1" marker-end="url(#m-v)"/>
+<line x1="70" y1="250" x2="70" y2="20" class="s1" marker-end="url(#m-v)"/>
+<line x1="142" y1="250" x2="142" y2="255" class="s1"/>
+<text x="142" y="270" class="sm" text-anchor="middle">1</text>
+<line x1="214" y1="250" x2="214" y2="255" class="s1"/>
+<text x="214" y="270" class="sm" text-anchor="middle">2</text>
+<line x1="286" y1="250" x2="286" y2="255" class="s1"/>
+<text x="286" y="270" class="sm" text-anchor="middle">3</text>
+<line x1="358" y1="250" x2="358" y2="255" class="s1"/>
+<text x="358" y="270" class="sm" text-anchor="middle">4</text>
+<line x1="430" y1="250" x2="430" y2="255" class="s1"/>
+<text x="430" y="270" class="sm" text-anchor="middle">5</text>
+<line x1="65" y1="200" x2="70" y2="200" class="s1"/>
+<text x="61" y="204" class="sm" text-anchor="end">0,1</text>
+<line x1="65" y1="150" x2="70" y2="150" class="s1"/>
+<text x="61" y="154" class="sm" text-anchor="end">0,2</text>
+<line x1="65" y1="100" x2="70" y2="100" class="s1"/>
+<text x="61" y="104" class="sm" text-anchor="end">0,3</text>
+<line x1="65" y1="50" x2="70" y2="50" class="s1"/>
+<text x="61" y="54" class="sm" text-anchor="end">0,4</text>
+<text x="470" y="268"><tspan class="it">u</tspan></text>
+<text x="480" y="268" class="sm">(V)</text>
+<text x="62" y="16" text-anchor="end"><tspan class="it">i</tspan></text>
+<text x="76" y="22" class="sm">(A)</text>
+<polyline points="70,250 77.2,249.6 84.4,249.2 91.6,248.5 98.8,247.8 106,246.9 113.2,245.9 120.4,244.8 127.6,243.5 134.8,242.1 142,240.6 149.2,239 156.4,237.2 163.6,235.3 170.8,233.3 178,231.1 185.2,228.8 192.4,226.4 199.6,223.8 206.8,221.1 214,218.3 221.2,215.4 228.4,212.3 235.6,209.1 242.8,205.8 250,202.3 257.2,198.7 264.4,195 271.6,191.2 278.8,187.2 286,183.1 293.2,178.9 300.4,174.5 307.6,170 314.8,165.4 322,160.7 329.2,155.8 336.4,150.8 343.6,145.6 350.8,140.4 358,135 365.2,129.4 372.4,123.8 379.6,118 386.8,112.1 394,106.1 401.2,99.9 408.4,93.6 415.6,87.2 422.8,80.6 430,73.9" class="s"/>
+<line x1="70" y1="50" x2="415.6" y2="250" class="f"/>
+<line x1="293" y1="179" x2="293" y2="250" class="d"/>
+<line x1="70" y1="179" x2="293" y2="179" class="d"/>
+<circle cx="293" cy="179" r="3.6" class="ptA"/>
+<text x="430" y="65" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">n</tspan><tspan dy="-4"></tspan></text>
+<text x="142" y="70" class="sm acc">náhradní zdroj</text>
+<text x="293" y="286" class="sm acc" text-anchor="middle">3,10</text>
+<text x="61" y="173" class="sm acc" text-anchor="end">0,142</text>
+<text x="419.6" y="242" class="acc"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan></text>
+<text x="78" y="46" class="acc"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4">/</tspan><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan></text>
+</svg>

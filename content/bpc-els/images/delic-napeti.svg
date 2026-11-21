@@ -1,0 +1,21 @@
+<svg viewBox="0 0 330 250" width="330" class="fig" role="img" aria-label="Dělič napětí: zdroj U, rezistory R1 a R2 v sérii, napětí U1 a U2">
+<circle cx="70" cy="128" r="14" class="s"/>
+<line x1="70" y1="114" x2="70" y2="142" class="s"/>
+<line x1="48" y1="110" x2="48" y2="146" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="133" text-anchor="end"><tspan class="it">U</tspan></text>
+<polyline points="70,114 70,40 220,40" class="s"/>
+<polyline points="70,142 70,215 220,215" class="s"/>
+<rect x="213" y="65" width="14" height="40" class="s"/>
+<text x="207" y="90" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="220,40 220,65" class="s"/>
+<rect x="213" y="150" width="14" height="40" class="s"/>
+<text x="207" y="175" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="220,105 220,150" class="s"/>
+<polyline points="220,190 220,215" class="s"/>
+<line x1="244" y1="63" x2="244" y2="107" class="v" marker-end="url(#m-v)"/>
+<text x="252" y="90"><tspan class="it">U</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<line x1="244" y1="148" x2="244" y2="192" class="v" marker-end="url(#m-v)"/>
+<text x="252" y="175"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<line x1="127" y1="56" x2="153" y2="56" class="v" marker-end="url(#m-v)"/>
+<text x="140" y="78" text-anchor="middle"><tspan class="it">I</tspan></text>
+</svg>

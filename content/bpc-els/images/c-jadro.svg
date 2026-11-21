@@ -1,0 +1,30 @@
+<svg viewBox="0 0 470 330" width="470" class="fig" role="img" aria-label="Jádro VC6 příkladu 2: C jádro s jhem, dvě vzduchové mezery 10 mm, vnější rozměry 350 × 310 mm, šířka sloupku 80 mm">
+<polygon points="90.0,40.0 352.5,40.0 352.5,205.0 292.5,205.0 292.5,100.0 150.0,100.0 150.0,205.0 90.0,205.0" class="gf"/>
+<rect x="90" y="212.5" width="262.5" height="60" class="gf"/>
+<rect x="120" y="70" width="202.5" height="172.5" class="d"/>
+<ellipse cx="172.5" cy="70.0" rx="9" ry="36.0" class="s"/>
+<ellipse cx="195.0" cy="70.0" rx="9" ry="36.0" class="s"/>
+<ellipse cx="217.5" cy="70.0" rx="9" ry="36.0" class="s"/>
+<ellipse cx="240.0" cy="70.0" rx="9" ry="36.0" class="s"/>
+<ellipse cx="262.5" cy="70.0" rx="9" ry="36.0" class="s"/>
+<polyline points="165.8,70 165.8,20" class="s"/>
+<circle cx="165.8" cy="16.5" r="3.5" class="s1"/>
+<polyline points="282.8,70 282.8,20" class="s"/>
+<circle cx="282.8" cy="16.5" r="3.5" class="s1"/>
+<text x="155.8" y="22" text-anchor="end"><tspan class="it">I</tspan></text>
+<text x="224.2" y="26" text-anchor="middle"><tspan class="it">N</tspan></text>
+<line x1="221.2" y1="40" x2="221.2" y2="40" class="s1"/>
+<line x1="221.2" y1="294.5" x2="90" y2="294.5" class="s1" marker-end="url(#m-v)"/>
+<line x1="221.2" y1="294.5" x2="352.5" y2="294.5" class="s1" marker-end="url(#m-v)"/>
+<text x="221.2" y="312.5" class="sm" text-anchor="middle">350</text>
+<line x1="62" y1="156.2" x2="62" y2="40" class="s1" marker-end="url(#m-v)"/>
+<line x1="62" y1="156.2" x2="62" y2="272.5" class="s1" marker-end="url(#m-v)"/>
+<text x="56" y="160.2" class="sm" text-anchor="end">310</text>
+<line x1="90" y1="152.5" x2="150" y2="152.5" class="s1"/>
+<text x="120" y="146.5" class="sm" text-anchor="middle">80</text>
+<line x1="352.5" y1="205" x2="374.5" y2="205" class="s1"/>
+<line x1="352.5" y1="212.5" x2="374.5" y2="212.5" class="s1"/>
+<text x="378.5" y="213.8" class="sm">10 (mezera)</text>
+<text x="221.2" y="160" class="sm mut" text-anchor="middle">hloubka 80 mm</text>
+<text x="221.2" y="264" class="sm mut" text-anchor="middle">jho</text>
+</svg>

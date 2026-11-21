@@ -1,0 +1,379 @@
+name = 'VC2: Metoda uzlových napětí'
+description = 'všechny čtyři příklady VC2 s mezivýsledky; výsledky ze zadání ověřené výpočtem'
+
+# ---------- Příklad 1
+[[question]]
+id = 'VC2-01'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 1'
+figure = 'images/vc2-p1.svg'
+text = '''
+$I_\text{A} = 1$ A (šipka dolů, z uzlu 1), $I_\text{B} = 2$ A (šipka nahoru, do uzlu 2), $R_1 = 10\ \Omega$, $R_2 = 20\ \Omega$, $R_3 = 10\ \Omega$. Která soustava MUN je správně (vodivosti v S, proudy v A)?
+'''
+options = [
+  '$\begin{bmatrix} 0{,}15 & -0{,}05 \\ -0{,}05 & 0{,}15 \end{bmatrix}\mathbf{U} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}$',
+  '$\begin{bmatrix} 0{,}15 & -0{,}05 \\ -0{,}05 & 0{,}15 \end{bmatrix}\mathbf{U} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$',
+  '$\begin{bmatrix} 0{,}1 & -0{,}05 \\ -0{,}05 & 0{,}1 \end{bmatrix}\mathbf{U} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}$',
+  '$\begin{bmatrix} 0{,}15 & 0{,}05 \\ 0{,}05 & 0{,}15 \end{bmatrix}\mathbf{U} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}$',
+]
+answer = 0
+explanation = '''
+$G_1 = 0{,}1$ S, $G_2 = 0{,}05$ S, $G_3 = 0{,}1$ S. Diagonála: $G_1 + G_2 = 0{,}15$, $G_2 + G_3 = 0{,}15$; mimo diagonálu $-G_2$. $I_\text{A}$ z uzlu 1 vytéká ($-1$), $I_\text{B}$ do uzlu 2 vtéká ($+2$).
+'''
+notes = ['', '$I_\text{A}$ míří z uzlu ven, píše se se znaménkem −.', 'Na diagonále chybí $G_2$.', 'Mimo diagonálu je záporné znaménko.']
+
+[[question]]
+id = 'VC2-02'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 1'
+figure = 'images/vc2-p1.svg'
+text = '''
+Jaké je uzlové napětí $U_{10}$?
+'''
+value = -2.5
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+$$\Delta = 0{,}15\cdot0{,}15 - 0{,}05^2 = 0{,}0225 - 0{,}0025 = 0{,}02$$
+$$\Delta_1 = \begin{vmatrix} -1 & -0{,}05 \\ 2 & 0{,}15 \end{vmatrix} = -0{,}15 + 0{,}1 = -0{,}05, \qquad U_{10} = \frac{-0{,}05}{0{,}02} = -2{,}5\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC2-03'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 1'
+figure = 'images/vc2-p1.svg'
+text = '''
+Jaké je uzlové napětí $U_{20}$?
+'''
+value = 12.5
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 0{,}15 & -1 \\ -0{,}05 & 2 \end{vmatrix} = 0{,}3 - 0{,}05 = 0{,}25, \qquad U_{20} = \frac{0{,}25}{0{,}02} = 12{,}5\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC2-04'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 1'
+figure = 'images/vc2-p1.svg'
+text = '''
+Jaký je proud $I_1$ (dolů rezistorem $R_1$)? (zadání: −0,25 A)
+'''
+value = -0.25
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I_1 = G_1 U_{10} = \frac{-2{,}5}{10} = -0{,}25\ \text{A}$$
+Proud teče rezistorem $R_1$ nahoru, proti šipce.
+'''
+
+[[question]]
+id = 'VC2-05'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 1'
+figure = 'images/vc2-p1.svg'
+text = '''
+Jaký je proud $I_2$ (doprava rezistorem $R_2$)? (zadání: −0,75 A)
+'''
+value = -0.75
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I_2 = \frac{U_{10} - U_{20}}{R_2} = \frac{-2{,}5 - 12{,}5}{20} = -0{,}75\ \text{A}$$
+'''
+
+[[question]]
+id = 'VC2-06'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 1'
+figure = 'images/vc2-p1.svg'
+text = '''
+Jaký je proud $I_3$ (dolů rezistorem $R_3$)? (zadání: 1,25 A)
+'''
+value = 1.25
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I_3 = G_3 U_{20} = \frac{12{,}5}{10} = 1{,}25\ \text{A}$$
+Kontrola 1. KZ v uzlu 2: přitéká $I_\text{B} + I_2 = 2 - 0{,}75 = 1{,}25$ A $= I_3$.
+'''
+
+# ---------- Příklad 2
+[[question]]
+id = 'VC2-07'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 2'
+figure = 'images/vc2-p2.svg'
+text = '''
+Větev mezi uzly 1 a 2 tvoří zdroj $U_\text{A} = 20$ V (šipka doprava, kladná svorka u uzlu 1) v sérii s $R_2 = 20\ \Omega$. Čím se pro MUN nahradí?
+'''
+options = [
+  'vodivostí $G_2 = 0{,}05$ S mezi uzly 1 a 2 a zdrojem proudu 1 A, který teče do uzlu 1 a z uzlu 2',
+  'vodivostí $G_2$ a zdrojem proudu 1 A do uzlu 2 a z uzlu 1',
+  'jen vodivostí $G_2$, zdroj se zkratuje',
+  'zdrojem proudu 20 A',
+]
+answer = 0
+explanation = '''
+$I = U_\text{A}/R_2 = 20/20 = 1$ A. Kladná svorka zdroje je u uzlu 1, proud náhradního zdroje proudu proto míří **do uzlu 1** (a z uzlu 2). Paralelně k němu $G_2 = 1/20 = 0{,}05$ S.
+
+Podobně větev $R_4$ + $U_\text{B}$ (šipka nahoru, kladná svorka dole u země): zdroj proudu $10/20 = 0{,}5$ A, který teče **z uzlu 2** do země, a $G_4 = 0{,}05$ S.
+'''
+notes = ['', 'Směr je obrácený: proud míří ke kladné svorce, tedy k uzlu 1.', 'Zkratovat by se zdroj mohl jen při superpozici, tady by zmizel.', '20/20 = 1 A, ne 20 A.']
+
+[[question]]
+id = 'VC2-08'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 2'
+figure = 'images/vc2-p2.svg'
+text = '''
+$I = 0{,}8$ A (šipka dolů, z uzlu 1), $U_\text{A} = 20$ V, $U_\text{B} = 10$ V, $R_1 = 15\ \Omega$, $R_2 = 20\ \Omega$, $R_3 = 50\ \Omega$, $R_4 = 20\ \Omega$. Jaký je součet proudů zdrojů na pravé straně rovnice uzlu 1?
+'''
+value = 0.2
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+Zdroj $I$ z uzlu vytéká ($-0{,}8$), náhradní zdroj větve $U_\text{A}$, $R_2$ do uzlu vtéká ($+1$): $-0{,}8 + 1 = 0{,}2$ A.
+
+Uzel 2: $-1$ (náhradní zdroj větve $U_\text{A}$) $-0{,}5$ (větev $U_\text{B}$) $= -1{,}5$ A.
+'''
+
+[[question]]
+id = 'VC2-09'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 2'
+figure = 'images/vc2-p2.svg'
+text = '''
+Jaké je napětí $U_1$? (zadání: −4,435 V)
+'''
+value = -4.435
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$G_{11} = G_1 + G_2 = 0{,}06667 + 0{,}05 = 0{,}11667$ S, $G_{22} = G_2 + G_3 + G_4 = 0{,}05 + 0{,}02 + 0{,}05 = 0{,}12$ S:
+$$\begin{bmatrix} 0{,}11667 & -0{,}05 \\ -0{,}05 & 0{,}12 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} 0{,}2 \\ -1{,}5 \end{bmatrix}$$
+$$\Delta = 0{,}11667\cdot0{,}12 - 0{,}0025 = 0{,}0115, \qquad \Delta_1 = 0{,}2\cdot0{,}12 - (-0{,}05)(-1{,}5) = 0{,}024 - 0{,}075 = -0{,}051$$
+$$U_1 = U_{10} = \frac{-0{,}051}{0{,}0115} = -4{,}435\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC2-10'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 2'
+figure = 'images/vc2-p2.svg'
+text = '''
+Jaké je napětí $U_2$? (zadání: −14,35 V)
+'''
+value = -14.35
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 0{,}11667 & 0{,}2 \\ -0{,}05 & -1{,}5 \end{vmatrix} = -0{,}175 + 0{,}01 = -0{,}165, \qquad U_2 = U_{20} = \frac{-0{,}165}{0{,}0115} = -14{,}35\ \text{V}$$
+'''
+
+# ---------- Příklad 3
+[[question]]
+id = 'VC2-11'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 3'
+figure = 'images/vc2-p3.svg'
+text = '''
+$U_\text{z1} = 10$ V (šipka dolů) v sérii s $R_3 = 200\ \Omega$ se převede na zdroj proudu do uzlu 1. Jaký má proud?
+'''
+value = 50
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I_\text{z1} = \frac{U_\text{z1}}{R_3} = \frac{10}{200} = 0{,}05\ \text{A} = 50\ \text{mA}, \qquad G_3 = 5\ \text{mS}$$
+Kladná svorka $U_\text{z1}$ je nahoře, proud proto teče do uzlu 1.
+'''
+
+[[question]]
+id = 'VC2-12'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 3'
+figure = 'images/vc2-p3.svg'
+text = '''
+$R_1 = 150\ \Omega$, $R_3 = 200\ \Omega$, $R_4 = 350\ \Omega$, $R_6 = 450\ \Omega$. Jaký je diagonální prvek $G_{11}$ (v mS, vodivosti na 3 desetinná místa)?
+'''
+value = 16.746
+tolerance = 0.002
+unit = 'mS'
+explanation = '''
+K uzlu 1 jsou připojeny $R_1$, $R_3$ (z převedeného zdroje), $R_4$ a $R_6$:
+$$G_{11} = G_1 + G_3 + G_4 + G_6 = 6{,}667 + 5 + 2{,}857 + 2{,}222 = 16{,}746\ \text{mS}$$
+'''
+
+[[question]]
+id = 'VC2-13'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 3'
+figure = 'images/vc2-p3.svg'
+text = '''
+Soustava (mS, mA): $\begin{bmatrix} 16{,}746 & -2{,}857 & -2{,}222 \\ -2{,}857 & 17{,}857 & -5 \\ -2{,}222 & -5 & 7{,}222 \end{bmatrix}\mathbf{U} = \begin{bmatrix} 50 \\ 0 \\ 20 \end{bmatrix}$. Jaký je determinant $\Delta$?
+'''
+value = 1530.4
+tolerance = 0.3
+unit = 'mS³'
+explanation = '''
+Sarrusovo pravidlo. Po hlavní diagonále:
+$$16{,}746\cdot17{,}857\cdot7{,}222 + (-2{,}857)(-5)(-2{,}222) + (-2{,}222)(-2{,}857)(-5) = 2159{,}618 - 31{,}741 - 31{,}741 = 2096{,}136$$
+Po vedlejší diagonále:
+$$(-2{,}222)\cdot17{,}857\cdot(-2{,}222) + 16{,}746\cdot(-5)(-5) + (-2{,}857)(-2{,}857)\cdot7{,}222 = 88{,}164 + 418{,}650 + 58{,}950 = 565{,}764$$
+$$\Delta = 2096{,}136 - 565{,}764 = 1530{,}37$$
+'''
+
+[[question]]
+id = 'VC2-14'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 3'
+figure = 'images/vc2-p3.svg'
+text = '''
+Jaké je uzlové napětí $U_{10}$?
+'''
+value = 4.102
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$$\Delta_1 = \begin{vmatrix} 50 & -2{,}857 & -2{,}222 \\ 0 & 17{,}857 & -5 \\ 20 & -5 & 7{,}222 \end{vmatrix} = (6448{,}16 + 285{,}70 + 0) - (-793{,}57 + 1250 + 0) = 6733{,}86 - 456{,}43 = 6277{,}43$$
+$$U_{10} = \frac{6277{,}43}{1530{,}37} = 4{,}102\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC2-15'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 3'
+figure = 'images/vc2-p3.svg'
+text = '''
+Jaký je proud $I_1$ rezistorem $R_1 = 150\ \Omega$? (zadání: 27,35 mA)
+'''
+value = 27.35
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$I_1 = G_1 U_{10} = 6{,}667\ \text{mS}\cdot4{,}102\ \text{V} = 27{,}35\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC2-16'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 3'
+figure = 'images/vc2-p3.svg'
+text = '''
+Jaký je proud $I_2$ rezistorem $R_2 = 100\ \Omega$? (zadání: 22,14 mA)
+'''
+value = 22.14
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 16{,}746 & 50 & -2{,}222 \\ -2{,}857 & 0 & -5 \\ -2{,}222 & 20 & 7{,}222 \end{vmatrix} = (0 + 555{,}50 + 126{,}97) - (0 - 1674{,}60 - 1031{,}66) = 682{,}47 + 2706{,}26 = 3388{,}73$$
+$$U_{20} = \frac{3388{,}73}{1530{,}37} = 2{,}2143\ \text{V}, \qquad I_2 = G_2 U_{20} = 10\cdot2{,}2143 = 22{,}14\ \text{mA}$$
+'''
+
+# ---------- Příklad 4
+[[question]]
+id = 'VC2-17'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 4'
+figure = 'images/vc2-p4.svg'
+text = '''
+$U_\text{z1} = 50$ V v sérii s $R_1 = 2{,}5$ kΩ se převede na zdroj proudu. Jaký má proud?
+'''
+value = 20
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I_\text{z1} = \frac{50}{2{,}5} = 20\ \text{mA}, \qquad G_1 = 0{,}4\ \text{mS}$$
+Stejně $I_\text{z2} = 30/1{,}5 = 20$ mA ($G_2 = 0{,}6667$ mS) a $I_\text{z3} = 10/10 = 1$ mA ($G_4 = 0{,}1$ mS).
+'''
+
+[[question]]
+id = 'VC2-18'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 4'
+figure = 'images/vc2-p4.svg'
+text = '''
+Referenční uzel je levý dolní, uzel 1 horní, uzel 2 pravý dolní. Jaká je pravá strana soustavy po převodu zdrojů ($I_\text{z1} = I_\text{z2} = 20$ mA, $I_\text{z3} = 1$ mA)?
+'''
+options = ['$\begin{bmatrix} 40 \\ -21 \end{bmatrix}$ mA', '$\begin{bmatrix} 40 \\ 21 \end{bmatrix}$ mA', '$\begin{bmatrix} 20 \\ -20 \end{bmatrix}$ mA', '$\begin{bmatrix} 41 \\ -20 \end{bmatrix}$ mA']
+answer = 0
+layout = 'grid'
+explanation = '''
+Uzel 1 (horní): $U_\text{z1}$ i $U_\text{z2}$ mají kladnou svorku nahoře, oba náhradní zdroje tečou do uzlu 1: $20 + 20 = 40$ mA.
+
+Uzel 2 (pravý dolní): zdroj větve $U_\text{z2}$ z něj vytéká ($-20$); kladná svorka $U_\text{z3}$ je vlevo (k $R_4$ a referenčnímu uzlu), náhradní zdroj tedy teče do referenčního uzlu a z uzlu 2 ($-1$). Celkem $-21$ mA.
+'''
+notes = ['', 'Zdroje v uzlu 2 z uzlu vytékají.', 'V uzlu 1 se sčítají dva zdroje a v uzlu 2 chybí $I_\text{z3}$.', '$I_\text{z3}$ nepatří k uzlu 1.']
+
+[[question]]
+id = 'VC2-19'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 4'
+figure = 'images/vc2-p4.svg'
+text = '''
+$R_3 = 250\ \Omega$, $R_5 = 100\ \Omega$, dále $G_1 = 0{,}4$ mS, $G_2 = 0{,}667$ mS. Jaký je diagonální prvek $G_{11}$ horního uzlu (v mS)?
+'''
+value = 15.067
+tolerance = 0.002
+unit = 'mS'
+explanation = '''
+K hornímu uzlu jsou připojeny $R_1$, $R_2$, $R_3$ a $R_5$:
+$$G_{11} = 0{,}4 + 0{,}667 + 4 + 10 = 15{,}067\ \text{mS}$$
+Dále $G_{12} = -(G_2 + G_5) = -10{,}667$ a $G_{22} = G_2 + G_4 + G_5 = 10{,}767$ mS.
+'''
+
+[[question]]
+id = 'VC2-20'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 4'
+figure = 'images/vc2-p4.svg'
+text = '''
+Jaký je proud $I_3$ rezistorem $R_3$? (zadání: 17,07 mA)
+'''
+value = 17.07
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$\begin{bmatrix} 15{,}067 & -10{,}667 \\ -10{,}667 & 10{,}767 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} 40 \\ -21 \end{bmatrix}$$
+$$\Delta = 15{,}067\cdot10{,}767 - 10{,}667^2 = 162{,}226 - 113{,}785 = 48{,}441$$
+$$\Delta_1 = 40\cdot10{,}767 - (-10{,}667)(-21) = 430{,}68 - 224{,}01 = 206{,}67, \qquad U_{10} = \frac{206{,}67}{48{,}441} = 4{,}2664\ \text{V}$$
+$R_3$ vede z horního uzlu do referenčního:
+$$I_3 = G_3 U_{10} = 4\cdot4{,}2664 = 17{,}07\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC2-21'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+source = 'VC2, příklad 4'
+figure = 'images/vc2-p4.svg'
+text = '''
+Jaký je proud $I_5$ rezistorem $R_5$? (zadání: 19,90 mA)
+'''
+value = 19.90
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$\Delta_2 = 15{,}067\cdot(-21) - (-10{,}667)\cdot40 = -316{,}41 + 426{,}68 = 110{,}27, \qquad U_{20} = \frac{110{,}27}{48{,}441} = 2{,}2764\ \text{V}$$
+$R_5$ vede z horního uzlu do uzlu 2:
+$$I_5 = G_5\,(U_{10} - U_{20}) = 10\cdot(4{,}2664 - 2{,}2764) = 19{,}90\ \text{mA}$$
+'''

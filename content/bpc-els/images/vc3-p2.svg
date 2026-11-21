@@ -1,0 +1,31 @@
+<svg viewBox="0 0 440 250" width="440" class="fig" role="img" aria-label="VC3 příklad 2: zdroj Uz s R1, rezistor R2, R3 a zátěž Rz">
+<rect x="63" y="70" width="14" height="40" class="s"/>
+<text x="57" y="95" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="70,45 70,70" class="s"/>
+<circle cx="70" cy="165" r="14" class="s"/>
+<line x1="70" y1="151" x2="70" y2="179" class="s"/>
+<line x1="48" y1="147" x2="48" y2="183" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="170" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="70,110 70,151" class="s"/>
+<polyline points="70,179 70,215" class="s"/>
+<polyline points="70,45 180,45" class="s"/>
+<rect x="173" y="110" width="14" height="40" class="s"/>
+<text x="167" y="135" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="180,45 180,110" class="s"/>
+<polyline points="180,150 180,215" class="s"/>
+<rect x="220" y="38" width="40" height="14" class="s"/>
+<text x="240" y="32" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="180,45 220,45" class="s"/>
+<polyline points="260,45 300,45" class="s"/>
+<circle cx="300" cy="45" r="3.5" class="s1"/>
+<circle cx="300" cy="215" r="3.5" class="s1"/>
+<polyline points="70,215 300,215" class="s"/>
+<polyline points="300,45 370,45" class="s"/>
+<polyline points="300,215 370,215" class="s"/>
+<rect x="363" y="110" width="14" height="40" class="s"/>
+<text x="357" y="135" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="370,45 370,110" class="s"/>
+<polyline points="370,150 370,215" class="s"/>
+<circle cx="180" cy="45" r="3.2" class="pt"/>
+<circle cx="180" cy="215" r="3.2" class="pt"/>
+</svg>

@@ -1,0 +1,409 @@
+name = 'VC1: Metoda smyčkových proudů'
+description = 'všechny čtyři příklady VC1 s mezivýsledky; výsledky ze zadání ověřené výpočtem'
+
+# ---------- Příklad 1
+[[question]]
+id = 'VC1-01'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 1'
+figure = 'images/vc1-p1.svg'
+text = '''
+$U_\text{z1} = 24$ V, $U_\text{z2} = 10$ V, $U_\text{z3} = 3$ V (všechny šipky dolů), $R_1 = 20\ \Omega$, $R_2 = 15\ \Omega$, $R_3 = 200\ \Omega$, $R_4 = 35\ \Omega$, $R_5 = 50\ \Omega$. Smyčkové proudy po směru hodinových ručiček. Jak vypadá pravá strana soustavy $\mathbf{R}\,\mathbf{I}_\text{S} = \mathbf{U}$?
+'''
+options = ['$\begin{bmatrix} 14 \\ 7 \end{bmatrix}$', '$\begin{bmatrix} 34 \\ 13 \end{bmatrix}$', '$\begin{bmatrix} -14 \\ -7 \end{bmatrix}$', '$\begin{bmatrix} 24 \\ 3 \end{bmatrix}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Smyčka 1: $I_\text{S1}$ jde zdrojem $U_\text{z1}$ nahoru, proti šipce: $+24$; zdrojem $U_\text{z2}$ dolů, po šipce: $-10$. Celkem $+14$ V.
+
+Smyčka 2: $I_\text{S2}$ jde zdrojem $U_\text{z2}$ nahoru, proti šipce: $+10$; zdrojem $U_\text{z3}$ dolů, po šipce: $-3$. Celkem $+7$ V.
+'''
+notes = ['', 'Zdroj $U_\text{z2}$ působí v obou smyčkách proti sobě, odečítá se.', 'Znaménka jsou obrácená.', 'Zapomenutý zdroj $U_\text{z2}$ ve společné větvi.']
+
+[[question]]
+id = 'VC1-02'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 1'
+figure = 'images/vc1-p1.svg'
+text = '''
+Hodnoty jako v předchozí otázce. Jaký je determinant matice odporů $\Delta$?
+'''
+value = 27575
+tolerance = 0
+unit = 'Ω²'
+explanation = '''
+$$\mathbf{R} = \begin{bmatrix} R_1 + R_3 + R_4 & -R_3 \\ -R_3 & R_2 + R_3 + R_5 \end{bmatrix} = \begin{bmatrix} 255 & -200 \\ -200 & 265 \end{bmatrix}$$
+$$\Delta = 255\cdot265 - (-200)\cdot(-200) = 67\,575 - 40\,000 = 27\,575$$
+'''
+
+[[question]]
+id = 'VC1-03'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 1'
+figure = 'images/vc1-p1.svg'
+text = '''
+Jaký je proud $I_1$? (zadání: 185,3 mA)
+'''
+value = 185.3
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$\begin{bmatrix} 255 & -200 \\ -200 & 265 \end{bmatrix}\begin{bmatrix} I_\text{S1} \\ I_\text{S2} \end{bmatrix} = \begin{bmatrix} 14 \\ 7 \end{bmatrix}, \qquad \Delta_1 = \begin{vmatrix} 14 & -200 \\ 7 & 265 \end{vmatrix} = 3710 + 1400 = 5110$$
+$$I_1 = I_\text{S1} = \frac{5110}{27\,575} = 0{,}1853\ \text{A} = 185{,}3\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-04'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 1'
+figure = 'images/vc1-p1.svg'
+text = '''
+Jaký je proud $I_2$? (zadání: 166,3 mA)
+'''
+value = 166.3
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 255 & 14 \\ -200 & 7 \end{vmatrix} = 1785 + 2800 = 4585, \qquad I_2 = I_\text{S2} = \frac{4585}{27\,575} = 0{,}1663\ \text{A} = 166{,}3\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-05'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 1'
+figure = 'images/vc1-p1.svg'
+text = '''
+Jaký je proud $I_3$ (šipka dolů rezistorem $R_3$)? (zadání: 19,04 mA)
+'''
+value = 19.04
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$R_3$ je společný oběma smyčkám; $I_\text{S1}$ jím teče dolů, $I_\text{S2}$ nahoru:
+$$I_3 = I_\text{S1} - I_\text{S2} = 185{,}31 - 166{,}27 = 19{,}04\ \text{mA}$$
+Kontrola 2. KZ ve smyčce 1: $0{,}18531\cdot55 + 0{,}01904\cdot200 + 10 = 10{,}19 + 3{,}81 + 10 = 24{,}0$ V.
+'''
+
+# ---------- Příklad 2
+[[question]]
+id = 'VC1-06'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 2'
+figure = 'images/vc1-p2.svg'
+text = '''
+$I_\text{z1} = 15$ mA (šipka dolů) s vnitřní vodivostí $G_\text{i1} = 1{,}5$ mS. Na jaké napětí se tento zdroj převede pro MSP?
+'''
+value = 10
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U'_\text{z1} = \frac{I_\text{z1}}{G_\text{i1}} = \frac{15\ \text{mA}}{1{,}5\ \text{mS}} = 10\ \text{V}, \qquad R_\text{i1} = \frac{1}{1{,}5\ \text{mS}} = 666{,}7\ \Omega\ \text{(v sérii)}$$
+Šipka $I_\text{z1}$ míří dolů, kladná svorka náhradního zdroje je tedy dole a šipka $U'_\text{z1}$ míří nahoru. Podobně $U'_\text{z2} = 50/2{,}5 = 20$ V s $R_\text{i2} = 400\ \Omega$, šipka dolů (kladná svorka nahoře).
+'''
+
+[[question]]
+id = 'VC1-07'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 2'
+figure = 'images/vc1-p2.svg'
+text = '''
+Po převodu zdrojů ($U'_\text{z1} = 10$ V se šipkou nahoru a $R_\text{i1} = 666{,}7\ \Omega$ vlevo, $U'_\text{z2} = 20$ V se šipkou dolů a $R_\text{i2} = 400\ \Omega$ vpravo; $R_1 = 350\ \Omega$, $R_2 = 150\ \Omega$, $R_3 = 250\ \Omega$) a se smyčkovými proudy po směru hodinových ručiček. Která soustava je správně?
+'''
+options = [
+  '$\begin{bmatrix} 1266{,}7 & -250 \\ -250 & 800 \end{bmatrix}\mathbf{I}_\text{S} = \begin{bmatrix} -10 \\ -20 \end{bmatrix}$',
+  '$\begin{bmatrix} 1266{,}7 & -250 \\ -250 & 800 \end{bmatrix}\mathbf{I}_\text{S} = \begin{bmatrix} 10 \\ 20 \end{bmatrix}$',
+  '$\begin{bmatrix} 600 & -250 \\ -250 & 400 \end{bmatrix}\mathbf{I}_\text{S} = \begin{bmatrix} -10 \\ -20 \end{bmatrix}$',
+  '$\begin{bmatrix} 1266{,}7 & 250 \\ 250 & 800 \end{bmatrix}\mathbf{I}_\text{S} = \begin{bmatrix} -10 \\ 20 \end{bmatrix}$',
+]
+answer = 0
+explanation = '''
+Diagonála: $R_\text{i1} + R_1 + R_3 = 666{,}7 + 350 + 250 = 1266{,}7$ a $R_3 + R_2 + R_\text{i2} = 250 + 150 + 400 = 800$; mimo diagonálu $-R_3$.
+
+Smyčkový proud 1 jde levým zdrojem nahoru, po šipce: $-10$. Smyčkový proud 2 jde pravým zdrojem dolů, po šipce: $-20$.
+'''
+notes = ['', 'Oba smyčkové proudy jdou zdroji po šipce, znaménka jsou záporná.', 'Chybí vnitřní odpory převedených zdrojů.', 'Mimo diagonálu má být záporné znaménko.']
+
+[[question]]
+id = 'VC1-08'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 2'
+figure = 'images/vc1-p2.svg'
+text = '''
+Jaký je proud $I_1$? (zadání: −13,67 mA)
+'''
+value = -13.67
+tolerance = 0.02
+unit = 'mA'
+sign_hint = 'Proud teče rezistorem R1 doleva, proti šipce.'
+explanation = '''
+$$\Delta = 1266{,}7\cdot800 - 250^2 = 1\,013\,360 - 62\,500 = 950\,860$$
+$$\Delta_1 = \begin{vmatrix} -10 & -250 \\ -20 & 800 \end{vmatrix} = -8000 - 5000 = -13\,000, \qquad I_1 = I_\text{S1} = \frac{-13\,000}{950\,860} = -13{,}67\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-09'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 2'
+figure = 'images/vc1-p2.svg'
+text = '''
+Jaký je proud $I_2$? (zadání: −29,27 mA)
+'''
+value = -29.27
+tolerance = 0.02
+unit = 'mA'
+sign_hint = 'Proud teče rezistorem R2 doleva, proti šipce.'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 1266{,}7 & -10 \\ -250 & -20 \end{vmatrix} = -25\,334 - 2500 = -27\,834, \qquad I_2 = I_\text{S2} = \frac{-27\,834}{950\,860} = -29{,}27\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-10'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 2'
+figure = 'images/vc1-p2.svg'
+text = '''
+Jaký je proud $I_3$ (dolů rezistorem $R_3$)? (zadání: 15,60 mA)
+'''
+value = 15.60
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$I_3 = I_\text{S1} - I_\text{S2} = -13{,}67 - (-29{,}27) = 15{,}60\ \text{mA}$$
+Kontrola MUN přímo v původním obvodu (uzly vlevo, uprostřed, vpravo) dá stejné proudy: −13,67; −29,27; 15,60 mA.
+'''
+
+# ---------- Příklad 3
+[[question]]
+id = 'VC1-11'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+$U_\text{z1} = 24$ V (šipka dolů), $U_\text{z2} = 14$ V (šipka nahoru), $R_1 = 20\ \Omega$, $R_2 = 15\ \Omega$, $R_3 = 40\ \Omega$, $G_4 = 0{,}25$ S. Smyčkové proudy po směru hodinových ručiček. Jaký je determinant matice odporů?
+'''
+value = 1920
+tolerance = 0
+unit = 'Ω²'
+explanation = '''
+$R_4 = 1/G_4 = 4\ \Omega$. Smyčka 1: $R_1 + R_3 + R_4 = 64$; smyčka 2: $R_3 + R_2 = 55$ (pravá větev je jen vodič); společný $R_3$.
+$$\mathbf{R} = \begin{bmatrix} 64 & -40 \\ -40 & 55 \end{bmatrix}, \qquad \Delta = 64\cdot55 - 40^2 = 3520 - 1600 = 1920$$
+'''
+
+[[question]]
+id = 'VC1-12'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+Jaký je proud $I_1$? (zadání: 796,9 mA)
+'''
+value = 796.9
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+Pravá strana: smyčka 1 jde oběma zdroji proti šipkám ($U_\text{z1}$ nahoru, $U_\text{z2}$ dolů): $24 + 14 = 38$; smyčka 2 jde zdrojem $U_\text{z2}$ nahoru, po šipce: $-14$.
+$$\Delta_1 = \begin{vmatrix} 38 & -40 \\ -14 & 55 \end{vmatrix} = 2090 - 560 = 1530, \qquad I_1 = \frac{1530}{1920} = 0{,}7969\ \text{A} = 796{,}9\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-13'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+Jaký je proud $I_2$? (zadání: 325 mA)
+'''
+value = 325
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 64 & 38 \\ -40 & -14 \end{vmatrix} = -896 + 1520 = 624, \qquad I_2 = \frac{624}{1920} = 0{,}325\ \text{A} = 325\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-14'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+Jaký je proud $I_3$? (zadání: 471,9 mA)
+'''
+value = 471.9
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$I_3 = I_\text{S1} - I_\text{S2} = 796{,}875 - 325 = 471{,}9\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-15'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+Jaký je úbytek napětí $U_1$ na rezistoru $R_1 = 20\ \Omega$? (zadání: 15,94 V)
+'''
+value = 15.94
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_1 = R_1 I_1 = 20\cdot0{,}796875 = 15{,}94\ \text{V}$$
+Ostatní: $U_2 = 15\cdot0{,}325 = 4{,}875$ V, $U_3 = 40\cdot0{,}471875 = 18{,}88$ V, $U_4 = 4\cdot0{,}796875 = 3{,}188$ V.
+'''
+
+[[question]]
+id = 'VC1-16'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+Jaký je úbytek napětí $U_4$ na prvku s vodivostí $G_4 = 0{,}25$ S? (zadání: 3,188 V)
+'''
+value = 3.188
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+$G_4$ je ve smyčce 1, teče jím $I_1$:
+$$U_4 = \frac{I_1}{G_4} = \frac{0{,}796875}{0{,}25} = 3{,}188\ \text{V}$$
+Kontrola 2. KZ ve smyčce 1: $15{,}94 + 18{,}88 + 3{,}19 = 38{,}0$ V $= 24 + 14$.
+'''
+
+[[question]]
+id = 'VC1-17'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 3'
+figure = 'images/vc1-p3.svg'
+text = '''
+Jaký je úbytek napětí $U_3$ na rezistoru $R_3 = 40\ \Omega$? (zadání: 18,88 V)
+'''
+value = 18.88
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_3 = R_3 I_3 = 40\cdot0{,}471875 = 18{,}875 \approx 18{,}88\ \text{V}$$
+Kontrola 2. KZ ve smyčce 2: $U_2 + 14 = 4{,}875 + 14 = 18{,}875$ V $= U_3$.
+'''
+
+# ---------- Příklad 4
+[[question]]
+id = 'VC1-18'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 4'
+figure = 'images/vc1-p4.svg'
+text = '''
+$U_\text{z1} = 24$ V, $U_\text{z2} = 30$ V (obě šipky dolů), $R_1 = 20\ \Omega$, $R_2 = 10\ \Omega$, $R_3 = 250\ \Omega$, $R_4 = 150\ \Omega$, $R_5 = 100\ \Omega$; tři oka podle obrázku. Jaký je determinant matice odporů?
+'''
+value = 5275000
+tolerance = 0
+unit = 'Ω³'
+explanation = '''
+$$\mathbf{R} = \begin{bmatrix} R_1 + R_3 & 0 & -R_3 \\ 0 & R_2 + R_5 & -R_5 \\ -R_3 & -R_5 & R_3 + R_4 + R_5 \end{bmatrix} = \begin{bmatrix} 270 & 0 & -250 \\ 0 & 110 & -100 \\ -250 & -100 & 500 \end{bmatrix}$$
+Sarrusovo pravidlo:
+$$\Delta = 270\cdot110\cdot500 + 0 + 0 - (-250)\cdot110\cdot(-250) - 270\cdot(-100)\cdot(-100) - 0 = 14\,850\,000 - 6\,875\,000 - 2\,700\,000 = 5\,275\,000$$
+'''
+
+[[question]]
+id = 'VC1-19'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 4'
+figure = 'images/vc1-p4.svg'
+text = '''
+Jaký je proud $I_1$? (zadání: 62,56 mA)
+'''
+value = 62.56
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+Pravá strana: $\mathbf{U} = (24;\ -30;\ 0)$ (oko 1 jde zdrojem $U_\text{z1}$ proti šipce, oko 2 zdrojem $U_\text{z2}$ po šipce).
+$$\Delta_1 = \begin{vmatrix} 24 & 0 & -250 \\ -30 & 110 & -100 \\ 0 & -100 & 500 \end{vmatrix} = 1\,320\,000 + 0 - 750\,000 - 0 - 240\,000 - 0 = 330\,000$$
+$$I_1 = I_\text{S1} = \frac{330\,000}{5\,275\,000} = 62{,}56\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-20'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 4'
+figure = 'images/vc1-p4.svg'
+text = '''
+Jaký je proud $I_2$ (šipka doleva rezistorem $R_2$)? (zadání: 298,6 mA)
+'''
+value = 298.6
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 270 & 24 & -250 \\ 0 & -30 & -100 \\ -250 & 0 & 500 \end{vmatrix} = -4\,050\,000 + 600\,000 + 0 + 1\,875\,000 - 0 - 0 = -1\,575\,000$$
+$$I_\text{S2} = \frac{-1\,575\,000}{5\,275\,000} = -298{,}6\ \text{mA}$$
+$I_\text{S2}$ jde rezistorem $R_2$ doprava, šipka $I_2$ doleva: $I_2 = -I_\text{S2} = 298{,}6$ mA.
+'''
+
+[[question]]
+id = 'VC1-21'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 4'
+figure = 'images/vc1-p4.svg'
+text = '''
+Jaký je proud $I_4$ (šipka doleva rezistorem $R_4$)? (zadání: −28,44 mA)
+'''
+value = -28.44
+tolerance = 0.02
+unit = 'mA'
+sign_hint = 'Proud teče rezistorem R4 doprava, proti šipce.'
+explanation = '''
+$$\Delta_3 = \begin{vmatrix} 270 & 0 & 24 \\ 0 & 110 & -30 \\ -250 & -100 & 0 \end{vmatrix} = 0 + 0 + 0 - (-660\,000) - 810\,000 - 0 = -150\,000$$
+$$I_4 = I_\text{S3} = \frac{-150\,000}{5\,275\,000} = -28{,}44\ \text{mA}$$
+$I_\text{S3}$ jde rezistorem $R_4$ doleva, ve směru šipky $I_4$.
+'''
+
+[[question]]
+id = 'VC1-22'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 4'
+figure = 'images/vc1-p4.svg'
+text = '''
+Jaký je proud $I_3$ (rezistorem $R_3$ od horního uzlu dolů vlevo)? (zadání: 91,00 mA)
+'''
+value = 91.00
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$R_3$ je společný okům 1 a 3. $I_\text{S1}$ jím teče shora dolů (ve směru šipky $I_3$), $I_\text{S3}$ zdola nahoru:
+$$I_3 = I_\text{S1} - I_\text{S3} = 62{,}56 - (-28{,}44) = 91{,}00\ \text{mA}$$
+'''
+
+[[question]]
+id = 'VC1-23'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+source = 'VC1, příklad 4'
+figure = 'images/vc1-p4.svg'
+text = '''
+Jaký je proud $I_5$ (rezistorem $R_5$ od horního uzlu dolů vpravo)? (zadání: 270,1 mA)
+'''
+value = 270.1
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$R_5$ je společný okům 2 a 3. $I_\text{S3}$ jím teče shora dolů (ve směru šipky $I_5$), $I_\text{S2}$ zdola nahoru:
+$$I_5 = I_\text{S3} - I_\text{S2} = -28{,}44 - (-298{,}58) = 270{,}1\ \text{mA}$$
+Kontrola 1. KZ v horním uzlu: přitéká $I_1 + I_2 = 62{,}56 + 298{,}58 = 361{,}1$ mA, odtéká $I_3 + I_5 = 91{,}00 + 270{,}14 = 361{,}1$ mA.
+'''

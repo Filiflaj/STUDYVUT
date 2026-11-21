@@ -1,0 +1,186 @@
+name = 'Nelineární obvody'
+description = 'interpolace charakteristiky, statický a dynamický odpor, zatěžovací přímka, Newtonova metoda'
+
+[[question]]
+id = 'NEL-01'
+topic = 'Nelineární obvody'
+text = '''
+Charakteristika se interpoluje polynomem $i = a_0 + a_1 u + a_2 u^2$. Proč je $a_0 = 0$, když jedním z naměřených bodů je $[0; 0]$?
+'''
+options = ['Dosazením $u = 0$ musí vyjít $i = 0$, a to dává právě $a_0$.', 'Protože kvadratický polynom nemá absolutní člen.', 'Protože $a_0$ je vždy nula u rezistorů.', 'Protože se $a_0$ neurčuje.']
+answer = 0
+explanation = '''
+$i(0) = a_0 + 0 + 0 = a_0$, a když charakteristika prochází počátkem, je $a_0 = 0$. Soustava se pak zmenší na 2 × 2 pro $a_1$, $a_2$.
+'''
+notes = ['', 'Obecný kvadratický polynom absolutní člen má.', 'Platí jen pro charakteristiky procházející počátkem.', 'Určuje se, jen tady vyjde nulový.']
+
+[[question]]
+id = 'NEL-02'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+text = '''
+Charakteristika prvku je $i(u) = -0{,}333\,u + 11{,}11\,u^2$ (A, V). Jaký proud teče při $u = 0{,}2$ V?
+'''
+value = 0.378
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$i(0{,}2) = -0{,}333\cdot0{,}2 + 11{,}11\cdot0{,}04 = -0{,}0666 + 0{,}4444 = 0{,}378\ \text{A}$$
+'''
+
+[[question]]
+id = 'NEL-03'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+text = '''
+Pro stejnou charakteristiku $i(u) = -0{,}333\,u + 11{,}11\,u^2$ urči dynamický odpor při $u = 0{,}15$ V.
+'''
+value = 0.333
+tolerance = 0.002
+unit = 'Ω'
+explanation = '''
+Dynamická vodivost je derivace charakteristiky:
+$$G_\text{d} = \frac{\text{d}i}{\text{d}u} = -0{,}333 + 2\cdot11{,}11\,u = -0{,}333 + 22{,}22\cdot0{,}15 = 3{,}0\ \text{S}, \qquad R_\text{d} = \frac{1}{G_\text{d}} = 0{,}333\ \Omega$$
+'''
+
+[[question]]
+id = 'NEL-04'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+text = '''
+Nelineární prvek má v pracovním bodě $u = 4$ V proud $i = 0{,}23$ A. Jaký je jeho statický odpor?
+'''
+value = 17.39
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+Statický odpor je podíl napětí a proudu v bodě:
+$$R = \frac{u}{i} = \frac{4}{0{,}23} = 17{,}39\ \Omega$$
+Dynamický odpor (převrácená hodnota sklonu tečny) je obecně jiný.
+'''
+
+[[question]]
+id = 'NEL-05'
+topic = 'Nelineární obvody'
+text = '''
+Co je při grafickém řešení metodou zatěžovací přímky pracovní bod?
+'''
+options = [
+  'průsečík AV charakteristiky nelineárního prvku s přímkou zbytku obvodu (náhradního zdroje)',
+  'průsečík přímky s osou proudu',
+  'vrchol charakteristiky',
+  'bod, kde má charakteristika největší sklon',
+]
+answer = 0
+explanation = '''
+Přímka $i = (U_\text{i} - u)/R_\text{i}$ popisuje, co dovolí zbytek obvodu; charakteristika, co dovolí prvek. Obojí platí současně jen v **průsečíku**.
+'''
+notes = ['', 'To je proud nakrátko $U_\text{i}/R_\text{i}$.', 'Charakteristika obecně vrchol nemá.', 'S pracovním bodem to nesouvisí.']
+
+[[question]]
+id = 'NEL-06'
+topic = 'Nelineární obvody'
+text = '''
+Mezi kterými body se kreslí zatěžovací přímka náhradního zdroje $U_\text{i}$, $R_\text{i}$ v grafu $i(u)$?
+'''
+options = ['$[U_\text{i};\ 0]$ a $[0;\ U_\text{i}/R_\text{i}]$', '$[0;\ 0]$ a $[U_\text{i};\ U_\text{i}/R_\text{i}]$', '$[R_\text{i};\ 0]$ a $[0;\ U_\text{i}]$', '$[U_\text{i};\ R_\text{i}]$ a $[0;\ 0]$']
+answer = 0
+explanation = '''
+Naprázdno ($i = 0$) je $u = U_\text{i}$; nakrátko ($u = 0$) je $i = U_\text{i}/R_\text{i}$. Přímka spojuje tyto dva body.
+'''
+notes = ['', 'Přímka zdroje neprochází počátkem.', 'Osy jsou napětí a proud, ne odpor.', 'Nesmysl.']
+
+[[question]]
+id = 'NEL-07'
+topic = 'Nelineární obvody'
+text = '''
+Jak zní krok Newtonovy iterační metody pro rovnici $f(x) = 0$?
+'''
+options = ['$x^{(k+1)} = x^{(k)} - \dfrac{f(x^{(k)})}{f\prime(x^{(k)})}$', '$x^{(k+1)} = x^{(k)} + f(x^{(k)})\,f\prime(x^{(k)})$', '$x^{(k+1)} = \dfrac{x^{(k)}}{f(x^{(k)})}$', '$x^{(k+1)} = x^{(k)} - f\prime(x^{(k)})$']
+answer = 0
+explanation = '''
+Nový odhad je průsečík tečny v bodě $x^{(k)}$ s osou $x$: odhad minus funkce děleno derivací.
+'''
+notes = ['', 'Má se dělit derivací a odečítat.', 'Chybí derivace a tečna.', 'Chybí funkční hodnota.']
+
+[[question]]
+id = 'NEL-08'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+text = '''
+Rovnice $f(i) = 20 i^2 + 10 i - 10 = 0$, odhad $i^{(0)} = 1$ A. Jaký je odhad po první iteraci Newtonovy metody?
+'''
+value = 0.6
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$f(1) = 20 + 10 - 10 = 20$, $f'(i) = 40 i + 10$, $f'(1) = 50$:
+$$i^{(1)} = 1 - \frac{20}{50} = 0{,}6\ \text{A}$$
+Další iterace dají 0,5059 a 0,5000 A.
+'''
+
+[[question]]
+id = 'NEL-09'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+text = '''
+Zdroj 10 V, rezistor 10 Ω a nelineární prvek $u_n = 20 i^2$ v sérii. Jaký proud teče obvodem (kladný kořen)?
+'''
+value = 0.5
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+Z 2. KZ $20 i^2 + 10 i - 10 = 0$, po vydělení deseti $2i^2 + i - 1 = 0$:
+$$i = \frac{-1 + \sqrt{1 + 8}}{4} = \frac{-1 + 3}{4} = 0{,}5\ \text{A}$$
+Druhý kořen −1 A fyzikálně nedává smysl.
+'''
+
+[[question]]
+id = 'NEL-10'
+topic = 'Nelineární obvody'
+text = '''
+Proč se kvadratická rovnice pro napětí na nelineárním rezistoru často řeší až po náhradě zbytku obvodu Théveninovým zdrojem?
+'''
+options = [
+  'Zbytek obvodu je lineární, takže stačí jediná rovnice (proud náhradního zdroje = proud prvku).',
+  'Théveninův zdroj odstraní nelinearitu prvku.',
+  'Bez náhrady by rovnice nebyla kvadratická, ale lineární.',
+  'Protože se tak nemusí interpolovat charakteristika.',
+]
+answer = 0
+explanation = '''
+S jediným nelineárním prvkem se zbytek nahradí $U_\text{i}$, $R_\text{i}$ a platí $(U_\text{i} - u)/R_\text{i} = i(u)$: jedna rovnice o jedné neznámé.
+'''
+notes = ['', 'Prvek zůstává nelineární.', 'Byla by to soustava, ve které je jedna rovnice kvadratická.', 'Charakteristika se interpolovat musí stejně.']
+
+[[question]]
+id = 'NEL-11'
+topic = 'Nelineární obvody'
+text = '''
+Kvadratická rovnice pro napětí na nelineárním rezistoru vyšla s kořeny 3,0966 V a −9,998 V. Který je správný a proč?
+'''
+options = [
+  '3,0966 V; zdroj s kladným napětím nemůže na pasivním prvku vytvořit záporné napětí.',
+  '−9,998 V; záporný kořen je vždy správný.',
+  'oba, prvek má dva pracovní body',
+  'žádný, rovnice je špatně',
+]
+answer = 0
+explanation = '''
+Pracovní bod musí ležet mezi 0 a napětím naprázdno $U_\text{i}$ (v VC4 je $U_\text{i} = 4{,}8$ V). Záporný kořen je matematický, fyzikální smysl nemá.
+'''
+notes = ['', 'Záporné napětí by znamenalo, že pasivní prvek dodává energii.', 'Interpolační polynom má dva kořeny, ale fyzikálně platí jen jeden.', 'Rovnice je v pořádku.']
+
+[[question]]
+id = 'NEL-12'
+topic = 'Nelineární obvody'
+text = '''
+Který prvek je nelineární?
+'''
+options = ['žárovka', 'uhlíkový rezistor při stálé teplotě', 'vzduchová cívka', 'ideální zdroj napětí']
+answer = 0
+layout = 'grid'
+explanation = '''
+Vlákno žárovky se proudem ohřívá a jeho odpor mnohonásobně roste, proud tedy není úměrný napětí.
+'''
+notes = ['', 'Při stálé teplotě má konstantní odpor.', 'Bez jádra je lineární.', 'Ideální zdroj se do linearity obvodu nepočítá jako nelineární prvek.']

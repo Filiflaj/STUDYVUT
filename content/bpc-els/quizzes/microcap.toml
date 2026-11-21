@@ -1,0 +1,112 @@
+name = 'Simulátor MicroCap'
+description = 'typy analýz, zadávání hodnot, výhody a nevýhody simulace'
+
+[[question]]
+id = 'MC-01'
+topic = 'MicroCap'
+text = '''
+Která analýza počítá časové průběhy a respektuje nelinearitu prvků?
+'''
+options = ['Transient', 'AC', 'BIAS', 'DC']
+answer = 0
+layout = 'grid'
+explanation = '''
+**Transient** je analýza v časové oblasti s počátečními podmínkami a zahrnuje nelinearitu. AC obvod v pracovním bodě linearizuje.
+'''
+notes = ['', 'AC je kmitočtová, malosignálová, linearizovaná.', 'BIAS jen pracovní bod.', 'DC počítá stejnosměrné stavy při rozmítání parametru.']
+
+[[question]]
+id = 'MC-02'
+topic = 'MicroCap'
+text = '''
+Co znamená v MicroCapu hodnota rezistoru zadaná jako „1M“?
+'''
+options = ['1 mΩ (m = mili)', '1 MΩ', '1 kΩ', 'chybu zadání']
+answer = 0
+layout = 'grid'
+explanation = '''
+V MicroCapu (a ve SPICE) je předpona **m = mili**, i velké M. Mega se píše **MEG**.
+'''
+notes = ['', 'Mega se zadává jako MEG.', 'Kilo je k.', 'Program to přijme, jen jako mili.']
+
+[[question]]
+id = 'MC-03'
+kind = 'numeric'
+topic = 'MicroCap'
+text = '''
+Jaký odpor v ohmech představuje v MicroCapu zápis „1k2“?
+'''
+value = 1200
+tolerance = 0
+unit = 'Ω'
+explanation = '''
+Inženýrský zápis: 1k2 = 1.2k = 1200 Ω. Desetinná čárka se nepíše, místo ní je tečka nebo předpona.
+'''
+
+[[question]]
+id = 'MC-04'
+topic = 'MicroCap'
+text = '''
+Proč simulace neběží, když ve schématu chybí „zem“?
+'''
+options = ['Chybí referenční uzel, ke kterému se počítají uzlová napětí.', 'Bez země nejde zapojit zdroj.', 'Zem je potřeba jen kvůli bezpečnosti.', 'Simulace běží i bez ní.']
+answer = 0
+explanation = '''
+Simulátor řeší obvod uzlovou metodou a potřebuje **referenční uzel** (REF) s nulovým napětím.
+'''
+notes = ['', 'Zdroj zapojit jde, ale soustava nemá referenci.', 'V simulaci o bezpečnost nejde.', 'Nepoběží.']
+
+[[question]]
+id = 'MC-05'
+topic = 'MicroCap'
+text = '''
+Co je hlavní **nevýhodou** obvodové simulace?
+'''
+options = ['Výsledek je jen tak dobrý, jak přesné jsou modely součástek.', 'Nejde v ní měřit proudy.', 'Neumí stejnosměrné obvody.', 'Vyžaduje vždy stavbu prototypu.']
+answer = 0
+explanation = '''
+Simulátor pracuje s modely, které nepostihnou všechny jevy reálné součástky; těžko se zadávají parazitní a tepelné vazby a vnější pole.
+'''
+notes = ['', 'Proudy i výkony ukazuje přímo.', 'DC analýza je základní.', 'Naopak, prototyp není potřeba.']
+
+[[question]]
+id = 'MC-06'
+kind = 'numeric'
+topic = 'MicroCap'
+text = '''
+V MicroCapu je dělič z baterie 5 V a dvou rezistorů 100 Ω. Jaký výkon ukáže analýza Dynamic DC na jednom rezistoru? Zadej v mW.
+'''
+value = 62.5
+tolerance = 0.1
+unit = 'mW'
+explanation = '''
+$$I = \frac{5}{200} = 25\ \text{mA}, \qquad P = R I^2 = 100\cdot0{,}025^2 = 0{,}0625\ \text{W} = 62{,}5\ \text{mW}$$
+Zdroj dodává 125 mW.
+'''
+
+[[question]]
+id = 'MC-07'
+topic = 'MicroCap'
+text = '''
+Která analýza je výchozím krokem ostatních analýz a určuje stejnosměrný pracovní bod?
+'''
+options = ['BIAS', 'Transient', 'AC', 'Stepping']
+answer = 0
+layout = 'grid'
+explanation = '''
+**BIAS** spočítá stejnosměrný pracovní bod. AC v něm obvod linearizuje, DC ho opakovaně přepočítává při změně parametru.
+'''
+notes = ['', 'Transient počítá časový průběh.', 'AC pracovní bod potřebuje, neurčuje.', 'Stepping je rozmítání parametru, ne analýza.']
+
+[[question]]
+id = 'MC-08'
+topic = 'MicroCap'
+text = '''
+V simulaci vyšel proud rezistoru se záporným znaménkem, i když podle výpočtu má být kladný. Co nejspíš stačí udělat?
+'''
+options = ['otočit rezistor o 180° (změnit jeho orientaci)', 'přidat druhou zem', 'změnit analýzu na AC', 'nic, simulace je špatně']
+answer = 0
+explanation = '''
+Znaménko proudu závisí na orientaci („polaritě“) součástky ve schématu. Po otočení o 180° vyjde kladně.
+'''
+notes = ['', 'Zem stačí jedna.', 'Typ analýzy znaménko neopraví.', 'Výsledek je správný, jen jinak orientovaný.']

@@ -1,0 +1,115 @@
+name = 'Metoda razítek'
+description = 'zdroj proudu řízený napětím, razítko v matici MUN, modely tranzistorů, přenos a vstupní odpor'
+
+[[question]]
+id = 'RAZ-01'
+topic = 'Metoda razítek'
+text = '''
+Zdroj proudu řízený napětím $I = g_\text{m} U_{12}$ dodává proud z uzlu 3 do uzlu 4. Co se přičte do řádku 3 matice vodivostí?
+'''
+options = ['$+g_\text{m}$ ve sloupci 1 a $-g_\text{m}$ ve sloupci 2', '$-g_\text{m}$ ve sloupci 1 a $+g_\text{m}$ ve sloupci 2', '$+g_\text{m}$ na diagonále', '$g_\text{m}$ na pravou stranu']
+answer = 0
+explanation = '''
+Proud $g_\text{m}(U_{10} - U_{20})$ vytéká z uzlu 3, v rovnici uzlu 3 je na levé straně s +: do řádku 3 přijde $+g_\text{m}$ pod uzel 1 a $-g_\text{m}$ pod uzel 2. Řádek 4 má znaménka opačná.
+'''
+notes = ['', 'To je řádek 4 (uzel, do kterého proud vtéká).', 'Razítko patří do sloupců řídicích uzlů, ne na diagonálu (pokud se uzly nekryjí).', 'Proud závisí na neznámých napětích, patří do matice.']
+
+[[question]]
+id = 'RAZ-02'
+topic = 'Metoda razítek'
+text = '''
+Jakou vlastnost ztratí matice vodivostí po přičtení razítka řízeného zdroje?
+'''
+options = ['symetrii', 'čtvercový tvar', 'regularitu (determinant je vždy nula)', 'nic, zůstane stejná']
+answer = 0
+explanation = '''
+Razítko leží v řádcích výstupních uzlů a sloupcích řídicích uzlů, takže $G_{jk} \ne G_{kj}$. Matice zůstává čtvercová a obecně regulární.
+'''
+notes = ['', 'Počet rovnic se nemění.', 'Determinant obecně nulový není.', 'Symetrie se ztratí.']
+
+[[question]]
+id = 'RAZ-03'
+topic = 'Metoda razítek'
+text = '''
+Jak vypadá jednoduchý model unipolárního tranzistoru (FET) pro metodu razítek?
+'''
+options = [
+  'hradlo rozpojené, mezi drainem a sourcem zdroj proudu $g_\text{m} U_\text{GS}$',
+  'odpor mezi hradlem a sourcem a zdroj proudu mezi drainem a sourcem',
+  'zdroj napětí mezi hradlem a drainem',
+  'dioda mezi hradlem a sourcem',
+]
+answer = 0
+explanation = '''
+Hradlo FET neodebírá proud, v modelu je rozpojené. Proud $I_\text{D} = g_\text{m} U_\text{GS}$ teče z D do S.
+'''
+notes = ['', 'Odpor $R_\text{BE}$ má model bipolárního tranzistoru.', 'Model obsahuje zdroj proudu, ne napětí.', 'Dioda v lineárním modelu není.']
+
+[[question]]
+id = 'RAZ-04'
+topic = 'Metoda razítek'
+text = '''
+Emitorový sledovač má kolektor připojený na napájecí napětí. Jak se kolektor bere v náhradním (střídavém) modelu?
+'''
+options = ['jako referenční uzel (napájecí zdroj je pro signál zkrat)', 'jako samostatný uzel s vlastní rovnicí', 'rozpojený', 'jako uzel se zdrojem napětí 0 V v sérii s $R_\text{BE}$']
+answer = 0
+explanation = '''
+Stejnosměrný napájecí zdroj má pro střídavý signál nulové napětí, je to zkrat na zem. Kolektor je tedy referenční uzel a jeho řádek a sloupec v matici odpadnou.
+'''
+notes = ['', 'Řádek referenčního uzlu v soustavě není.', 'Je spojený se zemí přes zdroj, který je střídavě zkrat.', 'Nesmysl.']
+
+[[question]]
+id = 'RAZ-05'
+kind = 'numeric'
+topic = 'Metoda razítek'
+text = '''
+Emitorový sledovač: $G_\text{B} + G_\text{BE} = 0{,}21786$ mS, $G_\text{BE} = 0{,}2$ mS, $G_\text{E} = 1$ mS, $g_\text{m} = 40$ mS. Matice je $\begin{bmatrix} 0{,}21786 & -0{,}2 \\ -40{,}2 & 41{,}2 \end{bmatrix}$. Jaký je její determinant?
+'''
+value = 0.93583
+tolerance = 0.0002
+unit = 'mS²'
+explanation = '''
+$$\Delta = 0{,}21786\cdot41{,}2 - (-0{,}2)\cdot(-40{,}2) = 8{,}97583 - 8{,}04 = 0{,}93583$$
+'''
+
+[[question]]
+id = 'RAZ-06'
+kind = 'numeric'
+topic = 'Metoda razítek'
+text = '''
+Pro emitorový sledovač z předchozí otázky (vstupní zdroj proudu $I$ v uzlu 1, výstup uzel 2) urči napěťový přenos $K_U = U_2/U_1$.
+'''
+value = 0.976
+tolerance = 0.002
+explanation = '''
+$$\Delta_1 = \begin{vmatrix} I & -0{,}2 \\ 0 & 41{,}2 \end{vmatrix} = 41{,}2\,I, \qquad \Delta_2 = \begin{vmatrix} 0{,}21786 & I \\ -40{,}2 & 0 \end{vmatrix} = 40{,}2\,I$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{40{,}2}{41{,}2} = 0{,}976 \approx 0{,}98$$
+'''
+
+[[question]]
+id = 'RAZ-07'
+kind = 'numeric'
+topic = 'Metoda razítek'
+text = '''
+Pro tentýž emitorový sledovač ($\Delta = 0{,}93583$ mS², $\Delta_1 = 41{,}2\,I$) urči vstupní odpor $R_\text{vst} = U_1/I$.
+'''
+value = 44.03
+tolerance = 0.03
+unit = 'kΩ'
+explanation = '''
+$$R_\text{vst} = \frac{U_1}{I} = \frac{\Delta_1}{\Delta\,I} = \frac{41{,}2}{0{,}93583} = 44{,}03\ \text{k}\Omega$$
+Vodivosti byly v mS, proto vychází kΩ.
+'''
+
+[[question]]
+id = 'RAZ-08'
+topic = 'Metoda razítek'
+text = '''
+Co je $g_\text{m}$ u modelu tranzistoru?
+'''
+options = ['přenosová vodivost (strmost), poměr výstupního proudu a řídicího napětí', 'vstupní odpor báze', 'proudový zesilovací činitel', 'odpor kolektoru']
+answer = 0
+explanation = '''
+$g_\text{m} = I_\text{výst}/U_\text{říd}$, jednotka S (nebo mS). U BJT $I_\text{C} = g_\text{m} U_\text{BE}$, u FET $I_\text{D} = g_\text{m} U_\text{GS}$.
+'''
+notes = ['', 'To je $R_\text{BE}$ (odpor), ne vodivost zdroje.', 'Zesilovací činitel β je poměr proudů, bez jednotky.', 'Odpor kolektoru je vnější součástka.']

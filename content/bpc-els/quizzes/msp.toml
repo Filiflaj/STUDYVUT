@@ -1,0 +1,214 @@
+name = 'Metoda smyčkových proudů'
+description = 'sestavení matice R, znaménka zdrojů, Cramerovo a Sarrusovo pravidlo, proudy větví'
+
+[[question]]
+id = 'MSP-01'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Na kterém zákoně je metoda smyčkových proudů založena a jaké zdroje smí obvod obsahovat?
+'''
+options = ['2. Kirchhoffův zákon, jen zdroje napětí', '1. Kirchhoffův zákon, jen zdroje proudu', '2. Kirchhoffův zákon, jen zdroje proudu', 'Ohmův zákon, libovolné zdroje']
+answer = 0
+explanation = '''
+MSP píše 2. KZ pro každou nezávislou smyčku; neznámé jsou smyčkové proudy. Zdroje proudu se musí převést na zdroje napětí ($U_\text{z} = I_\text{z}R_\text{i}$).
+'''
+notes = ['', 'To je MUN.', 'Zdroje proudu se v MSP převádějí na zdroje napětí.', 'Základem je 2. KZ a zdroje proudu se převádějí.']
+
+[[question]]
+id = 'MSP-02'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Smyčkové proudy $I_\text{S1}$ a $I_\text{S2}$ jsou oba po směru hodinových ručiček a mají společný rezistor $R_3$. Co bude v matici na pozici $R_{12}$?
+'''
+options = ['$-R_3$', '$+R_3$', '$R_1 + R_3$', '$0$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Při stejném směru obou smyčkových proudů tečou společným rezistorem proti sobě, proto je mimo diagonálu **záporný** společný odpor. Matice je symetrická, $R_{21} = -R_3$ také.
+'''
+notes = ['', 'Kladné by bylo jen při opačně orientovaných smyčkách.', 'To je diagonální prvek.', 'Nula je jen u smyček bez společného prvku.']
+
+[[question]]
+id = 'MSP-03'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Smyčkový proud prochází zdrojem napětí **proti** jeho šipce (šipka napětí míří od + k −). Jak se napětí zdroje zapíše do pravé strany?
+'''
+options = ['$+U_\text{z}$', '$-U_\text{z}$', 'nezapíše se', '$+U_\text{z}/2$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Proud jde zdrojem od − k +, zdroj ho pohání ve směru smyčky: **+U**. Když prochází po šipce, je to **−U**.
+'''
+notes = ['', 'Minus je pro průchod po šipce.', 'Každý zdroj ve smyčce se zapíše.', 'Nesmysl.']
+
+[[question]]
+id = 'MSP-04'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Zdroj proudu $I_\text{z} = 200$ mA má paralelně $R_1 = 2{,}4$ kΩ. Jaké napětí má náhradní zdroj napětí (se stejným $R_1$ v sérii)?
+'''
+value = 480
+tolerance = 0.1
+unit = 'V'
+explanation = '''
+$$U_\text{z} = I_\text{z} R_1 = 0{,}2\cdot2400 = 480\ \text{V}$$
+Kladná svorka náhradního zdroje je tam, kam mířila šipka $I_\text{z}$.
+'''
+
+[[question]]
+id = 'MSP-05'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Zdroj proudu 15 mA s vnitřní vodivostí 1,5 mS se převede na zdroj napětí. Jaké má napětí?
+'''
+value = 10
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_\text{z} = \frac{I_\text{z}}{G_\text{i}} = \frac{15\ \text{mA}}{1{,}5\ \text{mS}} = 10\ \text{V}, \qquad R_\text{i} = \frac{1}{1{,}5\ \text{mS}} = 666{,}7\ \Omega$$
+'''
+
+[[question]]
+id = 'MSP-06'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Obvod má 6 větví a 4 uzly. Kolik rovnic dá metoda smyčkových proudů?
+'''
+value = 3
+tolerance = 0
+explanation = '''
+Počet nezávislých smyček = větve − (uzly − 1) = 6 − 3 = **3**. (MUN by dala uzly − 1 = 3 rovnice také.)
+'''
+
+[[question]]
+id = 'MSP-07'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Spočítej determinant
+$$\Delta = \begin{vmatrix} 9000 & -5000 \\ -5000 & 11\,000 \end{vmatrix}$$
+Zadej v násobcích $10^{7}$.
+'''
+value = 7.4
+tolerance = 0.001
+unit = '× 10⁷'
+explanation = '''
+$$\Delta = 9000\cdot11\,000 - (-5000)\cdot(-5000) = 99\cdot10^{6} - 25\cdot10^{6} = 74\cdot10^{6} = 7{,}4\cdot10^{7}$$
+'''
+
+[[question]]
+id = 'MSP-08'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+figure = 'images/msp-priklad.svg'
+text = '''
+Příklad z prezentace: $\begin{bmatrix} 9000 & -5000 \\ -5000 & 11\,000 \end{bmatrix}\begin{bmatrix} I_\text{S1} \\ I_\text{S2} \end{bmatrix} = \begin{bmatrix} -480 \\ 300 \end{bmatrix}$. Jaký je smyčkový proud $I_\text{S1}$?
+'''
+value = -51.08
+tolerance = 0.02
+unit = 'mA'
+sign_hint = 'Pravá strana prvního řádku je záporná; IS1 vyjde záporné.'
+explanation = '''
+$$\Delta_1 = \begin{vmatrix} -480 & -5000 \\ 300 & 11\,000 \end{vmatrix} = -480\cdot11\,000 - (-5000)\cdot300 = -5{,}28\cdot10^{6} + 1{,}5\cdot10^{6} = -3{,}78\cdot10^{6}$$
+$$I_\text{S1} = \frac{\Delta_1}{\Delta} = \frac{-3{,}78\cdot10^{6}}{7{,}4\cdot10^{7}} = -0{,}05108\ \text{A} = -51{,}08\ \text{mA}$$
+'''
+
+[[question]]
+id = 'MSP-09'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+figure = 'images/msp-priklad.svg'
+text = '''
+Ve stejném příkladu jaký je smyčkový proud $I_\text{S2}$?
+'''
+value = 4.054
+tolerance = 0.002
+unit = 'mA'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 9000 & -480 \\ -5000 & 300 \end{vmatrix} = 9000\cdot300 - (-480)\cdot(-5000) = 2{,}7\cdot10^{6} - 2{,}4\cdot10^{6} = 3\cdot10^{5}$$
+$$I_\text{S2} = \frac{3\cdot10^{5}}{7{,}4\cdot10^{7}} = 4{,}054\ \text{mA}$$
+'''
+
+[[question]]
+id = 'MSP-10'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+figure = 'images/msp-priklad.svg'
+text = '''
+Smyčkové proudy vyšly $I_\text{S1} = -51{,}08$ mA a $I_\text{S2} = 4{,}054$ mA. Jaký proud teče rezistorem $R_4$ nahoru (ve směru $I_\text{S2}$)?
+'''
+value = 55.13
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$R_4$ je společný oběma smyčkám; $I_\text{S2}$ jím teče nahoru, $I_\text{S1}$ dolů:
+$$I_{R4} = I_\text{S2} - I_\text{S1} = 4{,}054 - (-51{,}08) = 55{,}13\ \text{mA}$$
+(Prezentace píše 55,14 mA z nezaokrouhlených proudů.)
+'''
+
+[[question]]
+id = 'MSP-11'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+text = '''
+V původním obvodu (zdroj proudu $I_\text{Z1} = 200$ mA s paralelním $R_1$) vyšel proud $I_{R3} = 51{,}08$ mA do horního uzlu nad $R_1$. Jaký proud teče rezistorem $R_1$ (nahoru, do uzlu)?
+'''
+value = 148.9
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+Proud $R_1$ v náhradním obvodu není proud $R_1$ v původním obvodu. Z 1. KZ v horním uzlu ($I_\text{Z1}$ z uzlu vytéká, $I_{R3}$ a $I_{R1}$ vtékají):
+$$I_\text{Z1} - I_{R3} - I_{R1} = 0 \quad\Rightarrow\quad I_{R1} = 200 - 51{,}08 = 148{,}9\ \text{mA}$$
+'''
+
+[[question]]
+id = 'MSP-12'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Proč nelze proud rezistoru $R_1$ v původním obvodu vzít přímo jako smyčkový proud z náhradního obvodu, ve kterém byl zdroj proudu s paralelním $R_1$ převeden na zdroj napětí se sériovým $R_1$?
+'''
+options = [
+  'Převodem se změnila větev: v náhradním obvodu teče $R_1$ proud zdroje i větve, v původním jen jeho část.',
+  'Protože smyčkové proudy jsou vždy záporné.',
+  'Protože $R_1$ se při převodu změní na $1/R_1$.',
+  'Lze, je to totéž.',
+]
+answer = 0
+explanation = '''
+Náhradní zdroj je ekvivalentní jen **navenek** (na svorkách). Uvnitř převáděné dvojice se proudy liší, proto se proud $R_1$ dopočítá z 1. KZ v původním obvodu.
+'''
+notes = ['', 'Znaménko smyčkového proudu závisí na obvodu.', 'Odpor zůstává stejný, mění se jen zapojení (paralelně na sériově).', 'Není to totéž, viz výsledek 148,9 mA proti 51,08 mA.']
+
+[[question]]
+id = 'MSP-13'
+kind = 'numeric'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Spočítej Sarrusovým pravidlem determinant
+$$\begin{vmatrix} 270 & 0 & -250 \\ 0 & 110 & -100 \\ -250 & -100 & 500 \end{vmatrix}$$
+'''
+value = 5275000
+tolerance = 1
+explanation = '''
+Součiny po hlavní diagonále: $270\cdot110\cdot500 + 0\cdot(-100)\cdot(-250) + (-250)\cdot0\cdot(-100) = 14\,850\,000$.
+
+Po vedlejší diagonále: $(-250)\cdot110\cdot(-250) + 270\cdot(-100)\cdot(-100) + 0\cdot0\cdot500 = 6\,875\,000 + 2\,700\,000 = 9\,575\,000$.
+$$\Delta = 14\,850\,000 - 9\,575\,000 = 5\,275\,000$$
+'''
+
+[[question]]
+id = 'MSP-14'
+topic = 'Metoda smyčkových proudů'
+text = '''
+Jak se v Cramerově pravidle sestaví determinant $\Delta_2$?
+'''
+options = ['V matici soustavy se 2. sloupec nahradí vektorem pravé strany.', 'V matici soustavy se 2. řádek nahradí vektorem pravé strany.', 'Z matice se škrtne 2. řádek a 2. sloupec.', 'Determinant matice se vynásobí druhým prvkem pravé strany.']
+answer = 0
+explanation = '''
+$I_{\text{S}k} = \Delta_k/\Delta$, kde v $\Delta_k$ je **sloupec** neznámé $I_{\text{S}k}$ nahrazený pravou stranou.
+'''
+notes = ['', 'Nahrazuje se sloupec, ne řádek.', 'To je subdeterminant pro rozvoj, ne $\Delta_2$.', 'Nesmysl.']

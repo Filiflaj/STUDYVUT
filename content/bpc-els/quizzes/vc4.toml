@@ -1,0 +1,172 @@
+name = 'VC4: Nelineární prvky a obvody'
+description = 'interpolace charakteristiky, náhradní zdroj, kvadratická rovnice a Newtonova metoda z VC4'
+
+[[question]]
+id = 'VC4-01'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 1'
+text = '''
+Charakteristika nelineárního rezistoru je změřena v bodech $[0; 0]$, $[4\ \text{V}; 0{,}23\ \text{A}]$, $[6\ \text{V}; 0{,}5\ \text{A}]$ a interpoluje se polynomem $i = a_2 u^2 + a_1 u + a_0$. Díky počátku je $a_0 = 0$. Jaký je determinant soustavy $\begin{bmatrix} 4 & 16 \\ 6 & 36 \end{bmatrix}\begin{bmatrix} a_1 \\ a_2 \end{bmatrix} = \begin{bmatrix} 0{,}23 \\ 0{,}5 \end{bmatrix}$?
+'''
+value = 48
+tolerance = 0
+explanation = '''
+Řádky jsou dosazené body: $4a_1 + 16a_2 = 0{,}23$ a $6a_1 + 36a_2 = 0{,}5$.
+$$\Delta = 4\cdot36 - 16\cdot6 = 144 - 96 = 48$$
+'''
+
+[[question]]
+id = 'VC4-02'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 1'
+text = '''
+Ze soustavy $4a_1 + 16a_2 = 0{,}23$, $6a_1 + 36a_2 = 0{,}5$ urči koeficient $a_2$. (zadání: 0,01292)
+'''
+value = 0.01292
+tolerance = 0.00001
+unit = 'A/V²'
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 4 & 0{,}23 \\ 6 & 0{,}5 \end{vmatrix} = 2 - 1{,}38 = 0{,}62, \qquad a_2 = \frac{0{,}62}{48} = 0{,}01292$$
+'''
+
+[[question]]
+id = 'VC4-03'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 1'
+text = '''
+Ze stejné soustavy urči koeficient $a_1$. (zadání: 0,005833)
+'''
+value = 0.005833
+tolerance = 0.000001
+unit = 'A/V'
+explanation = '''
+$$\Delta_1 = \begin{vmatrix} 0{,}23 & 16 \\ 0{,}5 & 36 \end{vmatrix} = 8{,}28 - 8 = 0{,}28, \qquad a_1 = \frac{0{,}28}{48} = 0{,}005833$$
+Ověření: $i(4) = 0{,}01292\cdot16 + 0{,}005833\cdot4 = 0{,}2067 + 0{,}0233 = 0{,}23$ A.
+'''
+
+[[question]]
+id = 'VC4-04'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 2'
+figure = 'images/vc4-obvod.svg'
+text = '''
+$U = 12$ V, $R_1 = 30\ \Omega$, $R_2 = 20\ \Omega$. Jaký je vnitřní odpor náhradního zdroje vzhledem ke svorkám nelineárního rezistoru $R_\text{n}$?
+'''
+value = 12
+tolerance = 0.001
+unit = 'Ω'
+explanation = '''
+Zdroj zkratovat; $R_1$ a $R_2$ jsou pak paralelně:
+$$R_\text{i} = \frac{30\cdot20}{30 + 20} = 12\ \Omega$$
+'''
+
+[[question]]
+id = 'VC4-05'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 2'
+figure = 'images/vc4-obvod.svg'
+text = '''
+Jaké je napětí naprázdno $U_\text{i}$ náhradního zdroje (bez $R_\text{n}$)?
+'''
+value = 4.8
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+Dělič $R_1$, $R_2$:
+$$U_\text{i} = U\,\frac{R_2}{R_1 + R_2} = 12\cdot\frac{20}{50} = 4{,}8\ \text{V}$$
+'''
+
+[[question]]
+id = 'VC4-06'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 2'
+figure = 'images/vc4-obvod.svg'
+text = '''
+Která rovnice popisuje napětí $U_2$ na nelineárním rezistoru ($U_\text{i} = 4{,}8$ V, $R_\text{i} = 12\ \Omega$, $i = 0{,}01292\,u^2 + 0{,}005833\,u$)?
+'''
+options = [
+  '$0{,}15504\,U_2^2 + 1{,}069996\,U_2 - 4{,}8 = 0$',
+  '$0{,}01292\,U_2^2 + 0{,}005833\,U_2 - 4{,}8 = 0$',
+  '$0{,}15504\,U_2^2 + 0{,}069996\,U_2 - 4{,}8 = 0$',
+  '$0{,}15504\,U_2^2 + 1{,}069996\,U_2 + 4{,}8 = 0$',
+]
+answer = 0
+explanation = '''
+Proud náhradního zdroje teče do $R_\text{n}$: $(4{,}8 - U_2)/12 = 0{,}01292\,U_2^2 + 0{,}005833\,U_2$. Po vynásobení dvanácti a převedení:
+$$0{,}15504\,U_2^2 + (0{,}069996 + 1)\,U_2 - 4{,}8 = 0$$
+'''
+notes = ['', 'Chybí vynásobení $R_\text{i}$ a člen $U_2/R_\text{i}$ z přímky.', 'Zapomenutý člen $+U_2$ (z $4{,}8 - U_2$).', 'Znaménko absolutního členu: $4{,}8$ je na druhé straně rovnice.']
+
+[[question]]
+id = 'VC4-07'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 2'
+figure = 'images/vc4-obvod.svg'
+text = '''
+Vyřeš rovnici $0{,}15504\,U_2^2 + 1{,}069996\,U_2 - 4{,}8 = 0$. Jaké je napětí $U_2$? (zadání: 3,0965 V)
+'''
+value = 3.0966
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+$$D = 1{,}069996^2 + 4\cdot0{,}15504\cdot4{,}8 = 1{,}144891 + 2{,}976768 = 4{,}121659, \qquad \sqrt{D} = 2{,}030187$$
+$$U_2 = \frac{-1{,}069996 + 2{,}030187}{2\cdot0{,}15504} = \frac{0{,}960191}{0{,}31008} = 3{,}0966\ \text{V}$$
+Druhý kořen $-9{,}998$ V je záporný a nemá fyzikální smysl. Zadání uvádí 3,0965 V (useknuto); s přesnými koeficienti ($a_1 = 7/1200$, $a_2 = 31/2400$) by vyšlo 3,0968 V.
+'''
+
+[[question]]
+id = 'VC4-08'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 3'
+text = '''
+Rovnice $f(U) = 0{,}15504\,U^2 + 1{,}069996\,U - 4{,}8 = 0$ se řeší Newtonovou metodou s počátečním odhadem $U^{(0)} = 4{,}8$ V (napětí naprázdno). Jaký je odhad $U^{(1)}$ po první iteraci?
+'''
+value = 3.2724
+tolerance = 0.0005
+unit = 'V'
+explanation = '''
+$$f(4{,}8) = 0{,}15504\cdot23{,}04 + 1{,}069996\cdot4{,}8 - 4{,}8 = 3{,}5721 + 5{,}1360 - 4{,}8 = 3{,}9081$$
+$$f'(U) = 0{,}31008\,U + 1{,}069996, \qquad f'(4{,}8) = 2{,}5584$$
+$$U^{(1)} = 4{,}8 - \frac{3{,}9081}{2{,}5584} = 4{,}8 - 1{,}5276 = 3{,}2724\ \text{V}$$
+Další iterace: 3,0989; 3,096592; 3,096591 V.
+'''
+
+[[question]]
+id = 'VC4-09'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 3'
+text = '''
+Zadání uvádí výsledek Newtonovy metody pro $f(U) = 0{,}15504\,U^2 + 1{,}069996\,U - 4{,}8$ jako 3,096585 V. Jaký kořen vyjde na šest desetinných míst, když se iteruje, dokud se šesté desetinné místo nemění?
+'''
+value = 3.096591
+tolerance = 0.00001
+unit = 'V'
+explanation = '''
+Od odhadu 4,8 V: 3,2724 → 3,0989 → 3,096592 → 3,096591 → 3,096591 V. Od odhadu 3 V stačí dvě iterace (3,097315 → 3,096591).
+
+Zadání uvádí 3,096585 V; rozdíl 6 µV je dán jiným zaokrouhlením mezivýsledků a je zanedbatelný. Tolerance otázky přijme obě hodnoty.
+'''
+
+[[question]]
+id = 'VC4-10'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'VC4, příklad 2'
+figure = 'images/vc4-obvod.svg'
+text = '''
+V pracovním bodě je $U_2 = 3{,}0966$ V. Jaký proud teče nelineárním rezistorem?
+'''
+value = 0.142
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+Z náhradního zdroje: $I_\text{n} = (4{,}8 - 3{,}0966)/12 = 0{,}1420$ A. Z polynomu: $0{,}01292\cdot3{,}0966^2 + 0{,}005833\cdot3{,}0966 = 0{,}1239 + 0{,}0181 = 0{,}1420$ A. Shoda potvrzuje řešení.
+'''

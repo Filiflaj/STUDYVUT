@@ -1,0 +1,43 @@
+<svg viewBox="0 0 460 290" width="460" class="fig" role="img" aria-label="Příklad na postupné zjednodušování: zdroj U, R4 přímo na zdroji, R1 v sérii s paralelní dvojicí R2, R3">
+<circle cx="60" cy="148" r="14" class="s"/>
+<line x1="60" y1="134" x2="60" y2="162" class="s"/>
+<line x1="38" y1="130" x2="38" y2="166" class="v" marker-end="url(#m-v)"/>
+<text x="30" y="153" text-anchor="end"><tspan class="it">U</tspan></text>
+<polyline points="60,134 60,40 380,40" class="s"/>
+<polyline points="60,162 60,255 380,255" class="s"/>
+<rect x="253" y="72" width="14" height="40" class="s"/>
+<text x="273" y="97"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="260,40 260,72" class="s"/>
+<polyline points="260,112 260,140" class="s"/>
+<polyline points="180,140 260,140" class="s"/>
+<rect x="173" y="175" width="14" height="40" class="s"/>
+<text x="167" y="200" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="180,140 180,175" class="s"/>
+<polyline points="180,215 180,255" class="s"/>
+<rect x="253" y="175" width="14" height="40" class="s"/>
+<text x="273" y="200"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="260,140 260,175" class="s"/>
+<polyline points="260,215 260,255" class="s"/>
+<rect x="373" y="128" width="14" height="40" class="s"/>
+<text x="393" y="153"><tspan class="it">R</tspan><tspan class="sm" dy="4">4</tspan><tspan dy="-4"></tspan></text>
+<polyline points="380,40 380,128" class="s"/>
+<polyline points="380,168 380,255" class="s"/>
+<circle cx="260" cy="40" r="3.2" class="pt"/>
+<circle cx="260" cy="140" r="3.2" class="pt"/>
+<circle cx="260" cy="255" r="3.2" class="pt"/>
+<circle cx="180" cy="255" r="3.2" class="pt"/>
+<line x1="117" y1="28" x2="143" y2="28" class="v" marker-end="url(#m-v)"/>
+<text x="130" y="16" text-anchor="middle"><tspan class="it">I</tspan></text>
+<line x1="244" y1="79" x2="244" y2="105" class="v" marker-end="url(#m-v)"/>
+<text x="236" y="97" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<line x1="400" y1="87" x2="400" y2="113" class="v" marker-end="url(#m-v)"/>
+<text x="408" y="105"><tspan class="it">I</tspan><tspan class="sm" dy="4">4</tspan><tspan dy="-4"></tspan></text>
+<line x1="198" y1="182" x2="198" y2="208" class="v" marker-end="url(#m-v)"/>
+<text x="206" y="200"><tspan class="it">I</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<line x1="282" y1="152" x2="282" y2="178" class="v" marker-end="url(#m-v)"/>
+<text x="290" y="170"><tspan class="it">I</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<line x1="296" y1="72" x2="296" y2="112" class="v" marker-end="url(#m-v)"/>
+<text x="304" y="97"><tspan class="it">U</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<line x1="318" y1="175" x2="318" y2="215" class="v" marker-end="url(#m-v)"/>
+<text x="326" y="200"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+</svg>

@@ -1,0 +1,36 @@
+<svg viewBox="0 0 560 230" width="560" class="fig" role="img" aria-label="Příklad k MSP: zdroj proudu Iz1 s R1 převedený na zdroj napětí Uz1, rezistory R3, R4, R2 a zdroj Uz2, smyčkové proudy IS1, IS2">
+<circle cx="70" cy="122" r="14" class="s"/>
+<line x1="70" y1="108" x2="70" y2="136" class="s"/>
+<line x1="48" y1="140" x2="48" y2="104" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="127" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">z1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="70,108 70,50" class="s"/>
+<polyline points="70,136 70,195" class="s"/>
+<rect x="120" y="43" width="40" height="14" class="s"/>
+<text x="140" y="37" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="70,50 120,50" class="s"/>
+<rect x="220" y="43" width="40" height="14" class="s"/>
+<text x="240" y="37" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="160,50 220,50" class="s"/>
+<polyline points="260,50 330,50" class="s"/>
+<rect x="385" y="43" width="40" height="14" class="s"/>
+<text x="405" y="37" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="330,50 385,50" class="s"/>
+<polyline points="425,50 480,50" class="s"/>
+<rect x="323" y="102" width="14" height="40" class="s"/>
+<text x="343" y="127"><tspan class="it">R</tspan><tspan class="sm" dy="4">4</tspan><tspan dy="-4"></tspan></text>
+<polyline points="330,50 330,102" class="s"/>
+<polyline points="330,142 330,195" class="s"/>
+<circle cx="480" cy="122" r="14" class="s"/>
+<line x1="480" y1="108" x2="480" y2="136" class="s"/>
+<line x1="502" y1="140" x2="502" y2="104" class="v" marker-end="url(#m-v)"/>
+<text x="508" y="127"><tspan class="it">U</tspan><tspan class="sm" dy="4">z2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="480,50 480,108" class="s"/>
+<polyline points="480,136 480,195" class="s"/>
+<polyline points="70,195 480,195" class="s"/>
+<circle cx="330" cy="50" r="3.2" class="pt"/>
+<circle cx="330" cy="195" r="3.2" class="pt"/>
+<path d="M 203.5 102.3 A 20 20 0 1 1 182.7 112.0" class="f" marker-end="url(#m-f)"/>
+<text x="200" y="127" class="acc" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">S1</tspan><tspan dy="-4"></tspan></text>
+<path d="M 408.5 102.3 A 20 20 0 1 1 387.7 112.0" class="f" marker-end="url(#m-f)"/>
+<text x="405" y="127" class="acc" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">S2</tspan><tspan dy="-4"></tspan></text>
+</svg>

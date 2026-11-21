@@ -1,0 +1,216 @@
+name = 'Metoda náhradního zdroje'
+description = 'Théveninova a Nortonova věta, napětí naprázdno, vnitřní odpor, můstek, výkonové přizpůsobení'
+
+[[question]]
+id = 'NZ-01'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Jak se určí vnitřní odpor $R_\text{i}$ náhradního zdroje?
+'''
+options = [
+  'Odpor do svorek, když se zdroje napětí nahradí zkratem a zdroje proudu rozpojí.',
+  'Odpor do svorek, když se zdroje napětí rozpojí a zdroje proudu zkratují.',
+  'Součet všech odporů v obvodu.',
+  'Odpor zátěže.',
+]
+answer = 0
+explanation = '''
+Nezávislé zdroje se nahradí svými vnitřními odpory: ideální zdroj napětí zkratem, ideální zdroj proudu rozpojením. Kontrolně $R_\text{i} = U_0/I_\text{k}$.
+'''
+notes = ['', 'Obráceně: zkrat je pro zdroj napětí.', 'Záleží na zapojení, ne na součtu.', 'Zátěž do náhradního zdroje nepatří.']
+
+[[question]]
+id = 'NZ-02'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Čemu se rovná napětí $U_\text{i}$ Théveninova náhradního zdroje?
+'''
+options = ['napětí na svorkách A–B naprázdno (bez zátěže)', 'napětí na svorkách při zatížení', 'napětí největšího zdroje v obvodu', 'součtu napětí všech zdrojů']
+answer = 0
+explanation = '''
+$U_\text{i} = U_0$, svorkové napětí **nezatíženého** obvodu. Proud Nortonova zdroje je proud nakrátko, $I_\text{i} = I_\text{k}$.
+'''
+notes = ['', 'Při zatížení je napětí menší o úbytek na $R_\text{i}$.', 'Záleží na celém obvodu.', 'Obecně ne.']
+
+[[question]]
+id = 'NZ-03'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Která část obvodu musí být **lineární**, aby šlo použít Théveninovu větu?
+'''
+options = ['nahrazovaná část; zátěž může být i nelineární', 'zátěž; nahrazovaná část může být nelineární', 'celý obvod včetně zátěže', 'žádná, věta platí vždy']
+answer = 0
+explanation = '''
+Náhradní zdroj nahrazuje lineární dvojpól. Zátěž může být jakákoli; proto se metoda používá pro nelineární prvky (VC4).
+'''
+notes = ['', 'Obráceně.', 'Zátěž lineární být nemusí.', 'Nelineární nahrazovaná část se jedním zdrojem popsat nedá.']
+
+[[question]]
+id = 'NZ-04'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+figure = 'images/nz-priklad.svg'
+text = '''
+V obvodu na obrázku je $R_1 = 30\ \Omega$, $R_3 = 10\ \Omega$, $R_4 = 20\ \Omega$. Jaký je vnitřní odpor $R_\text{i}$ vzhledem k zátěži $R_2$?
+'''
+value = 36.67
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+$U_\text{Z1}$ zkratovat, $I_\text{Z2}$ rozpojit. Od svorek je $R_1$ v sérii s paralelními $R_3$, $R_4$:
+$$R_\text{i} = R_1 + \frac{R_3 R_4}{R_3 + R_4} = 30 + \frac{200}{30} = 36{,}67\ \Omega$$
+'''
+
+[[question]]
+id = 'NZ-05'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+figure = 'images/nz-priklad.svg'
+text = '''
+Stejný obvod, $U_\text{Z1} = 20$ V, $I_\text{Z2} = 15$ mA (do uzlu). Jaké je napětí naprázdno $U_\text{i}$?
+'''
+value = 6.767
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+Naprázdno neteče $R_1$ proud, $U_\text{i}$ je napětí uzlu nad $R_3$. Zdroj $U_\text{Z1}$ s $R_4$ převést na $I_\text{z1} = 20/20 = 1$ A a napsat MUN:
+$$(G_3 + G_4)\,U_\text{i} = I_\text{z1} + I_\text{Z2}, \qquad 0{,}15\,U_\text{i} = 1{,}015, \qquad U_\text{i} = 6{,}767\ \text{V}$$
+'''
+
+[[question]]
+id = 'NZ-06'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+figure = 'images/nz-priklad.svg'
+text = '''
+Náhradní zdroj $U_\text{i} = 6{,}767$ V, $R_\text{i} = 36{,}67\ \Omega$. Jaké je napětí $U_2$ na zátěži $R_2 = 30\ \Omega$?
+'''
+value = 3.045
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+$$I_2 = \frac{U_\text{i}}{R_\text{i} + R_2} = \frac{6{,}767}{66{,}67} = 0{,}1015\ \text{A}, \qquad U_2 = R_2 I_2 = 30\cdot0{,}1015 = 3{,}045\ \text{V}$$
+'''
+
+[[question]]
+id = 'NZ-07'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+figure = 'images/most.svg'
+text = '''
+Můstek: $R_1 = 10\ \Omega$, $R_2 = 50\ \Omega$, $R_3 = 20\ \Omega$, $R_4 = 40\ \Omega$. Jaký je vnitřní odpor vzhledem k uzlům A, B?
+'''
+value = 21.67
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+Zkratovaný zdroj spojí levý a pravý uzel, takže od A jsou paralelně $R_1$, $R_2$ a od B paralelně $R_3$, $R_4$:
+$$R_\text{i} = \frac{10\cdot50}{60} + \frac{20\cdot40}{60} = 8{,}333 + 13{,}333 = 21{,}67\ \Omega$$
+'''
+
+[[question]]
+id = 'NZ-08'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+figure = 'images/most.svg'
+text = '''
+Stejný můstek, $U = 12$ V (levý uzel kladný). Jaké je napětí naprázdno $U_\text{i} = U_\text{AB}$?
+'''
+value = 2
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+Bez $R_\text{G}$ jsou to dva děliče:
+$$U_\text{i} = U\left(\frac{R_2}{R_1 + R_2} - \frac{R_4}{R_3 + R_4}\right) = 12\left(\frac{50}{60} - \frac{40}{60}\right) = 10 - 8 = 2\ \text{V}$$
+'''
+
+[[question]]
+id = 'NZ-09'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+figure = 'images/most.svg'
+text = '''
+Můstek s $U_\text{i} = 2$ V a $R_\text{i} = 21{,}667\ \Omega$, galvanometr $R_\text{G} = 2\ \Omega$. Jaký proud $I_\text{G}$ jím teče?
+'''
+value = 84.51
+tolerance = 0.03
+unit = 'mA'
+explanation = '''
+$$I_\text{G} = \frac{U_\text{i}}{R_\text{i} + R_\text{G}} = \frac{2}{23{,}667} = 0{,}08451\ \text{A} = 84{,}51\ \text{mA}$$
+'''
+
+[[question]]
+id = 'NZ-10'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Kdy je můstek vyvážený ($I_\text{G} = 0$ pro libovolné $R_\text{G}$)?
+'''
+options = ['když $R_1/R_2 = R_3/R_4$', 'když $R_1 + R_2 = R_3 + R_4$', 'když $R_\text{G} = R_\text{i}$', 'když $R_1 = R_4$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Vyvážený můstek má $U_\text{i} = 0$: oba děliče dávají stejné napětí, $R_2/(R_1 + R_2) = R_4/(R_3 + R_4)$, což je totéž jako $R_1/R_2 = R_3/R_4$.
+'''
+notes = ['', 'Záleží na poměrech, ne na součtech.', 'To je podmínka maximálního výkonu, ne vyvážení.', 'Obecně nestačí.']
+
+[[question]]
+id = 'NZ-11'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Náhradní zdroj má $U_\text{i} = 21{,}6$ V a $R_\text{i} = 28{,}2\ \Omega$. Jaký největší výkon může dodat do zátěže?
+'''
+value = 4.136
+tolerance = 0.002
+unit = 'W'
+explanation = '''
+Maximální výkon je při $R_\text{z} = R_\text{i}$ (výkonové přizpůsobení):
+$$P_\text{max} = \frac{U_\text{i}^2}{4R_\text{i}} = \frac{21{,}6^2}{4\cdot28{,}2} = \frac{466{,}56}{112{,}8} = 4{,}136\ \text{W}$$
+'''
+
+[[question]]
+id = 'NZ-12'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Thévenin: $U_\text{i} = 6{,}812$ V, $R_\text{i} = 1{,}499$ kΩ. Jaký je proud $I_\text{i}$ Nortonova zdroje?
+'''
+value = 4.544
+tolerance = 0.003
+unit = 'mA'
+explanation = '''
+$$I_\text{i} = I_\text{k} = \frac{U_\text{i}}{R_\text{i}} = \frac{6{,}812}{1{,}499} = 4{,}544\ \text{mA}$$
+(V obvodu LC4 je to proud nakrátko $U/R_1 = 10/2{,}2 = 4{,}545$ mA; rozdíl je zaokrouhlení.)
+'''
+
+[[question]]
+id = 'NZ-13'
+kind = 'numeric'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Zdroj má naprázdno 9 V a proud nakrátko 0,3 A. Jaký je jeho vnitřní odpor?
+'''
+value = 30
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+$$R_\text{i} = \frac{U_0}{I_\text{k}} = \frac{9}{0{,}3} = 30\ \Omega$$
+'''
+
+[[question]]
+id = 'NZ-14'
+topic = 'Metoda náhradního zdroje'
+text = '''
+Kdy se metoda náhradního zdroje hodí nejvíc?
+'''
+options = [
+  'když se hledá proud nebo napětí jedné větve, zvlášť pro více hodnot zátěže',
+  'když se hledají proudy všech větví najednou',
+  'když je obvod nelineární v nahrazované části',
+  'když obvod nemá žádný zdroj',
+]
+answer = 0
+explanation = '''
+Obvod se vyřeší jen jednou ($U_\text{i}$, $R_\text{i}$) a pro každou zátěž stačí dělič. Pro proudy všech větví jsou lepší MSP nebo MUN.
+'''
+notes = ['', 'Na to jsou MSP a MUN.', 'Nahrazovaná část musí být lineární.', 'Bez zdroje je $U_\text{i} = 0$, není co počítat.']

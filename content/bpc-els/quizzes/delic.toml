@@ -1,0 +1,239 @@
+name = 'Obvodové zákony, zdroje, děliče'
+description = 'Kirchhoffovy zákony, čítací šipky, reálné zdroje, spojování rezistorů, dělič napětí a proudu'
+
+[[question]]
+id = 'DEL-01'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Na čem se ve spotřebičové (pasivní) orientaci shodují čítací šipky napětí a proudu?
+'''
+options = ['Šipky U a I míří stejným směrem.', 'Šipky U a I míří proti sobě.', 'Šipka U míří vždy od − k +.', 'Šipka I míří vždy do kladné svorky zdroje.']
+answer = 0
+explanation = '''
+**Spotřebičová (pasivní)** orientace: šipky $U$ a $I$ souhlasné, používá se u rezistorů ($U = RI$ s kladným znaménkem). **Zdrojová (aktivní)** orientace: šipky proti sobě.
+'''
+notes = ['', 'To je zdrojová orientace.', 'Šipka napětí míří od + k −.', 'U zdroje proud vystupuje z kladné svorky, nevstupuje.']
+
+[[question]]
+id = 'DEL-02'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Uzlem procházejí proudy: $i_1$ do uzlu, $i_2$ a $i_3$ z uzlu. Jak zní 1. Kirchhoffův zákon v konvenci semináře (vytékající +)?
+'''
+options = ['$-i_1 + i_2 + i_3 = 0$', '$i_1 + i_2 + i_3 = 0$', '$i_1 - i_2 + i_3 = 0$', '$i_1 = i_2 - i_3$']
+answer = 0
+explanation = '''
+Algebraický součet proudů v uzlu je nula; proudy vytékající s +, vtékající s −: $-i_1 + i_2 + i_3 = 0$, tedy $i_1 = i_2 + i_3$.
+'''
+notes = ['', 'Všechny se stejným znaménkem by znamenalo, že všechny tečou ven.', 'Znaménka nesedí ke směrům.', 'Mělo by být $i_1 = i_2 + i_3$.']
+
+[[question]]
+id = 'DEL-03'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Kolik uzlů má obvod, ve kterém jsou tři rezistory paralelně připojené ke zdroji, když jsou horní vodiče kresleny se třemi tečkami spojenými drátem bez součástek?
+'''
+options = ['2 (horní a dolní uzel)', '4', '6', '3']
+answer = 0
+layout = 'grid'
+explanation = '''
+Uzel je vodivé spojení se stejným potenciálem. Tečky spojené drátem bez prvku jsou **jeden** uzel. Paralelní zapojení má tedy jen dva uzly: horní a dolní.
+'''
+notes = ['', 'Tečky spojené drátem se nepočítají zvlášť.', 'Každá tečka není samostatný uzel.', 'Horní tečky jsou jeden uzel, dolní druhý.']
+
+[[question]]
+id = 'DEL-04'
+kind = 'numeric'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Monočlánek má naprázdno 1,5 V; při odběru 0,5 A klesne napětí na 1,3 V. Jaký je jeho vnitřní odpor?
+'''
+value = 0.4
+tolerance = 0.001
+unit = 'Ω'
+explanation = '''
+Naprázdno $U_0 = U_\text{i} = 1{,}5$ V. Pokles napětí je úbytek na vnitřním odporu:
+$$R_\text{i} = \frac{\Delta U}{I} = \frac{1{,}5 - 1{,}3}{0{,}5} = \frac{0{,}2}{0{,}5} = 0{,}4\ \Omega$$
+'''
+
+[[question]]
+id = 'DEL-05'
+kind = 'numeric'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Jaký proud nakrátko dá monočlánek s $U_\text{i} = 1{,}5$ V a $R_\text{i} = 0{,}4\ \Omega$?
+'''
+value = 3.75
+tolerance = 0.01
+unit = 'A'
+explanation = '''
+Nakrátko je svorkové napětí nulové a celé $U_\text{i}$ je na $R_\text{i}$:
+$$I_\text{k} = \frac{U_\text{i}}{R_\text{i}} = \frac{1{,}5}{0{,}4} = 3{,}75\ \text{A}$$
+'''
+
+[[question]]
+id = 'DEL-06'
+kind = 'numeric'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Reálný zdroj napětí $U_\text{i} = 12$ V, $R_\text{i} = 2\ \Omega$ se převede na reálný zdroj proudu. Jaký je proud $I_\text{i}$ náhradního zdroje proudu?
+'''
+value = 6
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I_\text{i} = \frac{U_\text{i}}{R_\text{i}} = \frac{12}{2} = 6\ \text{A}, \qquad G_\text{i} = \frac{1}{R_\text{i}} = 0{,}5\ \text{S}$$
+Oba zdroje mají stejné napětí naprázdno (6/0,5 = 12 V) i proud nakrátko (6 A).
+'''
+
+[[question]]
+id = 'DEL-07'
+topic = 'Obvodové zákony a zdroje'
+text = '''
+Jak se chová ideální zdroj proudu?
+'''
+options = [
+  'Dodává stále stejný proud bez ohledu na napětí na svých svorkách.',
+  'Drží stálé napětí bez ohledu na proud.',
+  'Jeho proud klesá lineárně s napětím.',
+  'Nakrátko dodává nulový proud.',
+]
+answer = 0
+explanation = '''
+Ideální zdroj proudu má jediný parametr, proud $I$, a dodá ho při libovolném napětí (teoreticky nekonečná zásoba energie). Klesající proud s napětím má až **reálný** zdroj proudu, $I = I_\text{i} - G_\text{i} U$.
+'''
+notes = ['', 'To je ideální zdroj napětí.', 'To platí pro reálný zdroj proudu s vnitřní vodivostí.', 'Nakrátko dodává právě svůj proud $I$.']
+
+[[question]]
+id = 'DEL-08'
+kind = 'numeric'
+topic = 'Dělič napětí a proudu'
+text = '''
+Jaký je výsledný odpor rezistorů $R_1 = 220\ \Omega$ a $R_2 = 100\ \Omega$ zapojených paralelně?
+'''
+value = 68.75
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+$$R_1 \parallel R_2 = \frac{R_1 R_2}{R_1 + R_2} = \frac{220\cdot100}{320} = 68{,}75\ \Omega$$
+Paralelní kombinace je vždy menší než menší z rezistorů.
+'''
+
+[[question]]
+id = 'DEL-09'
+kind = 'numeric'
+topic = 'Dělič napětí a proudu'
+text = '''
+Dělič napětí: $U = 10$ V, $R_1 = 220\ \Omega$ (nahoře), $R_2 = 100\ \Omega$ (dole). Jaké je napětí $U_2$?
+'''
+figure = 'images/delic-napeti.svg'
+value = 3.125
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+$$U_2 = U\,\frac{R_2}{R_1 + R_2} = 10\cdot\frac{100}{320} = 3{,}125\ \text{V}$$
+'''
+
+[[question]]
+id = 'DEL-10'
+kind = 'numeric'
+topic = 'Dělič napětí a proudu'
+text = '''
+Dělič proudu: $I = 100$ mA, $R_1 = 220\ \Omega$, $R_2 = 100\ \Omega$ paralelně. Jaký proud teče rezistorem $R_1$?
+'''
+figure = 'images/delic-proudu.svg'
+value = 31.25
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I_1 = I\,\frac{G_1}{G_1 + G_2} = I\,\frac{R_2}{R_1 + R_2} = 100\cdot\frac{100}{320} = 31{,}25\ \text{mA}$$
+Větší rezistor má menší proud. Zbytek, 68,75 mA, teče rezistorem $R_2$.
+'''
+
+[[question]]
+id = 'DEL-11'
+topic = 'Dělič napětí a proudu'
+text = '''
+Který vztah platí pro proud $I_1$ v děliči proudu se dvěma rezistory?
+'''
+options = ['$I_1 = I\,\dfrac{R_2}{R_1 + R_2}$', '$I_1 = I\,\dfrac{R_1}{R_1 + R_2}$', '$I_1 = I\,\dfrac{G_2}{G_1 + G_2}$', '$I_1 = I\,\dfrac{R_1 R_2}{R_1 + R_2}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+$I_1 = I\,G_1/(G_1 + G_2)$; po vynásobení čitatele i jmenovatele součinem $R_1 R_2$ vyjde $I_1 = I\,R_2/(R_1 + R_2)$. V čitateli je **druhý** odpor.
+'''
+notes = ['', 'To je vzorec děliče napětí; u proudu jsou odpory prohozené.', 'V čitateli má být vlastní vodivost $G_1$.', 'To je odpor paralelní kombinace, ne podíl proudu.']
+
+[[question]]
+id = 'DEL-12'
+kind = 'numeric'
+topic = 'Dělič napětí a proudu'
+text = '''
+Dělič 1 : 2 má $R_1 = R_2 = 200\ \Omega$. O kolik procent klesne výstupní napětí, když se paralelně k $R_2$ připojí zátěž 1,5 kΩ?
+'''
+value = 6.25
+tolerance = 0.05
+unit = '%'
+explanation = '''
+$$R_2 \parallel R_\text{z} = \frac{200\cdot1500}{1700} = 176{,}47\ \Omega, \qquad \frac{U_2}{U} = \frac{176{,}47}{200 + 176{,}47} = 0{,}46875$$
+Naprázdno 0,5; pokles $\dfrac{0{,}5 - 0{,}46875}{0{,}5} = 0{,}0625 = 6{,}25\ \%$.
+'''
+
+[[question]]
+id = 'DEL-13'
+kind = 'numeric'
+topic = 'Dělič napětí a proudu'
+text = '''
+Pět stejných rezistorů v sérii je připojeno ke zdroji 12 V. Jaké napětí je na každém z nich?
+'''
+value = 2.4
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+Obecný dělič: $U_k = U\,R_k/R$. Pro stejné rezistory $U_k = U/N = 12/5 = 2{,}4$ V.
+'''
+
+[[question]]
+id = 'DEL-14'
+topic = 'Dělič napětí a proudu'
+text = '''
+Jak se správně připojí voltmetr a ampérmetr?
+'''
+options = ['voltmetr paralelně k prvku, ampérmetr do série', 'voltmetr do série, ampérmetr paralelně', 'oba paralelně', 'oba do série']
+answer = 0
+explanation = '''
+Voltmetr měří rozdíl potenciálů dvou uzlů, proto **paralelně**, a má mít velký vnitřní odpor. Ampérmetr měří proud větví, proto **do série**, a má mít malý vnitřní odpor.
+'''
+notes = ['', 'Ampérmetr paralelně ke zdroji je skoro zkrat.', 'Ampérmetr paralelně ke zdroji je skoro zkrat.', 'Voltmetr v sérii by přerušil obvod (velký odpor).']
+
+[[question]]
+id = 'DEL-15'
+topic = 'Dělič napětí a proudu'
+text = '''
+Proč se ohmmetrem nesmí měřit rezistor zapojený v obvodu?
+'''
+options = [
+  'Ohmmetr měří vlastním proudem; cizí napětí i paralelní cesty obvodu by výsledek zkreslily nebo přístroj poškodily.',
+  'Ohmmetr měří jen střídavě.',
+  'Rezistor v obvodu nemá odpor.',
+  'Ohmmetr by rezistor přepálil.',
+]
+answer = 0
+explanation = '''
+Ohmmetr pošle známý proud a měří napětí ($R = U/I$). V obvodu by se přičetlo napětí zdrojů a proud by tekl i paralelními větvemi, takže by měřil něco jiného.
+'''
+notes = ['', 'Měří stejnosměrně.', 'Odpor má, ale měří se i s ostatními prvky.', 'Měřicí proud ohmmetru je malý.']
+
+[[question]]
+id = 'DEL-16'
+kind = 'numeric'
+topic = 'Dělič napětí a proudu'
+text = '''
+Dělič napětí 10 V se dvěma rezistory 220 Ω a 100 Ω. Jaký proud jím teče?
+'''
+value = 31.25
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I = \frac{U}{R_1 + R_2} = \frac{10}{320} = 0{,}03125\ \text{A} = 31{,}25\ \text{mA}$$
+'''

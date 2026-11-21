@@ -1,0 +1,41 @@
+<svg viewBox="0 0 560 250" width="560" class="fig" role="img" aria-label="Příklad na náhradní zdroj: zátěž R2 mezi svorkami A a B, R1, zdroj proudu Iz2, R3, R4 a zdroj Uz1">
+<rect x="63" y="130" width="14" height="40" class="s"/>
+<text x="57" y="155" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="70,210 70,170" class="s"/>
+<polyline points="70,130 70,55" class="s"/>
+<rect x="130" y="48" width="40" height="14" class="s"/>
+<text x="150" y="42" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="70,55 130,55" class="s"/>
+<polyline points="170,55 230,55" class="s"/>
+<line x1="163" y1="73" x2="137" y2="73" class="v" marker-end="url(#m-v)"/>
+<text x="150" y="95" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<line x1="172" y1="20" x2="128" y2="20" class="v" marker-end="url(#m-v)"/>
+<text x="182" y="25"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<circle cx="230" cy="140" r="14" class="s"/>
+<line x1="216" y1="140" x2="244" y2="140" class="s"/>
+<line x1="208" y1="158" x2="208" y2="122" class="v" marker-end="url(#m-v)"/>
+<text x="200" y="145" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="4">z2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="230,55 230,126" class="s"/>
+<polyline points="230,154 230,210" class="s"/>
+<rect x="313" y="120" width="14" height="40" class="s"/>
+<text x="307" y="145" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="320,55 320,120" class="s"/>
+<polyline points="320,160 320,210" class="s"/>
+<rect x="375" y="48" width="40" height="14" class="s"/>
+<text x="395" y="42" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">4</tspan><tspan dy="-4"></tspan></text>
+<polyline points="230,55 375,55" class="s"/>
+<polyline points="415,55 470,55" class="s"/>
+<circle cx="470" cy="140" r="14" class="s"/>
+<line x1="470" y1="126" x2="470" y2="154" class="s"/>
+<line x1="492" y1="122" x2="492" y2="158" class="v" marker-end="url(#m-v)"/>
+<text x="498" y="145"><tspan class="it">U</tspan><tspan class="sm" dy="4">z1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="470,55 470,126" class="s"/>
+<polyline points="470,154 470,210" class="s"/>
+<polyline points="70,210 470,210" class="s"/>
+<circle cx="230" cy="55" r="3.2" class="pt"/>
+<circle cx="320" cy="55" r="3.2" class="pt"/>
+<circle cx="230" cy="210" r="3.2" class="pt"/>
+<circle cx="320" cy="210" r="3.2" class="pt"/>
+<text x="58" y="49" class="sm" text-anchor="end">A</text>
+<text x="234" y="47" class="sm">B</text>
+</svg>

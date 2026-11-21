@@ -1,0 +1,269 @@
+name = 'VC6: Magnetické obvody'
+description = 'všechny tři příklady (v podkladech zadání VC5): toroid s mezerou, C jádro, nelineární indukčnost'
+
+# ---------- Příklad 1
+[[question]]
+id = 'VC6-01'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 1'
+figure = 'images/toroid-mezera.svg'
+text = '''
+Toroid se středním průměrem $D_\text{s} = 120$ mm má vzduchovou mezeru $l_\text{v} = 1{,}2$ mm. Jaká je délka střední siločáry v železe $l_\text{f}$?
+'''
+value = 0.3758
+tolerance = 0.0002
+unit = 'm'
+explanation = '''
+$$l = \pi D_\text{s} = \pi\cdot0{,}12 = 0{,}3770\ \text{m}, \qquad l_\text{f} = l - l_\text{v} = 0{,}3770 - 0{,}0012 = 0{,}3758\ \text{m}$$
+'''
+
+[[question]]
+id = 'VC6-02'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 1'
+figure = 'images/toroid-mezera.svg'
+text = '''
+V mezeře $l_\text{v} = 1{,}2$ mm má být indukce $B_\text{v} = 0{,}7$ T. Jaké je magnetické napětí na mezeře $U_\text{mv}$? (zadání: 668,5 A)
+'''
+value = 668.5
+tolerance = 0.2
+unit = 'A'
+explanation = '''
+$$H_\text{v} = \frac{B_\text{v}}{\mu_0} = \frac{0{,}7}{4\pi\cdot10^{-7}} = 557\,042\ \text{A/m}, \qquad U_\text{mv} = H_\text{v} l_\text{v} = 557\,042\cdot0{,}0012 = 668{,}5\ \text{A}$$
+'''
+
+[[question]]
+id = 'VC6-03'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 1'
+figure = 'images/toroid-mezera.svg'
+text = '''
+Ocel má podle tabulky pro $B_\text{F} = 0{,}7$ T intenzitu $H_\text{F} = 167$ A/m, délka v železe je $l_\text{f} = 0{,}3758$ m. Jaké je magnetické napětí na jádře $U_\text{mf}$? (zadání: 62,8 A)
+'''
+value = 62.8
+tolerance = 0.1
+unit = 'A'
+explanation = '''
+Průřez jádra i mezery je stejný a rozptyl se zanedbává, takže $B_\text{f} = B_\text{v} = 0{,}7$ T a z tabulky $H_\text{f} = 167$ A/m:
+$$U_\text{mf} = H_\text{f} l_\text{f} = 167\cdot0{,}3758 = 62{,}76 \approx 62{,}8\ \text{A}$$
+'''
+
+[[question]]
+id = 'VC6-04'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 1'
+figure = 'images/toroid-mezera.svg'
+text = '''
+Cívka má $N = 200$ závitů, $U_\text{mv} = 668{,}5$ A, $U_\text{mf} = 62{,}8$ A. Jaký budicí proud je potřeba? (zadání: 3,66 A)
+'''
+value = 3.66
+tolerance = 0.01
+unit = 'A'
+explanation = '''
+Ampérův zákon po střední siločáře:
+$$N I = U_\text{mv} + U_\text{mf} = 668{,}5 + 62{,}8 = 731{,}3\ \text{A}, \qquad I = \frac{731{,}3}{200} = 3{,}66\ \text{A}$$
+'''
+
+[[question]]
+id = 'VC6-05'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 1'
+text = '''
+Porovnej magnetická napětí z příkladu 1: $U_\text{mv} = 668{,}5$ A na mezeře 1,2 mm a $U_\text{mf} = 62{,}8$ A na 376 mm železa. Co z toho plyne?
+'''
+options = [
+  'Mezera potřebuje asi desetkrát víc magnetického napětí než celé jádro; o budicím proudu rozhoduje hlavně mezera.',
+  'Jádro potřebuje víc, protože je delší.',
+  'Obě jsou zhruba stejná.',
+  'Mezeru lze ve výpočtu zanedbat.',
+]
+answer = 0
+explanation = '''
+$668{,}5/62{,}8 \approx 10{,}6$. Vzduch má $\mu_\text{r} = 1$, železo stovky až tisíce, takže i milimetrová mezera má větší magnetický odpor než celé jádro.
+'''
+notes = ['', 'Délka nerozhoduje, rozhoduje permeabilita.', 'Liší se asi desetkrát.', 'Naopak, mezera je rozhodující.']
+
+# ---------- Příklad 2
+[[question]]
+id = 'VC6-06'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 2'
+figure = 'images/c-jadro.svg'
+text = '''
+C jádro s jhem: vnější rozměry 350 × 310 mm, šířka sloupku 80 mm. Jaká je délka střední siločáry (včetně obou mezer)?
+'''
+value = 1.0
+tolerance = 0.001
+unit = 'm'
+explanation = '''
+Střední siločára vede středem sloupků, 40 mm od okraje. Obdélník má strany $350 - 80 = 270$ mm a $310 - 80 = 230$ mm:
+$$l = 2\cdot(270 + 230) = 1000\ \text{mm} = 1{,}0\ \text{m}$$
+V železe je $l_\text{f} = 1{,}0 - 2\cdot0{,}01 = 0{,}98$ m (dvě mezery po 10 mm).
+'''
+
+[[question]]
+id = 'VC6-07'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 2'
+figure = 'images/c-jadro.svg'
+text = '''
+V mezerách (dvě po 10 mm) má být indukce $B_\text{v} = 0{,}5$ T. Jaké je celkové magnetické napětí na mezerách?
+'''
+value = 7958
+tolerance = 2
+unit = 'A'
+explanation = '''
+$$H_\text{v} = \frac{0{,}5}{4\pi\cdot10^{-7}} = 397\,887\ \text{A/m}, \qquad U_\text{mv} = H_\text{v}\cdot2l_\text{v} = 397\,887\cdot0{,}02 = 7958\ \text{A}$$
+'''
+
+[[question]]
+id = 'VC6-08'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 2'
+figure = 'images/magnetizacni-krivky.svg'
+text = '''
+Odečti z magnetizační křivky dynamového plechu intenzitu $H_\text{f}$ pro $B = 0{,}5$ T.
+'''
+value = 80
+tolerance = 10
+unit = 'A/m'
+explanation = '''
+Dynamový plech (nejstrmější křivka na začátku) dosahuje 0,5 T asi při **80 A/m**. Graf je překreslený přibližně; na výsledném proudu se nepřesnost čtení skoro neprojeví, protože magnetické napětí železa (asi 80 A) je proti mezerám (7958 A) malé.
+'''
+
+[[question]]
+id = 'VC6-09'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 2'
+figure = 'images/c-jadro.svg'
+text = '''
+$N = 1200$ závitů, $U_\text{mv} = 7958$ A, v železe $H_\text{f} \approx 80$ A/m na délce 0,98 m. Jaký magnetovací proud je potřeba? (zadání: 6,7 A)
+'''
+value = 6.70
+tolerance = 0.02
+unit = 'A'
+explanation = '''
+$$U_\text{mf} = H_\text{f} l_\text{f} = 80\cdot0{,}98 = 78{,}4\ \text{A}, \qquad I = \frac{U_\text{mv} + U_\text{mf}}{N} = \frac{7958 + 78{,}4}{1200} = \frac{8036{,}4}{1200} = 6{,}70\ \text{A}$$
+'''
+
+[[question]]
+id = 'VC6-10'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 2'
+figure = 'images/c-jadro.svg'
+text = '''
+Průřez jádra je 80 × 80 mm a indukce 0,5 T. Jaký je magnetický tok? Zadej v mWb.
+'''
+value = 3.2
+tolerance = 0.001
+unit = 'mWb'
+explanation = '''
+$$S = 0{,}08\cdot0{,}08 = 0{,}0064\ \text{m}^2, \qquad \Phi = B\,S = 0{,}5\cdot0{,}0064 = 0{,}0032\ \text{Wb} = 3{,}2\ \text{mWb}$$
+'''
+
+[[question]]
+id = 'VC6-11'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 2'
+figure = 'images/c-jadro.svg'
+text = '''
+Jaká je indukčnost cívky ($N = 1200$, $\Phi = 3{,}2$ mWb, $I = 6{,}7$ A)? (zadání: 0,573 H)
+'''
+value = 0.573
+tolerance = 0.002
+unit = 'H'
+explanation = '''
+$$L = \frac{N\Phi}{I} = \frac{1200\cdot0{,}0032}{6{,}7} = \frac{3{,}84}{6{,}7} = 0{,}573\ \text{H}$$
+'''
+
+# ---------- Příklad 3
+[[question]]
+id = 'VC6-12'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 3'
+text = '''
+Cívka se 100 závity je navinutá na toroidu z oceli E11 se středním průměrem 80 mm (bez mezery). Jaká je intenzita pole v jádře při proudu 1 A?
+'''
+value = 397.9
+tolerance = 0.3
+unit = 'A/m'
+explanation = '''
+$$l = \pi\cdot0{,}08 = 0{,}2513\ \text{m}, \qquad H = \frac{NI}{l} = \frac{100\cdot1}{0{,}2513} = 397{,}9\ \text{A/m}$$
+'''
+
+[[question]]
+id = 'VC6-13'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 3'
+figure = 'images/magnetizacni-krivky.svg'
+text = '''
+Průřez toroidu je 12 mm². Pro $H \approx 400$ A/m odečti indukci z křivky oceli E11 a urči magnetický tok. Zadej v µWb. (zadání: 14,4 µWb)
+'''
+value = 14.4
+tolerance = 0.4
+unit = 'µWb'
+explanation = '''
+Z křivky E11 pro 400 A/m: $B \approx 1{,}2$ T.
+$$\Phi = B\,S = 1{,}2\cdot12\cdot10^{-6} = 14{,}4\cdot10^{-6}\ \text{Wb} = 14{,}4\ \mu\text{Wb}$$
+'''
+
+[[question]]
+id = 'VC6-14'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 3'
+text = '''
+Jaká je indukčnost cívky ($N = 100$) při proudu 1 A, když tok je 14,4 µWb? Zadej v mH. (zadání: 1,44 mH)
+'''
+value = 1.44
+tolerance = 0.04
+unit = 'mH'
+explanation = '''
+$$L = \frac{N\Phi}{I} = \frac{100\cdot14{,}4\cdot10^{-6}}{1} = 1{,}44\cdot10^{-3}\ \text{H} = 1{,}44\ \text{mH}$$
+'''
+
+[[question]]
+id = 'VC6-15'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 3'
+figure = 'images/magnetizacni-krivky.svg'
+text = '''
+Stejná cívka při proudu 2 A: $H = 795{,}8$ A/m. Odečti z křivky E11 indukci a urči tok (průřez 12 mm²). Zadej v µWb. (zadání: 16,56 µWb)
+'''
+value = 16.56
+tolerance = 0.4
+unit = 'µWb'
+explanation = '''
+$H = 200/0{,}2513 = 795{,}8$ A/m, z křivky E11 $B \approx 1{,}38$ T:
+$$\Phi = 1{,}38\cdot12\cdot10^{-6} = 16{,}56\ \mu\text{Wb}$$
+Proud se zdvojnásobil, tok vzrostl jen o 15 %: jádro se sytí.
+'''
+
+[[question]]
+id = 'VC6-16'
+kind = 'numeric'
+topic = 'Magnetické obvody'
+source = 'VC6, příklad 3'
+text = '''
+Jaká je indukčnost cívky ($N = 100$) při proudu 2 A a toku 16,56 µWb? Zadej v mH. (zadání: 0,828 mH)
+'''
+value = 0.828
+tolerance = 0.02
+unit = 'mH'
+explanation = '''
+$$L = \frac{N\Phi}{I} = \frac{100\cdot16{,}56\cdot10^{-6}}{2} = 0{,}828\ \text{mH}$$
+Při 1 A to bylo 1,44 mH: indukčnost cívky s železným jádrem závisí na proudu, cívka je nelineární prvek.
+'''

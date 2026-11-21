@@ -1,0 +1,35 @@
+<svg viewBox="0 0 600 260" width="600" class="fig" role="img" aria-label="Model reálného zdroje napětí Ui, Ri se zátěží Rz a jeho zatěžovací charakteristika U(I)">
+<circle cx="90" cy="150" r="14" class="s"/>
+<line x1="90" y1="136" x2="90" y2="164" class="s"/>
+<line x1="68" y1="132" x2="68" y2="168" class="v" marker-end="url(#m-v)"/>
+<text x="60" y="155" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="90,164 90,205 280,205" class="s"/>
+<rect x="83" y="65" width="14" height="40" class="s"/>
+<text x="77" y="90" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="90,136 90,105" class="s"/>
+<polyline points="90,65 90,45 165,45" class="s"/>
+<circle cx="165" cy="45" r="3.5" class="s1"/>
+<circle cx="165" cy="205" r="3.5" class="s1"/>
+<polyline points="165,45 280,45" class="s"/>
+<rect x="273" y="105" width="14" height="40" class="s"/>
+<text x="293" y="130"><tspan class="it">R</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="280,45 280,105" class="s"/>
+<polyline points="280,145 280,205" class="s"/>
+<line x1="215" y1="70" x2="215" y2="180" class="v" marker-end="url(#m-v)"/>
+<text x="223" y="130"><tspan class="it">U</tspan></text>
+<line x1="207" y1="33" x2="233" y2="33" class="v" marker-end="url(#m-v)"/>
+<text x="220" y="21" text-anchor="middle"><tspan class="it">I</tspan></text>
+<rect x="18" y="25" width="128" height="200" class="d"/>
+<text x="82" y="245" class="sm mut" text-anchor="middle">reálný zdroj</text>
+<line x1="380" y1="205" x2="585" y2="205" class="s1" marker-end="url(#m-v)"/>
+<line x1="380" y1="205" x2="380" y2="40" class="s1" marker-end="url(#m-v)"/>
+<text x="588" y="210"><tspan class="it">I</tspan></text>
+<text x="374" y="37" text-anchor="end"><tspan class="it">U</tspan></text>
+<line x1="380" y1="85" x2="550" y2="205" class="s"/>
+<text x="374" y="90" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">0</tspan><tspan dy="-4"></tspan></text>
+<text x="550" y="225" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">k</tspan><tspan dy="-4"></tspan></text>
+<circle cx="465" cy="145" r="3.2" class="ptA"/>
+<line x1="465" y1="145" x2="465" y2="205" class="d"/>
+<line x1="380" y1="145" x2="465" y2="145" class="d"/>
+<text x="472" y="139" class="sm acc">pracovní bod</text>
+</svg>
