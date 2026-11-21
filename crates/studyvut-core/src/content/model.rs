@@ -41,6 +41,8 @@ pub struct Subject {
     pub programs: Vec<String>,
     pub color: Color,
     pub description: Option<String>,
+    /// The chapter on how the subject is assessed (`info` in subject.toml).
+    pub info: Option<String>,
     pub chapters: Vec<Chapter>,
     pub quizzes: Vec<Quiz>,
     /// The custom sets of `subject.toml`, in file order.

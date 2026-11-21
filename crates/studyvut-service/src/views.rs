@@ -37,6 +37,8 @@ pub struct SubjectView {
     pub programs: Vec<String>,
     pub color: Color,
     pub description: Option<String>,
+    /// The chapter on how the subject is assessed, for the subject page.
+    pub info: Option<String>,
     pub chapters: Vec<ChapterView>,
     pub sets: Vec<SetView>,
     /// Questions in all its quizzes.

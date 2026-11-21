@@ -17,8 +17,10 @@
   import Quizzes from "./views/Quizzes.svelte";
   import Settings from "./views/Settings.svelte";
   import Study from "./views/Study.svelte";
+  import Subject from "./views/Subject.svelte";
 
-  const TABS: { key: Tab; icon: string }[] = [
+  /** The pages in the sidebar; a subject's own page opens from its tile. */
+  const TABS: { key: Exclude<Tab, "subject">; icon: string }[] = [
     { key: "overview", icon: "gauge" },
     { key: "study", icon: "book" },
     { key: "quiz", icon: "quiz" },
@@ -76,10 +78,9 @@
 
   const dueTotal = $derived(live.visibleSubjects.reduce((n, s) => n + s.due, 0));
 
-  /** A subject in the sidebar opens it on the Study or Quiz page, whichever is open. */
+  /** A subject in the sidebar opens its own page. */
   function openSubject(id: string) {
-    if (nav.tab === "quiz") nav.quiz(id);
-    else nav.study(id);
+    nav.open(id);
   }
 </script>
 
@@ -146,7 +147,7 @@
           {#each live.visibleSubjects as s (s.id)}
             <button
               class="subject"
-              class:current={nav.subject === s.id && (nav.tab === "study" || nav.tab === "quiz")}
+              class:current={nav.subject === s.id && (nav.tab === "subject" || nav.tab === "study" || nav.tab === "quiz")}
               title="{s.code} {s.name}"
               onclick={() => openSubject(s.id)}
             >
@@ -206,6 +207,8 @@
       <div class="center muted">{t().common.loading}</div>
     {:else if nav.tab === "overview"}
       <Overview />
+    {:else if nav.tab === "subject"}
+      <Subject />
     {:else if nav.tab === "study"}
       <Study />
     {:else if nav.tab === "quiz"}

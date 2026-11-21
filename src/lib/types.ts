@@ -85,6 +85,8 @@ export interface SubjectView {
   programs: string[];
   color: Color;
   description: string | null;
+  /** The chapter on how the subject is assessed (credit, exam), if any. */
+  info: string | null;
   chapters: ChapterView[];
   sets: SetView[];
   questions: number;

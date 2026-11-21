@@ -117,7 +117,8 @@ function subject(
     year: 1,
     programs: ["met"],
     color,
-    description: null,
+    description: withContent ? "Mechanika a elektrostatika: otázky ze starých testů, učivo k testu a laboratoře." : null,
+    info: withContent ? chapters[0]?.id ?? null : null,
     chapters: withContent ? chapters.map((c) => ({ id: c.id, title: c.title, topics: c.topics, questions: 4 })) : [],
     sets: withContent
       ? [

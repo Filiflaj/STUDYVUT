@@ -55,6 +55,9 @@ programs = ["met"]              # programmes that have it (programs.toml ids);
                                 # leave out for a subject of every programme
 color = "blue"                  # blue, green, pink, gold, violet, teal, orange, graphite
 description = "Mechanika a elektrostatika, přednášky a laboratoře."   # optional
+info = "prakt-01-jak-projit-predmetem"   # optional: the chapter on how the subject is
+                                # assessed (credit, exam, points); the subject page
+                                # shows it as "Hodnocení předmětu"
 
 # Custom quiz sets, optional, shown first and in this order.
 [[set]]

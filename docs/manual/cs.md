@@ -4,8 +4,11 @@
 
 Nahoře vyber svůj **obor** a **ročník**: nástěnka, postranní panel i výběr předmětu v Učivu a Kvízech pak ukazují jen předměty, které máš. Volba se pamatuje.
 
-- **Dnes čeká N otázek na opakování**: otázky, které ti dnes vrací plán opakování, s tlačítkem pro každý předmět.
-- **Dlaždice předmětů**, seskupené po semestrech: kolik kapitol a otázek předmět má a tlačítka **Učivo**, **Kvízy** a **Opakovat**.
+- **- **Dlaždice předmětů**, seskupené po semestrech: kolik kapitol a otázek předmět má a kolik otázek čeká na opakování. Klikem na dlaždici otevřeš stránku předmětu.
+
+## Stránka předmětu {#predmet}
+
+Odtud si vybereš, co v předmětu chceš dělat: **Učivo**, **Kvízy**, **Hodnocení předmětu** (jak získat zápočet a zkoušku) a **Odevzdané práce**. Když na tebe čekají otázky k opakování, je tu i tlačítko **Opakovat**. Z učiva a kvízů se vrátíš odkazem nahoře.
 
 ## Učivo {#ucivo}
 

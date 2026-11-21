@@ -4,8 +4,11 @@
 
 Pick your **programme** and **year** at the top: the Dashboard, the sidebar and the subject menus of Study and Quizzes then show only your subjects. The choice is remembered.
 
-- **N questions due for review today**, with a button per subject.
-- **Subject tiles**, grouped by term: how many chapters and questions a subject has, with **Study**, **Quizzes** and **Review**.
+- **Subject tiles**, grouped by term: how many chapters and questions a subject has and how many questions are due. Click a tile to open the subject's page.
+
+## Subject page {#subject}
+
+Pick what to do in the subject: **Study**, **Quizzes**, **Assessment** (how to pass it) and **Submitted work**, plus **Review** when questions are due. Study and Quizzes have a link back at the top.
 
 ## Study {#study}
 

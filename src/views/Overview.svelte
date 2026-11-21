@@ -4,6 +4,7 @@
   import { live } from "../lib/live.svelte";
   import { nav } from "../lib/nav.svelte";
   import { subjectColor } from "../lib/palette";
+  import { semesterName } from "../lib/sets";
   import { theme } from "../lib/theme.svelte";
   import type { SubjectView } from "../lib/types";
 
@@ -15,17 +16,8 @@
   );
   const programs = $derived(live.overview?.programs ?? []);
   const dark = $derived(theme.effective === "dark");
-  const due = $derived(live.visibleSubjects.filter((s) => s.due > 0));
-  const dueTotal = $derived(due.reduce((n, s) => n + s.due, 0));
   const program = $derived(live.settings?.program ?? "");
   const year = $derived(live.settings?.year ?? 0);
-
-  /** "ZS 2026/2027" → "Zimní semestr 2026/2027" (as the study system writes it). */
-  function semesterName(s: string): string {
-    const m = /^(ZS|LS)\s+(.+)$/i.exec(s.trim());
-    if (!m) return s;
-    return fill(m[1].toUpperCase() === "ZS" ? t().overview.winter : t().overview.summer, { years: m[2] });
-  }
 
   /** The shown subjects grouped by semester, in the backend's order. */
   const semesters = $derived.by(() => {
@@ -85,20 +77,6 @@
     </div>
   {/if}
 
-  {#if dueTotal > 0}
-    <div class="card due">
-      <Icon name="reset" size={15} />
-      <span class="due-text">{plural(t().overview.due, dueTotal)}</span>
-      <div class="due-actions">
-        {#each due as s (s.id)}
-          <button class="btn" onclick={() => nav.quiz(s.id, { kind: "due" })}>
-            <span class="dot" style:background={subjectColor(s.color, dark)}></span>
-            {s.code.replace(/^BPC-/, "")}: {s.due}
-          </button>
-        {/each}
-      </div>
-    </div>
-  {/if}
 
   {#if live.visibleSubjects.length === 0}
     <div class="card empty">
@@ -113,34 +91,22 @@
         {#each g.subjects as s (s.id)}
           {@const color = subjectColor(s.color, dark)}
           {@const empty = s.chapters.length === 0 && s.questions === 0}
-          <article class="card subject" style:--c={color}>
+          <button class="card subject" style:--c={color} onclick={() => nav.open(s.id)}>
             <header>
               <span class="dot"></span>
               <span class="code">{s.code}</span>
+              {#if s.due > 0}<span class="badge">{plural(t().overview.dueBadge, s.due)}</span>{/if}
             </header>
             <h3>{s.name}</h3>
-            {#if empty}
-              <p class="muted small">{t().overview.noContent}</p>
-              <p class="muted hint">{fill(t().overview.noContentHint, { id: s.id })}</p>
-            {:else}
-              <p class="muted small">
+            <p class="muted small">
+              {#if empty}
+                {t().overview.noContent}
+              {:else}
                 {plural(t().overview.chapters, s.chapters.length)} · {plural(t().overview.questions, s.questions)}
-              </p>
-              <div class="actions">
-                {#if s.chapters.length}
-                  <button class="btn" onclick={() => nav.study(s.id)}><Icon name="book" size={13} /> {t().overview.study}</button>
-                {/if}
-                {#if s.questions}
-                  <button class="btn" onclick={() => nav.quiz(s.id)}><Icon name="quiz" size={13} /> {t().overview.quizzes}</button>
-                {/if}
-                {#if s.due > 0}
-                  <button class="btn primary" onclick={() => nav.quiz(s.id, { kind: "due" })}>
-                    {plural(t().overview.review, s.due)}
-                  </button>
-                {/if}
-              </div>
-            {/if}
-          </article>
+              {/if}
+            </p>
+            <Icon name="chevron-right" size={16} />
+          </button>
         {/each}
       </div>
     </section>
@@ -176,31 +142,6 @@
   .welcome p {
     margin: 0;
   }
-  .due {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    padding: 10px 14px;
-    background: var(--accent-weak);
-    border-color: transparent;
-    color: var(--accent);
-  }
-  .due-text {
-    font-weight: 600;
-  }
-  .due-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-left: auto;
-  }
-  .due-actions .btn {
-    height: 28px;
-    padding: 0 10px;
-    font-size: 13px;
-    color: var(--text);
-  }
   .group {
     display: flex;
     flex-direction: column;
@@ -218,11 +159,47 @@
     gap: 12px;
   }
   .subject {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 14px 16px;
+    min-height: 112px;
+    padding: 14px 40px 14px 16px;
     border-top: 3px solid var(--c);
+    text-align: left;
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+  .subject:hover {
+    border-color: var(--c);
+    box-shadow: 0 4px 16px rgba(20, 20, 30, 0.08);
+  }
+  .subject > :global(svg) {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+  }
+  .subject:hover > :global(svg) {
+    color: var(--c);
+  }
+  .badge {
+    margin-left: auto;
+    padding: 1px 8px;
+    border-radius: 99px;
+    background: var(--accent-weak);
+    color: var(--accent);
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .subject {
+      transition: none;
+    }
   }
   .subject header {
     display: flex;
@@ -251,20 +228,5 @@
   }
   .small {
     font-size: 12.5px;
-  }
-  .hint {
-    font-size: 12px;
-  }
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: auto;
-    padding-top: 6px;
-  }
-  .actions .btn {
-    height: 28px;
-    padding: 0 10px;
-    font-size: 13px;
   }
 </style>

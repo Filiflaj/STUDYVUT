@@ -65,6 +65,12 @@
 <svelte:window {onkeydown} />
 
 <div class="view">
+  {#if subject}
+    <button class="back" onclick={() => subject && nav.open(subject.id)}>
+      <Icon name="chevron-left" size={14} />
+      {subject.code} · {subject.name}
+    </button>
+  {/if}
   <div class="page-head">
     <h1>
       {t().quiz.title}
@@ -150,6 +156,24 @@
 </div>
 
 <style>
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    align-self: flex-start;
+    margin: -6px 0 -8px -6px;
+    padding: 3px 6px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    cursor: pointer;
+  }
+  .back:hover {
+    background: var(--hover);
+    color: var(--text);
+  }
   .sub {
     color: var(--text-muted);
     font-weight: 500;

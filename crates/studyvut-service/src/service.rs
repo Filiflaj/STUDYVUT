@@ -571,6 +571,7 @@ fn subject_view(s: &Subject, personal: &Personal) -> SubjectView {
         programs: s.programs.clone(),
         color: s.color,
         description: s.description.clone(),
+        info: s.info.clone(),
         chapters: s
             .chapters
             .iter()

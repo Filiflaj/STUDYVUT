@@ -235,11 +235,22 @@ impl Ctx<'_> {
             programs: raw.programs,
             color: raw.color,
             description: raw.description,
+            info: None,
             chapters,
             quizzes,
             sets: Vec::new(),
         };
         subject.sets = self.sets(&toml_path, raw.sets, &subject);
+        if let Some(info) = raw.info {
+            if subject.chapter(&info).is_some() {
+                subject.info = Some(info);
+            } else {
+                self.problems.push(error(
+                    &toml_path,
+                    format!("info: no chapter {info:?} (chapters/{info}.md)"),
+                ));
+            }
+        }
         self.check_topics(&subject);
         Some(subject)
     }
@@ -844,5 +855,26 @@ expalnation = "x"
             "{m:?}"
         );
         assert_eq!(m.len(), 2, "{m:?}");
+    }
+    #[test]
+    fn info_names_an_existing_chapter() {
+        let s = |info: &str| {
+            format!("code = \"X\"\nname = \"X\"\nsemester = \"ZS 2026/2027\"\ninfo = \"{info}\"\n")
+        };
+        let files = MemFiles::new()
+            .with("a/subject.toml", s("00-pravidla"))
+            .with("a/chapters/00-pravidla.md", "# Jak projít předmětem\n")
+            .with("b/subject.toml", s("nope"));
+        let (catalog, problems) = load(&files);
+        assert_eq!(
+            catalog.subject("a").and_then(|x| x.info.clone()).as_deref(),
+            Some("00-pravidla")
+        );
+        assert_eq!(catalog.subject("b").and_then(|x| x.info.clone()), None);
+        let m: Vec<String> = problems.iter().map(|p| p.to_string()).collect();
+        assert_eq!(
+            m,
+            vec!["error: b/subject.toml: info: no chapter \"nope\" (chapters/nope.md)"]
+        );
     }
 }

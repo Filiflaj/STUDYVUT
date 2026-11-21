@@ -18,8 +18,10 @@
 
 ### Aplikace
 
-- **Nástěnka** s výběrem oboru a ročníku: dlaždice předmětů po semestrech
-  a otázky, které dnes čekají na opakování.
+- **Nástěnka** s výběrem oboru a ročníku a klikacími dlaždicemi předmětů po
+  semestrech.
+- **Stránka předmětu**: učivo, kvízy, hodnocení předmětu, odevzdané práce
+  a opakování na jednom místě.
 - **Učivo**: kapitoly se vzorci, obrázky pro světlý i tmavý vzhled, boxy
   „zapamatuj si“, „pozor“ a „příklad“, obsah kapitoly a procvičení kapitoly.
 - **Kvízy** jako v trenažéru BFY1: okamžitá zpětná vazba, proč je odpověď

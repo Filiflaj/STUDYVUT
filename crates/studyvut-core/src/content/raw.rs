@@ -17,6 +17,8 @@ pub struct RawSubject {
     #[serde(default)]
     pub color: Color,
     pub description: Option<String>,
+    /// The chapter on how the subject is assessed (credit, exam, points).
+    pub info: Option<String>,
     #[serde(default, rename = "set")]
     pub sets: Vec<RawSet>,
 }
