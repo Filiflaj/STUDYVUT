@@ -39,6 +39,10 @@
 
 {#if subject}
   <div class="view" style:--c={color}>
+    <button class="back" onclick={() => nav.go("overview")}>
+      <Icon name="chevron-left" size={14} />
+      {t().nav.overview}
+    </button>
     <header class="head">
       <div class="eyebrow">
         <span class="dot"></span>
@@ -108,6 +112,24 @@
 {/if}
 
 <style>
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    align-self: flex-start;
+    margin: -6px 0 -8px -6px;
+    padding: 3px 6px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    cursor: pointer;
+  }
+  .back:hover {
+    background: var(--hover);
+    color: var(--text);
+  }
   .head {
     display: flex;
     flex-direction: column;
