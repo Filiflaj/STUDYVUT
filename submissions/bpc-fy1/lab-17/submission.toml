@@ -1,0 +1,16 @@
+# Z inboxu: FY-LAB/Flajsinger_Filip_Lab17_2026-10-08.pdf (datum v názvu = den měření)
+title = "Vlastnosti analogových (ručkových) měřicích přístrojů"
+kind = "protocol"
+task = 17
+measured = 2026-10-08
+submitted = 2026-10-15
+summary = '''
+Neusměrněné, jednocestně a dvoucestně usměrněné napětí: amplituda,
+efektivní a střední hodnota všemi voltmetry úlohy, chyba z třídy přesnosti.
+'''
+chapters = ["lab-17-rucickove-pristroje", "lab-00-zpracovani-mereni"]
+topics = ["Úloha 17: ručkové přístroje", "Zpracování měření"]
+
+[[file]]
+path = "protokol.pdf"
+role = "final"

@@ -1,0 +1,16 @@
+# Z inboxu: FY-LAB/Flajsinger_Filip_Lab05_2026-10-15.pdf (datum v názvu = den měření)
+title = "Rovnoměrně zrychlený pohyb těles po nakloněné rovině"
+kind = "protocol"
+task = 5
+measured = 2026-10-15
+submitted = 2026-10-21
+summary = '''
+Součinitel smykového tření ze zrychlení tělesa na nakloněné rovině,
+$a = g(\sin\alpha - \mu\cos\alpha)$, pro dvě kombinace sklonu a materiálů.
+'''
+chapters = ["lab-05-naklonena-rovina", "lab-00-zpracovani-mereni"]
+topics = ["Úloha 5: nakloněná rovina", "Zpracování měření"]
+
+[[file]]
+path = "protokol.pdf"
+role = "final"

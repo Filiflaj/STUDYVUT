@@ -14,6 +14,9 @@
   v 9 kvízech, sada **Obhajoba nanečisto**.
 - BPC-PC1M: 7 kapitol jazyka C (funkce až spojový seznam) a 76 otázek
   v 7 kvízech.
+- Odevzdané práce: 6 protokolů z fyzikálních laboratoří (BPC-FY1) a 3 z MPE
+  (BPC-MPE) v originále, s naměřenými daty; jména a ID spolužáků a podpisy
+  vyučujících jsou zakryté.
 - Všech 9 předmětů 1. semestru MET (ZS 2026/2027) připravených pro učivo.
 
 ### Aplikace

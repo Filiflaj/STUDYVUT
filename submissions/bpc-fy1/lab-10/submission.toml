@@ -1,0 +1,16 @@
+# Z inboxu: FY-LAB/Flajsinger_Filip_Lab10_2026-10-01.pdf (datum v názvu = den měření)
+title = "Tíhové zrychlení (reverzní kyvadlo)"
+kind = "protocol"
+task = 10
+measured = 2026-10-01
+submitted = 2026-10-08
+summary = '''
+Poloha závaží, při níž je doba kmitu kolem obou os stejná; vzdálenost os
+je pak redukovaná délka $\ell_r$ a $g = 4\pi^2 \ell_r / T^2$.
+'''
+chapters = ["lab-10-tihove-zrychleni", "lab-00-zpracovani-mereni"]
+topics = ["Úloha 10: reverzní kyvadlo", "Zpracování měření"]
+
+[[file]]
+path = "protokol.pdf"
+role = "final"

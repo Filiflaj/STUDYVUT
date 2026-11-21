@@ -1,0 +1,30 @@
+# Z inboxu: MPE - LAB/MPE-L-5/ (PDF je naskenovaný, bez textu)
+title = "Měření vnitřního a povrchového odporu izolantů"
+kind = "protocol"
+task = "L-5"
+measured = 2026-10-14
+submitted = 2026-10-25
+summary = '''
+Vnitřní a povrchová rezistivita izolantů (PMMA, kombinovaný remikanit, kabelový
+papír) po 60 s při 300 V, časová závislost vnitřního odporu a nabíjecí
+a vybíjecí proud (absorpční charakteristika).
+'''
+
+[[file]]
+path = "protokol.pdf"
+role = "final"
+
+[[file]]
+path = "vypocty.docx"
+role = "source"
+label = "Výpočty (Word, rovnice)"
+
+[[file]]
+path = "data/odpor.xlsx"
+role = "data"
+label = "Vnitřní odpor v čase (Excel)"
+
+[[file]]
+path = "data/proud.xlsx"
+role = "data"
+label = "Nabíjecí a vybíjecí proud, náboj (Excel)"

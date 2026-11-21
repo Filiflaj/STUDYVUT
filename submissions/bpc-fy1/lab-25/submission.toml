@@ -1,0 +1,16 @@
+# Z inboxu: FY-LAB/Flajsinger_Filip_Lab25_2026-10-22.pdf (datum v názvu = den měření)
+title = "Měrný náboj elektronu"
+kind = "protocol"
+task = 25
+measured = 2026-10-22
+submitted = 2026-10-28
+summary = '''
+Měrný náboj $e/m$ metodou magnetronu pro tři anodová napětí $U_A$,
+porovnání s tabulkovou hodnotou.
+'''
+chapters = ["lab-25-merny-naboj", "lab-00-zpracovani-mereni"]
+topics = ["Úloha 25: měrný náboj elektronu", "Zpracování měření"]
+
+[[file]]
+path = "protokol.pdf"
+role = "final"

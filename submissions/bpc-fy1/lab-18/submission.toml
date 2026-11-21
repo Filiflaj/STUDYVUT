@@ -1,0 +1,16 @@
+# Z inboxu: FY-LAB/Flajsinger_Filip_Lab18_2026-11-05.pdf (datum v názvu = den měření)
+title = "Teplotní závislost odporu polovodičového termistoru a kovového snímače teploty"
+kind = "protocol"
+task = 18
+measured = 2026-11-05
+submitted = 2026-11-10
+summary = '''
+NTC, PTC a PT100 od 5 °C do 80 °C: který senzor je který, teplotní
+součinitel odporu platiny a energiová konstanta NTC termistoru.
+'''
+chapters = ["lab-18-termistory", "lab-00-zpracovani-mereni"]
+topics = ["Úloha 18: termistory a PT100", "Zpracování měření"]
+
+[[file]]
+path = "protokol.pdf"
+role = "final"

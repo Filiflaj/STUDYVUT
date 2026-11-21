@@ -1,0 +1,16 @@
+# Z inboxu: FY-LAB/Flajsinger_Filip_Lab21_2026-11-12.pdf (datum v názvu = den měření)
+title = "Elektromagnetická indukce ve spřažených cívkách"
+kind = "protocol"
+task = 21
+measured = 2026-11-12
+submitted = 2026-11-19
+summary = '''
+Indukované napětí podle natočení a vzdálenosti cívek, vzájemná indukčnost
+$M$ a koeficient vazby $k$, vlastní indukčnost z Wheelerova a Nagaokova vztahu.
+'''
+chapters = ["lab-21-indukce", "lab-00-zpracovani-mereni"]
+topics = ["Úloha 21: elektromagnetická indukce", "Zpracování měření"]
+
+[[file]]
+path = "protokol.pdf"
+role = "final"

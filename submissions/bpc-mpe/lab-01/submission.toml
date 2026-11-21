@@ -1,0 +1,37 @@
+# Z inboxu: MPE - LAB/MPE-L-1/ (PDF + 4 soubory .xls z měřicího programu)
+title = "Měření hysterezních ztrát a ztrát vířivými proudy feromagnetických materiálů"
+kind = "protocol"
+task = "L-1"
+measured = 2026-11-12
+submitted = 2026-11-21
+summary = '''
+Celkové měrné ztráty vzorků (Sonaperm, Permalloy) osciloskopickou metodou při
+50 a 100 Hz, z nich separací hysterezní a vířivé ztráty.
+
+Pozor: u Sonapermu vyšlo $p_c(100\,\mathrm{Hz}) / p_c(50\,\mathrm{Hz}) = 4{,}12 > 4$,
+takže separací $p_h < 0$ (fyzikálně nemožné), pravděpodobně chyba měření.
+'''
+
+[[file]]
+path = "protokol.pdf"
+role = "final"
+
+[[file]]
+path = "data/smycka-permalloy-ff-50hz.xls"
+role = "data"
+label = "Hysterezní smyčka, Permalloy 50 Hz"
+
+[[file]]
+path = "data/smycka-permalloy-ff-100hz.xls"
+role = "data"
+label = "Hysterezní smyčka, Permalloy 100 Hz"
+
+[[file]]
+path = "data/smycka-sonaperm-ff-50hz.xls"
+role = "data"
+label = "Hysterezní smyčka, Sonaperm 50 Hz"
+
+[[file]]
+path = "data/smycka-sonaperm-ff-100hz.xls"
+role = "data"
+label = "Hysterezní smyčka, Sonaperm 100 Hz"

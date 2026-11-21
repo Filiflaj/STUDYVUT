@@ -1,0 +1,25 @@
+# Z inboxu: MPE - LAB/MPE-L-7/ (PDF je naskenovaný, bez textu)
+title = "Měření teplotní závislosti rezistivity vodivých a odporových materiálů"
+kind = "protocol"
+task = "L-7"
+measured = 2026-09-30
+submitted = 2026-10-04
+summary = '''
+Teplotní závislost rezistivity vodičů a odporových materiálů (Al, kovar,
+manganin, Cu, kanthal, konstantan, platina, neznámý vzorek X) od 25 °C do
+100 °C, teplotní součinitel rezistivity a určení materiálu vzorku X.
+'''
+
+[[file]]
+path = "protokol.pdf"
+role = "final"
+
+[[file]]
+path = "vypocty.docx"
+role = "source"
+label = "Výpočty (Word, rovnice)"
+
+[[file]]
+path = "data/mereni.xlsx"
+role = "data"
+label = "Naměřené hodnoty a graf (Excel)"
