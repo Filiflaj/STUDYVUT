@@ -1,0 +1,217 @@
+name = 'Cvičení: Kirchhoffovy rovnice a MSP'
+description = 'počet rovnic, Cramerovo pravidlo, metoda smyčkových proudů (sbírka kap. 4 a 5)'
+
+[[question]]
+id = 'CVMSP-01'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'PC5'
+text = '''
+Obvod má 6 větví a 4 uzly. Kolik nezávislých rovnic z 2. Kirchhoffova zákona (tedy rovnic MSP) má?
+'''
+value = 3
+tolerance = 0
+explanation = '''
+$s = v - n + 1 = 6 - 4 + 1 = 3$. Z 1. KZ jsou další $n - 1 = 3$ rovnice, celkem 6 rovnic pro 6 proudů větví. MSP potřebuje jen ty 3 smyčkové, MUN by potřebovala 3 uzlové.
+'''
+
+[[question]]
+id = 'CVMSP-02'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'PC3, př. 2'
+text = '''
+Cramerovým pravidlem vyřeš soustavu a zadej $B$:
+$$\begin{bmatrix} 800 & -500 \\ -500 & 750 \end{bmatrix}\begin{bmatrix} A \\ B \end{bmatrix} = \begin{bmatrix} 10 \\ 20 \end{bmatrix}$$
+'''
+value = 0.06
+tolerance = 0.0005
+explanation = '''
+$$\Delta = 800\cdot750 - (-500)(-500) = 350\,000, \qquad \Delta_2 = 800\cdot20 - (-500)\cdot10 = 21\,000$$
+$$B = \frac{\Delta_2}{\Delta} = \frac{21\,000}{350\,000} = 0{,}06$$
+($A = 17\,500/350\,000 = 0{,}05$.)
+'''
+
+[[question]]
+id = 'CVMSP-03'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'Sbírka, př. 5.5'
+text = '''
+$U_1 = 10\ \text{V}$, $U_2 = 20\ \text{V}$, $U_3 = 30\ \text{V}$, $R_1 = R_4 = 10\ \Omega$, $R_2 = R_3 = 20\ \Omega$. Metodou smyčkových proudů (oba smyčkové proudy po směru hodinových ručiček) urči proud $I_3$.
+'''
+figure = 'images/cv-msp-55.svg'
+value = 1.333
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+Levá smyčka: $R_1 + R_4 + R_3 = 40\ \Omega$, pravá: $R_3 + R_2 = 40\ \Omega$, společný $R_3$. Zdroje: $U_1$ (šipka dolů, smyčka jde levou větví nahoru) $+U_1$; $U_2$ (šipka nahoru, levá smyčka jde prostřední větví dolů) $+U_2$, pro pravou smyčku $-U_2$; $U_3$ (šipka dolů jako smyčka) $-U_3$.
+$$\begin{bmatrix} 40 & -20 \\ -20 & 40 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} 30 \\ -50 \end{bmatrix}$$
+$$\Delta = 1600 - 400 = 1200, \quad \Delta_1 = 30\cdot40 - (-20)(-50) = 200, \quad \Delta_2 = 40\cdot(-50) - (-20)\cdot30 = -1400$$
+$$I_\text{s1} = 0{,}166\,7\ \text{A}, \quad I_\text{s2} = -1{,}166\,7\ \text{A}, \qquad I_3 = I_\text{s1} - I_\text{s2} = 1{,}333\ \text{A}$$
+($I_1 = I_\text{s1} = 0{,}167\ \text{A}$, $I_2 = -I_\text{s2} = 1{,}167\ \text{A}$, shodně se sbírkou.)
+'''
+
+[[question]]
+id = 'CVMSP-04'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'Sbírka, př. 5.6'
+text = '''
+$U_1 = 10\ \text{V}$, $U_2 = 30\ \text{V}$, $R_1 = R_2 = 10\ \Omega$, $R_3 = 20\ \Omega$. Metodou smyčkových proudů urči proud $I_2$ prostřední větví (šipka dolů).
+'''
+figure = 'images/cv-msp-56.svg'
+value = -1.4
+tolerance = 0.003
+unit = 'A'
+sign_hint = 'Proud teče prostřední větví nahoru, proti šipce.'
+explanation = '''
+$$\begin{bmatrix} R_1 + R_2 & -R_2 \\ -R_2 & R_2 + R_3 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} U_1 - U_2 \\ U_2 \end{bmatrix} \quad\Rightarrow\quad \begin{bmatrix} 20 & -10 \\ -10 & 30 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} -20 \\ 30 \end{bmatrix}$$
+$U_2$ má šipku dolů: levá smyčka jde prostřední větví dolů (souhlasně, $-U_2$), pravá nahoru (proti, $+U_2$).
+$$\Delta = 600 - 100 = 500, \quad \Delta_1 = -20\cdot30 - (-10)\cdot30 = -300, \quad \Delta_2 = 20\cdot30 - (-10)(-20) = 400$$
+$$I_\text{s1} = -0{,}6\ \text{A}, \quad I_\text{s2} = 0{,}8\ \text{A}, \qquad I_2 = I_\text{s1} - I_\text{s2} = -1{,}4\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVMSP-05'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'Sbírka, př. 5.7'
+text = '''
+$U_1 = 10\ \text{V}$, $U_2 = 30\ \text{V}$, $U_3 = 20\ \text{V}$, $R_1 = R_4 = R_5 = 10\ \Omega$, $R_2 = 20\ \Omega$, $R_3 = 30\ \Omega$. Metodou smyčkových proudů urči proud $I_1$.
+'''
+figure = 'images/cv-msp-57.svg'
+value = 0.7
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+Levá smyčka $R_1 + R_4 + R_2 = 40\ \Omega$, pravá $R_2 + R_3 + R_5 = 60\ \Omega$, společný $R_2 = 20\ \Omega$. Levá smyčka: $+U_1$ a $+U_2$ (šipka $U_2$ nahoru, smyčka jde dolů), pravá: $-U_2$ a $-U_3$.
+$$\begin{bmatrix} 40 & -20 \\ -20 & 60 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} 40 \\ -50 \end{bmatrix}$$
+$$\Delta = 2400 - 400 = 2000, \qquad \Delta_1 = 40\cdot60 - (-20)(-50) = 1400, \qquad I_1 = I_\text{s1} = \frac{1400}{2000} = 0{,}7\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVMSP-06'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'Sbírka, př. 5.8'
+text = '''
+$U_1 = 20\ \text{V}$, $U_2 = 30\ \text{V}$, $R_1 = R_2 = R_4 = 10\ \Omega$, $R_3 = 20\ \Omega$. Metodou smyčkových proudů urči proud $I_1$.
+'''
+figure = 'images/cv-msp-58.svg'
+value = -1.286
+tolerance = 0.003
+unit = 'A'
+sign_hint = 'Proud teče rezistorem R1 opačně, než ukazuje šipka.'
+explanation = '''
+Levá smyčka $R_1 + R_2 = 20\ \Omega$, pravá $R_2 + R_3 + R_4 = 40\ \Omega$. Levá: $U_1$ souhlasí se smyčkou ($-20$), pravá: $U_1$ proti ($+20$), $U_2$ souhlasně ($-30$).
+$$\begin{bmatrix} 20 & -10 \\ -10 & 40 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} -20 \\ -10 \end{bmatrix}$$
+$$\Delta = 800 - 100 = 700, \qquad \Delta_1 = -20\cdot40 - (-10)(-10) = -900, \qquad I_1 = I_\text{s1} = \frac{-900}{700} = -1{,}286\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVMSP-07'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'Sbírka, př. 5.9'
+text = '''
+$U_1 = 30\ \text{V}$, $U_2 = 20\ \text{V}$, $U_3 = 40\ \text{V}$, $R_1 = R_2 = 10\ \Omega$, $R_3 = R_4 = 20\ \Omega$. Metodou smyčkových proudů urči proud $I_2$ prostřední větví.
+'''
+figure = 'images/cv-msp-59.svg'
+value = 1.833
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+Levá smyčka $R_1 + R_2 + R_3 = 40\ \Omega$, pravá $R_3 + R_4 = 40\ \Omega$. Levá: $+U_1 + U_2 = 50$, pravá: $-U_2 - U_3 = -60$.
+$$\begin{bmatrix} 40 & -20 \\ -20 & 40 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} 50 \\ -60 \end{bmatrix}$$
+$$\Delta = 1200, \quad \Delta_1 = 50\cdot40 - (-20)(-60) = 800, \quad \Delta_2 = 40\cdot(-60) - (-20)\cdot50 = -1400$$
+$$I_\text{s1} = 0{,}666\,7\ \text{A}, \quad I_\text{s2} = -1{,}166\,7\ \text{A}, \qquad I_2 = I_\text{s1} - I_\text{s2} = 1{,}833\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVMSP-08'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'Sbírka, př. 5.4'
+text = '''
+Ve sbírce 5.4 se zdroj proudu $I = 1\ \text{A}$ s paralelním $R_3 = 10\ \Omega$ převede na zdroj napětí $U_\text{A} = R_3 I = 10\ \text{V}$ a vznikne soustava
+$$\begin{bmatrix} 50 & -10 \\ -10 & 30 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} 30 \\ -40 \end{bmatrix}$$
+Jaký je smyčkový proud $I_\text{s2}$?
+'''
+value = -1.214
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$\Delta = 50\cdot30 - (-10)(-10) = 1400, \qquad \Delta_2 = 50\cdot(-40) - (-10)\cdot30 = -1700$$
+$$I_\text{s2} = \frac{-1700}{1400} = -1{,}214\ \text{A}$$
+($I_\text{s1} = 500/1400 = 0{,}357\,1\ \text{A}$.) Proud rezistorem $R_3$ už ale smyčkový proud není: převodem rezistor „zmizel“ a jeho proud se dopočítá z 1. KZ v původním obvodu ($I_{R3} = 2{,}571\ \text{A}$).
+'''
+
+[[question]]
+id = 'CVMSP-09'
+topic = 'Kirchhoffovy rovnice a MSP'
+text = '''
+Jak se v metodě smyčkových proudů zapíše napětí zdroje do vektoru pravé strany?
+'''
+options = [
+  'kladně, když šipka zdroje míří proti smyčkovému proudu, záporně, když souhlasí',
+  'kladně, když šipka zdroje souhlasí se smyčkovým proudem',
+  'vždy kladně, znaménko vyjde až z výsledku',
+  'jako součin napětí a odporu smyčky',
+]
+answer = 0
+explanation = '''
+Zdroj, jehož šipka (od + k −) míří proti oběhu, smyčkový proud pohání, proto je na pravé straně kladně. Souhlasná šipka znamená, že zdroj působí proti proudu, a píše se záporně.
+'''
+notes = [
+  '',
+  'Obráceně: souhlasná šipka znamená záporné znaménko.',
+  'Na znaménku zdroje záleží, ovlivní výsledek.',
+  'Pravá strana obsahuje jen napětí zdrojů.',
+]
+
+[[question]]
+id = 'CVMSP-10'
+topic = 'Kirchhoffovy rovnice a MSP'
+text = '''
+Co je v matici MSP mimo hlavní diagonálu (smyčkové proudy orientované stejně)?
+'''
+options = [
+  'odpor společný dvěma smyčkám se znaménkem −',
+  'odpor společný dvěma smyčkám se znaménkem +',
+  'součet odporů obou smyček',
+  'vodivost mezi dvěma uzly se znaménkem −',
+]
+answer = 0
+explanation = '''
+Společnou větví tečou oba smyčkové proudy proti sobě, takže úbytek na ní je $R(I_\text{s1} - I_\text{s2})$ a k druhému proudu patří $-R$. Matice je symetrická.
+'''
+notes = [
+  '',
+  'Kladně by vyšlo jen při opačně orientovaných smyčkových proudech.',
+  'Součet odporů smyčky je na diagonále.',
+  'To je pravidlo MUN, ne MSP.',
+]
+
+[[question]]
+id = 'CVMSP-11'
+topic = 'Kirchhoffovy rovnice a MSP'
+text = '''
+V obvodu je ideální zdroj proudu bez paralelního rezistoru. Jak ho zahrnout do MSP?
+'''
+options = [
+  'vést jím jen jednu smyčku; její smyčkový proud je pak roven proudu zdroje a rovnic ubude',
+  'převést ho na zdroj napětí $U = R I$',
+  'nahradit ho zkratem',
+  'nahradit ho rozpojením a na zdroj zapomenout',
+]
+answer = 0
+explanation = '''
+Bez paralelního rezistoru převod na zdroj napětí nejde. Smyčky se zvolí tak, aby zdrojem proudu procházela jediná; její smyčkový proud je známý a zbylé rovnice se napíšou jen pro ostatní smyčky.
+'''
+notes = [
+  '',
+  'Na převod chybí paralelní rezistor.',
+  'Zkrat by změnil obvod; zkratem se nahrazuje zdroj napětí při hledání Ri.',
+  'Rozpojení se používá jen při hledání vnitřního odporu, ne při řešení obvodu.',
+]

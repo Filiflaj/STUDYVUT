@@ -1,0 +1,38 @@
+<svg viewBox="0 0 470 220" width="470" class="fig" role="img" aria-label="Obvod pro Théveninovu větu: UZ1 s R1, R2, zdroj proudu IZ2, R3 a zátěž RZ na svorkách a, b">
+<rect x="43" y="60" width="14" height="40" class="s"/>
+<text x="36" y="85" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="50,40 50,60" class="s"/>
+<circle cx="50" cy="140" r="14" class="s"/>
+<line x1="50" y1="126" x2="50" y2="154" class="s"/>
+<polyline points="50,100 50,126" class="s"/>
+<polyline points="50,154 50,185" class="s"/>
+<line x1="74" y1="122" x2="74" y2="158" class="v" marker-end="url(#m-v)"/>
+<text x="80" y="145"><tspan class="it">U</tspan><tspan class="sm" dy="4">Z1</tspan><tspan dy="-4"></tspan></text>
+<rect x="143" y="90" width="14" height="40" class="s"/>
+<text x="164" y="115"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="150,40 150,90" class="s"/>
+<polyline points="150,130 150,185" class="s"/>
+<circle cx="240" cy="110" r="14" class="s"/>
+<line x1="226" y1="110" x2="254" y2="110" class="s"/>
+<polyline points="240,40 240,96" class="s"/>
+<polyline points="240,124 240,185" class="s"/>
+<line x1="262" y1="128" x2="262" y2="92" class="v" marker-end="url(#m-v)"/>
+<text x="268" y="114"><tspan class="it">I</tspan><tspan class="sm" dy="4">Z2</tspan><tspan dy="-4"></tspan></text>
+<rect x="300" y="33" width="40" height="14" class="s"/>
+<text x="320" y="27" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="50,40 300,40" class="s"/>
+<polyline points="340,40 380,40" class="s"/>
+<polyline points="50,185 380,185" class="s"/>
+<circle cx="380" cy="40" r="3.5" class="s1"/>
+<circle cx="380" cy="185" r="3.5" class="s1"/>
+<text x="380" y="30" class="sm" text-anchor="middle">a</text>
+<text x="380" y="205" class="sm" text-anchor="middle">b</text>
+<polyline points="380,40 430,40 430,90" class="s"/>
+<rect x="423" y="90" width="14" height="40" class="s"/>
+<text x="444" y="115"><tspan class="it">R</tspan><tspan class="sm" dy="4">Z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="430,130 430,185 380,185" class="s"/>
+<circle cx="150" cy="40" r="3.2" class="pt"/>
+<circle cx="150" cy="185" r="3.2" class="pt"/>
+<circle cx="240" cy="40" r="3.2" class="pt"/>
+<circle cx="240" cy="185" r="3.2" class="pt"/>
+</svg>

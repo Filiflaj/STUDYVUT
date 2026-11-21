@@ -1,0 +1,39 @@
+<svg viewBox="0 0 560 210" width="560" class="fig" role="img" aria-label="Stabilizátor se Zenerovou diodou: zdroj U, R1, dioda v závěrném směru a zátěž R2; vpravo linearizovaný model diody Ud a Rd">
+<circle cx="40" cy="108" r="14" class="s"/>
+<line x1="40" y1="94" x2="40" y2="122" class="s"/>
+<polyline points="40,40 40,94" class="s"/>
+<polyline points="40,122 40,175" class="s"/>
+<line x1="18" y1="90" x2="18" y2="126" class="v" marker-end="url(#m-v)"/>
+<text x="12" y="113" text-anchor="end"><tspan class="it">U</tspan></text>
+<rect x="90" y="33" width="40" height="14" class="s"/>
+<text x="110" y="27" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="40,40 90,40" class="s"/>
+<polyline points="130,40 260,40" class="s"/>
+<polygon points="169,117 191,117 180,99" class="s"/>
+<polyline points="165,95 169,99 191,99 195,103" class="s"/>
+<polyline points="180,40 180,99" class="s"/>
+<polyline points="180,117 180,175" class="s"/>
+<text x="162" y="113" class="sm" text-anchor="middle">D</text>
+<rect x="253" y="88" width="14" height="40" class="s"/>
+<text x="274" y="113"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="260,40 260,88" class="s"/>
+<polyline points="260,128 260,175" class="s"/>
+<polyline points="40,175 260,175" class="s"/>
+<circle cx="180" cy="40" r="3.2" class="pt"/>
+<circle cx="180" cy="175" r="3.2" class="pt"/>
+<line x1="300" y1="80" x2="300" y2="136" class="v" marker-end="url(#m-v)"/>
+<text x="306" y="112"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<text x="450" y="22" class="sm mut" text-anchor="middle">model diody</text>
+<circle cx="450" cy="40" r="3.5" class="s1"/>
+<circle cx="450" cy="180" r="3.5" class="s1"/>
+<rect x="443" y="55" width="14" height="40" class="s"/>
+<text x="464" y="80"><tspan class="it">R</tspan><tspan class="sm" dy="4">d</tspan><tspan dy="-4"></tspan></text>
+<polyline points="450,40 450,55" class="s"/>
+<circle cx="450" cy="140" r="14" class="s"/>
+<line x1="450" y1="126" x2="450" y2="154" class="s"/>
+<polyline points="450,95 450,126" class="s"/>
+<polyline points="450,154 450,180" class="s"/>
+<line x1="428" y1="122" x2="428" y2="158" class="v" marker-end="url(#m-v)"/>
+<text x="422" y="145" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">d</tspan><tspan dy="-4"></tspan></text>
+<text x="395" y="110" text-anchor="middle">≡</text>
+</svg>

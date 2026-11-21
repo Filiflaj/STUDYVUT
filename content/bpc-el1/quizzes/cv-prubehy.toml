@@ -1,0 +1,292 @@
+name = 'Cvičení: periodické průběhy'
+description = 'střední, střední absolutní a efektivní hodnota, činitel tvaru a výkyvu, THD (sbírka kap. 9)'
+
+[[question]]
+id = 'CVPR-01'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.2'
+text = '''
+Proud podle obrázku má $I_\text{m} = 5\ \text{A}$ (v první půlperiodě lineárně roste od nuly, ve druhé je nulový). Jaká je jeho střední hodnota $I_0$?
+'''
+figure = 'images/cv-prubeh-h.svg'
+value = 1.25
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+V první půlperiodě $i = \dfrac{2I_\text{m}}{T}t$:
+$$I_0 = \frac1T\int_0^{T/2}\frac{2I_\text{m}}{T}t\,\mathrm{d}t = \frac{2I_\text{m}}{T^2}\left[\frac{t^2}{2}\right]_0^{T/2} = \frac{I_\text{m}}{4} = 1{,}25\ \text{A}$$
+Geometricky: trojúhelník s plochou $\tfrac12\cdot\tfrac T2\cdot I_\text{m}$ rozprostřený na celou periodu. Průběh je nezáporný, takže i $I_\text{sa} = 1{,}25\ \text{A}$.
+'''
+
+[[question]]
+id = 'CVPR-02'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.2'
+text = '''
+Jaká je efektivní hodnota téhož proudu ($I_\text{m} = 5\ \text{A}$)?
+'''
+figure = 'images/cv-prubeh-h.svg'
+value = 2.041
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$I = \sqrt{\frac1T\int_0^{T/2}\frac{4I_\text{m}^2}{T^2}t^2\,\mathrm{d}t} = \sqrt{\frac{4I_\text{m}^2}{T^3}\cdot\frac{(T/2)^3}{3}} = \frac{I_\text{m}}{\sqrt6} = \frac{5}{2{,}449} = 2{,}041\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVPR-03'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.2'
+text = '''
+Jaký je činitel výkyvu $k_\text{v}$ téhož průběhu ($I_\text{m} = 5\ \text{A}$, $I = 2{,}041\ \text{A}$)?
+'''
+figure = 'images/cv-prubeh-h.svg'
+value = 2.449
+tolerance = 0.003
+explanation = '''
+$$k_\text{v} = \frac{I_\text{m}}{I} = \frac{5}{2{,}041} = 2{,}449 = \sqrt6$$
+Činitel tvaru $k_\text{t} = I/I_\text{sa} = 2{,}041/1{,}25 = 1{,}633$.
+'''
+
+[[question]]
+id = 'CVPR-04'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.4'
+text = '''
+Harmonické napětí má amplitudu $U_\text{m} = 10\ \text{V}$. Jaká je jeho střední absolutní hodnota $U_\text{sa}$?
+'''
+value = 6.366
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+Stačí integrovat přes kladnou půlperiodu:
+$$U_\text{sa} = \frac{2}{T}\int_0^{T/2}U_\text{m}\sin\frac{2\pi}{T}t\,\mathrm{d}t = \frac{2U_\text{m}}{\pi} = \frac{20}{\pi} = 6{,}366\ \text{V}$$
+Střední hodnota je nulová (symetrie), efektivní $U_\text{m}/\sqrt2 = 7{,}071\ \text{V}$.
+'''
+
+[[question]]
+id = 'CVPR-05'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.4'
+text = '''
+Jaký je činitel tvaru harmonického (sinusového) průběhu?
+'''
+value = 1.111
+tolerance = 0.002
+explanation = '''
+$$k_\text{t} = \frac{U}{U_\text{sa}} = \frac{U_\text{m}/\sqrt2}{2U_\text{m}/\pi} = \frac{\pi}{2\sqrt2} = 1{,}111$$
+Činitel výkyvu je $\sqrt2 = 1{,}414$.
+'''
+warning = 'Ve sbírce (9.4 a 9.10) je činitel výkyvu sinusovky napsán jako 1,141; správně je √2 = 1,414.'
+
+[[question]]
+id = 'CVPR-06'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+text = '''
+Proud podle obrázku ($I_\text{m} = 1\ \text{A}$): do $T/2$ je $+I_\text{m}$, od $T/2$ do $3T/4$ je $-I_\text{m}$, poslední čtvrtinu periody nulový. Jaká je jeho střední hodnota?
+'''
+figure = 'images/cv-prubeh-g.svg'
+value = 0.25
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+$$I_0 = \frac1T\left[I_\text{m}\frac T2 - I_\text{m}\frac T4 + 0\right] = I_\text{m}\left(\frac12 - \frac14\right) = 0{,}25\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVPR-07'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+text = '''
+Jaká je efektivní hodnota téhož proudu ($I_\text{m} = 1\ \text{A}$, nulový v poslední čtvrtině periody)?
+'''
+figure = 'images/cv-prubeh-g.svg'
+value = 0.866
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+Čtverec je $I_\text{m}^2$ po dobu $\tfrac34T$ a nula zbytek periody:
+$$I = \sqrt{\frac1T\cdot I_\text{m}^2\cdot\frac34T} = I_\text{m}\sqrt{0{,}75} = 0{,}866\ \text{A}$$
+Znaménko úseku na efektivní hodnotu nemá vliv.
+'''
+
+[[question]]
+id = 'CVPR-08'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.7'
+text = '''
+Proud podle obrázku má $I_\text{m} = 0{,}5\ \text{A}$ ($+I_\text{m}$ v první půlperiodě, $-I_\text{m}/2$ ve druhé). Jaká je jeho střední absolutní hodnota?
+'''
+figure = 'images/cv-prubeh-c.svg'
+value = 0.375
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+$$I_\text{sa} = \frac1T\left[I_\text{m}\frac T2 + \frac{I_\text{m}}{2}\cdot\frac T2\right] = \frac34I_\text{m} = 0{,}375\ \text{A}$$
+Střední hodnota je $I_0 = I_\text{m}(\tfrac12 - \tfrac14) = 0{,}125\ \text{A}$.
+'''
+
+[[question]]
+id = 'CVPR-09'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.7'
+text = '''
+Jaká je efektivní hodnota téhož proudu ($I_\text{m} = 0{,}5\ \text{A}$)?
+'''
+figure = 'images/cv-prubeh-c.svg'
+value = 0.3953
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$$I = \sqrt{\frac1T\left[I_\text{m}^2\frac T2 + \frac{I_\text{m}^2}{4}\cdot\frac T2\right]} = I_\text{m}\sqrt{\frac12 + \frac18} = 0{,}5\sqrt{0{,}625} = 0{,}395\,3\ \text{A}$$
+$k_\text{t} = 0{,}3953/0{,}375 = 1{,}054$, $k_\text{v} = 0{,}5/0{,}3953 = 1{,}265$.
+'''
+
+[[question]]
+id = 'CVPR-10'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.8'
+text = '''
+Napětí podle obrázku má $U_\text{m} = 10\ \text{V}$ (v každé půlperiodě lineární úsek mezi nulou a $\pm U_\text{m}$). Jaká je jeho efektivní hodnota?
+'''
+figure = 'images/cv-prubeh-e.svg'
+value = 5.774
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+Obě půlperiody mají stejný čtverec, stačí jedna: $u = \dfrac{2U_\text{m}}{T}t$ na $\langle0; T/2\rangle$:
+$$U = \sqrt{\frac2T\int_0^{T/2}\frac{4U_\text{m}^2}{T^2}t^2\,\mathrm{d}t} = \sqrt{\frac{8U_\text{m}^2}{T^3}\cdot\frac{T^3}{24}} = \frac{U_\text{m}}{\sqrt3} = 5{,}774\ \text{V}$$
+Pro všechny trojúhelníkové a pilovité průběhy mezi nulou a $U_\text{m}$ (po celou periodu) vychází $U_\text{m}/\sqrt3$.
+'''
+
+[[question]]
+id = 'CVPR-11'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.9'
+text = '''
+Proud podle obrázku má $I_\text{m} = 2\ \text{A}$: do $T/4$ lineárně klesá z nuly na $-I_\text{m}/2$, do $3T/4$ je $+I_\text{m}$, do konce periody nulový. Jaká je jeho efektivní hodnota?
+'''
+figure = 'images/cv-prubeh-d.svg'
+value = 1.443
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+Na $\langle0; T/4\rangle$ je $i = -\dfrac{2I_\text{m}}{T}t$:
+$$I^2 = \frac1T\left[\int_0^{T/4}\frac{4I_\text{m}^2}{T^2}t^2\,\mathrm{d}t + I_\text{m}^2\frac T2\right] = I_\text{m}^2\left[\frac{4}{T^3}\cdot\frac{T^3}{192} + \frac12\right] = I_\text{m}^2\left(\frac1{48} + \frac12\right) = \frac{25}{48}I_\text{m}^2$$
+$$I = 2\sqrt{\frac{25}{48}} = 1{,}443\ \text{A}$$
+(Střední hodnota $I_0 = \tfrac{7}{16}I_\text{m} = 0{,}875\ \text{A}$.)
+'''
+
+[[question]]
+id = 'CVPR-12'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.10'
+text = '''
+Dvoucestně usměrněné harmonické napětí má vrcholovou hodnotu 10 V. Jaká je jeho stejnosměrná složka $U_0$?
+'''
+value = 6.366
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+Průběh $|U_\text{m}\sin\omega t|$ je nezáporný, takže $U_0 = U_\text{sa} = \dfrac{2U_\text{m}}{\pi} = 6{,}366\ \text{V}$. Efektivní hodnota zůstává $U_\text{m}/\sqrt2 = 7{,}071\ \text{V}$ (usměrnění nemění čtverec).
+'''
+
+[[question]]
+id = 'CVPR-13'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+text = '''
+Jednocestně usměrněné harmonické napětí (záporné půlvlny odříznuté) má vrcholovou hodnotu 10 V. Jaká je jeho efektivní hodnota?
+'''
+value = 5
+tolerance = 0.005
+unit = 'V'
+explanation = '''
+Čtverec je v kladné půlvlně stejný jako u sinusovky, v záporné nula, takže střední hodnota čtverce je poloviční:
+$$U = \sqrt{\frac12\cdot\frac{U_\text{m}^2}{2}} = \frac{U_\text{m}}{2} = 5\ \text{V}$$
+Stejnosměrná složka je $U_\text{m}/\pi = 3{,}183\ \text{V}$.
+'''
+
+[[question]]
+id = 'CVPR-14'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.3'
+text = '''
+Napětí podle obrázku má $U_\text{m} = 2\ \text{V}$: v první půlperiodě lineárně roste z nuly na $U_\text{m}/2$, ve druhé je $-U_\text{m}$. Jaká je jeho střední hodnota?
+'''
+figure = 'images/cv-prubeh-b.svg'
+value = -0.75
+tolerance = 0.003
+unit = 'V'
+sign_hint = 'Záporná půlperioda má větší plochu než kladná.'
+explanation = '''
+V první půlperiodě $u = \dfrac{U_\text{m}}{T}t$ (za $T/2$ dosáhne $U_\text{m}/2$):
+$$U_0 = \frac1T\left[\frac{U_\text{m}}{T}\cdot\frac{(T/2)^2}{2} - U_\text{m}\frac T2\right] = U_\text{m}\left(\frac18 - \frac12\right) = -\frac38U_\text{m} = -0{,}75\ \text{V}$$
+Efektivní hodnota $U_\text{m}\sqrt{13/24} = 1{,}472\ \text{V}$.
+'''
+
+[[question]]
+id = 'CVPR-15'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'Sbírka, př. 9.11'
+text = '''
+Spektrum napětí: $U_0 = 1{,}5\ \text{V}$, $U_1 = 5{,}2\ \text{V}$, $U_2 = 0{,}35\ \text{V}$, $U_3 = 0{,}25\ \text{V}$, $U_5 = 0{,}12\ \text{V}$. Jaký je činitel zkreslení $\text{THD}_\text{F}$ v procentech?
+'''
+value = 8.59
+tolerance = 0.02
+unit = '%'
+explanation = '''
+$$\text{THD}_\text{F} = \frac{\sqrt{U_2^2 + U_3^2 + U_5^2}}{U_1} = \frac{\sqrt{0{,}122\,5 + 0{,}062\,5 + 0{,}014\,4}}{5{,}2} = \frac{0{,}446\,5}{5{,}2} = 8{,}59\ \%$$
+$\text{THD}_\text{R} = 0{,}4465/\sqrt{27{,}04 + 0{,}1994} = 8{,}56\ \%$. Stejnosměrná složka se nepočítá.
+'''
+
+[[question]]
+id = 'CVPR-16'
+topic = 'Periodické průběhy'
+text = '''
+Ručkový voltmetr měří střední absolutní hodnotu a stupnici má cejchovanou pro sinusovku. Co ukáže pro souměrné obdélníkové napětí ±10 V?
+'''
+options = ['asi 11,1 V', '10 V', '7,07 V', '6,37 V']
+answer = 0
+layout = 'grid'
+explanation = '''
+Přístroj ukazuje $1{,}11\cdot U_\text{sa}$ (činitel tvaru sinusovky). Obdélník má $U_\text{sa} = 10\ \text{V}$, takže údaj je 11,1 V, ale skutečná efektivní hodnota je 10 V ($k_\text{t} = 1$). Chyba +11 %; správně měří jen přístroj TRMS.
+'''
+notes = [
+  '',
+  'To je skutečná efektivní hodnota, kterou by ukázal TRMS přístroj.',
+  'To je efektivní hodnota sinusovky s amplitudou 10 V.',
+  'To je střední absolutní hodnota sinusovky s amplitudou 10 V.',
+]
+
+[[question]]
+id = 'CVPR-17'
+topic = 'Periodické průběhy'
+text = '''
+Která hodnota střídavého proudu odpovídá stálému proudu se stejnými **tepelnými** účinky v rezistoru?
+'''
+options = ['efektivní', 'střední', 'střední absolutní', 'vrcholová']
+answer = 0
+layout = 'grid'
+explanation = '''
+Teplo v rezistoru je $\int Ri^2\,\mathrm{d}t$. Stálý proud $I$ dá za periodu $RI^2T$; z rovnosti vyjde $I = \sqrt{\frac1T\int i^2\,\mathrm{d}t}$, tedy efektivní hodnota (RMS).
+'''
+notes = [
+  '',
+  'Střední hodnota odpovídá přenesenému náboji, u střídavého průběhu je nulová.',
+  'Střední absolutní hodnota slouží v měřicích přístrojích, teplu neodpovídá.',
+  'Vrcholová hodnota trvá jen okamžik.',
+]

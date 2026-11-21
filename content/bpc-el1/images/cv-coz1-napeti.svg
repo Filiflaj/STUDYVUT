@@ -1,0 +1,25 @@
+<svg viewBox="0 0 380 170" width="380" class="fig" role="img" aria-label="Napětí kapacitoru: lineárně z nuly na 4 V ve 2 ms, do 5 ms konstantní, lineárně na nulu v 11 ms">
+<line x1="55" y1="130" x2="365" y2="130" class="v" marker-end="url(#m-v)"/>
+<line x1="55" y1="134" x2="55" y2="12" class="v" marker-end="url(#m-v)"/>
+<line x1="103.3" y1="127" x2="103.3" y2="133" class="s1"/>
+<text x="103.3" y="148" class="sm" text-anchor="middle">2</text>
+<line x1="151.7" y1="127" x2="151.7" y2="133" class="s1"/>
+<text x="151.7" y="148" class="sm" text-anchor="middle">4</text>
+<line x1="200" y1="127" x2="200" y2="133" class="s1"/>
+<text x="200" y="148" class="sm" text-anchor="middle">6</text>
+<line x1="248.3" y1="127" x2="248.3" y2="133" class="s1"/>
+<text x="248.3" y="148" class="sm" text-anchor="middle">8</text>
+<line x1="296.7" y1="127" x2="296.7" y2="133" class="s1"/>
+<text x="296.7" y="148" class="sm" text-anchor="middle">10</text>
+<line x1="345" y1="127" x2="345" y2="133" class="s1"/>
+<text x="345" y="148" class="sm" text-anchor="middle">12</text>
+<line x1="52" y1="80" x2="58" y2="80" class="s1"/>
+<text x="48" y="85" class="sm" text-anchor="end">2</text>
+<line x1="55" y1="80" x2="345" y2="80" class="d"/>
+<line x1="52" y1="30" x2="58" y2="30" class="s1"/>
+<text x="48" y="35" class="sm" text-anchor="end">4</text>
+<line x1="55" y1="30" x2="345" y2="30" class="d"/>
+<polyline points="55.0,130.0 103.3,30.0 175.8,30.0 320.8,130.0 345.0,130.0" class="f"/>
+<text x="363" y="122.0" class="sm" text-anchor="end"><tspan class="it">t</tspan> (ms)</text>
+<text x="61" y="20" class="sm"><tspan class="it">u</tspan> (V)</text>
+</svg>

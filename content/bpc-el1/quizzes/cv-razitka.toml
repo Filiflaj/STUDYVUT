@@ -1,0 +1,227 @@
+name = 'Cvičení: řízené zdroje a razítka'
+description = 'ZPŘN v MUN, napěťový přenos a vstupní odpor tranzistorových zesilovačů (sbírka kap. 6)'
+
+[[question]]
+id = 'CVRAZ-01'
+topic = 'Řízené zdroje v MUN'
+text = '''
+ZPŘN s proudem $g_\text{m}U_{ab}$ teče (uvnitř zdroje) z uzlu $c$ do uzlu $d$. Kam se v matici vodivostí zapíše $+g_\text{m}$?
+'''
+options = [
+  'do řádku $c$, sloupce $a$ a do řádku $d$, sloupce $b$',
+  'do řádku $a$, sloupce $c$ a do řádku $b$, sloupce $d$',
+  'na pravou stranu do řádku $c$',
+  'na diagonálu do řádků $c$ a $d$',
+]
+answer = 0
+explanation = '''
+Řádky patří výstupním uzlům (rovnice 1. KZ uzlu, ze kterého proud zdroje teče), sloupce řídicím uzlům (napětí, které proud určuje). Razítko:
+$$\begin{array}{c|cc} & a & b \\ \hline c & +g_\text{m} & -g_\text{m} \\ d & -g_\text{m} & +g_\text{m} \end{array}$$
+'''
+notes = [
+  '',
+  'Řádky a sloupce jsou prohozené.',
+  'Proud řízeného zdroje závisí na neznámých napětích, patří na levou stranu.',
+  'Na diagonálu by šel, jen kdyby řídicí napětí bylo napětí téhož uzlu.',
+]
+
+[[question]]
+id = 'CVRAZ-02'
+topic = 'Řízené zdroje v MUN'
+text = '''
+FET v zapojení SE: hradlo je uzel 1, drain uzel 2, source zem. ZPŘN $g_\text{m}U_{10}$ teče z uzlu 2 k zemi. Co razítko přidá do matice 2×2?
+'''
+options = [
+  'jen $+g_\text{m}$ na pozici (2, 1)',
+  '$+g_\text{m}$ na (2, 1) a $-g_\text{m}$ na (1, 2)',
+  'jen $+g_\text{m}$ na pozici (1, 2)',
+  '$+g_\text{m}$ na (2, 2)',
+]
+answer = 0
+explanation = '''
+Výstup: uzly 2 a 0, vstup: uzly 1 a 0. Řádek i sloupec země se vynechá, zbude jediný prvek: řádek 2, sloupec 1. Proto je matice nesymetrická:
+$$\begin{bmatrix} G_1 + G_2 & -G_2 \\ -G_2 + g_\text{m} & G_2 + G_3 \end{bmatrix}$$
+'''
+notes = [
+  '',
+  'Druhé číslo by patřilo k zemi, která v matici není.',
+  'Řádek je výstup (2), sloupec vstup (1), ne naopak.',
+  'Proud neřídí napětí uzlu 2, ale uzlu 1.',
+]
+
+[[question]]
+id = 'CVRAZ-03'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.7'
+text = '''
+Zesilovač SE s bipolárním tranzistorem: zdroj $I$ do uzlu 1 (báze), z uzlu 1 k zemi $R_1 = 5{,}6\ \text{k}\Omega$ a $R_\text{b} = 5\ \text{k}\Omega$, mezi uzly 1 a 2 $R_3 = 150\ \text{k}\Omega$, z uzlu 2 (kolektor) k zemi $R_2 = 2{,}2\ \text{k}\Omega$ a ZPŘN $g_\text{m}U_{10}$, $g_\text{m} = 150\ \text{mS}$. Jaký je napěťový přenos $K_U = U_2/U_1$?
+'''
+value = -325.2
+tolerance = 0.5
+explanation = '''
+$G_1 = 1{,}786\cdot10^{-4}$, $G_\text{b} = 2\cdot10^{-4}$, $G_3 = 6{,}667\cdot10^{-6}$, $G_2 = 4{,}545\cdot10^{-4}\ \text{S}$:
+$$\begin{bmatrix} G_1 + G_3 + G_\text{b} & -G_3 \\ -G_3 + g_\text{m} & G_2 + G_3 \end{bmatrix} = \begin{bmatrix} 3{,}852\cdot10^{-4} & -6{,}667\cdot10^{-6} \\ 0{,}15 & 4{,}612\cdot10^{-4} \end{bmatrix}$$
+$\Delta_1 = 4{,}612\cdot10^{-4}\,I$, $\Delta_2 = -0{,}15\,I$:
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{-0{,}15}{4{,}612\cdot10^{-4}} = -325{,}2$$
+'''
+
+[[question]]
+id = 'CVRAZ-04'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.7'
+text = '''
+Pro tentýž zesilovač ($\Delta = 1{,}178\cdot10^{-6}$, $\Delta_1 = 4{,}612\cdot10^{-4}\,I$) urči vstupní odpor $R_\text{vst}$.
+'''
+value = 391.5
+tolerance = 1
+unit = 'Ω'
+explanation = '''
+$$R_\text{vst} = \frac{U_1}{I} = \frac{\Delta_1}{I\,\Delta} = \frac{4{,}612\cdot10^{-4}}{1{,}178\cdot10^{-6}} = 391{,}5\ \Omega$$
+Determinant: $\Delta = 3{,}852\cdot10^{-4}\cdot4{,}612\cdot10^{-4} - (-6{,}667\cdot10^{-6})\cdot0{,}15 = 1{,}777\cdot10^{-7} + 1{,}000\cdot10^{-6} = 1{,}178\cdot10^{-6}$. (Bez zaokrouhlení 391,6 Ω.)
+'''
+
+[[question]]
+id = 'CVRAZ-05'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.8'
+text = '''
+Emitorový sledovač: z uzlu 1 (báze) k zemi $R_1 = 5\ \text{k}\Omega$ a $R_2 = 50\ \text{k}\Omega$, mezi uzly 1 a 2 $R_\text{b} = 5\ \text{k}\Omega$, z uzlu 2 (emitor) k zemi $R_3 = 1\ \text{k}\Omega$. ZPŘN $g_\text{m}U_{12}$ ($g_\text{m} = 100\ \text{mS}$) teče ze země (kolektor na zkratovaném napájení) do uzlu 2. Jaký je přenos $K_U$?
+'''
+value = 0.990
+tolerance = 0.002
+explanation = '''
+Razítko: proud do uzlu 2 je v rovnici uzlu 2 se záporným znaménkem, $-g_\text{m}(U_1 - U_2)$, tedy $-g_\text{m}$ na (2, 1) a $+g_\text{m}$ na (2, 2):
+$$\begin{bmatrix} G_1 + G_2 + G_\text{b} & -G_\text{b} \\ -G_\text{b} - g_\text{m} & G_\text{b} + G_3 + g_\text{m} \end{bmatrix} = \begin{bmatrix} 0{,}42\cdot10^{-3} & -0{,}2\cdot10^{-3} \\ -0{,}100\,2 & 0{,}101\,2 \end{bmatrix}$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{0{,}100\,2\,I}{0{,}101\,2\,I} = 0{,}990$$
+Sledovač má přenos těsně pod 1 a nefázuje.
+'''
+
+[[question]]
+id = 'CVRAZ-06'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.8'
+text = '''
+Vstupní odpor téhož emitorového sledovače ($\Delta_1 = 0{,}101\,2\,I$, matice z předchozí otázky)?
+'''
+value = 4505
+tolerance = 5
+unit = 'Ω'
+explanation = '''
+$$\Delta = 0{,}42\cdot10^{-3}\cdot0{,}101\,2 - (-0{,}2\cdot10^{-3})(-0{,}100\,2) = 4{,}250\cdot10^{-5} - 2{,}004\cdot10^{-5} = 2{,}246\cdot10^{-5}$$
+$$R_\text{vst} = \frac{\Delta_1}{I\,\Delta} = \frac{0{,}101\,2}{2{,}246\cdot10^{-5}} = 4505\ \Omega$$
+Tranzistor zvětšuje vstupní odpor emitorového rezistoru, zbytek omezují $R_1$ a $R_2$.
+'''
+
+[[question]]
+id = 'CVRAZ-07'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.17'
+text = '''
+Výpočetní schéma: z uzlu 1 k zemi $G_1$ ($R_1 = 10\ \text{k}\Omega$), mezi uzly 1 a 2 $G_2$ ($R_2 = 4{,}7\ \text{k}\Omega$), z uzlu 2 k zemi $G_3$ ($R_3 = 120\ \Omega$) a ZPŘN $g_\text{m}U_{12}$ ($g_\text{m} = 250\ \text{mS}$) tekoucí ze země do uzlu 2. Jaký je přenos $K_U$?
+'''
+value = 0.9678
+tolerance = 0.001
+explanation = '''
+$G_1 = 1\cdot10^{-4}$, $G_2 = 2{,}128\cdot10^{-4}$, $G_3 = 8{,}333\cdot10^{-3}\ \text{S}$. Stejné razítko jako u sledovače:
+$$\begin{bmatrix} G_1 + G_2 & -G_2 \\ -G_2 - g_\text{m} & G_2 + G_3 + g_\text{m} \end{bmatrix} = \begin{bmatrix} 3{,}128\cdot10^{-4} & -2{,}128\cdot10^{-4} \\ -0{,}250\,2 & 0{,}258\,5 \end{bmatrix}$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{0{,}250\,2}{0{,}258\,5} = 0{,}967\,9 \doteq 0{,}968$$
+(Sbírka: 0,9678.)
+'''
+
+[[question]]
+id = 'CVRAZ-08'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.17'
+text = '''
+Vstupní odpor zesilovače z předchozí otázky ($\Delta_1 = 0{,}258\,5\,I$)?
+'''
+value = 9358
+tolerance = 15
+unit = 'Ω'
+explanation = '''
+$$\Delta = 3{,}128\cdot10^{-4}\cdot0{,}258\,5 - (-2{,}128\cdot10^{-4})(-0{,}250\,2) = 8{,}086\cdot10^{-5} - 5{,}324\cdot10^{-5} = 2{,}762\cdot10^{-5}$$
+$$R_\text{vst} = \frac{0{,}258\,5}{2{,}762\cdot10^{-5}} = 9359\ \Omega$$
+(Bez zaokrouhlování mezivýsledků 9358 Ω, jako ve sbírce.)
+'''
+
+[[question]]
+id = 'CVRAZ-09'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.21'
+text = '''
+Zesilovač SB: uzel 1 je emitor (vstup), uzel 2 kolektor, báze je uzemněná. Z uzlu 1 k zemi $R_1 = 5{,}6\ \text{k}\Omega$ a $R_\text{b} = 5\ \text{k}\Omega$, mezi uzly $R_3 = 150\ \text{k}\Omega$, z uzlu 2 k zemi $R_2 = 2{,}2\ \text{k}\Omega$. ZPŘN $g_\text{m}U_\text{BE} = g_\text{m}U_{01}$ ($g_\text{m} = 150\ \text{mS}$) teče z kolektoru do emitoru. Jaký je vstupní odpor $R_\text{vst}$?
+'''
+value = 6.75
+tolerance = 0.03
+unit = 'Ω'
+explanation = '''
+Řídicí napětí $U_{01} = -U_{10}$, proud teče z uzlu 2 do uzlu 1: řádek 2 dostane $-g_\text{m}$, řádek 1 $+g_\text{m}$, oba ve sloupci 1:
+$$\begin{bmatrix} G_1 + G_\text{b} + G_3 + g_\text{m} & -G_3 \\ -G_3 - g_\text{m} & G_2 + G_3 \end{bmatrix} = \begin{bmatrix} 0{,}150\,4 & -6{,}667\cdot10^{-6} \\ -0{,}150\,0 & 4{,}612\cdot10^{-4} \end{bmatrix}$$
+$$\Delta = 0{,}150\,4\cdot4{,}612\cdot10^{-4} - 6{,}667\cdot10^{-6}\cdot0{,}150\,0 = 6{,}936\cdot10^{-5} - 1{,}000\cdot10^{-6} = 6{,}836\cdot10^{-5}$$
+$$R_\text{vst} = \frac{\Delta_1}{I\,\Delta} = \frac{4{,}612\cdot10^{-4}}{6{,}836\cdot10^{-5}} = 6{,}75\ \Omega$$
+Zapojení SB má velmi malý vstupní odpor (zhruba $1/g_\text{m}$).
+'''
+
+[[question]]
+id = 'CVRAZ-10'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.21'
+text = '''
+Přenos $K_U$ téhož zesilovače SB ($\Delta_1 = 4{,}612\cdot10^{-4}\,I$)?
+'''
+value = 325.2
+tolerance = 0.5
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} 0{,}150\,4 & I \\ -0{,}150\,0 & 0 \end{vmatrix} = 0{,}150\,0\,I, \qquad K_U = \frac{\Delta_2}{\Delta_1} = \frac{0{,}150\,0}{4{,}612\cdot10^{-4}} = 325{,}2$$
+Kladný: zapojení SB fázi neotáčí. (Sbírka 325,3 z přesnějších čísel.)
+'''
+
+[[question]]
+id = 'CVRAZ-11'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'Sbírka, př. 6.9'
+text = '''
+Dvoustupňový zesilovač s FET: z uzlu 1 k zemi $R_1 = 10\ \text{k}\Omega$, mezi uzly 1 a 2 $R_4 = 220\ \text{k}\Omega$, z uzlu 2 k zemi $R_2 = 10\ \text{k}\Omega$, mezi uzly 2 a 3 $R_5 = 47\ \text{k}\Omega$, z uzlu 3 k zemi $R_3 = 1\ \text{k}\Omega$. ZPŘN $g_\text{m1}U_{10}$ teče z uzlu 2 k zemi, ZPŘN $g_\text{m2}U_{20}$ z uzlu 3 k zemi; $g_\text{m1} = 150\ \text{mS}$, $g_\text{m2} = 200\ \text{mS}$. Jaký je přenos $K_U = U_3/U_1$?
+'''
+value = 6843
+tolerance = 5
+explanation = '''
+$$\begin{bmatrix} G_1 + G_4 & -G_4 & 0 \\ -G_4 + g_\text{m1} & G_2 + G_4 + G_5 & -G_5 \\ 0 & -G_5 + g_\text{m2} & G_3 + G_5 \end{bmatrix} = \begin{bmatrix} 1{,}0455\cdot10^{-4} & -4{,}5455\cdot10^{-6} & 0 \\ 0{,}15 & 1{,}2582\cdot10^{-4} & -2{,}1277\cdot10^{-5} \\ 0 & 0{,}2 & 1{,}0213\cdot10^{-3} \end{bmatrix}$$
+Pravá strana je $(I;\ 0;\ 0)$. $\Delta_1$ rozvojem podle 1. sloupce, $\Delta_3$ rozvojem podle 3. sloupce (v obou zbude jen prvek $I$):
+$$\Delta_1 = I\begin{vmatrix} 1{,}2582\cdot10^{-4} & -2{,}1277\cdot10^{-5} \\ 0{,}2 & 1{,}0213\cdot10^{-3} \end{vmatrix} = I\,(1{,}2850\cdot10^{-7} + 4{,}2554\cdot10^{-6}) = 4{,}3839\cdot10^{-6}\,I$$
+$$\Delta_3 = I\begin{vmatrix} 0{,}15 & 1{,}2582\cdot10^{-4} \\ 0 & 0{,}2 \end{vmatrix} = 0{,}15\cdot0{,}2\,I = 3\cdot10^{-2}\,I$$
+$$K_U = \frac{\Delta_3}{\Delta_1} = \frac{3\cdot10^{-2}}{4{,}3839\cdot10^{-6}} = 6843$$
+Oba stupně fázi otáčejí, takže výsledek je kladný (sbírka: 6843).
+'''
+
+[[question]]
+id = 'CVRAZ-12'
+topic = 'Řízené zdroje v MUN'
+text = '''
+Výpočet vstupního odporu tranzistorového dvojbranu dal $R_\text{vst} = -81\ \Omega$. Co to znamená?
+'''
+options = [
+  'vstupní napětí a proud mají opačný směr; dvojbran se zpětnou vazbou může mít záporný vstupní odpor',
+  'určitě je chyba ve výpočtu, odpor nemůže být záporný',
+  'vstupní odpor je 81 Ω, znaménko se zanedbá',
+  'tranzistor je v nasycení',
+]
+answer = 0
+explanation = '''
+Záporný vstupní odpor znamená, že při kladném vstupním proudu je vstupní napětí záporné: obvod napájený z aktivního prvku dodává energii zpět do zdroje signálu. U zapojení se zpětnou vazbou (PC8, př. 3; sbírka 6.24, 6.25) je to skutečná vlastnost, ne chyba.
+'''
+notes = [
+  '',
+  'Aktivní obvod záporný vstupní odpor mít může.',
+  'Znaménko nese informaci, nezanedbává se.',
+  'Malosignálový model nasycení vůbec nepopisuje.',
+]

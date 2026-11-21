@@ -1,0 +1,228 @@
+name = 'Cvičení: metoda uzlových napětí'
+description = 'MUN se zdroji napětí, Millmanova věta, modifikovaná MUN (sbírka kap. 6 a 7)'
+
+[[question]]
+id = 'CVMUN-01'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 6.2'
+text = '''
+$R_1 = 10\ \Omega$ vede z uzlu 1 k zemi, $R_2 = 20\ \Omega$ spojuje uzly 1 a 2, $R_3 = 10\ \Omega$ vede z uzlu 2 k zemi. Zdroj proudu $I_\text{A} = 1\ \text{A}$ odebírá proud z uzlu 1 do země, zdroj $I_\text{B} = 2\ \text{A}$ dodává proud ze země do uzlu 2. Jaké je uzlové napětí $U_{10}$?
+'''
+value = -2.5
+tolerance = 0.005
+unit = 'V'
+sign_hint = 'Zdroj IA proud z uzlu 1 odebírá, na pravé straně je záporně.'
+explanation = '''
+$G_1 = G_3 = 0{,}1\ \text{S}$, $G_2 = 0{,}05\ \text{S}$:
+$$\begin{bmatrix} G_1 + G_2 & -G_2 \\ -G_2 & G_2 + G_3 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -I_\text{A} \\ I_\text{B} \end{bmatrix} \quad\Rightarrow\quad \begin{bmatrix} 0{,}15 & -0{,}05 \\ -0{,}05 & 0{,}15 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}$$
+$$\Delta = 0{,}0225 - 0{,}0025 = 0{,}02, \qquad \Delta_1 = -1\cdot0{,}15 - (-0{,}05)\cdot2 = -0{,}05, \qquad U_{10} = \frac{-0{,}05}{0{,}02} = -2{,}5\ \text{V}$$
+'''
+
+[[question]]
+id = 'CVMUN-02'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 6.2'
+text = '''
+V tomtéž obvodu vyšlo $U_{10} = -2{,}5\ \text{V}$ a $U_{20} = 12{,}5\ \text{V}$. Jaký proud $I_2$ teče rezistorem $R_2 = 20\ \Omega$ od uzlu 1 k uzlu 2?
+'''
+value = -0.75
+tolerance = 0.003
+unit = 'A'
+sign_hint = 'Uzel 2 má vyšší napětí, proud teče od 2 k 1.'
+explanation = '''
+$$I_2 = \frac{U_{10} - U_{20}}{R_2} = \frac{-2{,}5 - 12{,}5}{20} = -0{,}75\ \text{A}$$
+Proud tedy teče od uzlu 2 k uzlu 1. Kontrola 1. KZ v uzlu 2: do uzlu teče $I_\text{B} = 2\ \text{A}$, odtéká $0{,}75\ \text{A}$ k uzlu 1 a $12{,}5/10 = 1{,}25\ \text{A}$ do $R_3$.
+'''
+
+[[question]]
+id = 'CVMUN-03'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 6.10'
+text = '''
+Zdroj $U = 10\ \text{V}$ se sériovým $R_1 = 20\ \Omega$ napájí uzel 1 (+ k uzlu). Z uzlu 1 vede $R_2 = 10\ \Omega$ k zemi, $R_3 = 40\ \Omega$ spojuje uzly 1 a 2, z uzlu 2 vede $R_4 = 50\ \Omega$ k zemi a do uzlu 2 teče ze země zdroj proudu $I = 2\ \text{A}$. Jaké je napětí $U_{20}$?
+'''
+value = 50
+tolerance = 0.1
+unit = 'V'
+explanation = '''
+Převod: $I_\text{z} = U/R_1 = 0{,}5\ \text{A}$ do uzlu 1. $G_1 = 0{,}05$, $G_2 = 0{,}1$, $G_3 = 0{,}025$, $G_4 = 0{,}02\ \text{S}$:
+$$\begin{bmatrix} 0{,}175 & -0{,}025 \\ -0{,}025 & 0{,}045 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} 0{,}5 \\ 2 \end{bmatrix}$$
+$$\Delta = 0{,}007\,875 - 0{,}000\,625 = 0{,}007\,25, \qquad \Delta_2 = 0{,}175\cdot2 - (-0{,}025)\cdot0{,}5 = 0{,}362\,5, \qquad U_{20} = \frac{0{,}362\,5}{0{,}007\,25} = 50\ \text{V}$$
+($U_{10} = 0{,}072\,5/0{,}007\,25 = 10\ \text{V}$, takže rezistorem $R_1$ neteče proud.)
+'''
+
+[[question]]
+id = 'CVMUN-04'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 6.10'
+text = '''
+V témže obvodu je $U_{10} = 10\ \text{V}$ a $U_{20} = 50\ \text{V}$. Jaký proud $I_3$ teče rezistorem $R_3 = 40\ \Omega$ od uzlu 1 k uzlu 2?
+'''
+value = -1
+tolerance = 0.005
+unit = 'A'
+sign_hint = 'Proud teče od uzlu 2 (vyšší napětí) k uzlu 1.'
+explanation = '''
+$$I_3 = \frac{U_{10} - U_{20}}{R_3} = \frac{10 - 50}{40} = -1\ \text{A}$$
+Zdroj proudu 2 A se v uzlu 2 dělí: 1 A do $R_4$ ($50/50$), 1 A přes $R_3$ do uzlu 1 a odtud do $R_2$ ($10/10 = 1\ \text{A}$).
+'''
+
+[[question]]
+id = 'CVMUN-05'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 6.11'
+text = '''
+Z uzlu 1 vede k zemi $R_1 = 10\ \Omega$ a zdroj proudu $I_\text{A} = 1\ \text{A}$ (proud z uzlu do země). Uzly 1 a 2 spojují dvě větve: $R_2 = 20\ \Omega$ a sériově $R_3 = 40\ \Omega$ se zdrojem $U = 20\ \text{V}$ (+ na straně uzlu 1). Z uzlu 2 vede k zemi $R_4 = 10\ \Omega$ a do uzlu 2 teče ze země $I_\text{B} = 2\ \text{A}$. Jaký proud $I_4$ teče rezistorem $R_4$ k zemi?
+'''
+value = 0.9
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+Větev $R_3$, $U$ převedu: $U/R_3 = 0{,}5\ \text{A}$, šipka náhradního proudu míří ke svorce + (do uzlu 1, z uzlu 2). $G_1 = G_4 = 0{,}1$, $G_2 = 0{,}05$, $G_3 = 0{,}025\ \text{S}$:
+$$\begin{bmatrix} 0{,}175 & -0{,}075 \\ -0{,}075 & 0{,}175 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -1 + 0{,}5 \\ 2 - 0{,}5 \end{bmatrix} = \begin{bmatrix} -0{,}5 \\ 1{,}5 \end{bmatrix}$$
+$$\Delta = 0{,}030\,625 - 0{,}005\,625 = 0{,}025, \qquad \Delta_2 = 0{,}175\cdot1{,}5 - (-0{,}075)(-0{,}5) = 0{,}225, \qquad U_{20} = 9\ \text{V}$$
+$$I_4 = \frac{U_{20}}{R_4} = \frac{9}{10} = 0{,}9\ \text{A}$$
+($U_{10} = 1\ \text{V}$ a $I_2 = (1 - 9)/20 = -0{,}4\ \text{A}$, shodně se sbírkou.)
+'''
+
+[[question]]
+id = 'CVMUN-06'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 6.12'
+text = '''
+Z uzlu 1 vede k zemi $R_3 = 10\ \Omega$. Uzly 1 a 2 spojují dvě větve: $R_2 = 10\ \Omega$ a sériově $R_1 = 10\ \Omega$ se zdrojem $U = 20\ \text{V}$ (+ na straně uzlu 2). Z uzlu 2 vede k zemi $R_4 = 10\ \Omega$ a do uzlu 2 teče ze země zdroj $I = 2\ \text{A}$. Jaký proud $I_2$ teče rezistorem $R_2$ od uzlu 1 k uzlu 2?
+'''
+value = -1.2
+tolerance = 0.003
+unit = 'A'
+sign_hint = 'Uzel 2 má vyšší napětí.'
+explanation = '''
+Větev $R_1$, $U$: náhradní proud $U/R_1 = 2\ \text{A}$ teče do uzlu 2 (strana +) a z uzlu 1. Všechny vodivosti 0,1 S:
+$$\begin{bmatrix} 0{,}3 & -0{,}2 \\ -0{,}2 & 0{,}3 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -2 \\ 2 + 2 \end{bmatrix}$$
+$$\Delta = 0{,}09 - 0{,}04 = 0{,}05, \quad \Delta_1 = -2\cdot0{,}3 - (-0{,}2)\cdot4 = 0{,}2, \quad \Delta_2 = 0{,}3\cdot4 - (-0{,}2)(-2) = 0{,}8$$
+$$U_{10} = 4\ \text{V}, \quad U_{20} = 16\ \text{V}, \qquad I_2 = \frac{U_{10} - U_{20}}{R_2} = \frac{4 - 16}{10} = -1{,}2\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVMUN-07'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 5.9 řešený MUN'
+text = '''
+Obvod z obrázku ($U_1 = 30\ \text{V}$, $U_2 = 20\ \text{V}$, $U_3 = 40\ \text{V}$, $R_1 = R_2 = 10\ \Omega$, $R_3 = R_4 = 20\ \Omega$) má jediný nezávislý uzel. Jaké je napětí horního uzlu proti dolnímu?
+'''
+figure = 'images/cv-msp-59.svg'
+value = 16.67
+tolerance = 0.03
+unit = 'V'
+explanation = '''
+Millmanova věta (jedna rovnice MUN). Levá větev: $U_1$ s $R_1 + R_2 = 20\ \Omega$, + nahoře; prostřední: $U_2$ obráceně (+ dole) s $R_3$; pravá: $U_3$ s $R_4$, + nahoře:
+$$U = \frac{\frac{30}{20} - \frac{20}{20} + \frac{40}{20}}{\frac{1}{20} + \frac{1}{20} + \frac{1}{20}} = \frac{2{,}5}{0{,}15} = 16{,}67\ \text{V}$$
+Proud prostřední větví dolů je $(16{,}67 + 20)/20 = 1{,}833\ \text{A}$, stejně jako z MSP.
+'''
+
+[[question]]
+id = 'CVMUN-08'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 5.8 řešený MUN'
+text = '''
+Obvod z obrázku ($U_1 = 20\ \text{V}$, $U_2 = 30\ \text{V}$, $R_1 = R_2 = R_4 = 10\ \Omega$, $R_3 = 20\ \Omega$) řeš jednou rovnicí MUN. Jaké je napětí horního uzlu proti dolnímu?
+'''
+figure = 'images/cv-msp-58.svg'
+value = 12.86
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+Levá větev jen $R_1$ (bez zdroje), prostřední $U_1$ s $R_2$ (+ nahoře), pravá $U_2$ s $R_3 + R_4 = 30\ \Omega$ (+ nahoře):
+$$U = \frac{0 + \frac{20}{10} + \frac{30}{30}}{\frac{1}{10} + \frac{1}{10} + \frac{1}{30}} = \frac{3}{0{,}233\,3} = 12{,}86\ \text{V}$$
+Pak $I_1 = -U/R_1 = -1{,}286\ \text{A}$ (šipka $I_1$ míří do uzlu), stejně jako metodou smyčkových proudů.
+'''
+
+[[question]]
+id = 'CVMUN-09'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'Sbírka, př. 7.1'
+text = '''
+Modifikovaná MUN: zdroj $U_1 = 5\ \text{V}$ s $R_1 = 5\ \Omega$ napájí uzel 1, z uzlu 1 vede $R_2 = 10\ \Omega$ k zemi, $R_3 = 5\ \Omega$ spojuje uzly 1 a 2, z uzlu 2 vede $R_4 = 10\ \Omega$ k zemi a mezi uzlem 2 a zemí je **ideální** zdroj $U_2 = 10\ \text{V}$. Jaký proud $I$ dodává zdroj $U_2$ do uzlu 2?
+'''
+value = 1.8
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+$I_\text{z1} = 1\ \text{A}$, $G_1 = G_3 = 0{,}2\ \text{S}$, $G_2 = G_4 = 0{,}1\ \text{S}$. Neznámé $U_{10}$, $U_{20}$, $I$; poslední rovnice je $U_{20} = U_2$:
+$$\begin{bmatrix} 0{,}5 & -0{,}2 & 0 \\ -0{,}2 & 0{,}3 & -1 \\ 0 & 1 & 0 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \\ I \end{bmatrix} = \begin{bmatrix} 1 \\ 0 \\ 10 \end{bmatrix}$$
+$U_{20} = 10\ \text{V}$, z 1. řádku $U_{10} = (1 + 2)/0{,}5 = 6\ \text{V}$, z 2. řádku $I = 0{,}3\cdot10 - 0{,}2\cdot6 = 1{,}8\ \text{A}$.
+'''
+
+[[question]]
+id = 'CVMUN-10'
+topic = 'MUN ve cvičení'
+text = '''
+Reálný zdroj napětí $U$ se sériovým $R$ (šipka napětí míří od uzlu k zemi, + je u uzlu) se pro MUN převede na:
+'''
+options = [
+  'zdroj proudu $U/R$ tekoucí do uzlu, paralelně vodivost $1/R$',
+  'zdroj proudu $U/R$ tekoucí z uzlu, paralelně vodivost $1/R$',
+  'zdroj proudu $U\,R$ tekoucí do uzlu',
+  'zkrat, protože MUN zdroje napětí ignoruje',
+]
+answer = 0
+explanation = '''
+Proud nakrátko reálného zdroje je $U/R$ a teče z jeho kladné svorky ven do obvodu, tedy do uzlu. Vnitřní vodivost $1/R$ se zapojí paralelně a přičte se k diagonále uzlu.
+'''
+notes = [
+  '',
+  'Směr je opačný: + je u uzlu, proud do uzlu vtéká.',
+  'Proud je napětí lomeno odporem.',
+  'MUN zdroje převádí, ne ignoruje.',
+]
+
+[[question]]
+id = 'CVMUN-11'
+topic = 'MUN ve cvičení'
+text = '''
+Obvod má 3 uzly a 6 větví. Kterou metodou vyjde méně rovnic?
+'''
+options = ['MUN, 2 rovnice', 'MSP, 2 rovnice', 'obě po 3 rovnicích', 'MSP, 3 rovnice']
+answer = 0
+layout = 'grid'
+explanation = '''
+MUN: $n - 1 = 3 - 1 = 2$. MSP: $v - n + 1 = 6 - 3 + 1 = 4$. Obvody s mnoha paralelními větvemi mezi málo uzly jsou pro MUN.
+'''
+notes = [
+  '',
+  'MSP by měla 6 − 3 + 1 = 4 rovnice.',
+  'Počty rovnic jsou 2 a 4.',
+  'MSP má 4 rovnice, ne 3.',
+]
+
+[[question]]
+id = 'CVMUN-12'
+topic = 'MUN ve cvičení'
+text = '''
+Zdroj $U_1$ se sériovým $R_1$ jsi pro MUN převedl na zdroj proudu $I_\text{z1}$ s vodivostí $G_1$ do uzlu 1. Jak spočítáš skutečný proud rezistorem $R_1$ (od zdroje do uzlu)?
+'''
+options = [
+  '$I_1 = I_\text{z1} - G_1U_{10} = (U_1 - U_{10})/R_1$',
+  '$I_1 = G_1U_{10}$',
+  '$I_1 = I_\text{z1}$',
+  '$I_1 = U_{10}/R_1 + I_\text{z1}$',
+]
+answer = 0
+explanation = '''
+V náhradním schématu teče vodivostí $G_1$ proud $G_1U_{10}$, ale to není proud původního rezistoru. Skutečný proud se počítá z původního obvodu: rozdíl napětí zdroje a uzlu lomeno odporem.
+'''
+notes = [
+  '',
+  'To je proud náhradní vodivosti, ne původního rezistoru.',
+  'To je proud nakrátko, platil by jen při $U_{10} = 0$.',
+  'Znaménka nesedí, proud se zmenšuje, když napětí uzlu roste.',
+]

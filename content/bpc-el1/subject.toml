@@ -21,3 +21,37 @@ pick = [
   { quiz = "magneticke-pole", count = 1 },
   { quiz = "nelinearni-prvky", count = 1 },
 ]
+
+[[set]]
+id = "test1"
+name = "Test 1 nanečisto (PC7)"
+description = "postupné zjednodušování a metoda smyčkových proudů, 10 náhodných otázek"
+pick = [
+  { quiz = "cv-zjednodusovani", count = 5 },
+  { quiz = "cv-msp", count = 5 },
+]
+
+[[set]]
+id = "test2"
+name = "Test 2 nanečisto (PC11)"
+description = "metoda uzlových napětí a věty o náhradním zdroji, 10 náhodných otázek"
+pick = [
+  { quiz = "cv-mun", count = 5 },
+  { quiz = "cv-nahradni-zdroj", count = 5 },
+]
+
+[[set]]
+id = "zkouska"
+name = "Zkouška nanečisto"
+description = "20 náhodných otázek ze všech témat početních cvičení"
+pick = [
+  { quiz = "cv-zaklady", count = 2 },
+  { quiz = "cv-zjednodusovani", count = 2 },
+  { quiz = "cv-msp", count = 2 },
+  { quiz = "cv-mun", count = 2 },
+  { quiz = "cv-razitka", count = 2 },
+  { quiz = "cv-nahradni-zdroj", count = 2 },
+  { quiz = "cv-nelinearni", count = 3 },
+  { quiz = "cv-prubehy", count = 3 },
+  { quiz = "cv-magneticke", count = 2 },
+]

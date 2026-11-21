@@ -1,0 +1,139 @@
+name = 'Cvičení: kalkulačka, LinRov a MicroCap'
+description = 'nástroje pro řešení soustav a simulaci obvodů'
+
+[[question]]
+id = 'CVNA-01'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+V MicroCapu zadáš rezistoru hodnotu `1M`. Jaký odpor bude mít?
+'''
+options = ['1 mΩ', '1 MΩ', '1 Ω', 'chyba, hodnota se nepřijme']
+answer = 0
+layout = 'grid'
+explanation = '''
+Simulátory typu SPICE nerozlišují velká a malá písmena: `M` i `m` znamená mili. Mega se píše `MEG` (`1MEG` = 1 MΩ). Jinak `k` = kilo, `u` = mikro, `n` = nano, `p` = piko; `1k2` = 1,2 kΩ.
+'''
+notes = [
+  '',
+  'Mega se v MicroCapu píše MEG.',
+  'Předpona se neignoruje.',
+  'Hodnota se přijme, jen jako miliohm.',
+]
+
+[[question]]
+id = 'CVNA-02'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+Jak se v MicroCapu správně zadá 2,2 kΩ?
+'''
+options = ['`2.2k` nebo `2k2`', '`2,2k`', '`2.2 kΩ` i s jednotkou', '`2200 K`']
+answer = 0
+layout = 'grid'
+explanation = '''
+Desetinný oddělovač je tečka; jde i inženýrský zápis s předponou místo tečky (`2k2`) nebo vědecký (`2.2e3`). Čárka se nepřijme.
+'''
+notes = [
+  '',
+  'Desetinná čárka v MicroCapu nefunguje.',
+  'Jednotka se nepíše, stačí číslo a předpona.',
+  'Mezera a velké K hodnotu poruší.',
+]
+
+[[question]]
+id = 'CVNA-03'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+Kterou analýzou MicroCapu nakreslíš závislost napětí na rezistoru na napětí zdroje (třeba AV charakteristiku diody)?
+'''
+options = ['DC', 'AC', 'Transient', 'jen pracovní bod (BIAS)']
+answer = 0
+layout = 'grid'
+explanation = '''
+DC analýza opakuje výpočet stejnosměrného pracovního bodu pro řadu hodnot rozmítané veličiny (napětí zdroje, teplota, parametr) a výsledek vykreslí jako graf.
+'''
+notes = [
+  '',
+  'AC je kmitočtová analýza linearizovaného obvodu.',
+  'Transient počítá časové průběhy.',
+  'BIAS dá jediný bod, ne závislost.',
+]
+
+[[question]]
+id = 'CVNA-04'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+Která analýza počítá časové průběhy napětí a proudů včetně nelinearit prvků?
+'''
+options = ['Transient', 'AC', 'DC', 'BIAS']
+answer = 0
+layout = 'grid'
+explanation = '''
+Analýza přechodných dějů (Transient) řeší obvod v časové oblasti s počátečními podmínkami a s nelineárními modely. AC naopak předpokládá malé signály a linearizuje.
+'''
+notes = [
+  '',
+  'AC pracuje v kmitočtové oblasti a nelinearity nepostihne.',
+  'DC dává ustálené stejnosměrné stavy.',
+  'BIAS je jen stejnosměrný pracovní bod.',
+]
+
+[[question]]
+id = 'CVNA-05'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+MicroCap odmítne spustit analýzu jednoduchého děliče napětí. Co ve schématu nejspíš chybí?
+'''
+options = ['zem (referenční uzel)', 'ampérmetr', 'pojistka', 'popisky uzlů']
+answer = 0
+layout = 'grid'
+explanation = '''
+Uzlová napětí se počítají proti referenčnímu uzlu, proto musí být ve schématu aspoň jedna zem. Bez ní nemá soustava rovnic jednoznačné řešení.
+'''
+notes = [
+  '',
+  'Proudy simulátor spočítá i bez měřidel.',
+  'Pojistka simulaci nepodmiňuje.',
+  'Uzly si simulátor očísluje sám.',
+]
+
+[[question]]
+id = 'CVNA-06'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+Matici soustavy máš na kalkulačce v MatA a vektor pravých stran v MatB. Jak získáš vektor neznámých?
+'''
+options = ['MatA⁻¹ × MatB', 'MatB⁻¹ × MatA', 'MatA × MatB', 'det(MatA) × MatB']
+answer = 0
+layout = 'grid'
+explanation = '''
+Z $\mathbf{A}\mathbf{x} = \mathbf{b}$ plyne $\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}$; inverzní matice se násobí **zleva**. Pro Cramerovo pravidlo se počítá det(MatA) a determinanty matic s nahrazeným sloupcem.
+'''
+notes = [
+  '',
+  'Vektor nemá inverzi a pořadí násobení je špatně.',
+  'To by matici soustavy použilo místo její inverze.',
+  'Determinant je číslo, z něj samotného řešení nevznikne.',
+]
+
+[[question]]
+id = 'CVNA-07'
+topic = 'Nástroje: kalkulačka, LinRov, MicroCap'
+text = '''
+Co ukáže program LinRov kromě řešení soustavy?
+'''
+options = [
+  'determinanty pro Cramerovo pravidlo (a hlídá singularitu matice)',
+  'schéma obvodu',
+  'graf průběhu proudu v čase',
+  'nic dalšího',
+]
+answer = 0
+explanation = '''
+LinRov řeší soustavy 1. až 5. řádu $\mathbf{K}\mathbf{X} = \mathbf{Y}$ a po stisku Výpočet zobrazí i $\Delta$ a $\Delta_k$, takže jde snadno zkontrolovat ruční výpočet. Symetrickou matici stačí zadat v horním trojúhelníku a zkopírovat.
+'''
+notes = [
+  '',
+  'LinRov pracuje jen s čísly, schéma nekreslí.',
+  'Časové průběhy počítá simulátor, ne řešič soustav.',
+  'Determinanty ukazuje.',
+]

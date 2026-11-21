@@ -1,0 +1,242 @@
+name = 'Cvičení: magnetické obvody'
+description = 'Ampérův zákon, magnetický odpor, obvody se vzduchovou mezerou, indukčnost a síla (sbírka kap. 11)'
+
+[[question]]
+id = 'CVMO-01'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.2'
+text = '''
+Prstenec z transformátorových plechů: průřez $S = 600\ \text{mm}^2$, střední průměr $D_\text{s} = 220\ \text{mm}$, vinutí $N = 200$ závitů. Má vzniknout tok $\Phi = 0{,}6\ \text{mWb}$; z magnetizační křivky je pro 1 T intenzita $H_\text{f} = 330\ \text{A/m}$. Jaký proud musí téct vinutím?
+'''
+value = 1.14
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+$$B_\text{f} = \frac{\Phi}{S} = \frac{0{,}6\cdot10^{-3}}{600\cdot10^{-6}} = 1\ \text{T} \;\Rightarrow\; H_\text{f} = 330\ \text{A/m}, \qquad l_\text{s} = \pi D_\text{s} = 0{,}691\,2\ \text{m}$$
+$$NI = H_\text{f}l_\text{s} \quad\Rightarrow\quad I = \frac{330\cdot0{,}691\,2}{200} = 1{,}14\ \text{A}$$
+Pro dynamové plechy (PC13, př. 4) se z křivky odečte asi 260 A/m a vyjde 0,898 A.
+'''
+
+[[question]]
+id = 'CVMO-02'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.3'
+text = '''
+Toroid: $N = 200$ závitů, $I = 1\ \text{A}$, střední průměr $D_\text{s} = 120\ \text{mm}$, průřez $S = 4\ \text{cm}^2$. Materiál: $H$ = 390; 530; 700; 900 A/m odpovídá $B$ = 0,6; 0,7; 0,8; 0,9 T. Jaká je indukčnost cívky? Výsledek zadej v mH.
+'''
+value = 56
+tolerance = 0.5
+unit = 'mH'
+explanation = '''
+Obrácená úloha bez mezery jde přímo:
+$$H = \frac{NI}{\pi D_\text{s}} = \frac{200}{0{,}377} = 530\ \text{A/m} \;\Rightarrow\; B = 0{,}7\ \text{T}, \qquad \Phi = BS = 0{,}7\cdot4\cdot10^{-4} = 280\ \mu\text{Wb}$$
+$$L = \frac{N\Phi}{I} = \frac{200\cdot280\cdot10^{-6}}{1} = 56\ \text{mH}$$
+'''
+
+[[question]]
+id = 'CVMO-03'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.5'
+text = '''
+Jaké magnetické napětí potřebuje vzduchová mezera délky 5 mm, má-li v ní být indukce 0,5 T?
+'''
+value = 1989
+tolerance = 2
+unit = 'A'
+explanation = '''
+$$U_\text{mv} = H_\text{v}l_\text{v} = \frac{B_\text{v}}{\mu_0}l_\text{v} = \frac{0{,}5}{4\pi\cdot10^{-7}}\cdot5\cdot10^{-3} = 1989\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVMO-04'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.5'
+text = '''
+Jádro z dynamových plechů (činitel plnění $k_\text{p} = 0{,}9$) má střední siločáru v železe $l_\text{f} = 0{,}8978\ \text{m}$ a mezeru 5 mm s indukcí $B_\text{v} = 0{,}5\ \text{T}$ ($U_\text{mv} = 1989\ \text{A}$). V železe je $B_\text{f} = B_\text{v}/k_\text{p} = 0{,}556\ \text{T}$ a z křivky $H_\text{f} \approx 100\ \text{A/m}$. Jaký magnetovací proud potřebuje cívka s $N = 1000$ závity?
+'''
+value = 2.08
+tolerance = 0.01
+unit = 'A'
+explanation = '''
+$$U_\text{mf} = H_\text{f}l_\text{f} = 100\cdot0{,}8978 = 89{,}78\ \text{A}, \qquad I = \frac{U_\text{mf} + U_\text{mv}}{N} = \frac{89{,}78 + 1989}{1000} = 2{,}08\ \text{A}$$
+Mezera 5 mm potřebuje 22krát víc magnetického napětí než skoro metr železa.
+'''
+
+[[question]]
+id = 'CVMO-05'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.6'
+text = '''
+Linearizovaný elektromagnet: $N = 100$, $I = 100\ \text{mA}$, průřez $S = 2{,}5\ \text{cm}^2$, jádro $l_\text{j} = 4\ \text{cm}$ s $\mu_\text{rj} = 500$, kotva $l_\text{k} = 2\ \text{cm}$ s $\mu_\text{rk} = 300$, dvě mezery po 0,05 mm. Jaký je magnetický tok? Výsledek zadej v μWb.
+'''
+value = 12.74
+tolerance = 0.03
+unit = 'μWb'
+explanation = '''
+$$R_\text{mj} = \frac{0{,}04}{\mu_0\cdot500\cdot2{,}5\cdot10^{-4}} = 254\,648\ \text{H}^{-1}, \quad R_\text{mk} = \frac{0{,}02}{\mu_0\cdot300\cdot2{,}5\cdot10^{-4}} = 212\,207\ \text{H}^{-1}$$
+$$R_\text{mv} = \frac{2\cdot0{,}05\cdot10^{-3}}{\mu_0\cdot2{,}5\cdot10^{-4}} = 318\,310\ \text{H}^{-1}$$
+$$\Phi = \frac{NI}{R_\text{mj} + R_\text{mk} + R_\text{mv}} = \frac{10}{785\,165} = 12{,}74\ \mu\text{Wb}$$
+'''
+
+[[question]]
+id = 'CVMO-06'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.6'
+text = '''
+Jaká je indukčnost cívky téhož elektromagnetu ($N = 100$, $I = 0{,}1\ \text{A}$, $\Phi = 12{,}74\ \mu\text{Wb}$)? Výsledek zadej v mH.
+'''
+value = 12.74
+tolerance = 0.03
+unit = 'mH'
+explanation = '''
+$$L = \frac{N\Phi}{I} = \frac{100\cdot12{,}74\cdot10^{-6}}{0{,}1} = 12{,}74\ \text{mH}$$
+Stejně $L = N^2/R_\text{m} = 10^4/785\,165 = 12{,}74\ \text{mH}$. Magnetická napětí: jádro 3,24 A, kotva 2,70 A, mezery 4,05 A, součet 10 A.
+'''
+
+[[question]]
+id = 'CVMO-07'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.8'
+text = '''
+Prstencové jádro ze dvou přiléhajících polovin má průřez $S = 4\ \text{cm}^2$. Indukce v jádře je 1,38 T. Jakou silou jsou poloviny drženy pohromadě?
+'''
+value = 606
+tolerance = 3
+unit = 'N'
+explanation = '''
+Prstenec má **dvě** styčné plochy, každá s průřezem $S$:
+$$F = \frac{B^2\cdot2S}{2\mu_0} = \frac{1{,}38^2\cdot2\cdot4\cdot10^{-4}}{2\cdot4\pi\cdot10^{-7}} = 606\ \text{N}$$
+(Indukce plyne z $H = NI/l = 100\cdot5/0{,}6283 = 796\ \text{A/m}$ a křivky oceli E11.)
+'''
+
+[[question]]
+id = 'CVMO-08'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.9'
+text = '''
+Elektromagnet z oceli E11 má v železe střední siločáru 0,98 m s $H_\text{f} \approx 300\ \text{A/m}$ a dvě mezery po 1 cm s indukcí $B_\text{v} = 1\ \text{T}$. Jaký proud potřebuje cívka s 500 závity?
+'''
+value = 32.4
+tolerance = 0.1
+unit = 'A'
+explanation = '''
+$$NI = H_\text{f}l_\text{f} + \frac{B_\text{v}}{\mu_0}l_\text{v} = 300\cdot0{,}98 + \frac{1}{4\pi\cdot10^{-7}}\cdot0{,}02 = 294 + 15\,915 = 16\,209\ \text{A}$$
+$$I = \frac{16\,209}{500} = 32{,}4\ \text{A}$$
+Železo potřebuje necelá 2 % magnetického napětí.
+'''
+
+[[question]]
+id = 'CVMO-09'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.11'
+text = '''
+Permanentní magnet s pracovním bodem $B_\text{p} = 0{,}23\ \text{T}$, $H_\text{p} = 90\ \text{kA/m}$ má v mezeře délky 0,6 cm vytvořit indukci 0,5 T. Jak vysoký musí být (rozptyl a odpor nástavců zanedbej)? Výsledek v cm.
+'''
+value = 2.653
+tolerance = 0.005
+unit = 'cm'
+explanation = '''
+Magnetické napětí magnetu pokryje mezeru: $H_\text{p}l_\text{p} = \dfrac{B_\text{v}}{\mu_0}l_\text{v}$:
+$$l_\text{p} = \frac{B_\text{v}l_\text{v}}{\mu_0H_\text{p}} = \frac{0{,}5\cdot0{,}6\cdot10^{-2}}{4\pi\cdot10^{-7}\cdot90\cdot10^3} = 0{,}026\,53\ \text{m} = 2{,}653\ \text{cm}$$
+Plocha z rovnosti toků: $S_\text{p} = B_\text{v}S_\text{v}/B_\text{p} = 0{,}5\cdot5/0{,}23 = 10{,}87\ \text{cm}^2$.
+'''
+
+[[question]]
+id = 'CVMO-10'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.12'
+text = '''
+Litinový prstenec kruhového průřezu $d = 4\ \text{cm}$, střední průměr $D_\text{s} = 15\ \text{cm}$, $N = 220$ závitů, $I = 1\ \text{A}$. Z magnetizační křivky litiny odpovídá vypočtené intenzitě indukce 0,38 T. Jaká je indukčnost cívky? Výsledek v mH.
+'''
+value = 105
+tolerance = 0.6
+unit = 'mH'
+explanation = '''
+$$H = \frac{NI}{\pi D_\text{s}} = \frac{220}{\pi\cdot0{,}15} = 467\ \text{A/m} \;\Rightarrow\; B = 0{,}38\ \text{T}$$
+$$\Phi = BS = 0{,}38\cdot\pi\cdot0{,}02^2 = 478\ \mu\text{Wb}, \qquad L = \frac{N\Phi}{I} = 220\cdot478\cdot10^{-6} = 105\ \text{mH}$$
+'''
+
+[[question]]
+id = 'CVMO-11'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.16'
+text = '''
+V mezeře toroidu délky 1,2 mm je indukce 0,8 T. Jaké magnetické napětí připadá na mezeru?
+'''
+value = 763.9
+tolerance = 1
+unit = 'A'
+explanation = '''
+$$U_\text{mv} = \frac{B_\text{v}}{\mu_0}l_\text{v} = \frac{0{,}8}{4\pi\cdot10^{-7}}\cdot1{,}2\cdot10^{-3} = 763{,}9\ \text{A}$$
+S magnetickým napětím jádra 87,96 A (sbírka) a $N = 200$ je budicí proud $(87{,}96 + 763{,}9)/200 = 4{,}26\ \text{A}$.
+'''
+
+[[question]]
+id = 'CVMO-12'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'Sbírka, př. 11.18'
+text = '''
+Elektromagnet s jádrem zanedbatelného magnetického odporu má cívku 1200 závitů a proud 4 A. Kotva je přitahována přes dvě mezery po 3 mm, pólové plochy mají 50 × 50 mm. Jak velká je přítažná síla?
+'''
+value = 2011
+tolerance = 5
+unit = 'N'
+explanation = '''
+Celé magnetické napětí připadá na dvě mezery: $NI = \dfrac{B_\text{v}}{\mu_0}\cdot2l_\text{v}$:
+$$B_\text{v} = \frac{\mu_0NI}{2l_\text{v}} = \frac{4\pi\cdot10^{-7}\cdot4800}{0{,}006} = 1{,}0053\ \text{T}$$
+$$F = \frac{B_\text{v}^2\cdot2S}{2\mu_0} = \frac{1{,}0053^2\cdot2\cdot2{,}5\cdot10^{-3}}{2\cdot4\pi\cdot10^{-7}} = 2011\ \text{N}$$
+'''
+
+[[question]]
+id = 'CVMO-13'
+topic = 'Výpočet magnetických obvodů'
+text = '''
+Které veličině elektrického obvodu odpovídá v magnetickém obvodu magnetický indukční tok $\Phi$?
+'''
+options = ['proudu $I$', 'napětí $U$', 'odporu $R$', 'výkonu $P$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Tok „teče“ magnetickým obvodem jako proud, pohání ho magnetické napětí $NI$ (obdoba napětí) přes magnetický odpor $R_\text{m}$: Hopkinsonův zákon $U_\text{m} = R_\text{m}\Phi$ je obdoba Ohmova zákona. V uzlu větveného obvodu je součet toků nulový jako u proudů.
+'''
+notes = [
+  '',
+  'Napětí odpovídá magnetické napětí $U_\text{m}$.',
+  'Odporu odpovídá magnetický odpor (reluktance).',
+  'Výkonová analogie se v magnetických obvodech nepoužívá.',
+]
+
+[[question]]
+id = 'CVMO-14'
+topic = 'Výpočet magnetických obvodů'
+text = '''
+Proč v obvodu s feromagnetickým jádrem a vzduchovou mezerou bývá většina magnetického napětí na mezeře, i když je o dva až tři řády kratší?
+'''
+options = [
+  'permeabilita vzduchu je stokrát až tisíckrát menší než železa, takže mezera má velký magnetický odpor',
+  'v mezeře je větší magnetický tok',
+  'v mezeře je menší indukce',
+  'mezera má větší průřez',
+]
+answer = 0
+explanation = '''
+$R_\text{m} = l/(\mu S)$. Při stejném toku a průřezu je indukce v mezeře i v železe stejná, ale intenzita $H = B/\mu$ je v mezeře $\mu_\text{r}$krát větší. Proto 1 mm vzduchu „spotřebuje“ tolik jako desítky centimetrů až metry železa.
+'''
+notes = [
+  '',
+  'V sériovém obvodu je tok všude stejný.',
+  'Při stejném průřezu je indukce stejná.',
+  'Větší průřez by odpor naopak zmenšil.',
+]

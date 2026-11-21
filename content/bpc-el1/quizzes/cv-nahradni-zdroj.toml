@@ -1,0 +1,211 @@
+name = 'Cvičení: věty o náhradním zdroji'
+description = 'Thévenin a Norton pro obvody s více zdroji, můstek, maximální výkon (sbírka kap. 8)'
+
+[[question]]
+id = 'CVNZ-01'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.1'
+text = '''
+Zdroj $U = 20\ \text{V}$ se sériovým $R_1 = 10\ \Omega$ napájí dvě paralelní větve: zátěž $R_2 = 20\ \Omega$ a sériovou dvojici $R_3 + R_4 = 10 + 40\ \Omega$. Jaké je napětí naprázdno $U_\text{i}$ náhradního zdroje pro zátěž $R_2$?
+'''
+value = 16.67
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+Bez $R_2$ zbude dělič $R_1$ a $R_3 + R_4$:
+$$U_\text{i} = U\,\frac{R_3 + R_4}{R_1 + R_3 + R_4} = 20\cdot\frac{50}{60} = 16{,}67\ \text{V}$$
+'''
+
+[[question]]
+id = 'CVNZ-02'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.1'
+text = '''
+Jaký je vnitřní odpor $R_\text{i}$ náhradního zdroje pro zátěž $R_2$ v tomtéž obvodu ($R_1 = 10\ \Omega$, $R_3 + R_4 = 50\ \Omega$)?
+'''
+value = 8.333
+tolerance = 0.005
+unit = 'Ω'
+explanation = '''
+Zdroj $U$ se nahradí zkratem; ze svorek zátěže jsou pak $R_1$ a $R_3 + R_4$ paralelně:
+$$R_\text{i} = \frac{R_1(R_3 + R_4)}{R_1 + R_3 + R_4} = \frac{10\cdot50}{60} = 8{,}333\ \Omega$$
+'''
+
+[[question]]
+id = 'CVNZ-03'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.1'
+text = '''
+S náhradním zdrojem $U_\text{i} = 16{,}667\ \text{V}$, $R_\text{i} = 8{,}333\ \Omega$ urči výkon na zátěži $R_2 = 20\ \Omega$.
+'''
+value = 6.92
+tolerance = 0.02
+unit = 'W'
+explanation = '''
+$$I_2 = \frac{U_\text{i}}{R_\text{i} + R_2} = \frac{16{,}667}{28{,}333} = 0{,}588\,2\ \text{A}, \quad U_2 = 20\cdot0{,}588\,2 = 11{,}76\ \text{V}, \quad P_2 = U_2I_2 = 6{,}92\ \text{W}$$
+'''
+
+[[question]]
+id = 'CVNZ-04'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.1'
+text = '''
+Tentýž obvod řeš Nortonovou větou. Jaký je proud nakrátko $I_\text{i}$ svorek zátěže $R_2$?
+'''
+value = 2
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+Zkrat na místě $R_2$ zkratuje i větev $R_3 + R_4$, takže proud omezuje jen $R_1$:
+$$I_\text{i} = \frac{U}{R_1} = \frac{20}{10} = 2\ \text{A}, \qquad G_\text{i} = \frac{1}{R_1} + \frac{1}{R_3 + R_4} = 0{,}1 + 0{,}02 = 0{,}12\ \text{S}$$
+$$I_2 = I_\text{i}\,\frac{G_2}{G_\text{i} + G_2} = 2\cdot\frac{0{,}05}{0{,}17} = 0{,}588\,2\ \text{A}$$
+Tady je Nortonova varianta jednodušší, protože proud nakrátko je hned vidět.
+'''
+
+[[question]]
+id = 'CVNZ-05'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.2'
+text = '''
+Zdroj $U = 10\ \text{V}$ se sériovým $R_1 = 10\ \Omega$ napájí uzel A. Z uzlu A vede k zemi $R_2 = 20\ \Omega$ a zdroj proudu $I_\text{z} = 2\ \text{A}$ (odebírá proud z uzlu A). Z uzlu A vede $R_3 = 10\ \Omega$ ke svorce, na kterou se připojuje zátěž $R_4 = 40\ \Omega$ (druhá svorka je zem). Jaké je napětí naprázdno $U_\text{i}$?
+'''
+value = -6.667
+tolerance = 0.01
+unit = 'V'
+sign_hint = 'Zdroj proudu odebírá víc, než dodá zdroj napětí, napětí uzlu je záporné.'
+explanation = '''
+Naprázdno neteče $R_3$ proud, $U_\text{i}$ je napětí uzlu A. MUN pro jeden uzel ($G_1 = 0{,}1$, $G_2 = 0{,}05\ \text{S}$):
+$$(G_1 + G_2)\,U_\text{i} = UG_1 - I_\text{z} \quad\Rightarrow\quad U_\text{i} = \frac{10\cdot0{,}1 - 2}{0{,}15} = \frac{-1}{0{,}15} = -6{,}667\ \text{V}$$
+'''
+
+[[question]]
+id = 'CVNZ-06'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.2'
+text = '''
+V tomtéž obvodu je $U_\text{i} = -6{,}667\ \text{V}$. Urči $R_\text{i}$ a výkon na zátěži $R_4 = 40\ \Omega$.
+'''
+value = 0.5536
+tolerance = 0.003
+unit = 'W'
+explanation = '''
+Zdroj napětí zkrat, zdroj proudu rozpojit: $R_\text{i} = R_3 + R_1 \parallel R_2 = 10 + \dfrac{10\cdot20}{30} = 16{,}67\ \Omega$.
+$$I_4 = \frac{U_\text{i}}{R_\text{i} + R_4} = \frac{-6{,}667}{56{,}67} = -0{,}117\,6\ \text{A}, \quad U_4 = 40\cdot(-0{,}117\,6) = -4{,}706\ \text{V}$$
+$$P_4 = U_4I_4 = (-4{,}706)(-0{,}117\,6) = 0{,}553\,6\ \text{W}$$
+Výkon na rezistoru je kladný vždy, i když proud teče proti šipce.
+'''
+
+[[question]]
+id = 'CVNZ-07'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.3'
+text = '''
+Když se ve sbírce 8.3 zdroje vyřadí, je ze svorek zátěže $R_4$ vidět $R_3 = 82\ \Omega$ paralelně se sériovou dvojicí $R_1 + R_2 = 100 + 120\ \Omega$. Jakou hodnotu musí mít $R_4$, aby do něj šel největší výkon?
+'''
+value = 59.74
+tolerance = 0.05
+unit = 'Ω'
+explanation = '''
+Maximální výkon je při $R_4 = R_\text{i}$:
+$$R_\text{i} = \frac{(R_1 + R_2)R_3}{R_1 + R_2 + R_3} = \frac{220\cdot82}{302} = 59{,}74\ \Omega$$
+'''
+
+[[question]]
+id = 'CVNZ-08'
+kind = 'numeric'
+topic = 'Přenos výkonu'
+source = 'Sbírka, př. 8.3'
+text = '''
+Náhradní zdroj z předchozí otázky má $U_\text{i} = 40{,}73\ \text{V}$ a $R_\text{i} = 59{,}74\ \Omega$. Jaký největší výkon dodá do zátěže?
+'''
+value = 6.942
+tolerance = 0.01
+unit = 'W'
+explanation = '''
+$$P_\text{max} = \frac{U_\text{i}^2}{4R_\text{i}} = \frac{40{,}73^2}{4\cdot59{,}74} = \frac{1659}{238{,}96} = 6{,}942\ \text{W}$$
+Stejně: $I_4 = 40{,}73/119{,}48 = 0{,}340\,9\ \text{A}$, $U_4 = 20{,}36\ \text{V}$, $P_4 = 6{,}942\ \text{W}$.
+'''
+
+[[question]]
+id = 'CVNZ-09'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.4'
+text = '''
+Zdroj $U = 20\ \text{V}$ napájí dělič $R_3 = R_4 = 10\ \Omega$. Ze středu děliče vede $R_1 = 15\ \Omega$ k zátěži $R_2 = 20\ \Omega$, jejíž druhý konec je na spodní svorce děliče. Jaký proud teče zátěží?
+'''
+value = 0.25
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+$$U_\text{i} = U\,\frac{R_4}{R_3 + R_4} = 10\ \text{V}, \qquad R_\text{i} = R_1 + \frac{R_3R_4}{R_3 + R_4} = 15 + 5 = 20\ \Omega$$
+$$I_2 = \frac{U_\text{i}}{R_\text{i} + R_2} = \frac{10}{40} = 0{,}25\ \text{A}$$
+Zátěž má $U_2 = 5\ \text{V}$ a $P_2 = 1{,}25\ \text{W}$; protože $R_2 = R_\text{i}$, je to zrovna maximální výkon.
+'''
+
+[[question]]
+id = 'CVNZ-10'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'Sbírka, př. 8.6'
+text = '''
+Můstek z obrázku: $U = 2\ \text{V}$, $R_1 = R_3 = 20\ \Omega$, $R_2 = 40\ \Omega$, $R_4 = 10\ \Omega$, $R_\text{G} = 25\ \Omega$. Větou o náhradním zdroji urči velikost proudu $I_\text{G}$ v mA.
+'''
+figure = 'images/cv-mustek.svg'
+value = 14.81
+tolerance = 0.03
+unit = 'mA'
+explanation = '''
+$$U_\text{i} = U\left(\frac{R_2}{R_1 + R_2} - \frac{R_4}{R_3 + R_4}\right) = 2\left(\frac{40}{60} - \frac{10}{30}\right) = 0{,}666\,7\ \text{V}$$
+$$R_\text{i} = \frac{20\cdot40}{60} + \frac{20\cdot10}{30} = 13{,}33 + 6{,}667 = 20\ \Omega, \qquad I_\text{G} = \frac{0{,}666\,7}{20 + 25} = 14{,}81\ \text{mA}$$
+Tentýž můstek dá metodou smyčkových proudů $I_\text{G} = I_\text{s1} - I_\text{s2} = 0{,}014\,81\ \text{A}$ (COZ2, př. 2.9).
+'''
+
+[[question]]
+id = 'CVNZ-11'
+topic = 'Věty o náhradním zdroji'
+text = '''
+Jak se při určování vnitřního odporu $R_\text{i}$ naloží s nezávislými zdroji ve zbytku obvodu?
+'''
+options = [
+  'zdroje napětí se zkratují, zdroje proudu rozpojí',
+  'zdroje napětí se rozpojí, zdroje proudu zkratují',
+  'všechny zdroje se zkratují',
+  'zdroje zůstanou, $R_\text{i}$ se změří ohmmetrem',
+]
+answer = 0
+explanation = '''
+Vyřazený zdroj se nahradí svým vnitřním odporem: ideální zdroj napětí má nulový (zkrat), ideální zdroj proudu nekonečný (rozpojení). Řízené zdroje se nevyřazují.
+'''
+notes = [
+  '',
+  'Přesně obráceně.',
+  'Zkratovaný zdroj proudu by do obvodu přidal spojení, které tam není.',
+  'Ohmmetr do obvodu se zdroji nepatří; i v laboratoři se zdroj nejdřív nahradí zkratem.',
+]
+
+[[question]]
+id = 'CVNZ-12'
+topic = 'Přenos výkonu'
+text = '''
+Zátěž je výkonově přizpůsobená ($R_\text{z} = R_\text{i}$). Jaká je účinnost přenosu z ideálního zdroje $U_\text{i}$ do zátěže?
+'''
+options = ['50 %', '100 %', '25 %', 'záleží na $U_\text{i}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Na $R_\text{i}$ i na $R_\text{z}$ teče stejný proud a mají stejný odpor, takže se výkon dělí napůl: $\eta = R_\text{z}/(R_\text{i} + R_\text{z}) = 1/2$. Vyšší účinnost dává větší zátěž, ale menší výkon.
+'''
+notes = [
+  '',
+  'Sto procent by bylo jen při $R_\text{i} = 0$ nebo nekonečné zátěži.',
+  'Čtvrtina se objevuje ve vzorci $P_\text{max} = U_\text{i}^2/(4R_\text{i})$, ne v účinnosti.',
+  'Účinnost závisí jen na poměru odporů.',
+]

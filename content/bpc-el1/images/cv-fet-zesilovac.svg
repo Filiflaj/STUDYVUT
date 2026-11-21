@@ -1,0 +1,41 @@
+<svg viewBox="0 0 500 230" width="500" class="fig" role="img" aria-label="Výpočetní schéma zesilovače s FET: zdroj I do uzlu 1, G1 z uzlu 1 k zemi, G2 mezi uzly 1 a 2, G3 z uzlu 2 k zemi, ZPŘN gm·U10 z uzlu 2 k zemi">
+<circle cx="50" cy="120" r="14" class="s"/>
+<line x1="36" y1="120" x2="64" y2="120" class="s"/>
+<polyline points="50,50 50,106" class="s"/>
+<polyline points="50,134 50,190" class="s"/>
+<line x1="28" y1="138" x2="28" y2="102" class="v" marker-end="url(#m-v)"/>
+<text x="22" y="124" text-anchor="end"><tspan class="it">I</tspan></text>
+<rect x="133" y="100" width="14" height="40" class="s"/>
+<text x="154" y="125"><tspan class="it">G</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="140,50 140,100" class="s"/>
+<polyline points="140,140 140,190" class="s"/>
+<rect x="200" y="43" width="40" height="14" class="s"/>
+<text x="220" y="37" text-anchor="middle"><tspan class="it">G</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="50,50 200,50" class="s"/>
+<polyline points="240,50 420,50" class="s"/>
+<circle cx="300" cy="120" r="14" class="s"/>
+<line x1="286" y1="120" x2="314" y2="120" class="s"/>
+<polyline points="300,50 300,106" class="s"/>
+<polyline points="300,134 300,190" class="s"/>
+<line x1="322" y1="104" x2="322" y2="136" class="v" marker-end="url(#m-v)"/>
+<text x="328" y="124"><tspan class="it">g</tspan><tspan class="sm" dy="4">m</tspan><tspan dy="-4" class="it">U</tspan><tspan class="sm" dy="4">10</tspan><tspan dy="-4"></tspan></text>
+<rect x="413" y="100" width="14" height="40" class="s"/>
+<text x="434" y="125"><tspan class="it">G</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="420,50 420,100" class="s"/>
+<polyline points="420,140 420,190" class="s"/>
+<polyline points="50,190 420,190" class="s"/>
+<circle cx="140" cy="50" r="3.2" class="pt"/>
+<circle cx="140" cy="190" r="3.2" class="pt"/>
+<circle cx="300" cy="50" r="3.2" class="pt"/>
+<circle cx="300" cy="190" r="3.2" class="pt"/>
+<circle cx="140" cy="26" r="9" class="s1"/>
+<text x="140" y="31" class="sm" text-anchor="middle">1</text>
+<circle cx="300" cy="26" r="9" class="s1"/>
+<text x="300" y="31" class="sm" text-anchor="middle">2</text>
+<circle cx="220" cy="212" r="9" class="s1"/>
+<text x="220" y="217" class="sm" text-anchor="middle">0</text>
+<line x1="100" y1="90" x2="100" y2="150" class="f" marker-end="url(#m-f)"/>
+<text x="94" y="125" class="acc" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<line x1="455" y1="90" x2="455" y2="150" class="f" marker-end="url(#m-f)"/>
+<text x="461" y="125" class="acc"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+</svg>

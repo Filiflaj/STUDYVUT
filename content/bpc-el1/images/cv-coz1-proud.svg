@@ -1,0 +1,23 @@
+<svg viewBox="0 0 380 170" width="380" class="fig" role="img" aria-label="Proud induktorem: nula do 2 ms, lineárně na 10 mA ve 4 ms, lineárně na nulu v 9 ms">
+<line x1="55" y1="130" x2="365" y2="130" class="v" marker-end="url(#m-v)"/>
+<line x1="55" y1="134" x2="55" y2="12" class="v" marker-end="url(#m-v)"/>
+<line x1="113" y1="127" x2="113" y2="133" class="s1"/>
+<text x="113" y="148" class="sm" text-anchor="middle">2</text>
+<line x1="171" y1="127" x2="171" y2="133" class="s1"/>
+<text x="171" y="148" class="sm" text-anchor="middle">4</text>
+<line x1="229" y1="127" x2="229" y2="133" class="s1"/>
+<text x="229" y="148" class="sm" text-anchor="middle">6</text>
+<line x1="287" y1="127" x2="287" y2="133" class="s1"/>
+<text x="287" y="148" class="sm" text-anchor="middle">8</text>
+<line x1="345" y1="127" x2="345" y2="133" class="s1"/>
+<text x="345" y="148" class="sm" text-anchor="middle">10</text>
+<line x1="52" y1="80" x2="58" y2="80" class="s1"/>
+<text x="48" y="85" class="sm" text-anchor="end">5</text>
+<line x1="55" y1="80" x2="345" y2="80" class="d"/>
+<line x1="52" y1="30" x2="58" y2="30" class="s1"/>
+<text x="48" y="35" class="sm" text-anchor="end">10</text>
+<line x1="55" y1="30" x2="345" y2="30" class="d"/>
+<polyline points="55.0,130.0 113.0,130.0 171.0,30.0 316.0,130.0 345.0,130.0" class="f"/>
+<text x="363" y="122.0" class="sm" text-anchor="end"><tspan class="it">t</tspan> (ms)</text>
+<text x="61" y="20" class="sm"><tspan class="it">i</tspan> (mA)</text>
+</svg>

@@ -1,0 +1,259 @@
+name = 'Cvičení: základní pojmy, prvky a zdroje'
+description = 'modely zdrojů, výkon a účinnost, energie v cívce a kapacitoru (sbírka kap. 1)'
+
+[[question]]
+id = 'CVZZ-01'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.1'
+text = '''
+Zdroj má napětí naprázdno 13 V. Při odběru 20 A klesne svorkové napětí na 12 V. Jaký je jeho vnitřní odpor $R_\text{i}$?
+'''
+value = 0.05
+tolerance = 0.001
+unit = 'Ω'
+explanation = '''
+Naprázdno neteče proud, takže $U_\text{i} = U_0 = 13\ \text{V}$. Při zatížení chybí úbytek na vnitřním odporu:
+$$R_\text{i} = \frac{U_0 - U}{I} = \frac{13 - 12}{20} = 0{,}05\ \Omega$$
+'''
+
+[[question]]
+id = 'CVZZ-02'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.1'
+text = '''
+Tentýž zdroj ($U_\text{i} = 13\ \text{V}$, $R_\text{i} = 0{,}05\ \Omega$) nahraď proudovým modelem. Jaký je proud ideálního zdroje proudu $I_\text{i}$?
+'''
+value = 260
+tolerance = 1
+unit = 'A'
+explanation = '''
+$$I_\text{i} = \frac{U_\text{i}}{R_\text{i}} = \frac{13}{0{,}05} = 260\ \text{A}, \qquad G_\text{i} = \frac{1}{R_\text{i}} = 20\ \text{S}$$
+Je to i proud nakrátko. Akumulátor by ho ve skutečnosti nevydržel, model platí jen v okolí běžného odběru.
+'''
+
+[[question]]
+id = 'CVZZ-03'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.3'
+text = '''
+Dva články jsou spojené paralelně a nic dalšího k nim není připojené: $U_\text{i1} = 1{,}6\ \text{V}$, $R_\text{i1} = 0{,}8\ \Omega$ (nový) a $U_\text{i2} = 1{,}45\ \text{V}$, $R_\text{i2} = 1{,}2\ \Omega$ (starší), kladné svorky spolu. Jaký vyrovnávací proud $I_\text{v}$ jimi teče?
+'''
+value = 0.075
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+2. KZ pro smyčku z obou článků: $R_\text{i1}I_\text{v} + R_\text{i2}I_\text{v} + U_\text{i2} - U_\text{i1} = 0$:
+$$I_\text{v} = \frac{U_\text{i1} - U_\text{i2}}{R_\text{i1} + R_\text{i2}} = \frac{1{,}6 - 1{,}45}{0{,}8 + 1{,}2} = \frac{0{,}15}{2} = 0{,}075\ \text{A}$$
+Proud teče i bez zátěže a vybíjí nový článek do starého. Proto se rozdílné články paralelně nespojují.
+'''
+
+[[question]]
+id = 'CVZZ-04'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.3'
+text = '''
+Jaké svorkové napětí $U$ mají tytéž dva paralelní články ($I_\text{v} = 0{,}075\ \text{A}$ teče z článku 1 do článku 2)?
+'''
+value = 1.54
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+Na starším článku proud vtéká do kladné svorky, takže k jeho vnitřnímu napětí se úbytek přičítá:
+$$U = U_\text{i2} + R_\text{i2}I_\text{v} = 1{,}45 + 1{,}2\cdot0{,}075 = 1{,}54\ \text{V}$$
+Kontrola z druhé strany: $U = U_\text{i1} - R_\text{i1}I_\text{v} = 1{,}6 - 0{,}06 = 1{,}54\ \text{V}$.
+'''
+
+[[question]]
+id = 'CVZZ-05'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.4'
+text = '''
+Dva reálné zdroje napětí jsou spojené paralelně, ale **proti sobě**: $U_1 = 70\ \text{V}$ s $R_1 = 9\ \Omega$ má kladnou svorku nahoře, $U_2 = 50\ \text{V}$ s $R_2 = 15\ \Omega$ dole. Jaké napětí $U$ je mezi horní a dolní svorkou (+ nahoře)?
+'''
+value = 25
+tolerance = 0.2
+unit = 'V'
+explanation = '''
+Převod na zdroje proudu: $I_1 = U_1/R_1 = 70/9 = 7{,}778\ \text{A}$ nahoru, $I_2 = U_2/R_2 = 50/15 = 3{,}333\ \text{A}$ dolů; vodivosti $G_1 = 0{,}111\,1\ \text{S}$, $G_2 = 0{,}066\,67\ \text{S}$. Jeden uzel, 1. KZ:
+$$U = \frac{I_1 - I_2}{G_1 + G_2} = \frac{7{,}778 - 3{,}333}{0{,}177\,8} = \frac{4{,}445}{0{,}177\,8} = 25{,}0\ \text{V}$$
+Stejně z 2. KZ: smyčkou teče $I = (70 + 50)/(9 + 15) = 5\ \text{A}$ a $U = 70 - 9\cdot5 = 25\ \text{V}$.
+'''
+
+[[question]]
+id = 'CVZZ-06'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.5'
+text = '''
+Dva články v sérii ($U_\text{i1} = 1{,}6\ \text{V}$, $R_\text{i1} = 0{,}8\ \Omega$ a $U_\text{i2} = 1{,}2\ \text{V}$, $R_\text{i2} = 4\ \Omega$, souhlasně) napájejí zátěž $R_\text{z} = 3\ \Omega$. Jaké je svorkové napětí $U_2$ druhého (slabšího) článku, měřené ve stejném smyslu jako jeho $U_\text{i2}$?
+'''
+value = -0.236
+tolerance = 0.003
+unit = 'V'
+sign_hint = 'Úbytek na velkém vnitřním odporu je větší než napětí článku, svorkové napětí je záporné.'
+explanation = '''
+$$I = \frac{U_\text{i1} + U_\text{i2}}{R_\text{i1} + R_\text{i2} + R_\text{z}} = \frac{2{,}8}{7{,}8} = 0{,}359\,0\ \text{A}$$
+$$U_2 = U_\text{i2} - R_\text{i2}I = 1{,}2 - 4\cdot0{,}359\,0 = -0{,}236\ \text{V}$$
+Slabší článek s velkým vnitřním odporem otočil polaritu svého svorkového napětí (pro $R_\text{z} = 5\ \Omega$ by ještě vyšlo +0,057 V). Proto se nové a staré články nespojují ani do série.
+'''
+
+[[question]]
+id = 'CVZZ-07'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'Sbírka, př. 1.6'
+text = '''
+Mezi svorkami a, b jsou paralelně tři větve, každá se zdrojem napětí a rezistorem; všechny zdroje mají + u svorky a: $U_1 = 10\ \text{V}$ s $R_1 = 5\ \Omega$, $U_2 = 20\ \text{V}$ s $R_2 = 10\ \Omega$, $U_3 = 30\ \text{V}$ s $R_3$. Jaké musí být $R_3$, aby $U_{ab} = 20\ \text{V}$?
+'''
+value = 5
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+1. KZ pro uzel a (proudy větvemi do uzlu a): $\dfrac{U_1 - U_{ab}}{R_1} + \dfrac{U_2 - U_{ab}}{R_2} + \dfrac{U_3 - U_{ab}}{R_3} = 0$
+$$\frac{10 - 20}{5} + \frac{20 - 20}{10} + \frac{30 - 20}{R_3} = 0 \quad\Rightarrow\quad -2 + 0 + \frac{10}{R_3} = 0 \quad\Rightarrow\quad R_3 = 5\ \Omega$$
+Je to totéž jako převod na zdroje proudu a 1. KZ (Millmanova věta).
+'''
+
+[[question]]
+id = 'CVZZ-08'
+topic = 'Základní pojmy a zdroje'
+text = '''
+Na prvku jsou šipky napětí a proudu nakreslené **souhlasně** (spotřebičová orientace). Výpočet dal $U = 5\ \text{V}$ a $I = -2\ \text{A}$. Co prvek dělá?
+'''
+options = [
+  'dodává do obvodu výkon 10 W',
+  'odebírá z obvodu výkon 10 W',
+  'odebírá výkon −10 W, to je chyba ve výpočtu',
+  'nic, výkon je nulový',
+]
+answer = 0
+explanation = '''
+Při spotřebičové orientaci je $P = UI$ výkon, který prvek **odebírá**: $P = 5\cdot(-2) = -10\ \text{W}$. Záporný odebíraný výkon znamená, že prvek 10 W dodává, pracuje jako zdroj. Skutečný proud teče opačně, než ukazuje šipka.
+'''
+notes = [
+  '',
+  'Platilo by pro kladný součin UI.',
+  'Záporné znaménko není chyba, jen říká, že skutečný směr je opačný než zvolená šipka.',
+  'Součin 5 · (−2) nulový není.',
+]
+
+[[question]]
+id = 'CVZZ-09'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+text = '''
+Přímotop s příkonem 2 kW topí 3 hodiny. Kolik elektrické energie spotřebuje? Výsledek zadej v MJ.
+'''
+value = 21.6
+tolerance = 0.05
+unit = 'MJ'
+explanation = '''
+$$W = P t = 2\ \text{kW}\cdot3\ \text{h} = 6\ \text{kWh} = 6\cdot3{,}6\ \text{MJ} = 21{,}6\ \text{MJ}$$
+($1\ \text{kWh} = 1000\ \text{W}\cdot3600\ \text{s} = 3{,}6\ \text{MJ}$.)
+'''
+
+[[question]]
+id = 'CVZZ-10'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+text = '''
+Elektromotor s účinností 90 % pohání generátor s účinností 85 %. Generátor dodává 3,06 kW. Jaký příkon odebírá motor ze sítě?
+'''
+value = 4.0
+tolerance = 0.02
+unit = 'kW'
+explanation = '''
+Účinnosti řetězce se násobí: $\eta = \eta_\text{M}\eta_\text{G} = 0{,}9\cdot0{,}85 = 0{,}765$.
+$$P_1 = \frac{P_2}{\eta} = \frac{3{,}06}{0{,}765} = 4{,}0\ \text{kW}$$
+Ztráty celého soustrojí jsou $4{,}0 - 3{,}06 = 0{,}94\ \text{kW}$.
+'''
+
+[[question]]
+id = 'CVZZ-11'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+text = '''
+Cívkou s indukčností $L = 4\ \text{mH}$ teče proud 10 mA. Jakou energii má její magnetické pole? Výsledek zadej v μJ.
+'''
+value = 0.2
+tolerance = 0.002
+unit = 'μJ'
+explanation = '''
+$$W_\text{m} = \frac12 L I^2 = \frac12\cdot4\cdot10^{-3}\cdot(10\cdot10^{-3})^2 = 2\cdot10^{-7}\ \text{J} = 0{,}2\ \mu\text{J}$$
+'''
+
+[[question]]
+id = 'CVZZ-12'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+text = '''
+Kapacitor $C = 2\ \mu\text{F}$ je nabitý na 4 V. Jakou energii má jeho elektrické pole? Výsledek zadej v μJ.
+'''
+value = 16
+tolerance = 0.05
+unit = 'μJ'
+explanation = '''
+$$W_\text{e} = \frac12 C U^2 = \frac12\cdot2\cdot10^{-6}\cdot4^2 = 16\cdot10^{-6}\ \text{J} = 16\ \mu\text{J}$$
+'''
+
+[[question]]
+id = 'CVZZ-13'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+text = '''
+Vybitý kapacitor $C = 10\ \mu\text{F}$ se nabíjí stálým proudem 2 mA po dobu 5 ms. Na jaké napětí se nabije?
+'''
+value = 1
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$u(t) = u(0) + \frac1C\int_0^t i\,\mathrm{d}t$, pro stálý proud je integrál obdélník $I t$:
+$$u = \frac{I t}{C} = \frac{2\cdot10^{-3}\cdot5\cdot10^{-3}}{10\cdot10^{-6}} = 1\ \text{V}$$
+'''
+
+[[question]]
+id = 'CVZZ-14'
+topic = 'Prvky R, L, C'
+text = '''
+Která dvojice veličin se v obvodu s reálnými prvky **nemůže změnit skokem**?
+'''
+options = [
+  'proud cívkou a napětí na kapacitoru',
+  'napětí na cívce a proud kapacitorem',
+  'proud cívkou a proud kapacitorem',
+  'napětí na cívce a napětí na kapacitoru',
+]
+answer = 0
+explanation = '''
+Energie $\tfrac12 L i^2$ a $\tfrac12 C u^2$ se nemůže změnit okamžitě (to by vyžadovalo nekonečný výkon). Proto je spojitý proud cívkou a napětí na kapacitoru. Skok proudu cívkou by podle $u = L\,\mathrm{d}i/\mathrm{d}t$ znamenal nekonečné napětí.
+'''
+notes = [
+  '',
+  'Právě tyto dvě veličiny skákat mohou (napětí na cívce je úměrné derivaci proudu).',
+  'Proud kapacitorem skákat může.',
+  'Napětí na cívce skákat může.',
+]
+
+[[question]]
+id = 'CVZZ-15'
+topic = 'Základní pojmy a zdroje'
+text = '''
+Jaký vnitřní odpor má **ideální zdroj proudu**?
+'''
+options = ['nekonečně velký', 'nulový', 'rovný odporu zátěže', 'záleží na proudu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Ideální zdroj proudu dodává stejný proud do jakékoli zátěže, jeho vnitřní vodivost je nulová, tedy $R_\text{i} \to \infty$. Proto se při hledání náhradního odporu obvodu **rozpojí**. Ideální zdroj napětí má naopak $R_\text{i} = 0$ a nahradí se zkratem.
+'''
+notes = [
+  '',
+  'Nulový vnitřní odpor má ideální zdroj napětí.',
+  'To je podmínka výkonového přizpůsobení, ne vlastnost zdroje.',
+  'Ideální zdroj má vnitřní odpor stálý.',
+]

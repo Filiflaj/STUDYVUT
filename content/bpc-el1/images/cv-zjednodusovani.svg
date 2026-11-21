@@ -1,0 +1,33 @@
+<svg viewBox="0 0 470 215" width="470" class="fig" role="img" aria-label="Příčkový obvod: zdroj U, podélný R1, příčný R2, podélný R3 a příčný R4; napětí U2 a U4, proud I1">
+<circle cx="50" cy="110" r="14" class="s"/>
+<line x1="50" y1="96" x2="50" y2="124" class="s"/>
+<polyline points="50,40 50,96" class="s"/>
+<polyline points="50,124 50,180" class="s"/>
+<line x1="28" y1="92" x2="28" y2="128" class="v" marker-end="url(#m-v)"/>
+<text x="22" y="115" text-anchor="end"><tspan class="it">U</tspan></text>
+<rect x="110" y="33" width="40" height="14" class="s"/>
+<text x="130" y="27" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="50,40 110,40" class="s"/>
+<polyline points="150,40 210,40" class="s"/>
+<rect x="203" y="90" width="14" height="40" class="s"/>
+<text x="224" y="115"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="210,40 210,90" class="s"/>
+<polyline points="210,130 210,180" class="s"/>
+<rect x="270" y="33" width="40" height="14" class="s"/>
+<text x="290" y="27" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="210,40 270,40" class="s"/>
+<polyline points="310,40 370,40" class="s"/>
+<rect x="363" y="90" width="14" height="40" class="s"/>
+<text x="384" y="115"><tspan class="it">R</tspan><tspan class="sm" dy="4">4</tspan><tspan dy="-4"></tspan></text>
+<polyline points="370,40 370,90" class="s"/>
+<polyline points="370,130 370,180" class="s"/>
+<polyline points="50,180 370,180" class="s"/>
+<circle cx="210" cy="40" r="3.2" class="pt"/>
+<circle cx="210" cy="180" r="3.2" class="pt"/>
+<line x1="113" y1="60" x2="147" y2="60" class="v" marker-end="url(#m-v)"/>
+<text x="130" y="78" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<line x1="180" y1="85" x2="180" y2="135" class="v" marker-end="url(#m-v)"/>
+<text x="174" y="115" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<line x1="415" y1="85" x2="415" y2="135" class="v" marker-end="url(#m-v)"/>
+<text x="422" y="115"><tspan class="it">U</tspan><tspan class="sm" dy="4">4</tspan><tspan dy="-4"></tspan></text>
+</svg>

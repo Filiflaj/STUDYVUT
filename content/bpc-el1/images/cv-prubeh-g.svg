@@ -1,0 +1,19 @@
+<svg viewBox="0 0 380 175" width="380" class="fig" role="img" aria-label="Obdélník: +Im do T/2, −Im od T/2 do 3T/4, nula od 3T/4 do T">
+<line x1="40" y1="88" x2="370" y2="88" class="v" marker-end="url(#m-v)"/>
+<line x1="45" y1="168" x2="45" y2="8" class="v" marker-end="url(#m-v)"/>
+<text x="369" y="82" class="it" text-anchor="middle">t</text>
+<text x="35" y="16" class="it" text-anchor="middle">i</text>
+<polyline points="45.0,88.0 45.0,30.0 45.0,30.0 195.0,30.0 195.0,30.0 195.0,146.0 195.0,146.0 270.0,146.0 270.0,146.0 270.0,88.0 270.0,88.0 345.0,88.0" class="f"/>
+<line x1="120" y1="84" x2="120" y2="92" class="s1"/>
+<text x="120" y="108" class="sm" text-anchor="middle">T/4</text>
+<line x1="195" y1="84" x2="195" y2="92" class="s1"/>
+<text x="195" y="108" class="sm" text-anchor="middle">T/2</text>
+<line x1="270" y1="84" x2="270" y2="92" class="s1"/>
+<text x="270" y="108" class="sm" text-anchor="middle">3T/4</text>
+<line x1="345" y1="84" x2="345" y2="92" class="s1"/>
+<text x="353" y="108" class="sm" text-anchor="middle">T</text>
+<line x1="45" y1="30" x2="345" y2="30" class="d"/>
+<text x="39" y="35" class="sm" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="3">m</tspan><tspan dy="-3"></tspan></text>
+<line x1="45" y1="146" x2="345" y2="146" class="d"/>
+<text x="39" y="151" class="sm" text-anchor="end">−<tspan class="it">I</tspan><tspan class="sm" dy="3">m</tspan><tspan dy="-3"></tspan></text>
+</svg>

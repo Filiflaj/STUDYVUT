@@ -1,0 +1,227 @@
+name = 'Cvičení: zjednodušování obvodu'
+description = 'sériové a paralelní spojení, děliče, metoda úměrných veličin, hvězda – trojúhelník (sbírka kap. 2 a 3)'
+
+[[question]]
+id = 'CVZJ-01'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.2'
+text = '''
+Zdroj $U = 20\ \text{V}$ napájí sériově $R_1$, dvojici $R_2 \parallel R_3$ a $R_4$; všechny rezistory mají 10 Ω. Jaký proud $I$ dodává zdroj?
+'''
+value = 0.8
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+$$R_{23} = \frac{R_2R_3}{R_2 + R_3} = \frac{10\cdot10}{20} = 5\ \Omega, \qquad R = R_1 + R_{23} + R_4 = 25\ \Omega, \qquad I = \frac{U}{R} = \frac{20}{25} = 0{,}8\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVZJ-02'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.2'
+text = '''
+V tomtéž obvodu ($I = 0{,}8\ \text{A}$, $R_{23} = 5\ \Omega$) urči proud $I_2$ rezistorem $R_2 = 10\ \Omega$.
+'''
+value = 0.4
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$U_2 = I R_{23} = 0{,}8\cdot5 = 4\ \text{V}, \qquad I_2 = \frac{U_2}{R_2} = \frac{4}{10} = 0{,}4\ \text{A}$$
+Stejné $R_2$ a $R_3$ si proud dělí napůl.
+'''
+
+[[question]]
+id = 'CVZJ-03'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.3'
+text = '''
+Zdroj $U = 20\ \text{V}$ napájí přes $R_1 = 10\ \Omega$ dvě paralelní větve: $R_2 = 20\ \Omega$ a druhou větev, ve které je dvojice $R_3 \parallel R_4$ ($R_3 = R_4 = 10\ \Omega$) v sérii s $R_5 = 15\ \Omega$. Jaký proud $I_3$ teče rezistorem $R_3$?
+'''
+value = 0.25
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+Zjednodušení: $R_{34} = 5\ \Omega$, $R_{345} = R_{34} + R_5 = 20\ \Omega$, $R_{2345} = 20 \parallel 20 = 10\ \Omega$, $R = R_1 + R_{2345} = 20\ \Omega$, $I = 20/20 = 1\ \text{A}$.
+
+Zpět: napětí na paralelních větvích $U_{AB} = U - R_1 I = 20 - 10 = 10\ \text{V}$, $I_2 = 10/20 = 0{,}5\ \text{A}$, $I_5 = I - I_2 = 0{,}5\ \text{A}$, napětí na $R_3 \parallel R_4$: $U_{AC} = U_{AB} - R_5I_5 = 10 - 7{,}5 = 2{,}5\ \text{V}$:
+$$I_3 = \frac{U_{AC}}{R_3} = \frac{2{,}5}{10} = 0{,}25\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVZJ-04'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.4'
+text = '''
+Ke zdroji $U = 50\ \text{V}$ je přímo připojen $R_2 = 20\ \Omega$ a vedle něj větev s $R_1 = 10\ \Omega$ v sérii s dvojicí $R_3 \parallel R_4$ ($R_3 = 20\ \Omega$, $R_4 = 10\ \Omega$). Jaký celkový proud $I$ dodává zdroj?
+'''
+value = 5.5
+tolerance = 0.02
+unit = 'A'
+explanation = '''
+$R_2$ má celé napětí zdroje: $I_2 = 50/20 = 2{,}5\ \text{A}$. Druhá větev: $R_{34} = \dfrac{20\cdot10}{30} = 6{,}667\ \Omega$, $R_1 + R_{34} = 16{,}67\ \Omega$, $I_1 = 50/16{,}67 = 3\ \text{A}$.
+$$I = I_1 + I_2 = 3 + 2{,}5 = 5{,}5\ \text{A}$$
+(Dál $I_3 = 1\ \text{A}$, $I_4 = 2\ \text{A}$.)
+'''
+
+[[question]]
+id = 'CVZJ-05'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.6'
+text = '''
+Zdroj $U = 30\ \text{V}$ je v sérii s $R_5 = 20\ \Omega$. Za ním je $R_2 = 10\ \Omega$ paralelně s větví $R_1 = 20\ \Omega$ + ($R_3 \parallel R_4$), kde $R_3 = 20\ \Omega$, $R_4 = 40\ \Omega$. Jaký proud $I_1$ teče rezistorem $R_1$?
+'''
+value = 0.25
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$R_{34} = \dfrac{20\cdot40}{60} = 13{,}33\ \Omega$, $R_{134} = 20 + 13{,}33 = 33{,}33\ \Omega$, $R_2 \parallel R_{134} = \dfrac{10\cdot33{,}33}{43{,}33} = 7{,}692\ \Omega$, $R = 7{,}692 + 20 = 27{,}69\ \Omega$.
+$$I = \frac{30}{27{,}69} = 1{,}083\ \text{A}, \qquad U_2 = U - R_5I = 30 - 21{,}67 = 8{,}333\ \text{V}, \qquad I_1 = \frac{U_2}{R_{134}} = \frac{8{,}333}{33{,}33} = 0{,}25\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVZJ-06'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.8'
+text = '''
+Zdroj $U = 10\ \text{V}$ napájí přes $R_2 = 13\ \text{k}\Omega$ dvě paralelní větve: $R_3 = 3\ \text{k}\Omega$ a sériovou dvojici $R_1 + R_4 = 3 + 2\ \text{k}\Omega$. Jaký proud $I_3$ teče rezistorem $R_3$? Výsledek zadej v mA.
+'''
+value = 0.4202
+tolerance = 0.002
+unit = 'mA'
+explanation = '''
+$R_3 \parallel (R_1 + R_4) = \dfrac{3\cdot5}{8} = 1{,}875\ \text{k}\Omega$, $R = 13 + 1{,}875 = 14{,}875\ \text{k}\Omega$, $I = 10/14{,}875 = 0{,}672\,3\ \text{mA}$. Dělič proudu (v čitateli odpor **druhé** větve):
+$$I_3 = I\,\frac{R_1 + R_4}{R_3 + R_1 + R_4} = 0{,}672\,3\cdot\frac58 = 0{,}420\,2\ \text{mA}, \qquad I_4 = 0{,}672\,3\cdot\frac38 = 0{,}252\,1\ \text{mA}$$
+'''
+warning = 'Sbírka uvádí I3 = 0,4213 mA a I4 = 0,2528 mA, jejich součet ale nedává celkový proud 0,6723 mA. Správně je 0,4202 a 0,2521 mA (stejně vyšlo i v PC4, př. 5).'
+
+[[question]]
+id = 'CVZJ-07'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 2.10'
+text = '''
+Ke zdroji $U = 50\ \text{V}$ je přímo připojen $R_2 = 60\ \Omega$ a vedle něj větev: $R_1 = 10\ \Omega$ v sérii s paralelní dvojicí, kterou tvoří $R_3 = 20\ \Omega$ a sériové $R_4 + R_5 = 10 + 30\ \Omega$. Jaký proud $I_1$ teče rezistorem $R_1$?
+'''
+value = 2.143
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+$R_3 \parallel (R_4 + R_5) = \dfrac{20\cdot40}{60} = 13{,}33\ \Omega$, větev má $10 + 13{,}33 = 23{,}33\ \Omega$:
+$$I_1 = \frac{50}{23{,}33} = 2{,}143\ \text{A}, \qquad I_3 = 2{,}143\cdot\frac{40}{60} = 1{,}429\ \text{A}, \qquad I_4 = 0{,}714\ \text{A}, \qquad I_2 = \frac{50}{60} = 0{,}833\ \text{A}$$
+'''
+
+[[question]]
+id = 'CVZJ-08'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 3.5'
+text = '''
+Řeš **metodou úměrných veličin**: zdroj $U = 30\ \text{V}$ v sérii s $R_5 = 20\ \Omega$, za ním $R_2 = 40\ \Omega$ paralelně s větví $R_1 = 20\ \Omega$ + ($R_3 \parallel R_4$), $R_3 = 10\ \Omega$, $R_4 = 20\ \Omega$. Jaký proud $I_4$ teče rezistorem $R_4$?
+'''
+value = 0.1667
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+Zvolím $I_4' = 1\ \text{A}$ a jdu ke zdroji:
+$$U_4' = R_4I_4' = 20\ \text{V}, \quad I_3' = \frac{20}{10} = 2\ \text{A}, \quad I_1' = 3\ \text{A}, \quad U_2' = U_4' + R_1I_1' = 20 + 60 = 80\ \text{V}$$
+$$I_2' = \frac{80}{40} = 2\ \text{A}, \quad I' = I_1' + I_2' = 5\ \text{A}, \quad U' = U_2' + R_5I' = 80 + 100 = 180\ \text{V}$$
+$$k = \frac{U}{U'} = \frac{30}{180} = 0{,}166\,7, \qquad I_4 = k\,I_4' = 0{,}166\,7\ \text{A}$$
+(Sbírka píše $I_4 = 0{,}1\overline{6}$ s pruhem nad šestkou, tedy totéž.)
+'''
+
+[[question]]
+id = 'CVZJ-09'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'Sbírka, př. 3.2'
+text = '''
+Příčkový obvod: $U = 10\ \text{V}$, podélné $R_1 = R_3 = 3\ \text{k}\Omega$, příčné $R_2 = 13\ \text{k}\Omega$ (za $R_1$), $R_4 = 2\ \text{k}\Omega$ a $R_5 = 4\ \text{k}\Omega$ (oba na konci za $R_3$, paralelně). Metodou úměrných veličin s volbou $I_5' = 1\ \text{mA}$ urči napětí $U_{20}$ na $R_4$ a $R_5$.
+'''
+value = 1.6
+tolerance = 0.005
+unit = 'V'
+explanation = '''
+$$U_{20}' = R_5I_5' = 4\ \text{V}, \quad I_4' = \frac{4}{2} = 2\ \text{mA}, \quad I_3' = 3\ \text{mA}, \quad U_{10}' = U_{20}' + R_3I_3' = 4 + 9 = 13\ \text{V}$$
+$$I_2' = \frac{13}{13} = 1\ \text{mA}, \quad I_1' = 4\ \text{mA}, \quad U' = U_{10}' + R_1I_1' = 13 + 12 = 25\ \text{V}$$
+$$k = \frac{10}{25} = 0{,}4, \qquad U_{20} = k\,U_{20}' = 0{,}4\cdot4 = 1{,}6\ \text{V}$$
+Kilo-ohmy krát miliampéry dávají rovnou volty.
+'''
+
+[[question]]
+id = 'CVZJ-10'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+text = '''
+Trojúhelník $R_{12} = 10\ \Omega$, $R_{23} = 20\ \Omega$, $R_{31} = 30\ \Omega$ převeď na hvězdu. Jaký je odpor $R_{20}$ u uzlu 2?
+'''
+figure = 'images/cv-hvezda-trojuhelnik.svg'
+value = 3.333
+tolerance = 0.005
+unit = 'Ω'
+explanation = '''
+Rezistor hvězdy u uzlu 2 je součin dvou stran trojúhelníku, které z uzlu 2 vycházejí, lomeno součtem všech tří:
+$$R_{20} = \frac{R_{23}R_{12}}{R_{12} + R_{23} + R_{31}} = \frac{20\cdot10}{60} = 3{,}333\ \Omega$$
+(Dál $R_{10} = 10\cdot30/60 = 5\ \Omega$, $R_{30} = 30\cdot20/60 = 10\ \Omega$.)
+'''
+
+[[question]]
+id = 'CVZJ-11'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+text = '''
+Hvězdu ze tří stejných rezistorů po 10 Ω převeď na trojúhelník. Jaký odpor má každá jeho strana?
+'''
+value = 30
+tolerance = 0.01
+unit = 'Ω'
+explanation = '''
+$$R_{12} = R_{10} + R_{20} + \frac{R_{10}R_{20}}{R_{30}} = 10 + 10 + \frac{10\cdot10}{10} = 30\ \Omega$$
+Pro stejné odpory obecně $R_\Delta = 3R_\text{Y}$.
+'''
+
+[[question]]
+id = 'CVZJ-12'
+topic = 'Zjednodušování obvodu'
+text = '''
+Kdy diagonálou můstku z obrázku neteče žádný proud?
+'''
+figure = 'images/cv-mustek.svg'
+options = ['$R_1R_4 = R_2R_3$', '$R_1R_2 = R_3R_4$', '$R_1 + R_4 = R_2 + R_3$', '$R_\text{G} = R_1 \parallel R_2$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Diagonála spojuje středy děličů $R_1$–$R_2$ a $R_3$–$R_4$. Proud jí neteče, když jsou obě napětí stejná:
+$$\frac{R_2}{R_1 + R_2} = \frac{R_4}{R_3 + R_4} \quad\Leftrightarrow\quad R_2R_3 = R_1R_4$$
+Vyvážení nezávisí na napětí zdroje ani na $R_\text{G}$.
+'''
+notes = [
+  '',
+  'Násobí se protilehlé rezistory, ne sousední.',
+  'Rovnost součtů s vyvážením nesouvisí.',
+  'Odpor diagonály na vyvážení vliv nemá.',
+]
+
+[[question]]
+id = 'CVZJ-13'
+topic = 'Zjednodušování obvodu'
+text = '''
+Proud $I$ se dělí do dvou paralelních rezistorů $R_1$ a $R_2$. Jaký proud teče rezistorem $R_2$?
+'''
+options = ['$I\,\dfrac{R_1}{R_1 + R_2}$', '$I\,\dfrac{R_2}{R_1 + R_2}$', '$I\,\dfrac{R_1R_2}{R_1 + R_2}$', '$\dfrac{I}{2}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Oba rezistory mají stejné napětí $U = I\,\dfrac{R_1R_2}{R_1 + R_2}$, takže $I_2 = \dfrac{U}{R_2} = I\,\dfrac{R_1}{R_1 + R_2}$. Větším odporem teče menší proud, proto je v čitateli odpor **druhé** větve. S vodivostmi: $I_2 = I\,G_2/(G_1 + G_2)$.
+'''
+notes = [
+  '',
+  'To je vzorec děliče napětí; u proudového děliče je v čitateli druhý odpor.',
+  'To je napětí na paralelní dvojici, ne proud.',
+  'Napůl jen pro stejné odpory.',
+]

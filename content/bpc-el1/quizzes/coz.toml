@@ -1,0 +1,1269 @@
+name = 'Pracovní sešity COZ1–COZ6'
+description = 'příklady z pracovních sešitů ke cvičením, s postupem a výsledkem'
+
+# ------------------------------------------------------------------ COZ1
+
+[[question]]
+id = 'COZ1-01'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.1'
+text = '''
+Induktorem teče proud $i = 5t^2$ (A, $t$ v sekundách). Jaké napětí je na něm v čase $t = 1\ \text{s}$? List indukčnost neuvádí, počítej s $L = 1\ \text{H}$.
+'''
+value = 10
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$u = L\frac{\mathrm{d}i}{\mathrm{d}t} = 1\cdot10t \quad\Rightarrow\quad u(1) = 10\ \text{V}$$
+Pro lineární proud $i = 5t$ by bylo napětí stálé, $u = 5\ \text{V}$; kvadratický proud dá lineárně rostoucí napětí.
+'''
+
+[[question]]
+id = 'COZ1-02'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.2'
+text = '''
+Na induktoru $L = 1\ \text{H}$ je od času 0 stálé napětí 5 V, na počátku jím proud neteče. Jaký proud jím teče v čase 2 s?
+'''
+value = 10
+tolerance = 0.01
+unit = 'A'
+explanation = '''
+$$i(t) = i(0) + \frac1L\int_0^t u\,\mathrm{d}t = 0 + \frac{5t}{1} \quad\Rightarrow\quad i(2) = 10\ \text{A}$$
+Stálé napětí na cívce znamená lineárně rostoucí proud.
+'''
+
+[[question]]
+id = 'COZ1-03'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.3'
+text = '''
+Proud cívkou $L = 4\ \text{mH}$ má průběh podle obrázku. Jaké napětí je na cívce v intervalu 4 až 9 ms? Výsledek v mV.
+'''
+figure = 'images/cv-coz1-proud.svg'
+value = -8
+tolerance = 0.05
+unit = 'mV'
+sign_hint = 'Proud v tomto úseku klesá, napětí je záporné.'
+explanation = '''
+Proud klesne o 10 mA za 5 ms:
+$$u = L\frac{\Delta i}{\Delta t} = 4\cdot10^{-3}\cdot\frac{-10\cdot10^{-3}}{5\cdot10^{-3}} = -8\cdot10^{-3}\ \text{V} = -8\ \text{mV}$$
+V úseku 2 až 4 ms je $+20\ \text{mV}$, jinde nula. (Indukčnost list neuvádí; 4 mH odpovídá měřítku jeho grafů.)
+'''
+
+[[question]]
+id = 'COZ1-04'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.4'
+text = '''
+Na cívce $L = 4\ \text{mH}$ je napětí 0 do 2 ms, $+20\ \text{mV}$ od 2 do 4 ms a $-8\ \text{mV}$ od 4 do 9 ms; na počátku neteče proud. Jaký proud teče v čase 6 ms? Výsledek v mA.
+'''
+value = 6
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+Proud je plocha pod napětím lomeno $L$:
+$$i(4\ \text{ms}) = \frac{20\cdot10^{-3}\cdot2\cdot10^{-3}}{4\cdot10^{-3}} = 10\ \text{mA}, \qquad i(6\ \text{ms}) = 10\ \text{mA} + \frac{-8\cdot10^{-3}\cdot2\cdot10^{-3}}{4\cdot10^{-3}} = 10 - 4 = 6\ \text{mA}$$
+Je to obrácená úloha k př. 1.3: vyjde trojúhelník s vrcholem 10 mA ve 4 ms, který v 9 ms klesne na nulu.
+'''
+
+[[question]]
+id = 'COZ1-05'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.5'
+text = '''
+Napětí kapacitoru $C = 2\ \mu\text{F}$ má průběh podle obrázku. Jaký proud jím teče v intervalu 0 až 2 ms? Výsledek v mA.
+'''
+figure = 'images/cv-coz1-napeti.svg'
+value = 4
+tolerance = 0.02
+unit = 'mA'
+explanation = '''
+$$i = C\frac{\Delta u}{\Delta t} = 2\cdot10^{-6}\cdot\frac{4}{2\cdot10^{-3}} = 4\cdot10^{-3}\ \text{A} = 4\ \text{mA}$$
+Kapacita v listu není; 2 μF odpovídá měřítku grafu proudu.
+'''
+
+[[question]]
+id = 'COZ1-06'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.5'
+text = '''
+Jaký proud teče tímtéž kapacitorem ($C = 2\ \mu\text{F}$) v intervalu 5 až 11 ms, kdy napětí klesá ze 4 V na nulu? Výsledek v mA.
+'''
+figure = 'images/cv-coz1-napeti.svg'
+value = -1.333
+tolerance = 0.005
+unit = 'mA'
+sign_hint = 'Napětí klesá, kapacitor se vybíjí, proud je záporný.'
+explanation = '''
+$$i = C\frac{\Delta u}{\Delta t} = 2\cdot10^{-6}\cdot\frac{-4}{6\cdot10^{-3}} = -1{,}333\ \text{mA}$$
+Mezi 2 a 5 ms se napětí nemění a proud je nulový.
+'''
+
+[[question]]
+id = 'COZ1-07'
+kind = 'numeric'
+topic = 'Prvky R, L, C'
+source = 'COZ1, př. 1.6'
+text = '''
+Vybitým kapacitorem $C = 2\ \mu\text{F}$ teče proud 4 mA od 0 do 2 ms, od 2 do 5 ms nulový a od 5 do 11 ms −1,333 mA. Jaké napětí má kapacitor v čase 8 ms?
+'''
+value = 2
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Napětí je plocha pod proudem lomeno $C$:
+$$u(2\ \text{ms}) = \frac{4\cdot10^{-3}\cdot2\cdot10^{-3}}{2\cdot10^{-6}} = 4\ \text{V}, \qquad u(8\ \text{ms}) = 4 + \frac{-1{,}333\cdot10^{-3}\cdot3\cdot10^{-3}}{2\cdot10^{-6}} = 4 - 2 = 2\ \text{V}$$
+'''
+
+# ------------------------------------------------------------------ COZ2
+
+[[question]]
+id = 'COZ2-01'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'COZ2, př. 2.1 (PC4, př. 1)'
+text = '''
+Automobilový akumulátor má napětí naprázdno 13,5 V, při odběru 20 A klesne svorkové napětí na 12,9 V. Jaký je jeho vnitřní odpor?
+'''
+value = 0.03
+tolerance = 0.0005
+unit = 'Ω'
+explanation = '''
+2. KZ: $R_\text{i}I + U - U_\text{i} = 0$:
+$$R_\text{i} = \frac{U_\text{i} - U}{I} = \frac{13{,}5 - 12{,}9}{20} = 0{,}03\ \Omega$$
+'''
+
+[[question]]
+id = 'COZ2-02'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'COZ2, př. 2.1 (PC4, př. 1)'
+text = '''
+Jaký je proud $I_\text{i}$ proudového modelu téhož akumulátoru ($U_\text{i} = 13{,}5\ \text{V}$, $R_\text{i} = 0{,}03\ \Omega$)?
+'''
+value = 450
+tolerance = 1
+unit = 'A'
+explanation = '''
+$$I_\text{i} = \frac{U_\text{i}}{R_\text{i}} = \frac{13{,}5}{0{,}03} = 450\ \text{A}, \qquad G_\text{i} = \frac{1}{0{,}03} = 33{,}3\ \text{S}$$
+'''
+
+[[question]]
+id = 'COZ2-03'
+kind = 'numeric'
+topic = 'Základní pojmy a zdroje'
+source = 'COZ2, př. 2.2 (PC4, př. 2)'
+text = '''
+Zdroj dodává do $R_1 = 68\ \Omega$ proud 0,15 A a do $R_2 = 100\ \Omega$ proud 0,106 A. Vyšlo $R_\text{i} = 9{,}091\ \Omega$ a $U_\text{i} = 11{,}56\ \text{V}$. Jaký je proud $I_\text{i}$ proudového modelu?
+'''
+value = 1.272
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$I_\text{i} = \frac{U_\text{i}}{R_\text{i}} = \frac{11{,}56}{9{,}091} = 1{,}272\ \text{A}, \qquad G_\text{i} = \frac{1}{9{,}091} = 0{,}11\ \text{S}$$
+Odvození $R_\text{i}$ a $U_\text{i}$ ze dvou zatížení je v kapitole o základních pojmech.
+'''
+
+[[question]]
+id = 'COZ2-04'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'COZ2, př. 2.3 (PC4, př. 3)'
+text = '''
+Metodou postupného zjednodušování urči $U_4$: $U = 10\ \text{V}$, $R_1 = 30\ \Omega$, $R_2 = 100\ \Omega$, $R_3 = R_4 = 50\ \Omega$.
+'''
+figure = 'images/cv-zjednodusovani.svg'
+value = 3.125
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+$$R_{34} = 100\ \Omega, \quad R_{234} = \frac{100\cdot100}{200} = 50\ \Omega, \quad R = 30 + 50 = 80\ \Omega$$
+$$I_1 = \frac{10}{80} = 0{,}125\ \text{A}, \quad U_2 = U - R_1I_1 = 10 - 3{,}75 = 6{,}25\ \text{V}, \quad U_4 = U_2\frac{R_4}{R_3 + R_4} = 3{,}125\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ2-05'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'COZ2, př. 2.4 (PC4, př. 5)'
+text = '''
+Zdroj $U = 10\ \text{V}$ má přímo připojený $R_5 = 10\ \text{k}\Omega$ a vedle něj větev: $R_2 = 13\ \text{k}\Omega$ v sérii s paralelní dvojicí $R_3 = 3\ \text{k}\Omega$ a $R_1 + R_4 = 3 + 2\ \text{k}\Omega$. Jaký celkový proud $I_1$ dodává zdroj? Výsledek v mA.
+'''
+value = 1.672
+tolerance = 0.003
+unit = 'mA'
+explanation = '''
+$$R_{14} = 5\ \text{k}\Omega, \quad R_{314} = \frac{3\cdot5}{8} = 1{,}875\ \text{k}\Omega, \quad R_{2314} = 13 + 1{,}875 = 14{,}875\ \text{k}\Omega$$
+$$R = \frac{R_5R_{2314}}{R_5 + R_{2314}} = \frac{10\cdot14{,}875}{24{,}875} = 5{,}98\ \text{k}\Omega, \qquad I_1 = \frac{10}{5{,}98} = 1{,}672\ \text{mA}$$
+'''
+
+[[question]]
+id = 'COZ2-06'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'COZ2, př. 2.4 (PC4, př. 5)'
+text = '''
+V tomtéž obvodu ($I_1 = 1{,}672\ \text{mA}$, proud $R_5$ je $I_5 = 1\ \text{mA}$) urči proud $I_4$ větví $R_1 + R_4$. Výsledek v mA.
+'''
+value = 0.2521
+tolerance = 0.002
+unit = 'mA'
+explanation = '''
+$$I_2 = I_1 - I_5 = 0{,}672\,3\ \text{mA}, \quad U_{R2} = 13\cdot0{,}672\,3 = 8{,}740\ \text{V}, \quad U_{R3} = 10 - 8{,}740 = 1{,}260\ \text{V}$$
+$$I_3 = \frac{1{,}260}{3} = 0{,}420\,0\ \text{mA}, \qquad I_4 = I_2 - I_3 = 0{,}672\,3 - 0{,}420\,0 = 0{,}252\ \text{mA}$$
+'''
+warning = 'Zaokrouhlení I2 na 0,672 mA posune U_R2 na 8,736 V a I3 na 0,4213 mA. Odtud pochází hodnota 0,4213 ve sbírce (př. 2.8); přesně je I3 = 0,4202 mA a I4 = 0,2521 mA.'
+
+[[question]]
+id = 'COZ2-07'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'COZ2, př. 2.5 (PC4, př. 5; sbírka 2.7)'
+text = '''
+Zdroj $U = 50\ \text{V}$ je v sérii s $R_1 = 10\ \Omega$ a $R_6 = 60\ \Omega$. Mezi nimi jsou dvě paralelní cesty: $R_2 = 20\ \Omega$ a cesta z paralelní dvojice $R_3 = 30\ \Omega$, $R_4 = 40\ \Omega$ v sérii s $R_5 = 50\ \Omega$. Jaký proud $I_2$ teče rezistorem $R_2$?
+'''
+value = 0.451
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+$$R_{34} = \frac{30\cdot40}{70} = 17{,}14\ \Omega, \quad R_{345} = 17{,}14 + 50 = 67{,}14\ \Omega, \quad R_{2345} = \frac{20\cdot67{,}14}{87{,}14} = 15{,}41\ \Omega$$
+$$R = 10 + 15{,}41 + 60 = 85{,}41\ \Omega, \quad I = \frac{50}{85{,}41} = 0{,}585\,4\ \text{A}, \quad U_2 = 0{,}585\,4\cdot15{,}41 = 9{,}021\ \text{V}$$
+$$I_2 = \frac{9{,}021}{20} = 0{,}451\ \text{A}$$
+(Dál $I_5 = 0{,}134\ \text{A}$, $I_3 = 0{,}0767\ \text{A}$, $I_4 = 0{,}0576\ \text{A}$, shodně se sbírkou.)
+'''
+
+[[question]]
+id = 'COZ2-08'
+kind = 'numeric'
+topic = 'Zjednodušování obvodu'
+source = 'COZ2, př. 2.6 (PC4, př. 6)'
+text = '''
+Zdroj $U = 48\ \text{V}$ v sérii s $R_1 = 2\ \Omega$ napájí dvě paralelní cesty: $R_5 = 20\ \Omega$ a $R_2 = 30\ \Omega$ v sérii s paralelní dvojicí $R_3 = 40\ \Omega$, $R_4 = 10\ \Omega$. Jaký proud $I_1$ dodává zdroj?
+'''
+value = 3.178
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+$$R_{34} = \frac{40\cdot10}{50} = 8\ \Omega, \quad R_{234} = 30 + 8 = 38\ \Omega, \quad R_{2345} = \frac{38\cdot20}{58} = 13{,}10\ \Omega$$
+$$I_1 = \frac{48}{2 + 13{,}10} = \frac{48}{15{,}10} = 3{,}178\ \text{A}$$
+(Dál $I_5 = 2{,}082\ \text{A}$, $I_2 = 1{,}096\ \text{A}$, $I_3 = 0{,}219\ \text{A}$, $I_4 = 0{,}877\ \text{A}$.)
+'''
+
+[[question]]
+id = 'COZ2-09'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'COZ2, př. 2.7 (PC5, př. 1)'
+text = '''
+Kirchhoffova soustava obvodu se dvěma zdroji je
+$$\begin{bmatrix} -1 & -1 & 1 \\ 10 & 0 & 15 \\ 0 & 20 & 15 \end{bmatrix}\begin{bmatrix} I_1 \\ I_2 \\ I_3 \end{bmatrix} = \begin{bmatrix} 0 \\ 6 \\ 18 \end{bmatrix}$$
+Sarrusovým pravidlem spočítej determinant $\Delta_2$ (2. sloupec nahrazený pravou stranou).
+'''
+value = 360
+tolerance = 0
+explanation = '''
+$$\Delta_2 = \begin{vmatrix} -1 & 0 & 1 \\ 10 & 6 & 15 \\ 0 & 18 & 15 \end{vmatrix} = (-1)\cdot6\cdot15 + 0\cdot15\cdot0 + 1\cdot10\cdot18 - \big[1\cdot6\cdot0 + (-1)\cdot15\cdot18 + 0\cdot10\cdot15\big]$$
+$$\Delta_2 = -90 + 180 - (-270) = 360$$
+S $\Delta = 650$ je $I_2 = 360/650 = 0{,}553\,8\ \text{A}$.
+'''
+
+[[question]]
+id = 'COZ2-10'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'COZ2, př. 2.8 (PC5, př. 2)'
+text = '''
+$U_1 = 6\ \text{V}$, $U_2 = 18\ \text{V}$, $R_1 = 10\ \Omega$, $R_2 = 20\ \Omega$, $R_3 = 15\ \Omega$. Jaký je smyčkový proud $I_\text{s2}$ (orientace podle obrázku)?
+'''
+figure = 'images/cv-msp-zaklad.svg'
+value = -0.5538
+tolerance = 0.001
+unit = 'A'
+sign_hint = 'Smyčkový proud teče proti zvolené orientaci.'
+explanation = '''
+$$\begin{bmatrix} 25 & -15 \\ -15 & 35 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} 6 \\ -18 \end{bmatrix}, \qquad \Delta = 875 - 225 = 650$$
+$$\Delta_2 = 25\cdot(-18) - (-15)\cdot6 = -360, \qquad I_\text{s2} = \frac{-360}{650} = -0{,}553\,8\ \text{A}$$
+$U_2$ má šipku dolů, stejně jako jde $I_\text{s2}$ pravou větví, proto $-U_2$.
+'''
+
+[[question]]
+id = 'COZ2-11'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'COZ2, př. 2.9 (PC5, př. 3)'
+text = '''
+Můstek z obrázku: $U = 2\ \text{V}$, $R_1 = R_3 = 20\ \Omega$, $R_2 = 40\ \Omega$, $R_4 = 10\ \Omega$, $R_\text{G} = 25\ \Omega$. Smyčky: $I_\text{s1}$ přes $R_1$, $R_\text{G}$, $R_3$; $I_\text{s2}$ přes $R_2$, $R_4$, $R_\text{G}$; $I_\text{s3}$ přes $R_3$, $R_4$ a zdroj. Soustava MSP je
+$$\begin{bmatrix} 65 & -25 & -20 \\ -25 & 75 & -10 \\ -20 & -10 & 30 \end{bmatrix}\mathbf{I}_\text{s} = \begin{bmatrix} 0 \\ 0 \\ 2 \end{bmatrix}$$
+Jaký proud teče diagonálou, $I_\text{G} = I_\text{s1} - I_\text{s2}$? Výsledek v mA.
+'''
+figure = 'images/cv-mustek.svg'
+value = 14.81
+tolerance = 0.03
+unit = 'mA'
+explanation = '''
+Rozvojem podle 1. řádku: $\Delta = 65(2250 - 100) + 25(-750 - 200) - 20(250 + 1500) = 139\,750 - 23\,750 - 35\,000 = 81\,000$.
+
+Pravá strana má jen třetí prvek, takže $\Delta_1$ a $\Delta_2$ dají rozvojem podle nahrazeného sloupce:
+$$\Delta_1 = 2\begin{vmatrix} -25 & -20 \\ 75 & -10 \end{vmatrix} = 2\cdot1750 = 3500, \qquad \Delta_2 = -2\begin{vmatrix} 65 & -20 \\ -25 & -10 \end{vmatrix} = -2\cdot(-1150) = 2300$$
+$$I_\text{s1} = 0{,}043\,21\ \text{A}, \quad I_\text{s2} = 0{,}028\,40\ \text{A}, \qquad I_\text{G} = 0{,}014\,81\ \text{A} = 14{,}81\ \text{mA}$$
+Náhradním zdrojem vyjde totéž (sbírka 8.6).
+'''
+
+[[question]]
+id = 'COZ2-12'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'COZ2, př. 2.10 (PC5, př. 4)'
+text = '''
+V obvodu je zdroj proudu $I = 2\ \text{A}$ paralelně s $R_2 = 30\ \Omega$. Po převodu na zdroj napětí $U = R_2I = 60\ \text{V}$ vyšla soustava
+$$\begin{bmatrix} 60 & -30 \\ -30 & 40 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \end{bmatrix} = \begin{bmatrix} 0 \\ -70 \end{bmatrix}$$
+Jaký je smyčkový proud $I_\text{s2}$?
+'''
+value = -2.8
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+$$\Delta = 60\cdot40 - (-30)(-30) = 1500, \qquad \Delta_2 = 60\cdot(-70) - (-30)\cdot0 = -4200, \qquad I_\text{s2} = \frac{-4200}{1500} = -2{,}80\ \text{A}$$
+($I_\text{s1} = -2100/1500 = -1{,}40\ \text{A}$.) Proud původního $R_2$ se pak dopočítá z 1. KZ v uzlu se zdrojem proudu: $I_{R2} = -0{,}60\ \text{A}$.
+'''
+
+[[question]]
+id = 'COZ2-13'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'COZ2, př. 2.11 (PC5, př. 5)'
+text = '''
+Soustava MSP se třemi smyčkami ($R_1 = 7{,}5$, $R_2 = 2{,}5$, $R_3 = 5$, $R_4 = 2$, $R_5 = 25\ \Omega$, $U_1 = 5\ \text{V}$, $U_2 = 7\ \text{V}$):
+$$\begin{bmatrix} 9{,}5 & -2 & 0 \\ -2 & 32 & -25 \\ 0 & -25 & 27{,}5 \end{bmatrix}\begin{bmatrix} I_\text{s1} \\ I_\text{s2} \\ I_\text{s3} \end{bmatrix} = \begin{bmatrix} 5 \\ 0 \\ -7 \end{bmatrix}$$
+Proud rezistorem $R_4$ (společný smyčkám 1 a 2) je $I_4 = I_\text{s1} - I_\text{s2}$. Kolik je?
+'''
+value = 1
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+Sarrus: $\Delta = 9{,}5\cdot32\cdot27{,}5 - \big[9{,}5\cdot(-25)(-25) + (-2)(-2)\cdot27{,}5\big] = 8360 - (5937{,}5 + 110) = 2312{,}5$.
+$$\Delta_1 = 5(880 - 625) + 2(0 - 175) = 925, \qquad \Delta_2 = 9{,}5\,(0 - 175) - 5(-55 - 0) = -1387{,}5$$
+$$I_\text{s1} = \frac{925}{2312{,}5} = 0{,}4\ \text{A}, \quad I_\text{s2} = \frac{-1387{,}5}{2312{,}5} = -0{,}6\ \text{A}, \qquad I_4 = 0{,}4 + 0{,}6 = 1\ \text{A}$$
+Zkouška ze slajdu: $I_2 = I_3 + I_5 = 0{,}6 + 0{,}2 = 0{,}8\ \text{A}$.
+'''
+
+[[question]]
+id = 'COZ2-14'
+kind = 'numeric'
+topic = 'Kirchhoffovy rovnice a MSP'
+source = 'COZ2, př. 2.14 (PC5, př. 8; sbírka 5.14)'
+text = '''
+V obvodu se dvěma zdroji $U_1 = U_2 = 8\ \text{V}$ vyšly proudy zdroji $I_1 = 0{,}3956\ \text{A}$ a $I_2 = 0{,}5726\ \text{A}$ (oba zdroje pracují jako zdroje). Jaký celkový výkon dodávají?
+'''
+value = 7.746
+tolerance = 0.005
+unit = 'W'
+explanation = '''
+$$P = U_1I_1 + U_2I_2 = 8\cdot0{,}3956 + 8\cdot0{,}5726 = 3{,}165 + 4{,}581 = 7{,}746\ \text{W}$$
+Rezistory spotřebují $\sum RI^2 = 7{,}745\ \text{W}$; bilance výkonů sedí až na zaokrouhlení, takže proudy jsou správně.
+'''
+
+# ------------------------------------------------------------------ COZ3
+
+[[question]]
+id = 'COZ3-01'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.1 (PC6, př. 1)'
+text = '''
+Soustava MUN ($I_\text{Z1} = 1\ \text{A}$, $I_\text{Z2} = 0{,}375\ \text{A}$, $I = 1{,}5\ \text{A}$, $R_1 = R_2 = 20\ \Omega$, $R_3 = R_4 = 40\ \Omega$):
+$$\begin{bmatrix} G_1 + G_2 & -G_2 \\ -G_2 & G_2 + G_3 + G_4 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} I_\text{Z1} - I \\ -I_\text{Z1} - I_\text{Z2} \end{bmatrix}$$
+Jaké je $U_{10}$?
+'''
+value = -15.83
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$$\begin{bmatrix} 0{,}1 & -0{,}05 \\ -0{,}05 & 0{,}1 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -0{,}5 \\ -1{,}375 \end{bmatrix}, \qquad \Delta = 0{,}01 - 0{,}0025 = 0{,}0075$$
+$$\Delta_1 = -0{,}5\cdot0{,}1 - (-0{,}05)(-1{,}375) = -0{,}118\,75, \qquad U_{10} = \frac{-0{,}118\,75}{0{,}0075} = -15{,}83\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ3-02'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.1 (PC6, př. 1)'
+text = '''
+Z téže soustavy (matice $\begin{bmatrix} 0{,}1 & -0{,}05 \\ -0{,}05 & 0{,}1 \end{bmatrix}$, pravá strana $(-0{,}5;\ -1{,}375)$) urči $U_{20}$.
+'''
+value = -21.67
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$$\Delta_2 = 0{,}1\cdot(-1{,}375) - (-0{,}05)(-0{,}5) = -0{,}1375 - 0{,}025 = -0{,}1625, \qquad U_{20} = \frac{-0{,}1625}{0{,}0075} = -21{,}67\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ3-03'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.2 (PC6, př. 2; sbírka 6.1)'
+text = '''
+Po převodu zdrojů napětí ($I_\text{A} = U_\text{A}/R_1 = 1\ \text{A}$, $I_\text{B} = U_\text{B}/R_4 = 0{,}375\ \text{A}$) vyšla soustava
+$$\begin{bmatrix} 0{,}125 & -0{,}025 \\ -0{,}025 & 0{,}05 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -2{,}5 \\ 1{,}875 \end{bmatrix}$$
+Jaké je napětí $U_1 = U_{10}$?
+'''
+value = -13.89
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$$\Delta = 0{,}125\cdot0{,}05 - 0{,}025^2 = 5{,}625\cdot10^{-3}, \qquad \Delta_1 = -2{,}5\cdot0{,}05 - (-0{,}025)\cdot1{,}875 = -0{,}078\,125$$
+$$U_1 = \frac{-0{,}078\,125}{5{,}625\cdot10^{-3}} = -13{,}89\ \text{V}$$
+(Sbírka píše $-13{,}8$ s pruhem nad osmičkou, tedy $-13{,}888\ldots$)
+'''
+
+[[question]]
+id = 'COZ3-04'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.2 (PC6, př. 2)'
+text = '''
+Z téže soustavy urči $U_2 = U_{20}$.
+'''
+value = 30.56
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$$\Delta_2 = 0{,}125\cdot1{,}875 - (-0{,}025)(-2{,}5) = 0{,}234\,375 - 0{,}0625 = 0{,}171\,875, \qquad U_2 = \frac{0{,}171\,875}{5{,}625\cdot10^{-3}} = 30{,}56\ \text{V}$$
+'''
+warning = 'Na slajdu PC6 je Δ2 = 171,2·10⁻³; správně je 171,9·10⁻³ (výsledek 30,56 V na slajdu sedí).'
+
+[[question]]
+id = 'COZ3-05'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.4 (PC6, př. 4)'
+text = '''
+Obvod z obrázku řeš MUN (jeden nezávislý uzel 1): $U_1 = 6\ \text{V}$, $U_2 = 18\ \text{V}$, $R_1 = 10\ \Omega$, $R_2 = 20\ \Omega$, $R_3 = 15\ \Omega$. Jaký proud $I_3$ teče rezistorem $R_3$?
+'''
+figure = 'images/cv-msp-zaklad.svg'
+value = 0.4615
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+$I_\text{Z1} = 6/10 = 0{,}6\ \text{A}$, $I_\text{Z2} = 18/20 = 0{,}9\ \text{A}$, $G_1 = 0{,}1$, $G_2 = 0{,}05$, $G_3 = 0{,}0667\ \text{S}$:
+$$(G_1 + G_2 + G_3)\,U_{10} = I_\text{Z1} + I_\text{Z2} \quad\Rightarrow\quad U_{10} = \frac{1{,}5}{0{,}2167} = 6{,}923\ \text{V}$$
+$$I_3 = \frac{U_{10}}{R_3} = \frac{6{,}923}{15} = 0{,}461\,5\ \text{A}$$
+Stejně jako metodou Kirchhoffových rovnic a MSP (př. 2.7, 2.8), ale z jediné rovnice.
+'''
+
+[[question]]
+id = 'COZ3-06'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.5 (PC6, př. 5)'
+text = '''
+$U_1 = 5\ \text{V}$, $U_2 = 10\ \text{V}$, $R_1 = R_2 = 2\ \text{k}\Omega$, $R_3 = 5\ \text{k}\Omega$, $R_4 = 3\ \text{k}\Omega$, $R_5 = 1\ \text{k}\Omega$. Jaké je uzlové napětí $U_{20}$?
+'''
+figure = 'images/cv-mun-dva-zdroje.svg'
+value = 1.942
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+V mS a mA: $I_\text{z1} = 2{,}5\ \text{mA}$, $I_\text{z2} = 2\ \text{mA}$,
+$$\begin{bmatrix} 1{,}3333 & -0{,}5 \\ -0{,}5 & 1{,}7 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} 2{,}5 \\ 2 \end{bmatrix}, \qquad \Delta = 2{,}0166, \quad \Delta_2 = 1{,}3333\cdot2 - (-0{,}5)\cdot2{,}5 = 3{,}9166$$
+$$U_{20} = \frac{3{,}9166}{2{,}0166} = 1{,}942\ \text{V}$$
+Celý postup i s proudy větví je v kapitole o MUN.
+'''
+
+[[question]]
+id = 'COZ3-07'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.6 (PC6, př. 6)'
+text = '''
+Obvod se třemi nezávislými uzly ($U_\text{A} = 5\ \text{V}$, $U_\text{B} = 10\ \text{V}$, $I = 2\ \text{mA}$, odpory v kΩ) vede po převodu zdrojů na soustavu (mS, mA)
+$$\begin{bmatrix} 1{,}458 & -0{,}549 & 0 \\ -0{,}549 & 0{,}7618 & -0{,}2128 \\ 0 & -0{,}2128 & 1{,}2128 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \\ U_{30} \end{bmatrix} = \begin{bmatrix} 1{,}431 \\ -5{,}704 \\ 2 \end{bmatrix}$$
+Hledané napětí je $U_2 = U_{20} - U_{30}$. Kolik je?
+'''
+value = -9.316
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Cramerovým pravidlem (nebo kalkulačkou) vyjde $\Delta = 0{,}9155$ a
+$$U_{10} = -2{,}520\ \text{V}, \qquad U_{20} = -9{,}299\ \text{V}, \qquad U_{30} = 0{,}0175\ \text{V}$$
+$$U_2 = U_{20} - U_{30} = -9{,}299 - 0{,}018 = -9{,}316\ \text{V}$$
+Hledané napětí není uzlové, je to rozdíl dvou uzlových napětí. ($U_1 = U_{10} = -2{,}519\ \text{V}$ ve sbírce 6.15.)
+'''
+
+[[question]]
+id = 'COZ3-08'
+kind = 'numeric'
+topic = 'MUN ve cvičení'
+source = 'COZ3, př. 3.10'
+text = '''
+Uzel 1: zdroj proudu $I = 1{,}5\ \text{A}$ z uzlu do země, $R_1 = 30\ \Omega$ k zemi. Uzel 2: $R_3 = 15\ \Omega$ k zemi a větev $R_4 = 40\ \Omega$ se zdrojem $U_\text{B} = 15\ \text{V}$, jehož náhradní proud $U_\text{B}/R_4$ teče z uzlu 2 do země. Mezi uzly je $R_2 = 20\ \Omega$ se zdrojem $U_\text{A} = 20\ \text{V}$, jehož náhradní proud $U_\text{A}/R_2$ teče z uzlu 2 do uzlu 1. Jaké je $U_1 = U_{10}$?
+'''
+value = -15
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$I_\text{Z1} = 20/20 = 1\ \text{A}$, $I_\text{Z2} = 15/40 = 0{,}375\ \text{A}$; $G_1 = 0{,}033\,33$, $G_2 = 0{,}05$, $G_3 = 0{,}066\,67$, $G_4 = 0{,}025\ \text{S}$:
+$$\begin{bmatrix} 0{,}083\,33 & -0{,}05 \\ -0{,}05 & 0{,}141\,67 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} 1 - 1{,}5 \\ -1 - 0{,}375 \end{bmatrix}$$
+$$\Delta = 0{,}011\,806 - 0{,}0025 = 0{,}009\,306, \qquad \Delta_1 = -0{,}5\cdot0{,}141\,67 - (-0{,}05)(-1{,}375) = -0{,}139\,58$$
+$$U_{10} = \frac{-0{,}139\,58}{0{,}009\,306} = -15{,}0\ \text{V}$$
+Shodou vyjde i $U_{20} = -15{,}0\ \text{V}$. Pro srovnání jde obvod řešit MSP; vyjde totéž.
+'''
+
+# ------------------------------------------------------------------ COZ4
+
+[[question]]
+id = 'COZ4-01'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.1 (PC8, př. 1)'
+text = '''
+Zesilovač s MOSFET v zapojení SE: $R_1 = 1\ \text{M}\Omega$ (uzel 1 – zem), $R_2 = 12\ \text{M}\Omega$ (uzly 1–2), $R_3 = 10\ \text{k}\Omega$ (uzel 2 – zem), ZPŘN $g_\text{m}U_{10}$ z uzlu 2 k zemi, $g_\text{m} = 100\ \text{mS}$. Jaký je napěťový přenos $K_U$?
+'''
+value = -999.1
+tolerance = 0.5
+explanation = '''
+$G_1 = 1\cdot10^{-6}$, $G_2 = 8{,}333\cdot10^{-8}$, $G_3 = 1\cdot10^{-4}\ \text{S}$:
+$$\begin{bmatrix} G_1 + G_2 & -G_2 \\ -G_2 + g_\text{m} & G_2 + G_3 \end{bmatrix} = \begin{bmatrix} 1{,}083\cdot10^{-6} & -8{,}333\cdot10^{-8} \\ 0{,}1 & 1{,}0008\cdot10^{-4} \end{bmatrix}$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{-0{,}1\,I}{1{,}0008\cdot10^{-4}\,I} = -999{,}2$$
+(S $G_2 + G_3$ zaokrouhleným na $1{,}001\cdot10^{-4}$ vyjde −999,0.)
+'''
+warning = 'Slajd PC8 uvádí K_U = −992,2, ale z jeho vlastních čísel vychází −0,1/1,001·10⁻⁴ = −999,0. Na slajdu je početní chyba.'
+
+[[question]]
+id = 'COZ4-02'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.1 (PC8, př. 1)'
+text = '''
+Vstupní odpor téhož zesilovače? Výsledek v kΩ.
+'''
+value = 11.86
+tolerance = 0.02
+unit = 'kΩ'
+explanation = '''
+$$\Delta = 1{,}083\cdot10^{-6}\cdot1{,}001\cdot10^{-4} - (-8{,}333\cdot10^{-8})\cdot0{,}1 = 1{,}084\cdot10^{-10} + 8{,}333\cdot10^{-9} = 8{,}441\cdot10^{-9}$$
+$$R_\text{vst} = \frac{\Delta_1}{I\,\Delta} = \frac{1{,}001\cdot10^{-4}}{8{,}441\cdot10^{-9}} = 11{,}86\ \text{k}\Omega$$
+Vstupní odpor je mnohem menší než $R_1 \parallel R_2$: zpětnovazební $R_2$ se ze vstupu jeví zmenšený asi tisíckrát (Millerův jev).
+'''
+
+[[question]]
+id = 'COZ4-03'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.2 (PC8, př. 2)'
+text = '''
+Emitorový sledovač: $R_\text{B} = 56\ \text{k}\Omega$ z uzlu 1 (báze) na napájení (= zem), $R_\text{BE} = 5\ \text{k}\Omega$ mezi uzly 1 a 2, $R_\text{E} = 1\ \text{k}\Omega$ z uzlu 2 (emitor) k zemi, ZPŘN $g_\text{m}U_{12}$ ($g_\text{m} = 40\ \text{mS}$) teče ze země do uzlu 2. Jaký je přenos $K_U$?
+'''
+value = 0.9757
+tolerance = 0.002
+explanation = '''
+$$\begin{bmatrix} G_\text{B} + G_\text{BE} & -G_\text{BE} \\ -G_\text{BE} - g_\text{m} & G_\text{BE} + G_\text{E} + g_\text{m} \end{bmatrix} = \begin{bmatrix} 2{,}1786\cdot10^{-4} & -2{,}0\cdot10^{-4} \\ -4{,}02\cdot10^{-2} & 4{,}12\cdot10^{-2} \end{bmatrix}$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{4{,}02\cdot10^{-2}\,I}{4{,}12\cdot10^{-2}\,I} = 0{,}976$$
+(Slajd zaokrouhluje na 0,98.)
+'''
+
+[[question]]
+id = 'COZ4-04'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.2 (PC8, př. 2)'
+text = '''
+Vstupní odpor téhož sledovače? Výsledek v kΩ.
+'''
+value = 44.03
+tolerance = 0.05
+unit = 'kΩ'
+explanation = '''
+$$\Delta = 2{,}1786\cdot10^{-4}\cdot4{,}12\cdot10^{-2} - (-2\cdot10^{-4})(-4{,}02\cdot10^{-2}) = 8{,}9758\cdot10^{-6} - 8{,}04\cdot10^{-6} = 9{,}358\cdot10^{-7}$$
+$$R_\text{vst} = \frac{4{,}12\cdot10^{-2}}{9{,}358\cdot10^{-7}} = 44{,}03\ \text{k}\Omega$$
+'''
+
+[[question]]
+id = 'COZ4-05'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.3 (PC8, př. 3; sbírka 6.25)'
+text = '''
+Dvojbran: $R_1 = 5{,}6\ \text{k}\Omega$ z uzlu 1 k zemi, $R_2 = 120\ \Omega$ mezi uzly 1 a 2, $R_3 = 2{,}2\ \text{k}\Omega$ z uzlu 2 k zemi, ZPŘN $g_\text{m}U_{10}$ ($g_\text{m} = 250\ \text{mS}$) teče z uzlu 2 do uzlu 1. Jaký je přenos $K_U$?
+'''
+value = -27.5
+tolerance = 0.05
+explanation = '''
+Razítko: výstup z uzlu 2 do uzlu 1, vstup uzel 1: $+g_\text{m}$ na (2, 1), $-g_\text{m}$ na (1, 1):
+$$\begin{bmatrix} G_1 + G_2 - g_\text{m} & -G_2 \\ -G_2 + g_\text{m} & G_2 + G_3 \end{bmatrix} = \begin{bmatrix} -0{,}2415 & -8{,}333\cdot10^{-3} \\ 0{,}2417 & 8{,}788\cdot10^{-3} \end{bmatrix}$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{-0{,}2417\,I}{8{,}788\cdot10^{-3}\,I} = -27{,}5$$
+'''
+
+[[question]]
+id = 'COZ4-06'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.3 (PC8, př. 3)'
+text = '''
+Vstupní odpor téhož dvojbranu?
+'''
+value = -81.16
+tolerance = 0.2
+unit = 'Ω'
+sign_hint = 'Vstupní odpor tohoto dvojbranu je záporný.'
+explanation = '''
+$$\Delta = -0{,}2415\cdot8{,}788\cdot10^{-3} - (-8{,}333\cdot10^{-3})\cdot0{,}2417 = -2{,}122\cdot10^{-3} + 2{,}014\cdot10^{-3} = -1{,}082\cdot10^{-4}$$
+$$R_\text{vst} = \frac{\Delta_1}{I\,\Delta} = \frac{8{,}788\cdot10^{-3}}{-1{,}082\cdot10^{-4}} = -81{,}2\ \Omega$$
+(Bez zaokrouhlení −81,16 Ω.) Záporný vstupní odpor: vstupní napětí a proud mají opačný směr.
+'''
+
+[[question]]
+id = 'COZ4-07'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.4 (PC8, př. 4)'
+text = '''
+Dvoustupňový zesilovač SC + SE, tranzistory $g_\text{m} = 40\ \text{mS}$, $R_\text{BE} = 5\ \text{k}\Omega$, $R_1 = 50\ \text{k}\Omega$, $R_2 = 1\ \text{k}\Omega$, $R_3 = 2\ \text{k}\Omega$. Soustava MUN je
+$$\begin{bmatrix} 2{,}2\cdot10^{-4} & -2{,}0\cdot10^{-4} & 0 \\ -4{,}02\cdot10^{-2} & 4{,}14\cdot10^{-2} & 0 \\ 0 & 4\cdot10^{-2} & 5\cdot10^{-4} \end{bmatrix}\begin{bmatrix} U_1 \\ U_2 \\ U_3 \end{bmatrix} = \begin{bmatrix} I \\ 0 \\ 0 \end{bmatrix}$$
+Jaký je přenos $K_U = U_3/U_1$?
+'''
+value = -77.68
+tolerance = 0.05
+explanation = '''
+Rozvojem podle nahrazeného sloupce:
+$$\Delta_1 = I\begin{vmatrix} 4{,}14\cdot10^{-2} & 0 \\ 4\cdot10^{-2} & 5\cdot10^{-4} \end{vmatrix} = 2{,}07\cdot10^{-5}\,I, \qquad \Delta_3 = I\begin{vmatrix} -4{,}02\cdot10^{-2} & 4{,}14\cdot10^{-2} \\ 0 & 4\cdot10^{-2} \end{vmatrix} = -1{,}608\cdot10^{-3}\,I$$
+$$K_U = \frac{\Delta_3}{\Delta_1} = \frac{-1{,}608\cdot10^{-3}}{2{,}07\cdot10^{-5}} = -77{,}68$$
+'''
+
+[[question]]
+id = 'COZ4-08'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.4 (PC8, př. 4)'
+text = '''
+Vstupní odpor téhož dvoustupňového zesilovače ($\Delta_1 = 2{,}07\cdot10^{-5}\,I$)? Výsledek v kΩ.
+'''
+value = 38.76
+tolerance = 0.05
+unit = 'kΩ'
+explanation = '''
+Rozvoj podle 1. řádku: $\Delta = 2{,}2\cdot10^{-4}\cdot2{,}07\cdot10^{-5} - (-2\cdot10^{-4})\cdot(-4{,}02\cdot10^{-2}\cdot5\cdot10^{-4}) = 4{,}554\cdot10^{-9} - 4{,}02\cdot10^{-9} = 5{,}34\cdot10^{-10}$
+$$R_\text{vst} = \frac{2{,}07\cdot10^{-5}}{5{,}34\cdot10^{-10}} = 38{,}76\ \text{k}\Omega$$
+První stupeň (sledovač) dává vysoký vstupní odpor, druhý (SE) zesílení.
+'''
+
+[[question]]
+id = 'COZ4-09'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.7 (DÚ)'
+text = '''
+Zesilovač SB: uzel 1 emitor, uzel 2 kolektor, báze uzemněná. Z uzlu 1 k zemi $R_1 = 10\ \text{k}\Omega$ a $R_\text{B} = 5\ \text{k}\Omega$ (mezi bází a emitorem), mezi uzly $R_3 = 270\ \text{k}\Omega$, z uzlu 2 k zemi $R_2 = 2{,}2\ \text{k}\Omega$, ZPŘN $g_\text{m}U_{01}$ ($g_\text{m} = 120\ \text{mS}$) z kolektoru do emitoru. Jaký je přenos $K_U$?
+'''
+value = 261.9
+tolerance = 0.5
+explanation = '''
+Stejné razítko jako u sbírky 6.21 ($+g_\text{m}$ na (1, 1), $-g_\text{m}$ na (2, 1)). $G_1 = 1\cdot10^{-4}$, $G_\text{B} = 2\cdot10^{-4}$, $G_3 = 3{,}704\cdot10^{-6}$, $G_2 = 4{,}545\cdot10^{-4}\ \text{S}$:
+$$\begin{bmatrix} G_1 + G_\text{B} + G_3 + g_\text{m} & -G_3 \\ -G_3 - g_\text{m} & G_2 + G_3 \end{bmatrix} = \begin{bmatrix} 0{,}120\,3 & -3{,}704\cdot10^{-6} \\ -0{,}120\,0 & 4{,}582\cdot10^{-4} \end{bmatrix}$$
+$$K_U = \frac{\Delta_2}{\Delta_1} = \frac{0{,}120\,0}{4{,}582\cdot10^{-4}} = 261{,}9$$
+List výsledek neuvádí.
+'''
+
+[[question]]
+id = 'COZ4-10'
+kind = 'numeric'
+topic = 'Řízené zdroje v MUN'
+source = 'COZ4, př. 4.7 (DÚ)'
+text = '''
+Vstupní odpor téhož zesilovače SB?
+'''
+value = 8.38
+tolerance = 0.03
+unit = 'Ω'
+explanation = '''
+$$\Delta = 0{,}120\,3\cdot4{,}582\cdot10^{-4} - 3{,}704\cdot10^{-6}\cdot0{,}120\,0 = 5{,}512\cdot10^{-5} - 4{,}445\cdot10^{-7} = 5{,}468\cdot10^{-5}$$
+$$R_\text{vst} = \frac{4{,}582\cdot10^{-4}}{5{,}468\cdot10^{-5}} = 8{,}38\ \Omega$$
+'''
+
+[[question]]
+id = 'COZ4-11'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'COZ4, př. 4.9 (PC9, př. 1)'
+text = '''
+Obvod z obrázku: $U_\text{Z1} = 20\ \text{V}$, $I_\text{Z2} = 0{,}5\ \text{A}$, $R_1 = 15\ \Omega$, $R_2 = 25\ \Omega$, $R_3 = 35\ \Omega$, $R_\text{Z} = 10\ \Omega$. Théveninovou větou urči napětí na zátěži.
+'''
+figure = 'images/cv-thevenin-priklad.svg'
+value = 3.161
+tolerance = 0.005
+unit = 'V'
+explanation = '''
+$$U_\text{i} = \frac{20/15 + 0{,}5}{1/15 + 1/25} = \frac{1{,}8333}{0{,}106\,67} = 17{,}19\ \text{V}, \qquad R_\text{i} = 35 + \frac{15\cdot25}{40} = 44{,}375\ \Omega$$
+$$I_\text{Z} = \frac{17{,}19}{54{,}375} = 0{,}316\,1\ \text{A}, \qquad U_\text{Z} = 10\cdot0{,}316\,1 = 3{,}161\ \text{V}, \qquad P_\text{Z} \doteq 1\ \text{W}$$
+'''
+
+[[question]]
+id = 'COZ4-12'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'COZ4, př. 4.10 (PC9, př. 2)'
+text = '''
+Tentýž obvod řeš Nortonovou větou. Jaký je proud nakrátko $I_\text{i}$ svorek a, b?
+'''
+figure = 'images/cv-thevenin-priklad.svg'
+value = 0.3873
+tolerance = 0.001
+unit = 'A'
+explanation = '''
+Se zkratovanými svorkami je $R_3$ připojen mezi horní uzel a zem. MUN pro horní uzel:
+$$\left(\frac1{15} + \frac1{25} + \frac1{35}\right)U = \frac{20}{15} + 0{,}5 \quad\Rightarrow\quad U = \frac{1{,}8333}{0{,}135\,24} = 13{,}556\ \text{V}, \qquad I_\text{i} = \frac{U}{R_3} = 0{,}387\,3\ \text{A}$$
+Zátěží pak teče $I_\text{i}\,G_\text{Z}/(G_\text{i} + G_\text{Z}) = 0{,}3873\cdot0{,}1/0{,}122\,54 = 0{,}316\,1\ \text{A}$.
+'''
+
+[[question]]
+id = 'COZ4-13'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'COZ4, př. 4.11 (PC9, př. 3)'
+text = '''
+Můstek z obrázku: $U = 30\ \text{V}$, $R_1 = 2$, $R_2 = 4$, $R_3 = 10$, $R_4 = 5\ \text{k}\Omega$. Jaké napětí $U_\text{G}$ bude na galvanometru s odporem $R_\text{G} = 50\ \Omega$? Výsledek v mV.
+'''
+figure = 'images/cv-mustek.svg'
+value = 106.0
+tolerance = 0.6
+unit = 'mV'
+explanation = '''
+$$U_\text{i} = 30\left(\frac{4}{6} - \frac{5}{15}\right) = 10\ \text{V}, \qquad R_\text{i} = \frac{2\cdot4}{6} + \frac{10\cdot5}{15} = 1{,}333 + 3{,}333 = 4{,}667\ \text{k}\Omega$$
+$$I_\text{G} = \frac{10}{4667 + 50} = 2{,}120\ \text{mA}, \qquad U_\text{G} = 2{,}120\cdot10^{-3}\cdot50 = 106{,}0\ \text{mV}$$
+(Slajd s proudem zaokrouhleným na 2,11 mA uvádí 105,5 mV.)
+'''
+
+[[question]]
+id = 'COZ4-14'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'COZ4, př. 4.12 (PC9, př. 4)'
+text = '''
+Pro proměnný rezistor $R$ vyšel náhradní zdroj $U_\text{i} = 15\ \text{V}$, $R_\text{i} = 8{,}333\ \Omega$. Jaké napětí bude na $R = 40\ \Omega$?
+'''
+value = 12.41
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$$U_R = U_\text{i}\,\frac{R}{R_\text{i} + R} = 15\cdot\frac{40}{48{,}33} = 12{,}41\ \text{V}$$
+Náhradní zdroj: $R_\text{i} = (R_1 + R_3) \parallel R_2 = 50\cdot10/60 = 8{,}333\ \Omega$, $U_\text{i} = (I + I')/(G_{13} + G_2) = (1 + 0{,}8)/(0{,}02 + 0{,}1) = 15\ \text{V}$ s $I' = U/(R_1 + R_3) = 0{,}8\ \text{A}$.
+'''
+
+[[question]]
+id = 'COZ4-15'
+kind = 'numeric'
+topic = 'Věty o náhradním zdroji'
+source = 'COZ4, př. 4.13 (PC9, př. 5)'
+text = '''
+Pro napětí naprázdno vyšla soustava MUN $\begin{bmatrix} 0{,}12 & -0{,}1 \\ -0{,}1 & 0{,}1833 \end{bmatrix}\begin{bmatrix} U_{10} \\ U_{20} \end{bmatrix} = \begin{bmatrix} -1 \\ 2{,}5 \end{bmatrix}$ a $U_\text{i} = U_{20}$. Kolik je $U_\text{i}$?
+'''
+value = 16.67
+tolerance = 0.03
+unit = 'V'
+explanation = '''
+$$\Delta = 0{,}12\cdot0{,}1833 - (-0{,}1)(-0{,}1) = 0{,}022 - 0{,}01 = 0{,}012, \qquad \Delta_2 = 0{,}12\cdot2{,}5 - (-0{,}1)(-1) = 0{,}2$$
+$$U_\text{i} = \frac{0{,}2}{0{,}012} = 16{,}67\ \text{V}$$
+S $R_\text{i} = 20\ \Omega$ dá přizpůsobená zátěž $R = 20\ \Omega$ výkon $16{,}67^2/(4\cdot20) = 3{,}472\ \text{W}$.
+'''
+
+# ------------------------------------------------------------------ COZ5
+
+[[question]]
+id = 'COZ5-01'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.1 (PC10, př. 1)'
+text = '''
+Zdroj $U = 12\ \text{V}$ napájí přes $R_1 = 10\ \Omega$ Zenerovu diodu a paralelně k ní zátěž $R_2 = 200\ \Omega$. Linearizovaný model diody: $U_\text{z} = 6{,}2\ \text{V}$, $R_\text{d} = 2\ \Omega$. Jaké je výstupní napětí $U_2$?
+'''
+figure = 'images/cv-stabilizator.svg'
+value = 7.107
+tolerance = 0.005
+unit = 'V'
+explanation = '''
+$I = 12/10 = 1{,}2\ \text{A}$, $I_\text{z} = 6{,}2/2 = 3{,}1\ \text{A}$, $G_1 = 0{,}1$, $G_2 = 0{,}005$, $G_\text{d} = 0{,}5\ \text{S}$:
+$$(G_1 + G_2 + G_\text{d})\,U_2 = I + I_\text{z} \quad\Rightarrow\quad 0{,}605\,U_2 = 4{,}3 \quad\Rightarrow\quad U_2 = 7{,}107\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ5-02'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.2 (PC10, př. 2)'
+text = '''
+Body charakteristiky: (0; 0), (0,15 V; 0,2 A), (0,3 V; 0,9 A). Interpoluj kvadratickým polynomem a urči proud pro $u = 0{,}2\ \text{V}$.
+'''
+value = 0.378
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+Díky počátku $a_0 = 0$; z $\begin{bmatrix} 0{,}15 & 0{,}0225 \\ 0{,}3 & 0{,}09 \end{bmatrix}\begin{bmatrix} a_1 \\ a_2 \end{bmatrix} = \begin{bmatrix} 0{,}2 \\ 0{,}9 \end{bmatrix}$ je $\Delta = 0{,}006\,75$, $a_1 = -0{,}333$, $a_2 = 11{,}11$:
+$$i_\text{a}(0{,}2) = -0{,}333\cdot0{,}2 + 11{,}11\cdot0{,}04 = 0{,}378\ \text{A}$$
+'''
+
+[[question]]
+id = 'COZ5-03'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.3 (PC10, př. 4)'
+text = '''
+Body charakteristiky: (0,1 V; 0,2 mA), (0,25 V; 0,3 mA), (0,4 V; 0,6 mA). Proložte je kvadratickým polynomem a extrapolujte proud pro $u = 0{,}6\ \text{V}$.
+'''
+value = 1.311
+tolerance = 0.004
+unit = 'mA'
+explanation = '''
+$$\begin{bmatrix} 1 & 0{,}1 & 0{,}01 \\ 1 & 0{,}25 & 0{,}0625 \\ 1 & 0{,}4 & 0{,}16 \end{bmatrix}\begin{bmatrix} a_0 \\ a_1 \\ a_2 \end{bmatrix} = \begin{bmatrix} 0{,}2 \\ 0{,}3 \\ 0{,}6 \end{bmatrix}, \quad \Delta = 6{,}75\cdot10^{-3}, \ \Delta_1 = 1{,}65\cdot10^{-3}, \ \Delta_2 = -0{,}006, \ \Delta_3 = 0{,}03$$
+$$i_\text{a} = 0{,}2444 - 0{,}8889u + 4{,}444u^2, \qquad i_\text{a}(0{,}6) = 0{,}2444 - 0{,}5333 + 1{,}6000 = 1{,}311\ \text{mA}$$
+(Slajd s koeficienty zaokrouhlenými na 0,244; −0,889; 4,44 uvádí 1,31 mA.)
+'''
+
+[[question]]
+id = 'COZ5-04'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.3 (PC10, př. 4)'
+text = '''
+Z polynomu $i_\text{a} = 0{,}2444 - 0{,}8889u + 4{,}444u^2$ (proud v mA) urči dynamický odpor v bodě $u = 0{,}25\ \text{V}$. Výsledek v Ω.
+'''
+value = 750
+tolerance = 2
+unit = 'Ω'
+explanation = '''
+$$G_\text{d} = -0{,}8889 + 2\cdot4{,}444\cdot0{,}25 = 1{,}333\ \text{mS}, \qquad R_\text{d} = \frac{1}{1{,}333\cdot10^{-3}} = 750\ \Omega$$
+(Se zaokrouhlenými koeficienty slajdu 751 Ω.) Pozor, proud je v mA.
+'''
+
+[[question]]
+id = 'COZ5-05'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.4 (PC10, př. 3)'
+text = '''
+Stabilizátor: $U = 12\ \text{V}$, $R_1 = 33\ \Omega$, dioda a paralelně zátěž $R_2 = 470\ \Omega$. Pro grafickou metodu nahraď lineární část Théveninovým zdrojem. Jaké je jeho napětí naprázdno?
+'''
+value = 11.21
+tolerance = 0.02
+unit = 'V'
+explanation = '''
+$$U_\text{i} = U\,\frac{R_2}{R_1 + R_2} = 12\cdot\frac{470}{503} = 11{,}21\ \text{V}, \qquad R_\text{i} = \frac{33\cdot470}{503} = 30{,}83\ \Omega, \qquad I_\text{k} = \frac{U_\text{i}}{R_\text{i}} = 0{,}364\ \text{A}$$
+Zatěžovací přímka jde z (11,2 V; 0) do (0; 0,364 A); s charakteristikou diody se protne v (9,15 V; 65 mA).
+'''
+
+[[question]]
+id = 'COZ5-06'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.4 (PC10, př. 3)'
+text = '''
+Grafickou metodou vyšel pracovní bod diody 9,15 V a 65 mA. Jaký je ztrátový výkon diody?
+'''
+value = 0.595
+tolerance = 0.002
+unit = 'W'
+explanation = '''
+$$P_\text{D} = U_\text{z}I_\text{z} = 9{,}15\cdot0{,}065 = 0{,}595\ \text{W}$$
+'''
+
+[[question]]
+id = 'COZ5-07'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.5 (PC10, př. 5)'
+text = '''
+$U = 12\ \text{V}$, $R = 100\ \Omega$, prvek $i_\text{n} = 0{,}02u_\text{n}^3 - 0{,}04u_\text{n}$ v sérii. Jaký je první Newtonův odhad $u_{(1)}$ z $u_{(0)} = 1{,}5\ \text{V}$?
+'''
+value = 2.4286
+tolerance = 0.0005
+unit = 'V'
+explanation = '''
+2. KZ: $100(0{,}02u^3 - 0{,}04u) + u - 12 = 0$, po úpravě $f(u) = 2u^3 - 3u - 12$, $f'(u) = 6u^2 - 3$.
+$$\varepsilon_{(0)} = -\frac{2\cdot3{,}375 - 4{,}5 - 12}{6\cdot2{,}25 - 3} = -\frac{-9{,}75}{10{,}5} = 0{,}928\,57, \qquad u_{(1)} = 1{,}5 + 0{,}928\,57 = 2{,}428\,6\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ5-08'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.5 (PC10, př. 5)'
+text = '''
+Pokračuj v iteraci $f(u) = 2u^3 - 3u - 12$ až do chyby pod 1 mV. Jaké je napětí prvku?
+'''
+value = 2.0905
+tolerance = 0.0005
+unit = 'V'
+explanation = '''
+| $k$ | $u_{(k)}$ | $\varepsilon_{(k)}$ |
+|---|---|---|
+| 0 | 1,5 | 0,928 57 |
+| 1 | 2,428 57 | −0,289 04 |
+| 2 | 2,139 53 | −0,047 79 |
+| 3 | 2,091 74 | −0,001 25 |
+| 4 | 2,090 49 | −0,000 001 |
+
+$u = 2{,}0905\ \text{V}$ (oprava v kroku 3 je ještě nad 1 mV, proto ještě jeden krok).
+'''
+
+[[question]]
+id = 'COZ5-09'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'COZ5, př. 5.6 (PC10, př. 6)'
+text = '''
+$U = 10\ \text{V}$, dělič $R_1 = R_2 = 160\ \Omega$, prvek $i = 0{,}0125u^3 - 0{,}05u$ paralelně k $R_2$. Théveninem a Newtonovou metodou (odhad 2,5 V) vyšlo $u = 2{,}279\ \text{V}$. Jaký proud teče prvkem?
+'''
+value = 0.0340
+tolerance = 0.0001
+unit = 'A'
+explanation = '''
+Náhrada: $U_\text{i} = 5\ \text{V}$, $R_\text{i} = 80\ \Omega$, $f(u) = u^3 - 3u - 5$, iterace 2,5 → 2,3016 → 2,2793 → 2,2790 V.
+$$i = 0{,}0125\cdot2{,}279^3 - 0{,}05\cdot2{,}279 = 0{,}148\,0 - 0{,}114\,0 = 0{,}034\,0\ \text{A}$$
+(Slajd s $u = 2{,}2793\ \text{V}$ uvádí 0,034 05 A.)
+'''
+
+# ------------------------------------------------------------------ COZ6
+
+[[question]]
+id = 'COZ6-01'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.1 (PC12, př. 1)'
+text = '''
+Proud podle obrázku má $I_\text{m} = 200\ \text{mA}$. Jaká je jeho střední hodnota? Výsledek v mA.
+'''
+figure = 'images/cv-prubeh-a.svg'
+value = 100
+tolerance = 0.5
+unit = 'mA'
+explanation = '''
+$$I_0 = \frac1T\left[I_\text{m}\frac T2 - I_\text{m}\frac T4 + I_\text{m}\frac T4\right] = \frac{I_\text{m}}{2} = 100\ \text{mA}$$
+'''
+
+[[question]]
+id = 'COZ6-02'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.1 (PC12, př. 1)'
+text = '''
+Jaká je efektivní hodnota téhož proudu ($I_\text{m} = 200\ \text{mA}$)? Výsledek v mA.
+'''
+figure = 'images/cv-prubeh-a.svg'
+value = 200
+tolerance = 0.5
+unit = 'mA'
+explanation = '''
+Čtverec je po celou periodu $I_\text{m}^2$, znaménko nehraje roli:
+$$I = \sqrt{\frac1T\left[I_\text{m}^2\frac T2 + I_\text{m}^2\frac T4 + I_\text{m}^2\frac T4\right]} = I_\text{m} = 200\ \text{mA}$$
+'''
+
+[[question]]
+id = 'COZ6-03'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.2 (PC12, př. 2)'
+text = '''
+Napětí podle obrázku má $U_\text{m} = 5\ \text{V}$. Jaká je jeho střední hodnota?
+'''
+figure = 'images/cv-prubeh-b.svg'
+value = -1.875
+tolerance = 0.005
+unit = 'V'
+sign_hint = 'Záporná půlperioda má větší plochu.'
+explanation = '''
+$$U_0 = \frac1T\left[\int_0^{T/2}\frac{U_\text{m}}{T}t\,\mathrm{d}t - U_\text{m}\frac T2\right] = U_\text{m}\left(\frac18 - \frac12\right) = -\frac38\cdot5 = -1{,}875\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ6-04'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.2 (PC12, př. 2)'
+text = '''
+Jaká je efektivní hodnota téhož napětí ($U_\text{m} = 5\ \text{V}$)?
+'''
+figure = 'images/cv-prubeh-b.svg'
+value = 3.680
+tolerance = 0.005
+unit = 'V'
+explanation = '''
+$$U = \sqrt{\frac1T\left[\int_0^{T/2}\frac{U_\text{m}^2}{T^2}t^2\,\mathrm{d}t + U_\text{m}^2\frac T2\right]} = U_\text{m}\sqrt{\frac1{24} + \frac12} = 5\sqrt{\frac{13}{24}} = 3{,}680\ \text{V}$$
+'''
+
+[[question]]
+id = 'COZ6-05'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.2 (PC12, př. 2)'
+text = '''
+Jaký je činitel tvaru téhož průběhu ($U = 3{,}680\ \text{V}$)?
+'''
+figure = 'images/cv-prubeh-b.svg'
+value = 1.178
+tolerance = 0.002
+explanation = '''
+Střední absolutní hodnota: $U_\text{sa} = U_\text{m}\left(\frac18 + \frac12\right) = \frac58\cdot5 = 3{,}125\ \text{V}$.
+$$k_\text{t} = \frac{U}{U_\text{sa}} = \frac{3{,}680}{3{,}125} = 1{,}178, \qquad k_\text{v} = \frac{U_\text{m}}{U} = \frac{5}{3{,}680} = 1{,}359$$
+'''
+
+[[question]]
+id = 'COZ6-06'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.3 (PC12, př. 3)'
+text = '''
+Napětí s kmitočtem 10 kHz má složky $U_0 = 5\ \text{V}$, $U_1 = 3\ \text{V}$, $U_2 = 0{,}15\ \text{V}$, $U_4 = 0{,}02\ \text{V}$. Jaký je $\text{THD}_\text{F}$ v procentech?
+'''
+value = 5.044
+tolerance = 0.005
+unit = '%'
+explanation = '''
+$$\text{THD}_\text{F} = \frac{\sqrt{0{,}15^2 + 0{,}02^2}}{3} = \frac{\sqrt{0{,}0229}}{3} = \frac{0{,}151\,3}{3} = 5{,}044\ \%$$
+Stejnosměrná složka 5 V se nepočítá.
+'''
+
+[[question]]
+id = 'COZ6-07'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.3 (PC12, př. 3)'
+text = '''
+Jaký je pro totéž napětí $\text{THD}_\text{R}$ v procentech?
+'''
+value = 5.038
+tolerance = 0.005
+unit = '%'
+explanation = '''
+$$\text{THD}_\text{R} = \frac{\sqrt{0{,}0229}}{\sqrt{3^2 + 0{,}0229}} = \frac{0{,}151\,3}{3{,}003\,8} = 5{,}038\ \%$$
+'''
+
+[[question]]
+id = 'COZ6-08'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.4 (PC12, př. 4)'
+text = '''
+Proud podle obrázku má $I_\text{m} = 3\ \text{A}$. Jaká je jeho efektivní hodnota?
+'''
+figure = 'images/cv-prubeh-c.svg'
+value = 2.372
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$I = I_\text{m}\sqrt{\frac12 + \frac14\cdot\frac12} = 3\sqrt{0{,}625} = 2{,}372\ \text{A}$$
+$I_0 = 0{,}75\ \text{A}$, $I_\text{sa} = 2{,}25\ \text{A}$, $k_\text{t} = 1{,}054$, $k_\text{v} = 1{,}265$.
+'''
+
+[[question]]
+id = 'COZ6-09'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.5 (PC12, př. 5)'
+text = '''
+Proud podle obrázku má $I_\text{m} = 5\ \text{A}$. Jaká je jeho střední hodnota?
+'''
+figure = 'images/cv-prubeh-d.svg'
+value = 2.188
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$I_0 = \frac1T\left[\int_0^{T/4}\left(-\frac{2I_\text{m}}{T}t\right)\mathrm{d}t + I_\text{m}\frac T2\right] = I_\text{m}\left(-\frac1{16} + \frac12\right) = \frac7{16}\cdot5 = 2{,}188\ \text{A}$$
+'''
+
+[[question]]
+id = 'COZ6-10'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.5 (PC12, př. 5)'
+text = '''
+Jaká je efektivní hodnota téhož proudu ($I_\text{m} = 5\ \text{A}$)?
+'''
+figure = 'images/cv-prubeh-d.svg'
+value = 3.608
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$I = I_\text{m}\sqrt{\frac1{48} + \frac12} = 5\sqrt{\frac{25}{48}} = 3{,}608\ \text{A}$$
+$I_\text{sa} = \tfrac9{16}I_\text{m} = 2{,}813\ \text{A}$, $k_\text{t} = 1{,}283$, $k_\text{v} = 1{,}386$.
+'''
+
+[[question]]
+id = 'COZ6-11'
+kind = 'numeric'
+topic = 'Periodické průběhy'
+source = 'COZ6, př. 6.6 (PC12, př. 6)'
+text = '''
+Napětí podle obrázku má $U_\text{m} = 5\ \text{V}$. Jaký je jeho činitel výkyvu?
+'''
+figure = 'images/cv-prubeh-e.svg'
+value = 1.732
+tolerance = 0.002
+explanation = '''
+$U = U_\text{m}/\sqrt3 = 2{,}887\ \text{V}$, $U_\text{sa} = U_\text{m}/2 = 2{,}5\ \text{V}$, $U_0 = 0$:
+$$k_\text{v} = \frac{U_\text{m}}{U} = \frac{5}{2{,}887} = 1{,}732, \qquad k_\text{t} = \frac{2{,}887}{2{,}5} = 1{,}155$$
+'''
+
+[[question]]
+id = 'COZ6-12'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.7 (PC13, př. 1)'
+text = '''
+Dvě jádra tvaru U s mezerami po 0,4 mm, střední siločára v železe 80 mm, průřez 25 mm², $\mu_\text{r} = 200$. Jaký je celkový magnetický odpor? Výsledek zadej v jednotkách $10^7\ \text{H}^{-1}$.
+'''
+value = 3.82
+tolerance = 0.005
+unit = '·10⁷ H⁻¹'
+explanation = '''
+$$R_\text{m} = \frac{l_\text{s}}{\mu_0\mu_\text{r}S} + 2\frac{\delta}{\mu_0S} = 1{,}273\cdot10^7 + 2{,}546\cdot10^7 = 3{,}82\cdot10^7\ \text{H}^{-1}$$
+Dvě mezery (dohromady 0,8 mm) mají dvakrát větší odpor než celé železo.
+'''
+
+[[question]]
+id = 'COZ6-13'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.8 (PC13, př. 2; sbírka 11.1)'
+text = '''
+Dlouhým přímým vodičem teče 10 A. Jaká je intenzita magnetického pole 1 m od vodiče?
+'''
+value = 1.592
+tolerance = 0.002
+unit = 'A/m'
+explanation = '''
+Ampérův zákon na kružnici kolem vodiče: $H\cdot2\pi r = I$:
+$$H = \frac{I}{2\pi r} = \frac{10}{2\pi\cdot1} = 1{,}592\ \text{A/m}$$
+'''
+
+[[question]]
+id = 'COZ6-14'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.9 (PC13, př. 3; sbírka 11.7)'
+text = '''
+Dvěma rovnoběžnými vodiči 5 cm od sebe teče zkratový proud 40 kA, v každém opačným směrem. Jaká síla působí na každý metr vodiče?
+'''
+value = 6400
+tolerance = 5
+unit = 'N'
+explanation = '''
+$$B_1 = \frac{\mu_0I_1}{2\pi r}, \qquad F = B_1I_2l = \frac{\mu_0I^2l}{2\pi r} = \frac{4\pi\cdot10^{-7}\cdot(40\cdot10^3)^2\cdot1}{2\pi\cdot0{,}05} = 6400\ \text{N}$$
+Opačné proudy se odpuzují. Proto musí být přípojnice v rozvodnách pevně uchycené.
+'''
+
+[[question]]
+id = 'COZ6-15'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.10 (PC13, př. 4)'
+text = '''
+Prstenec z dynamových plechů: $S = 600\ \text{mm}^2$, $N = 200$, $D_\text{s} = 220\ \text{mm}$, tok 0,6 mWb. Z křivky dynamových plechů je pro 1 T $H_\text{f} \doteq 260\ \text{A/m}$. Jaký proud musí téct vinutím?
+'''
+value = 0.898
+tolerance = 0.003
+unit = 'A'
+explanation = '''
+$$B_\text{f} = \frac{0{,}6\cdot10^{-3}}{600\cdot10^{-6}} = 1\ \text{T}, \qquad I = \frac{H_\text{f}\pi D_\text{s}}{N} = \frac{260\cdot\pi\cdot0{,}22}{200} = 0{,}898\ \text{A}$$
+'''
+
+[[question]]
+id = 'COZ6-16'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.10 (PC13, př. 4)'
+text = '''
+Jaký je magnetický odpor téhož jádra ($N = 200$, $I = 0{,}898\ \text{A}$, $\Phi = 0{,}6\ \text{mWb}$)? Výsledek zadej v jednotkách $10^5\ \text{H}^{-1}$.
+'''
+value = 2.995
+tolerance = 0.005
+unit = '·10⁵ H⁻¹'
+explanation = '''
+Hopkinsonův zákon:
+$$R_\text{m} = \frac{U_\text{m}}{\Phi} = \frac{NI}{\Phi} = \frac{200\cdot0{,}898}{0{,}6\cdot10^{-3}} = 2{,}993\cdot10^5\ \text{H}^{-1}$$
+(S nezaokrouhleným proudem $2{,}995\cdot10^5$, na slajdu 299,5 kH⁻¹.) Stejně z $\mu = B/H = 1/260 = 3{,}846\cdot10^{-3}\ \text{H/m}$ a $R_\text{m} = l_\text{s}/(\mu S)$.
+'''
+
+[[question]]
+id = 'COZ6-17'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.11 (PC13, př. 5; sbírka 11.4)'
+text = '''
+Prstenec $D = 90\ \text{mm}$ (vnější), průřez 10 × 10 mm, mezera 1 mm s indukcí 0,5 T, proud 5 A. Materiál: $B$ = 0,3; 0,5; 0,7; 0,9 T odpovídá $H$ = 66; 109; 167; 262 A/m. Kolik závitů potřebuje cívka?
+'''
+value = 85
+tolerance = 0.1
+explanation = '''
+$D_\text{s} = 90 - 10 = 80\ \text{mm}$, $l_\text{f} = \pi\cdot0{,}08 - 0{,}001 = 0{,}2503\ \text{m}$, $B_\text{f} = B_\text{v} = 0{,}5\ \text{T}$ → $H_\text{f} = 109\ \text{A/m}$:
+$$5N = 109\cdot0{,}2503 + \frac{0{,}5}{4\pi\cdot10^{-7}}\cdot10^{-3} = 27{,}28 + 397{,}9 = 425{,}2\ \text{A} \quad\Rightarrow\quad N = 85{,}03 \doteq 85$$
+'''
+
+[[question]]
+id = 'COZ6-18'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.11 (PC13, př. 5)'
+text = '''
+Jaká je indukčnost cívky z předchozí otázky ($N = 85$, $B = 0{,}5\ \text{T}$, $S = 1\ \text{cm}^2$, $I = 5\ \text{A}$)? Výsledek v μH.
+'''
+value = 850
+tolerance = 2
+unit = 'μH'
+explanation = '''
+$$L = \frac{N\Phi}{I} = \frac{NB_\text{v}S}{I} = \frac{85\cdot0{,}5\cdot(10\cdot10^{-3})^2}{5} = 850\ \mu\text{H}$$
+'''
+
+[[question]]
+id = 'COZ6-19'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.11'
+text = '''
+Jakou silou je namáháno jádro v oblasti jeho jediné vzduchové mezery (indukce 0,5 T, průřez 1 cm²)?
+'''
+value = 9.95
+tolerance = 0.03
+unit = 'N'
+explanation = '''
+Jedna mezera, tedy plocha jen jednou:
+$$F = \frac{B^2S}{2\mu_0} = \frac{0{,}5^2\cdot10^{-4}}{2\cdot4\pi\cdot10^{-7}} = 9{,}95\ \text{N}$$
+'''
+
+[[question]]
+id = 'COZ6-20'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.12'
+text = '''
+Elektromagnet z ocelolitiny: v každé ze dvou mezer délky 1 mm má být indukce 0,7 T. Jaké magnetické napětí připadá na **jednu** mezeru?
+'''
+value = 557
+tolerance = 1
+unit = 'A'
+explanation = '''
+$$U_\text{mv} = \frac{B}{\mu_0}l_\text{v} = \frac{0{,}7}{4\pi\cdot10^{-7}}\cdot10^{-3} = 557\ \text{A}$$
+Magnetické napětí na železe (0,3 m, intenzita z křivky ocelolitiny) je proti dvěma mezerám malé, proud určují hlavně mezery.
+'''
+
+[[question]]
+id = 'COZ6-21'
+kind = 'numeric'
+topic = 'Výpočet magnetických obvodů'
+source = 'COZ6, př. 6.12'
+text = '''
+Jakou silou je kotva téhož elektromagnetu přitahována (dvě mezery, průřez 3 cm², indukce 0,7 T)?
+'''
+value = 117
+tolerance = 0.5
+unit = 'N'
+explanation = '''
+Kotva je přitahována přes dvě pólové plochy:
+$$F = \frac{B^2\cdot2S}{2\mu_0} = \frac{0{,}7^2\cdot2\cdot3\cdot10^{-4}}{2\cdot4\pi\cdot10^{-7}} = 117\ \text{N}$$
+'''

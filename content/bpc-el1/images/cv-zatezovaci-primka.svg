@@ -1,0 +1,18 @@
+<svg viewBox="0 0 470 250" width="470" class="fig" role="img" aria-label="Metoda zatěžovací přímky: AV charakteristika nelineárního prvku a přímka náhradního zdroje z bodů U0 a Ik, průsečík je pracovní bod P">
+<line x1="50" y1="215" x2="450" y2="215" class="v" marker-end="url(#m-v)"/>
+<line x1="50" y1="215" x2="50" y2="20" class="v" marker-end="url(#m-v)"/>
+<text x="446" y="236" text-anchor="middle"><tspan class="it">u</tspan></text>
+<text x="40" y="28" text-anchor="end"><tspan class="it">i</tspan></text>
+<line x1="50" y1="55" x2="400" y2="215" class="s1"/>
+<text x="400" y="235" text-anchor="middle"><tspan class="it">U</tspan><tspan class="sm" dy="4">0</tspan><tspan dy="-4"></tspan></text>
+<text x="44" y="60" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="4">k</tspan><tspan dy="-4"></tspan></text>
+<polyline points="50.0,215.0 53.6,215.0 57.2,214.9 60.8,214.9 64.4,214.9 68.0,214.8 71.6,214.8 75.2,214.7 78.8,214.7 82.4,214.6 86.0,214.6 89.6,214.5 93.2,214.5 96.8,214.4 100.4,214.4 104.0,214.3 107.6,214.2 111.2,214.2 114.8,214.1 118.4,214.0 122.0,213.9 125.6,213.8 129.2,213.7 132.8,213.6 136.4,213.5 140.0,213.4 143.6,213.3 147.2,213.2 150.8,213.1 154.4,212.9 158.0,212.8 161.6,212.6 165.2,212.5 168.8,212.3 172.4,212.2 176.0,212.0 179.6,211.8 183.2,211.6 186.8,211.4 190.4,211.1 194.0,210.9 197.6,210.7 201.2,210.4 204.8,210.1 208.4,209.8 212.0,209.5 215.6,209.2 219.2,208.9 222.8,208.5 226.4,208.1 230.0,207.7 233.6,207.3 237.2,206.9 240.8,206.4 244.4,206.0 248.0,205.4 251.6,204.9 255.2,204.3 258.8,203.8 262.4,203.1 266.0,202.5 269.6,201.8 273.2,201.0 276.8,200.3 280.4,199.5 284.0,198.6 287.6,197.7 291.2,196.8 294.8,195.8 298.4,194.7 302.0,193.6 305.6,192.5 309.2,191.3 312.8,190.0 316.4,188.6 320.0,187.2 323.6,185.7 327.2,184.1 330.8,182.5 334.4,180.7 338.0,178.9 341.6,176.9 345.2,174.9 348.8,172.7 352.4,170.5 356.0,168.1 359.6,165.6 363.2,163.0 366.8,160.2 370.4,157.3 374.0,154.2 377.6,150.9 381.2,147.5 384.8,143.9 388.4,140.2 392.0,136.2 395.6,132.0 399.2,127.6 402.8,122.9 406.4,118.0 410.0,112.9" class="f"/>
+<circle cx="329.8" cy="182.9" r="4" class="ptA"/>
+<line x1="329.8" y1="182.9" x2="329.8" y2="215" class="d"/>
+<line x1="50" y1="182.9" x2="329.8" y2="182.9" class="d"/>
+<text x="329.8" y="235" text-anchor="middle"><tspan class="it">U</tspan><tspan class="sm" dy="4">P</tspan><tspan dy="-4"></tspan></text>
+<text x="44" y="187.9" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="4">P</tspan><tspan dy="-4"></tspan></text>
+<text x="315.8" y="172.9" class="acc" text-anchor="middle">P</text>
+<text x="160" y="70" class="sm mut" text-anchor="middle">zatěžovací přímka</text>
+<text x="395" y="60" class="sm acc" text-anchor="middle">i = f(u)</text>
+</svg>

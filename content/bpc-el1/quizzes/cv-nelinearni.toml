@@ -1,0 +1,296 @@
+name = 'Cvičení: nelineární obvody'
+description = 'spektrum, interpolace a aproximace charakteristik, linearizace, Newtonova metoda (sbírka kap. 10)'
+
+[[question]]
+id = 'CVNL-01'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.12'
+text = '''
+Na prvek s charakteristikou $i = 0{,}3u^2 + 2u$ působí napětí $u = 10\sin\omega t$. Jaká je stejnosměrná složka proudu $I_0$?
+'''
+value = 15
+tolerance = 0.01
+unit = 'A'
+explanation = '''
+S $\sin^2\alpha = \tfrac12(1 - \cos2\alpha)$:
+$$i = 0{,}3\cdot100\sin^2\omega t + 20\sin\omega t = 15 - 15\cos2\omega t + 20\sin\omega t\ \text{A}$$
+Stejnosměrná složka 15 A, první harmonická 20 A, druhá harmonická 15 A. Napětí přitom žádnou stejnosměrnou složku nemělo: kvadratický člen usměrňuje.
+'''
+
+[[question]]
+id = 'CVNL-02'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.1'
+text = '''
+Na prvek s charakteristikou $i = 0{,}1u^2$ působí $u = 3 + 2\sin\omega t$. Jaká je amplituda **druhé** harmonické složky proudu?
+'''
+value = 0.2
+tolerance = 0.002
+unit = 'A'
+explanation = '''
+$$i = 0{,}1\,(3 + 2\sin\omega t)^2 = 0{,}1\,(9 + 12\sin\omega t + 4\sin^2\omega t) = 1{,}1 + 1{,}2\sin\omega t - 0{,}2\cos2\omega t$$
+Druhá harmonická má amplitudu 0,2 A (znaménko a kosinus jen určují fázi).
+'''
+
+[[question]]
+id = 'CVNL-03'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.2'
+text = '''
+Metodou nejmenších čtverců proložte přímku $y_\text{a} = a_0 + a_1x$ body $x$ = 0, 1, 3, 5, 6 a $y$ = 5, 3, 3, 2, 1. Jaká je směrnice $a_1$?
+'''
+value = -0.538
+tolerance = 0.002
+explanation = '''
+Pomocná tabulka: $\sum x = 15$, $\sum y = 14$, $\sum x^2 = 71$, $\sum xy = 0 + 3 + 9 + 10 + 6 = 28$, $m = 5$:
+$$\begin{bmatrix} 5 & 15 \\ 15 & 71 \end{bmatrix}\begin{bmatrix} a_0 \\ a_1 \end{bmatrix} = \begin{bmatrix} 14 \\ 28 \end{bmatrix}, \qquad \Delta = 355 - 225 = 130$$
+$$a_1 = \frac{5\cdot28 - 15\cdot14}{130} = \frac{-70}{130} = -0{,}538, \qquad a_0 = \frac{14\cdot71 - 15\cdot28}{130} = 4{,}415$$
+'''
+
+[[question]]
+id = 'CVNL-04'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.14'
+text = '''
+Body charakteristiky diody: $u$ = 0,6; 0,625; 0,65; 0,675 V, $i$ = 0,02; 0,15; 0,4; 0,8 A. Metodou nejmenších čtverců je proložte přímkou $i_\text{a} = a_0 + a_1u$. Jaká je směrnice $a_1$ (v A/V)?
+'''
+value = 10.36
+tolerance = 0.02
+unit = 'A/V'
+explanation = '''
+$\sum u = 2{,}55$, $\sum i = 1{,}37$, $\sum u^2 = 1{,}628\,75$, $\sum ui = 0{,}012 + 0{,}093\,75 + 0{,}26 + 0{,}54 = 0{,}905\,75$, $m = 4$:
+$$\Delta = 4\cdot1{,}628\,75 - 2{,}55^2 = 6{,}515 - 6{,}502\,5 = 0{,}012\,5$$
+$$a_1 = \frac{4\cdot0{,}905\,75 - 2{,}55\cdot1{,}37}{0{,}012\,5} = \frac{3{,}623 - 3{,}493\,5}{0{,}012\,5} = \frac{0{,}129\,5}{0{,}012\,5} = 10{,}36\ \text{A/V}$$
+a $a_0 = -6{,}262\ \text{A}$, tedy $i_\text{a} = 10{,}36u - 6{,}262$ (shodně se sbírkou i s Excelem z PC11).
+'''
+
+[[question]]
+id = 'CVNL-05'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.3'
+text = '''
+Na charakteristice diody jsou body (0,5 V; 0,5 mA), (0,6 V; 20 mA) a (0,7 V; 1,0 A). Urči přibližně dynamický odpor v pracovním bodě 0,6 V ze sousedních bodů.
+'''
+value = 0.2
+tolerance = 0.002
+unit = 'Ω'
+explanation = '''
+Sečna sousedních bodů:
+$$R_\text{d}(0{,}6) \approx \frac{\Delta u}{\Delta i} = \frac{0{,}7 - 0{,}5}{1{,}0 - 0{,}000\,5} = 0{,}200\,1\ \Omega$$
+Derivace interpolačního polynomu $i_\text{a} = 14{,}31 - 52{,}63u + 48{,}03u^2$ dá $R_\text{d} = 1/(96{,}06\cdot0{,}6 - 52{,}63) = 0{,}200\ \Omega$. Statický odpor je naproti tomu $R_\text{s} = 0{,}6/0{,}02 = 30\ \Omega$.
+'''
+
+[[question]]
+id = 'CVNL-06'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.13'
+text = '''
+Kvadratický polynom proložený body (0,1 V; 0,1 mA), (0,2 V; 0,35 mA), (0,45 V; 0,85 mA) vyšel $i_\text{a} = -0{,}178\,6 + 2{,}929u - 1{,}429u^2$ (mA). Extrapoluj proud pro $u = 0{,}7\ \text{V}$.
+'''
+value = 1.171
+tolerance = 0.003
+unit = 'mA'
+explanation = '''
+$$i_\text{a}(0{,}7) = -0{,}178\,6 + 2{,}929\cdot0{,}7 - 1{,}429\cdot0{,}49 = -0{,}178\,6 + 2{,}050\,3 - 0{,}700\,2 = 1{,}171\ \text{mA}$$
+Koeficienty jsou z Vandermondovy soustavy: $\Delta = 0{,}008\,75$, $\Delta_0 = -0{,}001\,562\,5$, $\Delta_1 = 0{,}025\,625$, $\Delta_2 = -0{,}012\,5$. Extrapolace mimo naměřený interval je méně spolehlivá než interpolace.
+'''
+
+[[question]]
+id = 'CVNL-07'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.13'
+text = '''
+Z téhož polynomu $i_\text{a} = -0{,}178\,6 + 2{,}929u - 1{,}429u^2$ (proud v mA) urči dynamický odpor v bodě $u = 0{,}2\ \text{V}$. Výsledek zadej v Ω.
+'''
+value = 424
+tolerance = 2
+unit = 'Ω'
+explanation = '''
+$$G_\text{d} = \frac{\mathrm{d}i_\text{a}}{\mathrm{d}u} = 2{,}929 - 2\cdot1{,}429\cdot0{,}2 = 2{,}357\ \text{mS}, \qquad R_\text{d} = \frac{1}{2{,}357\cdot10^{-3}} = 424{,}3\ \Omega$$
+Statický odpor $R_\text{s} = 0{,}2/0{,}35\cdot10^{-3} = 571\ \Omega$.
+'''
+warning = 'Proud je v mA, takže derivace vychází v mS a odpor v kΩ (0,424 kΩ).'
+
+[[question]]
+id = 'CVNL-08'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.4'
+text = '''
+Nelineární prvek s charakteristikou $U_\text{n} = 3I^2 + 2I$ je v sérii s $R = 5\ \Omega$ připojen ke zdroji $U = 10\ \text{V}$. Jaký proud obvodem teče?
+'''
+value = 1
+tolerance = 0.005
+unit = 'A'
+explanation = '''
+2. KZ: $3I^2 + 2I + 5I - 10 = 0$, tedy $3I^2 + 7I - 10 = 0$:
+$$I_{1,2} = \frac{-7 \pm \sqrt{49 + 120}}{6} = \frac{-7 \pm 13}{6} \quad\Rightarrow\quad I_1 = 1\ \text{A}, \quad I_2 = -3{,}33\ \text{A}$$
+Smysl má jen $I = 1\ \text{A}$ (charakteristika je zadaná pro kladné proudy, zdroj proud pohání kladně).
+'''
+
+[[question]]
+id = 'CVNL-09'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.6'
+text = '''
+Zenerova dioda je v okolí 4,8 V linearizovaná přímkou $I_\text{z} = 1{,}3514\,U_2 - 6{,}2807$ (A). Napájí ji zdroj $U_1 = 12\ \text{V}$ přes $R = 33\ \Omega$, stabilizátor je bez zátěže. Jaké je výstupní napětí $U_2$?
+'''
+value = 4.809
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+Linearizovaná dioda je zdroj proudu $I_\text{d} = 6{,}2807\ \text{A}$ (do uzlu) s vodivostí $G_\text{d} = 1{,}3514\ \text{S}$. Zdroj s rezistorem: $I_1 = 12/33 = 0{,}363\,6\ \text{A}$, $G = 0{,}030\,3\ \text{S}$:
+$$U_2 = \frac{I_1 + I_\text{d}}{G + G_\text{d}} = \frac{0{,}363\,6 + 6{,}280\,7}{0{,}030\,3 + 1{,}351\,4} = \frac{6{,}644\,3}{1{,}381\,7} = 4{,}809\ \text{V}$$
+Přímka vznikla metodou nejmenších čtverců z bodů (4,65; 0,035), (4,80; 0,15), (5,00; 0,50).
+'''
+
+[[question]]
+id = 'CVNL-10'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.6'
+text = '''
+Stabilizátor z předchozí otázky ($U_1 = 12\ \text{V}$, $R = 33\ \Omega$, $U_2 = 4{,}809\ \text{V}$) je bez zátěže. Jaký ztrátový výkon má dioda?
+'''
+value = 1.048
+tolerance = 0.005
+unit = 'W'
+explanation = '''
+Bez zátěže teče celý proud rezistoru diodou:
+$$I_\text{z} = \frac{U_1 - U_2}{R} = \frac{12 - 4{,}809}{33} = 0{,}217\,9\ \text{A}, \qquad P_\text{D} = U_2I_\text{z} = 4{,}809\cdot0{,}217\,9 = 1{,}048\ \text{W}$$
+Rezistor zahřívá $RI_\text{z}^2 = 1{,}57\ \text{W}$.
+'''
+
+[[question]]
+id = 'CVNL-11'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.8'
+text = '''
+Prvek s charakteristikou $u = i^3 - 3i$ je v sérii s $R = 5\ \Omega$ na $U = 12\ \text{V}$, takže $f(i) = i^3 + 2i - 12 = 0$. Jaký je první Newtonův odhad $i_{(1)}$ z počátečního $i_{(0)} = 2{,}6\ \text{A}$?
+'''
+value = 2.1163
+tolerance = 0.0005
+unit = 'A'
+explanation = '''
+$f'(i) = 3i^2 + 2$:
+$$\varepsilon_{(0)} = -\frac{f(2{,}6)}{f'(2{,}6)} = -\frac{17{,}576 + 5{,}2 - 12}{20{,}28 + 2} = -\frac{10{,}776}{22{,}28} = -0{,}483\,66, \qquad i_{(1)} = 2{,}6 - 0{,}483\,66 = 2{,}116\,3\ \text{A}$$
+Další kroky dají 2,005 5 a 2,000 0 A; pracovní bod je $i = 2\ \text{A}$, $u = 8 - 6 = 2\ \text{V}$.
+'''
+
+[[question]]
+id = 'CVNL-12'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.9'
+text = '''
+Zdroj proudu $I = 0{,}25\ \text{A}$ napájí paralelně rezistor $R = 200\ \Omega$ a nelineární prvek $i = 0{,}005\,(u^3 - u)$. Newtonovou metodou (odhad 4 V, chyba pod 1 mV) urči napětí $u$.
+'''
+value = 3.6841
+tolerance = 0.0003
+unit = 'V'
+explanation = '''
+1. KZ: $-I + u/R + 0{,}005(u^3 - u) = 0$; protože $1/R = 0{,}005$, zbude $f(u) = 0{,}005u^3 - 0{,}25$, $f'(u) = 0{,}015u^2$.
+
+| $k$ | $u_{(k)}$ | $\varepsilon_{(k)}$ |
+|---|---|---|
+| 0 | 4 | −0,291 67 |
+| 1 | 3,708 33 | −0,024 14 |
+| 2 | 3,684 19 | −0,000 16 |
+
+$u = 3{,}6842\ \text{V}$, $i = 0{,}005(3{,}6842^3 - 3{,}6842) = 0{,}2316\ \text{A}$.
+'''
+
+[[question]]
+id = 'CVNL-13'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.16'
+text = '''
+Prvek $i = 0{,}0125u^3 - 0{,}0125u$ je v sérii s $R = 80\ \Omega$ na $U = 5\ \text{V}$. Newtonovou metodou z odhadu 2 V (chyba pod 1 mV) urči napětí prvku.
+'''
+value = 1.7104
+tolerance = 0.001
+unit = 'V'
+explanation = '''
+2. KZ: $u + 80(0{,}0125u^3 - 0{,}0125u) - 5 = 0$. Člen $+u$ se odečte s $-80\cdot0{,}0125u = -u$, zbude $f(u) = u^3 - 5$, $f'(u) = 3u^2$.
+
+| $k$ | $u_{(k)}$ | $\varepsilon_{(k)}$ |
+|---|---|---|
+| 0 | 2 | −0,250 0 |
+| 1 | 1,750 0 | −0,039 1 |
+| 2 | 1,710 9 | −0,000 9 |
+
+Oprava je pod 1 mV: $u = 1{,}7109\ \text{V}$ (sbírka), přesný kořen je $\sqrt[3]{5} = 1{,}7100\ \text{V}$. Proud $i \doteq 0{,}0412\ \text{A}$.
+'''
+
+[[question]]
+id = 'CVNL-14'
+kind = 'numeric'
+topic = 'Nelineární obvody'
+source = 'Sbírka, př. 10.17'
+text = '''
+Křemíková dioda $I_\text{d} = 5\cdot10^{-12}\,\mathrm{e}^{38U_\text{d}}$ je přes $R = 50\ \Omega$ připojena na $U = 10\ \text{V}$. Newtonovou metodou z odhadu 0,7 V urči $U_\text{d}$ (chyba pod 1 mV).
+'''
+value = 0.6408
+tolerance = 0.0003
+unit = 'V'
+explanation = '''
+$f(U_\text{d}) = U_\text{d} + 2{,}5\cdot10^{-10}\,\mathrm{e}^{38U_\text{d}} - 10$, $f' = 1 + 9{,}5\cdot10^{-9}\,\mathrm{e}^{38U_\text{d}}$. Iterace: 0,7 → 0,676 44 → 0,656 87 → 0,644 77 → 0,640 98 → 0,640 68 V (opravy −23,6; −19,6; −12,1; −3,8; −0,3 mV).
+
+$U_\text{d} = 0{,}6407\ \text{V}$, shodně se sbírkou a s tabulkou v Excelu z PC11. Exponenciála je velmi strmá, proto první kroky konvergují pomalu.
+'''
+
+[[question]]
+id = 'CVNL-15'
+topic = 'Nelineární obvody'
+text = '''
+Proč u obvodu s diodou nejde použít princip superpozice?
+'''
+options = [
+  'dioda je nelineární prvek; odezva na součet budicích veličin není součtem odezev',
+  'superpozice platí jen pro zdroje proudu',
+  'dioda má záporný odpor',
+  'superpozice jde použít, jen se musí zkratovat dioda',
+]
+answer = 0
+explanation = '''
+Superpozice vychází z linearity: když $i = Gu$, je $G(u_1 + u_2) = Gu_1 + Gu_2$. U nelineární charakteristiky (třeba $i = 0{,}1u^2$) to neplatí, ze součtu napětí vzniknou i nové složky (smíšené členy, harmonické). Laboratoř to ukazuje v úloze 5.
+'''
+notes = [
+  '',
+  'Superpozice platí pro jakékoli nezávislé zdroje v lineárním obvodu.',
+  'Běžná dioda záporný odpor nemá.',
+  'Zkratovaná dioda by změnila obvod.',
+]
+
+[[question]]
+id = 'CVNL-16'
+topic = 'Nelineární obvody'
+text = '''
+Co jsou dva body zatěžovací přímky v grafické metodě?
+'''
+options = [
+  'napětí naprázdno $U_0$ (na ose napětí) a proud nakrátko $I_\text{k}$ (na ose proudu) náhradního zdroje lineární části',
+  'dva naměřené body charakteristiky nelineárního prvku',
+  'počátek a pracovní bod',
+  'napětí zdroje a napětí na prvku',
+]
+answer = 0
+explanation = '''
+Zatěžovací přímka je převrácená AV charakteristika Théveninova zdroje lineární části obvodu: $u = U_0 - R_\text{i}i$. Naprázdno je $i = 0$, $u = U_0$; nakrátko $u = 0$, $i = I_\text{k} = U_0/R_\text{i}$. Průsečík s charakteristikou prvku je pracovní bod.
+'''
+notes = [
+  '',
+  'Body charakteristiky prvku tvoří křivku, ne přímku.',
+  'Přímka počátkem neprochází (kromě $U_0 = 0$).',
+  'Napětí na prvku je výsledek, ne bod pro konstrukci.',
+]

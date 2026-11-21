@@ -17,6 +17,12 @@
   **Úvod do měření nanečisto** a **Počítání chyb a závislostí**.
 - BPC-EL1: 9 kapitol k laboratořím (pracovní sešit a úlohy 1–8) a 98 otázek
   v 9 kvízech, sada **Obhajoba nanečisto**.
+- BPC-EL1: 10 kapitol k početním cvičením (základní pojmy a zdroje,
+  zjednodušování, Kirchhoffovy rovnice a MSP, MUN, řízené zdroje a razítka,
+  náhradní zdroj, nelineární obvody, periodické průběhy, magnetické obvody,
+  nástroje) s řešenými příklady; 203 otázek ze cvičení, ze sbírky
+  a z pracovních sešitů COZ1–COZ6 a sady **Test 1 nanečisto**, **Test 2
+  nanečisto** a **Zkouška nanečisto**.
 - BPC-PC1M: 7 kapitol jazyka C (funkce až spojový seznam) a 76 otázek
   v 7 kvízech.
 - Odevzdané práce: 6 protokolů z fyzikálních laboratoří (BPC-FY1) a 3 z MPE
