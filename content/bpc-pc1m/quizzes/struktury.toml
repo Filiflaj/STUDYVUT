@@ -1,0 +1,299 @@
+name = 'Struktury'
+description = 'struct, typedef, enum, switch, union'
+
+[[question]]
+id = 'ST-01'
+topic = 'Struktury'
+text = '''
+Co program vypíše?
+
+```c
+typedef struct
+{
+    int x;
+    int y;
+} Bod;
+
+int main()
+{
+    Bod a = {1, 2};
+    Bod b = a;
+    b.x = 10;
+    printf("%d %d\n", a.x, b.x);
+    return 0;
+}
+```
+'''
+options = ['`1 10`', '`10 10`', '`1 1`', '`10 1`']
+answer = 0
+explanation = '''
+Přiřazení `Bod b = a;` **zkopíruje** všechny položky. `a` a `b` jsou dvě samostatné struktury, změna `b.x` se `a` netýká.
+'''
+notes = [
+  '',
+  'Struktury se nesdílejí jako u ukazatelů, `b` je kopie.',
+  '`b.x` se po kopii přepsalo na 10.',
+  'Prohozené pořadí: vypisuje se nejdřív `a.x`.',
+]
+
+[[question]]
+id = 'ST-02'
+topic = 'Struktury'
+text = '''
+Pole knih z úlohy (`nazev`, `pocetStran`, `cena`):
+
+```c
+Kniha knihy[4] =
+{
+    {"C", 240, 349.0f},
+    {"Algoritmy", 520, 699.0f},
+    {"Git", 180, 299.0f},
+    {"Linux", 410, 549.0f}
+};
+printf("%c %d\n", knihy[2].nazev[0], knihy[3].pocetStran / 2);
+```
+
+Co se vypíše?
+'''
+options = ['`G 205`', '`A 260`', '`G 205.0`', '`L 90`']
+answer = 0
+explanation = '''
+Indexy jsou od nuly: `knihy[2]` je Git, `nazev[0]` je jeho první znak `G`. `knihy[3]` je Linux se 410 stranami, celočíselné dělení $410 / 2 = 205$.
+'''
+notes = [
+  '',
+  'To by byl `knihy[1]` a `knihy[0]`, indexuje se od nuly.',
+  '`%d` a dělení dvou `int` dá celé číslo bez desetinné části.',
+  'Linux je `knihy[3]`, jeho název se netiskne. Git má 180 stran, ale tiskne se Linux.',
+]
+
+[[question]]
+id = 'ST-03'
+topic = 'Struktury'
+text = '''
+Co vypíše poslední řádek úlohy s knihami?
+
+```c
+int nejdrazsi = 0;
+knihy[1].cena = knihy[1].cena + 50;
+
+for (int i = 1; i < 4; i++)
+{
+    if (knihy[i].cena > knihy[nejdrazsi].cena)
+    {
+        nejdrazsi = i;
+    }
+}
+printf("Nejdrazsi: %s (%.2f Kc)\n", knihy[nejdrazsi].nazev, knihy[nejdrazsi].cena);
+```
+
+(ceny jsou 349, 699, 299 a 549 Kč)
+'''
+options = [
+  '`Nejdrazsi: Algoritmy (749.00 Kc)`',
+  '`Nejdrazsi: Algoritmy (699.00 Kc)`',
+  '`Nejdrazsi: Linux (549.00 Kc)`',
+  '`Nejdrazsi: 1 (749.00 Kc)`',
+]
+answer = 0
+explanation = '''
+Před hledáním se Algoritmům přičte 50 Kč, mají tedy 749 Kč. Cyklus si pamatuje **index** nejdražší knihy (1), a z něj vypíše název i cenu. `%.2f` dá dvě desetinná místa.
+'''
+notes = [
+  '',
+  'Cena se zvýšila ještě před hledáním a vypisuje se nová hodnota.',
+  'Linux je dražší než C a Git, ale ne než Algoritmy.',
+  '`%s` vypíše řetězec `nazev`, ne index.',
+]
+
+[[question]]
+id = 'ST-04'
+topic = 'Struktury'
+kind = 'numeric'
+text = '''
+```c
+typedef enum { A = 3, B, C = 10, D } Pismena;
+```
+
+Jakou hodnotu má `D`?
+'''
+value = 11
+tolerance = 0
+explanation = '''
+Bez zadané hodnoty má položka o 1 víc než předchozí. `A = 3`, `B = 4`, `C = 10`, `D = 11`.
+'''
+
+[[question]]
+id = 'ST-05'
+topic = 'Struktury'
+text = '''
+Co program vypíše?
+
+```c
+typedef enum { VYPNUTO, ZAPNUTO, CHYBA } Stav;
+
+int main()
+{
+    Stav s = ZAPNUTO;
+    switch (s)
+    {
+        case VYPNUTO: printf("vypnuto ");
+        case ZAPNUTO: printf("zapnuto ");
+        case CHYBA:   printf("chyba ");
+    }
+    printf("\n");
+    return 0;
+}
+```
+'''
+options = ['`zapnuto chyba`', '`zapnuto`', '`vypnuto zapnuto chyba`', '`1`']
+answer = 0
+explanation = '''
+`switch` skočí na `case ZAPNUTO`. Protože chybí `break`, pokračuje (propadne) i do dalších větví. Vypíše se `zapnuto` a `chyba`. V úloze se zařízeními má proto každá větev `break`.
+'''
+notes = [
+  '',
+  'Tak by to bylo s `break` za každou větví.',
+  'Do `case VYPNUTO` se neskočí, propadá se jen směrem dolů od nalezené větve.',
+  'Enum se tu neporovnává s číslem k vypsání, vypisují se řetězce z větví.',
+]
+
+[[question]]
+id = 'ST-06'
+topic = 'Struktury'
+kind = 'numeric'
+text = '''
+```c
+typedef union
+{
+    int cele;
+    float desetinne;
+} Hodnota;
+```
+
+Kolik bajtů zabírá `Hodnota`, když `int` i `float` mají po 4 bajtech?
+'''
+value = 4
+tolerance = 0
+unit = 'B'
+explanation = '''
+Položky unionu sdílejí **stejné místo** v paměti, union je velký jako největší položka: 4 B. Struktura se stejnými dvěma položkami by měla 8 B, protože každá položka má svoje místo.
+'''
+
+[[question]]
+id = 'ST-07'
+topic = 'Struktury'
+text = '''
+Co platí o unionu `Hodnota` z úlohy (položky `int cele` a `float desetinne`)?
+'''
+options = [
+  'smysluplně drží jen naposledy zapsanou položku, proto se k němu ukládá i typ',
+  'drží obě hodnoty najednou, každou na jiném místě',
+  'po zápisu `cele` se automaticky převede hodnota i do `desetinne`',
+  'nejde ho vložit do struktury',
+]
+answer = 0
+explanation = '''
+Obě položky leží na stejných 4 bajtech. Zápis do `cele` přepíše bity, které by `desetinne` četlo jako úplně jiné číslo. Struktura `Data` si proto vedle unionu pamatuje `typ` a podle něj se čte správná položka.
+'''
+notes = [
+  '',
+  'To popisuje struct, ne union.',
+  'Nic se nepřevádí, `desetinne` by jen jinak vyložilo tytéž bity.',
+  'Struktura `Data` z úlohy union obsahuje.',
+]
+
+[[question]]
+id = 'ST-08'
+topic = 'Struktury'
+text = '''
+Který řádek se **nepřeloží**?
+
+```c
+typedef struct
+{
+    char nazev[40];
+    int pocetStran;
+} Kniha;
+
+Kniha k = {"C", 240};     // řádek A
+Kniha m;                  // řádek B
+m.pocetStran = 180;       // řádek C
+m.nazev = "Git";          // řádek D
+```
+'''
+options = ['řádek D', 'řádek A', 'řádek B', 'řádek C']
+answer = 0
+explanation = '''
+Pole (`char nazev[40]`) není přiřaditelné, překladač ohlásí *array type is not assignable*. Řetězec jde do pole dostat při inicializaci (řádek A) nebo funkcí `strcpy(m.nazev, "Git")` ze `string.h`.
+'''
+notes = [
+  '',
+  'Inicializace struktury složenými závorkami je v pořádku, i s řetězcem.',
+  'Deklarace bez inicializace je povolená.',
+  'Do položky typu int se přiřazovat smí.',
+]
+
+[[question]]
+id = 'ST-09'
+topic = 'Struktury'
+text = '''
+Je definovaná struktura **bez** `typedef`:
+
+```c
+struct Obdelnik { int a; int b; };
+```
+
+Která deklarace proměnné je správná?
+'''
+options = [
+  '`struct Obdelnik o = {3, 5};`',
+  '`Obdelnik o = {3, 5};`',
+  '`struct o = {3, 5};`',
+  '`Obdelnik struct o = {3, 5};`',
+]
+answer = 0
+explanation = '''
+Bez `typedef` je jméno typu celé `struct Obdelnik`. Samotné `Obdelnik` překladač nezná (*must use 'struct' tag*). S `typedef struct { … } Obdelnik;` by stačilo psát `Obdelnik o;`.
+'''
+notes = [
+  '',
+  'Funguje jen s typedef.',
+  'Chybí jméno struktury.',
+  'Slovo `struct` patří před jméno.',
+]
+
+[[question]]
+id = 'ST-10'
+topic = 'Struktury'
+text = '''
+Hledání osoby podle ID se změní tak, že `printf("Nenalezeno\n")` je ve větvi `else` **uvnitř** cyklu:
+
+```c
+for (int i = 0; i < 5; i++)
+{
+    if (osoby[i].id == hledaneId)
+        printf("ID %d: %s\n", osoby[i].id, osoby[i].jmeno);
+    else
+        printf("Nenalezeno\n");
+}
+```
+
+Co se vypíše pro hledané ID 310, které má třetí osoba (Eva)?
+'''
+options = [
+  'dvakrát `Nenalezeno`, pak `ID 310: Eva` a ještě dvakrát `Nenalezeno`',
+  'jen `ID 310: Eva`',
+  'jen `Nenalezeno`',
+  'dvakrát `Nenalezeno` a `ID 310: Eva`, pak cyklus skončí',
+]
+answer = 0
+explanation = '''
+`else` se provede u **každé** osoby, která nesedí, tedy u čtyř z pěti. Proto má program z úlohy příznak `nalezeno` a hlášku vypisuje až za cyklem, když příznak zůstal 0.
+'''
+notes = [
+  '',
+  'Tak se chová program z úlohy s příznakem `nalezeno`.',
+  'Eva se najde, takže její řádek se vypíše.',
+  'Cyklus nemá `break`, pokračuje až do konce pole.',
+]

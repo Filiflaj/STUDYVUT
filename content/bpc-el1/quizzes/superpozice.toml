@@ -1,0 +1,186 @@
+name = 'Úloha 5: Princip superpozice'
+description = 'dílčí obvody, náhrada zdrojů, platnost v lineárním a nelineárním obvodu'
+
+[[question]]
+id = 'SP-01'
+topic = 'Princip superpozice'
+text = '''
+Čím se při řešení dílčího obvodu nahradí ideální zdroj **napětí**, který právě nepůsobí?
+'''
+options = ['zkratem', 'rozpojením', 'rezistorem 1 kΩ', 'zdrojem proudu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Nepůsobící zdroj má nulové napětí; ideální zdroj napětí s nulovým napětím je zkrat (vnitřní odpor 0).
+'''
+notes = ['', 'Rozpojením se nahrazuje zdroj proudu.', 'Nahrazuje se vnitřním odporem, ten je u ideálního zdroje napětí nulový.', 'Zdroj se nepřevádí, nahrazuje se.']
+
+[[question]]
+id = 'SP-02'
+topic = 'Princip superpozice'
+text = '''
+Čím se nahradí ideální zdroj **proudu**, který právě nepůsobí?
+'''
+options = ['rozpojením', 'zkratem', 'zdrojem napětí', 'nechá se zapojený']
+answer = 0
+layout = 'grid'
+explanation = '''
+Nulový proud při libovolném napětí je rozpojený obvod (vnitřní odpor ideálního zdroje proudu je nekonečný).
+'''
+notes = ['', 'Zkratem se nahrazuje zdroj napětí.', 'Zdroj se nepřevádí, nahrazuje se.', 'Pak by působil i on.']
+
+[[question]]
+id = 'SP-03'
+kind = 'numeric'
+topic = 'Princip superpozice'
+text = '''
+Pro měřený lineární obvod platí $U_{10} = 0{,}3924\,U_\text{z1} + 0{,}1992\,U_\text{z2}$. Jaké je $U_{10}$ pro $U_\text{z1} = 8{,}7$ V a $U_\text{z2} = 3{,}3$ V?
+'''
+value = 4.07
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_{10} = 0{,}3924\cdot 8{,}7 + 0{,}1992\cdot 3{,}3 = 3{,}414 + 0{,}657 = 4{,}07\ \text{V}$$
+První člen je odezva jen od $U_\text{z1}$ ($U_{10}^{\prime}$), druhý jen od $U_\text{z2}$ ($U_{10}^{\prime\prime}$).
+'''
+
+[[question]]
+id = 'SP-04'
+kind = 'numeric'
+topic = 'Princip superpozice'
+text = '''
+Na rezistoru by samotný zdroj 1 vytvořil výkon 4 mW a samotný zdroj 2 výkon 9 mW, proudy obou zdrojů mají v rezistoru stejný směr. Jaký výkon je na rezistoru, když působí oba zdroje?
+'''
+value = 25
+tolerance = 0.1
+unit = 'mW'
+explanation = '''
+Proudy se sčítají, výkony ne. Z $P = RI^2$ jsou proudy v poměru $\sqrt{4} : \sqrt{9} = 2 : 3$, celkový proud odpovídá „5“:
+$$P = R\,(I^{\prime} + I^{\prime\prime})^2 = \bigl(\sqrt{4} + \sqrt{9}\bigr)^2\ \text{mW} = 25\ \text{mW} \neq 4 + 9$$
+Superpozice pro výkon neplatí, výkon se počítá z výsledného proudu.
+'''
+
+[[question]]
+id = 'SP-05'
+topic = 'Princip superpozice'
+text = '''
+Proč v obvodu s diodou vyjde $\Delta U = U - (U^{\prime} + U^{\prime\prime})$ řádově 1 V?
+'''
+options = [
+  'Dioda je nelineární: v každém dílčím obvodu pracuje v jiném bodě charakteristiky (jednou vede, jednou ne).',
+  'Dioda má příliš velký odpor.',
+  'Při měření se zapomnělo zkratovat zdroj.',
+  'Kirchhoffovy zákony s diodou neplatí.',
+]
+answer = 0
+explanation = '''
+S oběma zdroji (a s $U_\text{z1}$) dioda vede a drží asi 0,65 V, s $U_\text{z2}$ je v závěrném směru. Proto $f(U^{\prime} + U^{\prime\prime}) \neq f(U^{\prime}) + f(U^{\prime\prime})$. Kirchhoffovy zákony přitom platí dál.
+'''
+notes = [
+  '',
+  'Nejde o velikost odporu, ale o to, že se mění s napětím.',
+  'Velká odchylka vychází i při správném měření i v simulaci.',
+  'Platí vždy; $U_{12} = U_{10} - U_{20}$ sedí i s diodou.',
+]
+
+[[question]]
+id = 'SP-06'
+kind = 'numeric'
+topic = 'Princip superpozice'
+text = '''
+V nelineárním obvodu se naměřilo $U_{12} = 0{,}65$ V (oba zdroje), $U_{12}^{\prime} = 0{,}68$ V (jen $U_\text{z1}$) a $U_{12}^{\prime\prime} = -1{,}12$ V (jen $U_\text{z2}$). Jaká je odchylka $\Delta U_{12}$?
+'''
+value = 1.09
+tolerance = 0.005
+unit = 'V'
+sign_hint = 'Napětí U″12 je záporné a dosazuje se se znaménkem.'
+explanation = '''
+$$\Delta U_{12} = U_{12} - \bigl(U_{12}^{\prime} + U_{12}^{\prime\prime}\bigr) = 0{,}65 - \bigl(0{,}68 + (-1{,}12)\bigr) = 0{,}65 + 0{,}44 = 1{,}09\ \text{V}$$
+Superpozice s diodou neplatí.
+'''
+
+[[question]]
+id = 'SP-07'
+topic = 'Princip superpozice'
+text = '''
+Proč vyšlo napětí $U_{12}^{\prime\prime}$ (působí jen $U_\text{z2}$) záporné?
+'''
+options = [
+  'Když působí jen $U_\text{z2}$, je uzel 2 na vyšším potenciálu než uzel 1.',
+  'Voltmetr byl zapojený obráceně.',
+  'Zdroj $U_\text{z2}$ dává záporné napětí.',
+  'Je to chyba měření.',
+]
+answer = 0
+explanation = '''
+Proud od $U_\text{z2}$ teče rezistorem $R_3$ z uzlu 2 do uzlu 1, potenciál uzlu 2 je vyšší a napětí $U_{12}$ má opačný směr než šipka. Záporné číslo se zapíše i se znaménkem a se znaménkem se dosazuje.
+'''
+notes = ['', 'Polarita voltmetru je pořád stejná (červený na uzlu 1); znaménko dává obvod.', 'Zdroj má kladné napětí, rozhoduje směr proudu v $R_3$.', 'Je to správný výsledek.']
+
+[[question]]
+id = 'SP-08'
+topic = 'Princip superpozice'
+text = '''
+Zdroj $U_\text{z2}$ se při měření nahradí zkratem. Co se stane s jeho vnitřním odporem $R_\text{i2}$?
+'''
+options = [
+  'Zůstává v obvodu, zkratuje se jen ideální zdroj.',
+  'Zkratuje se taky.',
+  'Odpojí se.',
+  'Nahradí se rozpojením.',
+]
+answer = 0
+explanation = '''
+Vnitřní odpor patří k reálnému zdroji jako samostatný prvek. Nahrazuje se jen ideální zdroj napětí; v dílčím obvodu je pak $R_\text{i2}$ paralelně k $R_2$.
+'''
+notes = ['', 'Pak by se změnil obvod a dílčí odezva by vyšla špatně.', 'Odpojí se jen ideální zdroj proudu.', 'Rozpojení patří zdroji proudu.']
+
+[[question]]
+id = 'SP-09'
+topic = 'Princip superpozice'
+text = '''
+V tabulce je zapsáno $U_{10} = 3{,}200$ V, $U_{20} = 2{,}32$ V a $U_{12} = 1{,}79$ V (lineární obvod). Čím se pozná, že jedna hodnota je špatně?
+'''
+options = [
+  '2. Kirchhoffovým zákonem: $U_{10}$ má být $U_{20} + U_{12}$, tedy asi 4,1 V.',
+  'Superpozicí: $U_{10}$ má být $U_{20} \cdot U_{12}$.',
+  'Nijak, všechny hodnoty jsou naměřené.',
+  'Odchylka $\Delta U_{12}$ vyšla záporná.',
+]
+answer = 0
+explanation = '''
+Ve smyčce uzel 1 → uzel 2 → uzel 0 platí $U_{10} = U_{20} + U_{12}$ v lineárním i nelineárním obvodu. Hodnota 3,200 V se liší o 0,9 V (simulace dala 3,991 V). V sešitu se nepřepisuje, vysvětlí se v závěru.
+'''
+notes = ['', 'Napětí se sčítají, nenásobí.', 'I naměřená hodnota může být chybně odečtená; kontrola KZ to odhalí.', 'Znaménko odchylky samo o chybě nic neříká.']
+
+[[question]]
+id = 'SP-10'
+topic = 'Princip superpozice'
+text = '''
+Jaké napětí je přibližně na křemíkové diodě, když vede proud v jednotkách mA?
+'''
+options = ['asi 0,65 V', 'asi 0,1 V', 'asi 3 V', 'celé napětí zdroje']
+answer = 0
+layout = 'grid'
+explanation = '''
+Křemíková dioda začíná vést kolem 0,6 V a pak na ní napětí s proudem roste jen nepatrně. V úloze bylo $U_{12}$ = 0,65 a 0,68 V.
+'''
+notes = ['', 'To je pod prahem vedení.', 'Tolik by bylo na několika diodách v sérii.', 'Na vodivé diodě je jen malý úbytek.']
+
+[[question]]
+id = 'SP-11'
+topic = 'Princip superpozice'
+text = '''
+Které tvrzení o principu superpozice je správné?
+'''
+options = [
+  'Platí pro napětí a proudy v lineárním obvodu, ne pro výkon.',
+  'Platí pro napětí, proudy i výkony v každém obvodu.',
+  'Platí jen pro obvody s jedním zdrojem.',
+  'Platí i v obvodu s diodou, když se zdroje přepínají rychle.',
+]
+answer = 0
+explanation = '''
+Superpozice vyžaduje lineární obvod a týká se lineárních veličin (napětí, proudy). Výkon je kvadratický. S jedním zdrojem by nebylo co sčítat.
+'''
+notes = ['', 'Výkon ani nelineární obvody ne.', 'Smysl má právě pro více zdrojů.', 'Nelinearita diody na rychlosti přepínání nezávisí.']

@@ -1,0 +1,309 @@
+name = 'Spojový seznam'
+description = 'průchod, vkládání, mazání, uvolnění seznamu'
+
+[[question]]
+id = 'SS-01'
+topic = 'Spojový seznam'
+text = '''
+Uzly jsou propojené `a -> b -> c -> NULL` s hodnotami 5, 8, 12. Nový uzel `d` s hodnotou 7 se vloží funkcí z úlohy:
+
+```c
+void vloz_za(struct Node *kam, struct Node *novy)
+{
+    novy->next = kam->next;
+    kam->next = novy;
+}
+
+vloz_za(&b, &d);
+vypis(&a);
+```
+
+Co vypíše `vypis`?
+'''
+options = [
+  '`5 -> 8 -> 7 -> 12 -> NULL`',
+  '`5 -> 7 -> 8 -> 12 -> NULL`',
+  '`5 -> 8 -> 12 -> 7 -> NULL`',
+  '`7 -> 5 -> 8 -> 12 -> NULL`',
+]
+answer = 0
+explanation = '''
+Nový uzel jde **za** uzel `b` (hodnota 8): `d` převezme odkaz na `c` a `b` ukáže na `d`. Seznam se netřídí, pořadí určuje jen propojení.
+'''
+notes = [
+  '',
+  'Tak by to bylo při vložení za `a`.',
+  'Vkládá se za `b`, ne na konec.',
+  'Na začátek by se vkládalo přes změnu hlavy.',
+]
+
+[[question]]
+id = 'SS-02'
+topic = 'Spojový seznam'
+kind = 'numeric'
+text = '''
+Jaký součet vrátí funkce `soucet(&a)` pro seznam ze SS-01 po vložení uzlu s hodnotou 7?
+'''
+value = 32
+tolerance = 0
+explanation = '''
+Cyklus projde všechny uzly až po `NULL`: $5 + 8 + 7 + 12 = 32$.
+'''
+
+[[question]]
+id = 'SS-03'
+topic = 'Spojový seznam'
+text = '''
+Co se stane, když se ve funkci `vloz_za` prohodí pořadí řádků?
+
+```c
+kam->next = novy;
+novy->next = kam->next;
+```
+'''
+options = [
+  'nový uzel ukazuje sám na sebe, zbytek seznamu se ztratí a výpis se zacyklí',
+  'nic, výsledek je stejný',
+  'nový uzel se vloží před `kam`',
+  'překladač ohlásí chybu',
+]
+answer = 0
+explanation = '''
+První řádek přepíše `kam->next` na `novy` a adresa zbytku seznamu se ztratí. Druhý řádek pak nastaví `novy->next = kam->next`, což je `novy`. Uzel ukazuje sám na sebe a `vypis` tiskne jeho hodnotu donekonečna. Proto se nejdřív napojí nový uzel na zbytek a teprve pak se na něj přesměruje předchozí uzel.
+'''
+notes = [
+  '',
+  'Pořadí rozhoduje, druhý řádek čte už přepsanou hodnotu.',
+  'Pozice `kam` se nemění, rozbije se jen napojení dál.',
+  'Syntakticky je kód v pořádku, chyba je v logice.',
+]
+
+[[question]]
+id = 'SS-04'
+topic = 'Spojový seznam'
+text = '''
+Co vypíše funkce `vypis` z úlohy pro prázdný seznam, `vypis(NULL)`?
+
+```c
+void vypis(struct Node *head)
+{
+    struct Node *current = head;
+    while (current != NULL)
+    {
+        printf("%d -> ", current->data);
+        current = current->next;
+    }
+    printf("NULL\n");
+}
+```
+'''
+options = ['`NULL`', 'nic', 'program spadne', '`0 -> NULL`']
+answer = 0
+explanation = '''
+Podmínka `current != NULL` je hned nesplněná, cyklus se neprovede a vypíše se jen `NULL`. Funkce prázdný seznam zvládne bez zvláštního ošetření.
+'''
+notes = [
+  '',
+  'Řádek `printf("NULL\n")` za cyklem se provede vždy.',
+  'K dereferenci `current->data` nedojde, cyklus se přeskočí.',
+  'Žádný uzel s hodnotou 0 neexistuje.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'SS-05'
+topic = 'Spojový seznam'
+text = '''
+Proč se funkce volají jako `head = vloz_na_konec(head, 10);` a `head = smaz_prvni(head);`?
+'''
+options = [
+  'funkce dostane jen kopii ukazatele head, novou hlavu proto musí vrátit',
+  'bez přiřazení by se uzel nepřidělil přes malloc',
+  'funkce vracejí počet uzlů a ten se ukládá do head',
+  'je to jen zvyk, přiřazení nic nemění',
+]
+answer = 0
+explanation = '''
+Když se hlava změní (vložení do prázdného seznamu, smazání prvního uzlu), funkce změní jen svoji kopii ukazatele. Volající se o nové hlavě dozví jen z návratové hodnoty. Bez přiřazení by `head` v `main` ukazovala na starý (u mazání už uvolněný) uzel.
+'''
+notes = [
+  '',
+  'malloc proběhne ve funkci tak jako tak.',
+  'Vrací se ukazatel na první uzel, ne počet.',
+  'U smazání prvního uzlu by bez přiřazení zůstala v main adresa uvolněného uzlu.',
+]
+
+[[question]]
+id = 'SS-06'
+topic = 'Spojový seznam'
+text = '''
+Který řádek v této verzi funkce `uvolni` je chybný?
+
+```c
+void uvolni(struct Node *head)
+{
+    while (head != NULL)          // řádek A
+    {
+        free(head);               // řádek B
+        head = head->next;        // řádek C
+    }
+}
+```
+'''
+options = [
+  'řádek C: čte `next` z uzlu, který už byl uvolněný',
+  'řádek A: podmínka má být `head->next != NULL`',
+  'řádek B: free se smí volat jen jednou za program',
+  'žádný, funkce je správně',
+]
+answer = 0
+explanation = '''
+Po `free(head)` se k uzlu nesmí přistupovat, `head->next` je čtení uvolněné paměti. Správně si adresu dalšího uzlu uložit předem: `struct Node *dalsi = head->next; free(head); head = dalsi;`.
+'''
+notes = [
+  '',
+  'S `head->next != NULL` by se poslední uzel neuvolnil.',
+  'Každý uzel z malloc potřebuje vlastní free.',
+  'Čtení po free je nedefinované chování, i když to někdy „projde“.',
+]
+
+[[question]]
+id = 'SS-07'
+topic = 'Spojový seznam'
+kind = 'numeric'
+text = '''
+Seznam vznikl čtyřmi voláními `vloz_na_konec` (každé volá jednou `malloc`). Kolikrát musí funkce `uvolni` zavolat `free`, aby se uvolnila všechna paměť?
+'''
+value = 4
+tolerance = 0
+explanation = '''
+Každý uzel je samostatný blok z vlastního `malloc`, a potřebuje vlastní `free`. Pole z jednoho `malloc` je naopak jeden blok a stačí mu jedno `free`.
+'''
+
+[[question]]
+id = 'SS-08'
+topic = 'Spojový seznam'
+text = '''
+Ve funkci `vloz_na_konec` se hledá poslední uzel. Co se stane, když se podmínka cyklu napíše takto?
+
+```c
+struct Node *current = head;
+while (current != NULL)
+{
+    current = current->next;
+}
+current->next = novy;
+```
+'''
+options = [
+  'cyklus skončí až za posledním uzlem, `current` je NULL a `current->next` program shodí',
+  'nový uzel se vloží na konec, funguje to stejně',
+  'nový uzel se vloží před poslední uzel',
+  'cyklus se nikdy nezastaví',
+]
+answer = 0
+explanation = '''
+Pro připojení na konec se musí cyklus zastavit **na** posledním uzlu, tedy na tom, jehož `next == NULL`. Správně `while (current->next != NULL)`.
+'''
+notes = [
+  '',
+  'Za cyklem je current NULL, dereference NULL je chyba.',
+  'Ukazatel na předposlední uzel se nikde neuchovává.',
+  'Cyklus skončí, jen o krok později, než má.',
+]
+
+[[question]]
+id = 'SS-09'
+topic = 'Spojový seznam'
+kind = 'numeric'
+text = '''
+Seznam obsahuje 4 uzly. Kolikrát se při volání `vloz_na_konec` provede krok `current = current->next`, než se najde poslední uzel?
+
+```c
+struct Node *current = head;
+while (current->next != NULL)
+{
+    current = current->next;
+}
+```
+'''
+value = 3
+tolerance = 0
+explanation = '''
+`current` začíná na 1. uzlu a posune se na 2., 3. a 4. Čtvrtý uzel má `next == NULL` a cyklus skončí: 3 kroky. Vkládání na konec proto trvá tím déle, čím delší je seznam. Vkládání na začátek nemusí procházet nic.
+'''
+
+[[question]]
+id = 'SS-10'
+topic = 'Spojový seznam'
+text = '''
+V 9. týdnu byly uzly obyčejné proměnné (`struct Node a, b, c;` v `main`). Smí se na ně na konci programu zavolat `free(&a)`?
+'''
+options = [
+  'ne, free se smí volat jen na bloky z malloc, calloc nebo realloc',
+  'ano, jinak vznikne únik paměti',
+  'ano, ale jen na první uzel',
+  'ano, free funguje na libovolnou adresu',
+]
+answer = 0
+explanation = '''
+Proměnné v `main` zaniknou samy s koncem funkce. `free` na adresu, která nepochází z dynamického přidělení, je nedefinované chování (typicky pád). Uvolňovat se musí jen uzly z `malloc` (10. týden).
+'''
+notes = [
+  '',
+  'Únik paměti se týká jen dynamicky přidělených bloků.',
+  'Ani první uzel nevznikl přes malloc.',
+  'free přijímá jen adresy z malloc/calloc/realloc (nebo NULL).',
+]
+
+[[question]]
+id = 'SS-11'
+topic = 'Spojový seznam'
+text = '''
+Které pořadí příkazů správně vloží uzel `novy` na **začátek** seznamu s hlavou `head`?
+'''
+options = [
+  '`novy->next = head;` a pak `head = novy;`',
+  '`head = novy;` a pak `novy->next = head;`',
+  '`head->next = novy;`',
+  '`novy = head;` a pak `head->next = novy;`',
+]
+answer = 0
+explanation = '''
+Nový uzel se nejdřív napojí na dosavadní první uzel, potom se hlava přesune na něj. V opačném pořadí by `novy->next` ukazoval sám na sebe a původní seznam by se ztratil.
+'''
+notes = [
+  '',
+  'Hlava se přepíše dřív, než se uloží odkaz na zbytek seznamu.',
+  'Tím by se uzel vložil za první uzel a zbytek seznamu by se odpojil.',
+  'Přepíše se ukazatel `novy` a nový uzel se ztratí.',
+]
+
+[[question]]
+id = 'SS-12'
+topic = 'Spojový seznam'
+text = '''
+Seznam `10 -> 20 -> 30 -> 40 -> NULL` (uzly z malloc). Proč funkce `smaz_prvni` nejdřív uloží `head->next` a teprve potom zavolá `free(head)`?
+
+```c
+struct Node *nova_hlava = head->next;
+free(head);
+return nova_hlava;
+```
+'''
+options = [
+  'po free se k uzlu nesmí přistupovat, adresa druhého uzlu by se už nedala bezpečně přečíst',
+  'free by jinak uvolnilo celý seznam',
+  'je to jedno, pořadí lze prohodit',
+  'free mění hodnotu `head->next` na NULL',
+]
+answer = 0
+explanation = '''
+`free(head)` vrátí paměť uzlu systému. Čtení `head->next` po něm je čtení uvolněné paměti. Proto se adresa nové hlavy (uzel 20) uloží předem. Výsledek: `20 -> 30 -> 40 -> NULL`.
+'''
+notes = [
+  '',
+  'free uvolní jen jeden blok, ostatní uzly zůstanou.',
+  'Prohození by znamenalo čtení uvolněné paměti.',
+  'Co se s obsahem uvolněné paměti stane, není definované, a právě proto se z ní nečte.',
+]

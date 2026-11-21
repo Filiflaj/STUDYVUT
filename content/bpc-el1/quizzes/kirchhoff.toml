@@ -1,0 +1,172 @@
+name = 'Úloha 2: Kirchhoffovy zákony'
+description = '1. a 2. Kirchhoffův zákon, znaménka, metoda úměrných veličin'
+
+[[question]]
+id = 'KZ-01'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Ze kterého zákona zachování plyne 1. Kirchhoffův zákon?
+'''
+options = ['zachování náboje', 'zachování energie', 'zachování hybnosti', 'zachování výkonu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Náboj se v uzlu nehromadí ani neztrácí, proto je součet proudů v uzlu nulový.
+'''
+notes = ['', 'Ze zachování energie plyne 2. KZ.', 'Hybnost s proudy v uzlu nesouvisí.', 'Výkon není veličina, která se v uzlu „zachovává“.']
+
+[[question]]
+id = 'KZ-02'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Ze kterého zákona zachování plyne 2. Kirchhoffův zákon?
+'''
+options = ['zachování energie', 'zachování náboje', 'zachování hmotnosti', 'zachování proudu']
+answer = 0
+layout = 'grid'
+explanation = '''
+Náboj oběhnutý po uzavřené smyčce se vrátí na stejný potenciál, práce elektrického pole je nulová: součet napětí ve smyčce je nulový (bez proměnného vnějšího magnetického pole).
+'''
+notes = ['', 'Ze zachování náboje plyne 1. KZ.', 'Hmotnost tu nehraje roli.', 'To není samostatný zákon zachování.']
+
+[[question]]
+id = 'KZ-03'
+kind = 'numeric'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Do uzlu vtéká proud $I = 20{,}58$ mA a vytékají z něj $I_1 = 7{,}28$ mA, $I_2 = 3{,}4$ mA a $I_4 = 10{,}08$ mA. Jaký je součet proudů v uzlu podle konvence ze skript (do uzlu −, z uzlu +)?
+'''
+value = 0.18
+tolerance = 0.005
+unit = 'mA'
+sign_hint = 'Vtékající proud má znaménko −, vytékající +.'
+explanation = '''
+$$\sum I = -I + I_1 + I_2 + I_4 = -20{,}58 + 7{,}28 + 3{,}4 + 10{,}08 = 0{,}18\ \text{mA} \approx 0$$
+To je 0,9 % z $I$: každý proud měří jiný ampérmetr s vlastní chybou.
+'''
+
+[[question]]
+id = 'KZ-04'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Ve smyčce zdroj → mA → $R_3$ → $R_1$ → mA1 vyšlo $-U + U_3 + U_1 = -12{,}03 + 8{,}6 + 3{,}35 = -0{,}08$ V. Proč je součet záporný?
+'''
+options = [
+  'Ve smyčce jsou i ampérmetry mA a mA1, jejich úbytek se neměří.',
+  'Kirchhoffův zákon v reálném obvodu neplatí.',
+  'Voltmetr má příliš malý vnitřní odpor.',
+  'Smyčka se obíhala špatným směrem.',
+]
+answer = 0
+explanation = '''
+Úplný 2. KZ je $-U + U_\text{mA} + U_3 + U_1 + U_\text{mA1} = 0$, takže $-U + U_3 + U_1 = -(U_\text{mA} + U_\text{mA1}) < 0$. Chybějících 0,08 V odpovídá odporu ampérmetru asi 3 Ω. Při polovičním napětí chybí poloviční napětí: chyba je soustavná.
+'''
+notes = [
+  '',
+  'Platí; chybí jen neměřené napětí ampérmetrů.',
+  'Voltmetr by změnil hodnoty jen nepatrně a znaménko součtu nevysvětlí.',
+  'Opačný směr obíhání by dal +0,08 V, ale pořád stejný nenulový rozdíl.',
+]
+
+[[question]]
+id = 'KZ-05'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Kdy platí metoda úměrných veličin?
+'''
+options = [
+  'V lineárním obvodu s jediným nezávislým zdrojem.',
+  'V libovolném obvodu s jedním zdrojem.',
+  'V lineárním obvodu s libovolným počtem zdrojů, když se změní jen jeden.',
+  'Jen v obvodu bez rezistorů.',
+]
+answer = 0
+explanation = '''
+Když je obvod lineární a má jediný nezávislý zdroj, jsou všechna napětí a proudy úměrné napětí zdroje a poměr $k = X/X'$ je pro všechny veličiny stejný.
+'''
+notes = [
+  '',
+  'S nelineárním prvkem (dioda) úměrnost neplatí.',
+  'Při změně jen jednoho z více zdrojů se veličiny nemění úměrně (to řeší superpozice).',
+  'Nesmysl, měřený obvod rezistory má.',
+]
+
+[[question]]
+id = 'KZ-06'
+kind = 'numeric'
+topic = 'Kirchhoffovy zákony'
+text = '''
+V lineárním obvodu s jedním zdrojem teče při $U = 12$ V rezistorem $R_4$ proud 10,0 mA. Jaký proud jím poteče při $U' = 6$ V?
+'''
+value = 5.0
+tolerance = 0.05
+unit = 'mA'
+explanation = '''
+Metoda úměrných veličin: $k = U/U' = 2$, všechny proudy se zmenší dvakrát, $I_4' = 10{,}0/2 = 5{,}0$ mA.
+'''
+
+[[question]]
+id = 'KZ-07'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Proč vyšla napětí $U_1$ a $U_2$ skoro stejně?
+'''
+options = [
+  '$R_1$ a $R_2$ jsou zapojené paralelně.',
+  '$R_1$ a $R_2$ mají stejný odpor.',
+  'Teče jimi stejný proud.',
+  'Je to náhoda měření.',
+]
+answer = 0
+explanation = '''
+Paralelní prvky mají stejné napětí. Malý rozdíl dělají jen úbytky na ampérmetrech v jejich větvích.
+'''
+notes = ['', '470 Ω a 1 kΩ stejné nejsou.', 'Proudy jsou různé (7,28 a 3,4 mA), stejné je napětí.', 'Plyne to ze zapojení.']
+
+[[question]]
+id = 'KZ-08'
+kind = 'numeric'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Obvod: $R_1 = 470\ \Omega$ paralelně s $R_2 = 1\ \text{k}\Omega$, k tomu v sérii $R_3 = 820\ \Omega$, a celá tato větev paralelně s $R_4 = 1{,}2\ \text{k}\Omega$ na zdroji 12 V. Jaký proud teče ze zdroje (bez vlivu ampérmetrů)?
+'''
+value = 20.53
+tolerance = 0.1
+unit = 'mA'
+explanation = '''
+$$R_1 \parallel R_2 = \frac{470\cdot 1000}{1470} = 319{,}7\ \Omega, \qquad R_3 + 319{,}7 = 1139{,}7\ \Omega$$
+$$R = \frac{1139{,}7\cdot 1200}{1139{,}7 + 1200} = 584{,}5\ \Omega, \qquad I = \frac{12}{584{,}5} = 20{,}53\ \text{mA}$$
+Naměřeno bylo 20,58 mA při 12,03 V.
+'''
+
+[[question]]
+id = 'KZ-09'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Jaké znaménko má ve 2. Kirchhoffově zákoně napětí, jehož šipka míří proti zvolenému směru obíhání smyčky?
+'''
+options = ['−', '+', 'záleží na velikosti napětí', 'takové napětí se do součtu nepočítá']
+answer = 0
+layout = 'grid'
+explanation = '''
+Napětí po směru obíhání se berou s +, proti směru s −. Proto má zdroj ve smyčce obíhané po směru hodinových ručiček člen $-U$.
+'''
+notes = ['', 'S + se berou napětí po směru obíhání.', 'Znaménko určuje jen směr šipky.', 'Do součtu patří všechna napětí smyčky.']
+
+[[question]]
+id = 'KZ-10'
+topic = 'Kirchhoffovy zákony'
+text = '''
+Poměry $k = X/X'$ vyšly pro různé veličiny 1,99 a 2,00 (nezaokrouhleně 1,994 až 2,000). Co z toho plyne?
+'''
+options = [
+  'Metoda úměrných veličin platí, rozdíl je až v poslední platné číslici a pod přesností přístrojů.',
+  'Obvod není lineární.',
+  'Některý ampérmetr je vadný.',
+  "Napětí $U'$ bylo špatně nastavené.",
+]
+answer = 0
+explanation = '''
+Poměry se liší nejvýš o 0,3 %, což je méně než přesnost multimetrů. Kdyby obvod lineární nebyl, lišily by se poměry výrazně.
+'''
+notes = ['', 'Nelinearita by dala znatelně různé poměry.', 'Rozdíly jsou v rámci přesnosti.', "Velikost $U'$ na shodu poměrů vliv nemá."]

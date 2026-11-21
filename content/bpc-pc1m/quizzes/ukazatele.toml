@@ -1,0 +1,295 @@
+name = 'Ukazatele'
+description = '&, *, aritmetika ukazatelů, pole, ->'
+
+[[question]]
+id = 'UK-01'
+topic = 'Ukazatele'
+kind = 'numeric'
+text = '''
+Co program vypíše?
+
+```c
+int a = 5;
+int *p = &a;
+*p = 8;
+printf("%d\n", a);
+```
+'''
+value = 8
+tolerance = 0
+explanation = '''
+`p` obsahuje adresu `a`. Zápis `*p = 8` uloží 8 na tuto adresu, tedy přímo do `a`.
+'''
+
+[[question]]
+id = 'UK-02'
+topic = 'Ukazatele'
+text = '''
+Co program vypíše?
+
+```c
+void prohod1(int x, int y)   { int t = x;  x = y;   y = t; }
+void prohod2(int *x, int *y) { int t = *x; *x = *y; *y = t; }
+
+int main()
+{
+    int a = 1, b = 2;
+    prohod1(a, b);
+    printf("%d %d\n", a, b);
+    prohod2(&a, &b);
+    printf("%d %d\n", a, b);
+    return 0;
+}
+```
+'''
+options = [
+  '`1 2` a pod tím `2 1`',
+  '`2 1` a pod tím `1 2`',
+  '`2 1` a pod tím `2 1`',
+  '`1 2` a pod tím `1 2`',
+]
+answer = 0
+explanation = '''
+`prohod1` dostane kopie hodnot a prohodí jen je, `a` a `b` se nezmění. `prohod2` dostane **adresy** a přes `*x`, `*y` zapisuje přímo do `a` a `b`.
+'''
+notes = [
+  '',
+  'Opačně: předání hodnotou nic nezmění, předání adresy ano.',
+  'První volání pracuje s kopiemi.',
+  'Druhé volání přes ukazatele proměnné opravdu prohodí.',
+]
+
+[[question]]
+id = 'UK-03'
+topic = 'Ukazatele'
+text = '''
+Co program vypíše?
+
+```c
+int pole[5] = {10, 20, 30, 40, 50};
+int *p = pole;
+printf("%d %d\n", *(p + 2), *p + 2);
+```
+'''
+options = ['`30 12`', '`30 30`', '`12 12`', '`20 12`']
+answer = 0
+explanation = '''
+`*(p + 2)` je prvek o dva dál než `p`, tedy `pole[2] = 30`. Ve výrazu `*p + 2` má dereference přednost: `*p` je 10, plus 2 je 12.
+'''
+notes = [
+  '',
+  'Bez závorek se nejdřív dereferencuje, pak přičítá.',
+  '`*(p + 2)` posouvá ukazatel, nepřičítá k hodnotě.',
+  '`p + 2` je třetí prvek (indexy od 0), ne druhý.',
+]
+
+[[question]]
+id = 'UK-04'
+topic = 'Ukazatele'
+kind = 'numeric'
+text = '''
+`int *p` ukazuje na `pole[0]` pole typu `int` (4 bajty). O kolik **bajtů** je adresa `p + 3` větší než adresa `p`?
+'''
+value = 12
+tolerance = 0
+unit = 'B'
+explanation = '''
+Aritmetika ukazatelů počítá v **prvcích**: `p + 3` je o 3 prvky dál, tedy o $3 \cdot \text{sizeof(int)} = 3 \cdot 4 = 12$ bajtů.
+'''
+
+[[question]]
+id = 'UK-05'
+topic = 'Ukazatele'
+text = '''
+Předpokládej 64bitový systém (`int` 4 B, ukazatel 8 B). Co vypíše program?
+
+```c
+void f(int *p)
+{
+    printf("%zu\n", sizeof(p));
+}
+
+int main()
+{
+    int cisla[6] = {4, -2, 9, 0, 7, -5};
+    printf("%zu\n", sizeof(cisla));
+    f(cisla);
+    return 0;
+}
+```
+'''
+options = ['`24` a pod tím `8`', '`24` a pod tím `24`', '`6` a pod tím `6`', '`8` a pod tím `8`']
+answer = 0
+explanation = '''
+V `main` je `cisla` opravdové pole: $6 \cdot 4 = 24$ B. Do funkce se ale předá jen adresa prvního prvku, `p` je ukazatel a `sizeof(p)` je velikost adresy, 8 B. Proto se délka pole posílá do funkce zvlášť.
+'''
+notes = [
+  '',
+  'Ve funkci už není pole, jen ukazatel.',
+  'sizeof vrací bajty, ne počet prvků.',
+  'V main dá sizeof velikost celého pole.',
+]
+
+[[question]]
+id = 'UK-06'
+topic = 'Ukazatele'
+text = '''
+`o` je typu `struct Obdelnik *`. Který zápis **není** správný přístup k položce `a`?
+'''
+options = ['`*o.a`', '`o->a`', '`(*o).a`', '`o[0].a`']
+answer = 0
+explanation = '''
+Tečka má vyšší prioritu než `*`, takže `*o.a` se čte jako `*(o.a)`. Na ukazatel ale tečka použít nejde, překladač ohlásí chybu. `o->a` je zkratka pro `(*o).a`.
+'''
+notes = [
+  '',
+  'Šipka je správný a nejčastější zápis.',
+  'Se závorkami se nejdřív dereferencuje, pak bere položka.',
+  '`o[0]` je totéž co `*o`, takže je to správně, i když neobvyklé.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'UK-07'
+topic = 'Ukazatele'
+text = '''
+Funkce je `void zvetsi(struct Obdelnik *o, int k)` a v `main` je `struct Obdelnik obdelnik = {3, 5};`. Které volání je správné?
+'''
+options = [
+  '`zvetsi(&obdelnik, 2);`',
+  '`zvetsi(obdelnik, 2);`',
+  '`zvetsi(*obdelnik, 2);`',
+  '`zvetsi(obdelnik->a, 2);`',
+]
+answer = 0
+explanation = '''
+Funkce čeká **adresu** struktury, v `main` je struktura obyčejná proměnná, proto `&obdelnik`. Uvnitř funkce se pak píše `o->a`, v `main` `obdelnik.a`.
+'''
+notes = [
+  '',
+  'Předala by se struktura místo ukazatele, překladač ohlásí neslučitelný typ.',
+  '`obdelnik` není ukazatel, dereferencovat ho nejde.',
+  'Šipka patří k ukazateli a funkce navíc čeká celou strukturu, ne jednu položku.',
+]
+
+[[question]]
+id = 'UK-08'
+topic = 'Ukazatele'
+kind = 'numeric'
+text = '''
+S funkcemi z úlohy s obdélníkem (`zvetsi` násobí obě strany číslem `k`, `prohod_strany` prohodí `a` a `b`, `obsah` vrací `a * b`):
+
+```c
+struct Obdelnik o = {3, 5};
+zvetsi(&o, 3);
+prohod_strany(&o);
+printf("%d\n", obsah(&o));
+```
+
+Co se vypíše?
+'''
+value = 135
+tolerance = 0
+explanation = '''
+Po zvětšení je obdélník $9 \times 15$, po prohození $15 \times 9$. Obsah je $15 \cdot 9 = 135$. Funkce mění původní strukturu, protože dostávají její adresu.
+'''
+
+[[question]]
+id = 'UK-09'
+topic = 'Ukazatele'
+text = '''
+Co program vypíše?
+
+```c
+int pole[] = {4, -2, 9, 0};
+int *p = pole;
+p++;
+printf("%d %d\n", *p, p[1]);
+```
+'''
+options = ['`-2 9`', '`4 -2`', '`5 -2`', '`-2 -2`']
+answer = 0
+explanation = '''
+`p++` posune ukazatel o jeden prvek, na `pole[1] = -2`. `p[1]` je `*(p + 1)`, tedy `pole[2] = 9`. Index se počítá od místa, kam ukazatel právě ukazuje.
+'''
+notes = [
+  '',
+  'Ukazatel se posunul, už neukazuje na první prvek.',
+  '`p++` posouvá ukazatel, nezvyšuje hodnotu. To by bylo `(*p)++`.',
+  '`p[1]` je o jeden prvek za `p`, ne `p` samo.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'UK-10'
+topic = 'Ukazatele'
+text = '''
+Co deklaruje řádek `int *p, q;`?
+'''
+options = [
+  '`p` je ukazatel na int, `q` je obyčejný int',
+  '`p` i `q` jsou ukazatele na int',
+  '`p` je int, `q` ukazatel na int',
+  'chybu, takto se ukazatele deklarovat nesmí',
+]
+answer = 0
+explanation = '''
+Hvězdička patří k **jménu proměnné**, ne k typu. Dva ukazatele jsou `int *p, *q;`. Proto je čitelnější deklarovat každý ukazatel na samostatném řádku.
+'''
+notes = [
+  '',
+  'Pro dva ukazatele musí mít hvězdičku každá proměnná.',
+  'Hvězdička stojí u `p`, ne u `q`.',
+  'Zápis je povolený, jen se snadno splete.',
+]
+
+[[question]]
+id = 'UK-11'
+topic = 'Ukazatele'
+text = '''
+V úloze se min a max hledají ještě **před** zdvojnásobením pole. Co by program vypsal, kdyby se pořadí prohodilo?
+
+```c
+int cisla[6] = {4, -2, 9, 0, 7, -5};
+zdvojnasob(cisla, 6);
+min_max(cisla, 6, &nejmensi, &nejvetsi);
+printf("Min: %d, max: %d\n", nejmensi, nejvetsi);
+```
+'''
+options = ['`Min: -10, max: 18`', '`Min: -5, max: 9`', '`Min: -2, max: 9`', '`Min: 0, max: 18`']
+answer = 0
+explanation = '''
+`zdvojnasob` dostane adresu pole a mění **původní** prvky přes `*(p + i)`. Po něm je v poli 8, −4, 18, 0, 14, −10, takže min je −10 a max 18.
+'''
+notes = [
+  '',
+  'Tak to vypíše program z úlohy, kde se hledá před zdvojnásobením.',
+  'Nejmenší je −5 (po zdvojnásobení −10), ne −2.',
+  'min_max začíná prvním prvkem a najde i záporná čísla.',
+]
+
+[[question]]
+id = 'UK-12'
+topic = 'Ukazatele'
+text = '''
+Který řádek obsahuje chybu?
+
+```c
+int x;
+int *p = &x;          // řádek A
+scanf("%d", p);       // řádek B
+scanf("%d", x);       // řádek C
+printf("%d\n", *p);   // řádek D
+```
+'''
+options = ['řádek C', 'řádek A', 'řádek B', 'řádek D']
+answer = 0
+explanation = '''
+`scanf` potřebuje **adresu**, kam má číslo zapsat. Řádek C předá hodnotu `x` (navíc zatím nenastavenou) a scanf by zapisoval na nesmyslnou adresu. Správně `scanf("%d", &x)`. Řádek B je v pořádku, protože `p` adresu `x` už obsahuje.
+'''
+notes = [
+  '',
+  'Ukazatel se inicializuje adresou proměnné, to je správně.',
+  '`p` je adresa `x`, takže `&` už se nepíše.',
+  'Dereference `p` dá hodnotu `x`, správně.',
+]

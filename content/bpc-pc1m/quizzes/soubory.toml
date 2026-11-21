@@ -1,0 +1,275 @@
+name = 'Soubory'
+description = 'fopen, režimy, fscanf, fgetc/fputc, fgets/fputs'
+
+[[question]]
+id = 'SO-01'
+topic = 'Soubory'
+text = '''
+Soubor `jmena.txt` už existuje a obsahuje 5 jmen. Program ho otevře příkazem `fopen("jmena.txt", "w")`. Co se stane s původním obsahem?
+'''
+options = [
+  'smaže se, soubor začíná prázdný',
+  'zůstane a nová data se připíšou na konec',
+  'fopen vrátí NULL, protože soubor už existuje',
+  'zůstane a nová data přepíší jen začátek souboru',
+]
+answer = 0
+explanation = '''
+Režim `"w"` soubor vytvoří, nebo existující soubor **zkrátí na nulu**. Připisování na konec je režim `"a"`.
+'''
+notes = [
+  '',
+  'To dělá režim `"a"` (append).',
+  'Pro `"w"` existence souboru nevadí. NULL vrací hlavně `"r"`, když soubor chybí.',
+  'Obsah se při otevření smaže celý, ne jen přepisovaná část.',
+]
+
+[[question]]
+id = 'SO-02'
+topic = 'Soubory'
+text = '''
+Program má do souboru `log.txt` každým spuštěním **připsat** jeden řádek a nesmí smazat předchozí řádky. Který režim pro `fopen` použije?
+'''
+options = ['`"a"`', '`"w"`', '`"r"`', '`"r+"`']
+answer = 0
+explanation = '''
+`"a"` (append) zapisuje na konec souboru. Když soubor neexistuje, vytvoří ho.
+'''
+notes = [
+  '',
+  '`"w"` by při každém spuštění smazal předchozí obsah.',
+  '`"r"` je jen pro čtení.',
+  '`"r+"` zapisuje od začátku (přepisuje) a když soubor neexistuje, vrátí NULL.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'SO-03'
+topic = 'Soubory'
+text = '''
+Program `main1.c` čte `fopen("cisla.txt", "r")`. Soubor `cisla.txt` leží vedle `main1.c` ve složce `zadani1_cisla`, ale program se spustí z nadřazené složky příkazem `./zadani1_cisla/program`. Co se stane?
+'''
+options = [
+  'fopen vrátí NULL a program vypíše chybu, protože soubor hledá v aktuální (pracovní) složce',
+  'program soubor najde, protože hledá ve složce, kde leží zdrojový kód',
+  'program soubor najde, protože hledá ve složce, kde leží spustitelný soubor',
+  'program spadne ještě před voláním fopen',
+]
+answer = 0
+explanation = '''
+Jméno bez cesty se hledá v **pracovním adresáři**, tedy ve složce, ze které se program spustil. Proto se před spuštěním přepíná `cd zadani1_cisla`. Díky testu `soubor == NULL` program skončí s hláškou místo pádu.
+'''
+notes = [
+  '',
+  'Za běhu program o umístění zdrojového kódu nic neví.',
+  'Rozhoduje pracovní adresář, ne umístění spustitelného souboru.',
+  'Program normálně běží, jen fopen selže.',
+]
+
+[[question]]
+id = 'SO-04'
+topic = 'Soubory'
+kind = 'numeric'
+text = '''
+Soubor `data.txt` obsahuje
+
+```
+10 25
+16 abc 7
+```
+
+Kolik čísel načte tento cyklus (jakou hodnotu bude mít `pocet`)?
+
+```c
+while (fscanf(soubor, "%d", &cislo) == 1)
+{
+    pocet++;
+    soucet = soucet + cislo;
+}
+```
+'''
+value = 3
+tolerance = 0
+explanation = '''
+`fscanf` vrací počet úspěšně načtených položek. Načte 10, 25 a 16. Na slově `abc` vrátí 0, protože to není číslo, a cyklus skončí. Sedmička za ním se už nepřečte (součet je 51).
+'''
+
+[[question]]
+id = 'SO-05'
+topic = 'Soubory'
+text = '''
+Co se stane, když se v cyklu ze SO-04 změní podmínka na `while (fscanf(soubor, "%d", &cislo) != EOF)` a soubor obsahuje slovo `abc`?
+'''
+options = [
+  'cyklus poběží donekonečna, fscanf na `abc` pořád vrací 0 a nic nepřečte',
+  'slovo `abc` se přeskočí a načte se i sedmička',
+  'nic se nezmění, cyklus skončí na `abc`',
+  'program skončí chybou překladu',
+]
+answer = 0
+explanation = '''
+Na nečíselném textu `fscanf` vrátí 0 (ne `EOF`) a ze souboru nic neodebere. Další pokus skončí stejně, podmínka `!= EOF` je pořád splněná a cyklus se nezastaví. Navíc se pořád přičítá stará hodnota `cislo`. Proto `== 1`.
+'''
+notes = [
+  '',
+  '`%d` slovo nepřeskočí, zůstane ve vstupu.',
+  '0 se od `EOF` liší, takže `!= EOF` cyklus neukončí.',
+  'Kód se přeloží, chyba je v logice.',
+]
+
+[[question]]
+id = 'SO-06'
+topic = 'Soubory'
+text = '''
+Proč je v kopírování po znacích proměnná `znak` typu `int`, a ne `char`?
+
+```c
+int znak;
+while ((znak = fgetc(vstup)) != EOF)
+{
+    fputc(znak, kopie);
+}
+```
+'''
+options = [
+  'fgetc vrací int, aby šlo odlišit EOF od všech 256 možných hodnot bajtu',
+  'char by nestačil na písmena s diakritikou',
+  'fputc přijímá jen int, char by nešel předat',
+  'je to jedno, s char by program fungoval stejně na každém systému',
+]
+answer = 0
+explanation = '''
+`EOF` je záporná konstanta (obvykle −1) mimo rozsah hodnot bajtu. Uložením do `char` by splynula se skutečným bajtem: podle platformy by cyklus skončil předčasně na bajtu 255, nebo by neskončil nikdy.
+'''
+notes = [
+  '',
+  'Diakritika s tím nesouvisí, jde o odlišení konce souboru.',
+  'char se na int převede automaticky, předat by šel.',
+  'Právě na tom se programy na různých systémech liší.',
+]
+
+[[question]]
+id = 'SO-07'
+topic = 'Soubory'
+kind = 'numeric'
+text = '''
+Program zapíše do souboru:
+
+```c
+fputs("Ahoj", f);
+fputs("\n", f);
+fputs("svete", f);
+```
+
+Soubor zavře, znovu otevře pro čtení a přečte ho znak po znaku cyklem s `fgetc` až do `EOF`. Kolik znaků načte?
+'''
+value = 10
+tolerance = 0
+unit = 'znaků'
+explanation = '''
+`Ahoj` (4) + konec řádku `\n` (1) + `svete` (5) = 10. `fputs` nic dalšího nepřidává, ani konec řádku na konec souboru.
+'''
+
+[[question]]
+id = 'SO-08'
+topic = 'Soubory'
+text = '''
+Proč ve výpisu jmen chybí `\n` ve formátu?
+
+```c
+while (fgets(radek, sizeof(radek), soubor) != NULL)
+{
+    poradi++;
+    printf("%d. %s", poradi, radek);
+}
+```
+'''
+options = [
+  'fgets ukládá i znak konce řádku, takže `radek` už `\n` obsahuje',
+  'printf přidává konec řádku za `%s` automaticky',
+  'je to chyba, jména se vypíšou za sebou na jeden řádek',
+  'fgets čte jen jedno slovo, konec řádku pak doplní fclose',
+]
+answer = 0
+explanation = '''
+`fgets` čte do konce řádku **včetně** `\n` (nejvýš `sizeof(radek) - 1` znaků). Druhé `\n` ve formátu by udělalo mezi jmény prázdné řádky.
+'''
+notes = [
+  '',
+  'printf nic nepřidává, vypíše přesně formát.',
+  'Jména jsou pod sebou, protože `\n` je v řetězci `radek`.',
+  'fgets čte celý řádek i s mezerami, jedno slovo čte `scanf("%s")`.',
+]
+
+[[question]]
+id = 'SO-09'
+topic = 'Soubory'
+text = '''
+Hledání maxima se změní tak, že `nejvetsi` začíná nulou:
+
+```c
+int nejvetsi = 0;
+while (fscanf(soubor, "%d", &cislo) == 1)
+{
+    if (cislo > nejvetsi)
+    {
+        nejvetsi = cislo;
+    }
+}
+printf("Nejvetsi cislo: %d\n", nejvetsi);
+```
+
+Co se vypíše pro soubor s čísly −15, −3, −42, −8?
+'''
+options = ['`Nejvetsi cislo: 0`', '`Nejvetsi cislo: -3`', '`Nejvetsi cislo: -42`', '`Nejvetsi cislo: -15`']
+answer = 0
+explanation = '''
+Žádné číslo není větší než 0, podmínka se nikdy nesplní a zůstane počáteční nula, která v souboru vůbec není. Program z úlohy proto začíná prvním načteným číslem (`if (pocet == 0 || cislo > nejvetsi)`) a vypíše správně −3.
+'''
+notes = [
+  '',
+  'To vypíše správná verze, která začíná prvním číslem.',
+  'To je minimum.',
+  'To je první číslo, ale není největší.',
+]
+
+[[question]]
+id = 'SO-10'
+topic = 'Soubory'
+text = '''
+Co vypíše řádek `printf("%.2f %.2f\n", (float)soucet / pocet, (float)(soucet / pocet));` pro `int soucet = 7` a `int pocet = 2`?
+'''
+options = ['`3.50 3.00`', '`3.50 3.50`', '`3.00 3.00`', '`3.00 3.50`']
+answer = 0
+explanation = '''
+V prvním výrazu se `soucet` převede na `float` **před** dělením, dělí se reálně: 3.50. Ve druhém se nejdřív dělí dvě celá čísla (výsledek 3, zbytek se zahodí) a teprve pak se převádí: 3.00. Proto je v úloze `(float)soucet / pocet`.
+'''
+notes = [
+  '',
+  'Závorka kolem dělení způsobí celočíselné dělení před převodem.',
+  'První výraz dělí už jako float.',
+  'Prohozené pořadí.',
+]
+
+[[question]]
+id = 'SO-11'
+topic = 'Soubory'
+text = '''
+Program zapíše 5 jmen do `jmena.txt` (režim `"w"`) a hned je chce vypsat. Proč soubor mezi zápisem a čtením **zavře** a znovu otevře v režimu `"r"`?
+'''
+options = [
+  'fclose zapíše data z vyrovnávací paměti do souboru, bez toho by je čtení nemuselo vidět',
+  'soubor otevřený v režimu "w" jde číst, jen kdyby se nezavíral',
+  'fclose soubor smaže, aby se dal znovu vytvořit',
+  'nemá to význam, je to jen zvyk',
+]
+answer = 0
+explanation = '''
+Zápis jde nejdřív do vyrovnávací paměti (bufferu) a na disk se dostane při jejím zaplnění nebo při `fclose`. Navíc režim `"w"` je jen pro zápis. Zavření a otevření pro čtení zajistí, že se načte všech 5 jmen od začátku.
+'''
+notes = [
+  '',
+  'Ze souboru otevřeného jen pro zápis (`"w"`) číst nejde vůbec.',
+  'fclose soubor nemaže, jen ho uzavře.',
+  'Bez zavření by čtení mohlo vrátit neúplný nebo prázdný obsah.',
+]

@@ -1,0 +1,176 @@
+name = 'Úloha 6: Přenos výkonu'
+description = 'výkonové přizpůsobení, Pmax, účinnost'
+
+[[question]]
+id = 'PV-01'
+topic = 'Přenos výkonu'
+text = '''
+Při jakém odporu zátěže dodá zdroj s vnitřním odporem $R_\text{i}$ největší výkon do zátěže?
+'''
+options = ['$R_\text{z} = R_\text{i}$', '$R_\text{z} = 0$', '$R_\text{z} \to \infty$', '$R_\text{z} = 2R_\text{i}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Z nulové derivace $\dfrac{\mathrm{d}P_\text{z}}{\mathrm{d}R_\text{z}} = U_\text{i}^2\dfrac{R_\text{i} - R_\text{z}}{(R_\text{i} + R_\text{z})^3} = 0$ plyne $R_\text{z} = R_\text{i}$ (výkonové přizpůsobení).
+'''
+notes = ['', 'Při zkratu je napětí na zátěži nulové, výkon taky.', 'Naprázdno je nulový proud, výkon taky.', 'Tam je výkon jen 89 % maxima.']
+
+[[question]]
+id = 'PV-02'
+kind = 'numeric'
+topic = 'Přenos výkonu'
+text = '''
+Zdroj má $U_\text{i} = 12$ V a $R_\text{i} = 220\ \Omega$. Jaký je největší výkon, který může dodat do zátěže?
+'''
+value = 163.6
+tolerance = 1
+unit = 'mW'
+explanation = '''
+$$P_\text{max} = \frac{U_\text{i}^2}{4R_\text{i}} = \frac{12^2}{4\cdot 220} = \frac{144}{880} = 0{,}164\ \text{W} = 164\ \text{mW}$$
+'''
+
+[[question]]
+id = 'PV-03'
+topic = 'Přenos výkonu'
+text = '''
+Jaká je účinnost přenosu při výkonovém přizpůsobení ($R_\text{z} = R_\text{i}$)?
+'''
+options = ['50 %', '100 %', '25 %', '75 %']
+answer = 0
+layout = 'grid'
+explanation = '''
+Oběma odpory teče stejný proud a mají stejný odpor, na $R_\text{i}$ se tedy ztratí stejný výkon, jaký dostane zátěž: $\eta = R_\text{z}/(R_\text{i} + R_\text{z}) = 1/2$.
+'''
+notes = ['', 'K 100 % se účinnost blíží až pro $R_\text{z} \gg R_\text{i}$.', 'Polovina, ne čtvrtina; $U_\text{i}^2/(4R_\text{i})$ je vzorec pro výkon.', 'To by bylo při $R_\text{z} = 3R_\text{i}$.']
+
+[[question]]
+id = 'PV-04'
+kind = 'numeric'
+topic = 'Přenos výkonu'
+text = '''
+Jaká je účinnost přenosu pro $R_\text{i} = 220\ \Omega$ a $R_\text{z} = 60\ \Omega$?
+'''
+value = 21.4
+tolerance = 0.1
+unit = '%'
+explanation = '''
+$$\eta = \frac{R_\text{z}}{R_\text{i} + R_\text{z}}\cdot 100 = \frac{60}{220 + 60}\cdot 100 = 21{,}4\ \%$$
+Účinnost jde spočítat jen z odporů, sloupec $\eta$ se proto vyplňuje už doma.
+'''
+
+[[question]]
+id = 'PV-05'
+topic = 'Přenos výkonu'
+text = '''
+Jak účinnost přenosu závisí na napětí zdroje $U_\text{i}$?
+'''
+options = [
+  'Nezávisí, je dána jen poměrem odporů.',
+  'Roste s $U_\text{i}$.',
+  'Klesá s $U_\text{i}$.',
+  'Roste s $U_\text{i}^2$.',
+]
+answer = 0
+explanation = '''
+Výkon zátěže i výkon zdroje jsou úměrné $U_\text{i}^2$, v poměru se vykrátí: $\eta = R_\text{z}/(R_\text{i} + R_\text{z})$.
+'''
+notes = ['', 'S $U_\text{i}$ roste výkon, ne účinnost.', 'Viz vzorec, $U_\text{i}$ v něm není.', 'S $U_\text{i}^2$ rostou výkony, jejich poměr ne.']
+
+[[question]]
+id = 'PV-06'
+kind = 'numeric'
+topic = 'Přenos výkonu'
+text = '''
+Při $R_\text{z} = 60\ \Omega$ se naměřilo $U_\text{z} = 2{,}568$ V a $I_\text{z} = 42{,}9$ mA. Jaký je výkon na zátěži?
+'''
+value = 110.2
+tolerance = 0.5
+unit = 'mW'
+explanation = '''
+Nepřímá metoda: $P_\text{z} = U_\text{z} I_\text{z} = 2{,}568\ \text{V}\cdot 42{,}9\ \text{mA} = 110\ \text{mW}$ (V · mA = mW; na 3 platné číslice podle méně přesné hodnoty).
+'''
+
+[[question]]
+id = 'PV-07'
+kind = 'numeric'
+topic = 'Přenos výkonu'
+text = '''
+Zátěž má odpor $R_\text{z} = 9R_\text{i}$ (účinnost 90 %). Kolik procent maximálního výkonu $P_\text{max}$ dostane?
+'''
+value = 36
+tolerance = 0.5
+unit = '%'
+explanation = '''
+S $k = R_\text{z}/R_\text{i} = 9$:
+$$\frac{P_\text{z}}{P_\text{max}} = \frac{4k}{(1+k)^2} = \frac{36}{100} = 36\ \%$$
+Vysoká účinnost a maximální výkon nejdou dohromady.
+'''
+
+[[question]]
+id = 'PV-08'
+topic = 'Přenos výkonu'
+text = '''
+Kde se výkonové přizpůsobení ($R_\text{z} = R_\text{i}$) používá?
+'''
+options = [
+  've sdělovací a vf technice (anténa a vstup přijímače), kde je signál slabý',
+  'v rozvodné síti, aby byly malé ztráty',
+  'u nabíječky mobilu, aby byla co nejvyšší účinnost',
+  'všude, protože je to vždy nejvýhodnější',
+]
+answer = 0
+explanation = '''
+Přizpůsobení dává maximální výkon při účinnosti 50 %, což vadí jen tam, kde jde o energii. V energetice se proto volí $R_\text{z} \gg R_\text{i}$ a účinnost blízká 100 %.
+'''
+notes = ['', 'V energetice by 50% účinnost byla obrovská ztráta.', 'Při přizpůsobení je účinnost jen 50 %.', 'Kde záleží na účinnosti, přizpůsobení se nepoužívá.']
+
+[[question]]
+id = 'PV-09'
+kind = 'numeric'
+topic = 'Přenos výkonu'
+text = '''
+Napětí zdroje se při měření nezapsalo. Při $R_\text{z} = 220\ \Omega$ bylo $U_\text{z} = 5{,}98$ V a $I_\text{z} = 27{,}38$ mA, vnitřní odpor je $R_\text{i} = 220\ \Omega$. Jaké bylo $U_\text{i}$?
+'''
+value = 12.0
+tolerance = 0.05
+unit = 'V'
+explanation = '''
+Z $U_\text{z} = U_\text{i} - R_\text{i} I_\text{z}$:
+$$U_\text{i} = U_\text{z} + R_\text{i} I_\text{z} = 5{,}98 + 220\cdot 0{,}02738 = 5{,}98 + 6{,}02 = 12{,}0\ \text{V}$$
+'''
+
+[[question]]
+id = 'PV-10'
+topic = 'Přenos výkonu'
+text = '''
+Při změně odporu dekády se údaj voltmetru vůbec nemění. Co je nejspíš špatně?
+'''
+options = [
+  'Voltmetr je připojený přes $R_\text{i}$ i dekádu, měří napětí zdroje místo napětí zátěže.',
+  'Miliampérmetr je v sérii.',
+  'Dekáda je nastavená na 220 Ω.',
+  'Nic, napětí na zátěži se nemění.',
+]
+answer = 0
+explanation = '''
+Napětí zátěže se s $R_\text{z}$ mění ($U_\text{z} = U_\text{i}R_\text{z}/(R_\text{i} + R_\text{z})$). Stálé napětí ukazuje voltmetr připojený na celý zdroj. Patří přímo na svorky dekády.
+'''
+notes = ['', 'Tak je to správně.', 'Při změně dekády se mění i $R_\text{z}$.', 'Napětí zátěže na $R_\text{z}$ závisí.']
+
+[[question]]
+id = 'PV-11'
+topic = 'Přenos výkonu'
+text = '''
+Co znamená, že se výkon v úloze měří nepřímou metodou?
+'''
+options = [
+  'Změří se napětí a proud zátěže a výkon se spočítá jako $P = UI$.',
+  'Výkon se měří wattmetrem.',
+  'Výkon se odhadne z grafu.',
+  'Měří se jen teplota zátěže.',
+]
+answer = 0
+explanation = '''
+Wattmetr se nepoužívá, výkon se počítá z naměřených veličin. Voltmetr je přímo na zátěži, proud voltmetru (vnitřní odpor řádově 10 MΩ) je proti proudu zátěže zanedbatelný.
+'''
+notes = ['', 'To je přímá metoda.', 'Graf se kreslí až z vypočtených výkonů.', 'Kalorimetrie se tu nepoužívá.']

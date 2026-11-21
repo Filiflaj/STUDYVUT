@@ -1,0 +1,42 @@
+<svg viewBox="0 0 650 205" width="650" class="fig" role="img" aria-label="Měření reálného zdroje: a) naprázdno, b) se zátěží, c) nakrátko">
+<rect x="10" y="40" width="70" height="130" class="d"/>
+<text x="45" y="96" text-anchor="middle"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<text x="45" y="124" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<circle cx="80" cy="60" r="3.5" class="s1"/>
+<circle cx="80" cy="150" r="3.5" class="s1"/>
+<polyline points="80,60 140,60 140,92" class="s"/>
+<circle cx="140" cy="105" r="13" class="s"/>
+<text x="140" y="110" class="sm" text-anchor="middle">V</text>
+<polyline points="140,118 140,150 80,150" class="s"/>
+<text x="95" y="196" class="sm" text-anchor="middle">a) naprázdno</text>
+<rect x="220" y="40" width="70" height="130" class="d"/>
+<text x="255" y="96" text-anchor="middle"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<text x="255" y="124" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<circle cx="290" cy="60" r="3.5" class="s1"/>
+<circle cx="290" cy="150" r="3.5" class="s1"/>
+<polyline points="290,60 310,60" class="s"/>
+<circle cx="323" cy="60" r="13" class="s"/>
+<text x="323" y="65" class="sm" text-anchor="middle">mA</text>
+<polyline points="336,60 395,60 395,85" class="s"/>
+<rect x="388" y="85" width="14" height="40" class="s"/>
+<line x1="379" y1="123" x2="411" y2="87" class="v" marker-end="url(#m-v)"/>
+<text x="415" y="110"><tspan class="it">R</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="395,125 395,150 290,150" class="s"/>
+<polyline points="360,60 360,92" class="s"/>
+<circle cx="360" cy="105" r="13" class="s"/>
+<text x="360" y="110" class="sm" text-anchor="middle">V</text>
+<polyline points="360,118 360,150" class="s"/>
+<circle cx="360" cy="60" r="3.2" class="pt"/>
+<circle cx="360" cy="150" r="3.2" class="pt"/>
+<text x="320" y="196" class="sm" text-anchor="middle">b) se zátěží</text>
+<rect x="450" y="40" width="70" height="130" class="d"/>
+<text x="485" y="96" text-anchor="middle"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<text x="485" y="124" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<circle cx="520" cy="60" r="3.5" class="s1"/>
+<circle cx="520" cy="150" r="3.5" class="s1"/>
+<polyline points="520,60 580,60 580,92" class="s"/>
+<circle cx="580" cy="105" r="13" class="s"/>
+<text x="580" y="110" class="sm" text-anchor="middle">mA</text>
+<polyline points="580,118 580,150 520,150" class="s"/>
+<text x="535" y="196" class="sm" text-anchor="middle">c) nakrátko</text>
+</svg>

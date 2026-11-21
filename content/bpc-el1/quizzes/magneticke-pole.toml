@@ -1,0 +1,195 @@
+name = 'Úloha 7: Magnetický obvod'
+description = 'feritové jádro se vzduchovou mezerou, Hopkinsonův zákon, Hallova sonda'
+
+[[question]]
+id = 'MG-01'
+kind = 'numeric'
+topic = 'Magnetický obvod'
+text = '''
+Toroid má vnější poloměr $a = 40$ mm, vnitřní $b = 25$ mm a vzduchovou mezeru $\ell_\text{v} = 1{,}7$ mm. Jaká je délka střední siločáry ve feritu $\ell_\text{f}$?
+'''
+value = 202.5
+tolerance = 0.1
+unit = 'mm'
+explanation = '''
+Střední siločára je kružnice o poloměru $(a + b)/2$, od jejího obvodu se odečte mezera:
+$$\ell_\text{f} = 2\pi\,\frac{a + b}{2} - \ell_\text{v} = \pi\,(40 + 25) - 1{,}7 = 204{,}20 - 1{,}7 = 202{,}50\ \text{mm}$$
+'''
+
+[[question]]
+id = 'MG-02'
+kind = 'numeric'
+topic = 'Magnetický obvod'
+text = '''
+Průřez stejného toroidu je obdélník o šířce $a - b$ a výšce $c = 22$ mm ($a = 40$ mm, $b = 25$ mm). Jaký je průřez $S$?
+'''
+value = 330
+tolerance = 1
+unit = 'mm²'
+explanation = '''
+$$S = (a - b)\cdot c = 15\cdot 22 = 330\ \text{mm}^2 = 3{,}30\cdot 10^{-4}\ \text{m}^2$$
+'''
+
+[[question]]
+id = 'MG-03'
+kind = 'numeric'
+topic = 'Magnetický obvod'
+text = '''
+Cívka má $N_\text{z} = 232$ závitů, mezera je $\ell_\text{v} = 1{,}7$ mm a budicí proud $I_\text{b} = 0{,}6$ A. Jakou indukci $\tilde{B}$ dává linearizovaný vztah (odpor feritu zanedbán)?
+'''
+value = 102.9
+tolerance = 0.2
+unit = 'mT'
+explanation = '''
+$$\tilde{B} = \mu_0\,\frac{N_\text{z} I_\text{b}}{\ell_\text{v}} = 4\pi\cdot 10^{-7}\cdot\frac{232\cdot 0{,}6}{1{,}7\cdot 10^{-3}} = 0{,}1029\ \text{T} = 102{,}9\ \text{mT}$$
+Přesnější vztah s feritem ($\mu_\text{rf} = 2870$) dá 98,8 mT.
+'''
+
+[[question]]
+id = 'MG-04'
+topic = 'Magnetický obvod'
+text = '''
+Proč je indukce $B$ ve feritovém jádře stejná jako ve vzduchové mezeře?
+'''
+options = [
+  'Tok je v celém obvodu stejný a průřez taky, $B = \Phi/S$.',
+  'Ferit a vzduch mají stejnou permeabilitu.',
+  'Intenzita $H$ je všude stejná.',
+  'Stejná není, v mezeře je vždy nulová.',
+]
+answer = 0
+explanation = '''
+Při zanedbání rozptylu prochází celým obvodem stejný tok $\Phi$ a průřez je stejný, takže i $B$. Liší se intenzita: $H_\text{v} = \mu_\text{rf}H_\text{f}$, v mezeře je tisíckrát větší.
+'''
+notes = ['', 'Ferit má $\mu_\text{r}$ v tisících, vzduch asi 1.', 'Stejná je indukce, intenzita se liší.', 'Indukci v mezeře právě měří Hallova sonda.']
+
+[[question]]
+id = 'MG-05'
+topic = 'Magnetický obvod'
+text = '''
+Proč vzduchová mezera magnetický obvod „linearizuje“?
+'''
+options = [
+  'Její magnetický odpor je mnohem větší než odpor feritu, takže nelinearita feritu se skoro neprojeví.',
+  'Vzduch je nelineární a vyruší nelinearitu feritu.',
+  'Mezera zvětší permeabilitu feritu.',
+  'Mezera odstraní rozptyl.',
+]
+answer = 0
+explanation = '''
+Na mezeře je asi 96 % magnetického napětí. Indukci pak určuje hlavně mezera a cívka, $\tilde{B} \cong \mu_0 N_\text{z} I_\text{b}/\ell_\text{v}$, a ta je úměrná proudu.
+'''
+notes = ['', 'Vzduch je lineární ($\mu_\text{r} = 1$).', 'Permeabilitu feritu mezera nemění.', 'U mezery naopak rozptyl vzniká.']
+
+[[question]]
+id = 'MG-06'
+topic = 'Magnetický obvod'
+text = '''
+Hopkinsonův zákon $U_\text{m} = \Phi R_\text{m}$ je obdobou kterého zákona elektrického obvodu?
+'''
+options = ['Ohmova zákona', '1. Kirchhoffova zákona', 'Faradayova zákona', 'Coulombova zákona']
+answer = 0
+layout = 'grid'
+explanation = '''
+Magnetické napětí odpovídá napětí, tok proudu a magnetický odpor odporu: $U = IR$ ↔ $U_\text{m} = \Phi R_\text{m}$. Součet $U_\text{mf} + U_\text{mv} = N_\text{z}I_\text{b}$ je zase obdoba 2. KZ.
+'''
+notes = ['', '1. KZ odpovídá zachování toku v uzlu magnetického obvodu.', 'Faradayův zákon popisuje indukované napětí.', 'Coulomb popisuje sílu mezi náboji.']
+
+[[question]]
+id = 'MG-07'
+kind = 'numeric'
+topic = 'Magnetický obvod'
+text = '''
+Jaký je magnetický odpor vzduchové mezery $R_\text{mv}$ pro $\ell_\text{v} = 1{,}7$ mm a $S = 330\ \text{mm}^2$? Odpověď uveď v násobcích $10^6\ \text{H}^{-1}$.
+'''
+value = 4.10
+tolerance = 0.02
+unit = '·10⁶ H⁻¹'
+explanation = '''
+$$R_\text{mv} = \frac{\ell_\text{v}}{\mu_0 S} = \frac{1{,}7\cdot 10^{-3}}{4\pi\cdot 10^{-7}\cdot 3{,}30\cdot 10^{-4}} = 4{,}099\cdot 10^{6}\ \text{H}^{-1}$$
+Odpor feritu je při 0,6 A jen $1{,}701\cdot 10^{5}\ \text{H}^{-1}$, asi 24× menší.
+'''
+
+[[question]]
+id = 'MG-08'
+topic = 'Magnetický obvod'
+text = '''
+Proč se indukce měří pro oba směry budicího proudu a bere se průměr?
+'''
+options = [
+  'Aby se vyloučila zbytková magnetizace jádra a posun nuly Hallovy sondy.',
+  'Aby se změřila permeabilita feritu.',
+  'Protože sonda měří jen kladné hodnoty.',
+  'Aby se jádro nepřehřálo.',
+]
+answer = 0
+explanation = '''
+Zbytková (remanentní) magnetizace a posun nuly přičtou k údaji pro oba směry stejný příspěvek, kdežto pole od proudu změní znaménko. Průměr velikostí $B_\text{m} = (B_\text{m34} + B_\text{m43})/2$ tyto vlivy z velké části vyruší.
+'''
+notes = ['', '$\mu_\text{rf}$ je dané tabulkou.', 'Sonda ukazuje velikost, směr proudu jde o něco jiného.', 'S teplotou to nesouvisí.']
+
+[[question]]
+id = 'MG-09'
+kind = 'numeric'
+topic = 'Magnetický obvod'
+text = '''
+Při $I_\text{b} = 0{,}6$ A se naměřilo $B_\text{m34} = 102{,}9$ mT a po prohození vodičů $B_\text{m43} = 103{,}3$ mT. Jaká je výsledná naměřená indukce $B_\text{m}$?
+'''
+value = 103.1
+tolerance = 0.05
+unit = 'mT'
+explanation = '''
+$$B_\text{m} = \frac{B_\text{m34} + B_\text{m43}}{2} = \frac{102{,}9 + 103{,}3}{2} = 103{,}1\ \text{mT}$$
+Proti vypočtené $B$ = 98,8 mT je to +4,4 %.
+'''
+
+[[question]]
+id = 'MG-10'
+topic = 'Magnetický obvod'
+text = '''
+Na jakém principu měří Hallova sonda?
+'''
+options = [
+  'Magnetické pole vychyluje nosiče náboje v destičce, kterou teče proud; napříč vznikne napětí úměrné $B$.',
+  'Magnetické pole indukuje napětí v cívce sondy.',
+  'Magnetické pole mění odpor kovového drátu.',
+  'Sonda měří sílu na magnetku.',
+]
+answer = 0
+explanation = '''
+Lorentzova síla tlačí pohybující se nosiče k jedné straně destičky, napříč destičkou vznikne Hallovo napětí úměrné indukci. Měří i stálé (stejnosměrné) pole.
+'''
+notes = ['', 'Indukční cívka měří jen proměnné pole.', 'To je magnetorezistence, ne Hallův jev.', 'Sonda je polovodičová, magnetku nemá.']
+
+[[question]]
+id = 'MG-11'
+kind = 'numeric'
+topic = 'Magnetický obvod'
+text = '''
+Při 0,6 A je magnetické napětí cívky $U_\text{m} = 139{,}2$ A a na mezeře připadá $U_\text{mv} = 133{,}6$ A. Kolik procent magnetického napětí je na mezeře?
+'''
+value = 96
+tolerance = 0.5
+unit = '%'
+explanation = '''
+$$\frac{U_\text{mv}}{U_\text{m}}\cdot 100 = \frac{133{,}6}{139{,}2}\cdot 100 = 96\ \%$$
+Mezera dlouhá 1,7 mm „spotřebuje“ skoro celé magnetické napětí, přestože ferit měří přes 200 mm.
+'''
+
+[[question]]
+id = 'MG-12'
+topic = 'Magnetický obvod'
+text = '''
+Proč indukce při posouvání sondy klesá směrem k okrajům mezery a mimo jádro?
+'''
+options = [
+  'Rozptyl: u okraje se siločáry vyboulí ven a pole se rozprostře do většího prostoru.',
+  'Sonda je u okraje blíž cívce.',
+  'Ferit je na okrajích tenčí.',
+  'Okraje jsou nemagnetické.',
+]
+answer = 0
+explanation = '''
+Uvnitř mezery je pole téměř homogenní (asi ±6 mm). U hran jádra (±7,5 mm) siločáry vybíhají ven a indukce klesá asi na 80 %, mimo jádro rychle ubývá.
+'''
+notes = ['', 'Cívka je na druhé straně toroidu.', 'Průřez je obdélník, všude stejný.', 'Celé jádro je feritové.']

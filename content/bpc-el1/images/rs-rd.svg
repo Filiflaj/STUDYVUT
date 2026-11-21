@@ -1,0 +1,36 @@
+<svg viewBox="0 0 600 250" width="600" class="fig" role="img" aria-label="AV charakteristika nelineárního prvku se statickým a dynamickým odporem a linearizovaný model">
+<line x1="50" y1="215" x2="356" y2="215" class="v" marker-end="url(#m-v)"/>
+<line x1="50" y1="215" x2="50" y2="26" class="v" marker-end="url(#m-v)"/>
+<text x="350" y="237" text-anchor="middle"><tspan class="it">u</tspan></text>
+<text x="40" y="35" text-anchor="end"><tspan class="it">i</tspan></text>
+<polyline points="50.0,215.0 51.6,215.0 53.1,215.0 54.7,215.0 56.2,215.0 57.8,215.0 59.3,214.9 60.9,214.9 62.5,214.9 64.0,214.9 65.6,214.9 67.1,214.9 68.7,214.9 70.2,214.9 71.8,214.8 73.3,214.8 74.9,214.8 76.5,214.8 78.0,214.8 79.6,214.8 81.1,214.7 82.7,214.7 84.2,214.7 85.8,214.7 87.3,214.7 88.9,214.6 90.5,214.6 92.0,214.6 93.6,214.5 95.1,214.5 96.7,214.5 98.2,214.5 99.8,214.4 101.4,214.4 102.9,214.4 104.5,214.3 106.0,214.3 107.6,214.2 109.1,214.2 110.7,214.2 112.2,214.1 113.8,214.1 115.4,214.0 116.9,214.0 118.5,213.9 120.0,213.9 121.6,213.8 123.1,213.7 124.7,213.7 126.3,213.6 127.8,213.5 129.4,213.5 130.9,213.4 132.5,213.3 134.0,213.2 135.6,213.1 137.1,213.0 138.7,212.9 140.3,212.8 141.8,212.7 143.4,212.6 144.9,212.5 146.5,212.4 148.0,212.3 149.6,212.2 151.2,212.0 152.7,211.9 154.3,211.7 155.8,211.6 157.4,211.4 158.9,211.3 160.5,211.1 162.1,210.9 163.6,210.7 165.2,210.5 166.7,210.3 168.3,210.1 169.8,209.9 171.4,209.6 172.9,209.4 174.5,209.1 176.1,208.9 177.6,208.6 179.2,208.3 180.7,208.0 182.3,207.7 183.8,207.3 185.4,207.0 186.9,206.6 188.5,206.2 190.1,205.8 191.6,205.4 193.2,205.0 194.7,204.5 196.3,204.1 197.8,203.6 199.4,203.1 201.0,202.5 202.5,202.0 204.1,201.4 205.6,200.8 207.2,200.1 208.7,199.5 210.3,198.8 211.8,198.1 213.4,197.3 215.0,196.5 216.5,195.7 218.1,194.8 219.6,193.9 221.2,193.0 222.7,192.0 224.3,191.0 225.9,189.9 227.4,188.8 229.0,187.6 230.5,186.4 232.1,185.1 233.6,183.8 235.2,182.4 236.7,181.0 238.3,179.5 239.9,177.9 241.4,176.2 243.0,174.5 244.5,172.7 246.1,170.8 247.6,168.9 249.2,166.8 250.8,164.7 252.3,162.5 253.9,160.1 255.4,157.7 257.0,155.2 258.5,152.5 260.1,149.8 261.6,146.9 263.2,143.8 264.8,140.7 266.3,137.4 267.9,134.0 269.4,130.4 271.0,126.6 272.5,122.7 274.1,118.6 275.7,114.4 277.2,109.9 278.8,105.3 280.3,100.4 281.9,95.3 283.4,90.0 285.0,84.5 286.5,78.7 288.1,72.7 289.7,66.4 291.2,59.8 292.8,53.0 294.3,45.8 295.9,38.3" class="s"/>
+<line x1="50" y1="215" x2="331.2" y2="91.2" class="d"/>
+<line x1="239" y1="215" x2="301.2" y2="44" class="f"/>
+<line x1="275" y1="116" x2="275" y2="215" class="d"/>
+<line x1="50" y1="116" x2="275" y2="116" class="d"/>
+<circle cx="275" cy="116" r="3.2" class="pt"/>
+<text x="263" y="112" class="it" text-anchor="end">P</text>
+<text x="281" y="237" text-anchor="middle"><tspan class="it">u</tspan><tspan class="sm" dy="4">P</tspan><tspan dy="-4"></tspan></text>
+<text x="42" y="121" text-anchor="end"><tspan class="it">i</tspan><tspan class="sm" dy="4">P</tspan><tspan dy="-4"></tspan></text>
+<circle cx="239" cy="215" r="3.2" class="ptA"/>
+<text x="235" y="237" class="acc" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">S</tspan><tspan dy="-4"></tspan></text>
+<text x="80.0" y="161.0" class="sm"><tspan class="it">R</tspan><tspan dy="3">s</tspan><tspan dy="-3">: spojnice 0–P</tspan></text>
+<text x="260.0" y="38.599999999999994" class="sm acc" text-anchor="end"><tspan class="it">R</tspan><tspan dy="3">d</tspan><tspan dy="-3">: tečna v P</tspan></text>
+<circle cx="450" cy="160" r="14" class="s"/>
+<line x1="450" y1="146" x2="450" y2="174" class="s"/>
+<line x1="428" y1="142" x2="428" y2="180" class="v" marker-end="url(#m-v)"/>
+<text x="420" y="166" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">S</tspan><tspan dy="-4"></tspan></text>
+<rect x="443" y="75" width="14" height="40" class="s"/>
+<text x="436" y="100" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">d</tspan><tspan dy="-4"></tspan></text>
+<polyline points="450,60 450,75" class="s"/>
+<polyline points="450,115 450,146" class="s"/>
+<polyline points="450,60 540,60" class="s"/>
+<polyline points="450,174 450,200 540,200" class="s"/>
+<circle cx="540" cy="60" r="3.5" class="s1"/>
+<circle cx="540" cy="200" r="3.5" class="s1"/>
+<line x1="562" y1="70" x2="562" y2="190" class="v" marker-end="url(#m-v)"/>
+<text x="568" y="135"><tspan class="it">u</tspan></text>
+<line x1="520" y1="48" x2="490" y2="48" class="v" marker-end="url(#m-v)"/>
+<text x="505" y="40" text-anchor="middle"><tspan class="it">i</tspan></text>
+<text x="495" y="240" class="sm mut" text-anchor="middle">linearizovaný model</text>
+</svg>

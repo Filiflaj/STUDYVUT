@@ -1,0 +1,237 @@
+name = 'Úloha 10: Tíhové zrychlení'
+description = 'vstupní test: fyzické a matematické kyvadlo, redukovaná délka'
+
+[[question]]
+id = 'L10-01'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, Dodatek, úloha 10'
+tags = ["lab"]
+text = '''
+Doba kmitu fyzického kyvadla je $4\pi$ sekund. Jak velká je jeho redukovaná délka? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 39.24
+tolerance = 0.1
+unit = 'm'
+explanation = '''
+Redukovaná délka je délka matematického kyvadla se stejnou dobou kmitu. Z $T = 2\pi\sqrt{\ell_\mathrm{r}/g}$:
+$$\ell_\mathrm{r} = \frac{g\,T^2}{4\pi^2} = \frac{g\cdot16\pi^2}{4\pi^2} = 4g = 39{,}24\ \mathrm{m}$$
+'''
+
+[[question]]
+id = 'L10-02'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, Dodatek, úloha 10'
+tags = ["lab"]
+text = '''
+Fyzické kyvadlo má hmotnost $m = 0{,}6\ \mathrm{kg}$, vzdálenost osy od těžiště $d = 0{,}9\ \mathrm{m}$ a dobu kmitu $T = 4\ \mathrm{s}$. Jaký je jeho moment setrvačnosti? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 2.147
+tolerance = 0.01
+unit = 'kg·m²'
+explanation = '''
+Z $T = 2\pi\sqrt{\dfrac{J}{mgd}}$ vyjádříme $J$:
+$$J = \frac{T^2\,m g d}{4\pi^2} = \frac{16\cdot0{,}6\cdot9{,}81\cdot0{,}9}{4\pi^2} = \frac{84{,}76}{39{,}48} \doteq 2{,}15\ \mathrm{kg\,m^2}$$
+'''
+
+[[question]]
+id = 'L10-03'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, Dodatek, úloha 10'
+tags = ["lab"]
+text = '''
+Fyzické kyvadlo má moment setrvačnosti $J = 0{,}12\ \mathrm{kg\,m^2}$, hmotnost $m = 0{,}5\ \mathrm{kg}$ a vzdálenost osy od těžiště $d = 0{,}4\ \mathrm{m}$. Jaká je jeho doba kmitu? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 1.554
+tolerance = 0.01
+unit = 's'
+explanation = '''
+$$T = 2\pi\sqrt{\frac{J}{mgd}} = 2\pi\sqrt{\frac{0{,}12}{0{,}5\cdot9{,}81\cdot0{,}4}} = 2\pi\sqrt{0{,}0612} \doteq 1{,}55\ \mathrm{s}$$
+'''
+
+[[question]]
+id = 'L10-04'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, Dodatek, úloha 10'
+tags = ["lab"]
+text = '''
+U fyzického kyvadla se změní moment setrvačnosti $J$, hmotnost $m$ nebo vzdálenost osy od těžiště $d$, ale tak, že doba kmitu zůstane stejná. Změní se jeho redukovaná délka?
+'''
+options = [
+  'Nezmění, redukovaná délka je určená jen dobou kmitu.',
+  'Ano, změní se úměrně $J$.',
+  'Ano, změní se nepřímo úměrně $m$.',
+  'Záleží na tom, která z veličin se změnila.',
+]
+answer = 0
+explanation = '''
+Redukovaná délka je délka matematického kyvadla se **stejnou dobou kmitu**: $\ell_\mathrm{r} = gT^2/(4\pi^2)$. Zůstane-li $T$ stejná, zůstane stejná i $\ell_\mathrm{r}$.
+'''
+notes = [
+  '',
+  '$\ell_\mathrm{r} = J/(md)$, ale když se $T$ nezmění, nezmění se ani tento podíl.',
+  'Změny $J$, $m$ a $d$ se při stejné $T$ vzájemně vyrovnají.',
+  'Rozhoduje jen doba kmitu, ne to, která veličina se změnila.',
+]
+
+[[question]]
+id = 'L10-05'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Reverzní kyvadlo je nastavené tak, že doby kmitu kolem obou os jsou stejné, $T = 2{,}000\ \mathrm{s}$. Vzdálenost břitů je $99{,}4\ \mathrm{cm}$. Jaké vyjde tíhové zrychlení?
+'''
+value = 9.810
+tolerance = 0.005
+unit = 'm/s²'
+explanation = '''
+Vzdálenost břitů je redukovaná délka:
+$$g = \frac{4\pi^2\ell_\mathrm{r}}{T^2} = \frac{4\pi^2\cdot0{,}994}{2{,}000^2} = 9{,}810\ \mathrm{m\,s^{-2}}$$
+'''
+warning = 'Délku dosaďte v metrech.'
+
+[[question]]
+id = 'L10-06'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Co je redukovaná délka fyzického kyvadla?
+'''
+options = [
+  'Délka matematického kyvadla, které má stejnou dobu kmitu jako dané fyzické kyvadlo.',
+  'Vzdálenost osy kyvu od těžiště kyvadla.',
+  'Celková délka tyče kyvadla.',
+  'Vzdálenost těžiště od posuvného závaží.',
+]
+answer = 0
+explanation = '''
+Je to definice z návodu. U reverzního kyvadla je redukovanou délkou vzdálenost břitů, když jsou doby kmitu kolem obou os stejné.
+'''
+notes = [
+  '',
+  'To je $d$ ve vztahu pro fyzické kyvadlo; redukovaná délka je $J/(md)$, tedy větší.',
+  'Délka tyče nemá s dobou kmitu přímý vztah.',
+  'Poloha závaží jen mění polohu těžiště.',
+]
+
+[[question]]
+id = 'L10-07'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Proč se u reverzního kyvadla hledá poloha závaží, při níž je doba kmitu kolem obou os stejná?
+'''
+options = [
+  'Vzdálenost obou os je pak rovna redukované délce a $g$ jde spočítat ze vztahu pro matematické kyvadlo.',
+  'Těžiště je pak přesně uprostřed mezi osami.',
+  'Kyvadlo je pak nejméně tlumené.',
+  'Moment setrvačnosti je pak nulový.',
+]
+answer = 0
+explanation = '''
+Fyzické kyvadlo má dvě osy se stejnou dobou kmitu a jejich vzdálenost je redukovaná délka. Neznámé $J$ a $d$ pak nepotřebujeme: stačí změřit vzdálenost břitů a dobu kmitu, $g = 4\pi^2\ell_\mathrm{r}/T^2$.
+'''
+notes = [
+  '',
+  'Těžiště je blíž jedné z os, jinak by obě osy byly souměrné a ve stejné vzdálenosti.',
+  'Tlumení s volbou polohy závaží nesouvisí.',
+  'Moment setrvačnosti tuhého tělesa nulový není nikdy.',
+]
+
+[[question]]
+id = 'L10-08'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Jak závisí doba kmitu matematického kyvadla (malé rozkyvy) na hmotnosti zavěšeného bodu?
+'''
+options = ['Nezávisí na ní.', 'Je jí přímo úměrná.', 'Je úměrná její odmocnině.', 'Je jí nepřímo úměrná.']
+answer = 0
+layout = 'grid'
+explanation = '''
+$T = 2\pi\sqrt{\ell/g}$: hmotnost ve vztahu není. Doba kmitu závisí jen na délce a na tíhovém zrychlení.
+'''
+notes = [
+  '',
+  'Ve vztahu $T = 2\pi\sqrt{\ell/g}$ hmotnost nevystupuje.',
+  'Odmocnina je z délky, ne z hmotnosti.',
+  'Hmotnost se z pohybové rovnice vykrátí.',
+]
+
+[[question]]
+id = 'L10-09'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Kde je tíhové zrychlení na povrchu Země větší?
+'''
+options = ['na pólech', 'na rovníku', 'všude stejné', 'na 45° zeměpisné šířky']
+answer = 0
+layout = 'grid'
+explanation = '''
+Tíhové zrychlení je výslednice gravitace a odstředivého účinku rotace Země. Na rovníku je odstředivá složka největší a navíc je tam povrch dál od středu Země, proto je tam $g$ menší, na pólech největší.
+'''
+notes = [
+  '',
+  'Na rovníku je odstředivá složka největší a $g$ nejmenší.',
+  '$g$ závisí na zeměpisné šířce i nadmořské výšce.',
+  'Tam je $g$ mezi hodnotami na pólu a na rovníku.',
+]
+
+[[question]]
+id = 'L10-10'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Jaký je vztah těžiště a hmotného středu tělesa?
+'''
+options = [
+  'V homogenním tíhovém poli splývají; v beztížném stavu pojem těžiště ztrácí smysl.',
+  'Splývají vždy, jsou to synonyma bez rozdílu.',
+  'Těžiště je vždy výš než hmotný střed.',
+  'Hmotný střed existuje jen v tíhovém poli.',
+]
+answer = 0
+explanation = '''
+Těžiště se určuje zavěšováním (průsečík těžnic), hmotný střed je dán rozložením hmoty a na vnějším poli nezávisí. V homogenním poli u povrchu Země splývají, v silně nehomogenním poli se liší.
+'''
+notes = [
+  '',
+  'V nehomogenním poli se liší: u dlouhé tyče ze Země do vesmíru by těžiště bylo blíž Zemi.',
+  'V homogenním poli splývají.',
+  'Je to naopak: na poli nezávisí hmotný střed, těžiště pole potřebuje.',
+]
+
+[[question]]
+id = 'L10-11'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Návod, úloha 10'
+tags = ["lab"]
+text = '''
+Kyvadlo se omylem rozkývá s velkým rozkyvem (asi 20°). Jak to ovlivní vypočtené $g = 4\pi^2\ell_\mathrm{r}/T^2$?
+'''
+options = [
+  'Doba kmitu se prodlouží, $g$ vyjde menší.',
+  'Doba kmitu se zkrátí, $g$ vyjde větší.',
+  'Nijak, doba kmitu na rozkyvu nezávisí.',
+  'Doba kmitu se prodlouží, $g$ vyjde větší.',
+]
+answer = 0
+explanation = '''
+Vztahy pro dobu kmitu platí jen pro malé rozkyvy (asi do 5°). Pro větší rozkyv je skutečná doba kmitu delší, a protože je $T$ ve jmenovateli na druhou, $g$ vyjde menší.
+'''
+notes = [
+  '',
+  'Doba kmitu s rozkyvem roste, nezkracuje se.',
+  'Nezávislost na rozkyvu platí jen přibližně pro malé úhly.',
+  'Delší $T$ ve jmenovateli $g$ zmenší.',
+]

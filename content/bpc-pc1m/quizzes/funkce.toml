@@ -1,0 +1,292 @@
+name = 'Funkce'
+description = 'funkce, prototypy, hlavičkové soubory, #define'
+
+[[question]]
+id = 'FN-01'
+topic = 'Funkce'
+text = '''
+Co program vypíše?
+
+```c
+#include <stdio.h>
+
+void zvys(int x)
+{
+    x = x + 1;
+}
+
+int main()
+{
+    int a = 5;
+    zvys(a);
+    printf("%d\n", a);
+    return 0;
+}
+```
+'''
+options = ['`5`', '`6`', '`1`', 'nic, program se nepřeloží']
+answer = 0
+explanation = '''
+Parametr se předává **hodnotou**: `x` je kopie `a`. Funkce zvýší jen kopii, `a` zůstane 5. Aby funkce změnila `a`, musela by dostat adresu: `void zvys(int *x)` a volání `zvys(&a)`.
+'''
+notes = [
+  '',
+  'Tolik by vyšlo jen s předáním adresy (`int *x`, `*x = *x + 1`).',
+  'Funkce `x` nenastavuje na 1, přičítá jedničku ke kopii.',
+  'Program je v pořádku, `void` funkce bez `return` je povolená.',
+]
+
+[[question]]
+id = 'FN-02'
+topic = 'Funkce'
+text = '''
+Co program vypíše?
+
+```c
+#include <stdio.h>
+#define DVA 1 + 1
+
+int main()
+{
+    printf("%d\n", DVA * 3);
+    return 0;
+}
+```
+'''
+options = ['`4`', '`6`', '`9`', '`2`']
+answer = 0
+explanation = '''
+`#define` je jen **náhrada textu**. Preprocesor z `DVA * 3` udělá `1 + 1 * 3` a násobení má přednost: $1 + 3 = 4$. Proto se výraz v makru píše do závorek: `#define DVA (1 + 1)`.
+'''
+notes = [
+  '',
+  'Šestka by vyšla se závorkami v makru. Preprocesor ale závorky sám nepřidá.',
+  'To by bylo `(1 + 1) * 3 + 3`, nic takového tu není.',
+  'Násobení třemi se provede, jen se váže k druhé jedničce.',
+]
+
+[[question]]
+id = 'FN-03'
+topic = 'Funkce'
+text = '''
+Funkce `dvakrat` je definovaná až **pod** funkcí `main` a nad `main` není nic dalšího. Co ohlásí současný překladač (C99 a novější) u volání `dvakrat(4)` v `main`?
+'''
+options = [
+  'chybu *implicit declaration*: funkce v místě volání ještě není deklarovaná',
+  'nic, překladač si funkci najde sám kdekoli v souboru',
+  'chybu linkeru *undefined reference*',
+  'chybu až za běhu programu',
+]
+answer = 0
+explanation = '''
+Překladač čte soubor shora dolů. V místě volání musí znát aspoň **prototyp**: `int dvakrat(int x);` nad `main`, nebo v hlavičkovém souboru vloženém přes `#include`. Od C99 je volání nedeklarované funkce chyba (starší překladače jen varovaly).
+'''
+notes = [
+  '',
+  'Překladač nečte dopředu. Proto se prototypy píšou nahoru nebo do .h.',
+  'Linker by si stěžoval, kdyby chybělo tělo funkce (např. zapomenutý .c soubor). Tady tělo existuje.',
+  'Jde o chybu překladu, program vůbec nevznikne.',
+]
+
+[[question]]
+id = 'FN-04'
+topic = 'Funkce'
+text = '''
+K čemu slouží v hlavičkovém souboru tyto řádky?
+
+```c
+#ifndef TABULKA_H_INCLUDED
+#define TABULKA_H_INCLUDED
+...
+#endif
+```
+'''
+options = [
+  'zabrání tomu, aby se obsah hlavičky při vícenásobném `#include` vložil dvakrát',
+  'definují konstantu `TABULKA_H_INCLUDED` s hodnotou 1, kterou používá `main`',
+  'označují, které funkce se mají přeložit',
+  'zajistí, že se `tabulka.c` přeloží automaticky',
+]
+answer = 0
+explanation = '''
+Je to **include guard**. Při prvním vložení makro `TABULKA_H_INCLUDED` ještě neexistuje, obsah se vloží a makro se definuje. Při dalším vložení je už definované a vše mezi `#ifndef` a `#endif` se přeskočí. Nevzniknou tak dvojí definice.
+'''
+notes = [
+  '',
+  'Makro je definované prázdné a slouží jen jako značka „už vloženo“.',
+  'Co se přeloží, určuje příkaz gcc a obsah .c souborů.',
+  '`tabulka.c` se musí uvést v příkazu gcc, hlavička to nezařídí.',
+]
+
+[[question]]
+id = 'FN-05'
+topic = 'Funkce'
+text = '''
+Program se skládá ze souborů `main.c`, `tabulka.c` a `tabulka.h`. Který příkaz ho přeloží správně?
+'''
+options = [
+  '`gcc main.c tabulka.c -o tabulka`',
+  '`gcc main.c -o tabulka`',
+  '`gcc main.c tabulka.h -o tabulka`',
+  '`gcc tabulka.h tabulka.c -o tabulka`',
+]
+answer = 0
+explanation = '''
+Překládají a linkují se všechny **.c** soubory. Hlavičky se do příkazu nepíšou, vkládá je `#include`. Na Linuxu se kvůli `pow` a `sqrt` přidává ještě `-lm`.
+'''
+notes = [
+  '',
+  'Bez `tabulka.c` chybí těla funkcí, linker ohlásí *undefined reference* (na Macu *undefined symbols*).',
+  'Hlavička do příkazu nepatří a hlavně chybí `tabulka.c` s těly funkcí.',
+  'Chybí `main.c` s funkcí `main`.',
+]
+
+[[question]]
+id = 'FN-06'
+topic = 'Funkce'
+kind = 'numeric'
+text = '''
+Funkce z úlohy s tabulkou vypíše pod nadpis tolik znaků `=`, kolik má nadpis znaků:
+
+```c
+#define NADPIS "Tabulka mocnin a odmocnin"
+...
+int delka = strlen(NADPIS);
+for (i = 0; i < delka; i++)
+{
+    putchar('=');
+}
+```
+
+Kolik rovnítek se vypíše?
+'''
+value = 25
+tolerance = 0
+unit = 'znaků'
+explanation = '''
+`strlen` počítá znaky řetězce bez ukončovací nuly `\0`, mezery se počítají: „Tabulka“ 7 + mezera + „mocnin“ 6 + mezera + „a“ 1 + mezera + „odmocnin“ 8 = 25.
+'''
+
+[[question]]
+id = 'FN-07'
+topic = 'Funkce'
+text = '''
+Co vypíše tento řádek (znak `|` je jen oddělovač)?
+
+```c
+double n = 2;
+printf("|%4.0f|%10.3f|\n", pow(n, 3), sqrt(n));
+```
+'''
+options = [
+  '`|   8|     1.414|`',
+  '`|8|1.414|`',
+  '`|8.0000|1.4142135624|`',
+  '`|   8|1.414     |`',
+]
+answer = 0
+explanation = '''
+`%4.0f`: šířka 4 znaky, 0 desetinných míst, číslo se zarovná **doprava** (3 mezery + `8`). `%10.3f`: šířka 10, tři desetinná místa, opět doprava (5 mezer + `1.414`).
+'''
+notes = [
+  '',
+  'Číslo před tečkou je minimální šířka pole, doplní se mezerami.',
+  'Za tečkou je počet desetinných míst, ne šířka.',
+  'Bez znaménka mínus se zarovnává doprava. Doleva by to bylo `%-10.3f`.',
+]
+
+[[question]]
+id = 'FN-08'
+topic = 'Funkce'
+text = '''
+Co program vypíše?
+
+```c
+#include <stdio.h>
+
+int pocet = 0;
+
+void pricti(void)
+{
+    int pocet = 10;
+    pocet++;
+}
+
+int main()
+{
+    pricti();
+    pricti();
+    printf("%d\n", pocet);
+    return 0;
+}
+```
+'''
+options = ['`0`', '`2`', '`11`', '`12`']
+answer = 0
+explanation = '''
+Uvnitř `pricti` je **lokální** proměnná `pocet`, která globální proměnnou se stejným jménem zakryje. Funkce zvýší jen svoji lokální kopii, která pak zanikne. Globální `pocet` zůstane 0.
+'''
+notes = [
+  '',
+  'Tak by to bylo bez lokální deklarace `int pocet = 10;` ve funkci.',
+  'Lokální proměnná je 11 jen uvnitř funkce a s koncem funkce zanikne. `main` vypisuje globální.',
+  'Lokální proměnná vzniká při každém volání znovu s hodnotou 10, nic se nesčítá.',
+]
+
+[[question]]
+id = 'FN-09'
+topic = 'Funkce'
+text = '''
+Co program vypíše?
+
+```c
+#include <stdio.h>
+
+int secti(int a, int b)
+{
+    return a + b;
+    printf("konec\n");
+}
+
+int main()
+{
+    int x = secti(2, 3);
+    printf("%d\n", secti(x, x));
+    return 0;
+}
+```
+'''
+options = ['`10`', '`konec` a pod tím `10`', '`5`', '`konec`, `konec` a `10`']
+answer = 0
+explanation = '''
+`return` funkci okamžitě ukončí, `printf("konec")` za ním se nikdy neprovede. `x = 2 + 3 = 5`, pak se vypíše `secti(5, 5) = 10`.
+'''
+notes = [
+  '',
+  'Kód za `return` je nedosažitelný.',
+  'Vypisuje se `secti(x, x)`, ne `x`.',
+  'Kód za `return` se neprovede ani jednou.',
+]
+
+[[question]]
+id = 'FN-10'
+topic = 'Funkce'
+text = '''
+Co znamená prototyp `void vypis_tabulku(void);`?
+'''
+options = [
+  'funkce nic nevrací a nemá žádné parametry',
+  'funkce vrací ukazatel bez typu',
+  'funkce vrací libovolný typ podle toho, co dostane',
+  'funkce je zatím prázdná a doplní se později',
+]
+answer = 0
+explanation = '''
+`void` jako návratový typ = funkce nic nevrací (stačí `return;` nebo konec těla). `void` v závorkách = funkce nebere žádné argumenty. Středník na konci znamená, že jde o prototyp (deklaraci), tělo je jinde.
+'''
+notes = [
+  '',
+  'Ukazatel bez typu by byl `void *`.',
+  'Návratový typ je v C pevně daný.',
+  'Prototyp jen oznamuje, že funkce existuje. Tělo je v `tabulka.c`.',
+]

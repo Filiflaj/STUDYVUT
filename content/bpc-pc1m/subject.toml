@@ -1,0 +1,21 @@
+code = "BPC-PC1M"
+name = "Počítače a programování 1"
+semester = "ZS 2026/2027"
+year = 1
+programs = ["met"]
+color = "green"
+description = "Jazyk C: funkce, struktury, soubory, zásobník a fronta, ukazatele, dynamická paměť a spojový seznam podle cvičení."
+
+[[set]]
+id = "exam"
+name = "Test nanečisto"
+description = "15 náhodných otázek ze všech témat"
+pick = [
+  { quiz = "funkce", count = 2 },
+  { quiz = "struktury", count = 2 },
+  { quiz = "soubory", count = 2 },
+  { quiz = "zasobnik-fronta", count = 2 },
+  { quiz = "ukazatele", count = 3 },
+  { quiz = "dynamicka-pamet", count = 2 },
+  { quiz = "spojovy-seznam", count = 2 },
+]

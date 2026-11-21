@@ -1,0 +1,23 @@
+code = "BPC-EL1"
+name = "Elektrotechnika 1"
+semester = "ZS 2026/2027"
+year = 1
+programs = ["met"]
+color = "orange"
+description = "Laboratorní cvičení: jak na pracovní sešit, teorie a výpočty k osmi úlohám, otázky z obhajoby."
+
+[[set]]
+id = "exam"
+name = "Obhajoba nanečisto"
+description = "15 náhodných otázek ze všech úloh"
+pick = [
+  { quiz = "pracovni-sesit", count = 2 },
+  { quiz = "realny-zdroj", count = 2 },
+  { quiz = "kirchhoff", count = 2 },
+  { quiz = "nahradni-zdroj", count = 2 },
+  { quiz = "uzlova-napeti", count = 2 },
+  { quiz = "superpozice", count = 2 },
+  { quiz = "prenos-vykonu", count = 1 },
+  { quiz = "magneticke-pole", count = 1 },
+  { quiz = "nelinearni-prvky", count = 1 },
+]

@@ -1,0 +1,29 @@
+<svg viewBox="0 0 560 235" width="560" class="fig" role="img" aria-label="Princip měření AV charakteristiky na pracovišti RC 2000">
+<circle cx="50" cy="137" r="14" class="s"/>
+<line x1="50" y1="123" x2="50" y2="151" class="s"/>
+<text x="28" y="142" text-anchor="end">∿</text>
+<text x="12" y="226" class="sm mut">generátor (pila −5 až +5 V)</text>
+<polyline points="50,123 50,75 130,75" class="s"/>
+<rect x="130" y="68" width="40" height="14" class="s"/>
+<text x="150" y="103" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">sn</tspan><tspan dy="-4"> = 100 Ω</tspan></text>
+<polyline points="170,75 300,75 300,107" class="s"/>
+<rect x="285" y="107" width="30" height="60" class="gf"/>
+<text x="325" y="142" class="sm">měřený dvojpól</text>
+<polyline points="300,167 300,200 50,200" class="s"/>
+<polyline points="50,151 50,200" class="s"/>
+<circle cx="130" cy="75" r="3.2" class="pt"/>
+<circle cx="170" cy="75" r="3.2" class="pt"/>
+<polyline points="130,75 130,30 137,30" class="s"/>
+<polyline points="170,75 170,30 163,30" class="s"/>
+<circle cx="150" cy="30" r="13" class="s"/>
+<text x="150" y="35" class="sm" text-anchor="middle">B</text>
+<text x="182" y="35" class="sm acc" text-anchor="start">kanál B: napětí na <tspan class="it">R</tspan><tspan dy="3">sn</tspan><tspan dy="-3"> ~ proud </tspan><tspan class="it">i</tspan></text>
+<circle cx="300" cy="92" r="3.2" class="pt"/>
+<circle cx="300" cy="182" r="3.2" class="pt"/>
+<polyline points="300,92 470,92 470,124" class="s"/>
+<circle cx="470" cy="137" r="13" class="s"/>
+<text x="470" y="142" class="sm" text-anchor="middle">A</text>
+<polyline points="470,150 470,182 300,182" class="s"/>
+<text x="488" y="135" class="sm acc" text-anchor="start">kanál A:</text>
+<text x="488" y="152" class="sm acc" text-anchor="start">napětí <tspan class="it">u</tspan></text>
+</svg>

@@ -1,0 +1,221 @@
+name = 'Úloha 5: Nakloněná rovina'
+description = 'vstupní test: síly, tření a zrychlení na nakloněné rovině'
+
+[[question]]
+id = 'L05-01'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Látka k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Těleso o hmotnosti $2\ \mathrm{kg}$ klouže po nakloněné rovině se sklonem $30^\circ$, součinitel smykového tření je $\mu = 0{,}4$. Jak velká je třecí síla? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 6.80
+tolerance = 0.06
+unit = 'N'
+explanation = '''
+$$N = mg\cos\alpha = 2\cdot9{,}81\cdot\cos30^\circ = 17{,}0\ \mathrm{N} \qquad F_\mathrm{t} = \mu N = 0{,}4\cdot17{,}0 = 6{,}8\ \mathrm{N}$$
+'''
+warning = 'Třecí síla je úměrná normálové síle $mg\cos\alpha$, ne celé tíze $mg$.'
+
+[[question]]
+id = 'L05-02'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Látka k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Součinitel statického tření mezi tělesem a rovinou je $\mu = 0{,}5$. Při jakém nejmenším úhlu sklonu se těleso začne pohybovat?
+'''
+value = 26.6
+tolerance = 0.2
+unit = '°'
+explanation = '''
+Těleso se rozjede, když složka tíhy podél roviny překoná maximální statické tření:
+$$mg\sin\alpha = \mu\, mg\cos\alpha \ \Rightarrow\ \operatorname{tg}\alpha = \mu \ \Rightarrow\ \alpha = \operatorname{arctg}0{,}5 \doteq 26{,}6^\circ$$
+'''
+
+[[question]]
+id = 'L05-03'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Látka k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Těleso klouže po rovině se sklonem $35^\circ$, součinitel smykového tření je $\mu = 0{,}2$. Jaké má zrychlení? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 4.02
+tolerance = 0.05
+unit = 'm/s²'
+explanation = '''
+$$a = g(\sin\alpha - \mu\cos\alpha) = 9{,}81\,(0{,}5736 - 0{,}2\cdot0{,}8192) = 9{,}81\cdot0{,}4097 \doteq 4{,}0\ \mathrm{m\,s^{-2}}$$
+'''
+
+[[question]]
+id = 'L05-04'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Okruhy k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Na rovině se sklonem $30^\circ$ bylo naměřeno zrychlení $a = 2{,}50\ \mathrm{m\,s^{-2}}$. Jaký je součinitel smykového tření? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 0.283
+tolerance = 0.004
+explanation = '''
+$$\mu = \frac{\sin\alpha - \dfrac{a}{g}}{\cos\alpha} = \frac{0{,}5000 - \dfrac{2{,}50}{9{,}81}}{0{,}8660} = \frac{0{,}5000 - 0{,}2548}{0{,}8660} \doteq 0{,}283$$
+'''
+
+[[question]]
+id = 'L05-05'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Látka k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Na stejné nakloněné rovině ze stejného materiálu kloužou dvě tělesa: jedno o hmotnosti $m$, druhé $2m$. Jak se liší jejich zrychlení?
+'''
+options = [
+  'Jsou stejná.',
+  'Těžší těleso má dvojnásobné zrychlení.',
+  'Těžší těleso má poloviční zrychlení.',
+  'Těžší těleso má větší zrychlení, ale ne dvojnásobné.',
+]
+answer = 0
+explanation = '''
+V pohybové rovnici $mg\sin\alpha - \mu mg\cos\alpha = ma$ se hmotnost vykrátí: $a = g(\sin\alpha - \mu\cos\alpha)$. Těžší těleso má větší tíhu, ale i větší třecí sílu a setrvačnost.
+'''
+notes = [
+  '',
+  'Dvojnásobná je síla, ale i hmotnost, kterou urychluje.',
+  'Hmotnost se v rovnici vykrátí, zrychlení na ní nezávisí.',
+  'Hmotnost se vykrátí úplně.',
+]
+
+[[question]]
+id = 'L05-06'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Návod, úloha 5'
+tags = ["lab"]
+text = '''
+Body grafu dráhy na čase jsou proloženy parabolou $s = 1{,}30\,t^2 + 0{,}05\,t + 0{,}001$ (v jednotkách SI). Jaké je zrychlení tělesa?
+'''
+options = ['$2{,}60\ \mathrm{m\,s^{-2}}$', '$1{,}30\ \mathrm{m\,s^{-2}}$', '$0{,}65\ \mathrm{m\,s^{-2}}$', '$0{,}05\ \mathrm{m\,s^{-2}}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Porovnáním se $s = \tfrac12 at^2 + v_0t + s_0$: koeficient u $t^2$ je $a/2$, tedy $a = 2\cdot1{,}30 = 2{,}60\ \mathrm{m\,s^{-2}}$. Koeficient u $t$ je počáteční rychlost.
+'''
+notes = [
+  '',
+  'Koeficient u $t^2$ je polovina zrychlení.',
+  'Koeficient se násobí dvěma, ne dělí.',
+  'To je počáteční rychlost $v_0$ v $\mathrm{m\,s^{-1}}$.',
+]
+
+[[question]]
+id = 'L05-07'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Látka k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Co představuje směrnice přímky proložené grafem rychlosti tělesa na čase $v(t)$?
+'''
+options = ['zrychlení $a$', 'počáteční rychlost $v_0$', 'polovinu zrychlení $a/2$', 'součinitel tření $\mu$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Pro rovnoměrně zrychlený pohyb $v(t) = at + v_0$: směrnice je zrychlení, úsek na ose $v$ počáteční rychlost. Z grafu $v(t)$ se v úloze zrychlení určuje.
+'''
+notes = [
+  '',
+  '$v_0$ je úsek na svislé ose, ne směrnice.',
+  'Polovina zrychlení je koeficient u $t^2$ v parabole $s(t)$.',
+  '$\mu$ se počítá až ze zrychlení a úhlu.',
+]
+
+[[question]]
+id = 'L05-08'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Látka k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Jak velká je normálová síla, kterou působí nakloněná rovina se sklonem $\alpha$ na těleso o hmotnosti $m$ (bez dalších sil)?
+'''
+options = ['$mg\cos\alpha$', '$mg\sin\alpha$', '$mg$', '$mg\operatorname{tg}\alpha$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Kolmo k rovině se těleso nepohybuje, normálová síla tedy vyrovnává kolmou složku tíhy: $N = G_y = mg\cos\alpha$.
+'''
+notes = [
+  '',
+  '$mg\sin\alpha$ je složka tíhy podél roviny, ta těleso urychluje.',
+  'Celá tíha by to byla jen na vodorovné podložce.',
+  'Tangens vystupuje v podmínce rozjezdu, ne v normálové síle.',
+]
+
+[[question]]
+id = 'L05-09'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Návod, úloha 5'
+tags = ["lab"]
+text = '''
+Který výrok o součiniteli smykového tření platí (v ideálním modelu)?
+'''
+options = [
+  'Závisí na materiálech a stavu povrchů, ne na velikosti styčné plochy.',
+  'Má jednotku newton.',
+  'Roste s hmotností tělesa.',
+  'Dynamický součinitel bývá větší než statický.',
+]
+answer = 0
+explanation = '''
+$\mu = F_\mathrm{t}/N$ je bezrozměrný poměr dvou sil. Závisí na dvojici materiálů, drsnosti a znečištění, ne na ploše ani na normálové síle. Obvykle $\mu_\mathrm{d} < \mu_\mathrm{s}$.
+'''
+notes = [
+  '',
+  'Je to poměr dvou sil, tedy bezrozměrné číslo.',
+  'S hmotností roste třecí síla, ale poměr $F_\mathrm{t}/N$ zůstává stejný.',
+  'Obvykle je to naopak: rozjet těleso je těžší než ho udržet v pohybu.',
+]
+
+[[question]]
+id = 'L05-10'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Okruhy k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Těleso na rovině se sklonem $25^\circ$ samo klouže dolů. Co můžete říct o součiniteli tření?
+'''
+options = [
+  '$\mu < \operatorname{tg}25^\circ \doteq 0{,}47$',
+  '$\mu > \operatorname{tg}25^\circ \doteq 0{,}47$',
+  '$\mu < \sin25^\circ \doteq 0{,}42$, jinak nic',
+  '$\mu = \cos25^\circ \doteq 0{,}91$',
+]
+answer = 0
+explanation = '''
+Aby se těleso rozjelo, musí platit $mg\sin\alpha > \mu mg\cos\alpha$, tedy $\mu < \operatorname{tg}\alpha$. Je to i dobrá kontrola vypočteného $\mu$: tabulková hodnota ocel–ocel 0,6 by při $25^\circ$ těleso udržela v klidu.
+'''
+notes = [
+  '',
+  'Pak by tření těleso udrželo v klidu.',
+  'Podmínka obsahuje podíl $\sin/\cos$, tedy tangens.',
+  'To není žádná podmínka pohybu.',
+]
+
+[[question]]
+id = 'L05-11'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Okruhy k testu, úloha 5'
+tags = ["lab"]
+text = '''
+Jaké zrychlení by mělo těleso na rovině se sklonem $30^\circ$ bez tření? ($g = 9{,}81\ \mathrm{m\,s^{-2}}$)
+'''
+value = 4.905
+tolerance = 0.03
+unit = 'm/s²'
+explanation = '''
+Pro $\mu = 0$: $a = g\sin\alpha = 9{,}81\cdot0{,}5 = 4{,}905\ \mathrm{m\,s^{-2}}$.
+'''

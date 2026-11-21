@@ -20,3 +20,19 @@ pick = [
   { quiz = "mechanika", count = 7 },
   { quiz = "elektrostatika", count = 8 },
 ]
+
+[[set]]
+id = "lab"
+name = "Laboratoře: vstupní testy"
+description = "otázky ke vstupním testům všech šesti úloh praktika"
+tags = ["lab"]
+
+[[set]]
+id = "lab-mix"
+name = "Praktikum nanečisto"
+description = "12 náhodných otázek ze všech úloh a zpracování měření"
+pick = [
+  { quiz = "lab-00", count = 2 }, { quiz = "lab-05", count = 2 }, { quiz = "lab-10", count = 2 },
+  { quiz = "lab-17", count = 2 }, { quiz = "lab-18", count = 2 }, { quiz = "lab-21", count = 1 },
+  { quiz = "lab-25", count = 1 },
+]

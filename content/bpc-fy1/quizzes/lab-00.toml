@@ -1,0 +1,220 @@
+name = 'Praktikum: zpracování měření'
+description = 'chyby, zaokrouhlení a šíření chyb podle Úvodu do měření'
+
+[[question]]
+id = 'L00-01'
+kind = 'numeric'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Doba kmitu byla změřena pětkrát: $2{,}31$; $2{,}35$; $2{,}29$; $2{,}33$; $2{,}32$ s. Jaká je chyba výsledku $\delta = t\cdot s_{\bar x}$ pro $P = 95\ \%$ (před zaokrouhlením)?
+'''
+value = 0.0297
+tolerance = 0.0015
+unit = 's'
+explanation = '''
+$$\bar x = \frac{11{,}60}{5} = 2{,}320\ \mathrm{s}$$
+Odchylky od průměru: $-0{,}01$; $0{,}03$; $-0{,}03$; $0{,}01$; $0$, součet čtverců $0{,}0020\ \mathrm{s^2}$.
+$$s_{\bar x} = \sqrt{\frac{0{,}0020}{5\cdot4}} = 0{,}0100\ \mathrm{s} \qquad \delta = t_{5;\,0{,}95}\cdot s_{\bar x} = 2{,}968\cdot0{,}0100 = 0{,}0297\ \mathrm{s}$$
+Zapsáno: $T = (2{,}32 \pm 0{,}03)\ \mathrm{s}$, $n = 5$, $P = 95\ \%$.
+'''
+
+[[question]]
+id = 'L00-02'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Vypočtená chyba vyšla $\delta(X) = 0{,}0342\ \mathrm{m}$. Jak ji zapíšete?
+'''
+options = ['$0{,}04\ \mathrm{m}$', '$0{,}03\ \mathrm{m}$', '$0{,}034\ \mathrm{m}$', '$0{,}035\ \mathrm{m}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Chyba se zaokrouhluje **vždy nahoru na jednu platnou číslici**. Dvě číslice se nechávají jen tehdy, když chyba začíná jedničkou.
+'''
+notes = [
+  '',
+  'Chyba se nezaokrouhluje matematicky, ale vždy nahoru, aby se nezmenšila.',
+  'Dvě platné číslice jen u chyby, která začíná jedničkou.',
+  'Dvě platné číslice jen u chyby, která začíná jedničkou.',
+]
+
+[[question]]
+id = 'L00-03'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Vypočtená chyba vyšla $\delta(X) = 0{,}0137\ \mathrm{V}$. Jak ji zapíšete?
+'''
+options = ['$0{,}014\ \mathrm{V}$', '$0{,}02\ \mathrm{V}$', '$0{,}01\ \mathrm{V}$', '$0{,}0137\ \mathrm{V}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Chyba začíná jedničkou, proto se nechají **dvě** platné číslice (zaokrouhlené nahoru). Zaokrouhlením na $0{,}02$ by se chyba skoro zdvojnásobila.
+'''
+notes = [
+  '',
+  'Takhle by se chyba skoro zdvojnásobila, u chyby začínající jedničkou se nechávají dvě číslice.',
+  'Chyba se nikdy nezaokrouhluje dolů.',
+  'Tři platné číslice chyby nemají smysl.',
+]
+
+[[question]]
+id = 'L00-04'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Který zápis výsledku je správný?
+'''
+options = [
+  '$d = (6{,}84 \pm 0{,}02)\ \mathrm{m}$',
+  '$d = (6{,}843 \pm 0{,}02)\ \mathrm{m}$',
+  '$d = (6{,}8 \pm 0{,}018)\ \mathrm{m}$',
+  '$d = (6{,}84 \pm 0{,}018)\ \mathrm{m}$',
+]
+answer = 0
+explanation = '''
+Chyba má jednu platnou číslici (nebo dvě, začíná-li jedničkou) a výsledek se zaokrouhlí na **stejný řád jako chyba**. Chyba $0{,}018$ by se navíc zaokrouhlila nahoru na $0{,}02$ (nezačíná jedničkou).
+'''
+notes = [
+  '',
+  'Výsledek má o řád víc míst než chyba.',
+  'Výsledek je zaokrouhlený hruběji než chyba.',
+  'Chyba nezačíná jedničkou, má být na jednu číslici: $0{,}02$.',
+]
+
+[[question]]
+id = 'L00-05'
+kind = 'numeric'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Tíhové zrychlení se počítá ze vztahu $g = 4\pi^2\ell/T^2$. Relativní chyba délky je $0{,}06\ \%$, doby kmitu $0{,}04\ \%$. Jaká je relativní chyba $g$ (zjednodušený zákon šíření chyb)?
+'''
+value = 0.14
+tolerance = 0.005
+unit = '%'
+explanation = '''
+Pro součin a podíl mocnin se sčítají relativní chyby vynásobené absolutní hodnotou exponentu:
+$$\delta_\mathrm{r}(g) = 1\cdot\delta_\mathrm{r}(\ell) + 2\cdot\delta_\mathrm{r}(T) = 0{,}06 + 2\cdot0{,}04 = 0{,}14\ \%$$
+'''
+
+[[question]]
+id = 'L00-06'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Naměřili jste $g = (9{,}79 \pm 0{,}02)\ \mathrm{m\,s^{-2}}$, tabulková hodnota je $9{,}81\ \mathrm{m\,s^{-2}}$. Co z toho plyne?
+'''
+options = [
+  'Výsledek se s tabulkovou hodnotou shoduje, rozdíl je menší než $3\delta$.',
+  'Měření je zatížené soustavnou chybou, protože rozdíl je větší než $\delta$.',
+  'Měření je chybné, tabulková hodnota neleží v intervalu $\bar x \pm \delta$.',
+  'Nelze rozhodnout bez počtu měření.',
+]
+answer = 0
+explanation = '''
+Rozdíl je $0{,}02\ \mathrm{m\,s^{-2}}$, trojnásobek chyby $0{,}06\ \mathrm{m\,s^{-2}}$. Podle Úvodu ukazuje na soustavnou chybu až rozdíl **větší než $3\delta$**.
+'''
+notes = [
+  '',
+  'Kritériem je trojnásobek chyby, ne chyba sama.',
+  'Tabulková hodnota leží právě na hranici intervalu, a i hodnota kousek mimo $\pm\delta$ je při $P = 95\ \%$ ještě v pořádku.',
+  'Počet měření už je obsažen v chybě (koeficient $t$ a $s_{\bar x}$).',
+]
+
+[[question]]
+id = 'L00-07'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Odpor se určuje z $R = U/I$. Napětí $4{,}80\ \mathrm{V}$ změřené voltmetrem třídy $0{,}5$ na rozsahu $6\ \mathrm{V}$, proud $12{,}0\ \mathrm{mA}$ ampérmetrem třídy $1$ na rozsahu $15\ \mathrm{mA}$. Jaká je relativní chyba odporu (po zaokrouhlení)?
+'''
+options = ['$1{,}9\ \%$', '$1{,}5\ \%$', '$1{,}25\ \%$', '$0{,}63\ \%$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Mezní chyby z třídy přesnosti: $\delta(U) = 0{,}005\cdot6 = 0{,}03\ \mathrm{V}$, $\delta(I) = 0{,}01\cdot15 = 0{,}15\ \mathrm{mA}$.
+$$\delta_\mathrm{r}(R) = \frac{0{,}03}{4{,}80} + \frac{0{,}15}{12{,}0} = 0{,}63\ \% + 1{,}25\ \% = 1{,}875\ \% \to 1{,}9\ \%$$
+Chyba začíná jedničkou, proto dvě platné číslice (zaokrouhleno nahoru). Rozhoduje ampérmetr. $R = 400\ \Omega$, $\delta(R) = 400\cdot0{,}01875 = 7{,}5\ \Omega \to 8\ \Omega$.
+'''
+notes = [
+  '',
+  'To je jen součet tříd přesnosti; chyba se vztahuje k rozsahu, ne k naměřené hodnotě.',
+  'To je jen příspěvek ampérmetru.',
+  'To je jen příspěvek voltmetru.',
+]
+
+[[question]]
+id = 'L00-08'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+U jedné veličiny vyšla náhodná relativní chyba $\delta_\mathrm{r} = 0{,}07\ \%$ a relativní chyba měřidla $u_\mathrm{r} = 0{,}03\ \%$. Se kterou chybou se počítá dál?
+'''
+options = [
+  'S náhodnou chybou $0{,}07\ \%$, je větší.',
+  'S chybou měřidla $0{,}03\ \%$, je přesnější.',
+  'Se součtem $0{,}10\ \%$.',
+  'S průměrem obou, $0{,}05\ \%$.',
+]
+answer = 0
+explanation = '''
+Obě chyby se porovnají a **použije se větší**, menší se zanedbá. Úvod doporučuje uvádět vždy i chybu měřidla, aby bylo vidět, která převažuje.
+'''
+notes = [
+  '',
+  'Menší chyba by výsledek ukázala přesnější, než je.',
+  'Úvod chyby nesčítá, použije se ta převažující.',
+  'Průměrování chyb nemá oporu v metodice.',
+]
+
+[[question]]
+id = 'L00-09'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Postupnou metodou zapisujete čas po každých 10 kmitech od 0 do 90 kmitů. Kolik hodnot doby 50 kmitů z toho dostanete?
+'''
+options = ['5', '9', '10', '1']
+answer = 0
+layout = 'grid'
+explanation = '''
+Sloupec A má časy pro 0, 10, 20, 30, 40 kmitů, sloupec B pro 50, 60, 70, 80, 90. Rozdíly $B - A$ dají **5 hodnot** $50T$, které se zpracují jako opakované měření s $n = 5$ ($t = 2{,}968$).
+'''
+notes = [
+  '',
+  'Devět je počet rozdílů po sobě jdoucích časů (doby 10 kmitů), ne doby 50 kmitů.',
+  'Deset je počet zapsaných časů.',
+  'Jedna hodnota by byla jen při jediném měření 50 kmitů.',
+]
+
+[[question]]
+id = 'L00-10'
+topic = 'Zpracování měření'
+source = 'Úvod do měření'
+tags = ["lab"]
+text = '''
+Jaký je koeficient Studentova rozdělení $t_{n,P}$ pro $n = 10$ měření a $P = 95\ \%$ (tabulka v Úvodu)?
+'''
+options = ['$2{,}320$', '$2{,}968$', '$1{,}059$', '$4{,}526$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Z tabulky v Úvodu pro $P = 0{,}95$: $n = 3$: 4,526; $n = 5$: 2,968; $n = 10$: 2,320; $n = 15$: 2,145; $n = 20$: 2,093.
+'''
+notes = [
+  '',
+  'To je hodnota pro $n = 5$.',
+  'To je hodnota pro $n = 10$ a $P = 68\ \%$.',
+  'To je hodnota pro $n = 3$.',
+]

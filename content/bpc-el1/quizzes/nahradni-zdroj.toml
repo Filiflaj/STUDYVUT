@@ -1,0 +1,171 @@
+name = 'Úloha 3: Náhradní zdroj'
+description = 'Théveninova a Nortonova věta, výpočet a měření Ui, Ri'
+
+[[question]]
+id = 'TH-01'
+kind = 'numeric'
+topic = 'Náhradní zdroj'
+text = '''
+Zdroj $U = 12$ V napájí dělič $R_1 = 680\ \Omega$ (sériově) a $R_3 = 470\ \Omega$ (k zemi); za uzlem děliče je v sérii $R_2 = 390\ \Omega$ ke svorce A. Jaké je napětí náhradního zdroje $U_\text{i}$ na svorkách A–B?
+'''
+value = 4.904
+tolerance = 0.005
+unit = 'V'
+explanation = '''
+Naprázdno neteče $R_2$ proud a nemá úbytek, $U_\text{i}$ je napětí děliče:
+$$U_\text{i} = U\,\frac{R_3}{R_1 + R_3} = 12\cdot\frac{470}{1150} = 4{,}904\ \text{V}$$
+'''
+
+[[question]]
+id = 'TH-02'
+kind = 'numeric'
+topic = 'Náhradní zdroj'
+text = '''
+Pro stejný obvod ($R_1 = 680\ \Omega$, $R_3 = 470\ \Omega$, $R_2 = 390\ \Omega$) urči vnitřní odpor náhradního zdroje $R_\text{i}$.
+'''
+value = 667.9
+tolerance = 0.5
+unit = 'Ω'
+explanation = '''
+Zdroj napětí se nahradí zkratem, $R_1$ a $R_3$ jsou pak paralelně a k nim v sérii $R_2$:
+$$R_\text{i} = \frac{R_1 R_3}{R_1 + R_3} + R_2 = \frac{680\cdot 470}{1150} + 390 = 277{,}9 + 390 = 667{,}9\ \Omega$$
+'''
+
+[[question]]
+id = 'TH-03'
+topic = 'Náhradní zdroj'
+text = '''
+Proč ve vzorci $U_\text{i} = U R_3/(R_1 + R_3)$ není rezistor $R_2$?
+'''
+options = [
+  'Naprázdno jím neteče proud, takže na něm není úbytek napětí.',
+  'Je zkratovaný.',
+  'Je zanedbatelně malý.',
+  'Je paralelně ke zdroji.',
+]
+answer = 0
+explanation = '''
+$U_\text{i}$ je napětí naprázdno: svorky A–B jsou rozpojené, $R_2$ je v sérii se svorkou, a tak jím neteče proud.
+'''
+notes = ['', 'Zkratuje se jen zdroj při určování $R_\text{i}$.', '390 Ω malý není; v $R_\text{i}$ se projeví.', '$R_2$ je v sérii se svorkou A.']
+
+[[question]]
+id = 'TH-04'
+topic = 'Náhradní zdroj'
+text = '''
+Jak se z obvodu určí vnitřní odpor $R_\text{i}$ náhradního zdroje?
+'''
+options = [
+  'Odpor do svorek A–B, když se zdroje napětí zkratují a zdroje proudu rozpojí.',
+  'Odpor do svorek A–B, když se zdroje napětí rozpojí a zdroje proudu zkratují.',
+  'Součet všech odporů v obvodu.',
+  'Odpor zátěže při maximálním výkonu.',
+]
+answer = 0
+explanation = '''
+Nezávislé zdroje se nahradí jejich vnitřním odporem: ideální zdroj napětí má nulový (zkrat), ideální zdroj proudu nekonečný (rozpojení).
+'''
+notes = ['', 'Obráceně.', 'Záleží na zapojení (sériové a paralelní řazení).', 'Při přizpůsobení je $R_\text{z} = R_\text{i}$, ale tak se $R_\text{i}$ neurčuje.']
+
+[[question]]
+id = 'TH-05'
+kind = 'numeric'
+topic = 'Náhradní zdroj'
+text = '''
+Náhradní zdroj má $U_\text{i} = 4{,}904$ V a $R_\text{i} = 667{,}9\ \Omega$. Jaký proud teče zátěží $R_\text{z} = 390\ \Omega$?
+'''
+value = 4.636
+tolerance = 0.005
+unit = 'mA'
+explanation = '''
+$$I_\text{z} = \frac{U_\text{i}}{R_\text{i} + R_\text{z}} = \frac{4{,}904}{667{,}9 + 390} = \frac{4{,}904}{1057{,}9} = 4{,}636\ \text{mA}$$
+Stejný proud dá i řešení celého původního obvodu.
+'''
+
+[[question]]
+id = 'TH-06'
+kind = 'numeric'
+topic = 'Náhradní zdroj'
+text = '''
+Jaký je proud ekvivalentního Nortonova zdroje pro $U_\text{i} = 4{,}904$ V a $R_\text{i} = 667{,}9\ \Omega$?
+'''
+value = 7.343
+tolerance = 0.01
+unit = 'mA'
+explanation = '''
+$$I_\text{i} = I_\text{k} = \frac{U_\text{i}}{R_\text{i}} = \frac{4{,}904}{667{,}9} = 7{,}343\ \text{mA}, \qquad G_\text{i} = \frac{1}{667{,}9} = 1{,}497\ \text{mS}$$
+'''
+
+[[question]]
+id = 'TH-07'
+topic = 'Náhradní zdroj'
+text = '''
+Kdy Théveninovu větu použít nejde?
+'''
+options = [
+  'Když nahrazovaná část obsahuje nelineární prvek.',
+  'Když je zátěž nelineární.',
+  'Když je v nahrazované části více zdrojů.',
+  'Když je zátěž větší než $R_\text{i}$.',
+]
+answer = 0
+explanation = '''
+Nahrazovaná část musí být lineární. Zátěž může být jakákoli a nahrazovaná část může mít libovolný počet nezávislých zdrojů.
+'''
+notes = ['', 'Zátěž lineární být nemusí.', 'Více zdrojů nevadí, $U_\text{i}$ a $R_\text{i}$ se určí stejně.', 'Velikost zátěže nehraje roli.']
+
+[[question]]
+id = 'TH-08'
+topic = 'Náhradní zdroj'
+text = '''
+Jak se správně měří $R_\text{im}$ ohmmetrem?
+'''
+options = [
+  'Zdroj odpojit, nahradit ho propojkou a změřit odpor do svorek A–B.',
+  'Zdroj nechat zapnutý a ohmmetr připojit na svorky A–B.',
+  'Zdroj odpojit a jeho svorky nechat rozpojené.',
+  'Změřit odpor zátěže.',
+]
+answer = 0
+explanation = '''
+Ideální zdroj napětí má nulový vnitřní odpor, proto se nahradí zkratem. Ohmmetr měří vlastním proudem; na obvod pod napětím se nikdy nepřipojuje (zkreslené měření, riziko poškození).
+'''
+notes = [
+  '',
+  'Ohmmetr nesmí na obvod pod napětím.',
+  'Rozpojení by odpovídalo zdroji proudu, ne zdroji napětí.',
+  'Zátěž s $R_\text{i}$ nesouvisí.',
+]
+
+[[question]]
+id = 'TH-09'
+kind = 'numeric'
+topic = 'Náhradní zdroj'
+text = '''
+Jaký největší výkon může náhradní zdroj ($U_\text{i} = 4{,}904$ V, $R_\text{i} = 667{,}9\ \Omega$) dodat do zátěže?
+'''
+value = 9.0
+tolerance = 0.1
+unit = 'mW'
+explanation = '''
+Při $R_\text{z} = R_\text{i}$ (úloha 6):
+$$P_\text{max} = \frac{U_\text{i}^2}{4R_\text{i}} = \frac{4{,}904^2}{4\cdot 667{,}9} = 9{,}0\ \text{mW}$$
+'''
+
+[[question]]
+id = 'TH-10'
+topic = 'Náhradní zdroj'
+text = '''
+Proč se v úloze měří se dvěma různými zátěžemi?
+'''
+options = [
+  'Aby se ukázalo, že náhrada platí pro libovolnou zátěž.',
+  'Aby se zprůměrovala chyba měření.',
+  'Protože jedna zátěž by zdroj přetížila.',
+  'Aby se určil $R_\text{i}$ z poměru proudů.',
+]
+answer = 0
+explanation = '''
+Náhradní zdroj je ekvivalentní původnímu obvodu pro jakoukoli zátěž. Shoda pro dvě různé zátěže to ukazuje.
+'''
+notes = ['', 'Jde o ověření věty, ne o průměrování.', 'Proudy jsou jen jednotky mA.', '$R_\text{i}$ se měří ohmmetrem a počítá ze vzorce.']

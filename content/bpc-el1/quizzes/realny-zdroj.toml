@@ -1,0 +1,178 @@
+name = 'Úloha 1: Reálný zdroj'
+description = 'model zdroje napětí a proudu, zatěžovací charakteristika, ekvivalence'
+
+[[question]]
+id = 'RZ-01'
+kind = 'numeric'
+topic = 'Reálný zdroj'
+text = '''
+Zdroj má $U_\text{i} = 10{,}0$ V a $R_\text{i} = 130\ \Omega$. Jaké je svorkové napětí při proudu $I_\text{z} = 30$ mA?
+'''
+value = 6.1
+tolerance = 0.05
+unit = 'V'
+explanation = '''
+$$U_\text{z} = U_\text{i} - R_\text{i} I_\text{z} = 10{,}0 - 130\cdot 0{,}030 = 10{,}0 - 3{,}9 = 6{,}1\ \text{V}$$
+(Nebo v kΩ a mA: $0{,}130\cdot 30 = 3{,}9$ V.)
+'''
+
+[[question]]
+id = 'RZ-02'
+kind = 'numeric'
+topic = 'Reálný zdroj'
+text = '''
+Napětí naprázdno je $U_0 = 12{,}5$ V a proud nakrátko $I_\text{k} = 54$ mA. Jaký je vnitřní odpor zdroje?
+'''
+value = 231
+tolerance = 2
+unit = 'Ω'
+explanation = '''
+$$R_\text{i} = \frac{U_\text{i}}{I_\text{k}} = \frac{12{,}5\ \text{V}}{54\ \text{mA}} = 0{,}231\ \text{k}\Omega = 231\ \Omega$$
+Pozor: V/mA = kΩ.
+'''
+
+[[question]]
+id = 'RZ-03'
+topic = 'Reálný zdroj'
+text = '''
+Zdroj napětí $U_\text{i} = 10$ V s $R_\text{i} = 200\ \Omega$ se nahradí ekvivalentním zdrojem proudu. Jaké jsou jeho parametry?
+'''
+options = [
+  '$I_\text{i} = 50$ mA, $G_\text{i} = 5$ mS',
+  '$I_\text{i} = 50$ mA, $G_\text{i} = 200$ mS',
+  '$I_\text{i} = 2$ A, $G_\text{i} = 5$ mS',
+  '$I_\text{i} = 20$ mA, $G_\text{i} = 0{,}5$ mS',
+]
+answer = 0
+explanation = '''
+$$I_\text{i} = \frac{U_\text{i}}{R_\text{i}} = \frac{10}{200} = 0{,}05\ \text{A} = 50\ \text{mA}, \qquad G_\text{i} = \frac{1}{R_\text{i}} = \frac{1}{200} = 5\ \text{mS}$$
+Vnitřní proud je proud nakrátko.
+'''
+notes = [
+  '',
+  'Vodivost je převrácená hodnota odporu, ne odpor v mS.',
+  'Proud je $U/R$, ne $U\cdot R$.',
+  'Čísla nesedí ani na $U/R$, ani na $1/R$.',
+]
+
+[[question]]
+id = 'RZ-04'
+topic = 'Reálný zdroj'
+text = '''
+Jak vypadá zatěžovací charakteristika $U_\text{z} = f(I_\text{z})$ **ideálního zdroje napětí** (napětí na svislé ose)?
+'''
+options = ['vodorovná přímka', 'svislá přímka', 'klesající přímka z $U_0$ do $I_\text{k}$', 'přímka z počátku']
+answer = 0
+explanation = '''
+Ideální zdroj napětí má $R_\text{i} = 0$, svorkové napětí nezávisí na proudu: vodorovná přímka. Svislá přímka patří ideálnímu zdroji proudu, klesající přímka reálnému zdroji.
+'''
+notes = [
+  '',
+  'To je ideální zdroj proudu ($G_\text{i} = 0$).',
+  'To je reálný zdroj s nenulovým $R_\text{i}$.',
+  'To je charakteristika rezistoru, ne zdroje.',
+]
+
+[[question]]
+id = 'RZ-05'
+topic = 'Reálný zdroj'
+text = '''
+Zdroj 1 má $R_\text{i1} = 130\ \Omega$, zdroj 2 má $R_\text{i2} = 231\ \Omega$. Který se víc blíží ideálnímu zdroji napětí?
+'''
+options = ['zdroj 1', 'zdroj 2', 'oba stejně', 'nejde rozhodnout bez $U_\text{i}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Ideální zdroj napětí má $R_\text{i} = 0$. Čím menší vnitřní odpor, tím méně svorkové napětí při zatížení klesá, tedy zdroj 1.
+'''
+notes = ['', 'Má větší vnitřní odpor.', 'Vnitřní odpory se liší.', 'O blízkosti ideálnímu zdroji napětí rozhoduje jen $R_\text{i}$.']
+
+[[question]]
+id = 'RZ-06'
+kind = 'numeric'
+topic = 'Reálný zdroj'
+text = '''
+Napětí naprázdno se nezapsalo. Při 15 mA bylo na svorkách 8,0 V, při 72 mA 0,32 V. Jaké vyjde vnitřní napětí prodloužením charakteristiky k nulovému proudu? (Sklon zaokrouhli na 0,135 V/mA.)
+'''
+value = 10.0
+tolerance = 0.1
+unit = 'V'
+explanation = '''
+Sklon: $\dfrac{8{,}0 - 0{,}32}{72 - 15} = \dfrac{7{,}68}{57} = 0{,}135$ V/mA. Z $U_\text{z} = U_\text{i} - R_\text{i} I_\text{z}$:
+$$U_\text{i} = U_\text{z} + \frac{\Delta U}{\Delta I}\,I_\text{z} = 8{,}0 + 0{,}135\cdot 15 = 10{,}0\ \text{V}$$
+V grafu je to průsečík prodloužené přímky s osou napětí.
+'''
+
+[[question]]
+id = 'RZ-07'
+topic = 'Reálný zdroj'
+text = '''
+Proč může být napětí naprázdno naměřené analogovým voltmetrem o něco menší než skutečné $U_\text{i}$?
+'''
+options = [
+  'Voltmetr odebírá proud, takže zdroj není úplně naprázdno.',
+  'Voltmetr přidává do obvodu napětí.',
+  'Naprázdno teče proud nakrátko.',
+  'Analogový přístroj vždy ukazuje méně.',
+]
+answer = 0
+explanation = '''
+Analogový voltmetr má konečný (relativně malý) vnitřní odpor, teče jím proud a na $R_\text{i}$ vznikne malý úbytek.
+'''
+notes = ['', 'Voltmetr je pasivní, napětí nedodává.', 'Naprázdno je proud nulový.', 'Chyba nemá stálé znaménko, tady ji způsobuje proud voltmetru.']
+
+[[question]]
+id = 'RZ-08'
+kind = 'numeric'
+topic = 'Reálný zdroj'
+text = '''
+Zdroj má $U_0 = 10{,}0$ V a $I_\text{k} = 77$ mA. Jaká je jeho vnitřní vodivost $G_\text{i}$?
+'''
+value = 7.70
+tolerance = 0.05
+unit = 'mS'
+explanation = '''
+$$G_\text{i} = \frac{I_\text{k}}{U_0} = \frac{77\ \text{mA}}{10{,}0\ \text{V}} = 7{,}70\ \text{mS}$$
+(mA/V = mS.) Kontrola s $R_\text{i} = 130\ \Omega$: $0{,}130\ \text{k}\Omega\cdot 7{,}70\ \text{mS} = 1{,}00$.
+'''
+
+[[question]]
+id = 'RZ-09'
+topic = 'Reálný zdroj'
+text = '''
+Co platí pro zdroj **nakrátko**?
+'''
+options = [
+  'Svorkové napětí je nulové a teče proud nakrátko $I_\text{k} = U_\text{i}/R_\text{i}$.',
+  'Proud je nulový a na svorkách je $U_\text{i}$.',
+  'Na zátěži je polovina napětí $U_\text{i}$.',
+  'Teče nekonečný proud.',
+]
+answer = 0
+explanation = '''
+Nakrátko je $R_\text{z} = 0$, takže $U_\text{z} = 0$ a celé vnitřní napětí je na $R_\text{i}$: $I_\text{k} = U_\text{i}/R_\text{i}$.
+'''
+notes = ['', 'To je stav naprázdno.', 'To platí při $R_\text{z} = R_\text{i}$ (úloha 6).', 'Proud omezuje vnitřní odpor; nekonečný by byl jen u ideálního zdroje napětí.']
+
+[[question]]
+id = 'RZ-10'
+topic = 'Reálný zdroj'
+text = '''
+Při měření nakrátko (miliampérmetr přímo na svorkách) ukazoval voltmetr na svorkách 0,29 V při proudu 77 mA. Co to je?
+'''
+options = [
+  'Úbytek na miliampérmetru, jeho odpor je asi 3,8 Ω.',
+  'Vnitřní napětí zdroje.',
+  'Chyba voltmetru, nemá žádný význam.',
+  'Napětí na vnitřním odporu zdroje.',
+]
+answer = 0
+explanation = '''
+Zkrat vede přes miliampérmetr, na jehož vnitřním odporu vzniká malý úbytek: $0{,}29\ \text{V}/77\ \text{mA} \approx 3{,}8\ \Omega$. Do výpočtu $U_\text{i}$ ani $R_\text{i}$ se nepoužívá; naměřený $I_\text{k}$ je kvůli tomu o 2 až 3 % menší než u dokonalého zkratu.
+'''
+notes = [
+  '',
+  'Vnitřní napětí je asi 10 V, ne 0,3 V.',
+  'Hodnota má jasný fyzikální význam.',
+  'Napětí na $R_\text{i}$ voltmetr na svorkách změřit nemůže, vnitřek zdroje není přístupný.',
+]

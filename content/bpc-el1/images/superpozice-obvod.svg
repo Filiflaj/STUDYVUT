@@ -1,0 +1,46 @@
+<svg viewBox="0 0 600 235" width="600" class="fig" role="img" aria-label="Obvod se dvěma zdroji Uz1 a Uz2 pro ověření principu superpozice">
+<circle cx="80" cy="136" r="14" class="s"/>
+<line x1="80" y1="122" x2="80" y2="150" class="s"/>
+<polyline points="80,122 80,66" class="s"/>
+<polyline points="80,150 80,206" class="s"/>
+<line x1="58" y1="118" x2="58" y2="156" class="v" marker-end="url(#m-v)"/>
+<text x="50" y="142" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">z1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="80,66 115,66" class="s"/>
+<rect x="115" y="59" width="40" height="14" class="s"/>
+<text x="135" y="53" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="155,66 270,66" class="s"/>
+<rect x="193" y="116" width="14" height="40" class="s"/>
+<text x="186" y="141" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<polyline points="200,66 200,116" class="s"/>
+<polyline points="200,156 200,206" class="s"/>
+<rect x="270" y="59" width="40" height="14" class="s"/>
+<text x="290" y="92" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">3</tspan><tspan dy="-4"></tspan></text>
+<polyline points="310,66 415,66" class="s"/>
+<rect x="373" y="116" width="14" height="40" class="s"/>
+<text x="366" y="141" text-anchor="end"><tspan class="it">R</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="380,66 380,116" class="s"/>
+<polyline points="380,156 380,206" class="s"/>
+<rect x="415" y="59" width="40" height="14" class="s"/>
+<text x="435" y="53" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="455,66 500,66" class="s"/>
+<circle cx="500" cy="136" r="14" class="s"/>
+<line x1="500" y1="122" x2="500" y2="150" class="s"/>
+<polyline points="500,66 500,122" class="s"/>
+<polyline points="500,150 500,206" class="s"/>
+<line x1="522" y1="118" x2="522" y2="156" class="v" marker-end="url(#m-v)"/>
+<text x="528" y="142"><tspan class="it">U</tspan><tspan class="sm" dy="4">z2</tspan><tspan dy="-4"></tspan></text>
+<polyline points="80,206 500,206" class="s"/>
+<circle cx="200" cy="66" r="3.2" class="pt"/>
+<circle cx="380" cy="66" r="3.2" class="pt"/>
+<circle cx="200" cy="206" r="3.2" class="pt"/>
+<circle cx="380" cy="206" r="3.2" class="pt"/>
+<text x="200" y="54" class="sm" text-anchor="middle">1</text>
+<text x="380" y="54" class="sm" text-anchor="middle">2</text>
+<text x="290" y="224" class="sm" text-anchor="middle">0</text>
+<line x1="224" y1="82" x2="224" y2="190" class="f" marker-end="url(#m-f)"/>
+<text x="230" y="142" class="acc"><tspan class="it">U</tspan><tspan class="sm" dy="4">10</tspan><tspan dy="-4"></tspan></text>
+<line x1="404" y1="82" x2="404" y2="190" class="f" marker-end="url(#m-f)"/>
+<text x="410" y="142" class="acc"><tspan class="it">U</tspan><tspan class="sm" dy="4">20</tspan><tspan dy="-4"></tspan></text>
+<line x1="266" y1="44" x2="310" y2="44" class="f" marker-end="url(#m-f)"/>
+<text x="318" y="49" class="acc"><tspan class="it">U</tspan><tspan class="sm" dy="4">12</tspan><tspan dy="-4"></tspan></text>
+</svg>

@@ -1,0 +1,30 @@
+<svg viewBox="0 0 560 205" width="560" class="fig" role="img" aria-label="Ekvivalentní zdroj napětí (Ui, Ri) a zdroj proudu (Ii, Gi)">
+<circle cx="60" cy="120" r="14" class="s"/>
+<line x1="60" y1="106" x2="60" y2="134" class="s"/>
+<polyline points="60,106 60,50 90,50" class="s"/>
+<rect x="90" y="43" width="40" height="14" class="s"/>
+<text x="110" y="37" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="130,50 170,50" class="s"/>
+<polyline points="60,134 60,180 170,180" class="s"/>
+<circle cx="170" cy="50" r="3.5" class="s1"/>
+<circle cx="170" cy="180" r="3.5" class="s1"/>
+<line x1="38" y1="102" x2="38" y2="140" class="v" marker-end="url(#m-v)"/>
+<text x="30" y="126" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<line x1="250" y1="115" x2="300" y2="115" class="v" marker-start="url(#m-v)" marker-end="url(#m-v)"/>
+<circle cx="370" cy="115" r="14" class="s"/>
+<line x1="356" y1="115" x2="384" y2="115" class="s"/>
+<polyline points="370,101 370,50 520,50" class="s"/>
+<polyline points="370,129 370,180 520,180" class="s"/>
+<line x1="348" y1="135" x2="348" y2="95" class="v" marker-end="url(#m-v)"/>
+<text x="340" y="120" text-anchor="end"><tspan class="it">I</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<rect x="443" y="95" width="14" height="40" class="s"/>
+<text x="464" y="120"><tspan class="it">G</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="450,50 450,95" class="s"/>
+<polyline points="450,135 450,180" class="s"/>
+<circle cx="450" cy="50" r="3.2" class="pt"/>
+<circle cx="450" cy="180" r="3.2" class="pt"/>
+<circle cx="520" cy="50" r="3.5" class="s1"/>
+<circle cx="520" cy="180" r="3.5" class="s1"/>
+<text x="110" y="202" class="sm mut" text-anchor="middle">zdroj napětí</text>
+<text x="445" y="202" class="sm mut" text-anchor="middle">zdroj proudu</text>
+</svg>

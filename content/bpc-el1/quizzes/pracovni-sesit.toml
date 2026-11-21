@@ -1,0 +1,187 @@
+name = 'Pracovní sešit a měření'
+description = 'pravidla zápisu, analogové přístroje, zaokrouhlování, odchylka'
+
+[[question]]
+id = 'PS-01'
+kind = 'numeric'
+topic = 'Pracovní sešit'
+text = '''
+Analogový voltmetr je na rozsahu 12 V, stupnice má 120 dílků a ručka ukazuje výchylku $\alpha = 80$ dílků. Jaké je měřené napětí?
+'''
+value = 8.0
+tolerance = 0.05
+unit = 'V'
+explanation = '''
+Konstanta je rozsah / počet dílků, $k = 12/120$ V/dílek, a měřená hodnota je výchylka krát konstanta:
+$$U = \alpha\cdot k = 80\cdot\frac{12}{120} = 8{,}0\ \text{V}$$
+'''
+
+[[question]]
+id = 'PS-02'
+topic = 'Pracovní sešit'
+text = '''
+Analogový voltmetr je přepnutý na rozsah 2,4 V a jeho stupnice má 120 dílků. Jak se do sešitu zapíše konstanta $k$?
+'''
+options = ['$2{,}4/120$', '$0{,}02$', '$120/2{,}4$', '$0{,}02$ V, zaokrouhleno na 1 platnou číslici']
+answer = 0
+explanation = '''
+Konstanta se píše jako **nezkrácený zlomek** rozsah / počet dílků. Ze zápisu $2{,}4/120$ jde zpětně poznat, na jakém rozsahu se měřilo.
+'''
+notes = [
+  '',
+  'Číselně je to správně, ale ze zápisu se ztratí použitý rozsah.',
+  'Obráceně: rozsah patří do čitatele.',
+  'Zaokrouhlovat se nemá a rozsah se tím ztratí.',
+]
+
+[[question]]
+id = 'PS-03'
+topic = 'Pracovní sešit'
+text = '''
+Digitální multimetr ukazuje 12,030 V. Co se zapíše do tabulky?
+'''
+options = ['12,030', '12,03', '12,0', '12']
+answer = 0
+explanation = '''
+U digitálního přístroje se zapisují **všechny zobrazené číslice** včetně koncových nul, nic se nezaokrouhluje. Zaokrouhlují se až vypočtené hodnoty, a to na stejný počet míst jako měřené.
+'''
+notes = [
+  '',
+  'Koncová nula je také údaj přístroje, nevynechává se.',
+  'Naměřená hodnota se nezaokrouhluje.',
+  'Naměřená hodnota se nezaokrouhluje.',
+]
+
+[[question]]
+id = 'PS-04'
+kind = 'numeric'
+topic = 'Pracovní sešit'
+text = '''
+Vypočtené napětí je $U_\text{teor} = 4{,}904$ V, naměřené $U_\text{měř} = 4{,}96$ V. Jaká je relativní odchylka $\delta$ v procentech (se znaménkem)?
+'''
+value = 1.15
+tolerance = 0.07
+unit = '%'
+sign_hint = 'Naměřená hodnota je větší než vypočtená, odchylka je kladná.'
+explanation = '''
+$$\delta = \frac{U_\text{měř} - U_\text{teor}}{U_\text{teor}}\cdot 100 = \frac{4{,}96 - 4{,}904}{4{,}904}\cdot 100 = 1{,}14\ \%$$
+Odchylka se zaokrouhluje **nahoru** na 1 až 2 platné číslice a nechává se jí znaménko: $\delta = +1{,}2\ \%$.
+'''
+
+[[question]]
+id = 'PS-05'
+topic = 'Pracovní sešit'
+text = '''
+Jak se volí rozsah analogového přístroje?
+'''
+options = [
+  'Nejbližší vyšší, aby ručka byla v poslední třetině stupnice.',
+  'Vždy největší, aby se přístroj nepoškodil.',
+  'Tak, aby ručka byla uprostřed stupnice.',
+  'Na rozsahu nezáleží, chyba je pořád stejná.',
+]
+answer = 0
+explanation = '''
+Chyba analogového přístroje je daná třídou přesnosti z **rozsahu**. Při velké výchylce je proto relativní chyba nejmenší. Volí se nejbližší vyšší rozsah, než je měřená hodnota; při přepínání se začíná od nejvyššího.
+'''
+notes = [
+  '',
+  'Na největším rozsahu se začíná, ale měří se na nejbližším vyšším.',
+  'Uprostřed stupnice je relativní chyba zbytečně velká.',
+  'Absolutní chyba je daná rozsahem, relativní je tedy nejmenší při velké výchylce.',
+]
+
+[[question]]
+id = 'PS-06'
+topic = 'Pracovní sešit'
+text = '''
+Které buňky tabulek v pracovním sešitu se vyplňují měřením?
+'''
+options = ['bílé', 'šedé', 'všechny', 'jen ty s jednotkou']
+answer = 0
+explanation = '''
+Bílé buňky se měří, šedé se počítají (převod $\alpha\cdot k$, odchylky, výkony…).
+'''
+notes = ['', 'Šedé buňky se dopočítávají.', 'Šedé buňky se počítají.', 'Rozhoduje barva buňky, ne jednotka.']
+
+[[question]]
+id = 'PS-07'
+topic = 'Pracovní sešit'
+text = '''
+Napětí 4,904 V se vydělí proudem 4,636 mA. Jaký je výsledek?
+'''
+options = ['1,058 kΩ', '1,058 Ω', '1,058 MΩ', '1058 kΩ']
+answer = 0
+layout = 'grid'
+explanation = '''
+V/mA = kΩ, protože $1\ \text{V}/10^{-3}\ \text{A} = 10^{3}\ \Omega$. Výsledek je tedy 1,058 kΩ = 1058 Ω.
+'''
+notes = ['', 'Volty děleno miliampéry nejsou ohmy.', 'To by bylo V/µA.', 'Buď 1,058 kΩ, nebo 1058 Ω.']
+
+[[question]]
+id = 'PS-08'
+topic = 'Pracovní sešit'
+text = '''
+Při zpracování se ukáže, že jedna naměřená hodnota zjevně nesedí (např. napětí naprázdno je zapsané jako 0 V). Co s ní?
+'''
+options = [
+  'V tabulce ji nechat, chybu vysvětlit a hodnotu případně určit náhradně (z grafu, z Kirchhoffova zákona).',
+  'Přepsat ji na hodnotu, která by vyjít měla.',
+  'Vymazat celý řádek.',
+  'Upravit i ostatní hodnoty, aby to sedělo.',
+]
+answer = 0
+explanation = '''
+Naměřené hodnoty se nepřepisují. Chyba se v závěru vysvětlí a potřebná veličina se určí jinou cestou, třeba prodloužením charakteristiky k ose napětí. Opravit se smí jen překlep ve **vypočtené** (šedé) buňce.
+'''
+notes = ['', 'Přepsat naměřenou hodnotu nejde, to by bylo falšování měření.', 'Data se nemažou, chyba se vysvětlí.', 'Měřené hodnoty se nemění.']
+
+[[question]]
+id = 'PS-09'
+topic = 'Pracovní sešit'
+text = '''
+Co patří do závěru v pracovním sešitu?
+'''
+options = [
+  'Asi tři věty: zda metoda nebo zákon platí, největší odchylka a příčiny odchylek.',
+  'Opis teoretického úvodu.',
+  'Seznam použitých přístrojů.',
+  'Jen věta „měření proběhlo v pořádku“.',
+]
+answer = 0
+explanation = '''
+Závěr hodnotí výsledky vůči teorii: platnost (použitelnost) metody, číslo největší odchylky a její příčiny (tolerance rezistorů, vnitřní odpor ampérmetru, přesnost přístrojů).
+'''
+notes = ['', 'Teorie je v domácí přípravě.', 'Přístroje mají vlastní kolonku.', 'Chybí čísla i příčiny odchylek.']
+
+[[question]]
+id = 'PS-10'
+topic = 'Pracovní sešit'
+text = '''
+Jak se zaokrouhluje výchylka $\alpha$ odečtená na analogovém přístroji?
+'''
+options = ['na půl dílku', 'na celé dílky', 'na desetiny dílku', 'na pět dílků']
+answer = 0
+layout = 'grid'
+explanation = '''
+Výchylka se odečítá a zapisuje s přesností na půl dílku stupnice.
+'''
+notes = ['', 'To je zbytečně hrubé.', 'Tak přesně se stupnice odečíst nedá.', 'To je příliš hrubé.']
+
+[[question]]
+id = 'PS-11'
+topic = 'Pracovní sešit'
+text = '''
+Co musí být v sešitu pod tabulkou vypočtených hodnot?
+'''
+options = [
+  'Obecný vztah a jeden dosazený příklad, ostatní hodnoty se jen zapíšou.',
+  'Dosazený výpočet pro každý řádek.',
+  'Jen výsledky, bez vztahů.',
+  'Výpis z kalkulačky.',
+]
+answer = 0
+explanation = '''
+Ke každému typu výpočtu se píše obecný vztah a jeden příklad s čísly. Ostatní řádky se vyplní už jen výsledky.
+'''
+notes = ['', 'Stačí jeden příklad.', 'Bez vztahu nejde výpočet zkontrolovat.', 'To se do sešitu nepíše.']

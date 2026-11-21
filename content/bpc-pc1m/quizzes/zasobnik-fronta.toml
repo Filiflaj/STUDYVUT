@@ -1,0 +1,246 @@
+name = 'Zásobník a fronta'
+description = 'LIFO, FIFO, kruhová fronta, robot'
+
+[[question]]
+id = 'ZF-01'
+topic = 'Zásobník a fronta'
+text = '''
+S knihovnami z úlohy (zásobník `push`/`pop`, fronta `enqueue`/`dequeue`) se provede:
+
+```c
+push(1); push(2); push(3);
+printf("%d ", pop());
+printf("%d\n", pop());
+
+enqueue(1); enqueue(2); enqueue(3);
+printf("%d ", dequeue());
+printf("%d\n", dequeue());
+```
+
+Co se vypíše?
+'''
+options = [
+  '`3 2` a pod tím `1 2`',
+  '`1 2` a pod tím `3 2`',
+  '`3 2` a pod tím `3 2`',
+  '`1 2` a pod tím `1 2`',
+]
+answer = 0
+explanation = '''
+Zásobník je **LIFO**: první vyjde poslední vložená hodnota (3, pak 2). Fronta je **FIFO**: první vyjde první vložená (1, pak 2).
+'''
+notes = [
+  '',
+  'Prohozené chování zásobníku a fronty.',
+  'Fronta vydává v pořadí vložení.',
+  'Zásobník vydává od vrcholu, tedy pozpátku.',
+]
+
+[[question]]
+id = 'ZF-02'
+topic = 'Zásobník a fronta'
+text = '''
+Zásobník je pole `stack[MAX]` s indexem vrcholu `top`, prázdný zásobník má `top = -1`. Která podmínka v `push` správně pozná **plný** zásobník?
+'''
+options = ['`top == MAX - 1`', '`top == MAX`', '`top == 0`', '`top > MAX`']
+answer = 0
+explanation = '''
+Platné indexy pole jsou 0 až `MAX - 1`. Když `top` ukazuje na poslední políčko, další `top++` by zapsalo mimo pole.
+'''
+notes = [
+  '',
+  'Index `MAX` je už mimo pole. Při této podmínce by se jeden zápis provedl za konec pole.',
+  '`top == 0` znamená, že v zásobníku je jeden prvek.',
+  'Tahle podmínka by se splnila až dávno po přetečení.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'ZF-03'
+topic = 'Zásobník a fronta'
+kind = 'numeric'
+text = '''
+Kruhová fronta má `MAX = 5`, na začátku `front = 0`, `rear = -1`, `count = 0`. Vkládá se `rear = (rear + 1) % MAX`, vybírá se `front = (front + 1) % MAX`.
+
+Provede se 5× `enqueue`, 2× `dequeue` a znovu 1× `enqueue`. Jakou hodnotu má po posledním vložení `rear`?
+'''
+value = 0
+tolerance = 0
+explanation = '''
+Pět vložení: `rear` = 0, 1, 2, 3, 4. Dva výběry posunou `front` na 2. Další vložení: $\text{rear} = (4 + 1) \bmod 5 = 0$. Nová hodnota jde na první políčko, které se výběrem uvolnilo. Proto se fronta jmenuje kruhová.
+'''
+
+[[question]]
+id = 'ZF-04'
+topic = 'Zásobník a fronta'
+text = '''
+Ve frontě ze ZF-03 byly postupně vloženy hodnoty 10, 20, 30, 40, 50, pak se dvakrát vybíralo a vložila se 60. Co vrátí další `dequeue()`?
+'''
+options = ['`30`', '`60`', '`10`', '`50`']
+answer = 0
+explanation = '''
+Dva výběry odebraly 10 a 20. Fronta teď obsahuje 30, 40, 50, 60 a `front = 2` ukazuje na 30. Fronta vydává v pořadí vložení.
+'''
+notes = [
+  '',
+  'To je poslední vložená hodnota, vyšla by ze zásobníku.',
+  '10 už se vybrala.',
+  'Před 50 jsou ve frontě ještě 30 a 40.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'ZF-05'
+topic = 'Zásobník a fronta'
+text = '''
+Robot stojí na (0, 0) čelem na sever. Sever je `y + 1`, východ `x + 1`. Provede příkazy `F R F F L B` (F dopředu, B dozadu, L/R otočení vlevo/vpravo). Kde skončí?
+'''
+options = ['(2, 0), čelem na sever', '(2, 1), čelem na sever', '(2, 2), čelem na východ', '(1, 0), čelem na sever']
+answer = 0
+explanation = '''
+F → (0, 1) N; R → (0, 1) E; F → (1, 1) E; F → (2, 1) E; L → (2, 1) N; B (couvne proti směru N) → (2, 0) N.
+'''
+notes = [
+  '',
+  'Poslední B ještě couvne o jedno pole na jih.',
+  'Po L je robot otočený na sever, B ho posune v ose y, ne x.',
+  'Po R jede robot dvakrát na východ, x je 2.',
+]
+
+[[question]]
+id = 'ZF-06'
+topic = 'Zásobník a fronta'
+text = '''
+Po provedení příkazů se robot vrací na start: bere příkazy ze zásobníku a provádí jejich opak (F ↔ B, L ↔ R). Proč právě ze **zásobníku**?
+'''
+options = [
+  'poslední pohyb se musí zrušit jako první, a zásobník vydává hodnoty pozpátku (LIFO)',
+  'zásobník je rychlejší než fronta',
+  'fronta už je po provedení příkazů prázdná a zásobník ne, jinak by to bylo jedno',
+  'zásobník si pamatuje souřadnice robota',
+]
+answer = 0
+explanation = '''
+Návrat je přehrání cesty pozpátku. Opačné příkazy v pořadí zadání (FIFO) by robota otáčely v jiných místech a do startu by se nedostal. Zásobník ukládá příkazy během provádění a vydá je v obráceném pořadí.
+'''
+notes = [
+  '',
+  'Rychlost tu nehraje roli, rozhoduje pořadí.',
+  'Pořadí není jedno: rušit pohyby od prvního nefunguje.',
+  'Zásobník obsahuje jen znaky příkazů, ne polohu.',
+]
+
+[[question]]
+id = 'ZF-07'
+topic = 'Zásobník a fronta'
+text = '''
+Funkce `pop()` z knihovny při prázdném zásobníku vypíše hlášku a vrátí `-1`. Proč robot před voláním testuje `stackIsEmpty()`, místo aby hlídal návratovou hodnotu −1?
+'''
+options = [
+  '−1 může být i skutečná uložená hodnota, z návratové hodnoty se prázdný zásobník spolehlivě nepozná',
+  'pop() při prázdném zásobníku program ukončí',
+  'stackIsEmpty() zásobník zároveň vyprázdní',
+  'pop() vrací −1 vždy, když je v zásobníku jeden prvek',
+]
+answer = 0
+explanation = '''
+Knihovna ukládá `int`. Pro znaky příkazů by −1 nevadila, ale obecně je to platné číslo. Test `stackIsEmpty()` (vrací výsledek `top == -1`) prázdný zásobník pozná vždy a hláška se nevypíše.
+'''
+notes = [
+  '',
+  'pop() jen vypíše hlášku a vrátí −1, program běží dál.',
+  'stackIsEmpty() nic nemění, jen porovná `top == -1`.',
+  'S jedním prvkem pop() vrátí ten prvek.',
+]
+
+[[question]]
+id = 'ZF-08'
+topic = 'Zásobník a fronta'
+text = '''
+Program robota se skládá z `main1.c`, `stack.c`, `queue.c` a hlaviček. Co se stane po příkazu `gcc main1.c -o program`?
+'''
+options = [
+  'linker ohlásí nedefinované funkce `push`, `pop`, `enqueue`… (undefined reference / undefined symbols)',
+  'překlad projde, funkce se doplní z hlaviček',
+  'překladač ohlásí, že nezná `stack.h`',
+  'program se přeloží, ale spadne při prvním push',
+]
+answer = 0
+explanation = '''
+Hlavičky obsahují jen prototypy, takže překlad `main1.c` projde. Těla funkcí jsou ale v `stack.c` a `queue.c` a ty v příkazu chybí. Správně `gcc main1.c stack.c queue.c -o program`.
+'''
+notes = [
+  '',
+  'V hlavičkách jsou jen deklarace, žádná těla.',
+  'Hlavička je ve stejné složce a `#include "stack.h"` ji najde.',
+  'Bez těl funkcí spustitelný soubor vůbec nevznikne.',
+]
+
+[[question]]
+id = 'ZF-09'
+topic = 'Zásobník a fronta'
+text = '''
+`stack.c` i `queue.c` obsahují řádek `#define MAX 50`. Proč to při překladu `gcc main1.c stack.c queue.c` nevadí?
+'''
+options = [
+  'makro platí jen v souboru, kde je definované; každý .c se zpracuje preprocesorem zvlášť',
+  'druhá definice tu první automaticky přepíše',
+  'vadí to, linker ohlásí dvojí definici MAX',
+  'MAX je v hlavičce, takže se vloží jen jednou',
+]
+answer = 0
+explanation = '''
+Preprocesor nahradí `MAX` číslem 50 ještě před překladem, zvlášť v každém souboru. Linker pak už žádné `MAX` nevidí. Dvojí definice by vadila u **globálních proměnných**: proto mají zásobník a fronta různá jména (`top` vs. `front`, `rear`, `count`).
+'''
+notes = [
+  '',
+  'Soubory se zpracovávají odděleně, nic se nepřepisuje.',
+  'Makra do linkeru vůbec nejdou.',
+  'V úloze je MAX v .c souborech, ne v hlavičkách.',
+]
+
+[[question]]
+id = 'ZF-10'
+topic = 'Zásobník a fronta'
+text = '''
+Kterou strukturu použiješ pro (1) funkci **Zpět** v textovém editoru a (2) **tiskovou frontu**, kde se dokumenty tisknou v pořadí odeslání?
+'''
+options = [
+  '(1) zásobník, (2) fronta',
+  '(1) fronta, (2) zásobník',
+  'v obou případech zásobník',
+  'v obou případech fronta',
+]
+answer = 0
+explanation = '''
+Zpět ruší nejdřív poslední úpravu: LIFO, zásobník. Tisk v pořadí odeslání: FIFO, fronta.
+'''
+notes = [
+  '',
+  'Prohozené: Zpět ruší poslední akci, tisk jde od prvního dokumentu.',
+  'Tisková fronta by tiskla od posledního dokumentu.',
+  'Zpět by rušilo nejstarší úpravu.',
+]
+
+[[question]]
+id = 'ZF-11'
+topic = 'Zásobník a fronta'
+text = '''
+Funkce robota mají tvar `Robot otocVlevo(Robot robot)` a volají se `robot = otocVlevo(robot);`. Co by se stalo, kdyby se volaly jen `otocVlevo(robot);` (bez přiřazení)?
+'''
+options = [
+  'robot by se neotočil: funkce mění kopii struktury a vrácenou hodnotu nikdo neuloží',
+  'nic by se nezměnilo, struktura se předává odkazem',
+  'překladač by ohlásil chybu',
+  'robot by se otočil dvakrát',
+]
+answer = 0
+explanation = '''
+Struktura se předává **hodnotou**, funkce dostane kopii, otočí ji a vrátí. Bez přiřazení se výsledek zahodí. Alternativa je předat ukazatel: `void otocVlevo(Robot *r)` a `r->smer = 'W';`.
+'''
+notes = [
+  '',
+  'V C se struktura předává hodnotou (kopií), ne odkazem.',
+  'Zahodit návratovou hodnotu je povolené.',
+  'Funkce se volá jednou a mění jen kopii.',
+]

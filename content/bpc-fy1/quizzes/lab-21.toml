@@ -1,0 +1,280 @@
+name = 'Úloha 21: Elektromagnetická indukce'
+description = 'vstupní test: tok, Faradayův zákon, spřažené cívky, indukčnost, fázový posun'
+
+[[question]]
+id = 'L21-01'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Rovinnou smyčkou o ploše $10\ \mathrm{cm^2}$ prochází homogenní pole $B = 2\ \mathrm{mT}$. Normála smyčky svírá se směrem pole úhel $60^\circ$. Jaký je magnetický tok smyčkou? Odpověď v μWb.
+'''
+value = 1.0
+tolerance = 0.01
+unit = 'μWb'
+explanation = '''
+$$\Phi_B = BS\cos\theta = 2\cdot10^{-3}\cdot10\cdot10^{-4}\cdot\cos60^\circ = 1{,}0\cdot10^{-6}\ \mathrm{Wb}$$
+'''
+warning = '$1\ \mathrm{cm^2} = 10^{-4}\ \mathrm{m^2}$.'
+
+[[question]]
+id = 'L21-02'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Tok každým závitem cívky s 200 závity rovnoměrně vzroste o $5\cdot10^{-5}\ \mathrm{Wb}$ za $10\ \mathrm{ms}$. Jak velké napětí se v cívce indukuje?
+'''
+value = 1.0
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Faradayův zákon pro cívku, $\lambda = N\Phi$:
+$$|\mathcal{E}| = N\frac{\Delta\Phi}{\Delta t} = 200\cdot\frac{5\cdot10^{-5}}{0{,}010} = 1{,}0\ \mathrm{V}$$
+'''
+
+[[question]]
+id = 'L21-03'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Co vyjadřuje záporné znaménko ve Faradayově zákoně $\mathcal{E} = -\mathrm{d}\Phi_B/\mathrm{d}t$?
+'''
+options = [
+  'Lenzovo pravidlo: indukovaný proud brání změně toku, která ho vyvolala.',
+  'Že indukované napětí je vždy záporné.',
+  'Že tok klesá s časem.',
+  'Že se náboj elektronu bere záporně.',
+]
+answer = 0
+explanation = '''
+Minus říká, že indukované napětí (a proud v uzavřeném obvodu) má takový směr, aby svým magnetickým polem **bránil změně** toku. Indukce není „energie zadarmo“.
+'''
+notes = [
+  '',
+  'Znaménko napětí závisí na tom, zda tok roste, nebo klesá.',
+  'Tok může růst i klesat, znaménko určuje směr indukovaného napětí.',
+  'Zákon platí pro tok, s nábojem elektronu nesouvisí.',
+]
+
+[[question]]
+id = 'L21-04'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Při souosých cívkách ($\theta = 0^\circ$) je amplituda indukovaného napětí $80\ \mathrm{mV}$. Jaká bude, když indukční cívku natočíte o $\theta = 60^\circ$?
+'''
+value = 40
+tolerance = 0.5
+unit = 'mV'
+explanation = '''
+Indukční cívkou prochází jen průmět pole do směru její normály: $U_\mathrm{ind}(\theta) = U_\mathrm{ind}(0)\cos\theta = 80\cdot0{,}5 = 40\ \mathrm{mV}$.
+'''
+
+[[question]]
+id = 'L21-05'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Cívky jsou souosé a daleko od sebe (dipólové přiblížení). Jak se změní indukované napětí, když jejich vzdálenost zdvojnásobíte?
+'''
+options = ['klesne 8krát', 'klesne 2krát', 'klesne 4krát', 'nezmění se']
+answer = 0
+layout = 'grid'
+explanation = '''
+Pole magnetického dipólu na ose klesá jako $1/d^3$, indukované napětí je mu úměrné: $(1/2)^3 = 1/8$.
+'''
+notes = [
+  '',
+  'To by odpovídalo $1/d$.',
+  'To by odpovídalo $1/d^2$.',
+  'Pole budicí cívky se vzdáleností výrazně slábne.',
+]
+
+[[question]]
+id = 'L21-06'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Ve vzdálenosti $100\ \mathrm{mm}$ je indukované napětí $40\ \mathrm{mV}$, ve vzdálenosti $200\ \mathrm{mm}$ je $5\ \mathrm{mV}$. Jaký exponent $n$ v mocninném zákoně $U \propto d^{\,n}$ z toho vychází?
+'''
+value = -3.0
+tolerance = 0.05
+sign_hint = 'Napětí se vzdáleností klesá, exponent je záporný.'
+explanation = '''
+V log–log souřadnicích je směrnice exponent:
+$$n = \frac{\log(5/40)}{\log(200/100)} = \frac{\log 0{,}125}{\log 2} = -3$$
+To odpovídá dipólu ($B \propto d^{-3}$).
+'''
+
+[[question]]
+id = 'L21-07'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Při frekvenci $2\ \mathrm{kHz}$ je časové zpoždění mezi budicím a indukovaným napětím $\Delta t = 0{,}05\ \mathrm{ms}$. Jaký je fázový posun?
+'''
+value = 36
+tolerance = 0.5
+unit = '°'
+explanation = '''
+$$\Delta\varphi = 360^\circ\cdot f\cdot\Delta t = 360^\circ\cdot2000\cdot0{,}05\cdot10^{-3} = 36^\circ$$
+Zpoždění $\Delta t$ je tu $1/10$ periody ($T = 0{,}5\ \mathrm{ms}$), tedy $36^\circ$.
+'''
+
+[[question]]
+id = 'L21-08'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Odhadněte Wheelerovým vztahem $L \approx \dfrac{r^2N^2}{9r + 10\ell}\ [\mu\mathrm{H}]$ indukčnost vzduchové cívky se 400 závity, poloměrem $25{,}4\ \mathrm{mm}$ a délkou $101{,}6\ \mathrm{mm}$. Výsledek v mH.
+'''
+value = 3.27
+tolerance = 0.03
+unit = 'mH'
+explanation = '''
+Rozměry se dosazují **v palcích**: $r = 1\ \mathrm{in}$, $\ell = 4\ \mathrm{in}$.
+$$L \approx \frac{1^2\cdot400^2}{9\cdot1 + 10\cdot4} = \frac{160\,000}{49} \doteq 3265\ \mu\mathrm{H} \doteq 3{,}27\ \mathrm{mH}$$
+'''
+warning = 'S rozměry v mm nebo v m vyjde nesmysl, vztah je empirický a počítá s palci (1 in = 25,4 mm).'
+
+[[question]]
+id = 'L21-09'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Z měření impedance budicí cívky jste vynesli $|Z|^2$ proti $\omega^2$ a proložili přímku $|Z|^2 = a\,\omega^2 + b$. Jak z ní určíte indukčnost a odpor?
+'''
+options = [
+  '$L = \sqrt{a}$, $R = \sqrt{b}$',
+  '$L = a$, $R = b$',
+  '$L = \sqrt{b}$, $R = \sqrt{a}$',
+  '$L = a/b$, $R = \sqrt{b}$',
+]
+answer = 0
+explanation = '''
+Pro sériový model $R$–$L$ je $|Z|^2 = R^2 + \omega^2L^2$. Směrnice je $L^2$, úsek $R^2$, tedy $L = \sqrt a$, $R = \sqrt b$.
+'''
+notes = [
+  '',
+  'Ve vztahu jsou druhé mocniny $L^2$ a $R^2$.',
+  'Prohozené: u $\omega^2$ stojí $L^2$.',
+  'Podíl směrnice a úseku nemá fyzikální význam indukčnosti.',
+]
+
+[[question]]
+id = 'L21-10'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+K čemu se blíží fázový posun mezi budicím a indukovaným napětím při velmi nízkých frekvencích ($\omega L_\mathrm{b} \ll R_\mathrm{b}$)?
+'''
+options = ['$\pm90^\circ$', '$0^\circ$', '$\pm180^\circ$', '$45^\circ$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Při nízkých frekvencích převládá odpor, budicí napětí je skoro ve fázi s proudem. Indukované napětí je úměrné $\mathrm{d}I_\mathrm{b}/\mathrm{d}t$, tedy posunuté o $90^\circ$. Při vysokých frekvencích jsou obě napětí úměrná $\mathrm{d}I/\mathrm{d}t$ a posun jde k $0^\circ$ (po otočení cívky o $180^\circ$ k $\pm180^\circ$).
+'''
+notes = [
+  '',
+  'K $0^\circ$ se posun blíží při vysokých frekvencích.',
+  'To nastane při vysokých frekvencích po otočení cívky o $180^\circ$.',
+  '$45^\circ$ je přechod kolem $\omega L_\mathrm{b} = R_\mathrm{b}$.',
+]
+
+[[question]]
+id = 'L21-11'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Co plyne z Maxwellovy–Faradayovy rovnice $\oint_{\partial S}\vec E\cdot\mathrm{d}\vec\ell = -\frac{\mathrm{d}}{\mathrm{d}t}\int_S\vec B\cdot\mathrm{d}\vec S$?
+'''
+options = [
+  'Proměnné magnetické pole vytváří vírové elektrické pole, které není konzervativní.',
+  'Oběh elektrického pole po uzavřené křivce je vždy nulový.',
+  'Indukované pole je elektrostatické pole nábojů na cívce.',
+  'Magnetický tok uzavřenou plochou je nulový.',
+]
+answer = 0
+explanation = '''
+Když se tok mění, je oběh $\vec E$ po křivce nenulový. Takové pole má vírový charakter a není konzervativní (na rozdíl od elektrostatického pole, jehož oběh je vždy nulový).
+'''
+notes = [
+  '',
+  'To platí jen pro elektrostatické pole, ne při proměnném toku.',
+  'Elektrostatické pole má nulový oběh, indukované ne.',
+  'To je Gaussův zákon pro magnetické pole, jiná rovnice.',
+]
+
+[[question]]
+id = 'L21-12'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Proč je cívka vhodná k demonstraci elektromagnetické indukce?
+'''
+options = [
+  'Toková vazba je $\lambda = N\Phi_B$, takže indukované napětí roste úměrně počtu závitů.',
+  'Cívka má nulový odpor.',
+  'V cívce se tok nemění.',
+  'Indukované napětí na počtu závitů nezávisí, cívka jen šetří místo.',
+]
+answer = 0
+explanation = '''
+Každým z $N$ závitů prochází přibližně stejný tok, napětí se sčítají: $\mathcal{E} = -N\,\mathrm{d}\Phi_B/\mathrm{d}t$.
+'''
+notes = [
+  '',
+  'Vinutí má nenulový odpor (u budicí cívky desítky ohmů).',
+  'Bez změny toku by se nic neindukovalo.',
+  'Napětí je úměrné počtu závitů.',
+]
+
+[[question]]
+id = 'L21-13'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Jaká je indukčnost dlouhého solenoidu ($K_\mathrm{N} = 1$) s 500 závity, poloměrem $20\ \mathrm{mm}$ a délkou $100\ \mathrm{mm}$? Výsledek v mH.
+'''
+value = 3.95
+tolerance = 0.03
+unit = 'mH'
+explanation = '''
+$$L = \mu_0\frac{N^2\pi r^2}{\ell} = 4\pi\cdot10^{-7}\cdot\frac{500^2\cdot\pi\cdot0{,}020^2}{0{,}100} \doteq 3{,}95\cdot10^{-3}\ \mathrm{H}$$
+Pro skutečnou cívku je potřeba ještě Nagaokův faktor $K_\mathrm{N} < 1$ (zde $r/\ell = 0{,}2$, $K_\mathrm{N} \doteq 0{,}85$).
+'''
+
+[[question]]
+id = 'L21-14'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Okruhy k testu, úloha 21'
+tags = ["lab"]
+text = '''
+Při $f = 1\ \mathrm{kHz}$ je amplituda indukovaného napětí $31{,}4\ \mathrm{mV}$ a amplituda proudu budicí cívkou $50\ \mathrm{mA}$. Jaká je vzájemná indukčnost? Výsledek v μH.
+'''
+value = 100
+tolerance = 1
+unit = 'μH'
+explanation = '''
+$$U_\mathrm{ind} = \omega M I_\mathrm{b} \ \Rightarrow\ M = \frac{U_\mathrm{ind}}{2\pi f\,I_\mathrm{b}} = \frac{0{,}0314}{2\pi\cdot1000\cdot0{,}050} \doteq 1{,}0\cdot10^{-4}\ \mathrm{H}$$
+'''

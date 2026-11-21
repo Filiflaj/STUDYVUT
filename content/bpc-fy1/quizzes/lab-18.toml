@@ -1,0 +1,246 @@
+name = 'Úloha 18: Termistory a PT100'
+description = 'vstupní test: odpor kovů a polovodičů, NTC termistor, energiová konstanta B'
+
+[[question]]
+id = 'L18-01'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Návod, příklad 1, úloha 18'
+tags = ["lab"]
+text = '''
+Odpor měděného vodiče je při $20\ {}^\circ\mathrm{C}$ roven $10\ \Omega$, při $80\ {}^\circ\mathrm{C}$ je $12{,}352\ \Omega$. Jaký je teplotní součinitel odporu mědi? Odpověď zadejte v jednotkách $10^{-3}\ \mathrm{K^{-1}}$.
+'''
+value = 3.92
+tolerance = 0.02
+unit = '·10⁻³ K⁻¹'
+explanation = '''
+Z $R_T = R_0[1 + \alpha_R(T - T_0)]$:
+$$\alpha_R = \frac{R_T - R_0}{R_0\,(T - T_0)} = \frac{12{,}352 - 10}{10\cdot60} = 3{,}92\cdot10^{-3}\ \mathrm{K^{-1}}$$
+Rozdíl teplot je ve °C i v K stejný (60 K).
+'''
+
+[[question]]
+id = 'L18-02'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Návod, příklad 2, úloha 18'
+tags = ["lab"]
+text = '''
+Měděný vodič má při $20\ {}^\circ\mathrm{C}$ odpor $10\ \Omega$ a teplotní součinitel odporu $3{,}92\cdot10^{-3}\ \mathrm{K^{-1}}$. Jaký má odpor při $100\ {}^\circ\mathrm{C}$?
+'''
+value = 13.14
+tolerance = 0.02
+unit = 'Ω'
+explanation = '''
+$$R = R_0[1 + \alpha_R(T - T_0)] = 10\,[1 + 3{,}92\cdot10^{-3}\cdot80] = 10\cdot1{,}3136 \doteq 13{,}14\ \Omega$$
+'''
+
+[[question]]
+id = 'L18-03'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Návod, příklad 3, úloha 18'
+tags = ["lab"]
+text = '''
+Termistor má při $20\ {}^\circ\mathrm{C}$ odpor $22\ \mathrm{k\Omega}$ a při $100\ {}^\circ\mathrm{C}$ odpor $8{,}1\ \mathrm{k\Omega}$. Jaká je jeho energiová konstanta $B$?
+'''
+value = 1366
+tolerance = 15
+unit = 'K'
+explanation = '''
+Teploty v kelvinech: $T_1 = 293{,}15\ \mathrm{K}$, $T_2 = 373{,}15\ \mathrm{K}$. Ze dvou bodů $R = R_0\,\mathrm{e}^{B(1/T - 1/T_0)}$:
+$$B = \frac{\ln(R_1/R_2)}{\dfrac1{T_1} - \dfrac1{T_2}} = \frac{\ln(22/8{,}1)}{\dfrac1{293{,}15} - \dfrac1{373{,}15}} = \frac{0{,}9992}{7{,}313\cdot10^{-4}\ \mathrm{K^{-1}}} \doteq 1370\ \mathrm{K}$$
+'''
+warning = 'Teploty v exponentu musí být v kelvinech.'
+
+[[question]]
+id = 'L18-04'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Návod, příklad 4, úloha 18'
+tags = ["lab"]
+text = '''
+Termistor má při $20\ {}^\circ\mathrm{C}$ odpor $39\ \mathrm{k\Omega}$, jeho energiová konstanta je $B = 5000\ \mathrm{K}$. Při jaké teplotě (ve °C) bude mít poloviční odpor?
+'''
+value = 32.4
+tolerance = 0.3
+unit = '°C'
+explanation = '''
+$$\ln\frac{R}{R_0} = B\left(\frac1T - \frac1{T_0}\right) \ \Rightarrow\ \frac1T = \frac1{T_0} + \frac{\ln 0{,}5}{B} = \frac1{293{,}15} - \frac{0{,}6931}{5000} = 3{,}2726\cdot10^{-3}\ \mathrm{K^{-1}}$$
+$T \doteq 305{,}6\ \mathrm{K}$, tedy asi $32{,}4\ {}^\circ\mathrm{C}$. Počáteční odpor 39 kΩ k výsledku potřeba není, rozhoduje jen poměr odporů.
+'''
+
+[[question]]
+id = 'L18-05'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+NTC termistor má energiovou konstantu $B = 3500\ \mathrm{K}$. Jaký je jeho teplotní součinitel odporu při $25\ {}^\circ\mathrm{C}$? Odpověď zadejte v jednotkách $10^{-2}\ \mathrm{K^{-1}}$ i se znaménkem.
+'''
+value = -3.94
+tolerance = 0.03
+unit = '·10⁻² K⁻¹'
+sign_hint = 'NTC termistor má záporný teplotní součinitel odporu, jeho odpor s teplotou klesá.'
+explanation = '''
+$$\alpha_R = -\frac{B}{T^2} = -\frac{3500}{298{,}15^2} = -3{,}94\cdot10^{-2}\ \mathrm{K^{-1}}$$
+Asi desetkrát víc než u kovů a se záporným znaménkem.
+'''
+
+[[question]]
+id = 'L18-06'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Platinový snímač PT100 má při $0\ {}^\circ\mathrm{C}$ odpor $100\ \Omega$ a teplotní součinitel $3{,}925\cdot10^{-3}\ \mathrm{K^{-1}}$. Jaký odpor má při $50\ {}^\circ\mathrm{C}$?
+'''
+value = 119.6
+tolerance = 0.1
+unit = 'Ω'
+explanation = '''
+$$R = R_0[1 + \alpha_R\,\Delta T] = 100\,[1 + 3{,}925\cdot10^{-3}\cdot50] = 119{,}6\ \Omega$$
+'''
+
+[[question]]
+id = 'L18-07'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Proč odpor kovů s rostoucí teplotou roste?
+'''
+options = [
+  'Atomy mřížky víc kmitají a volné elektrony se s nimi častěji srážejí, počet volných elektronů se přitom téměř nemění.',
+  'S teplotou ubývá volných elektronů.',
+  'S teplotou přibývá děr, které elektrony zachytí.',
+  'Kov se teplem roztahuje, a proto se prodlužuje vodič.',
+]
+answer = 0
+explanation = '''
+V kovu je volných elektronů hodně už za nízkých teplot a s teplotou jich nepřibývá. Převládne zkracování střední doby mezi srážkami s kmitajícími atomy, a odpor proto roste (přibližně lineárně).
+'''
+notes = [
+  '',
+  'Počet volných elektronů v kovu se s teplotou prakticky nemění.',
+  'Díry jsou pojem z polovodičů, u kovů vedení zajišťují volné elektrony.',
+  'Tepelná roztažnost je na odpor zanedbatelný vliv.',
+]
+
+[[question]]
+id = 'L18-08'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Jak se chová čistý polovodič při teplotách blízkých $0\ \mathrm{K}$?
+'''
+options = [
+  'Jako izolant, nemá volné nosiče náboje.',
+  'Jako supravodič s nulovým odporem.',
+  'Jako kov s velmi malým odporem.',
+  'Jeho odpor je stejný jako při pokojové teplotě.',
+]
+answer = 0
+explanation = '''
+Volné nosiče v polovodiči vznikají dodáním (tepelné) energie. Blízko 0 K žádné nejsou, odpor je obrovský a polovodič je izolant. S teplotou počet nosičů prudce roste a odpor exponenciálně klesá.
+'''
+notes = [
+  '',
+  'Supravodivost je jiný jev, polovodiče u 0 K naopak nevedou.',
+  'Bez volných nosičů je odpor velmi velký, ne malý.',
+  'Odpor polovodiče na teplotě silně závisí.',
+]
+
+[[question]]
+id = 'L18-09'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Do jakého grafu se vynesou hodnoty NTC termistoru, aby vyšla přímka, ze které se určí $B$?
+'''
+options = [
+  '$\ln R$ proti $\left(\frac1T - \frac1{T_0}\right)$, směrnice je $B$',
+  '$R$ proti $T$, směrnice je $B$',
+  '$\ln R$ proti $T$, směrnice je $-B$',
+  '$R$ proti $\frac1T$, směrnice je $\ln B$',
+]
+answer = 0
+explanation = '''
+Zlogaritmováním $R = R_0\,\mathrm{e}^{B(1/T - 1/T_0)}$ dostaneme $\ln R = \ln R_0 + B\left(\frac1T - \frac1{T_0}\right)$: přímka se směrnicí $B$ a úsekem $\ln R_0$.
+'''
+notes = [
+  '',
+  'Závislost $R(T)$ je exponenciální, přímka nevyjde.',
+  'Logaritmus odporu je lineární v $1/T$, ne v $T$.',
+  'Bez logaritmu odporu přímka nevyjde.',
+]
+
+[[question]]
+id = 'L18-10'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Jaká termodynamická teplota odpovídá $25\ {}^\circ\mathrm{C}$?
+'''
+value = 298.15
+tolerance = 0.01
+unit = 'K'
+explanation = '''
+$T = t + 273{,}15 = 25 + 273{,}15 = 298{,}15\ \mathrm{K}$. Rozdíl teplot je přitom v K i ve °C stejný.
+'''
+
+[[question]]
+id = 'L18-11'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Jaký je rozdíl mezi NTC a PTC termistorem?
+'''
+options = [
+  'NTC má záporný teplotní součinitel (odpor s teplotou klesá), PTC kladný (odpor roste, nad mezní teplotou prudce).',
+  'NTC je z kovu, PTC z polovodiče.',
+  'NTC se používá jen pro střídavý proud, PTC pro stejnosměrný.',
+  'NTC má lineární závislost, PTC exponenciální pokles.',
+]
+answer = 0
+explanation = '''
+Negative / Positive Temperature Coefficient. NTC je z polovodiče a odpor klesá exponenciálně. PTC se vyrábí z feroelektrik s příměsí a jeho odpor nad mezní teplotou strmě roste.
+'''
+notes = [
+  '',
+  'Oba termistory jsou polovodičové součástky, kovový je snímač PT100.',
+  'Druh proudu s rozdělením nesouvisí.',
+  'NTC klesá exponenciálně, PTC je nelineární a roste.',
+]
+
+[[question]]
+id = 'L18-12'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Okruhy k testu, úloha 18'
+tags = ["lab"]
+text = '''
+Polovodič typu n má jako majoritní nosiče volné elektrony. Je jako celek elektricky nabitý?
+'''
+options = [
+  'Ne, je neutrální: náboj volných elektronů vyrovnávají kladné ionty příměsi.',
+  'Ano, záporně.',
+  'Ano, kladně.',
+  'Záleží na teplotě.',
+]
+answer = 0
+explanation = '''
+Příměsové atomy (donory) uvolní elektron a zůstanou jako kladné ionty. Celkový náboj krystalu je nulový, polovodič typu n i p je jako celek neutrální.
+'''
+notes = [
+  '',
+  'Každý volný elektron má v krystalu odpovídající kladný iont.',
+  'Kladné ionty jen vyrovnávají náboj elektronů.',
+  'S teplotou se mění počet nosičů, ale neutralita platí vždy.',
+]

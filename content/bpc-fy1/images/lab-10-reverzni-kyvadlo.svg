@@ -1,0 +1,22 @@
+<svg viewBox="0 0 300 330" width="300" class="fig" role="img" aria-label="Reverzní kyvadlo: tyč s břity O1 a O2, posuvné závaží Z ve vzdálenosti a od konce tyče, redukovaná délka lr mezi břity">
+<rect x="124" y="18" width="12" height="292" class="gf"/>
+<polygon points="106,54 154,54 130,70" class="blk"/>
+<polygon points="106,230 154,230 130,214" class="blk"/>
+<line x1="80" y1="70" x2="200" y2="70" class="d"/>
+<line x1="80" y1="214" x2="200" y2="214" class="d"/>
+<text x="74" y="75" text-anchor="end"><tspan class="it">O</tspan><tspan class="sm" dy="4">1</tspan><tspan dy="-4"></tspan></text>
+<text x="74" y="219" text-anchor="end"><tspan class="it">O</tspan><tspan class="sm" dy="4">2</tspan><tspan dy="-4"></tspan></text>
+<rect x="108" y="244" width="44" height="26" class="blk"/>
+<text x="162" y="262">Z</text>
+<line x1="192" y1="142" x2="192" y2="71" class="v" marker-end="url(#m-v)"/>
+<line x1="192" y1="142" x2="192" y2="213" class="v" marker-end="url(#m-v)"/>
+<line x1="186" y1="70" x2="198" y2="70" class="s1"/>
+<line x1="186" y1="214" x2="198" y2="214" class="s1"/>
+<text x="202" y="147"><tspan class="it">ℓ</tspan><tspan class="sm" dy="4">r</tspan><tspan dy="-4"></tspan></text>
+<line x1="92" y1="290" x2="92" y2="271" class="v" marker-end="url(#m-v)"/>
+<line x1="92" y1="290" x2="92" y2="309" class="v" marker-end="url(#m-v)"/>
+<line x1="86" y1="270" x2="98" y2="270" class="s1"/>
+<line x1="86" y1="310" x2="98" y2="310" class="s1"/>
+<text x="84" y="296" text-anchor="end"><tspan class="it">a</tspan></text>
+<text x="162" y="306" class="sm mut">konec tyče</text>
+</svg>

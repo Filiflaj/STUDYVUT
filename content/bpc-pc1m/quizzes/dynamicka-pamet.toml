@@ -1,0 +1,224 @@
+name = 'Dynamická paměť'
+description = 'malloc, calloc, realloc, free, úniky paměti'
+
+[[question]]
+id = 'DP-01'
+topic = 'Dynamická paměť'
+kind = 'numeric'
+text = '''
+Kolik bajtů přidělí `int *p = malloc(5 * sizeof(*p));` na systému, kde má `int` 4 bajty?
+'''
+value = 20
+tolerance = 0
+unit = 'B'
+explanation = '''
+`*p` je jeden `int`, `sizeof(*p) = 4`. Pro 5 prvků $5 \cdot 4 = 20$ B.
+'''
+
+[[question]]
+id = 'DP-02'
+topic = 'Dynamická paměť'
+text = '''
+Které volání správně přidělí místo pro `n` čísel typu `double` do `double *d`?
+'''
+options = [
+  '`d = malloc(n * sizeof(*d));`',
+  '`d = malloc(n * sizeof(d));`',
+  '`d = malloc(n);`',
+  '`d = malloc(sizeof(n));`',
+]
+answer = 0
+explanation = '''
+Velikost bloku je počet prvků krát velikost **jednoho prvku**, tedy `sizeof(*d)` (8 B pro double). Zápis přes `*d` zůstane správný, i když se typ ukazatele změní.
+'''
+notes = [
+  '',
+  '`sizeof(d)` je velikost adresy. Pro double náhodou také 8 B, ale u jiného typu (např. struktury) by bloku bylo příliš málo.',
+  'Přidělí jen `n` bajtů, na `n` doublů je potřeba 8krát víc.',
+  'Velikost proměnné `n` (4 B) s počtem prvků nesouvisí.',
+]
+
+[[question]]
+id = 'DP-03'
+topic = 'Dynamická paměť'
+text = '''
+Ve kterém řádku je chyba, která při neúspěchu `realloc` způsobí únik paměti?
+
+```c
+int *pole = malloc(5 * sizeof(*pole));   // řádek A
+if (pole == NULL) return 1;              // řádek B
+pole = realloc(pole, 8 * sizeof(*pole)); // řádek C
+if (pole == NULL) return 1;              // řádek D
+```
+'''
+options = ['řádek C', 'řádek A', 'řádek B', 'žádný, program je v pořádku']
+answer = 0
+explanation = '''
+Když `realloc` selže, vrátí `NULL`, ale **původní blok zůstane přidělený**. Řádek C přepíše jedinou adresu bloku na `NULL` a blok už nejde uvolnit. Správně výsledek nejdřív do pomocného ukazatele `pom`, kontrola, při chybě `free(pole)`, a teprve pak `pole = pom`.
+'''
+notes = [
+  '',
+  'malloc s kontrolou na dalším řádku je správně.',
+  'Kontrola po malloc je správně.',
+  'Při neúspěchu realloc tu blok zůstane bez ukazatele.',
+]
+
+[[question]]
+id = 'DP-04'
+topic = 'Dynamická paměť'
+text = '''
+Která funkce přidělí blok, který je **vynulovaný**?
+'''
+options = ['`calloc`', '`malloc`', '`realloc`', 'žádná, paměť se musí vždy nulovat ručně']
+answer = 0
+explanation = '''
+`calloc(pocet, velikost)` paměť vynuluje. `malloc` ani `realloc` (u nově přidané části) obsah nenastavují, je tam „smetí“. Proto funkce `zvetsi` z úlohy nové prvky nuluje cyklem.
+'''
+notes = [
+  '',
+  'malloc obsah nenastavuje.',
+  'realloc zachová staré prvky, nové nechá nenastavené.',
+  'calloc nulování zařídí sám.',
+]
+layout = 'grid'
+
+[[question]]
+id = 'DP-05'
+topic = 'Dynamická paměť'
+text = '''
+Funkce `vytvor(4)` z úlohy přidělí pole čtverců 1, 4, 9, 16 a funkce `zvetsi(pole, 4, 6)` ho přes `realloc` zvětší na 6 prvků a nové prvky vynuluje. Co se pak vypíše výpisem všech 6 prvků?
+'''
+options = ['`1 4 9 16 0 0`', '`1 4 9 16 25 36`', '`0 0 1 4 9 16`', '`1 4 9 16` a dvě náhodná čísla']
+answer = 0
+explanation = '''
+`realloc` zachová původní obsah (1, 4, 9, 16) a přidá dva prvky na konec. Ty `zvetsi` nastaví na 0. Bez nulovacího cyklu by na konci byly nenastavené hodnoty.
+'''
+notes = [
+  '',
+  'Čtverce počítá jen `vytvor`. Nové prvky z `zvetsi` jsou nuly.',
+  'Nové místo přibude na konci bloku, ne na začátku.',
+  'Tak by to bylo bez cyklu `pom[i] = 0` ve funkci `zvetsi`.',
+]
+
+[[question]]
+id = 'DP-06'
+topic = 'Dynamická paměť'
+text = '''
+Co platí o volání `free(NULL)`?
+'''
+options = [
+  'je povolené a nic neudělá',
+  'program spadne',
+  'uvolní naposledy přidělený blok',
+  'je chyba překladu',
+]
+answer = 0
+explanation = '''
+Norma C zaručuje, že `free(NULL)` nic neudělá. Proto se po `free(pole)` píše `pole = NULL`: případné další `free(pole)` už je neškodné a omylem použitý ukazatel se pozná.
+'''
+notes = [
+  '',
+  'Spadnout může dvojí free platné adresy, free(NULL) ne.',
+  'free uvolní jen blok, jehož adresu dostane.',
+  'Typově je to v pořádku, NULL je ukazatel.',
+]
+
+[[question]]
+id = 'DP-07'
+topic = 'Dynamická paměť'
+text = '''
+Co je špatně?
+
+```c
+int *p = malloc(10 * sizeof(*p));
+if (p == NULL) return 1;
+p[0] = 42;
+free(p);
+printf("%d\n", p[0]);
+```
+'''
+options = [
+  'čte se uvolněná paměť (visící ukazatel), chování je nedefinované',
+  'chybí přetypování `(int *)` u malloc, program se nepřeloží',
+  'nic, vypíše se 42',
+  'free se smí volat jen na pole z calloc',
+]
+answer = 0
+explanation = '''
+Po `free(p)` blok programu nepatří, `p` je **visící ukazatel**. Může se vypsat 42, smetí, nebo program spadne. Paměť se uvolňuje až ve chvíli, kdy ji program už nepotřebuje.
+'''
+notes = [
+  '',
+  'V C se `void *` z malloc převede na `int *` automaticky.',
+  'Může se to tak náhodou chovat, ale je to nedefinované chování.',
+  'free patří ke každému malloc, calloc i realloc.',
+]
+
+[[question]]
+id = 'DP-08'
+topic = 'Dynamická paměť'
+text = '''
+Proč smí funkce `vytvor` vrátit ukazatel na pole, které v ní vzniklo přes `malloc`, ale nesmí vrátit adresu lokálního pole `int p[5];`?
+'''
+options = [
+  'lokální pole s koncem funkce zanikne, blok z malloc existuje, dokud se neuvolní',
+  'lokální pole se nedá vrátit, protože nemá adresu',
+  'malloc pole je rychlejší',
+  'obojí je správně, rozdíl je jen ve stylu',
+]
+answer = 0
+explanation = '''
+Lokální proměnné leží na zásobníku volání a po `return` jejich místo použije další funkce. Ukazatel na ně by byl visící. Dynamicky přidělený blok žije, dokud ho program neuvolní přes `free`.
+'''
+notes = [
+  '',
+  'Adresu má, jen po skončení funkce přestane platit.',
+  'Rychlost tu nerozhoduje, jde o dobu života paměti.',
+  'Vrácení adresy lokálního pole je chyba.',
+]
+
+[[question]]
+id = 'DP-09'
+topic = 'Dynamická paměť'
+text = '''
+Co je únik paměti (memory leak)?
+'''
+options = [
+  'přidělený blok se neuvolní a program ztratí poslední ukazatel na něj',
+  'zápis za konec přiděleného pole',
+  'dvojí uvolnění stejného bloku',
+  'čtení proměnné, která nebyla inicializovaná',
+]
+answer = 0
+explanation = '''
+Blok zůstane obsazený až do konce programu a nikdo ho už nemůže použít ani uvolnit. U dlouho běžících programů tak paměť postupně dochází. Na Macu úniky ukáže `leaks --atExit -- ./program`.
+'''
+notes = [
+  '',
+  'To je přetečení bufferu.',
+  'To je double free, jiná chyba.',
+  'To je čtení neinicializované hodnoty.',
+]
+
+[[question]]
+id = 'DP-10'
+topic = 'Dynamická paměť'
+text = '''
+Proč si program s dynamickým polem drží počet prvků v proměnné `n`?
+'''
+options = [
+  'velikost přiděleného bloku se z ukazatele zjistit nedá, `sizeof(pole)` dá jen velikost adresy',
+  'malloc potřebuje n při uvolňování',
+  'bez n by realloc blok zmenšil',
+  'n je potřeba jen kvůli printf',
+]
+answer = 0
+explanation = '''
+`pole` je obyčejný ukazatel. `sizeof(pole)` vrátí 8 (velikost adresy na 64bitovém systému), ne délku bloku. Počet prvků si musí pamatovat program sám a předávat ho funkcím.
+'''
+notes = [
+  '',
+  '`free` dostává jen adresu, velikost si pamatuje systém sám.',
+  'realloc dostává novou velikost v bajtech, n ho nijak neomezuje.',
+  'n se používá ve všech cyklech přes pole.',
+]

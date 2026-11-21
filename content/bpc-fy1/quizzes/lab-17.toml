@@ -1,0 +1,293 @@
+name = 'Úloha 17: Ručkové měřicí přístroje'
+description = 'vstupní test: efektivní a střední hodnota, třída přesnosti, konstanta rozsahu'
+
+[[question]]
+id = 'L17-01'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Jaká je střední hodnota střídavého harmonického napětí s amplitudou $U_\mathrm{M} = 5\ \mathrm{V}$?
+'''
+options = ['$0\ \mathrm{V}$', '$3{,}54\ \mathrm{V}$', '$3{,}18\ \mathrm{V}$', '$1{,}59\ \mathrm{V}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Kladná a záporná půlvlna přenesou stejný náboj opačného znaménka, střední hodnota harmonického napětí je **vždy nulová** (bez ohledu na amplitudu). Proto se střídavé napětí definuje jako napětí s nulovou střední hodnotou.
+'''
+notes = [
+  '',
+  'To je efektivní hodnota $U_\mathrm{M}/\sqrt2$.',
+  'To je střední hodnota dvoucestně usměrněného napětí $2U_\mathrm{M}/\pi$.',
+  'To je střední hodnota jednocestně usměrněného napětí $U_\mathrm{M}/\pi$.',
+]
+
+[[question]]
+id = 'L17-02'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Jaká je efektivní hodnota střídavého harmonického napětí s amplitudou $U_\mathrm{M} = 2\ \mathrm{V}$?
+'''
+value = 1.414
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_\mathrm{ef} = \frac{U_\mathrm{M}}{\sqrt2} = \frac{2}{\sqrt2} = \sqrt2 \doteq 1{,}41\ \mathrm{V}$$
+'''
+
+[[question]]
+id = 'L17-03'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Efektivní hodnota harmonického napětí je $U_\mathrm{ef} = 1{,}5\ \mathrm{V}$. Jaká je jeho amplituda (maximální hodnota)?
+'''
+value = 2.12
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+$$U_\mathrm{M} = \sqrt2\,U_\mathrm{ef} = 1{,}41\cdot1{,}5 \doteq 2{,}12\ \mathrm{V}$$
+'''
+
+[[question]]
+id = 'L17-04'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Na voltmetru je údaj $100\ \Omega/\mathrm{V}$. Měříte na rozsahu $60\ \mathrm{V}$. Jaký je vnitřní odpor voltmetru?
+'''
+value = 6000
+tolerance = 1
+unit = 'Ω'
+explanation = '''
+Údaj v $\Omega/\mathrm{V}$ se násobí **rozsahem**: $R_\mathrm{i} = 100\ \Omega/\mathrm{V}\cdot60\ \mathrm{V} = 6000\ \Omega$.
+'''
+
+[[question]]
+id = 'L17-05'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Na voltmetru je údaj $1000\ \Omega/\mathrm{V}$. Měříte na rozsahu $30\ \mathrm{V}$ a ručka ukazuje přesně doprostřed stupnice se 150 dílky. Jaký je vnitřní odpor voltmetru?
+'''
+options = ['$30\ \mathrm{k\Omega}$', '$15\ \mathrm{k\Omega}$', '$150\ \mathrm{k\Omega}$', '$75\ \mathrm{k\Omega}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Vnitřní odpor závisí jen na zvoleném rozsahu, ne na výchylce ručky: $R_\mathrm{i} = 1000\ \Omega/\mathrm{V}\cdot30\ \mathrm{V} = 30\ \mathrm{k\Omega}$.
+'''
+notes = [
+  '',
+  'Výchylka ručky na vnitřní odpor vliv nemá.',
+  'Násobí se rozsahem ve voltech, ne počtem dílků.',
+  'Počet dílků s vnitřním odporem nesouvisí.',
+]
+
+[[question]]
+id = 'L17-06'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Měřicí přístroj ukazuje na rozsahu $90\ \mathrm{V}$ výchylku ručky 18 dílků. Celá stupnice má 30 dílků. Jaké je naměřené napětí?
+'''
+value = 54
+tolerance = 0.2
+unit = 'V'
+explanation = '''
+Konstanta rozsahu $k = 90/30\ \text{V/dílek} = 3\ \text{V/dílek}$, napětí $U = \alpha k = 18\cdot3 = 54\ \mathrm{V}$.
+'''
+
+[[question]]
+id = 'L17-07'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Jakou mezní absolutní chybu má přístroj třídy přesnosti $T_\mathrm{p} = 0{,}05$ na rozsahu $200\ \mathrm{mA}$, když měří hodnotu $140\ \mathrm{mA}$?
+'''
+value = 0.10
+tolerance = 0.005
+unit = 'mA'
+explanation = '''
+Mezní chyba se počítá z **rozsahu**, na naměřené hodnotě nezávisí:
+$$\delta(I) = \frac{T_\mathrm{p}}{100}\,I_\mathrm{R} = \frac{0{,}05}{100}\cdot200\ \mathrm{mA} = 0{,}10\ \mathrm{mA}$$
+'''
+warning = 'Hodnota 140 mA je zadaná navíc, k výpočtu mezní absolutní chyby není potřeba.'
+
+[[question]]
+id = 'L17-08'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, Dodatek, úloha 17'
+tags = ["lab"]
+text = '''
+Přístroj třídy přesnosti $T_\mathrm{p} = 0{,}5$ naměřil na rozsahu $250\ \mathrm{mA}$ proud $100\ \mathrm{mA}$. Jaká je relativní chyba tohoto měření?
+'''
+value = 1.25
+tolerance = 0.01
+unit = '%'
+explanation = '''
+$$\delta(I) = \frac{0{,}5}{100}\cdot250 = 1{,}25\ \mathrm{mA} \qquad \delta_\mathrm{r}(I) = \frac{1{,}25}{100}\cdot100\ \% = 1{,}25\ \%$$
+Kdyby ručka ukazovala konec stupnice (250 mA), byla by relativní chyba jen 0,5 %.
+'''
+
+[[question]]
+id = 'L17-09'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Okruhy k testu, úloha 17'
+tags = ["lab"]
+text = '''
+Jaký vnitřní odpor má mít ampérmetr v porovnání s voltmetrem?
+'''
+options = [
+  'Ampérmetr co nejmenší, voltmetr co největší.',
+  'Ampérmetr co největší, voltmetr co nejmenší.',
+  'Oba co největší.',
+  'Oba co nejmenší.',
+]
+answer = 0
+explanation = '''
+Ampérmetr je zapojen **v sérii**, jeho odpor nemá zvětšit odpor obvodu (úbytek na něm má být malý). Voltmetr je **paralelně**, nemá odebírat proud, proto co největší odpor.
+'''
+notes = [
+  '',
+  'Je to obráceně: velký odpor v sérii by proud zmenšil, malý paralelně by obvod zkratoval.',
+  'Velký odpor ampérmetru v sérii by změnil měřený proud.',
+  'Voltmetr s malým odporem by odebíral velký proud a měřené napětí by kleslo.',
+]
+
+[[question]]
+id = 'L17-10'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Okruhy k testu, úloha 17'
+tags = ["lab"]
+text = '''
+Který voltmetr má výchylku úměrnou **efektivní** hodnotě napětí pro libovolný průběh?
+'''
+options = [
+  'elektromagnetický (feromagnetický)',
+  'magnetoelektrický (s otočnou cívkou)',
+  'magnetoelektrický s usměrňovačem',
+  'žádný ručkový voltmetr',
+]
+answer = 0
+explanation = '''
+Elektromagnetický voltmetr reaguje na efektivní hodnotu. Magnetoelektrický reaguje na střední hodnotu (jen stejnosměrná napětí). Magnetoelektrický s usměrňovačem také na střední hodnotu, ale stupnici má cejchovanou v efektivní hodnotě **harmonického** napětí, takže pro jiné průběhy ukazuje špatně.
+'''
+notes = [
+  '',
+  'Ten měří střední hodnotu, na střídavém napětí ukáže nulu.',
+  'Ukazuje efektivní hodnotu jen u harmonického (a dvoucestně usměrněného) průběhu.',
+  'Elektromagnetický voltmetr efektivní hodnotu měří.',
+]
+
+[[question]]
+id = 'L17-11'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Okruhy k testu, úloha 17'
+tags = ["lab"]
+text = '''
+Jednocestně usměrněné harmonické napětí má amplitudu $U_\mathrm{M} = 31{,}4\ \mathrm{V}$. Jaká je jeho střední hodnota?
+'''
+value = 10.0
+tolerance = 0.1
+unit = 'V'
+explanation = '''
+Pro jednocestné usměrnění: $U_\mathrm{s} = U_\mathrm{M}/\pi = 31{,}4/\pi \doteq 10{,}0\ \mathrm{V}$ (a $U_\mathrm{ef} = U_\mathrm{M}/2 = 15{,}7\ \mathrm{V}$).
+'''
+
+[[question]]
+id = 'L17-12'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Okruhy k testu, úloha 17'
+tags = ["lab"]
+text = '''
+Dvoucestně usměrněné harmonické napětí má amplitudu $U_\mathrm{M} = 20\ \mathrm{V}$. Jaká je jeho střední hodnota?
+'''
+value = 12.73
+tolerance = 0.05
+unit = 'V'
+explanation = '''
+Pro dvoucestné usměrnění: $U_\mathrm{s} = 2U_\mathrm{M}/\pi = 40/\pi \doteq 12{,}7\ \mathrm{V}$. Efektivní hodnota je stejná jako u neusměrněného napětí, $U_\mathrm{M}/\sqrt2 \doteq 14{,}1\ \mathrm{V}$.
+'''
+
+[[question]]
+id = 'L17-13'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, úloha 17'
+tags = ["lab"]
+text = '''
+Jak se do tabulky zapisuje konstanta rozsahu přístroje s rozsahem $60\ \mathrm{V}$ a stupnicí se 120 dílky?
+'''
+options = ['$60/120$', '$0{,}5$', '$1/2$', '$120/60$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Konstanta rozsahu je rozsah / počet dílků a zapisuje se jako **nezkrácený zlomek**, aby šlo zpětně zjistit, jaký byl rozsah a jak vzniklo napětí $U = \alpha k$.
+'''
+notes = [
+  '',
+  'Hodnota je správně, ale ze zápisu by nešlo poznat rozsah.',
+  'Zlomek se neupravuje, rozsah by z něj nešel vyčíst.',
+  'Obráceně: rozsah dělený počtem dílků.',
+]
+
+[[question]]
+id = 'L17-14'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, úloha 17'
+tags = ["lab"]
+text = '''
+Proč se rozsah ručkového přístroje volí tak, aby ručka byla v poslední třetině stupnice?
+'''
+options = [
+  'Absolutní chyba z třídy přesnosti je stejná na celém rozsahu, relativní chyba je proto nejmenší při velké výchylce.',
+  'Na začátku stupnice přístroj nemá třídu přesnosti.',
+  'Při malé výchylce se přístroj zahřívá.',
+  'Při velké výchylce je menší vnitřní odpor.',
+]
+answer = 0
+explanation = '''
+$\delta(U) = T_\mathrm{p}/100\cdot U_\mathrm{R}$ nezávisí na výchylce. Relativní chyba $\delta(U)/U_\text{měř}$ je tedy tím menší, čím větší je naměřená hodnota.
+'''
+notes = [
+  '',
+  'Třída přesnosti platí na celém rozsahu, jen relativní chyba je na začátku stupnice velká.',
+  'Ohřev s výchylkou nesouvisí.',
+  'Vnitřní odpor závisí na rozsahu, ne na výchylce.',
+]
+
+[[question]]
+id = 'L17-15'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Návod, úloha 17'
+tags = ["lab"]
+text = '''
+Magnetoelektrickým voltmetrem s usměrňovačem měříte jednocestně usměrněné napětí a odečtete $U_\text{měř} = 12{,}0\ \mathrm{V}$. Jaká je amplituda tohoto napětí?
+'''
+options = ['$33{,}9\ \mathrm{V}$', '$17{,}0\ \mathrm{V}$', '$37{,}7\ \mathrm{V}$', '$24{,}0\ \mathrm{V}$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Stupnice je cejchovaná pro harmonický průběh. Nejdřív se údaj přepočte na skutečnou střední hodnotu, $U_\mathrm{s} = \frac{2\sqrt2}{\pi}U_\text{měř} \doteq 10{,}8\ \mathrm{V}$, a pak podle vztahu pro jednocestné usměrnění:
+$$U_\mathrm{M} = \pi U_\mathrm{s} = 2\sqrt2\,U_\text{měř} \doteq 2{,}83\cdot12{,}0 \doteq 33{,}9\ \mathrm{V}$$
+'''
+notes = [
+  '',
+  'To je $\sqrt2\,U_\text{měř}$, tedy efektivní hodnota po přepočtu, ne amplituda.',
+  'To je $\pi U_\text{měř}$ bez přepočtu činitelem tvaru.',
+  'To je $2U_\text{měř}$, vztah $U_\mathrm{ef} = U_\mathrm{M}/2$ platí pro skutečnou efektivní hodnotu, ne pro údaj tohoto voltmetru.',
+]

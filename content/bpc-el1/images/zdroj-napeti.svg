@@ -1,0 +1,39 @@
+<svg viewBox="0 0 600 235" width="600" class="fig" role="img" aria-label="Model reálného zdroje napětí se zátěží a jeho zatěžovací charakteristika">
+<rect x="6" y="30" width="144" height="175" class="d"/>
+<text x="78" y="222" class="sm mut" text-anchor="middle">reálný zdroj</text>
+<circle cx="70" cy="150" r="14" class="s"/>
+<line x1="70" y1="136" x2="70" y2="164" class="s"/>
+<polyline points="70,164 70,190 170,190" class="s"/>
+<polyline points="70,136 70,60 90,60" class="s"/>
+<rect x="90" y="53" width="40" height="14" class="s"/>
+<text x="110" y="47" text-anchor="middle"><tspan class="it">R</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<polyline points="130,60 170,60" class="s"/>
+<line x1="48" y1="132" x2="48" y2="170" class="v" marker-end="url(#m-v)"/>
+<text x="40" y="156" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<circle cx="170" cy="60" r="3.5" class="s1"/>
+<circle cx="170" cy="190" r="3.5" class="s1"/>
+<polyline points="170,60 245,60 245,105" class="s"/>
+<rect x="238" y="105" width="14" height="40" class="s"/>
+<text x="259" y="130"><tspan class="it">R</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<polyline points="245,145 245,190 170,190" class="s"/>
+<line x1="186" y1="46" x2="222" y2="46" class="v" marker-end="url(#m-v)"/>
+<text x="204" y="38" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<line x1="200" y1="78" x2="200" y2="172" class="v" marker-end="url(#m-v)"/>
+<text x="206" y="130"><tspan class="it">U</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<line x1="360" y1="195" x2="590" y2="195" class="v" marker-end="url(#m-v)"/>
+<line x1="360" y1="195" x2="360" y2="22" class="v" marker-end="url(#m-v)"/>
+<text x="584" y="216" text-anchor="middle"><tspan class="it">I</tspan></text>
+<text x="346" y="32" text-anchor="end"><tspan class="it">U</tspan></text>
+<line x1="360" y1="62" x2="548" y2="195" class="s"/>
+<line x1="360" y1="62" x2="575" y2="62" class="d"/>
+<text x="470" y="54" class="sm mut" text-anchor="middle">ideální zdroj (<tspan class="it">R</tspan><tspan dy="3">i</tspan><tspan dy="-3"> = 0)</tspan></text>
+<text x="352" y="67" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">0</tspan><tspan dy="-4"> = </tspan><tspan class="it">U</tspan><tspan class="sm" dy="4">i</tspan><tspan dy="-4"></tspan></text>
+<text x="548" y="214" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">k</tspan><tspan dy="-4"></tspan></text>
+<line x1="445" y1="122.1" x2="445" y2="195" class="d"/>
+<line x1="360" y1="122.1" x2="445" y2="122.1" class="d"/>
+<line x1="445" y1="62" x2="445" y2="122.1" class="s1"/>
+<circle cx="445" cy="122.1" r="3.2" class="pt"/>
+<text x="445" y="214" text-anchor="middle"><tspan class="it">I</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<text x="352" y="127.1" text-anchor="end"><tspan class="it">U</tspan><tspan class="sm" dy="4">z</tspan><tspan dy="-4"></tspan></text>
+<text x="452" y="97.1" class="sm">Δ<tspan class="it">U</tspan> = <tspan class="it">R</tspan><tspan dy="3">i</tspan><tspan class="it" dy="-3">I</tspan><tspan dy="3">z</tspan></text>
+</svg>

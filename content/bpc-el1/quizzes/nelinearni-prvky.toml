@@ -1,0 +1,192 @@
+name = 'Úloha 8: Nelineární prvky'
+description = 'statický a dynamický odpor, linearizace, sériové a paralelní spojení'
+
+[[question]]
+id = 'NL-01'
+topic = 'Nelineární prvky'
+text = '''
+Co je statický odpor nelineárního prvku v pracovním bodě $P$?
+'''
+options = [
+  '$R_\text{s} = u(P)/i(P)$, sklon spojnice počátku s bodem $P$',
+  '$R_\text{s} = \Delta u/\Delta i$ v okolí $P$, sklon tečny',
+  'odpor prvku při nulovém napětí',
+  'největší odpor na celé charakteristice',
+]
+answer = 0
+explanation = '''
+Statický odpor je poměr napětí a proudu v bodě $P$ a popisuje chování pro stejnosměrný proud.
+'''
+notes = ['', 'To je dynamický odpor.', 'V počátku poměr $u/i$ není definovaný.', 'Statický odpor se vztahuje k jednomu bodu $P$.']
+
+[[question]]
+id = 'NL-02'
+topic = 'Nelineární prvky'
+text = '''
+Co je dynamický (diferenciální) odpor v bodě $P$?
+'''
+options = [
+  'sklon tečny v $P$, přibližně $\Delta u/\Delta i$ mezi body $P_1$ a $P_2$',
+  'poměr $u_P/i_P$',
+  'odpor při maximálním proudu',
+  'průměr statických odporů v $P_1$ a $P_2$',
+]
+answer = 0
+explanation = '''
+$$R_\text{d} = \frac{\mathrm{d}u}{\mathrm{d}i}\bigg|_P \cong \frac{u_{P2} - u_{P1}}{i_{P2} - i_{P1}}$$
+Popisuje chování pro malé změny (malý střídavý signál) kolem $P$.
+'''
+notes = ['', 'To je statický odpor.', 'Dynamický odpor se vztahuje k bodu $P$.', 'Počítá se z rozdílů, ne z průměru poměrů.']
+
+[[question]]
+id = 'NL-03'
+kind = 'numeric'
+topic = 'Nelineární prvky'
+text = '''
+Pracovní bod nelineárního prvku je $P$ = (660 mV; 5,331 mA). Jaký je statický odpor?
+'''
+value = 124
+tolerance = 0.5
+unit = 'Ω'
+explanation = '''
+$$R_\text{s} = \frac{u_P}{i_P} = \frac{660\ \text{mV}}{5{,}331\ \text{mA}} = 123{,}8 \approx 124\ \Omega$$
+(mV/mA = Ω.)
+'''
+
+[[question]]
+id = 'NL-04'
+kind = 'numeric'
+topic = 'Nelineární prvky'
+text = '''
+V okolí bodu $P$ byly odečteny body $P_1$ = (650 mV; 4,319 mA) a $P_2$ = (670 mV; 6,590 mA). Jaký je dynamický odpor?
+'''
+value = 8.8
+tolerance = 0.1
+unit = 'Ω'
+explanation = '''
+$$R_\text{d} \cong \frac{670 - 650}{6{,}590 - 4{,}319} = \frac{20\ \text{mV}}{2{,}271\ \text{mA}} = 8{,}8\ \Omega$$
+Napětí se odečítalo po 10 mV, takže je to jen orientační hodnota (2 platné číslice).
+'''
+
+[[question]]
+id = 'NL-05'
+kind = 'numeric'
+topic = 'Nelineární prvky'
+text = '''
+Pro bod $P$ = (660 mV; 5,331 mA) a $R_\text{d} = 8{,}8\ \Omega$ urči napětí zdroje $U_\text{S}$ linearizovaného modelu (průsečík tečny s osou $u$).
+'''
+value = 613
+tolerance = 1
+unit = 'mV'
+explanation = '''
+$$U_\text{S} = u_P - R_\text{d}\,i_P = 660 - 8{,}8\cdot 5{,}331 = 660 - 46{,}9 = 613\ \text{mV}$$
+(Ω · mA = mV.) Model: zdroj 613 mV v sérii s 8,8 Ω.
+'''
+
+[[question]]
+id = 'NL-06'
+topic = 'Nelineární prvky'
+text = '''
+Jak se graficky sestrojí charakteristika **sériového** spojení dvou prvků?
+'''
+options = [
+  'Při stejném proudu se sečtou napětí (vodorovně).',
+  'Při stejném napětí se sečtou proudy (svisle).',
+  'Sečtou se odpory podle vzorce $R_1 + R_2$ v každém bodě zvlášť a výsledek se zprůměruje.',
+  'Vezme se charakteristika prvku s větším odporem.',
+]
+answer = 0
+explanation = '''
+V sérii teče oběma prvky stejný proud, napětí se sčítají: $u = u_R + u_n$. Např. při 4,5 mA bylo 1230 mV na rezistoru + asi 660 mV na prvku = 1890 mV, naměřeno 1890 mV.
+'''
+notes = ['', 'To platí pro paralelní spojení.', 'Průměrování nemá oporu, sčítají se napětí.', 'Napětí na obou prvcích se sčítají.']
+
+[[question]]
+id = 'NL-07'
+topic = 'Nelineární prvky'
+text = '''
+Proč u paralelního spojení rezistoru (276 Ω) a nelineárního prvku (124 Ω v bodě $P$) nesedí výsledný odpor se vzorcem $1/(1/276 + 1/124) = 85\ \Omega$?
+'''
+options = [
+  'Vzorec platí jen pro lineární prvky; nelineární prvek je v paralelním zapojení v jiném pracovním bodě s jiným odporem.',
+  'Paralelní spojení se měřilo špatně.',
+  'Vzorec pro paralelní odpory neplatí nikdy.',
+  'Rezistor se zahřál.',
+]
+answer = 0
+explanation = '''
+Odpor nelineárního prvku závisí na napětí. V paralelním zapojení je na něm jiné napětí (630 mV), teče jím jiný proud a má tedy jiný odpor než 124 Ω. Správná kontrola je součet proudů při stejném napětí: při 650 mV $2{,}36 + 4{,}319 = 6{,}67$ mA, naměřeno 6,62 mA.
+'''
+notes = ['', 'Součet proudů ukazuje, že měření sedí.', 'Pro lineární rezistory platí.', 'Ohřev tak velký rozdíl nevysvětlí.']
+
+[[question]]
+id = 'NL-08'
+topic = 'Nelineární prvky'
+text = '''
+U lineárního rezistoru vyšlo $R_\text{s}$ = 276 Ω a $R_\text{d}$ = 280 Ω. Co z toho plyne?
+'''
+options = [
+  'Odpory jsou prakticky stejné, jak má lineární prvek mít (přímka z počátku).',
+  'Rezistor je nelineární.',
+  'Měření je chybné, statický a dynamický odpor se musí lišit.',
+  'Dynamický odpor rezistoru je vždy větší než statický.',
+]
+answer = 0
+explanation = '''
+U lineárního prvku je charakteristika přímka z počátku, spojnice s počátkem i tečna mají stejný sklon: $R_\text{s} = R_\text{d} = R$. Rozdíl 1,4 % je v rámci odečtu po 10 mV.
+'''
+notes = ['', 'Rozdíl 1,4 % je v rámci přesnosti.', 'Liší se jen u nelineárních prvků.', 'Neplatí, u lineárního prvku jsou stejné.']
+
+[[question]]
+id = 'NL-09'
+topic = 'Nelineární prvky'
+text = '''
+Linearizovaný model diody (613 mV v sérii s 8,8 Ω) by při $u = 0$ dal proud asi −70 mA. Co z toho plyne?
+'''
+options = [
+  'Model platí jen pro malé změny v okolí pracovního bodu $P$.',
+  'Dioda vede v závěrném směru 70 mA.',
+  'Model je spočítaný špatně.',
+  'Dynamický odpor je záporný.',
+]
+answer = 0
+explanation = '''
+Tečna nahrazuje charakteristiku jen v okolí $P$. Daleko od $P$ (při $u = 0$ je skutečný proud nulový) model neplatí.
+'''
+notes = ['', 'Při nulovém napětí diodou proud neteče.', 'Model je správně, jen se používá mimo svou platnost.', '$R_\text{d}$ je kladný (8,8 Ω).']
+
+[[question]]
+id = 'NL-10'
+topic = 'Nelineární prvky'
+text = '''
+Jak pracoviště RC 2000 měří proud prvkem?
+'''
+options = [
+  'Měří napětí na snímacím rezistoru 100 Ω v sérii s prvkem a dělí ho odporem.',
+  'Vestavěným ampérmetrem s ručkou.',
+  'Z výkonu generátoru.',
+  'Hallovou sondou.',
+]
+answer = 0
+explanation = '''
+Kanál B měří napětí na snímacím rezistoru, proud je $i = u_{R\text{sn}}/100\ \Omega$. Kanál A měří napětí na prvku. Pilové napětí −5 až +5 V projede celou charakteristiku najednou.
+'''
+notes = ['', 'RC 2000 je počítačové pracoviště s napěťovými vstupy.', 'Výkon generátoru se neměří.', 'Hallova sonda měří magnetické pole (úloha 7).']
+
+[[question]]
+id = 'NL-11'
+topic = 'Nelineární prvky'
+text = '''
+V pracovním sešitu je napětí ve sloupci v mV a u sériového spojení je zapsáno „2,050“. Jak se s tím počítá?
+'''
+options = [
+  'Jako 2050 mV (program ukazoval volty), hodnota se v tabulce nepřepisuje, ve výpočtu se píše 2050 mV.',
+  'Jako 2,050 mV.',
+  'Jako 20,50 mV.',
+  'Hodnota se vyřadí.',
+]
+answer = 0
+explanation = '''
+Napětí kolem 2 V na sériovém spojení odpovídá součtu asi 1,4 V na rezistoru a 0,66 V na prvku. Zápis se nepřepisuje; ve výpočtu $R_\text{s} = 2050/5{,}038 = 407\ \Omega$.
+'''
+notes = ['', 'Tak malé napětí by s proudem 5 mA nedávalo smysl.', 'Ani to nesedí se součtem napětí obou prvků.', 'Hodnota je správná, jen v jiné jednotce.']

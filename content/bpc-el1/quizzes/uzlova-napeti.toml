@@ -1,0 +1,190 @@
+name = 'Úloha 4: Metoda uzlových napětí'
+description = 'sestavení matice vodivostí, Cramerovo pravidlo, měření se zdrojem proudu'
+
+[[question]]
+id = 'MUN-01'
+topic = 'Metoda uzlových napětí'
+text = '''
+Na kterém zákoně je metoda uzlových napětí založena?
+'''
+options = ['na 1. Kirchhoffově zákoně', 'na 2. Kirchhoffově zákoně', 'na principu superpozice', 'na Théveninově větě']
+answer = 0
+explanation = '''
+Pro každý nezávislý uzel se napíše 1. KZ a proudy větví se vyjádří přes uzlová napětí a vodivosti.
+'''
+notes = ['', '2. KZ je základem metody smyčkových proudů.', 'Superpozice je jiná metoda.', 'Thévenin nahrazuje část obvodu zdrojem.']
+
+[[question]]
+id = 'MUN-02'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Obvod má 4 uzly (včetně referenčního). Kolik rovnic dá metoda uzlových napětí?
+'''
+value = 3
+tolerance = 0
+explanation = '''
+Počet rovnic = počet uzlů − 1 (referenční uzel má napětí 0): $4 - 1 = 3$.
+'''
+
+[[question]]
+id = 'MUN-03'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+K uzlu 2 jsou připojeny $R_1 = 100\ \Omega$ (do uzlu 1), $R_2 = 150\ \Omega$ (do uzlu 3) a $R_4 = 330\ \Omega$ (k zemi). Jaký je diagonální prvek $G_{22}$ matice vodivostí? Vodivosti počítej v mS na 3 desetinná místa.
+'''
+value = 19.697
+tolerance = 0.003
+unit = 'mS'
+explanation = '''
+Diagonála = součet vodivostí všech prvků připojených k uzlu:
+$$G_{22} = G_1 + G_2 + G_4 = 10{,}000 + 6{,}667 + 3{,}030 = 19{,}697\ \text{mS}$$
+'''
+
+[[question]]
+id = 'MUN-04'
+topic = 'Metoda uzlových napětí'
+text = '''
+Uzly 1 a 3 spojuje jen rezistor $R_3$. Co bude v matici vodivostí na pozici $G_{13}$?
+'''
+options = ['$-G_3$', '$+G_3$', '$G_1 + G_3$', '$0$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Mimo diagonálu je vodivost mezi dvěma uzly se znaménkem −. Matice je symetrická, takže i $G_{31} = -G_3$.
+'''
+notes = ['', 'Mimo diagonálu je znaménko −.', 'To je diagonální prvek uzlu 1.', 'Nula by byla, kdyby uzly nespojoval žádný prvek.']
+
+[[question]]
+id = 'MUN-05'
+topic = 'Metoda uzlových napětí'
+text = '''
+Zdroj proudu $I_\text{z}$ teče z referenčního uzlu do uzlu 1, do uzlů 2 a 3 žádný zdroj nevede. Jak vypadá vektor pravé strany?
+'''
+options = ['$(I_\text{z};\ 0;\ 0)$', '$(-I_\text{z};\ 0;\ 0)$', '$(I_\text{z};\ I_\text{z};\ I_\text{z})$', '$(0;\ 0;\ I_\text{z})$']
+answer = 0
+layout = 'grid'
+explanation = '''
+Proud zdroje, který míří **do** uzlu, se píše s +. Uzly bez zdroje mají na pravé straně nulu.
+'''
+notes = ['', 'Záporně by se psal proud vytékající z uzlu.', 'Zdroj je připojen jen k uzlu 1.', 'Zdroj vede do uzlu 1, ne 3.']
+
+[[question]]
+id = 'MUN-06'
+topic = 'Metoda uzlových napětí'
+text = '''
+Soustava se řeší Cramerovým pravidlem. Jak se spočítá $U_{20}$?
+'''
+options = [
+  '$D_2/D$, kde $D_2$ je determinant matice s 2. sloupcem nahrazeným vektorem pravé strany.',
+  '$D/D_2$, kde $D_2$ je determinant matice s 2. sloupcem nahrazeným vektorem pravé strany.',
+  '$D_2/D$, kde $D_2$ je determinant matice s 2. řádkem nahrazeným vektorem pravé strany.',
+  '$I_\text{z}/G_{22}$',
+]
+answer = 0
+explanation = '''
+$U_{k0} = D_k/D$; v $D_k$ se nahrazuje **sloupec** patřící neznámé $U_{k0}$.
+'''
+notes = ['', 'Obrácený podíl.', 'Nahrazuje se sloupec, ne řádek.', 'To by platilo jen pro jediný uzel bez vazeb.']
+
+[[question]]
+id = 'MUN-07'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Spočítej subdeterminant
+$$M_{11} = \begin{vmatrix} 19{,}697 & -6{,}667 \\ -6{,}667 & 21{,}212 \end{vmatrix}$$
+(mezivýsledky na 3 desetinná místa).
+'''
+value = 373.364
+tolerance = 0.01
+explanation = '''
+Determinant 2×2 je hlavní diagonála minus vedlejší:
+$$M_{11} = 19{,}697\cdot 21{,}212 - (-6{,}667)\cdot(-6{,}667) = 417{,}813 - 44{,}449 = 373{,}364$$
+V úloze pak $D_1 = 80\cdot M_{11}$ a $U_{10} = D_1/D = 13{,}007$ V.
+'''
+
+[[question]]
+id = 'MUN-08'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Vyšlo $U_{10} = 13{,}007$ V a $U_{20} = 8{,}445$ V. Jaké je napětí $U_{12}$?
+'''
+value = 4.562
+tolerance = 0.001
+unit = 'V'
+sign_hint = 'U12 = U10 − U20, uzel 1 je na vyšším potenciálu.'
+explanation = '''
+Z 2. KZ je větvové napětí rozdílem uzlových: $U_{12} = U_{10} - U_{20} = 13{,}007 - 8{,}445 = 4{,}562$ V.
+'''
+
+[[question]]
+id = 'MUN-09'
+topic = 'Metoda uzlových napětí'
+text = '''
+V obvodu je **ideální** zdroj napětí (bez sériového odporu). Co s ním v metodě uzlových napětí?
+'''
+options = [
+  'Převést ho na zdroj proudu nejde; obvod se řeší modifikovanou MUN.',
+  'Převede se na zdroj proudu $I = U/R_\text{i}$.',
+  'Vynechá se.',
+  'Nahradí se zkratem.',
+]
+answer = 0
+explanation = '''
+Reálný zdroj napětí se převede na zdroj proudu ($U_\text{i}/R_\text{i}$, $1/R_\text{i}$). U ideálního je $R_\text{i} = 0$ a převod by dal nekonečný proud; na to je modifikovaná MUN.
+'''
+notes = ['', 'S $R_\text{i} = 0$ by vyšel nekonečný proud.', 'Zdroj se vynechat nedá, změnil by se obvod.', 'Zkratem se nahrazuje jen nepůsobící zdroj při superpozici.']
+
+[[question]]
+id = 'MUN-10'
+topic = 'Metoda uzlových napětí'
+text = '''
+Laboratorní zdroj má fungovat jako zdroj proudu 80 mA, ale na displeji svítí CV místo CC. Co je špatně?
+'''
+options = [
+  'Napěťový limit je nastavený moc nízko (pod asi 13 V potřebnými pro obvod).',
+  'Proudový limit je moc vysoko.',
+  'Ampérmetr je zapojený paralelně.',
+  'Je to v pořádku, CV znamená konstantní proud.',
+]
+answer = 0
+explanation = '''
+CC = konstantní proud, CV = konstantní napětí. Aby zdroj udržel 80 mA, potřebuje napětí asi $U_{10} \approx 13$ V; když je limit nižší, přejde do režimu CV.
+'''
+notes = ['', 'Proud nastavuje proudový limit; problém je v napětí.', 'To by byl zkrat přes ampérmetr, ne přepnutí do CV.', 'CV je constant voltage.']
+
+[[question]]
+id = 'MUN-11'
+kind = 'numeric'
+topic = 'Metoda uzlových napětí'
+text = '''
+Při $I_\text{z} = 80$ mA vyšlo $U_{10} = 13{,}007$ V. Jaké bude $U_{10}$, když na pracovišti zadají 100 mA?
+'''
+value = 16.259
+tolerance = 0.01
+unit = 'V'
+explanation = '''
+Obvod je lineární, matice $\mathbf{G}$ se nemění a pravá strana je úměrná $I_\text{z}$:
+$$U_{10} = 13{,}007\cdot\frac{100}{80} = 16{,}259\ \text{V}$$
+'''
+
+[[question]]
+id = 'MUN-12'
+topic = 'Metoda uzlových napětí'
+text = '''
+Proč miliampérmetr zapojený v sérii se zdrojem proudu neovlivní měřená uzlová napětí?
+'''
+options = [
+  'Zdroj proudu si vnutí proud bez ohledu na odpor ve své větvi.',
+  'Miliampérmetr má nulový odpor.',
+  'Napětí se měří až po odpojení miliampérmetru.',
+  'Ovlivní, ale chyba se odečte.',
+]
+answer = 0
+explanation = '''
+Ideální zdroj proudu dodá nastavený proud nezávisle na zátěži. Odpor ampérmetru jen zvýší napětí na svorkách zdroje, proudy v obvodu se nezmění.
+'''
+notes = ['', 'Má malý, ale nenulový odpor; tady na tom nezáleží.', 'Měří se se zapojeným ampérmetrem.', 'Odpor ampérmetru tady uzlová napětí nemění.']
