@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.1.0 (2026-11-21)
+
 ### Materiály
 
 - BPC-FY1: celý trenažér BFY1 v aplikaci: 18 kapitol učiva z mechaniky
