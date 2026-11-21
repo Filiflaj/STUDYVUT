@@ -1,5 +1,10 @@
 import { fill, t } from "./i18n/index.svelte";
-import type { SetView, SubjectView } from "./types";
+import type { ChapterView, SetView, SubjectView } from "./types";
+
+/** The chapters of the study text: all but the assessment chapter, which has its own page. */
+export function studyChapters(s: SubjectView | undefined): ChapterView[] {
+  return (s?.chapters ?? []).filter((c) => c.id !== s?.info);
+}
 
 /** "ZS 2026/2027" → "Zimní semestr 2026/2027" (as the study system writes it). */
 export function semesterName(s: string): string {

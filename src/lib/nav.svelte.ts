@@ -1,6 +1,6 @@
 import type { SetSpec } from "./types";
 
-export type Tab = "overview" | "subject" | "study" | "quiz" | "settings" | "manual";
+export type Tab = "overview" | "subject" | "info" | "study" | "quiz" | "settings" | "manual";
 
 /** A quiz another page asked to start. */
 export interface QuizRequest {
@@ -53,6 +53,12 @@ class Nav {
   open(subject: string) {
     this.selectSubject(subject);
     this.tab = "subject";
+  }
+
+  /** Open how a subject is assessed (its `info` chapter, on a page of its own). */
+  info(subject: string) {
+    this.selectSubject(subject);
+    this.tab = "info";
   }
 
   /** Open a subject's study text, optionally at a chapter. */

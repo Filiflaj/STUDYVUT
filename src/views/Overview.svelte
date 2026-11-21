@@ -4,7 +4,7 @@
   import { live } from "../lib/live.svelte";
   import { nav } from "../lib/nav.svelte";
   import { subjectColor } from "../lib/palette";
-  import { semesterName } from "../lib/sets";
+  import { semesterName, studyChapters } from "../lib/sets";
   import { theme } from "../lib/theme.svelte";
   import type { SubjectView } from "../lib/types";
 
@@ -90,7 +90,7 @@
       <div class="subjects">
         {#each g.subjects as s (s.id)}
           {@const color = subjectColor(s.color, dark)}
-          {@const empty = s.chapters.length === 0 && s.questions === 0}
+          {@const empty = studyChapters(s).length === 0 && s.questions === 0}
           <button class="card subject" style:--c={color} onclick={() => nav.open(s.id)}>
             <header>
               <span class="dot"></span>
@@ -102,7 +102,7 @@
               {#if empty}
                 {t().overview.noContent}
               {:else}
-                {plural(t().overview.chapters, s.chapters.length)} · {plural(t().overview.questions, s.questions)}
+                {plural(t().overview.chapters, studyChapters(s).length)} · {plural(t().overview.questions, s.questions)}
               {/if}
             </p>
             <Icon name="chevron-right" size={16} />

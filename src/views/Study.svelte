@@ -10,11 +10,12 @@
   import { live } from "../lib/live.svelte";
   import { render, type Rendered } from "../lib/markdown";
   import { nav } from "../lib/nav.svelte";
+  import { studyChapters } from "../lib/sets";
   import type { ChapterPayload, SubmissionRow } from "../lib/types";
 
   /** The chosen subject, or the first visible one. */
   const subject = $derived(live.subject(nav.subject) ?? live.defaultSubject);
-  const chapters = $derived(subject?.chapters ?? []);
+  const chapters = $derived(studyChapters(subject));
   const chapterId = $derived(
     chapters.some((c) => c.id === nav.chapter) ? nav.chapter : (chapters[0]?.id ?? null),
   );

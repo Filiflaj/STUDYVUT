@@ -56,7 +56,7 @@ npm run build
 
 ### The browser preview
 
-`preview.html` runs the whole UI in a browser with a mocked backend (`src/preview.ts`). The study texts and figures are the real ones of `content/bpc-fy1`; questions and progress are made up. Query parameters select the situation: `?tab=overview|subject|study|quiz|settings|manual`, `&subject=bpc-fy1`, `&program=met`, `&year=1` (0 for all), `&theme=light|dark`, `&lang=cs|en`, `&fresh=1` (first start), `&whatsnew=1`, `&problems=1`, and `&start=quiz:mechanika&answer=1` (a running quiz with its first question answered), `&work=lab-10` (Study → Odevzdané práce with a work open). Screenshots with headless Chrome:
+`preview.html` runs the whole UI in a browser with a mocked backend (`src/preview.ts`). The study texts and figures are the real ones of `content/bpc-fy1`; questions and progress are made up. Query parameters select the situation: `?tab=overview|subject|info|study|quiz|settings|manual`, `&subject=bpc-fy1`, `&program=met`, `&year=1` (0 for all), `&theme=light|dark`, `&lang=cs|en`, `&fresh=1` (first start), `&whatsnew=1`, `&problems=1`, and `&start=quiz:mechanika&answer=1` (a running quiz with its first question answered), `&work=lab-10` (Study → Odevzdané práce with a work open). Screenshots with headless Chrome:
 
 ```sh
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
@@ -90,7 +90,8 @@ src-tauri/                  the desktop app (package "studyvut")
 src/                        Svelte 5 frontend, no router
   App.svelte                shell: sidebar (logo, pages, theme and language, subjects, links), "Co je nového" once after an update
   views/                    Overview (Dashboard: programme and year, clickable subject tiles), Subject (a subject's page: Study,
-                            Quizzes, Assessment = the `info` chapter, Submitted work, Review), Study, Quizzes, Settings, Manual
+                            Quizzes, Assessment, Submitted work, Review), Info (Assessment: the `info` chapter alone; it is
+                            left out of the Study chapter list), Study, Quizzes, Settings, Manual
   lib/live.svelte.ts        app state from the backend; settings saves
   lib/nav.svelte.ts         the open page, the chosen subject and chapter, quiz requests between pages
   lib/quiz.svelte.ts        the running quiz (kept while other pages are open)

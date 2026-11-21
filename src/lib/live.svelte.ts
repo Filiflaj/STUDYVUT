@@ -1,6 +1,7 @@
 import { api, errorMessage } from "./api";
 import { i18n, resolveLang } from "./i18n/index.svelte";
 import { theme } from "./theme.svelte";
+import { studyChapters } from "./sets";
 import type { AppInfo, Overview, Settings, SubjectView } from "./types";
 
 /** App state mirrored from the backend. */
@@ -52,7 +53,7 @@ class Live {
   /** The subject the Study and Quiz pages open without a choice: the first visible one with material. */
   get defaultSubject(): SubjectView | undefined {
     const visible = this.visibleSubjects;
-    return visible.find((s) => s.chapters.length > 0 || s.questions > 0) ?? visible[0];
+    return visible.find((s) => studyChapters(s).length > 0 || s.questions > 0) ?? visible[0];
   }
 
   /** Store settings and apply theme and language right away. */

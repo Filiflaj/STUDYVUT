@@ -10,13 +10,14 @@
   import { live } from "../lib/live.svelte";
   import { nav } from "../lib/nav.svelte";
   import { subjectColor } from "../lib/palette";
-  import { semesterName } from "../lib/sets";
+  import { semesterName, studyChapters } from "../lib/sets";
   import { theme } from "../lib/theme.svelte";
   import type { SubmissionRow } from "../lib/types";
 
   const subject = $derived(live.subject(nav.subject) ?? live.defaultSubject);
   const color = $derived(subjectColor(subject?.color, theme.effective === "dark"));
   const info = $derived(subject?.chapters.find((c) => c.id === subject?.info));
+  const chapters = $derived(studyChapters(subject));
   const program = $derived(
     live.overview?.programs.filter((p) => subject?.programs.includes(p.id)).map((p) => p.code.replace(/^BPC-/, "")) ?? [],
   );
@@ -64,16 +65,16 @@
       </div>
     {/if}
 
-    {#if subject.chapters.length === 0 && subject.questions === 0 && subject.submissions === 0}
+    {#if chapters.length === 0 && subject.questions === 0 && subject.submissions === 0}
       <div class="card empty">{fill(t().subject.empty, { id: subject.id })}</div>
     {/if}
 
     <div class="tiles">
-      <button class="card tile" disabled={subject.chapters.length === 0} onclick={() => subject && nav.study(subject.id)}>
+      <button class="card tile" disabled={chapters.length === 0} onclick={() => subject && nav.study(subject.id)}>
         <span class="icon"><Icon name="book" size={20} /></span>
         <span class="title">{t().subject.study}</span>
         <span class="hint">
-          {subject.chapters.length ? plural(t().subject.studyHint, subject.chapters.length) : t().subject.none}
+          {chapters.length ? plural(t().subject.studyHint, chapters.length) : t().subject.none}
         </span>
       </button>
 
@@ -92,7 +93,7 @@
         </span>
       </button>
 
-      <button class="card tile" disabled={!info} onclick={() => subject && info && nav.study(subject.id, info.id)}>
+      <button class="card tile" disabled={!info} onclick={() => subject && info && nav.info(subject.id)}>
         <span class="icon"><Icon name="info" size={20} /></span>
         <span class="title">{t().subject.info}</span>
         <span class="hint">{info ? t().subject.infoHint : t().subject.none}</span>

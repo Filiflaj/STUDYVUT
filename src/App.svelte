@@ -17,10 +17,11 @@
   import Quizzes from "./views/Quizzes.svelte";
   import Settings from "./views/Settings.svelte";
   import Study from "./views/Study.svelte";
+  import Info from "./views/Info.svelte";
   import Subject from "./views/Subject.svelte";
 
   /** The pages in the sidebar; a subject's own page opens from its tile. */
-  const TABS: { key: Exclude<Tab, "subject">; icon: string }[] = [
+  const TABS: { key: Exclude<Tab, "subject" | "info">; icon: string }[] = [
     { key: "overview", icon: "gauge" },
     { key: "study", icon: "book" },
     { key: "quiz", icon: "quiz" },
@@ -147,7 +148,7 @@
           {#each live.visibleSubjects as s (s.id)}
             <button
               class="subject"
-              class:current={nav.subject === s.id && (nav.tab === "subject" || nav.tab === "study" || nav.tab === "quiz")}
+              class:current={nav.subject === s.id && ["subject", "info", "study", "quiz"].includes(nav.tab)}
               title="{s.code} {s.name}"
               onclick={() => openSubject(s.id)}
             >
@@ -209,6 +210,8 @@
       <Overview />
     {:else if nav.tab === "subject"}
       <Subject />
+    {:else if nav.tab === "info"}
+      <Info />
     {:else if nav.tab === "study"}
       <Study />
     {:else if nav.tab === "quiz"}

@@ -8,7 +8,7 @@ Nahoře vyber svůj **obor** a **ročník**: nástěnka, postranní panel i výb
 
 ## Stránka předmětu {#predmet}
 
-Odtud si vybereš, co v předmětu chceš dělat: **Učivo**, **Kvízy**, **Hodnocení předmětu** (jak získat zápočet a zkoušku) a **Odevzdané práce**. Když na tebe čekají otázky k opakování, je tu i tlačítko **Opakovat**. Z učiva a kvízů se vrátíš odkazem nahoře.
+Odtud si vybereš, co v předmětu chceš dělat: **Učivo**, **Kvízy**, **Hodnocení předmětu** (samostatná stránka s tím, jak získat zápočet a zkoušku) a **Odevzdané práce**. Když na tebe čekají otázky k opakování, je tu i tlačítko **Opakovat**. Z učiva a kvízů se vrátíš odkazem nahoře.
 
 ## Učivo {#ucivo}
 
