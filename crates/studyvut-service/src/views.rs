@@ -3,9 +3,8 @@
 use std::collections::BTreeMap;
 
 use serde::Serialize;
-use studyvut_core::content::{Color, Question};
+use studyvut_core::content::{Color, Program, Question};
 use studyvut_core::quiz::SetSpec;
-use studyvut_core::store::{DayActivity, SessionRow};
 
 /// Counts of content problems, by severity.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize)]
@@ -19,16 +18,10 @@ pub struct ProblemCount {
 #[derive(Clone, Debug, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub struct Overview {
+    /// The study programmes, for the programme menu.
+    pub programs: Vec<Program>,
     pub subjects: Vec<SubjectView>,
     pub problems: ProblemCount,
-    /// The user's local day.
-    pub today: i64,
-    pub answered_today: u32,
-    pub correct_today: u32,
-    /// Days in a row with at least one answer, up to today (or yesterday,
-    /// while today has none yet).
-    pub streak: u32,
-    pub recent: Vec<SessionRow>,
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -38,11 +31,18 @@ pub struct SubjectView {
     pub code: String,
     pub name: String,
     pub semester: String,
+    /// The study year (ročník); None when the content does not say.
+    pub year: Option<u8>,
+    /// The programmes that have it; empty for every programme.
+    pub programs: Vec<String>,
     pub color: Color,
     pub description: Option<String>,
     pub chapters: Vec<ChapterView>,
     pub sets: Vec<SetView>,
-    pub progress: Progress,
+    /// Questions in all its quizzes.
+    pub questions: usize,
+    /// Questions due for review today.
+    pub due: usize,
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -68,21 +68,6 @@ pub struct SetView {
     pub description: Option<String>,
     /// Questions it asks now.
     pub count: usize,
-    /// Best finished score in percent.
-    pub best: Option<u32>,
-}
-
-/// Where the user stands in a subject. Every question is in exactly one of
-/// `correct` (latest answer right), `wrong` (latest wrong) or unseen.
-#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize)]
-#[serde(rename_all = "snake_case")]
-pub struct Progress {
-    pub questions: usize,
-    pub seen: usize,
-    pub correct: usize,
-    pub wrong: usize,
-    /// Due for review today.
-    pub due: usize,
 }
 
 /// A chapter to read.
@@ -106,38 +91,6 @@ pub struct SessionPayload {
     pub id: i64,
     pub subject: String,
     pub key: String,
-    pub scored: bool,
     pub questions: Vec<Question>,
     pub svgs: BTreeMap<String, String>,
 }
-
-/// A finished session and the set's best score.
-#[derive(Clone, Debug, Serialize)]
-#[serde(rename_all = "snake_case")]
-pub struct SessionResult {
-    pub session: SessionRow,
-    pub best: Option<u32>,
-    /// This session set a new best.
-    pub new_best: bool,
-}
-
-/// A question of the content and the user's history with it, for the Data page.
-#[derive(Clone, Debug, Serialize)]
-#[serde(rename_all = "snake_case")]
-pub struct QuestionRow {
-    pub subject: String,
-    pub id: String,
-    pub quiz: String,
-    pub topic: String,
-    /// Markdown.
-    pub text: String,
-    pub answered: u32,
-    pub correct: u32,
-    pub last_correct: Option<bool>,
-    pub last_ts: Option<i64>,
-    pub r#box: Option<u8>,
-    pub due_day: Option<i64>,
-}
-
-/// Answers per local day, every day of the span (zero when none).
-pub type Activity = Vec<DayActivity>;

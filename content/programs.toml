@@ -1,0 +1,8 @@
+# Study programmes (obory). Subjects list the ids of the programmes that
+# have them (`programs = ["met"]` in subject.toml); the Dashboard filters by
+# programme and study year. See docs/content.md.
+
+[[program]]
+id = "met"
+code = "BPC-MET"
+name = "Mikroelektronika a technologie"

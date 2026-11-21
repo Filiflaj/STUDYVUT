@@ -12,7 +12,10 @@ export interface Settings {
   version: number;
   theme: ThemePref;
   language: LanguagePref;
-  daily_goal: number;
+  /** The programme (programs.toml id) whose subjects are shown; null for all. */
+  program: string | null;
+  /** The study year (ročník) whose subjects are shown; null for all. */
+  year: number | null;
   hidden_subjects: string[];
   last_seen_version: string | null;
 }
@@ -39,12 +42,11 @@ export interface Problem {
   message: string;
 }
 
-export interface Progress {
-  questions: number;
-  seen: number;
-  correct: number;
-  wrong: number;
-  due: number;
+/** A study programme (obor). */
+export interface Program {
+  id: string;
+  code: string;
+  name: string;
 }
 
 export type SetSpec =
@@ -63,7 +65,6 @@ export interface SetView {
   name: string;
   description: string | null;
   count: number;
-  best: number | null;
 }
 
 export interface ChapterView {
@@ -78,11 +79,17 @@ export interface SubjectView {
   code: string;
   name: string;
   semester: string;
+  /** The study year (ročník), when the content says. */
+  year: number | null;
+  /** Programme ids; empty for every programme. */
+  programs: string[];
   color: Color;
   description: string | null;
   chapters: ChapterView[];
   sets: SetView[];
-  progress: Progress;
+  questions: number;
+  /** Questions due for review today. */
+  due: number;
 }
 
 export interface SessionRow {
@@ -96,14 +103,9 @@ export interface SessionRow {
 }
 
 export interface Overview {
+  programs: Program[];
   subjects: SubjectView[];
   problems: ProblemCount;
-  /** The local day number (days since 1970-01-01 in the user's zone). */
-  today: number;
-  answered_today: number;
-  correct_today: number;
-  streak: number;
-  recent: SessionRow[];
 }
 
 export interface Snapshot {
@@ -142,7 +144,6 @@ export interface SessionPayload {
   id: number;
   subject: string;
   key: string;
-  scored: boolean;
   questions: Question[];
   svgs: Record<string, string>;
 }
@@ -152,30 +153,4 @@ export type Response = { kind: "choice"; index: number } | { kind: "numeric"; va
 export interface Verdict {
   correct: boolean;
   sign_only: boolean;
-}
-
-export interface SessionResult {
-  session: SessionRow;
-  best: number | null;
-  new_best: boolean;
-}
-
-export interface DayActivity {
-  day: number;
-  answered: number;
-  correct: number;
-}
-
-export interface QuestionRow {
-  subject: string;
-  id: string;
-  quiz: string;
-  topic: string;
-  text: string;
-  answered: number;
-  correct: number;
-  last_correct: boolean | null;
-  last_ts: number | null;
-  box: number | null;
-  due_day: number | null;
 }

@@ -1,14 +1,12 @@
 import { convertFileSrc, invoke } from "@tauri-apps/api/core";
 import type {
   ChapterPayload,
-  DayActivity,
   Overview,
   Problem,
   ProblemCount,
-  QuestionRow,
   Response,
   SessionPayload,
-  SessionResult,
+  SessionRow,
   SetSpec,
   Settings,
   Snapshot,
@@ -26,9 +24,7 @@ export const api = {
     invoke<SessionPayload>("start_session", { subject, spec, tz: tz() }),
   answer: (session: number | null, subject: string, question: string, response: Response) =>
     invoke<Verdict>("answer", { session, subject, question, response, tz: tz() }),
-  finishSession: (session: number) => invoke<SessionResult>("finish_session", { session }),
-  activity: (days: number) => invoke<DayActivity[]>("get_activity", { days, tz: tz() }),
-  questions: () => invoke<QuestionRow[]>("get_questions"),
+  finishSession: (session: number) => invoke<SessionRow>("finish_session", { session }),
   problems: () => invoke<Problem[]>("get_problems"),
   saveSettings: (settings: Settings) => invoke<Settings>("save_settings", { settings }),
   reloadContent: () => invoke<ProblemCount>("reload_content"),

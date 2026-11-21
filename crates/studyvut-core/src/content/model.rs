@@ -6,7 +6,19 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, Default, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub struct Catalog {
+    /// Study programmes (`programs.toml`), in file order.
+    pub programs: Vec<Program>,
     pub subjects: Vec<Subject>,
+}
+
+/// A study programme (obor), e.g. BPC-MET.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub struct Program {
+    /// Lower case, e.g. `met`; subjects refer to it.
+    pub id: String,
+    pub code: String,
+    pub name: String,
 }
 
 impl Catalog {
@@ -23,6 +35,10 @@ pub struct Subject {
     pub code: String,
     pub name: String,
     pub semester: String,
+    /// The study year (ročník) the subject is taught in.
+    pub year: Option<u8>,
+    /// The programmes (ids) that have it; empty for every programme.
+    pub programs: Vec<String>,
     pub color: Color,
     pub description: Option<String>,
     pub chapters: Vec<Chapter>,

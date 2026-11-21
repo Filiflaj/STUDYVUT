@@ -1,7 +1,11 @@
 //! The service: content, settings and progress behind one handle, and the
 //! actions every front end (the app's commands, the CLI) goes through.
+//!
+//! Progress is kept for what helps learning (the latest answer per question
+//! and its review schedule), not for statistics: the user chose an app
+//! without success statistics (2026-11-21).
 
-use std::collections::{BTreeMap, HashMap, HashSet};
+use std::collections::{BTreeMap, HashMap};
 use std::path::PathBuf;
 use std::sync::Arc;
 
@@ -11,15 +15,14 @@ use studyvut_core::content::{
     self, Catalog, Files, Problem, QuestionKind, SetRule, Severity, Subject, markdown::image_refs,
 };
 use studyvut_core::quiz::{self, Personal, Response, SetSpec, Verdict};
-use studyvut_core::store::{self, Answer, DayActivity, QuestionState, Store, StoreError};
-use studyvut_core::{DAY_MS, local_day, now_ms};
+use studyvut_core::store::{Answer, QuestionState, SessionRow, Store, StoreError};
+use studyvut_core::{local_day, now_ms};
 use tracing::{info, warn};
 
 use crate::paths::Paths;
 use crate::settings::Settings;
 use crate::views::{
-    Activity, ChapterPayload, ChapterView, Overview, ProblemCount, Progress, QuestionRow,
-    SessionPayload, SessionResult, SetView, SubjectView,
+    ChapterPayload, ChapterView, Overview, ProblemCount, SessionPayload, SetView, SubjectView,
 };
 
 #[derive(Debug, thiserror::Error)]
@@ -168,33 +171,28 @@ impl Service {
         Ok(settings)
     }
 
-    /// The Dashboard: every subject with its sets and progress.
+    /// The Dashboard: the programmes, and every subject with its sets.
     pub fn overview(&self, offset_min: i32) -> Result<Overview> {
         let loaded = self.loaded();
-        let now = now_ms();
-        let today = local_day(now, offset_min);
-        let store = self.store.lock();
-        let states = store.question_states(None)?;
+        let today = local_day(now_ms(), offset_min);
+        let states = self.store.lock().question_states(None)?;
         let mut by_subject: HashMap<&str, Vec<&QuestionState>> = HashMap::new();
         for s in &states {
             by_subject.entry(s.subject.as_str()).or_default().push(s);
         }
-        let mut subjects = Vec::new();
-        for subject in &loaded.catalog.subjects {
-            let states = by_subject.remove(subject.id.as_str()).unwrap_or_default();
-            let best = store.best_scores(&subject.id)?;
-            subjects.push(subject_view(subject, &states, &best, today));
-        }
-        let activity = store.activity(now - 400 * DAY_MS, offset_min)?;
-        let today_row = activity.iter().find(|d| d.day == today);
+        let subjects = loaded
+            .catalog
+            .subjects
+            .iter()
+            .map(|s| {
+                let mine = by_subject.remove(s.id.as_str()).unwrap_or_default();
+                subject_view(s, &personal(mine, today))
+            })
+            .collect();
         Ok(Overview {
+            programs: loaded.catalog.programs.clone(),
             subjects,
             problems: count(&loaded.problems),
-            today,
-            answered_today: today_row.map_or(0, |d| d.answered),
-            correct_today: today_row.map_or(0, |d| d.correct),
-            streak: streak(&activity, today),
-            recent: store.recent_sessions(8)?,
         })
     }
 
@@ -258,7 +256,6 @@ impl Service {
             id,
             subject: s.id.clone(),
             key,
-            scored: spec.scored(),
             svgs: self.svgs(&s.id, refs),
             questions,
         })
@@ -292,87 +289,9 @@ impl Service {
         Ok(verdict)
     }
 
-    pub fn finish_session(&self, session: i64) -> Result<SessionResult> {
-        let store = self.store.lock();
-        let before = store
-            .session(session)?
-            .ok_or(StoreError::NoSession(session))?;
-        let previous = store
-            .best_scores(&before.subject)?
-            .get(&before.set_key)
-            .copied();
-        let row = store.finish_session(session, now_ms())?;
-        let best = store.best_scores(&row.subject)?.get(&row.set_key).copied();
-        let scored = before.finished.is_none() && best.is_some() && best != previous;
-        Ok(SessionResult {
-            session: row,
-            best,
-            new_best: scored,
-        })
-    }
-
-    /// Answers per local day for the last `days` days, today included.
-    pub fn activity(&self, days: u32, offset_min: i32) -> Result<Activity> {
-        let now = now_ms();
-        let today = local_day(now, offset_min);
-        let first = today - i64::from(days.max(1)) + 1;
-        let rows = self
-            .store
-            .lock()
-            .activity(first * DAY_MS - i64::from(offset_min) * 60_000, offset_min)?;
-        let by_day: HashMap<i64, &DayActivity> = rows.iter().map(|d| (d.day, d)).collect();
-        Ok((first..=today)
-            .map(|day| {
-                by_day.get(&day).map_or(
-                    DayActivity {
-                        day,
-                        answered: 0,
-                        correct: 0,
-                    },
-                    |d| (*d).clone(),
-                )
-            })
-            .collect())
-    }
-
-    /// Every question of the content with the user's history.
-    pub fn questions(&self) -> Result<Vec<QuestionRow>> {
-        let loaded = self.loaded();
-        let store = self.store.lock();
-        let totals: HashMap<(String, String), store::QuestionTotals> = store
-            .question_totals()?
-            .into_iter()
-            .map(|t| ((t.subject.clone(), t.question.clone()), t))
-            .collect();
-        let states: HashMap<(String, String), QuestionState> = store
-            .question_states(None)?
-            .into_iter()
-            .map(|s| ((s.subject.clone(), s.question.clone()), s))
-            .collect();
-        let mut out = Vec::new();
-        for s in &loaded.catalog.subjects {
-            for quiz in &s.quizzes {
-                for q in &quiz.questions {
-                    let key = (s.id.clone(), q.id.clone());
-                    let t = totals.get(&key);
-                    let st = states.get(&key);
-                    out.push(QuestionRow {
-                        subject: s.id.clone(),
-                        id: q.id.clone(),
-                        quiz: quiz.id.clone(),
-                        topic: q.topic.clone(),
-                        text: q.text.clone(),
-                        answered: t.map_or(0, |t| t.answered),
-                        correct: t.map_or(0, |t| t.correct),
-                        last_correct: st.map(|s| s.last_correct),
-                        last_ts: st.map(|s| s.last_ts),
-                        r#box: st.map(|s| s.r#box),
-                        due_day: st.map(|s| s.due_day),
-                    });
-                }
-            }
-        }
-        Ok(out)
+    /// End a session; the result of this one quiz (right answers of all).
+    pub fn finish_session(&self, session: i64) -> Result<SessionRow> {
+        Ok(self.store.lock().finish_session(session, now_ms())?)
     }
 
     /// Forget the progress of a subject, or of everything.
@@ -451,6 +370,7 @@ fn find<'a>(catalog: &'a Catalog, subject: &str) -> Result<&'a Subject> {
         .ok_or_else(|| ServiceError::UnknownSubject(subject.to_owned()))
 }
 
+/// The personal sets: questions whose latest answer was wrong, and those due.
 fn personal<'a>(states: impl IntoIterator<Item = &'a QuestionState>, today: i64) -> Personal {
     let mut p = Personal::default();
     for s in states {
@@ -464,26 +384,17 @@ fn personal<'a>(states: impl IntoIterator<Item = &'a QuestionState>, today: i64)
     p
 }
 
-fn subject_view(
-    s: &Subject,
-    states: &[&QuestionState],
-    best: &HashMap<String, u32>,
-    today: i64,
-) -> SubjectView {
-    let ids: HashSet<&str> = s.questions().map(|q| q.id.as_str()).collect();
-    let mine: Vec<&QuestionState> = states
-        .iter()
-        .copied()
-        .filter(|st| ids.contains(st.question.as_str()))
-        .collect();
-    let personal = personal(mine.iter().copied(), today);
-    let progress = Progress {
-        questions: ids.len(),
-        seen: mine.len(),
-        correct: mine.iter().filter(|st| st.last_correct).count(),
-        wrong: personal.mistakes.len(),
-        due: personal.due.len(),
-    };
+fn subject_view(s: &Subject, personal: &Personal) -> SubjectView {
+    // Questions removed from the content no longer count.
+    let mistakes = s
+        .questions()
+        .filter(|q| personal.mistakes.contains(&q.id))
+        .count();
+    let due = s
+        .questions()
+        .filter(|q| personal.due.contains(&q.id))
+        .count();
+    let questions = s.questions().count();
 
     let mut sets = Vec::new();
     let mut push = |spec: SetSpec,
@@ -491,10 +402,8 @@ fn subject_view(
                     name: String,
                     description: Option<String>,
                     count: usize| {
-        let key = spec.key();
         sets.push(SetView {
-            best: best.get(&key).copied(),
-            key,
+            key: spec.key(),
             spec,
             kind,
             name,
@@ -535,15 +444,9 @@ fn subject_view(
             quiz.questions.len(),
         );
     }
-    if progress.questions > 0 {
-        push(
-            SetSpec::Mistakes,
-            "mistakes",
-            String::new(),
-            None,
-            progress.wrong,
-        );
-        push(SetSpec::Due, "due", String::new(), None, progress.due);
+    if questions > 0 {
+        push(SetSpec::Mistakes, "mistakes", String::new(), None, mistakes);
+        push(SetSpec::Due, "due", String::new(), None, due);
     }
 
     SubjectView {
@@ -551,6 +454,8 @@ fn subject_view(
         code: s.code.clone(),
         name: s.name.clone(),
         semester: s.semester.clone(),
+        year: s.year,
+        programs: s.programs.clone(),
         color: s.color,
         description: s.description.clone(),
         chapters: s
@@ -567,28 +472,9 @@ fn subject_view(
             })
             .collect(),
         sets,
-        progress,
+        questions,
+        due,
     }
-}
-
-/// Consecutive days with answers ending today, or yesterday when today has none yet.
-fn streak(activity: &[DayActivity], today: i64) -> u32 {
-    let days: HashSet<i64> = activity
-        .iter()
-        .filter(|d| d.answered > 0)
-        .map(|d| d.day)
-        .collect();
-    let mut day = if days.contains(&today) {
-        today
-    } else {
-        today - 1
-    };
-    let mut n = 0;
-    while days.contains(&day) {
-        n += 1;
-        day -= 1;
-    }
-    n
 }
 
 #[cfg(test)]
@@ -602,8 +488,12 @@ mod tests {
             [[question]]\nid = \"M2\"\ntopic = \"T\"\ntext = \"b ![](images/g.png)\"\noptions = [\"x\", \"y\"]\nanswer = 1\n";
         let files = MemFiles::new()
             .with(
+                "programs.toml",
+                "[[program]]\nid = \"met\"\ncode = \"BPC-MET\"\nname = \"Mikroelektronika a technologie\"\n",
+            )
+            .with(
                 "fy1/subject.toml",
-                "code = \"BPC-FY1\"\nname = \"Fyzika 1\"\nsemester = \"ZS 2026/2027\"\n",
+                "code = \"BPC-FY1\"\nname = \"Fyzika 1\"\nsemester = \"ZS 2026/2027\"\nyear = 1\nprograms = [\"met\"]\n",
             )
             .with("fy1/quizzes/mech.toml", quiz)
             .with("fy1/images/f.svg", "<svg class=\"fig\"/>")
@@ -616,7 +506,7 @@ mod tests {
     }
 
     #[test]
-    fn a_session_runs_from_start_to_best_score() -> Result<()> {
+    fn a_session_runs_from_start_to_result() -> Result<()> {
         let svc = service();
         let spec = SetSpec::Quiz { id: "mech".into() };
         let session = svc.start_session("fy1", &spec, 60)?;
@@ -626,46 +516,31 @@ mod tests {
             vec!["images/f.svg"],
             "only SVGs are inlined"
         );
-
-        let right = |id: &str| if id == "M1" { 0 } else { 1 };
         for q in &session.questions {
+            let right = if q.id == "M1" { 0 } else { 1 };
             let v = svc.answer(
                 Some(session.id),
                 "fy1",
                 &q.id,
-                &Response::Choice {
-                    index: right(&q.id),
-                },
+                &Response::Choice { index: right },
                 60,
             )?;
             assert!(v.correct);
         }
         let result = svc.finish_session(session.id)?;
-        assert_eq!((result.best, result.new_best), (Some(100), true));
-        let again = svc.finish_session(session.id)?;
-        assert!(!again.new_best, "finishing twice is no new best");
+        assert_eq!((result.correct, result.total), (2, 2));
 
         let o = svc.overview(60)?;
+        assert_eq!(o.programs.len(), 1);
         let fy1 = &o.subjects[0];
         assert_eq!(
-            fy1.progress,
-            Progress {
-                questions: 2,
-                seen: 2,
-                correct: 2,
-                wrong: 0,
-                due: 0
-            }
+            (fy1.year, fy1.programs.clone()),
+            (Some(1), vec!["met".to_owned()])
         );
-        assert_eq!(o.answered_today, 2);
-        assert_eq!(o.streak, 1);
-        let quiz_set = fy1
-            .sets
-            .iter()
-            .find(|s| s.key == "quiz:mech")
-            .expect("quiz set");
-        assert_eq!(quiz_set.best, Some(100));
+        assert_eq!((fy1.questions, fy1.due), (2, 0));
         assert_eq!(fy1.chapters[0].questions, 2);
+        let mistakes = fy1.sets.iter().find(|s| s.kind == "mistakes").expect("set");
+        assert_eq!(mistakes.count, 0);
         Ok(())
     }
 
@@ -685,13 +560,13 @@ mod tests {
                 .collect::<Vec<_>>(),
             vec!["M2"]
         );
-        assert!(!s.scored);
-        let rows = svc.questions()?;
-        let m2 = rows.iter().find(|r| r.id == "M2").expect("M2");
-        assert_eq!(
-            (m2.answered, m2.correct, m2.last_correct),
-            (1, 0, Some(false))
-        );
+        let o = svc.overview(0)?;
+        let mistakes = o.subjects[0]
+            .sets
+            .iter()
+            .find(|s| s.kind == "mistakes")
+            .expect("set");
+        assert_eq!(mistakes.count, 1);
         Ok(())
     }
 
@@ -717,29 +592,5 @@ mod tests {
         );
         assert!(svc.asset("fy1/subject.toml").is_none());
         Ok(())
-    }
-
-    #[test]
-    fn activity_fills_every_day() -> Result<()> {
-        let svc = service();
-        svc.answer(None, "fy1", "M1", &Response::Choice { index: 0 }, 0)?;
-        let a = svc.activity(7, 0)?;
-        assert_eq!(a.len(), 7);
-        assert_eq!(a.last().map(|d| d.answered), Some(1));
-        assert!(a[..6].iter().all(|d| d.answered == 0));
-        Ok(())
-    }
-
-    #[test]
-    fn streaks_count_back_from_today_or_yesterday() {
-        let d = |day, answered| DayActivity {
-            day,
-            answered,
-            correct: 0,
-        };
-        assert_eq!(streak(&[d(8, 1), d(9, 2), d(10, 1)], 10), 3);
-        assert_eq!(streak(&[d(8, 1), d(9, 2)], 10), 2, "today not started yet");
-        assert_eq!(streak(&[d(7, 1), d(9, 2)], 10), 1);
-        assert_eq!(streak(&[d(5, 1)], 10), 0);
     }
 }

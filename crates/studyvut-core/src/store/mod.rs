@@ -7,7 +7,6 @@
 
 mod schema;
 
-use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 pub use rusqlite::Connection;
@@ -67,15 +66,6 @@ pub struct QuestionState {
     pub answered: u32,
 }
 
-/// Answers on one local day.
-#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
-#[serde(rename_all = "snake_case")]
-pub struct DayActivity {
-    pub day: i64,
-    pub answered: u32,
-    pub correct: u32,
-}
-
 /// A finished or abandoned session.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "snake_case")]
@@ -87,17 +77,6 @@ pub struct SessionRow {
     pub finished: Option<i64>,
     pub total: u32,
     pub correct: u32,
-}
-
-/// Totals per question over all answers.
-#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
-#[serde(rename_all = "snake_case")]
-pub struct QuestionTotals {
-    pub subject: String,
-    pub question: String,
-    pub answered: u32,
-    pub correct: u32,
-    pub last_ts: i64,
 }
 
 /// Read-write handle; the app keeps one behind a mutex.
@@ -222,18 +201,6 @@ impl Store {
             .optional()?)
     }
 
-    /// The newest sessions with at least one answer, newest first.
-    pub fn recent_sessions(&self, limit: usize) -> Result<Vec<SessionRow>> {
-        let mut stmt = self.conn.prepare(
-            "SELECT s.id, s.subject, s.set_key, s.started, s.finished, s.total, s.correct
-             FROM sessions s
-             WHERE EXISTS (SELECT 1 FROM answers a WHERE a.session_id = s.id)
-             ORDER BY s.started DESC LIMIT ?1",
-        )?;
-        let rows = stmt.query_map([limit as i64], session_row)?;
-        Ok(rows.collect::<rusqlite::Result<_>>()?)
-    }
-
     /// The review state of every answered question, of one subject or all.
     pub fn question_states(&self, subject: Option<&str>) -> Result<Vec<QuestionState>> {
         let mut stmt = self.conn.prepare(
@@ -249,53 +216,6 @@ impl Store {
                 last_correct: r.get(4)?,
                 last_ts: r.get(5)?,
                 answered: r.get(6)?,
-            })
-        })?;
-        Ok(rows.collect::<rusqlite::Result<_>>()?)
-    }
-
-    /// The best finished score in percent of each scored set of a subject.
-    pub fn best_scores(&self, subject: &str) -> Result<HashMap<String, u32>> {
-        let mut stmt = self.conn.prepare(
-            "SELECT set_key, MAX((correct * 100 + total / 2) / total) FROM sessions
-             WHERE subject = ?1 AND scored = 1 AND finished IS NOT NULL AND total > 0
-             GROUP BY set_key",
-        )?;
-        let rows = stmt.query_map([subject], |r| Ok((r.get(0)?, r.get(1)?)))?;
-        Ok(rows.collect::<rusqlite::Result<_>>()?)
-    }
-
-    /// Answers per local day from `since_ms` on, oldest first; days without
-    /// answers are left out.
-    pub fn activity(&self, since_ms: i64, offset_min: i32) -> Result<Vec<DayActivity>> {
-        let offset_ms = i64::from(offset_min) * 60_000;
-        let mut stmt = self.conn.prepare(
-            "SELECT (ts + ?2) / 86400000 AS day, COUNT(*), SUM(correct) FROM answers
-             WHERE ts >= ?1 GROUP BY day ORDER BY day",
-        )?;
-        let rows = stmt.query_map(params![since_ms, offset_ms], |r| {
-            Ok(DayActivity {
-                day: r.get(0)?,
-                answered: r.get(1)?,
-                correct: r.get(2)?,
-            })
-        })?;
-        Ok(rows.collect::<rusqlite::Result<_>>()?)
-    }
-
-    /// Answer totals of every question ever answered.
-    pub fn question_totals(&self) -> Result<Vec<QuestionTotals>> {
-        let mut stmt = self.conn.prepare(
-            "SELECT subject, question, COUNT(*), SUM(correct), MAX(ts) FROM answers
-             GROUP BY subject, question ORDER BY subject, question",
-        )?;
-        let rows = stmt.query_map([], |r| {
-            Ok(QuestionTotals {
-                subject: r.get(0)?,
-                question: r.get(1)?,
-                answered: r.get(2)?,
-                correct: r.get(3)?,
-                last_ts: r.get(4)?,
             })
         })?;
         Ok(rows.collect::<rusqlite::Result<_>>()?)
@@ -365,7 +285,7 @@ mod tests {
     }
 
     #[test]
-    fn a_session_counts_answers_and_scores() -> Result<()> {
+    fn a_session_counts_its_answers() -> Result<()> {
         let store = Store::open_in_memory()?;
         let t0 = 20_000 * DAY_MS;
         let s = store.start_session("fy1", "quiz:mech", true, 3, t0)?;
@@ -374,23 +294,11 @@ mod tests {
         store.record(&answer(Some(s), "M3", true, t0 + 3))?;
         let row = store.finish_session(s, t0 + 4)?;
         assert_eq!((row.total, row.correct, row.finished), (3, 2, Some(t0 + 4)));
-        assert_eq!(store.best_scores("fy1")?.get("quiz:mech"), Some(&67));
-
-        // A worse second run keeps the best; an unfinished one does not count.
-        let s2 = store.start_session("fy1", "quiz:mech", true, 3, t0 + 10)?;
-        store.record(&answer(Some(s2), "M1", false, t0 + 11))?;
-        store.finish_session(s2, t0 + 12)?;
-        let s3 = store.start_session("fy1", "quiz:mech", true, 1, t0 + 20)?;
-        store.record(&answer(Some(s3), "M1", true, t0 + 21))?;
-        assert_eq!(store.best_scores("fy1")?.get("quiz:mech"), Some(&67));
-
+        let again = store.finish_session(s, t0 + 9)?;
         assert_eq!(
-            store
-                .recent_sessions(10)?
-                .iter()
-                .map(|s| s.id)
-                .collect::<Vec<_>>(),
-            vec![s3, s2, s]
+            again.finished,
+            Some(t0 + 4),
+            "finishing twice keeps the first time"
         );
         assert!(matches!(
             store.record(&answer(Some(999), "M1", true, t0)),
@@ -414,43 +322,6 @@ mod tests {
         assert_eq!((m2.r#box, m2.last_correct), (1, false));
         assert!(store.question_states(Some("other"))?.is_empty());
         assert_eq!(store.question_states(None)?.len(), 2);
-        Ok(())
-    }
-
-    #[test]
-    fn activity_is_counted_per_local_day() -> Result<()> {
-        let store = Store::open_in_memory()?;
-        let day = 20_000 * DAY_MS;
-        // 23:30 UTC is the next day in UTC+1.
-        let late = day + 23 * 3_600_000 + 1_800_000;
-        store.record(&answer(None, "M1", true, day + 3_600_000))?;
-        store.record(&answer(None, "M2", false, late))?;
-        let utc = store.activity(0, 0)?;
-        assert_eq!(
-            utc,
-            vec![DayActivity {
-                day: 20_000,
-                answered: 2,
-                correct: 1
-            }]
-        );
-        let prague = store.activity(0, 60)?;
-        assert_eq!(
-            prague,
-            vec![
-                DayActivity {
-                    day: 20_000,
-                    answered: 1,
-                    correct: 1
-                },
-                DayActivity {
-                    day: 20_001,
-                    answered: 1,
-                    correct: 0
-                },
-            ]
-        );
-        assert_eq!(store.question_totals()?.len(), 2);
         Ok(())
     }
 

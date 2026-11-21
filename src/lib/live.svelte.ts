@@ -39,10 +39,10 @@ class Live {
     return this.overview?.subjects ?? [];
   }
 
-  /** The subjects not hidden in the settings. */
+  /** The subjects of the chosen programme and year, not hidden in the settings. */
   get visibleSubjects(): SubjectView[] {
-    const hidden = new Set(this.settings?.hidden_subjects ?? []);
-    return this.subjects.filter((s) => !hidden.has(s.id));
+    const s = this.settings;
+    return this.subjects.filter((x) => matches(x, s?.program ?? null, s?.year ?? null, s?.hidden_subjects ?? []));
   }
 
   subject(id: string | null | undefined): SubjectView | undefined {
@@ -52,7 +52,7 @@ class Live {
   /** The subject the Study and Quiz pages open without a choice: the first visible one with material. */
   get defaultSubject(): SubjectView | undefined {
     const visible = this.visibleSubjects;
-    return visible.find((s) => s.chapters.length > 0 || s.progress.questions > 0) ?? visible[0];
+    return visible.find((s) => s.chapters.length > 0 || s.questions > 0) ?? visible[0];
   }
 
   /** Store settings and apply theme and language right away. */
@@ -92,6 +92,17 @@ class Live {
     this.saving = run;
     return run;
   }
+}
+
+/**
+ * Whether a subject belongs to the chosen programme and year. A subject
+ * without programmes is in every programme; one without a year in every year.
+ */
+export function matches(s: SubjectView, program: string | null, year: number | null, hidden: string[]): boolean {
+  if (hidden.includes(s.id)) return false;
+  if (program && s.programs.length > 0 && !s.programs.includes(program)) return false;
+  if (year && s.year !== null && s.year !== year) return false;
+  return true;
 }
 
 export const live = new Live();

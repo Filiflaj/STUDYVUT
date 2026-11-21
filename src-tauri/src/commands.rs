@@ -8,9 +8,8 @@ use std::path::PathBuf;
 use serde::Serialize;
 use studyvut_core::content::Problem;
 use studyvut_core::quiz::{Response, SetSpec, Verdict};
-use studyvut_service::views::{
-    Activity, ChapterPayload, Overview, ProblemCount, QuestionRow, SessionPayload, SessionResult,
-};
+use studyvut_core::store::SessionRow;
+use studyvut_service::views::{ChapterPayload, Overview, ProblemCount, SessionPayload};
 use studyvut_service::{ContentSource, ServiceError, Settings};
 use tauri::{AppHandle, State};
 use tauri_plugin_dialog::DialogExt;
@@ -125,18 +124,8 @@ pub fn answer(
 }
 
 #[tauri::command]
-pub fn finish_session(state: State<'_, AppState>, session: i64) -> CmdResult<SessionResult> {
+pub fn finish_session(state: State<'_, AppState>, session: i64) -> CmdResult<SessionRow> {
     Ok(state.service.finish_session(session)?)
-}
-
-#[tauri::command]
-pub fn get_activity(state: State<'_, AppState>, days: u32, tz: i32) -> CmdResult<Activity> {
-    Ok(state.service.activity(days.min(400), tz)?)
-}
-
-#[tauri::command]
-pub fn get_questions(state: State<'_, AppState>) -> CmdResult<Vec<QuestionRow>> {
-    Ok(state.service.questions()?)
 }
 
 #[tauri::command]

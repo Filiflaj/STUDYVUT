@@ -17,6 +17,7 @@ Originals (PDF, slides, photos, protocols) never go in here. They go in
 
 ```
 content/
+  programs.toml                the study programmes (obory)
   bpc-fy1/                     subject id: the course code in lower case
     subject.toml               the subject, its custom quiz sets
     chapters/
@@ -29,12 +30,26 @@ content/
 
 All texts are in Czech; the format's keys are English, like the code.
 
+## programs.toml
+
+The programmes the Dashboard offers in its **Obor** menu, in this order:
+
+```toml
+[[program]]
+id = "met"                      # [a-z0-9-]+; subjects refer to it
+code = "BPC-MET"
+name = "Mikroelektronika a technologie"
+```
+
 ## subject.toml
 
 ```toml
 code = "BPC-FY1"                # as in the study system
 name = "Fyzika 1"
 semester = "ZS 2026/2027"       # subjects are grouped by this, newest first
+year = 1                        # the study year (ročník), 1 to 6; optional
+programs = ["met"]              # programmes that have it (programs.toml ids);
+                                # leave out for a subject of every programme
 color = "blue"                  # blue, green, pink, gold, violet, teal, orange, graphite
 description = "Mechanika a elektrostatika, přednášky a laboratoře."   # optional
 

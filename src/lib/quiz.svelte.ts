@@ -1,6 +1,6 @@
 import { api, errorCode, errorMessage } from "./api";
 import { live } from "./live.svelte";
-import type { Question, Response, SessionPayload, SessionResult, SetSpec, Verdict } from "./types";
+import type { Question, Response, SessionPayload, SessionRow, SetSpec, Verdict } from "./types";
 
 /**
  * The running quiz, kept while the user visits other pages. It behaves as
@@ -17,7 +17,8 @@ class QuizSession {
   missed = $state<string[]>([]);
   /** The answer to the current question, once given. */
   answer = $state<{ response: Response; verdict: Verdict } | null>(null);
-  result = $state<SessionResult | null>(null);
+  /** The finished quiz: right answers of all. */
+  result = $state<SessionRow | null>(null);
   busy = $state(false);
   /** `empty_set` or a message, when starting or answering failed. */
   error = $state<string | null>(null);

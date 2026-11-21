@@ -40,8 +40,6 @@ pub fn run() {
             commands::start_session,
             commands::answer,
             commands::finish_session,
-            commands::get_activity,
-            commands::get_questions,
             commands::get_problems,
             commands::save_settings,
             commands::reload_content,

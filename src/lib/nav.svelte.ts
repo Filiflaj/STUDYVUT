@@ -1,6 +1,6 @@
 import type { SetSpec } from "./types";
 
-export type Tab = "overview" | "study" | "quiz" | "data" | "settings" | "manual";
+export type Tab = "overview" | "study" | "quiz" | "settings" | "manual";
 
 /** A quiz another page asked to start. */
 export interface QuizRequest {

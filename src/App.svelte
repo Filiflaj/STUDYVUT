@@ -6,14 +6,12 @@
   import Icon from "./lib/components/Icon.svelte";
   import WhatsNew from "./lib/components/WhatsNew.svelte";
   import PrefsSwitcher from "./lib/components/PrefsSwitcher.svelte";
-  import { percent } from "./lib/format";
-  import { fill, t } from "./lib/i18n/index.svelte";
+  import { fill, plural, t } from "./lib/i18n/index.svelte";
   import { live } from "./lib/live.svelte";
   import { nav, type Tab } from "./lib/nav.svelte";
   import { subjectColor } from "./lib/palette";
   import { quiz } from "./lib/quiz.svelte";
   import { theme } from "./lib/theme.svelte";
-  import Data from "./views/Data.svelte";
   import Manual from "./views/Manual.svelte";
   import Overview from "./views/Overview.svelte";
   import Quizzes from "./views/Quizzes.svelte";
@@ -24,7 +22,6 @@
     { key: "overview", icon: "gauge" },
     { key: "study", icon: "book" },
     { key: "quiz", icon: "quiz" },
-    { key: "data", icon: "table" },
     { key: "settings", icon: "sliders" },
     { key: "manual", icon: "help" },
   ];
@@ -77,7 +74,7 @@
     if (current) void live.save((s) => (s.last_seen_version = current));
   }
 
-  const dueTotal = $derived(live.visibleSubjects.reduce((n, s) => n + s.progress.due, 0));
+  const dueTotal = $derived(live.visibleSubjects.reduce((n, s) => n + s.due, 0));
 
   /** A subject in the sidebar opens it on the Study or Quiz page, whichever is open. */
   function openSubject(id: string) {
@@ -134,7 +131,7 @@
           {#if tab_.key === "quiz" && quiz.active && !quiz.done}
             <span class="live-dot" aria-hidden="true"></span>
           {:else if tab_.key === "quiz" && dueTotal > 0}
-            <span class="count" title={t().overview.due}>{dueTotal}</span>
+            <span class="count" title={plural(t().overview.due, dueTotal)}>{dueTotal}</span>
           {/if}
         </button>
       {/each}
@@ -147,7 +144,6 @@
         <div class="status">
           <div class="status-title">{t().nav.subjects}</div>
           {#each live.visibleSubjects as s (s.id)}
-            {@const pct = percent(s.progress.correct, s.progress.questions)}
             <button
               class="subject"
               class:current={nav.subject === s.id && (nav.tab === "study" || nav.tab === "quiz")}
@@ -157,7 +153,6 @@
               <span class="dot" style:background={subjectColor(s.color, theme.effective === "dark")}></span>
               <span class="label">{s.code.replace(/^BPC-/, "")}</span>
               <span class="name">{s.name}</span>
-              {#if pct !== null}<span class="pct tabular">{pct} %</span>{/if}
             </button>
           {/each}
         </div>
@@ -215,8 +210,6 @@
       <Study />
     {:else if nav.tab === "quiz"}
       <Quizzes />
-    {:else if nav.tab === "data"}
-      <Data />
     {:else if nav.tab === "manual"}
       <Manual />
     {:else}
@@ -443,11 +436,6 @@
     text-overflow: ellipsis;
     color: var(--text-muted);
     font-weight: 400;
-  }
-  .subject .pct {
-    flex: none;
-    color: var(--text-muted);
-    font-size: 11.5px;
   }
   .subject .dot {
     flex-shrink: 0;

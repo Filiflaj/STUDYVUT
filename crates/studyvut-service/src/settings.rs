@@ -35,8 +35,11 @@ pub struct Settings {
     pub version: u32,
     pub theme: ThemePref,
     pub language: LanguagePref,
-    /// Answers a day the Dashboard counts towards.
-    pub daily_goal: u32,
+    /// The study programme (`programs.toml` id) whose subjects are shown;
+    /// None for every programme.
+    pub program: Option<String>,
+    /// The study year (ročník) whose subjects are shown; None for every year.
+    pub year: Option<u8>,
     /// Subjects left out of the sidebar and the Dashboard (not studied).
     pub hidden_subjects: Vec<String>,
     /// The app version whose "Co je nového" the user has seen; None on a
@@ -50,7 +53,8 @@ impl Default for Settings {
             version: SETTINGS_VERSION,
             theme: ThemePref::System,
             language: LanguagePref::Cs,
-            daily_goal: 20,
+            program: None,
+            year: None,
             hidden_subjects: Vec::new(),
             last_seen_version: None,
         }
@@ -68,7 +72,8 @@ impl Settings {
     /// Values within their ranges.
     pub fn validated(mut self) -> Self {
         self.version = SETTINGS_VERSION;
-        self.daily_goal = self.daily_goal.clamp(1, 500);
+        self.year = self.year.filter(|y| (1..=6).contains(y));
+        self.program = self.program.filter(|p| !p.is_empty());
         self.hidden_subjects.sort();
         self.hidden_subjects.dedup();
         self
@@ -148,7 +153,8 @@ fn lenient(v: &serde_json::Value) -> Settings {
     }
     field!(theme);
     field!(language);
-    field!(daily_goal);
+    field!(program);
+    field!(year);
     field!(hidden_subjects);
     field!(last_seen_version);
     s
@@ -181,7 +187,8 @@ mod tests {
         let s = Settings {
             theme: ThemePref::Dark,
             language: LanguagePref::En,
-            daily_goal: 35,
+            program: Some("met".into()),
+            year: Some(1),
             hidden_subjects: vec!["bpc-tde".into()],
             last_seen_version: Some("0.1.0".into()),
             ..Settings::default()
@@ -197,13 +204,13 @@ mod tests {
         let path = dir.path().join("settings.json");
         std::fs::write(
             &path,
-            r#"{"theme":"dark","daily_goal":"lots","language":"cs"}"#,
+            r#"{"theme":"dark","year":"first","language":"en","program":"met"}"#,
         )?;
         let (s, first) = Settings::load(&path);
         assert!(!first);
         assert_eq!(
-            (s.theme, s.language, s.daily_goal),
-            (ThemePref::Dark, LanguagePref::Cs, 20)
+            (s.theme, s.language, s.year, s.program.as_deref()),
+            (ThemePref::Dark, LanguagePref::En, None, Some("met"))
         );
         assert!(dir.path().join("settings.json.bad").exists());
 
@@ -215,12 +222,13 @@ mod tests {
     #[test]
     fn values_are_kept_in_range() {
         let s = Settings {
-            daily_goal: 0,
+            year: Some(9),
+            program: Some(String::new()),
             hidden_subjects: vec!["b".into(), "a".into(), "b".into()],
             ..Settings::default()
         };
         let v = s.validated();
-        assert_eq!(v.daily_goal, 1);
+        assert_eq!((v.year, v.program), (None, None));
         assert_eq!(v.hidden_subjects, vec!["a", "b"]);
     }
 }

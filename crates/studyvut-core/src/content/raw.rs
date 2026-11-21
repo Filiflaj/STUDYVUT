@@ -11,11 +11,29 @@ pub struct RawSubject {
     pub code: String,
     pub name: String,
     pub semester: String,
+    pub year: Option<u8>,
+    #[serde(default)]
+    pub programs: Vec<String>,
     #[serde(default)]
     pub color: Color,
     pub description: Option<String>,
     #[serde(default, rename = "set")]
     pub sets: Vec<RawSet>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct RawPrograms {
+    #[serde(default, rename = "program")]
+    pub programs: Vec<RawProgram>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct RawProgram {
+    pub id: String,
+    pub code: String,
+    pub name: String,
 }
 
 #[derive(Debug, Deserialize)]

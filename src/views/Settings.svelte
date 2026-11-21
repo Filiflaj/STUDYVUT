@@ -106,20 +106,6 @@
     </Section>
 
     <Section title={st.learning} description={st.subjectsHint}>
-      <Field label={st.dailyGoal} hint={st.dailyGoalHint}>
-        <input
-          class="input num"
-          type="number"
-          min="1"
-          max="500"
-          value={s.daily_goal}
-          onchange={(e) => {
-            const v = Math.round(Number(e.currentTarget.value));
-            if (v >= 1) live.save((x) => (x.daily_goal = v));
-          }}
-        />
-        <span class="muted">{st.answers}</span>
-      </Field>
       {#each live.subjects as subj (subj.id)}
         {@const shown = !s.hidden_subjects.includes(subj.id)}
         <Field label="{subj.code} · {subj.name}" hint={subj.semester}>

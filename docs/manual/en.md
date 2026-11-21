@@ -2,14 +2,10 @@
 
 ## Dashboard {#dashboard}
 
-What is going on today and where you stand:
+Pick your **programme** and **year** at the top: the Dashboard, the sidebar and the subject menus of Study and Quizzes then show only your subjects. The choice is remembered.
 
-- **Today**: your answers today out of the daily goal (set it in Settings → Learning).
-- **Right today**: how many of today's answers were right.
-- **Streak**: days in a row with at least one answer.
-- **Due for review**: questions the review plan brings back today. The button starts the subject with the most.
-- **Last 30 days**: answers per day. The stronger part of a bar were right; the dashed line is the daily goal. Hover for the numbers.
-- **Subjects**: the bar shows what you know (the subject's colour), your mistakes (red) and what is new (grey). "Known" means your latest answer to the question was right.
+- **N questions due for review today**, with a button per subject.
+- **Subject tiles**, grouped by term: how many chapters and questions a subject has, with **Study**, **Quizzes** and **Review**.
 
 ## Study {#study}
 
@@ -21,7 +17,7 @@ Under a chapter, **Practise this chapter** starts a quiz on its topics; the arro
 
 ## Quizzes {#quizzes}
 
-At the top are the subject's quiz sets with their size and your best score: the subject's own sets (such as old tests or a mock exam), one per topic, **My mistakes** and **Due for review**.
+At the top are the subject's quiz sets with their size: the subject's own sets (such as old tests or a mock exam), one per topic, **My mistakes** and **Due for review**.
 
 Click a set to start it. Answer with the mouse or the keys <kbd>a</kbd>–<kbd>h</kbd> (or <kbd>1</kbd>–<kbd>8</kbd>); <kbd>Enter</kbd> goes on. For numeric questions type the number (decimal comma or point) and press <kbd>Enter</kbd>; if only the sign is wrong, the app says so.
 
@@ -31,13 +27,9 @@ After each answer you see what was right, **why your answer is wrong**, the expl
 
 Every question you answer gets a plan: after a right answer it comes back after 1, then 2, 4, 8 and finally 16 days; a wrong answer starts it over at one day. Days follow your calendar, so a question from the evening is back the next morning.
 
-## Statistics {#statistics}
-
-Every question in a table: how often you answered it, how well, when last and when it is due. Filter by subject and state or search the text; **Practise** starts a quiz with the first 50 shown questions of one subject.
-
 ## Settings {#settings}
 
-Appearance and language (the study material is Czech either way), the daily goal and which subjects to show, where the content comes from and whether it is valid, your data folder, exporting every answer as JSON, resetting progress, the version and **What's new**.
+Appearance and language (the study material is Czech either way), which subjects to show, where the content comes from and whether it is valid, your data folder, exporting every answer as JSON, resetting progress, the version and **What's new**.
 
 ## Your data {#data}
 

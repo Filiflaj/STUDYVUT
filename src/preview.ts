@@ -2,7 +2,8 @@
 // (no Tauri). npm run dev, then open http://localhost:1420/preview.html
 // Query parameters: ?tab=overview|study|quiz|data|settings|manual
 //                   &theme=system|light|dark  &lang=system|cs|en
-//                   &fresh=1 (no answers yet: the welcome card)
+//                   &fresh=1 (first start: no programme or year chosen, the welcome card)
+//                   &program=met|  &year=1|2|3|0
 //                   &whatsnew=1 (the app was just updated: "Co je nového")
 //                   &problems=1 (the content has problems)
 // Study texts and figures are the real ones of content/bpc-fy1; the quiz
@@ -12,11 +13,9 @@ import { mockIPC } from "@tauri-apps/api/mocks";
 import { nav, type Tab } from "./lib/nav.svelte";
 import type {
   ChapterPayload,
-  DayActivity,
   LanguagePref,
   Overview,
   Question,
-  QuestionRow,
   Response,
   SessionPayload,
   SetSpec,
@@ -31,9 +30,6 @@ import type {
 
 const params = new URLSearchParams(location.search);
 const fresh = params.get("fresh") === "1";
-const DAY = 86_400_000;
-const tzMin = -new Date().getTimezoneOffset();
-const today = Math.floor((Date.now() + tzMin * 60_000) / DAY);
 
 const CHAPTERS = import.meta.glob<string>("../content/bpc-fy1/chapters/*.md", {
   query: "?raw",
@@ -116,22 +112,23 @@ function subject(
     code,
     name,
     semester: "ZS 2026/2027",
+    year: 1,
+    programs: ["met"],
     color,
     description: null,
     chapters: withContent ? chapters.map((c) => ({ id: c.id, title: c.title, topics: c.topics, questions: 4 })) : [],
     sets: withContent
       ? [
-          { spec: { kind: "custom", id: "old" }, kind: "custom", key: "custom:old", name: "Staré testy", description: "otázky z fotek a e-learningu", count: 41, best: fresh ? null : 78 },
-          { spec: { kind: "custom", id: "exam" }, kind: "custom", key: "custom:exam", name: "Test nanečisto", description: "15 náhodných otázek z obou témat", count: 15, best: null },
-          { spec: { kind: "quiz", id: "mechanika" }, kind: "quiz", key: "quiz:mechanika", name: "Mechanika", description: "vše z mechaniky, zamíchané", count: 42, best: fresh ? null : 64 },
-          { spec: { kind: "quiz", id: "elektrostatika" }, kind: "quiz", key: "quiz:elektrostatika", name: "Elektrostatika", description: "vše z elektrostatiky, zamíchané", count: 45, best: null },
-          { spec: { kind: "mistakes" }, kind: "mistakes", key: "mistakes", name: "", description: null, count: fresh ? 0 : 7, best: null },
-          { spec: { kind: "due" }, kind: "due", key: "due", name: "", description: null, count: fresh ? 0 : 5, best: null },
+          { spec: { kind: "custom", id: "old" }, kind: "custom", key: "custom:old", name: "Staré testy", description: "otázky z fotek a e-learningu", count: 41 },
+          { spec: { kind: "custom", id: "exam" }, kind: "custom", key: "custom:exam", name: "Test nanečisto", description: "15 náhodných otázek z obou témat", count: 15 },
+          { spec: { kind: "quiz", id: "mechanika" }, kind: "quiz", key: "quiz:mechanika", name: "Mechanika", description: "vše z mechaniky, zamíchané", count: 42 },
+          { spec: { kind: "quiz", id: "elektrostatika" }, kind: "quiz", key: "quiz:elektrostatika", name: "Elektrostatika", description: "vše z elektrostatiky, zamíchané", count: 45 },
+          { spec: { kind: "mistakes" }, kind: "mistakes", key: "mistakes", name: "", description: null, count: fresh ? 0 : 7 },
+          { spec: { kind: "due" }, kind: "due", key: "due", name: "", description: null, count: fresh ? 0 : 5 },
         ]
       : [],
-    progress: fresh || !withContent
-      ? { questions, seen: 0, correct: 0, wrong: 0, due: 0 }
-      : { questions, seen: 46, correct: 39, wrong: 7, due: 5 },
+    questions,
+    due: fresh || !withContent ? 0 : 5,
   };
 }
 
@@ -147,34 +144,18 @@ const subjects: SubjectView[] = [
   subject("bpc-tde", "BPC-TDE", "Technická dokumentace", "teal", false),
 ];
 
-const activity: DayActivity[] = Array.from({ length: 30 }, (_, i) => {
-  const day = today - 29 + i;
-  if (fresh || (i % 6 === 2 && i < 25)) return { day, answered: 0, correct: 0 };
-  const answered = Math.round(8 + 18 * Math.abs(Math.sin(i * 1.7)) + i * 0.4);
-  return { day, answered, correct: Math.round(answered * (0.55 + 0.35 * Math.abs(Math.cos(i)))) };
-});
-
 const overview = (): Overview => ({
+  programs: [{ id: "met", code: "BPC-MET", name: "Mikroelektronika a technologie" }],
   subjects,
   problems: params.get("problems") === "1" ? { errors: 1, warnings: 2 } : { errors: 0, warnings: 0 },
-  today,
-  answered_today: activity[29].answered,
-  correct_today: activity[29].correct,
-  streak: fresh ? 0 : 4,
-  recent: fresh
-    ? []
-    : [
-        { id: 3, subject: "bpc-fy1", set_key: "quiz:mechanika", started: Date.now() - 3_600_000, finished: Date.now() - 3_000_000, total: 42, correct: 27 },
-        { id: 2, subject: "bpc-fy1", set_key: "mistakes", started: Date.now() - DAY, finished: Date.now() - DAY + 600_000, total: 9, correct: 6 },
-        { id: 1, subject: "bpc-fy1", set_key: "custom:old", started: Date.now() - 2 * DAY, finished: Date.now() - 2 * DAY + 900_000, total: 41, correct: 32 },
-      ],
 });
 
 let settings: Settings = {
   version: 1,
   theme: (params.get("theme") as ThemePref) ?? "system",
   language: (params.get("lang") as LanguagePref) ?? "system",
-  daily_goal: 20,
+  program: params.get("program") ?? (fresh ? null : "met"),
+  year: params.has("year") ? Number(params.get("year")) || null : fresh ? null : 1,
   hidden_subjects: [],
   // ?whatsnew=1: seen an older version, so "Co je nového" opens (once there are releases).
   last_seen_version: params.get("whatsnew") === "1" ? "0.0.0" : "0.1.0",
@@ -227,7 +208,6 @@ mockIPC((cmd, args) => {
         id: ++session,
         subject: String(a.subject),
         key: spec.kind === "custom" || spec.kind === "quiz" ? `${spec.kind}:${spec.id}` : spec.kind === "questions" ? "retry" : spec.kind === "chapter" ? `chapter:${spec.id}` : spec.kind,
-        scored: spec.kind === "custom" || spec.kind === "quiz",
         questions,
         svgs: { "images/tri-kvadry.svg": svg("tri-kvadry.svg") },
       };
@@ -238,33 +218,7 @@ mockIPC((cmd, args) => {
       return q ? verdict(q, a.response as Response) : { correct: false, sign_only: false };
     }
     case "finish_session":
-      return {
-        session: { id: Number(a.session), subject: "bpc-fy1", set_key: "quiz:mechanika", started: Date.now() - 300_000, finished: Date.now(), total: 3, correct: 2 },
-        best: 67,
-        new_best: true,
-      };
-    case "get_activity":
-      return activity;
-    case "get_questions": {
-      const rows: QuestionRow[] = Array.from({ length: 40 }, (_, i) => {
-        const q = QUESTIONS[i % QUESTIONS.length];
-        const answered = fresh ? 0 : (i * 7) % 5;
-        return {
-          subject: "bpc-fy1",
-          id: `${q.id}-${i}`,
-          quiz: i % 2 ? "mechanika" : "elektrostatika",
-          topic: q.topic,
-          text: q.text,
-          answered,
-          correct: Math.max(0, answered - (i % 3 === 0 ? 1 : 0)),
-          last_correct: answered ? i % 3 !== 0 : null,
-          last_ts: answered ? Date.now() - i * 3_600_000 : null,
-          box: answered ? (i % 5) + 1 : null,
-          due_day: answered ? today + (i % 4) - 1 : null,
-        };
-      });
-      return rows;
-    }
+      return { id: Number(a.session), subject: "bpc-fy1", set_key: "quiz:mechanika", started: Date.now() - 300_000, finished: Date.now(), total: 3, correct: 2 };
     case "get_problems":
       return [
         { severity: "error", path: "bpc-fy1/quizzes/mechanika.toml", message: "question M3: answer 5 is out of range (options 0 to 4)" },

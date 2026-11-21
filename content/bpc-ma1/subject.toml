@@ -1,4 +1,6 @@
 code = "BPC-MA1"
 name = "Matematika 1"
 semester = "ZS 2026/2027"
+year = 1
+programs = ["met"]
 color = "violet"

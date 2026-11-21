@@ -1,24 +1,33 @@
 <script lang="ts">
-  import { api } from "../lib/api";
-  import ActivityChart from "../lib/components/ActivityChart.svelte";
   import Icon from "../lib/components/Icon.svelte";
-  import ProgressBar from "../lib/components/ProgressBar.svelte";
-  import { fmtDateTime, fmtToday, percent } from "../lib/format";
   import { fill, plural, t } from "../lib/i18n/index.svelte";
   import { live } from "../lib/live.svelte";
   import { nav } from "../lib/nav.svelte";
   import { subjectColor } from "../lib/palette";
-  import { setName } from "../lib/sets";
   import { theme } from "../lib/theme.svelte";
-  import type { DayActivity, SubjectView } from "../lib/types";
+  import type { SubjectView } from "../lib/types";
 
-  const o = $derived(live.overview);
-  const goal = $derived(live.settings?.daily_goal ?? 20);
+  /** Study years offered: a bachelor's three, and any other year the content uses. */
+  const years = $derived(
+    [...new Set([1, 2, 3, ...live.subjects.map((s) => s.year).filter((y): y is number => y !== null)])].sort(
+      (a, b) => a - b,
+    ),
+  );
+  const programs = $derived(live.overview?.programs ?? []);
   const dark = $derived(theme.effective === "dark");
-  const dueTotal = $derived(live.visibleSubjects.reduce((n, s) => n + s.progress.due, 0));
-  const accuracy = $derived(o ? percent(o.correct_today, o.answered_today) : null);
+  const due = $derived(live.visibleSubjects.filter((s) => s.due > 0));
+  const dueTotal = $derived(due.reduce((n, s) => n + s.due, 0));
+  const program = $derived(live.settings?.program ?? "");
+  const year = $derived(live.settings?.year ?? 0);
 
-  /** Subjects grouped by semester, in the backend's order. */
+  /** "ZS 2026/2027" → "Zimní semestr 2026/2027" (as the study system writes it). */
+  function semesterName(s: string): string {
+    const m = /^(ZS|LS)\s+(.+)$/i.exec(s.trim());
+    if (!m) return s;
+    return fill(m[1].toUpperCase() === "ZS" ? t().overview.winter : t().overview.summer, { years: m[2] });
+  }
+
+  /** The shown subjects grouped by semester, in the backend's order. */
   const semesters = $derived.by(() => {
     const groups: { semester: string; subjects: SubjectView[] }[] = [];
     for (const s of live.visibleSubjects) {
@@ -28,153 +37,134 @@
     }
     return groups;
   });
-
-  let activity = $state<DayActivity[]>([]);
-  $effect(() => {
-    void live.overview;
-    api.activity(30).then((a) => (activity = a), console.error);
-  });
-
-  /** The subject with the most questions due, for the tile's button. */
-  const mostDue = $derived([...live.visibleSubjects].sort((a, b) => b.progress.due - a.progress.due)[0]);
 </script>
 
 <div class="view">
   <div class="page-head">
     <h1>{t().overview.title}</h1>
-    <span class="muted today">{fmtToday()}</span>
+    <div class="filters">
+      <label class="filter">
+        <span>{t().overview.program}</span>
+        <select
+          class="select"
+          value={program}
+          onchange={(e) => {
+            const v = e.currentTarget.value || null;
+            live.save((s) => (s.program = v));
+          }}
+        >
+          <option value="">{t().overview.allPrograms}</option>
+          {#each programs as p (p.id)}
+            <option value={p.id}>{p.code.replace(/^BPC-/, "")} · {p.name}</option>
+          {/each}
+        </select>
+      </label>
+      <label class="filter">
+        <span>{t().overview.year}</span>
+        <select
+          class="select"
+          value={String(year)}
+          onchange={(e) => {
+            const v = Number(e.currentTarget.value) || null;
+            live.save((s) => (s.year = v));
+          }}
+        >
+          <option value="0">{t().overview.allYears}</option>
+          {#each years as y (y)}
+            <option value={String(y)}>{fill(t().overview.yearN, { n: y })}</option>
+          {/each}
+        </select>
+      </label>
+    </div>
   </div>
 
-  {#if o && o.recent.length === 0 && o.answered_today === 0}
+  {#if live.firstRun && !live.settings?.program && !live.settings?.year}
     <div class="card welcome">
       <h2>{t().overview.welcome}</h2>
       <p class="muted">{t().overview.welcomeText}</p>
     </div>
   {/if}
 
-  {#if o}
-    <div class="tiles">
-      <div class="card tile">
-        <div class="tile-head"><Icon name="target" size={14} /> {t().overview.today}</div>
-        <div class="big tabular">{o.answered_today}<span class="of">/ {goal}</span></div>
-        <div class="goal-bar" aria-hidden="true">
-          <div style:width="{Math.min(100, (o.answered_today / goal) * 100)}%"></div>
-        </div>
-        <div class="sub muted">
-          {o.answered_today >= goal ? t().overview.goalDone : fill(t().overview.goal, { n: o.answered_today, goal })}
-        </div>
-      </div>
-      <div class="card tile">
-        <div class="tile-head"><Icon name="check" size={14} /> {t().overview.accuracy}</div>
-        <div class="big tabular">{accuracy === null ? "–" : `${accuracy} %`}</div>
-        <div class="sub muted">
-          {accuracy === null ? t().overview.accuracyNone : `${o.correct_today} / ${o.answered_today}`}
-        </div>
-      </div>
-      <div class="card tile">
-        <div class="tile-head"><Icon name="flame" size={14} /> {t().overview.streak}</div>
-        <div class="big tabular">{plural(t().overview.streakDays, o.streak)}</div>
-        <div class="sub muted">{t().overview.streakHint}</div>
-      </div>
-      <div class="card tile">
-        <div class="tile-head"><Icon name="reset" size={14} /> {t().overview.due}</div>
-        <div class="big tabular">{dueTotal}</div>
-        {#if dueTotal > 0 && mostDue}
-          <button class="btn small" onclick={() => nav.quiz(mostDue.id, { kind: "due" })}>
-            <Icon name="play" size={12} />
-            {mostDue.code}: {plural(t().overview.review, mostDue.progress.due)}
+  {#if dueTotal > 0}
+    <div class="card due">
+      <Icon name="reset" size={15} />
+      <span class="due-text">{plural(t().overview.due, dueTotal)}</span>
+      <div class="due-actions">
+        {#each due as s (s.id)}
+          <button class="btn" onclick={() => nav.quiz(s.id, { kind: "due" })}>
+            <span class="dot" style:background={subjectColor(s.color, dark)}></span>
+            {s.code.replace(/^BPC-/, "")}: {s.due}
           </button>
-        {:else}
-          <div class="sub muted">{t().overview.dueHint}</div>
-        {/if}
+        {/each}
       </div>
     </div>
-
-    <section class="card chart-card">
-      <div class="card-head">
-        <h2>{t().overview.activity}</h2>
-        <span class="muted small">{t().overview.activityHint}</span>
-      </div>
-      <ActivityChart days={activity} {goal} />
-    </section>
-
-    {#if live.visibleSubjects.length === 0}
-      <div class="card empty">{t().overview.hiddenAll}</div>
-    {/if}
-
-    {#each semesters as g (g.semester)}
-      <section class="group">
-        <h2 class="group-title">{t().overview.subjects} · {g.semester}</h2>
-        <div class="subjects">
-          {#each g.subjects as s (s.id)}
-            {@const color = subjectColor(s.color, dark)}
-            {@const empty = s.chapters.length === 0 && s.progress.questions === 0}
-            <article class="card subject">
-              <header>
-                <span class="dot" style:background={color}></span>
-                <span class="code">{s.code}</span>
-                <span class="name">{s.name}</span>
-              </header>
-              {#if empty}
-                <p class="muted small">{t().overview.noContent}</p>
-                <p class="muted hint">{fill(t().overview.noContentHint, { id: s.id })}</p>
-              {:else}
-                <ProgressBar progress={s.progress} {color} />
-                <div class="stats muted small">
-                  {fill(t().progress.summary, {
-                    known: s.progress.correct,
-                    mistakes: s.progress.wrong,
-                    unseen: s.progress.questions - s.progress.correct - s.progress.wrong,
-                  })}
-                </div>
-                <div class="actions">
-                  {#if s.chapters.length}
-                    <button class="btn" onclick={() => nav.study(s.id)}><Icon name="book" size={13} /> {t().overview.study}</button>
-                  {/if}
-                  {#if s.progress.questions}
-                    <button class="btn" onclick={() => nav.quiz(s.id)}><Icon name="quiz" size={13} /> {t().overview.quizzes}</button>
-                  {/if}
-                  {#if s.progress.due > 0}
-                    <button class="btn primary" onclick={() => nav.quiz(s.id, { kind: "due" })}>
-                      {plural(t().overview.review, s.progress.due)}
-                    </button>
-                  {/if}
-                </div>
-              {/if}
-            </article>
-          {/each}
-        </div>
-      </section>
-    {/each}
-
-    <section class="card recent">
-      <div class="card-head"><h2>{t().overview.recent}</h2></div>
-      {#if o.recent.length === 0}
-        <p class="muted small pad">{t().overview.noRecent}</p>
-      {:else}
-        <ul>
-          {#each o.recent as r (r.id)}
-            {@const s = live.subject(r.subject)}
-            {@const pct = percent(r.correct, r.total)}
-            <li>
-              <span class="dot" style:background={subjectColor(s?.color, dark)}></span>
-              <span class="what">
-                <span class="set">{setName(s, r.set_key)}</span>
-                <span class="muted small">{s?.code ?? r.subject} · {fmtDateTime(r.started)}</span>
-              </span>
-              <span class="score tabular">{r.correct} / {r.total}</span>
-              <span class="pct tabular muted">{pct ?? 0} %</span>
-            </li>
-          {/each}
-        </ul>
-      {/if}
-    </section>
   {/if}
+
+  {#if live.visibleSubjects.length === 0}
+    <div class="card empty">
+      {live.subjects.length && (program || year) ? t().overview.noSubjects : t().overview.hiddenAll}
+    </div>
+  {/if}
+
+  {#each semesters as g (g.semester)}
+    <section class="group">
+      <h2 class="group-title">{semesterName(g.semester)}</h2>
+      <div class="subjects">
+        {#each g.subjects as s (s.id)}
+          {@const color = subjectColor(s.color, dark)}
+          {@const empty = s.chapters.length === 0 && s.questions === 0}
+          <article class="card subject" style:--c={color}>
+            <header>
+              <span class="dot"></span>
+              <span class="code">{s.code}</span>
+            </header>
+            <h3>{s.name}</h3>
+            {#if empty}
+              <p class="muted small">{t().overview.noContent}</p>
+              <p class="muted hint">{fill(t().overview.noContentHint, { id: s.id })}</p>
+            {:else}
+              <p class="muted small">
+                {plural(t().overview.chapters, s.chapters.length)} · {plural(t().overview.questions, s.questions)}
+              </p>
+              <div class="actions">
+                {#if s.chapters.length}
+                  <button class="btn" onclick={() => nav.study(s.id)}><Icon name="book" size={13} /> {t().overview.study}</button>
+                {/if}
+                {#if s.questions}
+                  <button class="btn" onclick={() => nav.quiz(s.id)}><Icon name="quiz" size={13} /> {t().overview.quizzes}</button>
+                {/if}
+                {#if s.due > 0}
+                  <button class="btn primary" onclick={() => nav.quiz(s.id, { kind: "due" })}>
+                    {plural(t().overview.review, s.due)}
+                  </button>
+                {/if}
+              </div>
+            {/if}
+          </article>
+        {/each}
+      </div>
+    </section>
+  {/each}
 </div>
 
 <style>
-  .today {
-    font-size: 13px;
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .filter .select {
+    max-width: 280px;
+    font-size: 13.5px;
+    color: var(--text);
   }
   .welcome {
     padding: 16px 18px;
@@ -186,76 +176,30 @@
   .welcome p {
     margin: 0;
   }
-  .tiles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-  }
-  .tile {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 14px 16px;
-    min-height: 118px;
-  }
-  .tile-head {
+  .due {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--text-2);
-  }
-  .tile-head :global(svg) {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding: 10px 14px;
+    background: var(--accent-weak);
+    border-color: transparent;
     color: var(--accent);
   }
-  .big {
-    font-size: 28px;
+  .due-text {
     font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
   }
-  .of {
-    margin-left: 4px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-muted);
-  }
-  .sub {
-    font-size: 12.5px;
-  }
-  .goal-bar {
-    height: 6px;
-    border-radius: 99px;
-    background: var(--grid);
-    overflow: hidden;
-  }
-  .goal-bar > div {
-    height: 100%;
-    border-radius: 99px;
-    background: var(--accent);
-  }
-  .btn.small {
-    align-self: flex-start;
-    height: 26px;
-    padding: 0 10px;
-    font-size: 12.5px;
-  }
-  .chart-card {
-    padding: 14px 16px;
-  }
-  .card-head {
+  .due-actions {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 8px;
+    gap: 6px;
+    margin-left: auto;
   }
-  .card-head h2,
-  .group-title {
+  .due-actions .btn {
+    height: 28px;
+    padding: 0 10px;
     font-size: 13px;
-    font-weight: 600;
-    color: var(--text-2);
+    color: var(--text);
   }
   .group {
     display: flex;
@@ -264,92 +208,63 @@
   }
   .group-title {
     padding: 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
   }
   .subjects {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 12px;
   }
   .subject {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     padding: 14px 16px;
+    border-top: 3px solid var(--c);
   }
   .subject header {
     display: flex;
     align-items: center;
     gap: 8px;
-    min-width: 0;
   }
   .dot {
     flex: none;
     width: 9px;
     height: 9px;
     border-radius: 50%;
+    background: var(--c);
   }
   .code {
+    font-size: 12px;
     font-weight: 600;
-  }
-  .name {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    letter-spacing: 0.04em;
     color: var(--text-2);
+  }
+  .subject h3 {
+    font-size: 15.5px;
+    font-weight: 600;
   }
   .subject p {
     margin: 0;
   }
-  .hint {
-    font-size: 12px;
-  }
   .small {
     font-size: 12.5px;
+  }
+  .hint {
+    font-size: 12px;
   }
   .actions {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: 2px;
+    margin-top: auto;
+    padding-top: 6px;
   }
   .actions .btn {
     height: 28px;
     padding: 0 10px;
     font-size: 13px;
-  }
-  .recent {
-    padding: 14px 16px 6px;
-  }
-  .recent ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .recent li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-top: 1px solid var(--border);
-  }
-  .recent .what {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .recent .set {
-    font-weight: 500;
-  }
-  .recent .score {
-    font-weight: 600;
-  }
-  .recent .pct {
-    width: 48px;
-    text-align: right;
-  }
-  .pad {
-    margin: 0 0 8px;
   }
 </style>

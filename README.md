@@ -26,9 +26,8 @@
   Číselné otázky s tolerancí. Na konci výsledek a zopakování chybných.
 - **Opakování s rozestupy**: co zkazíš, vrátí se zítra; co umíš, za 2, 4, 8
   a 16 dní. Sada **K opakování** a **Moje chyby** u každého předmětu.
-- **Nástěnka**: dnešní cíl, série dní, úspěšnost, graf za 30 dní a pokrok
-  v každém předmětu.
-- **Statistiky** všech otázek s filtrem a procvičením vybraných.
+- **Nástěnka** s výběrem oboru a ročníku: vidíš jen své předměty a co dnes
+  čeká na opakování.
 - Česky a anglicky, světlý i tmavý vzhled. Pokrok zůstává jen u tebe
   v počítači (SQLite) a jde exportovat.
 

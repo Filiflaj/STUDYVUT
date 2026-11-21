@@ -32,7 +32,7 @@
   }
 
   const result = $derived(quiz.result);
-  const pct = $derived(result ? (percent(result.session.correct, result.session.total) ?? 0) : 0);
+  const pct = $derived(result ? (percent(result.correct, result.total) ?? 0) : 0);
   const message = $derived(
     pct >= 90 ? t().quiz.msgGreat : pct >= 70 ? t().quiz.msgGood : pct >= 50 ? t().quiz.msgHalf : t().quiz.msgLow,
   );
@@ -80,7 +80,7 @@
 
   {#if !subject}
     <div class="card empty">{t().overview.hiddenAll}</div>
-  {:else if subject.progress.questions === 0}
+  {:else if subject.questions === 0}
     <div class="card empty">
       <p>{t().quiz.noQuizzes}</p>
       <p class="muted small">{fill(t().overview.noContentHint, { id: subject.id })}</p>
@@ -100,9 +100,6 @@
             <span class="desc">
               {plural(t().quiz.questions, set.count)}{#if setDescription(set)}&nbsp;· {setDescription(set)}{/if}
             </span>
-            {#if set.best !== null}
-              <span class="best tabular"><Icon name="trophy" size={11} /> {fill(t().quiz.best, { n: set.best })}</span>
-            {/if}
           </button>
         {/each}
       </div>
@@ -117,11 +114,8 @@
     {#if mine && result}
       <div class="card end">
         <div class="eyebrow">{setName(subject, quiz.payload?.key ?? "", quiz.name)} · {t().quiz.result}</div>
-        <div class="big tabular">{result.session.correct} / {result.session.total}</div>
+        <div class="big tabular">{result.correct} / {result.total}</div>
         <p>{pct} % · {message}</p>
-        {#if result.new_best}
-          <p class="new-best"><Icon name="trophy" size={14} /> {t().quiz.newBest}</p>
-        {/if}
         {#if missed.length}
           <h2>{t().quiz.missed}</h2>
           <ul class="missed">
@@ -212,13 +206,6 @@
     font-size: 12.5px;
     color: var(--text-muted);
   }
-  .set .best {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    color: var(--text-2);
-  }
   .empty p {
     margin: 0 0 4px;
   }
@@ -251,13 +238,6 @@
   }
   .end p {
     margin: 0;
-  }
-  .new-best {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--accent);
-    font-weight: 600;
   }
   .end h2 {
     margin-top: 8px;

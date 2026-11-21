@@ -2,14 +2,10 @@
 
 ## Nástěnka {#nastenka}
 
-Co se dnes děje a jak jsi na tom:
+Nahoře vyber svůj **obor** a **ročník**: nástěnka, postranní panel i výběr předmětu v Učivu a Kvízech pak ukazují jen předměty, které máš. Volba se pamatuje.
 
-- **Dnes**: kolik odpovědí máš za dnešek z denního cíle (cíl nastavíš v Nastavení → Učení).
-- **Dnes správně**: úspěšnost dnešních odpovědí.
-- **Série**: kolik dní v řadě jsi odpověděl aspoň na jednu otázku.
-- **K opakování**: otázky, které ti dnes vrací plán opakování. Tlačítko spustí ten předmět, kde jich je nejvíc.
-- **Posledních 30 dní**: odpovědi za den. Výraznější část sloupce byla správně, čárkovaná čára je denní cíl. Po najetí myší uvidíš přesná čísla.
-- **Předměty**: pruh pokroku ukazuje, co umíš (barva předmětu), kde máš chyby (červeně) a co je nové (šedě). „Umím“ znamená, že jsi na otázku naposledy odpověděl správně.
+- **Dnes čeká N otázek na opakování**: otázky, které ti dnes vrací plán opakování, s tlačítkem pro každý předmět.
+- **Dlaždice předmětů**, seskupené po semestrech: kolik kapitol a otázek předmět má a tlačítka **Učivo**, **Kvízy** a **Opakovat**.
 
 ## Učivo {#ucivo}
 
@@ -28,7 +24,7 @@ Pod kapitolou je **Procvičit kapitolu**: kvíz z otázek k témuž tématu. Ši
 
 ## Kvízy {#kvizy}
 
-Nahoře jsou sady otázek předmětu, u každé počet otázek a tvůj nejlepší výsledek:
+Nahoře jsou sady otázek předmětu, u každé počet otázek:
 
 - sady předmětu (např. **Staré testy**, **Test nanečisto**) a sada za každé téma;
 - **Moje chyby**: otázky, které jsi naposledy zkazil;
@@ -44,14 +40,10 @@ Kvíz počká, když mezitím otevřeš jinou stránku. **Ukončit kvíz** ho za
 
 Každá otázka, na kterou odpovíš, dostane plán: po správné odpovědi se vrátí za 1, pak 2, 4, 8 a nakonec 16 dní; po špatné začíná znovu od jednoho dne. Dny se počítají podle tvého kalendáře, takže otázka z večera je zpátky hned ráno. Co je na řadě, najdeš v sadě **K opakování** a na nástěnce.
 
-## Statistiky {#statistiky}
-
-Všechny otázky v tabulce: kolikrát jsi odpovídal, jak úspěšně, kdy naposledy a kdy přijde opakování. Filtruj podle předmětu, stavu (chyby, k opakování, nové, umím) nebo hledej v textu. **Procvičit** spustí kvíz z prvních 50 zobrazených otázek jednoho předmětu.
-
 ## Nastavení {#nastaveni}
 
 - **Obecné**: vzhled (podle systému, světlý, tmavý) a jazyk aplikace. Učivo je vždy česky.
-- **Učení**: denní cíl a které předměty se zobrazují (skryté zmizí z panelu i nástěnky, pokrok zůstává).
+- **Učení**: které předměty se zobrazují (skryté zmizí z panelu i nástěnky, pokrok zůstává).
 - **Obsah**: odkud aplikace učivo bere a jestli je v pořádku.
 - **Tvoje data**: složka s nastavením a pokrokem, export všech odpovědí do JSON a smazání pokroku (jednoho předmětu nebo všeho).
 - **O aplikaci** a **Co je nového**: verze a změny v každé verzi.

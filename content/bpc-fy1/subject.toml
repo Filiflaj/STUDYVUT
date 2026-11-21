@@ -1,6 +1,8 @@
 code = "BPC-FY1"
 name = "Fyzika 1"
 semester = "ZS 2026/2027"
+year = 1
+programs = ["met"]
 color = "blue"
 description = "Mechanika a elektrostatika: otázky ze starých testů, jejich nové varianty a učivo k testu."
 

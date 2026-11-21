@@ -19,7 +19,9 @@ STUDYVUT is a desktop study app (Tauri 2, Rust, Svelte 5) for the subjects of th
 - shows the study texts of every subject (Markdown with KaTeX formulas, SVG figures that follow the theme, callouts);
 - runs quizzes that behave like the original BFY1 trainer (`../FYZ/trenazer-bfy1.html`): one question at a time, instant feedback, why each wrong option is wrong, numeric answers with a tolerance, a result with the missed questions;
 - remembers every answer in SQLite and plans repetition (Leitner boxes: 1, 2, 4, 8, 16 days);
-- shows the progress on a Dashboard (today, streak, due questions, 30-day activity, per subject).
+- shows the subjects of the chosen programme (obor) and study year (ročník) on a Dashboard, with the questions due for review.
+
+There are **no success statistics** (no charts, scores, best results or streaks): the user removed them as useless on 2026-11-21. Progress is kept only where it drives learning: the latest answer per question (My mistakes) and its review schedule (Due for review). The result screen at the end of a quiz stays, as in the trainer.
 
 It is modelled on [hardwario/tower-bridge](https://github.com/hardwario/tower-bridge) (MIT): the same workspace layout, the same look (sidebar, cards, settings rows), the same conventions. When in doubt, do what TOWER Bridge does. The user chose this on 2026-11-21.
 
@@ -54,7 +56,7 @@ npm run build
 
 ### The browser preview
 
-`preview.html` runs the whole UI in a browser with a mocked backend (`src/preview.ts`). The study texts and figures are the real ones of `content/bpc-fy1`; questions and progress are made up. Query parameters select the situation: `?tab=overview|study|quiz|data|settings|manual`, `&subject=bpc-fy1`, `&theme=light|dark`, `&lang=cs|en`, `&fresh=1` (no answers yet), `&whatsnew=1`, `&problems=1`, and `&start=quiz:mechanika&answer=1` (a running quiz with its first question answered). Screenshots with headless Chrome:
+`preview.html` runs the whole UI in a browser with a mocked backend (`src/preview.ts`). The study texts and figures are the real ones of `content/bpc-fy1`; questions and progress are made up. Query parameters select the situation: `?tab=overview|study|quiz|settings|manual`, `&subject=bpc-fy1`, `&program=met`, `&year=1` (0 for all), `&theme=light|dark`, `&lang=cs|en`, `&fresh=1` (first start), `&whatsnew=1`, `&problems=1`, and `&start=quiz:mechanika&answer=1` (a running quiz with its first question answered). Screenshots with headless Chrome:
 
 ```sh
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
@@ -87,13 +89,14 @@ src-tauri/                  the desktop app (package "studyvut")
   window.rs, logging.rs, i18n.rs
 src/                        Svelte 5 frontend, no router
   App.svelte                shell: sidebar (logo, pages, theme and language, subjects, links), "Co je nového" once after an update
-  views/                    Overview (Dashboard), Study, Quizzes, Data (Statistics), Settings, Manual
+  views/                    Overview (Dashboard: programme and year, due questions, subject tiles), Study, Quizzes, Settings, Manual
   lib/live.svelte.ts        app state from the backend; settings saves
   lib/nav.svelte.ts         the open page, the chosen subject and chapter, quiz requests between pages
   lib/quiz.svelte.ts        the running quiz (kept while other pages are open)
   lib/markdown.ts           marked + KaTeX + callouts + inlined SVGs + heading ids
   lib/changelog.ts          CHANGELOG.md for "Co je nového"
   lib/i18n/                 UI texts in cs and en (the content is Czech either way)
+content/programs.toml       the study programmes; subjects carry `year` and `programs`
 content/<subject>/          the study material (docs/content.md)
 inbox/<subject>/            originals to process; git-ignored except README and .gitkeep
 docs/                       content.md, versioning.md, manual/

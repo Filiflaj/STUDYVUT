@@ -4,8 +4,12 @@ use std::collections::{BTreeMap, HashMap, HashSet};
 
 use super::files::Files;
 use super::markdown::{dollars_balanced, first_heading, image_refs, split_front_matter};
-use super::model::{Catalog, Chapter, Question, QuestionKind, Quiz, SetDef, SetRule, Subject};
-use super::raw::{RawFrontMatter, RawKind, RawLayout, RawQuestion, RawQuiz, RawSubject};
+use super::model::{
+    Catalog, Chapter, Program, Question, QuestionKind, Quiz, SetDef, SetRule, Subject,
+};
+use super::raw::{
+    RawFrontMatter, RawKind, RawLayout, RawPrograms, RawQuestion, RawQuiz, RawSubject,
+};
 use super::{Problem, Severity, is_image};
 
 const MAX_OPTIONS: usize = 8;
@@ -19,10 +23,11 @@ pub fn load(files: &dyn Files) -> (Catalog, Vec<Problem>) {
     for path in &paths {
         match path.split_once('/') {
             Some((subject, _)) => by_subject.entry(subject).or_default().push(path),
-            None if path.ends_with(".md") => {} // a README at the top
+            None if path.ends_with(".md") || path == PROGRAMS => {}
             None => problems.push(warning(path, "a file outside any subject folder")),
         }
     }
+    let programs = load_programs(files, &mut problems);
 
     let mut subjects = Vec::new();
     for (id, paths) in by_subject {
@@ -30,6 +35,7 @@ pub fn load(files: &dyn Files) -> (Catalog, Vec<Problem>) {
             files,
             subject: id,
             paths: paths.iter().copied().collect(),
+            programs: &programs,
             problems: &mut problems,
         };
         if let Some(s) = ctx.subject(&paths) {
@@ -41,7 +47,41 @@ pub fn load(files: &dyn Files) -> (Catalog, Vec<Problem>) {
             .cmp(&semester_key(&a.semester))
             .then_with(|| a.code.cmp(&b.code))
     });
-    (Catalog { subjects }, problems)
+    (Catalog { programs, subjects }, problems)
+}
+
+/// The study programmes, at the top of the content folder.
+const PROGRAMS: &str = "programs.toml";
+
+fn load_programs(files: &dyn Files, problems: &mut Vec<Problem>) -> Vec<Program> {
+    let Some(text) = files.read_string(PROGRAMS) else {
+        return Vec::new();
+    };
+    let raw: RawPrograms = match toml::from_str(&text) {
+        Ok(r) => r,
+        Err(e) => {
+            problems.push(error(PROGRAMS, toml_message(&e)));
+            return Vec::new();
+        }
+    };
+    let mut out: Vec<Program> = Vec::new();
+    for p in raw.programs {
+        if !valid_id(&p.id, &[]) || p.id.chars().any(|c| c.is_ascii_uppercase()) {
+            problems.push(error(
+                PROGRAMS,
+                format!("program {:?}: id must be [a-z0-9-]+", p.id),
+            ));
+        } else if out.iter().any(|o| o.id == p.id) {
+            problems.push(error(PROGRAMS, format!("program {:?}: duplicate id", p.id)));
+        } else {
+            out.push(Program {
+                id: p.id,
+                code: p.code,
+                name: p.name,
+            });
+        }
+    }
+    out
 }
 
 /// Newer semesters sort higher: "ZS 2026/2027" < "LS 2026/2027" < "ZS 2027/2028".
@@ -91,6 +131,7 @@ struct Ctx<'a> {
     files: &'a dyn Files,
     subject: &'a str,
     paths: HashSet<&'a str>,
+    programs: &'a [Program],
     problems: &'a mut Vec<Problem>,
 }
 
@@ -151,11 +192,27 @@ impl Ctx<'_> {
             }
         }
 
+        if let Some(year) = raw.year
+            && !(1..=6).contains(&year)
+        {
+            self.problems
+                .push(error(&toml_path, format!("year {year} is not 1 to 6")));
+        }
+        for p in &raw.programs {
+            if !self.programs.iter().any(|x| &x.id == p) {
+                self.problems.push(error(
+                    &toml_path,
+                    format!("program {p:?} is not in {PROGRAMS}"),
+                ));
+            }
+        }
         let mut subject = Subject {
             id: id.to_owned(),
             code: raw.code,
             name: raw.name,
             semester: raw.semester,
+            year: raw.year.filter(|y| (1..=6).contains(y)),
+            programs: raw.programs,
             color: raw.color,
             description: raw.description,
             chapters,
@@ -709,5 +766,43 @@ expalnation = "x"
             m,
             vec!["error: x/subject.toml: missing (every subject folder needs one)"]
         );
+    }
+    #[test]
+    fn programs_and_years() {
+        let programs = "[[program]]\nid = \"met\"\ncode = \"BPC-MET\"\nname = \"Mikroelektronika a technologie\"\n";
+        let s = |extra: &str| {
+            format!("code = \"X\"\nname = \"X\"\nsemester = \"ZS 2026/2027\"\n{extra}")
+        };
+        let files = MemFiles::new()
+            .with("programs.toml", programs)
+            .with("a/subject.toml", s("year = 1\nprograms = [\"met\"]"))
+            .with("b/subject.toml", s("year = 9\nprograms = [\"nope\"]"))
+            .with("c/subject.toml", s(""));
+        let (catalog, problems) = load(&files);
+        assert_eq!(catalog.programs.len(), 1);
+        assert_eq!(catalog.programs[0].code, "BPC-MET");
+        let a = catalog.subject("a").expect("a");
+        assert_eq!(
+            (a.year, a.programs.clone()),
+            (Some(1), vec!["met".to_owned()])
+        );
+        let b = catalog.subject("b").expect("b");
+        assert_eq!(b.year, None, "an invalid year is dropped");
+        let c = catalog.subject("c").expect("c");
+        assert!(
+            c.year.is_none() && c.programs.is_empty(),
+            "both are optional"
+        );
+        let m: Vec<String> = problems.iter().map(|p| p.to_string()).collect();
+        assert!(
+            m.iter().any(|x| x.contains("year 9 is not 1 to 6")),
+            "{m:?}"
+        );
+        assert!(
+            m.iter()
+                .any(|x| x.contains("program \"nope\" is not in programs.toml")),
+            "{m:?}"
+        );
+        assert_eq!(m.len(), 2, "{m:?}");
     }
 }
