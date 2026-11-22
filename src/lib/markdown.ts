@@ -36,6 +36,56 @@ function tex(text: string, display: boolean): string {
   return katex.renderToString(text, { displayMode: display, throwOnError: false, strict: "ignore" });
 }
 
+/**
+ * The parts of a display formula: it is cut at top-level `\qquad` and at a
+ * `\quad` after a comma or semicolon, which the content uses to set several
+ * results on one line (`Δ₁ = …, \qquad Δ₂ = …`). Nothing inside braces,
+ * environments or `\left…\right` is cut.
+ */
+export function displayParts(text: string): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let start = 0;
+  let i = 0;
+  const cut = (end: number, next: number) => {
+    parts.push(text.slice(start, end).trim());
+    start = next;
+  };
+  while (i < text.length) {
+    const c = text[i];
+    if (c === "{") depth++;
+    else if (c === "}") depth--;
+    else if (c === "\\") {
+      const word = /^\\([a-zA-Z]+)/.exec(text.slice(i))?.[1];
+      if (!word) {
+        i += 2; // \{ \, \\ and the like
+        continue;
+      }
+      if (word === "begin" || word === "left") depth++;
+      else if (word === "end" || word === "right") depth--;
+      else if (depth === 0 && (word === "qquad" || (word === "quad" && /[,;]\s*$/.test(text.slice(start, i))))) {
+        cut(i, i + 1 + word.length);
+      }
+      i += 1 + word.length;
+      continue;
+    }
+    i++;
+  }
+  cut(text.length, text.length);
+  return parts.filter(Boolean);
+}
+
+/**
+ * A display formula, in display style but set like inline math so that a long
+ * one wraps after `=` or `+` instead of running out of its box (the user found
+ * cut-off formulas, 2026-11-22); its parts (displayParts) sit side by side and
+ * go under each other when the column is narrow.
+ */
+function display(text: string): string {
+  const parts = displayParts(text).map((p) => tex(`\\displaystyle ${p}`, false));
+  return `<span class="katex-display math">${parts.join("")}</span>`;
+}
+
 const mathBlock: TokenizerAndRendererExtension = {
   name: "mathBlock",
   level: "block",
@@ -48,7 +98,7 @@ const mathBlock: TokenizerAndRendererExtension = {
     return undefined;
   },
   renderer(token) {
-    return tex(String(token.text), true) + "\n";
+    return display(String(token.text)) + "\n";
   },
 };
 
@@ -67,7 +117,8 @@ const mathInline: TokenizerAndRendererExtension = {
     return undefined;
   },
   renderer(token) {
-    return tex(String(token.text), Boolean(token.display));
+    const text = String(token.text);
+    return token.display ? display(text) : tex(text, false);
   },
 };
 

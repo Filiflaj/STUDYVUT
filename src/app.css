@@ -564,6 +564,18 @@ svg.fig {
   border-radius: var(--radius-sm);
   background: var(--surface-2);
 }
+/* A display formula (display() in markdown.ts): its parts side by side and
+   under each other when the column is narrow; a long part wraps after = or +. */
+.prose .katex-display.math {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 2em;
+}
+.prose .katex-display.math > .katex {
+  white-space: normal;
+}
 .prose .katex {
   font-size: 1.08em;
 }

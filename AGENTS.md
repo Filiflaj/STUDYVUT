@@ -184,6 +184,15 @@ One version, `X.Y.Z`, for the app and the study material; the policy is in
   `grep "{id:'"` also counts the study-text chapters.
 - 2026-11-21. Tauri's `window.confirm` is not reliable in every webview:
   confirmations are inline (Settings → Reset progress).
+- 2026-11-22. KaTeX display mode never wraps, and at the default window
+  size (Study column 600 px, 520 px in the smallest window) dozens of the
+  worked examples ran out of their box behind a scroll bar the user took
+  for a cut-off, wrong formula. `markdown.ts` therefore sets `$$…$$` as
+  inline math with `\displaystyle` (KaTeX breaks inline math after
+  relations and operators) and cuts it at top-level `\qquad` into parts
+  that wrap. To find overflowing formulas, render every chapter and quiz
+  text at those widths in headless Chrome and compare `scrollWidth` with
+  `clientWidth` of each `.katex-display`.
 - 2026-11-21. In Markdown, `$…$` must be tokenized before emphasis, or
   `$a_1 b_2$` turns into italics; `markdown.ts` registers math as marked
   extensions for that reason.

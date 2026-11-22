@@ -175,6 +175,11 @@ ids come from the text, or set one with `## Nadpis {#id}`.
 - **Math**: `$…$` inline, `$$…$$` on its own line (KaTeX). In TOML strings
   write a backslash twice (`\\frac`), or use literal strings `'''…'''`, where
   one is enough. Write a dollar sign that is no math as `\$`.
+  A `$$…$$` formula never runs out of its box: separate several results on
+  one line with `\qquad` (or `,\quad`), and the app puts them under each
+  other when the column is narrow; a long equation wraps after `=`, `+`
+  or `−`. No `\tag` (the app sets formulas in display style, not display
+  mode, which KaTeX needs for it).
 - **Images**: `![popis](images/x.svg "Titulek pod obrázkem")`. The path is
   relative to the subject folder. SVGs are inlined, so they follow the
   light and dark theme (see below); PNG, JPG and WebP are shown as they are.

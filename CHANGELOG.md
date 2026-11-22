@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Opravy
+
+- Dlouhé vzorce se už neuříznou na okraji. Výsledky na jednom řádku (třeba
+  Δ₁ a Δ₂ v BPC-ELS, metoda uzlových napětí) jdou v úzkém okně pod sebe
+  a dlouhá rovnice se zalomí za rovnítkem nebo znaménkem.
+
 ## 0.1.0 (2026-11-21)
 
 ### Materiály
