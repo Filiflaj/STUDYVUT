@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 (2026-11-24)
+
 ### Materiály
 
 - BPC-FY1: k písemce na zápočtovém cvičení nová kapitola **Vzorce k písemce
