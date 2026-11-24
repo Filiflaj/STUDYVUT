@@ -39,6 +39,12 @@ pick = [
 ]
 
 [[set]]
+id = "pisemka-mix"
+name = "Písemka nanečisto"
+description = "15 náhodných otázek ke všem šesti úlohám a zpracování měření"
+pick = [{ quiz = "pisemka", count = 15 }]
+
+[[set]]
 id = "prakt-pred"
 name = "Před prvním cvičením"
 description = "hodnocení praktika, laboratorní řád, zapojování a bezpečnost"

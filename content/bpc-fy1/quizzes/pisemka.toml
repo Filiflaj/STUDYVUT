@@ -1,0 +1,882 @@
+name = 'Písemka ze cvičení'
+description = 'k zápočtovému cvičení: teorie a jednoduché výpočty ze šesti úloh a zpracování měření'
+
+# Úloha 5: nakloněná rovina
+
+[[question]]
+id = 'PIS-05-01'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Protokol, úloha 5'
+text = '''
+Rychlost tělesa na úseku $i$ se počítá jako $v_i = \Delta s_i/\Delta t_i$. Proč se do grafu $v(t)$ vynáší k času $\tau_i = (t_{i-1} + t_i)/2$, tedy do středu doby průjezdu úsekem?
+'''
+options = [
+  'U rovnoměrně zrychleného pohybu se průměrná rychlost za časový interval rovná okamžité rychlosti v polovině tohoto intervalu.',
+  'Těleso projede každý úsek stálou rychlostí, takže na volbě času nezáleží.',
+  'Aby se vyrovnalo zpoždění, se kterým se spouští osciloskop.',
+  'Uprostřed úseku je těleso nejrychlejší.',
+]
+answer = 0
+explanation = '''
+$v_i$ je **průměrná** rychlost na úseku. Při rovnoměrně zrychleném pohybu roste rychlost s časem lineárně, $v = at + v_0$, a průměr lineární funkce přes interval je její hodnota uprostřed intervalu. Body $[\tau_i;\,v_i]$ proto leží na přímce a její směrnice je zrychlení $a$.
+'''
+notes = [
+  '',
+  'Těleso zrychluje, rychlost se během úseku mění. Právě proto záleží na tom, ke kterému času ji přiřadíme.',
+  'Osciloskop se spouští průchodem bránou 0, s volbou času $\tau_i$ to nesouvisí.',
+  'Zrychlující těleso je nejrychlejší na konci úseku, ne uprostřed.',
+]
+
+[[question]]
+id = 'PIS-05-02'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Protokol, úloha 5'
+text = '''
+Čím se v úloze 5 měří doby, za které těleso projede jednotlivé úseky mezi branami?
+'''
+options = [
+  'Optickými branami podél roviny: osciloskop se spustí průchodem bránou 0 a kontrolní počítač ukáže doby průjezdu.',
+  'Ručními stopkami, které měřící spouští a zastavuje.',
+  'Ultrazvukovým snímačem, který měří vzdálenost tělesa od konce roviny.',
+  'Videokamerou a rozborem snímků v počítači.',
+]
+answer = 0
+explanation = '''
+Podél roviny je deset optických bran 0 až 9. Těleso přerušením brány 0 spustí osciloskop a kontrolní počítač ukáže pro každou bránu čas od brány 0 i dobu průjezdu úsekem od předchozí brány (rozlišení $1\ \mu\mathrm{s}$). Délky úseků se změří ocelovým měřítkem.
+'''
+notes = [
+  '',
+  'Úsek trvá setiny sekundy, ruční stopky (chyba asi $0{,}3\ \mathrm{s}$) by byly mnohem nepřesnější než doby samotné.',
+  'Takový snímač v úloze není. Brány jsou pevné a jejich vzdálenosti se změří měřítkem.',
+  'Kamera se v úloze nepoužívá.',
+]
+
+[[question]]
+id = 'PIS-05-03'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Protokol, úloha 5'
+text = '''
+Jak se změní zrychlení tělesa $a = g(\sin\alpha - \mu\cos\alpha)$, když při stejné dvojici materiálů (stejném $\mu$) zvětšíte úhel sklonu roviny $\alpha$?
+'''
+options = [
+  'Zvětší se: $\sin\alpha$ roste a $\cos\alpha$ klesá, takže závorka roste.',
+  'Zmenší se, protože roste třecí síla.',
+  'Nezmění se, zrychlení závisí jen na materiálech.',
+  'Zvětší se přímo úměrně úhlu.',
+]
+answer = 0
+explanation = '''
+Se sklonem roste složka tíhy podél roviny $mg\sin\alpha$ a klesá normálová síla $N = mg\cos\alpha$, a s ní i třecí síla $F_\mathrm{t} = \mu N$. Obojí zrychlení zvětšuje. Například pro $\mu = 0{,}17$ vychází při $25^\circ$ asi $2{,}6\ \mathrm{m\,s^{-2}}$, při $35^\circ$ asi $4{,}3\ \mathrm{m\,s^{-2}}$.
+'''
+notes = [
+  '',
+  'Třecí síla $\mu mg\cos\alpha$ se s rostoucím úhlem naopak zmenšuje.',
+  'Na materiálech závisí $\mu$, zrychlení závisí i na úhlu.',
+  '$\sin\alpha$ a $\cos\alpha$ nejsou lineární funkce úhlu, přímá úměrnost neplatí.',
+]
+
+[[question]]
+id = 'PIS-05-04'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Protokol, úloha 5'
+text = '''
+Ze vztahu $v_i = \Delta s_i/\Delta t_i$ vypočtěte rychlost tělesa na 2. úseku. Délka úseku je $\Delta s_2 = 76{,}0\ \mathrm{mm}$, doba průjezdu $\Delta t_2 = 0{,}085913\ \mathrm{s}$.
+'''
+value = 0.885
+tolerance = 0.009
+unit = 'm/s'
+explanation = '''
+Délku převedeme na metry, $\Delta s_2 = 76{,}0\ \mathrm{mm} = 0{,}0760\ \mathrm{m}$:
+$$v_2 = \frac{\Delta s_2}{\Delta t_2} = \frac{0{,}0760\ \mathrm{m}}{0{,}085913\ \mathrm{s}} = 0{,}8846\ \mathrm{m\,s^{-1}} \doteq 0{,}885\ \mathrm{m\,s^{-1}}$$
+Je to průměrná rychlost na úseku, v grafu $v(t)$ patří k času $\tau_2$ uprostřed průjezdu.
+'''
+warning = 'Délku úseku dosaďte v metrech.'
+
+[[question]]
+id = 'PIS-05-05'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Protokol, úloha 5'
+text = '''
+Těleso projelo 1. úsek za $\Delta t_1 = 0{,}127313\ \mathrm{s}$ a 2. úsek za $\Delta t_2 = 0{,}085913\ \mathrm{s}$. Čas $t_i$ průchodu bránou $i$ se měří od brány 0, $t_i = \sum_{k=1}^{i}\Delta t_k$. Rychlost na 2. úseku patří k času $\tau_2 = (t_1 + t_2)/2$. Vypočtěte $\tau_2$.
+'''
+value = 0.1703
+tolerance = 0.001
+unit = 's'
+explanation = '''
+Časy průchodu branami 1 a 2:
+$$t_1 = \Delta t_1 = 0{,}127313\ \mathrm{s} \qquad t_2 = \Delta t_1 + \Delta t_2 = (0{,}127313 + 0{,}085913)\ \mathrm{s} = 0{,}213226\ \mathrm{s}$$
+Čas uprostřed průjezdu 2. úsekem:
+$$\tau_2 = \frac{t_1 + t_2}{2} = \frac{0{,}127313 + 0{,}213226}{2}\ \mathrm{s} = 0{,}170270\ \mathrm{s}$$
+'''
+
+[[question]]
+id = 'PIS-05-06'
+kind = 'numeric'
+topic = 'Úloha 5: nakloněná rovina'
+source = 'Protokol, úloha 5'
+text = '''
+Ze vztahu $\mu = \dfrac{\sin\alpha - a/g}{\cos\alpha}$ vypočtěte součinitel smykového tření pro ocel na oceli: $\alpha = 25{,}06^\circ$, naměřené zrychlení $a = 2{,}61\ \mathrm{m\,s^{-2}}$, $g = 9{,}81\ \mathrm{m\,s^{-2}}$.
+'''
+value = 0.174
+tolerance = 0.002
+explanation = '''
+$$\sin 25{,}06^\circ = 0{,}4236 \qquad \cos 25{,}06^\circ = 0{,}9059 \qquad \frac{a}{g} = \frac{2{,}61}{9{,}81} = 0{,}2661$$
+$$\mu = \frac{\sin\alpha - a/g}{\cos\alpha} = \frac{0{,}4236 - 0{,}2661}{0{,}9059} = \frac{0{,}1575}{0{,}9059} = 0{,}174$$
+Součinitel je bezrozměrný. Kontrola: $\mu < \operatorname{tg}25{,}06^\circ \doteq 0{,}47$, takže těleso po rovině opravdu klouže.
+'''
+warning = 'Kalkulačka musí počítat ve stupních (DEG).'
+
+# Úloha 10: reverzní kyvadlo
+
+[[question]]
+id = 'PIS-10-01'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Protokol, úloha 10'
+text = '''
+Proč se tíhové zrychlení v úloze 10 nepočítá přímo ze vztahu pro fyzické kyvadlo $T = 2\pi\sqrt{J/(mgd)}$?
+'''
+options = [
+  'Moment setrvačnosti $J$ ani vzdálenost osy od těžiště $d$ neznáme. Reverzní kyvadlo je obejde: stačí změřit redukovanou délku $\ell_\mathrm{r}$ a dobu kmitu.',
+  'Vztah pro fyzické kyvadlo platí jen pro velké rozkyvy.',
+  'Fyzické kyvadlo nemá stálou dobu kmitu.',
+  'Ve vztahu je hmotnost kyvadla a tu nejde změřit.',
+]
+answer = 0
+explanation = '''
+Fyzické kyvadlo kývá stejně jako matematické kyvadlo délky $\ell_\mathrm{r}$ (redukovaná délka). Když je závaží v poloze, kde jsou doby kmitu kolem obou břitů stejné, je vzdálenost břitů právě $\ell_\mathrm{r}$. Pak stačí vztah pro matematické kyvadlo:
+$$g = \frac{4\pi^2\ell_\mathrm{r}}{T^2}$$
+'''
+notes = [
+  '',
+  'Platí naopak pro malé rozkyvy, stejně jako vztah pro matematické kyvadlo.',
+  'Pro malé rozkyvy je doba kmitu fyzického kyvadla stálá.',
+  'Hmotnost by se zvážit dala. Problém je v $J$ a $d$, které změřit neumíme.',
+]
+
+[[question]]
+id = 'PIS-10-02'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Protokol, úloha 10'
+text = '''
+Proč se doba kmitu měří postupnou metodou (čas po každých 10 kmitech až do 90) a ne jako doba jediného kmitu?
+'''
+options = [
+  'Chyba odečtu času se rozdělí na 50 kmitů, takže doba jednoho kmitu je přesnější, a z pěti hodnot doby 50 kmitů jde spočítat průměr a náhodnou chybu.',
+  'Doba kmitu se s počtem kmitů mění a metoda ji zprůměruje.',
+  'Optický snímač dobu jednoho kmitu změřit neumí.',
+  'Doba 50 kmitů se pak už nemusí dělit, je to rovnou $T$.',
+]
+answer = 0
+explanation = '''
+Časy se zapíšou po 0, 10, …, 90 kmitech. Rozdíly $B - A$ (50 − 0, 60 − 10, …, 90 − 40) dají 5 hodnot doby 50 kmitů. Z nich se spočte průměr a chyba $\delta(50T)$, a pak
+$$T = \frac{\overline{50T}}{50} \qquad \delta(T) = \frac{\delta(50T)}{50}$$
+'''
+notes = [
+  '',
+  'Pro malé rozkyvy je doba kmitu stálá, o její změnu nejde.',
+  'Snímač dobu jednoho kmitu změří (tak se hledal průsečík), jde o přesnost.',
+  'Doba 50 kmitů se naopak musí vydělit 50.',
+]
+
+[[question]]
+id = 'PIS-10-03'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Protokol, úloha 10'
+text = '''
+Jak se změní doba kmitu matematického kyvadla $T = 2\pi\sqrt{\ell/g}$, když jeho délku čtyřikrát zvětšíte?
+'''
+options = ['Zdvojnásobí se.', 'Zčtyřnásobí se.', 'Zmenší se na polovinu.', 'Nezmění se.']
+answer = 0
+layout = 'grid'
+explanation = '''
+Doba kmitu je úměrná odmocnině z délky: $T \propto \sqrt{\ell}$. Čtyřnásobná délka dá $\sqrt4 = 2$, tedy dvojnásobnou dobu kmitu.
+'''
+notes = [
+  '',
+  'Doba kmitu roste s odmocninou délky, ne přímo úměrně.',
+  'Delší kyvadlo kývá pomaleji, doba kmitu roste.',
+  'Na hmotnosti doba kmitu nezávisí, na délce ano.',
+]
+
+[[question]]
+id = 'PIS-10-04'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Protokol, úloha 10'
+text = '''
+Postupná metoda, osa O1: čas po 10 kmitech je $19{,}719\ \mathrm{s}$, po 60 kmitech $118{,}265\ \mathrm{s}$. Rozdíl dává dobu 50 kmitů. Vypočtěte dobu jednoho kmitu $T = 50T/50$.
+'''
+value = 1.9709
+tolerance = 0.002
+unit = 's'
+explanation = '''
+$$50T = B - A = 118{,}265\ \mathrm{s} - 19{,}719\ \mathrm{s} = 98{,}546\ \mathrm{s}$$
+$$T = \frac{50T}{50} = \frac{98{,}546\ \mathrm{s}}{50} = 1{,}9709\ \mathrm{s}$$
+V protokolu se takto spočte všech pět rozdílů, ty se zprůměrují a 50 se dělí až průměr.
+'''
+
+[[question]]
+id = 'PIS-10-05'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Protokol, úloha 10'
+text = '''
+Průměrná doba 50 kmitů kolem osy O2 je $98{,}463\ \mathrm{s}$, redukovaná délka $\ell_\mathrm{r} = 97{,}01\ \mathrm{cm}$. Ze vztahu $g = 4\pi^2\ell_\mathrm{r}/T^2$ vypočtěte tíhové zrychlení.
+'''
+value = 9.876
+tolerance = 0.02
+unit = 'm/s²'
+explanation = '''
+Doba jednoho kmitu a délka v metrech:
+$$T = \frac{98{,}463\ \mathrm{s}}{50} = 1{,}96926\ \mathrm{s} \qquad \ell_\mathrm{r} = 97{,}01\ \mathrm{cm} = 0{,}9701\ \mathrm{m}$$
+$$g = \frac{4\pi^2\ell_\mathrm{r}}{T^2} = \frac{4\pi^2\cdot0{,}9701}{1{,}96926^2}\ \mathrm{m\,s^{-2}} = \frac{38{,}298}{3{,}8780}\ \mathrm{m\,s^{-2}} = 9{,}876\ \mathrm{m\,s^{-2}}$$
+'''
+warning = 'Do vztahu patří doba jednoho kmitu (ne 50) a délka v metrech.'
+
+[[question]]
+id = 'PIS-10-06'
+kind = 'numeric'
+topic = 'Úloha 10: reverzní kyvadlo'
+source = 'Protokol, úloha 10'
+text = '''
+Doba 50 kmitů vyšla $\overline{50T} = 98{,}53\ \mathrm{s}$ s chybou $\delta(50T) = 0{,}03\ \mathrm{s}$. Vypočtěte chybu doby jednoho kmitu $\delta(T) = \delta(50T)/50$ a z ní relativní chybu $\delta_\mathrm{r}(T) = \delta(T)/T\cdot100\ \%$ (před zaokrouhlením).
+'''
+value = 0.0304
+tolerance = 0.0005
+unit = '%'
+explanation = '''
+$$T = \frac{98{,}53\ \mathrm{s}}{50} = 1{,}9706\ \mathrm{s} \qquad \delta(T) = \frac{\delta(50T)}{50} = \frac{0{,}03\ \mathrm{s}}{50} = 0{,}0006\ \mathrm{s}$$
+$$\delta_\mathrm{r}(T) = \frac{\delta(T)}{T}\cdot100\ \% = \frac{0{,}0006}{1{,}9706}\cdot100\ \% = 0{,}0304\ \%$$
+Relativní chyba je stejná jako u doby 50 kmitů ($0{,}03/98{,}53$), dělení padesáti ji nemění. Zaokrouhleno nahoru: $0{,}04\ \%$.
+'''
+
+# Úloha 17: ručkové přístroje
+
+[[question]]
+id = 'PIS-17-01'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Protokol, úloha 17'
+text = '''
+Co je efektivní hodnota střídavého napětí $U_\mathrm{ef}$?
+'''
+options = [
+  'Stejnosměrné napětí, které na rezistoru vyvine za periodu stejné teplo jako dané střídavé napětí.',
+  'Stejnosměrné napětí, které za periodu přenese stejný náboj.',
+  'Největší hodnota napětí během periody.',
+  'Rozdíl největší a nejmenší hodnoty napětí.',
+]
+answer = 0
+explanation = '''
+$$U_\mathrm{ef} = \sqrt{\frac1T\int_0^T u^2(t)\,\mathrm{d}t}$$
+Pro harmonické napětí s amplitudou $U_\mathrm{M}$ je $U_\mathrm{ef} = U_\mathrm{M}/\sqrt2$.
+'''
+notes = [
+  '',
+  'To je střední hodnota $U_\mathrm{s}$.',
+  'To je amplituda $U_\mathrm{M}$.',
+  'To je rozkmit (špička–špička) $2U_\mathrm{M}$.',
+]
+
+[[question]]
+id = 'PIS-17-02'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Protokol, úloha 17'
+text = '''
+Proč se magnetoelektrickým voltmetrem V1 (bez usměrňovače) neměřilo harmonické, neusměrněné napětí?
+'''
+options = [
+  'Jeho výchylka je úměrná střední hodnotě napětí a ta je u harmonického napětí nulová, ručka by stála na nule.',
+  'Napětí 25 V je pro něj příliš velké.',
+  'Měří efektivní hodnotu a ta je u harmonického napětí nulová.',
+  'Má horší třídu přesnosti než ostatní voltmetry.',
+]
+answer = 0
+explanation = '''
+Magnetoelektrický voltmetr měří střední hodnotu $U_\mathrm{s} = \frac1T\int_0^T u(t)\,\mathrm{d}t$. Kladná a záporná půlvlna harmonického napětí se vyruší, $U_\mathrm{s} = 0$. Usměrněná napětí už nenulovou střední hodnotu mají, proto je V1 měřil.
+'''
+notes = [
+  '',
+  'Rozsah se dá zvolit, problém je v principu měření.',
+  'Efektivní hodnota harmonického napětí nulová není, je $U_\mathrm{M}/\sqrt2$. V1 měří střední hodnotu.',
+  'V1 má třídu přesnosti 0,5, stejně dobrou jako V3. O přesnost nejde.',
+]
+
+[[question]]
+id = 'PIS-17-03'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Protokol, úloha 17'
+text = '''
+Magnetoelektrický voltmetr s usměrňovačem (V2) napětí usměrní a měří jeho střední hodnotu, stupnici má ale cejchovanou v efektivní hodnotě harmonického napětí. Pro které průběhy ukazuje přímo efektivní hodnotu?
+'''
+options = [
+  'Pro harmonické a dvoucestně usměrněné napětí.',
+  'Pro všechny tři průběhy.',
+  'Jen pro jednocestně usměrněné napětí.',
+  'Pro žádný, vždy ukazuje střední hodnotu.',
+]
+answer = 0
+explanation = '''
+Stupnice je přepočtená činitelem tvaru harmonického průběhu $k_\mathrm{t} = U_\mathrm{ef}/U_\mathrm{s} = \pi/(2\sqrt2) \doteq 1{,}11$. Harmonické napětí po usměrnění v přístroji vypadá stejně jako dvoucestně usměrněné, pro oba je údaj správný. Jednocestně usměrněné napětí má jiný poměr $U_\mathrm{ef}/U_\mathrm{s} = \pi/2$, jeho údaj se musí přepočítat: $U_\mathrm{M} = 2\sqrt2\,U_\text{Měř}$.
+'''
+notes = [
+  '',
+  'U jednocestně usměrněného napětí je činitel tvaru jiný, údaj se musí přepočítat.',
+  'To je právě průběh, u kterého údaj neodpovídá. Zbylé dva jsou správně.',
+  'Díky cejchování činitelem 1,11 ukazuje u harmonického průběhu efektivní hodnotu.',
+]
+
+[[question]]
+id = 'PIS-17-04'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Protokol, úloha 17'
+text = '''
+Elektromagnetický voltmetr na rozsahu $U_\mathrm{R} = 26\ \mathrm{V}$ se stupnicí $\alpha_\mathrm{max} = 130$ dílků ukazuje u harmonického napětí výchylku $\alpha = 116$ dílků. Jeho údaj $U_\text{Měř} = \alpha\,U_\mathrm{R}/\alpha_\mathrm{max}$ je efektivní hodnota. Vypočtěte amplitudu $U_\mathrm{M} = \sqrt2\,U_\mathrm{ef}$.
+'''
+value = 32.81
+tolerance = 0.2
+unit = 'V'
+explanation = '''
+$$U_\text{Měř} = \alpha\,\frac{U_\mathrm{R}}{\alpha_\mathrm{max}} = 116\cdot\frac{26}{130}\ \mathrm{V} = 23{,}20\ \mathrm{V} = U_\mathrm{ef}$$
+$$U_\mathrm{M} = \sqrt2\,U_\mathrm{ef} = \sqrt2\cdot23{,}20\ \mathrm{V} = 32{,}81\ \mathrm{V}$$
+'''
+
+[[question]]
+id = 'PIS-17-05'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Protokol, úloha 17'
+text = '''
+Voltmetr s usměrňovačem třídy přesnosti $T_\mathrm{p} = 1{,}5$ měří na rozsahu $U_\mathrm{R} = 60\ \mathrm{V}$ efektivní hodnotu harmonického napětí. Mezní chyba údaje je $\delta(U_\text{Měř}) = \dfrac{T_\mathrm{p}}{100}\,U_\mathrm{R}$ a chyba amplitudy $\delta(U_\mathrm{M}) = \sqrt2\,\delta(U_\text{Měř})$. Vypočtěte $\delta(U_\mathrm{M})$.
+'''
+value = 1.27
+tolerance = 0.03
+unit = 'V'
+explanation = '''
+$$\delta(U_\text{Měř}) = \frac{T_\mathrm{p}}{100}\,U_\mathrm{R} = \frac{1{,}5}{100}\cdot60\ \mathrm{V} = 0{,}9\ \mathrm{V}$$
+$$\delta(U_\mathrm{M}) = \sqrt2\,\delta(U_\text{Měř}) = \sqrt2\cdot0{,}9\ \mathrm{V} = 1{,}27\ \mathrm{V}$$
+Chyba začíná jedničkou, zaokrouhlí se nahoru na dvě platné číslice: $1{,}3\ \mathrm{V}$.
+'''
+warning = 'Třída přesnosti se násobí rozsahem, ne naměřenou hodnotou.'
+
+[[question]]
+id = 'PIS-17-06'
+kind = 'numeric'
+topic = 'Úloha 17: ručkové přístroje'
+source = 'Protokol, úloha 17'
+text = '''
+Magnetoelektrický voltmetr (ukazuje střední hodnotu) měří jednocestně usměrněné napětí na rozsahu $U_\mathrm{R} = 12\ \mathrm{V}$ se stupnicí $\alpha_\mathrm{max} = 120$ dílků, výchylka je $\alpha = 116$ dílků. Ze vztahů $U_\text{Měř} = \alpha\,U_\mathrm{R}/\alpha_\mathrm{max}$ a $U_\mathrm{s} = U_\mathrm{M}/\pi$ vypočtěte amplitudu napětí.
+'''
+value = 36.44
+tolerance = 0.2
+unit = 'V'
+explanation = '''
+$$U_\mathrm{s} = U_\text{Měř} = \alpha\,\frac{U_\mathrm{R}}{\alpha_\mathrm{max}} = 116\cdot\frac{12}{120}\ \mathrm{V} = 11{,}60\ \mathrm{V}$$
+$$U_\mathrm{M} = \pi\,U_\mathrm{s} = \pi\cdot11{,}60\ \mathrm{V} = 36{,}44\ \mathrm{V}$$
+'''
+
+# Úloha 18: termistory a PT100
+
+[[question]]
+id = 'PIS-18-01'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Protokol, úloha 18'
+text = '''
+Podle čeho jste v úloze 18 poznali, který ze tří senzorů je NTC termistor, PTC termistor a platinový snímač PT100?
+'''
+options = [
+  'Podle průběhu naměřené závislosti: odpor NTC termistoru exponenciálně klesá, odpor PT100 roste téměř lineárně a je kolem 100 Ω, odpor PTC termistoru roste.',
+  'Podle barvy zdířky, ke které je senzor připojený.',
+  'Podle odporu při pokojové teplotě: největší odpor má vždy PT100.',
+  'Podle toho, jak rychle se senzor ohřeje na nastavenou teplotu.',
+]
+answer = 0
+explanation = '''
+Senzory jsou připojené ke zdířkám TS1 až TS3 a který je který, se určí až z naměřených závislostí $R(t)$. Klesající exponenciála je NTC termistor ($R = R_0\,\mathrm{e}^{B(1/T - 1/T_0)}$), přímka kolem 100 Ω je PT100 ($R = R_0[1 + \alpha_R(T - T_0)]$) a rostoucí, nelineární průběh je PTC termistor.
+'''
+notes = [
+  '',
+  'Barva zdířky jen označuje vývod, typ senzoru z ní nepoznáte.',
+  'PT100 má kolem 100 Ω, NTC termistor měl desítky kΩ. Podle jedné hodnoty typ neurčíte.',
+  'Rychlost ohřevu typ senzoru neurčuje, rozhoduje tvar závislosti $R(t)$.',
+]
+
+[[question]]
+id = 'PIS-18-02'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Protokol, úloha 18'
+text = '''
+Proč odpor polovodičového (NTC) termistoru s rostoucí teplotou klesá?
+'''
+options = [
+  'S teplotou rychle přibývá volných nosičů náboje (elektronů a děr) a to převáží nad častějšími srážkami s kmitající mřížkou.',
+  'Atomy mřížky s teplotou méně kmitají, takže se nosiče méně srážejí.',
+  'Počet volných nosičů se nemění, nosiče se jen zrychlí.',
+  'Termistor se zahřívá měřicím proudem a tím se zmenšuje.',
+]
+answer = 0
+explanation = '''
+V krystalu působí proti sobě dva vlivy: s teplotou roste počet volných nosičů (odpor klesá) a mřížka víc kmitá, takže nosiče se častěji srážejí (odpor roste). U polovodiče převládá nárůst počtu nosičů a odpor klesá exponenciálně. U kovu je volných elektronů dost už za nízké teploty, převládají srážky a odpor roste.
+'''
+notes = [
+  '',
+  'S teplotou atomy kmitají víc a srážek přibývá. To odpor zvyšuje.',
+  'Tak je to u kovů, a jejich odpor proto roste. U polovodiče rozhoduje nárůst počtu nosičů.',
+  'Ohřev měřicím proudem se zanedbává a změna rozměrů nehraje roli.',
+]
+
+[[question]]
+id = 'PIS-18-03'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Protokol, úloha 18'
+text = '''
+Co udává teplotní součinitel odporu $\alpha_R = \dfrac{1}{R}\dfrac{\mathrm{d}R}{\mathrm{d}T}$?
+'''
+options = [
+  'Poměrnou (relativní) změnu odporu při změně teploty o 1 K, jednotka $\mathrm{K^{-1}}$.',
+  'Změnu odporu v ohmech při změně teploty o 1 K, jednotka $\Omega\,\mathrm{K^{-1}}$.',
+  'Odpor senzoru při vztažné teplotě $T_0$.',
+  'Teplotu, při které odpor prudce vzroste.',
+]
+answer = 0
+explanation = '''
+Změna odporu se dělí odporem, $\alpha_R$ je proto relativní změna na kelvin. U PT100 vyšlo $\alpha_R \doteq 3{,}83\cdot10^{-3}\ \mathrm{K^{-1}}$: odpor roste asi o 0,4 % na kelvin. U NTC termistoru je $\alpha_\mathrm{NTC} = -B/T^2$ záporný a v absolutní hodnotě mnohem větší.
+'''
+notes = [
+  '',
+  'To je směrnice $\mathrm{d}R/\mathrm{d}T$ (u proložené přímky $a$). $\alpha_R$ je ještě vydělená odporem.',
+  'To je $R_0$ (u proložené přímky úsek $b$).',
+  'To je mezní teplota PTC termistoru.',
+]
+
+[[question]]
+id = 'PIS-18-04'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Protokol, úloha 18'
+text = '''
+Body závislosti odporu platinového snímače na $T - T_0$ jste proložili přímkou $R_3 = a(T - T_0) + b$ a vyšlo $a = 0{,}389\ \Omega\,\mathrm{K^{-1}}$, $b = 101{,}48\ \Omega$. Ze vztahu $\alpha_R = a/b$ vypočtěte teplotní součinitel odporu. Odpověď v jednotkách $10^{-3}\ \mathrm{K^{-1}}$.
+'''
+value = 3.833
+tolerance = 0.04
+unit = '·10⁻³ K⁻¹'
+explanation = '''
+Porovnáním přímky se vztahem $R = R_0[1 + \alpha_R(T - T_0)]$ je $b = R_0$ a $a = R_0\alpha_R$, proto
+$$\alpha_R = \frac{a}{b} = \frac{0{,}389\ \Omega\,\mathrm{K^{-1}}}{101{,}48\ \Omega} = 3{,}833\cdot10^{-3}\ \mathrm{K^{-1}}$$
+Ohmy se vykrátí, zůstane $\mathrm{K^{-1}}$.
+'''
+
+[[question]]
+id = 'PIS-18-05'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Protokol, úloha 18'
+text = '''
+Z přímky $R_3 = a(T - T_0) + b$ s $a = 0{,}389\ \Omega\,\mathrm{K^{-1}}$, $b = 101{,}48\ \Omega$ a vztažnou teplotou $T_0 = 278{,}15\ \mathrm{K}$ (5 °C) vypočtěte odpor platinového snímače při teplotě $t = 60\ {}^\circ\mathrm{C}$.
+'''
+value = 122.9
+tolerance = 0.3
+unit = 'Ω'
+explanation = '''
+$$T = (60 + 273{,}15)\ \mathrm{K} = 333{,}15\ \mathrm{K} \qquad T - T_0 = (333{,}15 - 278{,}15)\ \mathrm{K} = 55\ \mathrm{K}$$
+$$R_3 = a(T - T_0) + b = (0{,}389\cdot55 + 101{,}48)\ \Omega = (21{,}40 + 101{,}48)\ \Omega = 122{,}9\ \Omega$$
+Naměřeno bylo $123\ \Omega$. Rozdíl teplot je ve stupních i v kelvinech stejný: $60 - 5 = 55$.
+'''
+warning = 'Dosazuje se rozdíl od vztažné teploty, ne samotná teplota 60 °C.'
+
+[[question]]
+id = 'PIS-18-06'
+kind = 'numeric'
+topic = 'Úloha 18: termistory a PT100'
+source = 'Protokol, úloha 18'
+text = '''
+NTC termistor má energiovou konstantu $B = 2340\ \mathrm{K}$. Ze vztahu $\alpha_\mathrm{NTC} = -B/T^2$ vypočtěte jeho teplotní součinitel odporu při $t = 5\ {}^\circ\mathrm{C}$. Odpověď v jednotkách $10^{-2}\ \mathrm{K^{-1}}$.
+'''
+value = -3.02
+tolerance = 0.03
+unit = '·10⁻² K⁻¹'
+sign_hint = 'Teplotní součinitel NTC termistoru je záporný, odpor s teplotou klesá.'
+explanation = '''
+$$T = (5 + 273{,}15)\ \mathrm{K} = 278{,}15\ \mathrm{K}$$
+$$\alpha_\mathrm{NTC} = -\frac{B}{T^2} = -\frac{2340\ \mathrm{K}}{(278{,}15\ \mathrm{K})^2} = -\frac{2340}{77\,367}\ \mathrm{K^{-1}} = -3{,}02\cdot10^{-2}\ \mathrm{K^{-1}}$$
+V absolutní hodnotě je asi osmkrát větší než u platiny ($3{,}83\cdot10^{-3}\ \mathrm{K^{-1}}$).
+'''
+warning = 'Teplotu dosaďte v kelvinech.'
+
+# Úloha 21: elektromagnetická indukce
+
+[[question]]
+id = 'PIS-21-01'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Proč je indukované napětí při natočení indukční cívky o $\theta = 90^\circ$ (ideálně) nulové?
+'''
+options = [
+  'Normála závitů je kolmá na pole, magnetický tok $\Phi = BS\cos\theta$ cívkou je nulový a nemění se.',
+  'Při 90° se přeruší proud budicí cívkou.',
+  'Pole budicí cívky je při 90° nejslabší.',
+  'Indukční cívka je při 90° nejdál od budicí.',
+]
+answer = 0
+explanation = '''
+Indukované napětí vzniká změnou toku, $u_\mathrm{ind} = -N_\mathrm{i}\,\mathrm{d}\Phi/\mathrm{d}t$. Tok je úměrný $\cos\theta$, proto $U_\mathrm{ind}(\theta) = U_\mathrm{ind}(0)\cos\theta$ a při $90^\circ$ je nulové. V protokolu zbylo asi $8{,}5\ \mathrm{mV}$, nejspíš proto, že poloha $0^\circ$ neodpovídala přesně souhlasným osám cívek a pole nebylo homogenní.
+'''
+notes = [
+  '',
+  'Proud budicí cívkou na natočení indukční cívky nezávisí.',
+  'Pole budicí cívky se nemění, mění se jen tok závity indukční cívky.',
+  'Cívka se natáčí kolem svislé osy, vzdálenost středů zůstává stejná.',
+]
+
+[[question]]
+id = 'PIS-21-02'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Proč se při natočení $\theta > 90^\circ$ zapisuje indukované napětí se záporným znaménkem?
+'''
+options = [
+  'Tok indukční cívkou má opačný směr a napětí opačnou polaritu. Osciloskop ukazuje jen velikost amplitudy, znaménko se doplní ručně.',
+  'Aby body v grafu vyšly na přímce, fyzikální důvod to nemá.',
+  'Při $\theta > 90^\circ$ se obrátí směr proudu v budicí cívce.',
+  'Napětí je pro $\theta > 90^\circ$ menší než pro $\theta < 90^\circ$.',
+]
+answer = 0
+explanation = '''
+Pro $\theta > 90^\circ$ je $\cos\theta < 0$, takže $U_\mathrm{ind}(\theta) = U_\mathrm{ind}(0)\cos\theta$ je záporné. Graf normovaného napětí $y_\theta = U_\mathrm{ind}(\theta)/U_\mathrm{ind}(0)$ proti $x = \cos\theta$ je pak přímka $y_\theta = x$ od $-1$ do $1$.
+'''
+notes = [
+  '',
+  'Důvod je fyzikální: $\cos\theta$ je pro $\theta > 90^\circ$ záporný a napětí má opačnou polaritu.',
+  'Budicí proud se nemění, obrací se orientace indukční cívky vůči poli.',
+  'Pro $\theta$ a $180^\circ - \theta$ je velikost napětí přibližně stejná, mění se znaménko.',
+]
+
+[[question]]
+id = 'PIS-21-03'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Jak se mění vzájemná indukčnost $M$ a koeficient spřažení $k$, když cívky od sebe vzdalujete?
+'''
+options = [
+  'Obě klesají: při zasunutých cívkách je $k$ řádu desetin, ve vzdálenosti přes 200 mm řádu $10^{-3}$.',
+  'Obě rostou, protože pole prochází větší plochou.',
+  '$M$ klesá, ale $k$ zůstává stejné, protože je bezrozměrné.',
+  'Nemění se, závisí jen na počtu závitů.',
+]
+answer = 0
+explanation = '''
+Se vzdáleností klesá tok, kterým pole budicí cívky prochází indukční cívkou, a tedy i $M$. Koeficient $k = M/\sqrt{\tilde L_\mathrm{b}\tilde L_\mathrm{i}}$ je s $M$ úměrný, protože vlastní indukčnosti se nemění. V protokolu: $M \doteq 0{,}9\ \mathrm{mH}$ a $k \doteq 0{,}26$ při $d = 0$, $M \doteq 8{,}5\ \mu\mathrm{H}$ a $k \doteq 2{,}5\cdot10^{-3}$ při $d = 220\ \mathrm{mm}$.
+'''
+notes = [
+  '',
+  'Vzdálením cívek tok indukční cívkou klesá.',
+  '$k$ je úměrný $M$, vlastní indukčnosti ve jmenovateli se nemění.',
+  'Na počtu závitů $M$ závisí, ale i na vzájemné poloze cívek.',
+]
+
+[[question]]
+id = 'PIS-21-04'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Proč se exponent $n$ v závislosti $U_\mathrm{ind} \sim d^{\,n}$ určuje proložením jen bodů s velkou vzdáleností cívek (v protokolu $d \ge 120\ \mathrm{mm}$)?
+'''
+options = [
+  'Závislost $U_\mathrm{ind} \propto d^{-3}$ plyne z dipólového přiblížení, které platí jen daleko od budicí cívky. Blízko se cívky překrývají a body v logaritmickém grafu na přímce neleží.',
+  'Pro malé $d$ je napětí příliš malé a osciloskop ho neodečte.',
+  'Blízké body mají větší chybu odečtu vzdálenosti.',
+  'Pro malé $d$ nejde spočítat logaritmus.',
+]
+answer = 0
+explanation = '''
+Daleko od budicí cívky má její pole na ose tvar pole magnetického dipólu, $B_z \propto 1/d^3$. V grafu $\ln y_d$ proti $\ln d$ je to přímka se směrnicí $n$. Cívky se překrývají, dokud je $d < (\ell_\mathrm{b} + \ell_\mathrm{i})/2 \doteq 102\ \mathrm{mm}$, a tam dipólové přiblížení neplatí.
+'''
+notes = [
+  '',
+  'Naopak, pro malé $d$ je napětí největší.',
+  'Chyba odečtu vzdálenosti je u všech bodů stejná (1 mm). Důvod je fyzikální.',
+  'Logaritmus nejde jen pro $d = 0$. Ostatní blízké body se vyřazují kvůli neplatnosti dipólového přiblížení.',
+]
+
+[[question]]
+id = 'PIS-21-05'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Vzájemná indukčnost zasunutých cívek vyšla $M = 0{,}9\ \mathrm{mH}$. Vlastní indukčnosti cívek jsou $\tilde L_\mathrm{b} = 2{,}04\ \mathrm{mH}$ a $\tilde L_\mathrm{i} = 5{,}74\ \mathrm{mH}$. Ze vztahu $k = M/\sqrt{\tilde L_\mathrm{b}\tilde L_\mathrm{i}}$ vypočtěte koeficient spřažení.
+'''
+value = 0.263
+tolerance = 0.003
+explanation = '''
+$$\sqrt{\tilde L_\mathrm{b}\tilde L_\mathrm{i}} = \sqrt{2{,}04\cdot5{,}74}\ \mathrm{mH} = \sqrt{11{,}710}\ \mathrm{mH} = 3{,}422\ \mathrm{mH}$$
+$$k = \frac{M}{\sqrt{\tilde L_\mathrm{b}\tilde L_\mathrm{i}}} = \frac{0{,}9\ \mathrm{mH}}{3{,}422\ \mathrm{mH}} = 0{,}263$$
+Koeficient je bezrozměrný a leží mezi 0 a 1.
+'''
+
+[[question]]
+id = 'PIS-21-06'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Budicí cívka má odpor vinutí $R = 28{,}9\ \Omega$ a indukčnost $L = 2{,}04\ \mathrm{mH}$. Ze vztahu $f_0 = R/(2\pi L)$ vypočtěte charakteristickou frekvenci, kolem které se fázový posun mezi budicím a indukovaným napětím nejvíc mění.
+'''
+value = 2255
+tolerance = 25
+unit = 'Hz'
+explanation = '''
+$$f_0 = \frac{R}{2\pi L} = \frac{28{,}9\ \Omega}{2\pi\cdot2{,}04\cdot10^{-3}\ \mathrm{H}} = \frac{28{,}9}{0{,}012818}\ \mathrm{Hz} = 2255\ \mathrm{Hz}$$
+Při $f_0$ je $\omega L = R$ a posun se od $90^\circ$ odchýlí právě o $45^\circ$. V protokolu vyšla odchylka $45^\circ$ asi při $1{,}8\ \mathrm{kHz}$.
+'''
+warning = 'Indukčnost dosaďte v henry.'
+
+[[question]]
+id = 'PIS-21-07'
+kind = 'numeric'
+topic = 'Úloha 21: elektromagnetická indukce'
+source = 'Protokol, úloha 21'
+text = '''
+Při $f = 5000\ \mathrm{Hz}$ je efektivní napětí na budicí cívce $U_\mathrm{b,ef} = 10{,}26\ \mathrm{V}$ a amplituda proudu $I_\mathrm{b} = 127\ \mathrm{mA}$. Ze vztahů $I_\mathrm{b,ef} = I_\mathrm{b}/\sqrt2$ a $|Z| = U_\mathrm{b,ef}/I_\mathrm{b,ef}$ vypočtěte velikost impedance budicí cívky.
+'''
+value = 114.3
+tolerance = 1.1
+unit = 'Ω'
+explanation = '''
+$$I_\mathrm{b,ef} = \frac{I_\mathrm{b}}{\sqrt2} = \frac{127\ \mathrm{mA}}{\sqrt2} = 89{,}80\ \mathrm{mA} = 0{,}08980\ \mathrm{A}$$
+$$|Z| = \frac{U_\mathrm{b,ef}}{I_\mathrm{b,ef}} = \frac{10{,}26\ \mathrm{V}}{0{,}08980\ \mathrm{A}} = 114{,}3\ \Omega$$
+Napětí i proud musí být oba efektivní (nebo oba amplitudy).
+'''
+
+# Úloha 25: měrný náboj elektronu
+
+[[question]]
+id = 'PIS-25-01'
+topic = 'Úloha 25: měrný náboj elektronu'
+source = 'Protokol, úloha 25'
+text = '''
+Co je kritická magnetická indukce $B_0$ v magnetronu?
+'''
+options = [
+  'Indukce, při které se dráha elektronu anody jen dotkne. Při větší indukci se elektrony k anodě nedostanou a anodový proud klesne.',
+  'Indukce, při které elektrony začnou vyletovat z katody.',
+  'Největší indukce, kterou cívka vydrží bez přehřátí.',
+  'Indukce, při které magnetická síla zrychlí elektrony na největší rychlost.',
+]
+answer = 0
+explanation = '''
+Magnetické pole cívky zakřivuje dráhy elektronů letících od katody k anodě. Při $B_0$ se dráha anody právě dotkne. Z kritické indukce se počítá měrný náboj:
+$$\frac{e}{m} = \frac{8U_\mathrm{A}R_\mathrm{a}^2}{(R_\mathrm{a}^2 - R_\mathrm{k}^2)^2B_0^2}$$
+'''
+notes = [
+  '',
+  'Elektrony vyletují ze žhavené katody i bez magnetického pole.',
+  'S tepelným zatížením cívky $B_0$ nesouvisí.',
+  'Magnetická síla je kolmá na rychlost, její velikost nemění.',
+]
+
+[[question]]
+id = 'PIS-25-02'
+topic = 'Úloha 25: měrný náboj elektronu'
+source = 'Protokol, úloha 25'
+text = '''
+Jak se změní kritický proud cívkou $I_0$, když zvýšíte anodové napětí $U_\mathrm{A}$?
+'''
+options = [
+  'Zvětší se: rychlejší elektrony potřebují k zakřivení dráhy silnější pole ($B_0^2$ je úměrné $U_\mathrm{A}$).',
+  'Zmenší se, protože elektrony mají větší energii.',
+  'Nezmění se, závisí jen na rozměrech elektronky.',
+  'Zvětší se přímo úměrně napětí.',
+]
+answer = 0
+explanation = '''
+Ze vztahu pro měrný náboj plyne $B_0^2 = \dfrac{8U_\mathrm{A}R_\mathrm{a}^2}{(R_\mathrm{a}^2 - R_\mathrm{k}^2)^2\,(e/m)}$, tedy $B_0 \propto \sqrt{U_\mathrm{A}}$, a $I_0 = B_0/K$ roste s napětím. V protokolu vyšlo $I_0 \doteq 290$, $301$ a $322\ \mathrm{mA}$ pro $8$, $10$ a $12\ \mathrm{V}$.
+'''
+notes = [
+  '',
+  'Větší energie znamená větší rychlost a větší poloměr dráhy. K zakřivení je potřeba silnější pole.',
+  'Z rovnice pro $e/m$ plyne $B_0 \propto \sqrt{U_\mathrm{A}}$, závisí tedy i na napětí.',
+  '$B_0$, a tedy i $I_0$, roste s odmocninou napětí, ne přímo úměrně.',
+]
+
+[[question]]
+id = 'PIS-25-03'
+topic = 'Úloha 25: měrný náboj elektronu'
+source = 'Protokol, úloha 25'
+text = '''
+Jak se v úloze 25 určila konstanta cívky $K$ ve vztahu $B = K I_\mathrm{C}$?
+'''
+options = [
+  'Magnetometrem se změřila indukce uprostřed cívky pro řadu proudů a body se proložily přímkou procházející počátkem. Její směrnice je $K$.',
+  'Z anodového proudu při kritickém proudu cívkou.',
+  'Jen ze štítkových údajů cívky dosazením do $\mu_0 N/L$.',
+  'Jako podíl anodového napětí a proudu cívkou.',
+]
+answer = 0
+explanation = '''
+Body $[I_\mathrm{C};\,B]$ se proloží přímkou $B = K I_\mathrm{C}$ metodou nejmenších čtverců, $K = \sum I_iB_i/\sum I_i^2$. V protokolu vyšlo $K = (15{,}55 \pm 0{,}03)\ \mathrm{mT\,A^{-1}}$. Hodnota ze štítku, $\mu_0N/L \doteq 15{,}22\ \mathrm{mT\,A^{-1}}$, sloužila jen pro kontrolu.
+'''
+notes = [
+  '',
+  'Anodový proud slouží k určení kritického proudu $I_0$, ne konstanty $K$.',
+  'Štítkové údaje sloužily jen pro kontrolu, počítá se s naměřenou konstantou.',
+  '$U_\mathrm{A}/I_\mathrm{C}$ má jednotku ohm a s polem cívky nesouvisí.',
+]
+
+[[question]]
+id = 'PIS-25-04'
+kind = 'numeric'
+topic = 'Úloha 25: měrný náboj elektronu'
+source = 'Protokol, úloha 25'
+text = '''
+Konstanta cívky je $K = 15{,}55\ \mathrm{mT\,A^{-1}}$ a kritický proud cívkou při $U_\mathrm{A} = 10\ \mathrm{V}$ vyšel $I_0 = 301\ \mathrm{mA}$. Ze vztahu $B_0 = K I_0$ vypočtěte kritickou magnetickou indukci.
+'''
+value = 4.681
+tolerance = 0.05
+unit = 'mT'
+explanation = '''
+Proud převedeme na ampéry, $I_0 = 301\ \mathrm{mA} = 0{,}301\ \mathrm{A}$:
+$$B_0 = K I_0 = 15{,}55\ \mathrm{mT\,A^{-1}}\cdot0{,}301\ \mathrm{A} = 4{,}681\ \mathrm{mT}$$
+'''
+
+[[question]]
+id = 'PIS-25-05'
+kind = 'numeric'
+topic = 'Úloha 25: měrný náboj elektronu'
+source = 'Protokol, úloha 25'
+text = '''
+Ze vztahu $\dfrac{e}{m} = \dfrac{G\,U_\mathrm{A}}{B_0^2}$, kde $G = \dfrac{8R_\mathrm{a}^2}{(R_\mathrm{a}^2 - R_\mathrm{k}^2)^2} = 7{,}8125\cdot10^{5}\ \mathrm{m^{-2}}$ je geometrický činitel elektronky, vypočtěte měrný náboj elektronu pro $U_\mathrm{A} = 10{,}000\ \mathrm{V}$ a $B_0 = 4{,}68\ \mathrm{mT}$. Odpověď v jednotkách $10^{11}\ \mathrm{C\,kg^{-1}}$.
+'''
+value = 3.567
+tolerance = 0.04
+unit = '·10¹¹ C/kg'
+explanation = '''
+Indukci převedeme na tesly, $B_0 = 4{,}68\cdot10^{-3}\ \mathrm{T}$:
+$$B_0^2 = (4{,}68\cdot10^{-3}\ \mathrm{T})^2 = 2{,}190\cdot10^{-5}\ \mathrm{T^2}$$
+$$\frac{e}{m} = \frac{G\,U_\mathrm{A}}{B_0^2} = \frac{7{,}8125\cdot10^{5}\cdot10{,}000}{2{,}190\cdot10^{-5}}\ \mathrm{C\,kg^{-1}} = 3{,}567\cdot10^{11}\ \mathrm{C\,kg^{-1}}$$
+Je to asi dvakrát víc než tabulková hodnota $1{,}76\cdot10^{11}\ \mathrm{C\,kg^{-1}}$. Rozdíl je větší než $3\delta$, jde tedy nejspíš o soustavnou chybu.
+'''
+warning = 'Indukci dosaďte v teslách, ne v militeslách.'
+
+[[question]]
+id = 'PIS-25-06'
+kind = 'numeric'
+topic = 'Úloha 25: měrný náboj elektronu'
+source = 'Protokol, úloha 25'
+text = '''
+Relativní chyba kritické indukce je $\delta_\mathrm{r}(B_0) = 1{,}92\ \%$ a relativní chyba měřidla anodového napětí $u_\mathrm{r}(U_\mathrm{A}) = 0{,}01\ \%$. Pro $e/m = G\,U_\mathrm{A}/B_0^2$ platí podle zákona šíření chyb $\delta_\mathrm{r}(e/m) = u_\mathrm{r}(U_\mathrm{A}) + 2\,\delta_\mathrm{r}(B_0)$. Vypočtěte $\delta_\mathrm{r}(e/m)$ (před zaokrouhlením).
+'''
+value = 3.85
+tolerance = 0.04
+unit = '%'
+explanation = '''
+$$\delta_\mathrm{r}(e/m) = u_\mathrm{r}(U_\mathrm{A}) + 2\,\delta_\mathrm{r}(B_0) = 0{,}01\ \% + 2\cdot1{,}92\ \% = 3{,}85\ \%$$
+$B_0$ je ve vztahu na druhou, proto se jeho relativní chyba počítá dvakrát. $U_\mathrm{A}$ je v první mocnině. Zaokrouhleno nahoru: $4\ \%$.
+'''
+
+# Zpracování měření
+
+[[question]]
+id = 'PIS-ZM-01'
+topic = 'Zpracování měření'
+source = 'Protokoly, zpracování měření'
+text = '''
+Tíhové zrychlení vyšlo $g = 9{,}8623\ \mathrm{m\,s^{-2}}$ s chybou $\delta(g) = 0{,}0121\ \mathrm{m\,s^{-2}}$ ($P = 95\ \%$). Jak správně zapíšete výsledek?
+'''
+options = [
+  '$g = (9{,}862 \pm 0{,}013)\ \mathrm{m\,s^{-2}}$',
+  '$g = (9{,}86 \pm 0{,}02)\ \mathrm{m\,s^{-2}}$',
+  '$g = (9{,}8623 \pm 0{,}0121)\ \mathrm{m\,s^{-2}}$',
+  '$g = (9{,}862 \pm 0{,}012)\ \mathrm{m\,s^{-2}}$',
+]
+answer = 0
+explanation = '''
+Chyba začíná jedničkou, proto se nechají dvě platné číslice a zaokrouhlí se **nahoru**: $0{,}0121 \to 0{,}013$. Výsledek se zaokrouhlí na stejný řád jako chyba (tisíciny): $9{,}8623 \to 9{,}862$. K zápisu patří ještě $n$, $P$ a relativní chyba.
+'''
+notes = [
+  '',
+  'Chyba začíná jedničkou, nechávají se dvě číslice. Zaokrouhlením na $0{,}02$ by se skoro zdvojnásobila.',
+  'Chyba se zaokrouhluje na jednu (dvě) platné číslice a výsledek na její řád.',
+  'Chyba se zaokrouhluje vždy nahoru, ne matematicky.',
+]
+
+[[question]]
+id = 'PIS-ZM-02'
+topic = 'Zpracování měření'
+source = 'Protokoly, zpracování měření'
+text = '''
+Výchylku ručkového voltmetru jste odečetli jen jednou. Jak určíte chybu naměřeného napětí?
+'''
+options = [
+  'Z třídy přesnosti: $\delta = \dfrac{T_\mathrm{p}}{100}\,U_\mathrm{R}$, kde $U_\mathrm{R}$ je zvolený rozsah.',
+  'Z třídy přesnosti a naměřené hodnoty: $\delta = \dfrac{T_\mathrm{p}}{100}\,U_\text{Měř}$.',
+  'Jako $t_{n,P}\,s_{\bar x}$ se Studentovým koeficientem pro $n = 1$.',
+  'Chyba je nulová, protože se hodnota odečetla jen jednou.',
+]
+answer = 0
+explanation = '''
+Z jedné hodnoty nejde spočítat rozptyl, chyba se proto určí jen z měřidla. U ručkového přístroje je to mezní chyba z třídy přesnosti, stejná na celém rozsahu. Relativní chyba $\delta_\mathrm{r} = \delta/U_\text{Měř}\cdot100\ \%$ je proto nejmenší, když je ručka v poslední třetině stupnice.
+'''
+notes = [
+  '',
+  'Třída přesnosti udává chybu v procentech rozsahu, ne naměřené hodnoty.',
+  'Z jedné hodnoty nejde spočítat směrodatnou odchylku.',
+  'Každé měření má chybu, u jednoho odečtu ji určuje měřidlo.',
+]
+
+[[question]]
+id = 'PIS-ZM-03'
+kind = 'numeric'
+topic = 'Zpracování měření'
+source = 'Protokoly, zpracování měření'
+text = '''
+Postupnou metodou vyšlo pět hodnot doby 50 kmitů: $98{,}561$; $98{,}546$; $98{,}534$; $98{,}521$; $98{,}511\ \mathrm{s}$. Vypočtěte aritmetický průměr $\overline{50T} = \frac1n\sum x_i$.
+'''
+value = 98.5346
+tolerance = 0.001
+unit = 's'
+explanation = '''
+$$\overline{50T} = \frac{98{,}561 + 98{,}546 + 98{,}534 + 98{,}521 + 98{,}511}{5}\ \mathrm{s} = \frac{492{,}673}{5}\ \mathrm{s} = 98{,}5346\ \mathrm{s}$$
+Na kolik míst se průměr nakonec zapíše, určí až jeho chyba: s chybou $0{,}03\ \mathrm{s}$ je to $(98{,}53 \pm 0{,}03)\ \mathrm{s}$.
+'''
+
+[[question]]
+id = 'PIS-ZM-04'
+kind = 'numeric'
+topic = 'Zpracování měření'
+source = 'Protokoly, zpracování měření'
+text = '''
+Vzdálenost os kyvadla jste změřili desetkrát. Součet čtverců odchylek od průměru je $\sum(\ell_i - \bar\ell)^2 = 0{,}05725\ \mathrm{cm^2}$. Vypočtěte výběrovou směrodatnou odchylku průměru $s_{\bar\ell} = \sqrt{\dfrac{\sum(\ell_i - \bar\ell)^2}{n(n-1)}}$ a z ní chybu $\delta = t_{10;\,0{,}95}\,s_{\bar\ell}$, kde $t_{10;\,0{,}95} = 2{,}320$ (před zaokrouhlením).
+'''
+value = 0.0585
+tolerance = 0.0006
+unit = 'cm'
+explanation = '''
+$$s_{\bar\ell} = \sqrt{\frac{0{,}05725\ \mathrm{cm^2}}{10\cdot9}} = \sqrt{6{,}361\cdot10^{-4}\ \mathrm{cm^2}} = 0{,}02522\ \mathrm{cm}$$
+$$\delta(\ell_\mathrm{r}) = t_{10;\,0{,}95}\,s_{\bar\ell} = 2{,}320\cdot0{,}02522\ \mathrm{cm} = 0{,}0585\ \mathrm{cm}$$
+Zaokrouhleno nahoru na jednu platnou číslici: $0{,}06\ \mathrm{cm}$, výsledek $\ell_\mathrm{r} = (97{,}01 \pm 0{,}06)\ \mathrm{cm}$, $n = 10$, $P = 95\ \%$.
+'''
+warning = 'Ve jmenovateli je $n(n-1)$, ne jen $n - 1$: jde o odchylku průměru, ne jednoho měření.'
+
+[[question]]
+id = 'PIS-ZM-05'
+kind = 'numeric'
+topic = 'Zpracování měření'
+source = 'Protokoly, zpracování měření'
+text = '''
+Vzdálenost os $\ell_\mathrm{r} = 97{,}01\ \mathrm{cm}$ jste měřili ocelovým měřítkem s nejmenším dílkem $0{,}5\ \mathrm{mm}$. Chybu měřítka berte jako polovinu nejmenšího dílku. Vypočtěte relativní chybu měřidla $u_\mathrm{r} = u/\ell_\mathrm{r}\cdot100\ \%$ (před zaokrouhlením).
+'''
+value = 0.0258
+tolerance = 0.0003
+unit = '%'
+explanation = '''
+$$u = \frac{0{,}5\ \mathrm{mm}}{2} = 0{,}25\ \mathrm{mm} = 0{,}025\ \mathrm{cm}$$
+$$u_\mathrm{r} = \frac{u}{\ell_\mathrm{r}}\cdot100\ \% = \frac{0{,}025\ \mathrm{cm}}{97{,}01\ \mathrm{cm}}\cdot100\ \% = 0{,}0258\ \%$$
+Je menší než náhodná chyba $\delta_\mathrm{r} \doteq 0{,}062\ \%$, proto se dál počítá s náhodnou chybou.
+'''
+warning = 'Chybu měřítka a délku dosaďte ve stejných jednotkách.'

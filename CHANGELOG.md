@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Materiály
+
+- BPC-FY1: k písemce na zápočtovém cvičení nová kapitola **Vzorce k písemce
+  ze cvičení** (vzorce všech šesti úloh a zpracování měření se symboly
+  a jednotkami), kvíz **Písemka ze cvičení** se 42 otázkami (teorie
+  a jednoduché výpočty s celým postupem) a sada **Písemka nanečisto**.
+
 ### Opravy
 
 - Dlouhé vzorce se už neuříznou na okraji. Výsledky na jednom řádku (třeba
