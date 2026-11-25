@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.1 (2026-11-25)
+
 ### Opravy
 
 - Možnosti v kvízech se pokaždé náhodně zamíchají. Správná odpověď byla
