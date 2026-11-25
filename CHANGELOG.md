@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.2 (2026-11-25)
+
 ### Materiály
 
 - BPC-MPE: pět kvízů k numerickým cvičením (stavba látek, polovodiče,
