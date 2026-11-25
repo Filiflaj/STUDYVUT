@@ -78,6 +78,7 @@ pub struct RawQuestion {
     pub answer: Option<usize>,
     pub notes: Option<Vec<String>>,
     pub layout: Option<RawLayout>,
+    pub keep_order: Option<bool>,
     // numeric
     pub value: Option<f64>,
     pub tolerance: Option<f64>,

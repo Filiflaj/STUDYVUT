@@ -196,6 +196,15 @@
   box-sizing: border-box;
 }
 
+/* The page itself never scrolls or bounces: only the sidebar and the page
+   content scroll (App.svelte). Without this, a trackpad scroll that the
+   sidebar cannot take moved the whole window away (the user, 2026-11-25). */
+html,
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 html,
 body {
   margin: 0;

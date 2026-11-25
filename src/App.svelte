@@ -249,6 +249,7 @@
     gap: 14px;
     min-height: 0;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 16px 12px 12px;
     background: var(--sidebar);
     border-right: 1px solid var(--border);
@@ -479,6 +480,7 @@
   }
   main {
     overflow-y: auto;
+    overscroll-behavior: contain;
     min-width: 0;
   }
   .save-error {

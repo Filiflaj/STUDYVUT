@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Opravy
+
+- Možnosti v kvízech se pokaždé náhodně zamíchají. Správná odpověď byla
+  skoro vždy pod a), takže se dala uhodnout bez znalosti látky.
+- Posouvání v menu vlevo už nevyveze celé okno mimo obrazovku. Posouvá se
+  jen menu nebo obsah stránky.
+
 ## 0.2.0 (2026-11-24)
 
 ### Materiály

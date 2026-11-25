@@ -57,7 +57,7 @@
     if (i < 0 && /^[1-8]$/.test(k)) i = Number(k) - 1;
     if (i >= 0 && i < q.options.length) {
       e.preventDefault();
-      void quiz.respond({ kind: "choice", index: i });
+      void quiz.choose(i);
     }
   }
 </script>

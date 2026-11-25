@@ -68,6 +68,7 @@ const QUESTIONS: Question[] = [
     answer: 2,
     notes: ["To je síla, kterou táhneme C.", "Tolik táhne lanko B–C.", "", "Kvádry jsou tři.", "Kvádry zrychlují."],
     grid: false,
+    keep_order: false,
   },
   {
     id: "X2",
@@ -83,6 +84,7 @@ const QUESTIONS: Question[] = [
     answer: 1,
     notes: ["Zapomíná na druhou mocninu.", "", "Síla se vzdáleností klesá.", "Síla se vzdáleností klesá."],
     grid: true,
+    keep_order: false,
   },
   {
     id: "E15",

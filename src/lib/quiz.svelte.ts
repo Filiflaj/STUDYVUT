@@ -1,5 +1,6 @@
 import { api, errorCode, errorMessage } from "./api";
 import { live } from "./live.svelte";
+import { optionOrder } from "./order";
 import type { Question, Response, SessionPayload, SessionRow, SetSpec, Verdict } from "./types";
 
 /**
@@ -13,6 +14,8 @@ class QuizSession {
   /** The set's display name, when the page cannot derive it (chapter, selection). */
   name = $state<string | undefined>(undefined);
   index = $state(0);
+  /** The current question's options as shown: position → option index (order.ts). */
+  order = $state<number[]>([]);
   score = $state(0);
   missed = $state<string[]>([]);
   /** The answer to the current question, once given. */
@@ -57,6 +60,7 @@ class QuizSession {
       this.missed = [];
       this.answer = null;
       this.result = null;
+      this.arrange();
     } catch (e) {
       this.error = errorCode(e) === "empty_set" ? "empty_set" : errorMessage(e);
     } finally {
@@ -81,11 +85,29 @@ class QuizSession {
     }
   }
 
+  /** Answer with the option shown at `position` (keys a–h, 1–8). */
+  choose(position: number): Promise<void> {
+    const index = this.order[position];
+    return index === undefined ? Promise.resolve() : this.respond({ kind: "choice", index });
+  }
+
+  /** Where the option `index` is shown (for its letter). */
+  shown(index: number): number {
+    return this.order.indexOf(index);
+  }
+
+  /** A new question on screen: its options in a new random order. */
+  private arrange() {
+    const q = this.question;
+    this.order = q?.kind === "choice" ? optionOrder(q.options.length, q.keep_order) : [];
+  }
+
   async next(): Promise<void> {
     if (!this.answer || this.busy) return;
     if (!this.last) {
       this.index++;
       this.answer = null;
+      this.arrange();
       return;
     }
     const p = this.payload;

@@ -17,7 +17,7 @@ Open work is tracked in [TODO.md](TODO.md); user-visible changes go in [CHANGELO
 STUDYVUT is a desktop study app (Tauri 2, Rust, Svelte 5) for the subjects of the user's study programme (MET, FEKT VUT). It:
 
 - shows the study texts of every subject (Markdown with KaTeX formulas, SVG figures that follow the theme, callouts);
-- runs quizzes that behave like the original BFY1 trainer (`../FYZ/trenazer-bfy1.html`): one question at a time, instant feedback, why each wrong option is wrong, numeric answers with a tolerance, a result with the missed questions;
+- runs quizzes that behave like the original BFY1 trainer (`../FYZ/trenazer-bfy1.html`): one question at a time, instant feedback, why each wrong option is wrong, numeric answers with a tolerance, a result with the missed questions; unlike the trainer, it shuffles the options of every choice question each time (`src/lib/order.ts`; `keep_order = true` in the content opts out);
 - remembers every answer in SQLite and plans repetition (Leitner boxes: 1, 2, 4, 8, 16 days);
 - shows the subjects of the chosen programme (obor) and study year (ročník) on a Dashboard, with the questions due for review.
 
@@ -171,6 +171,17 @@ One version, `X.Y.Z`, for the app and the study material; the policy is in
 
 ## Key learnings
 
+- 2026-11-25. Content written by agents put the right option first: 71 % of
+  all choice questions (100 % in EL1, ELS and PC1M) had it under a), and the
+  user noticed in a mock test. The app now shuffles options on screen; the
+  backend still sees the content index (`quiz.order` maps positions to
+  indexes). So never refer to an option by its letter or position in notes
+  or explanations (docs/content.md).
+- 2026-11-25. On macOS the webview rubber-bands the whole page when a
+  scroll reaches an end, even though the page itself is exactly as tall as
+  the window (checked in a WKWebView probe): the user saw the window scroll
+  "away". `html, body` have `overflow: hidden; overscroll-behavior: none`
+  and the sidebar and `main` contain their own overscroll.
 - 2026-11-21. Rather than raising the version with the first change after a
   release (`## X.Y.Z (unreleased)`), STUDYVUT collects changelog lines under
   `## Unreleased` and changes the version only in the tagged

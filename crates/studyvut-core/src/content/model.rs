@@ -150,6 +150,9 @@ pub enum QuestionKind {
         notes: Option<Vec<String>>,
         /// Options in two columns.
         grid: bool,
+        /// Options in the given order. The app shuffles them otherwise, so
+        /// that the right one is not always in the same place.
+        keep_order: bool,
     },
     Numeric {
         value: f64,

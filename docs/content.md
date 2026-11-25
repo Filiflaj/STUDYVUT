@@ -111,6 +111,7 @@ figure = "images/tri-kvadry.svg"  # optional, shown under the text
 options = ["$T$", "$2T/3$", "$T/3$", "$T/2$", "$0$"]
 answer = 2                        # index of the right option, from 0
 layout = "grid"                   # optional: options in two columns (short options, figures)
+keep_order = true                 # optional: show the options in this order (see below)
 explanation = """
 Všechna tělesa mají stejné zrychlení $a = T/(3M)$. Lanko A–B táhne jen kvádr A:
 $$F_{AB} = M a = \\frac{T}{3}$$
@@ -146,6 +147,14 @@ Rules the check enforces:
 - a numeric question has a finite `value`, `tolerance` ≥ 0 and no `options`;
 - every referenced image exists;
 - `$` signs pair up in every text.
+
+**The app shuffles the options of every choice question** each time it is
+shown (the user found the right answer almost always under a), 2026-11-25),
+so write them in any order. Therefore no option, note or explanation may
+refer to another option by its letter or position ("obě předchozí",
+"správně je b)"). Name the statement instead. Set `keep_order = true` only
+when the order itself carries meaning, for example options labelled after
+the panels of a figure (`graf a)`, `graf b)`).
 
 ## Chapters: chapters/*.md
 

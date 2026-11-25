@@ -456,6 +456,7 @@ impl Ctx<'_> {
                     answer,
                     notes: q.notes,
                     grid: q.layout == Some(RawLayout::Grid),
+                    keep_order: q.keep_order.unwrap_or(false),
                 }
             }
             RawKind::Numeric => {
@@ -463,10 +464,12 @@ impl Ctx<'_> {
                     || q.answer.is_some()
                     || q.notes.is_some()
                     || q.layout.is_some()
+                    || q.keep_order.is_some()
                 {
                     fail(
                         self.problems,
-                        "options, answer, notes and layout are for choice questions".into(),
+                        "options, answer, notes, layout and keep_order are for choice questions"
+                            .into(),
                     );
                     return None;
                 }
@@ -753,6 +756,61 @@ expalnation = "x"
             "{m:?}"
         );
         assert!(has("question D: unknown field `expalnation`"), "{m:?}");
+    }
+
+    #[test]
+    fn keep_order_is_for_choice_questions() {
+        let quiz = r#"
+name = "Q"
+[[question]]
+id = "A"
+topic = "t"
+text = "x"
+options = ["graf a)", "graf b)"]
+answer = 1
+keep_order = true
+
+[[question]]
+id = "B"
+topic = "t"
+text = "x"
+options = ["1", "2"]
+answer = 0
+
+[[question]]
+id = "N"
+kind = "numeric"
+topic = "t"
+text = "x"
+value = 1.0
+tolerance = 0.0
+unit = ""
+keep_order = true
+"#;
+        let files = MemFiles::new()
+            .with(
+                "s/subject.toml",
+                "code = \"X\"\nname = \"X\"\nsemester = \"ZS 2026/2027\"",
+            )
+            .with("s/quizzes/q.toml", quiz);
+        let (catalog, _) = load(&files);
+        let keep = |id: &str| match catalog.subjects[0].question(id).map(|q| &q.kind) {
+            Some(QuestionKind::Choice { keep_order, .. }) => *keep_order,
+            k => panic!("choice expected, got {k:?}"),
+        };
+        assert!(keep("A"));
+        assert!(
+            !keep("B"),
+            "options are shuffled unless the content says so"
+        );
+        assert!(catalog.subjects[0].question("N").is_none());
+        assert!(
+            messages(&files)
+                .iter()
+                .any(|m| m.contains("question N: options, answer, notes, layout and keep_order")),
+            "{:?}",
+            messages(&files)
+        );
     }
 
     #[test]

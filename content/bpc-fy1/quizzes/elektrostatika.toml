@@ -137,6 +137,7 @@ options = [
   'graf e)',
 ]
 answer = 2
+keep_order = true
 explanation = '''
 **Uvnitř** ($r < R$): Gaussova koule menší než slupka neobsahuje žádný náboj (ten je celý na povrchu), takže $E = 0$.
 
@@ -428,7 +429,7 @@ notes = [
   '',
   'Nenabitý izolant se polarizuje, síla působí.',
   'Znaménko nerozhoduje, přitahování nastane vždy.',
-  'Platí, ale neúplně. Přitahují se i při záporném náboji, proto je obecně správně b).',
+  'Platí, ale neúplně. Přitahují se i při záporném náboji, proto je obecně správně, že se přitahují vždy.',
 ]
 warning = 'V klíči pod fotkou je uvedeno 13-c. To je chyba, správně je b).'
 
@@ -1042,6 +1043,7 @@ options = [
   'graf e)',
 ]
 answer = 3
+keep_order = true
 explanation = '''
 Uvnitř plné nevodivé koule obsahuje Gaussova koule o poloměru $r$ náboj $Q \cdot (r/R)^3$:
 

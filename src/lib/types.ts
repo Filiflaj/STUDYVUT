@@ -130,7 +130,15 @@ export interface ChapterPayload {
 }
 
 export type QuestionKind =
-  | { kind: "choice"; options: string[]; answer: number; notes: string[] | null; grid: boolean }
+  | {
+      kind: "choice";
+      options: string[];
+      answer: number;
+      notes: string[] | null;
+      grid: boolean;
+      /** Show the options in the content's order, not shuffled. */
+      keep_order: boolean;
+    }
   | { kind: "numeric"; value: number; tolerance: number; unit: string; sign_hint: string | null };
 
 export type Question = {

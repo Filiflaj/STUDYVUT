@@ -19,7 +19,10 @@
     if (svg !== undefined) return cleanSvg(svg, q.topic);
     return `<img src="${contentUrl(`${ctx.subject}/${q.figure}`)}" alt="" />`;
   });
-  const options = $derived(q?.kind === "choice" ? q.options.map((o) => renderInline(o, ctx)) : []);
+  // In the order shown (quiz.order); `i` is the option's index in the content.
+  const options = $derived(
+    q?.kind === "choice" ? quiz.order.map((i) => ({ i, html: renderInline(q.options[i] ?? "", ctx) })) : [],
+  );
   const notes = $derived(q?.kind === "choice" && q.notes ? q.notes.map((n) => renderInline(n, ctx)) : null);
   const explanation = $derived(q ? render(q.explanation, ctx).html : "");
   const warning = $derived(q?.warning ? renderInline(q.warning, ctx) : "");
@@ -81,7 +84,7 @@
 
     {#if q.kind === "choice"}
       <div class="opts" class:grid={q.grid} role="group">
-        {#each options as html, i (i)}
+        {#each options as { i, html }, position (i)}
           {@const isRight = quiz.answer && i === q.answer}
           {@const isChosen = quiz.answer && i === chosen && i !== q.answer}
           <button
@@ -92,7 +95,7 @@
             disabled={quiz.answer !== null || quiz.busy}
             onclick={() => quiz.respond({ kind: "choice", index: i })}
           >
-            <span class="k">{letter(i)})</span>
+            <span class="k">{letter(position)})</span>
             <span class="tx selectable">{@html html}</span>
             <span class="mark" aria-hidden="true">
               {#if isRight}<Icon name="check" size={16} stroke={2.6} />{:else if isChosen}<Icon name="close" size={16} stroke={2.6} />{/if}
@@ -125,9 +128,9 @@
       {@const ok = quiz.answer.verdict.correct}
       <div class="fb" class:ok class:bad={!ok} role="status">
         {#if q.kind === "choice"}
-          <h3>{ok ? t().quiz.correct : fill(t().quiz.wrong, { key: letter(q.answer) })}</h3>
+          <h3>{ok ? t().quiz.correct : fill(t().quiz.wrong, { key: letter(quiz.shown(q.answer)) })}</h3>
           {#if !ok && chosen !== null && notes?.[chosen]}
-            <p><strong>{fill(t().quiz.whyNot, { key: letter(chosen) })}</strong>: {@html notes[chosen]}</p>
+            <p><strong>{fill(t().quiz.whyNot, { key: letter(quiz.shown(chosen)) })}</strong>: {@html notes[chosen]}</p>
           {/if}
           <div class="why">
             <strong>{t().quiz.explanation}:</strong>
@@ -153,10 +156,11 @@
         {#if q.kind === "choice" && notes}
           <div class="notes-h">{t().quiz.allOptions}</div>
           <ul class="notes">
-            {#each notes as note, i (i)}
+            {#each quiz.order as i, position (i)}
+              {@const note = notes[i]}
               {#if i === q.answer || note}
                 <li class:yes={i === q.answer} class:chosen={i === chosen && i !== q.answer}>
-                  <span class="k">{letter(i)})</span>
+                  <span class="k">{letter(position)})</span>
                   <span class="selectable">{#if i === q.answer}{t().quiz.rightOption}{:else}{@html note}{/if}</span>
                 </li>
               {/if}

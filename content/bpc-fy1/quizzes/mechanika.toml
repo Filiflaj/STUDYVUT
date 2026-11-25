@@ -454,6 +454,7 @@ options = [
   '![](images/prace-sila-e.svg)',
 ]
 answer = 3
+keep_order = true
 layout = "grid"
 explanation = '''
 Práce stálé síly je skalár se znaménkem:
