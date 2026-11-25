@@ -1,0 +1,462 @@
+name = 'Stavba atomů, molekul, látek'
+description = 'krychlové mřížky a jejich zaplnění, elementární buňka z hustoty, vakance a mezimřížkové poruchy; všech 5 příkladů zadání a jejich obměny'
+
+# ---------- Zadání, příklad 1: prostá, prostorově a plošně centrovaná mřížka
+
+[[question]]
+id = 'ST-01'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Kolik atomů v průměru připadá na jednu elementární buňku krychlové mřížky **prosté**, **prostorově centrované** a **plošně centrované** (v tomto pořadí)?
+'''
+options = ['8 / 9 / 14', '1 / 2 / 7', '1 / 2 / 4', '1 / 4 / 2']
+answer = 2
+layout = 'grid'
+explanation = '''
+Atom v rohu krychle sdílí 8 sousedních buněk, atom ve stěně 2 buňky, atom uprostřed buňky patří jen jí.
+
+$$\text{prostá: } N = 8\cdot\tfrac18 = 1 \qquad \text{prostorově c.: } N = 8\cdot\tfrac18 + 1 = 2 \qquad \text{plošně c.: } N = 8\cdot\tfrac18 + 6\cdot\tfrac12 = 4$$
+
+**Jak to říct:** „Rohový atom patří osmi buňkám, stěnový dvěma, středový jen jedné; sečtu podíly.“
+'''
+notes = [
+  'To jsou všechny nakreslené atomy. Rohový atom ale patří osmi buňkám a stěnový dvěma, počítá se jen jejich podíl.',
+  'Atomy ve stěnách jsou sdílené dvěma buňkami: $6\cdot\frac12 = 3$, ne 6.',
+  '',
+  'Prostorově a plošně centrovaná jsou prohozené: středový atom je jen jeden, stěnových šest.',
+]
+
+[[question]]
+id = 'ST-02'
+kind = 'numeric'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Mřížka je složená ze stejných atomů, pevných koulí o poloměru $r$, které se navzájem dotýkají. Jaké je zaplnění objemu elementární buňky (podíl objemu buňky vyplněný atomy) u **prosté** krychlové mřížky?
+'''
+value = 52.36
+tolerance = 0.5
+unit = '%'
+explanation = '''
+V prosté mřížce se atomy dotýkají podél hrany: $a = 2r$. Na buňku připadá $N = 1$ atom.
+
+$$D = \frac{N\cdot V_a}{V_M} = \frac{1\cdot\frac43\pi r^3}{a^3} = \frac{\frac43\pi r^3}{8r^3} = \frac{\pi}{6} \doteq 0{,}523 = 52\,\%$$
+'''
+
+[[question]]
+id = 'ST-03'
+kind = 'numeric'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Mřížka je složená ze stejných atomů, pevných koulí o poloměru $r$, které se navzájem dotýkají. Jaké je zaplnění objemu elementární buňky u **prostorově centrované** krychlové mřížky?
+'''
+value = 68.02
+tolerance = 0.7
+unit = '%'
+explanation = '''
+Atomy se dotýkají podél tělesové úhlopříčky (roh – střed – roh): $a\sqrt3 = 4r$, tedy $a = \dfrac{4r}{\sqrt3}$. Na buňku připadají $N = 2$ atomy.
+
+$$D = \frac{2\cdot\frac43\pi r^3}{a^3} = \frac{\frac83\pi r^3}{\frac{4^3 r^3}{(\sqrt3)^3}} = \frac{8\pi}{3}\cdot\frac{(\sqrt3)^3}{4^3} = \frac{\pi\sqrt3}{8} \doteq 0{,}68 = 68\,\%$$
+'''
+
+[[question]]
+id = 'ST-04'
+kind = 'numeric'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Mřížka je složená ze stejných atomů, pevných koulí o poloměru $r$, které se navzájem dotýkají. Jaké je zaplnění objemu elementární buňky u **plošně centrované** krychlové mřížky?
+'''
+value = 74.05
+tolerance = 0.7
+unit = '%'
+explanation = '''
+Atomy se dotýkají podél stěnové úhlopříčky (roh – střed stěny – roh): $a\sqrt2 = 4r$, tedy $a = \dfrac{4r}{\sqrt2}$ a $a^3 = \dfrac{64r^3}{2\sqrt2}$. Na buňku připadají $N = 4$ atomy.
+
+$$D = \frac{4\cdot\frac43\pi r^3}{a^3} = \frac{\frac{16}{3}\pi r^3}{\frac{64r^3}{2\sqrt2}} = \frac{\pi\sqrt2}{6} \doteq 0{,}74 = 74\,\%$$
+
+V sešitu je v mezikroku čitatel $\frac83\pi r^3$; správně je $4\cdot\frac43 = \frac{16}{3}$. Výsledek 0,74 sedí.
+'''
+
+[[question]]
+id = 'ST-05'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Která krychlová mřížka (při těsném uložení stejných atomů, které se dotýkají) zaplňuje objem elementární buňky nejlépe, a čím se to dokáže?
+'''
+options = [
+  'prostorově centrovaná: atom uprostřed buňky vyplní prázdné místo, zaplnění vyjde 0,74',
+  'prostá: atomy se dotýkají přímo podél hrany, mezi nimi nezůstane mezera, zaplnění vyjde 0,74',
+  'struktura diamantu: má nejvíc atomů v buňce (8), proto je zaplnění největší',
+  'plošně centrovaná: atomy se dotýkají podél stěnové úhlopříčky ($a\sqrt2 = 4r$), zaplnění vyjde 0,74',
+]
+answer = 3
+explanation = '''
+Důkaz je výpočet zaplnění $D = N\cdot V_a / a^3$ pro všechny tři mřížky a jejich porovnání:
+
+$$D_\text{prostá} = \frac{\pi}{6} \doteq 0{,}52 \qquad D_\text{prostorově} = \frac{\pi\sqrt3}{8} \doteq 0{,}68 \qquad D_\text{plošně} = \frac{\pi\sqrt2}{6} \doteq 0{,}74$$
+
+Největší je u plošně centrované mřížky.
+
+**Jak to říct:** „Spočítám zaplnění pro každou mřížku z podmínky dotyku: prostá 52 %, prostorově centrovaná 68 %, plošně centrovaná 74 %. Plošně centrovaná je nejtěsnější uložení.“
+'''
+notes = [
+  'Prostorově centrovaná mřížka má zaplnění jen 0,68: atomy se dotýkají podél tělesové úhlopříčky a hrana je delší.',
+  'Prostá mřížka má jen 0,52, mezi osmi rohovými atomy zůstává uprostřed buňky velká mezera.',
+  'Diamant má sice 8 atomů v buňce, ale atomy jsou malé vůči hraně ($a\sqrt3/4 = 2r$): zaplnění jen 0,34.',
+  '',
+]
+
+[[question]]
+id = 'ST-06'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Atomy (koule o poloměru $r$) se v mřížce dotýkají. Který vztah mezi hranou elementární buňky $a$ a poloměrem $r$ platí pro **prostorově centrovanou** krychlovou mřížku?
+'''
+options = ['$a\sqrt2 = 4r$', '$a\sqrt3 = 4r$', '$a = 2r$', '$\dfrac{a\sqrt3}{4} = 2r$']
+answer = 1
+layout = 'grid'
+explanation = '''
+V prostorově centrované buňce se dotýkají rohový atom, středový atom a protější rohový atom, tedy podél **tělesové** úhlopříčky délky $a\sqrt3$. Na ní leží $r + 2r + r = 4r$:
+
+$$a\sqrt3 = 4r \quad\Rightarrow\quad a = \frac{4r}{\sqrt3}$$
+'''
+notes = [
+  'To platí pro plošně centrovanou mřížku (dotyk podél stěnové úhlopříčky).',
+  '',
+  'To platí pro prostou mřížku (dotyk podél hrany).',
+  'To platí pro strukturu diamantu (dotyk podél čtvrtiny tělesové úhlopříčky).',
+]
+
+# ---------- Zadání, příklad 2: struktura diamantu
+
+[[question]]
+id = 'ST-07'
+kind = 'numeric'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Kolik atomů v průměru připadá na jednu elementární buňku krystalové struktury **diamantu**?
+'''
+value = 8
+tolerance = 0
+unit = 'atomů'
+explanation = '''
+Struktura diamantu je plošně centrovaná mřížka, ve které jsou navíc 4 atomy uvnitř buňky:
+
+$$N = 8\cdot\tfrac18 + 6\cdot\tfrac12 + 4 = 1 + 3 + 4 = 8$$
+
+V sešitu samostatně není; stejný počet se používá v příkladu 1 polovodičů (Si, Ge).
+'''
+
+[[question]]
+id = 'ST-08'
+kind = 'numeric'
+topic = 'Krystalové mřížky'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Atomy struktury diamantu jsou stejné pevné koule o poloměru $r$, které se navzájem dotýkají. Jaké je zaplnění objemu elementární buňky?
+'''
+value = 34.01
+tolerance = 0.5
+unit = '%'
+explanation = '''
+Vnitřní atom se dotýká nejbližšího rohového atomu; jejich středy jsou od sebe čtvrtinu tělesové úhlopříčky:
+
+$$\frac{a\sqrt3}{4} = 2r \quad\Rightarrow\quad a = \frac{8r}{\sqrt3} \qquad a^3 = \frac{512\,r^3}{3\sqrt3}$$
+
+Na buňku připadá $N = 8$ atomů:
+
+$$D = \frac{8\cdot\frac43\pi r^3}{a^3} = \frac{32}{3}\pi r^3\cdot\frac{3\sqrt3}{512\,r^3} = \frac{\pi\sqrt3}{16} \doteq 0{,}34 = 34\,\%$$
+
+V sešitu tento příklad není; postup je stejný jako u příkladu 1, jen s jinou podmínkou dotyku.
+'''
+
+# ---------- Zadání, příklad 3: měď (v sešitu „Příklad 2“)
+
+[[question]]
+id = 'ST-09'
+kind = 'numeric'
+topic = 'Elementární buňka z hustoty'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Měď krystalizuje v krychlové soustavě, v mřížce plošně centrované. Při 20 °C má hustotu 8 890 kg·m⁻³, její molární hmotnost je 63,57 kg/kmol. Jaký je objem elementární buňky?
+'''
+value = 4.749e-29
+tolerance = 0.05e-29
+unit = 'm³'
+explanation = '''
+Hmotnost připadající na jeden atom je stejná, ať ji počítám z buňky, nebo z molu: $\dfrac{m}{N} = \dfrac{M}{N_A}$, kde $m = \rho V$ je hmotnost buňky s $N = 4$ atomy:
+
+$$\frac{\rho\cdot V}{N} = \frac{M}{N_A} \quad\Rightarrow\quad V = \frac{N\cdot M}{\rho\cdot N_A}$$
+
+$$V = \frac{4\cdot 63{,}57}{8\,890\cdot 6{,}022\cdot10^{26}} = 4{,}749\cdot10^{-29}\ \mathrm{m^3}$$
+
+Molární hmotnost je v kg/kmol, proto $N_A = 6{,}022\cdot10^{23}\ \mathrm{mol^{-1}} = 6{,}022\cdot10^{26}\ \mathrm{kmol^{-1}}$.
+
+**Jak to říct:** „Hmotnost buňky dělená počtem jejích atomů je hmotnost jednoho atomu, tedy M/N_A. Z toho vyjádřím objem buňky.“
+'''
+
+[[question]]
+id = 'ST-10'
+kind = 'numeric'
+topic = 'Elementární buňka z hustoty'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Měď (mřížka plošně centrovaná, hustota 8 890 kg·m⁻³, molární hmotnost 63,57 kg/kmol): atomy jsou koule, které se v elementární buňce dotýkají. Jaký je poloměr atomu mědi?
+'''
+value = 1.28e-10
+tolerance = 0.02e-10
+unit = 'm'
+explanation = '''
+Objem buňky (předchozí krok): $V = \dfrac{4\cdot63{,}57}{8\,890\cdot6{,}022\cdot10^{26}} = 4{,}749\cdot10^{-29}\ \mathrm{m^3}$.
+
+V plošně centrované mřížce $a\sqrt2 = 4r$ a $a = \sqrt[3]{V}$:
+
+$$r = \frac{\sqrt2}{4}\cdot\sqrt[3]{V} = \frac{\sqrt2}{4}\cdot\sqrt[3]{4{,}749\cdot10^{-29}} = \frac{\sqrt2}{4}\cdot 3{,}621\cdot10^{-10} = 1{,}28\cdot10^{-10}\ \mathrm{m}$$
+'''
+
+[[question]]
+id = 'ST-11'
+kind = 'numeric'
+topic = 'Elementární buňka z hustoty'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Jaká je hmotnost jednoho atomu mědi (molární hmotnost 63,57 kg/kmol)?
+'''
+value = 1.056e-25
+tolerance = 0.01e-25
+unit = 'kg'
+explanation = '''
+$$m_a = \frac{M}{N_A} = \frac{63{,}57}{6{,}022\cdot10^{26}} = 1{,}056\cdot10^{-25}\ \mathrm{kg}$$
+
+$N_A$ v $\mathrm{kmol^{-1}}$, protože $M$ je v kg/kmol.
+'''
+
+# ---------- Zadání, příklad 4: vakance v hliníku (v sešitu „Příklad 3“)
+
+[[question]]
+id = 'ST-12'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Hliník má hustotu 2 699 kg·m⁻³ a molární hmotnost 26,98 kg/kmol. Kolik atomů je v 1,00 m³ hliníku (koncentrace atomů $N$)?
+'''
+value = 6.024e28
+tolerance = 0.06e28
+unit = 'm⁻³'
+explanation = '''
+Stejná úvaha jako u mědi, $\dfrac{m}{N} = \dfrac{M}{N_A}$, jen teď hledám počet atomů v objemu $V = 1\ \mathrm{m^3}$:
+
+$$N = \frac{\rho\cdot V\cdot N_A}{M} = \frac{2\,699\cdot1\cdot6{,}022\cdot10^{26}}{26{,}98} = 6{,}024\cdot10^{28}\ \mathrm{m^{-3}}$$
+
+To je počet uzlových bodů mřížky v 1 m³, potřebný pro vakance i mezimřížkové poruchy.
+'''
+
+[[question]]
+id = 'ST-13'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+K vytvoření vakance v hliníku je třeba energie 0,75 eV. Hliník: mřížka plošně centrovaná, hustota 2 699 kg·m⁻³, molární hmotnost 26,98 kg/kmol. Kolik vakancí je v 1,00 m³ hliníku při 25,0 °C v termodynamické rovnováze?
+'''
+value = 1.3e16
+tolerance = 0.06e16
+unit = 'm⁻³'
+explanation = '''
+Převody: $T = 25{,}0 + 273{,}15 = 298{,}15\ \mathrm{K}$, $W_v = 0{,}75\cdot1{,}602\cdot10^{-19} \doteq 1{,}2\cdot10^{-19}\ \mathrm{J}$.
+
+Koncentrace atomů: $N = \dfrac{\rho V N_A}{M} = \dfrac{2\,699\cdot1\cdot6{,}022\cdot10^{26}}{26{,}98} = 6{,}024\cdot10^{28}\ \mathrm{m^{-3}}$.
+
+$$n_v = N\cdot e^{-\frac{W_v}{kT}} = 6{,}024\cdot10^{28}\cdot e^{-\frac{1{,}2\cdot10^{-19}}{1{,}38\cdot10^{-23}\cdot298{,}15}} = 6{,}024\cdot10^{28}\cdot e^{-29{,}17} \doteq 1{,}3\cdot10^{16}\ \mathrm{m^{-3}}$$
+
+Sešit zaokrouhluje $W_v$ na $1{,}2\cdot10^{-19}$ J. S nezaokrouhleným $1{,}2015\cdot10^{-19}$ J vyjde exponent $-29{,}20$ a $n_v = 1{,}25\cdot10^{16}\ \mathrm{m^{-3}}$; uznává se obojí. V exponentu se vyplatí nezaokrouhlovat.
+'''
+warning = 'Teplotu do exponentu vždy v kelvinech a energii v joulech.'
+
+[[question]]
+id = 'ST-14'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+K vytvoření vakance v hliníku je třeba energie 0,75 eV. Hliník: mřížka plošně centrovaná, hustota 2 699 kg·m⁻³, molární hmotnost 26,98 kg/kmol. Kolik vakancí je v 1,00 m³ hliníku při **550 °C**?
+'''
+value = 1.55e24
+tolerance = 0.03e24
+unit = 'm⁻³'
+explanation = '''
+$T = 550 + 273{,}15 = 823{,}15\ \mathrm{K}$, $W_v \doteq 1{,}2\cdot10^{-19}\ \mathrm{J}$, $N = 6{,}024\cdot10^{28}\ \mathrm{m^{-3}}$.
+
+$$n_v = 6{,}024\cdot10^{28}\cdot e^{-\frac{1{,}2\cdot10^{-19}}{1{,}38\cdot10^{-23}\cdot823{,}15}} = 6{,}024\cdot10^{28}\cdot e^{-10{,}56} \doteq 1{,}55\cdot10^{24}\ \mathrm{m^{-3}}$$
+
+Proti 25 °C je vakancí asi $10^{8}$krát víc. (S nezaokrouhleným $W_v$ vyjde $1{,}54\cdot10^{24}$.)
+
+**Jak to říct:** „Koncentrace vakancí roste s teplotou exponenciálně, proto je při 550 °C o osm řádů vyšší.“
+'''
+
+# ---------- Zadání, příklad 5: mezimřížkové poruchy v hliníku (v sešitu „Příklad 4“)
+
+[[question]]
+id = 'ST-15'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Zadání, příklad 5'
+tags = ['zadani']
+text = '''
+K přesunu atomu hliníku z uzlového bodu do mezimřížkové polohy je třeba energie 3 eV, konstanta $c' = 3$. Hliník: hustota 2 699 kg·m⁻³, molární hmotnost 26,98 kg/kmol. Kolik atomů v mezimřížkových polohách je v 1 m³ hliníku při **20,0 °C**?
+'''
+value = 4.6e-23
+tolerance = 0.1e-23
+unit = 'm⁻³'
+explanation = '''
+$T = 20{,}0 + 273{,}15 = 293{,}15\ \mathrm{K}$, $W_m = 3\cdot1{,}602\cdot10^{-19} = 4{,}806\cdot10^{-19}\ \mathrm{J}$, $N = 6{,}024\cdot10^{28}\ \mathrm{m^{-3}}$ (jako u vakancí).
+
+$$n_m = c'\cdot N\cdot e^{-\frac{W_m}{kT}} = 3\cdot6{,}024\cdot10^{28}\cdot e^{-\frac{4{,}806\cdot10^{-19}}{1{,}38\cdot10^{-23}\cdot293{,}15}} = 1{,}807\cdot10^{29}\cdot e^{-118{,}80} \doteq 4{,}6\cdot10^{-23}\ \mathrm{m^{-3}}$$
+
+Prakticky žádné mezimřížkové poruchy.
+
+V sešitu je zapsáno $W_m = 4{,}81\cdot10^{-19}$ J, ale výsledek $4{,}6\cdot10^{-23}$ odpovídá nezaokrouhlenému $4{,}806\cdot10^{-19}$ J. S $4{,}81$ by vyšlo $4{,}2\cdot10^{-23}$: v exponentu kolem 119 už změní výsledek i třetí platná číslice.
+'''
+warning = 'Energii v exponentu nezaokrouhluj: $W_m = 4{,}806\cdot10^{-19}$ J.'
+
+[[question]]
+id = 'ST-16'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Zadání, příklad 5'
+tags = ['zadani']
+text = '''
+K přesunu atomu hliníku z uzlového bodu do mezimřížkové polohy je třeba energie 3 eV, konstanta $c' = 3$. Hliník: hustota 2 699 kg·m⁻³, molární hmotnost 26,98 kg/kmol. Kolik atomů v mezimřížkových polohách je v 1 m³ hliníku při **550 °C**?
+'''
+value = 7.63e10
+tolerance = 0.15e10
+unit = 'm⁻³'
+explanation = '''
+$T = 550 + 273{,}15 = 823{,}15\ \mathrm{K}$, $W_m = 4{,}806\cdot10^{-19}\ \mathrm{J}$, $N = 6{,}024\cdot10^{28}\ \mathrm{m^{-3}}$.
+
+$$n_m = 3\cdot6{,}024\cdot10^{28}\cdot e^{-\frac{4{,}806\cdot10^{-19}}{1{,}38\cdot10^{-23}\cdot823{,}15}} = 1{,}807\cdot10^{29}\cdot e^{-42{,}31} \doteq 7{,}63\cdot10^{10}\ \mathrm{m^{-3}}$$
+
+Proti vakancím při stejné teplotě ($1{,}55\cdot10^{24}$) je jich o 13 řádů méně: přesun atomu do mezimřížkové polohy stojí čtyřikrát víc energie.
+'''
+
+# ---------- Obměny
+
+[[question]]
+id = 'ST-17'
+kind = 'numeric'
+topic = 'Elementární buňka z hustoty'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Stříbro krystalizuje v krychlové mřížce plošně centrované, má hustotu 10 500 kg·m⁻³ a molární hmotnost 107,87 kg/kmol. Jaký je objem jeho elementární buňky?
+'''
+value = 6.824e-29
+tolerance = 0.07e-29
+unit = 'm³'
+explanation = '''
+Plošně centrovaná mřížka: $N = 4$.
+
+$$V = \frac{N\cdot M}{\rho\cdot N_A} = \frac{4\cdot107{,}87}{10\,500\cdot6{,}022\cdot10^{26}} = 6{,}824\cdot10^{-29}\ \mathrm{m^3}$$
+'''
+
+[[question]]
+id = 'ST-18'
+kind = 'numeric'
+topic = 'Elementární buňka z hustoty'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Stříbro: mřížka plošně centrovaná, hustota 10 500 kg·m⁻³, molární hmotnost 107,87 kg/kmol. Atomy jsou koule, které se v buňce dotýkají. Jaký je poloměr atomu stříbra?
+'''
+value = 1.445e-10
+tolerance = 0.02e-10
+unit = 'm'
+explanation = '''
+$$V = \frac{4\cdot107{,}87}{10\,500\cdot6{,}022\cdot10^{26}} = 6{,}824\cdot10^{-29}\ \mathrm{m^3} \qquad a = \sqrt[3]{V} = 4{,}086\cdot10^{-10}\ \mathrm{m}$$
+
+Plošně centrovaná mřížka, $a\sqrt2 = 4r$:
+
+$$r = \frac{\sqrt2}{4}\cdot a = \frac{\sqrt2}{4}\cdot4{,}086\cdot10^{-10} = 1{,}445\cdot10^{-10}\ \mathrm{m}$$
+'''
+
+[[question]]
+id = 'ST-19'
+kind = 'numeric'
+topic = 'Elementární buňka z hustoty'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3, jiná mřížka.** Železo α krystalizuje v krychlové mřížce **prostorově centrované**, má hustotu 7 870 kg·m⁻³ a molární hmotnost 55,85 kg/kmol. Atomy jsou koule, které se v buňce dotýkají. Jaký je poloměr atomu železa?
+'''
+value = 1.2415e-10
+tolerance = 0.02e-10
+unit = 'm'
+explanation = '''
+Prostorově centrovaná mřížka: $N = 2$ atomy na buňku.
+
+$$V = \frac{N\cdot M}{\rho\cdot N_A} = \frac{2\cdot55{,}85}{7\,870\cdot6{,}022\cdot10^{26}} = 2{,}357\cdot10^{-29}\ \mathrm{m^3} \qquad a = \sqrt[3]{V} = 2{,}867\cdot10^{-10}\ \mathrm{m}$$
+
+Dotyk podél tělesové úhlopříčky, $a\sqrt3 = 4r$:
+
+$$r = \frac{\sqrt3}{4}\cdot a = \frac{\sqrt3}{4}\cdot2{,}867\cdot10^{-10} = 1{,}24\cdot10^{-10}\ \mathrm{m}$$
+'''
+warning = 'Jiná mřížka = jiný počet atomů $N$ i jiná podmínka dotyku.'
+
+[[question]]
+id = 'ST-20'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** K vytvoření vakance v mědi je třeba energie 1,28 eV. Měď: mřížka plošně centrovaná, hustota 8 890 kg·m⁻³, molární hmotnost 63,57 kg/kmol. Kolik vakancí je v 1,00 m³ mědi při 1 000 °C?
+'''
+value = 7.19e23
+tolerance = 0.14e23
+unit = 'm⁻³'
+explanation = '''
+$T = 1\,000 + 273{,}15 = 1\,273{,}15\ \mathrm{K}$, $W_v = 1{,}28\cdot1{,}602\cdot10^{-19} = 2{,}051\cdot10^{-19}\ \mathrm{J}$.
+
+$$N = \frac{\rho V N_A}{M} = \frac{8\,890\cdot1\cdot6{,}022\cdot10^{26}}{63{,}57} = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$$
+
+$$n_v = N\cdot e^{-\frac{W_v}{kT}} = 8{,}42\cdot10^{28}\cdot e^{-\frac{2{,}051\cdot10^{-19}}{1{,}38\cdot10^{-23}\cdot1\,273{,}15}} = 8{,}42\cdot10^{28}\cdot e^{-11{,}67} \doteq 7{,}19\cdot10^{23}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'ST-21'
+kind = 'numeric'
+topic = 'Bodové poruchy'
+source = 'Obměna příkladu 5'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 5.** K přesunu atomu mědi z uzlového bodu do mezimřížkové polohy je třeba energie 2,5 eV, konstanta $c' = 2$. Měď: hustota 8 890 kg·m⁻³, molární hmotnost 63,57 kg/kmol. Kolik atomů v mezimřížkových polohách je v 1 m³ mědi při 800 °C?
+'''
+value = 3.03e17
+tolerance = 0.06e17
+unit = 'm⁻³'
+explanation = '''
+$T = 800 + 273{,}15 = 1\,073{,}15\ \mathrm{K}$, $W_m = 2{,}5\cdot1{,}602\cdot10^{-19} = 4{,}005\cdot10^{-19}\ \mathrm{J}$, $N = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$.
+
+$$n_m = c'\cdot N\cdot e^{-\frac{W_m}{kT}} = 2\cdot8{,}42\cdot10^{28}\cdot e^{-\frac{4{,}005\cdot10^{-19}}{1{,}38\cdot10^{-23}\cdot1\,073{,}15}} = 1{,}684\cdot10^{29}\cdot e^{-27{,}04} \doteq 3{,}03\cdot10^{17}\ \mathrm{m^{-3}}$$
+'''

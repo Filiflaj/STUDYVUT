@@ -67,3 +67,8 @@ name = "Počítání chyb a závislostí"
 description = "jen výpočty: chyby, zaokrouhlení, šíření chyb, směrnice, přístroje"
 tags = ["pocty"]
 shuffle = true
+
+[[document]]
+file = "files/vzorce-k-pisemce.pdf"
+title = "Vzorce k písemce ze cvičení"
+description = "vzorce všech šesti úloh a zpracování měření na dvou stranách A4, k tisku (stejné jako kapitola)"

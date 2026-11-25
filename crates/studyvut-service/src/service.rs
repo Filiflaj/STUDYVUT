@@ -390,6 +390,24 @@ impl Service {
         )?)
     }
 
+    /// A PDF of the study material (`[[document]]`) as a file on the disk
+    /// (a copy in the cache folder), for the system's viewer. Only listed
+    /// documents: the window names one by its `file` in subject.toml.
+    pub fn document_file(&self, subject: &str, file: &str) -> Result<PathBuf> {
+        let loaded = self.loaded();
+        let unknown = || ServiceError::UnknownFile(format!("{subject}/{file}"));
+        let doc = loaded
+            .catalog
+            .subject(subject)
+            .and_then(|s| s.document(file))
+            .ok_or_else(unknown)?;
+        let path = format!("{subject}/{}", doc.file);
+        let bytes = self.files.read(&path).ok_or_else(unknown)?;
+        let mut target = self.paths.cache_dir().join("documents").join(subject);
+        target.extend(doc.file.split('/'));
+        Ok(crate::cache::copy(&target, &bytes)?)
+    }
+
     /// A file of a submission, for "save a copy": its name and bytes.
     pub fn submission_bytes(
         &self,
@@ -589,6 +607,7 @@ fn subject_view(s: &Subject, personal: &Personal) -> SubjectView {
         questions,
         due,
         submissions: 0,
+        documents: s.documents.clone(),
     }
 }
 
@@ -706,6 +725,48 @@ mod tests {
             Some("image/png")
         );
         assert!(svc.asset("fy1/subject.toml").is_none());
+        Ok(())
+    }
+
+    #[test]
+    fn documents_open_from_a_copy_in_the_cache() -> Result<()> {
+        let dir = tempfile::tempdir()?;
+        let files = MemFiles::new()
+            .with(
+                "mpe/subject.toml",
+                "code = \"BPC-MPE\"\nname = \"Materiály\"\nsemester = \"ZS 2026/2027\"\n\
+                 [[document]]\nfile = \"files/vzorce.pdf\"\ntitle = \"Vzorce\"\n",
+            )
+            .with("mpe/files/vzorce.pdf", "%PDF-1.7");
+        let svc = Service::start(ServiceConfig {
+            paths: Paths {
+                data_dir: dir.path().to_owned(),
+                custom: true,
+            },
+            files: Arc::new(files),
+            submissions: Arc::new(MemFiles::new()),
+            source: ContentSource::Embedded,
+        })?;
+        assert_eq!(svc.problem_count().errors, 0, "{:?}", svc.problems());
+        let view = &svc.overview(0)?.subjects[0];
+        assert_eq!(view.documents.len(), 1);
+        assert_eq!(view.documents[0].size, 8);
+
+        let pdf = svc.document_file("mpe", "files/vzorce.pdf")?;
+        assert!(pdf.starts_with(dir.path().join("cache/documents/mpe")));
+        assert_eq!(std::fs::read_to_string(&pdf)?, "%PDF-1.7");
+        for (subject, file) in [
+            ("mpe", "subject.toml"),
+            ("mpe", "../x.pdf"),
+            ("nic", "files/vzorce.pdf"),
+        ] {
+            let e = svc.document_file(subject, file);
+            assert_eq!(
+                e.err().map(|e| e.code()),
+                Some("unknown_file"),
+                "{subject}/{file}"
+            );
+        }
         Ok(())
     }
 }

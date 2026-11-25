@@ -65,16 +65,25 @@
       </div>
     {/if}
 
-    {#if chapters.length === 0 && subject.questions === 0 && subject.submissions === 0}
+    {#if chapters.length === 0 && subject.documents.length === 0 && subject.questions === 0 && subject.submissions === 0}
       <div class="card empty">{fill(t().subject.empty, { id: subject.id })}</div>
     {/if}
 
     <div class="tiles">
-      <button class="card tile" disabled={chapters.length === 0} onclick={() => subject && nav.study(subject.id)}>
+      <button
+        class="card tile"
+        disabled={chapters.length === 0 && subject.documents.length === 0}
+        onclick={() => subject && nav.study(subject.id)}
+      >
         <span class="icon"><Icon name="book" size={20} /></span>
         <span class="title">{t().subject.study}</span>
         <span class="hint">
-          {chapters.length ? plural(t().subject.studyHint, chapters.length) : t().subject.none}
+          {[
+            chapters.length ? plural(t().subject.studyHint, chapters.length) : "",
+            subject.documents.length ? plural(t().subject.documentsHint, subject.documents.length) : "",
+          ]
+            .filter(Boolean)
+            .join(" · ") || t().subject.none}
         </span>
       </button>
 

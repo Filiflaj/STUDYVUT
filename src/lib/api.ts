@@ -40,6 +40,7 @@ export const api = {
   submissions: (subject: string | null) => invoke<SubmissionRow[]>("get_submissions", { subject }),
   submission: (subject: string, id: string) => invoke<SubmissionDetail>("get_submission", { subject, id }),
   /** Opens a document in its system app (a copy in the cache folder). */
+  openDocument: (subject: string, file: string) => invoke<void>("open_document", { subject, file }),
   openSubmissionFile: (subject: string, id: string, file: number) =>
     invoke<void>("open_submission_file", { subject, id, file }),
   revealSubmissionFile: (subject: string, id: string, file: number) =>

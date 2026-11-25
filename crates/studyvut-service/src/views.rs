@@ -3,7 +3,7 @@
 use std::collections::BTreeMap;
 
 use serde::Serialize;
-use studyvut_core::content::{Color, Program, Question};
+use studyvut_core::content::{Color, Document, Program, Question};
 use studyvut_core::quiz::SetSpec;
 
 /// Counts of content problems, by severity.
@@ -47,6 +47,8 @@ pub struct SubjectView {
     pub due: usize,
     /// Submitted work of the subject (`submissions/`), for its tab.
     pub submissions: usize,
+    /// PDFs of the study material, listed with the chapters.
+    pub documents: Vec<Document>,
 }
 
 #[derive(Clone, Debug, Serialize)]

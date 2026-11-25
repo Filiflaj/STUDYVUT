@@ -51,6 +51,7 @@ pub fn run() {
             commands::get_submissions,
             commands::get_submission,
             commands::open_submission_file,
+            commands::open_document,
             commands::reveal_submission_file,
             commands::save_submission_file,
         ])

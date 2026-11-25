@@ -20,6 +20,19 @@
     chapters.some((c) => c.id === nav.chapter) ? nav.chapter : (chapters[0]?.id ?? null),
   );
   const index = $derived(chapters.findIndex((c) => c.id === chapterId));
+  /** PDFs of the study material (`[[document]]`), listed under the chapters. */
+  const documents = $derived(subject?.documents ?? []);
+  let openError = $state<string | null>(null);
+
+  async function openDocument(file: string) {
+    if (!subject) return;
+    openError = null;
+    try {
+      await api.openDocument(subject.id, file);
+    } catch (e) {
+      openError = fill(t().study.openFailed, { error: errorMessage(e) });
+    }
+  }
 
   /** The subject's submitted work (docs/submissions.md), listed under the chapters. */
   let works = $state<SubmissionRow[]>([]);
@@ -38,14 +51,15 @@
       cancelled = true;
     };
   });
-  /** The open work: the chosen one, or the first when the subject has no chapters. */
+  /** The open work: the chosen one, or the first when the subject has no study text. */
   const workId = $derived(
     works.some((w) => w.id === nav.submission)
       ? nav.submission
-      : chapters.length === 0
+      : chapters.length === 0 && documents.length === 0
         ? (works[0]?.id ?? null)
         : null,
   );
+  const studyText = $derived(chapters.length > 0 || documents.length > 0);
 
   let chapter = $state<ChapterPayload | null>(null);
   let rendered = $state<Rendered>({ html: "", sections: [] });
@@ -126,7 +140,7 @@
 
   {#if !subject}
     <div class="card empty">{t().overview.hiddenAll}</div>
-  {:else if chapters.length === 0 && subject.submissions === 0}
+  {:else if !studyText && subject.submissions === 0}
     <div class="card empty">
       <p>{t().study.empty}</p>
       <p class="muted small">{fill(t().study.emptyHint, { id: subject.id })}</p>
@@ -134,7 +148,7 @@
   {:else}
     <div class="layout">
       <nav class="toc" aria-label={t().study.chapters}>
-        {#if works.length && chapters.length}
+        {#if works.length && studyText}
           <div class="switch">
             <SegmentedControl
               options={[
@@ -148,7 +162,23 @@
           </div>
         {/if}
         {#if !workId}
-        {#if !works.length}<div class="toc-title">{t().study.chapters}</div>{/if}
+        {#if documents.length}
+          <div class="toc-title">{t().study.documents}</div>
+          {#each documents as d (d.file)}
+            <a
+              href="#{d.file}"
+              class="doc"
+              title={d.description ?? t().study.openDocument}
+              onclick={(e) => {
+                e.preventDefault();
+                void openDocument(d.file);
+              }}><Icon name="file-text" size={14} /><span>{d.title}</span></a
+            >
+          {/each}
+        {/if}
+        {#if chapters.length && (!works.length || documents.length)}
+          <div class="toc-title" class:gap={documents.length > 0}>{t().study.chapters}</div>
+        {/if}
         {#each chapters as c (c.id)}
           <a
             href="#{c.id}"
@@ -175,7 +205,7 @@
           {/if}
         {/each}
         {:else}
-          {#if !chapters.length}<div class="toc-title">{t().submissions.title}</div>{/if}
+          {#if !studyText}<div class="toc-title">{t().submissions.title}</div>{/if}
           {#each works as w (w.id)}
             <a
               href="#{w.id}"
@@ -192,8 +222,29 @@
       </nav>
 
       <div class="column">
+        {#if openError}
+          <div class="card empty" role="alert">{openError}</div>
+        {/if}
         {#if workId && subject}
           <SubmissionPanel subject={subject.id} id={workId} />
+        {:else if chapters.length === 0}
+          <div class="card docs">
+            <h2 class="title">{t().study.documents}</h2>
+            <p class="muted">{t().study.documentsIntro}</p>
+            {#each documents as d (d.file)}
+              <div class="doc-row">
+                <Icon name="file-text" size={20} />
+                <div class="doc-text">
+                  <div class="doc-title">{d.title}</div>
+                  {#if d.description}<div class="muted small">{d.description}</div>{/if}
+                </div>
+                <button class="btn primary" onclick={() => openDocument(d.file)}>
+                  <Icon name="external" size={13} />
+                  {t().study.openDocument}
+                </button>
+              </div>
+            {/each}
+          </div>
         {:else if error}
           <div class="card empty">{fill(t().study.loadFailed, { error })}</div>
         {:else if chapter}
@@ -312,6 +363,48 @@
   }
   .switch {
     padding: 0 0 12px;
+  }
+  .toc-title.gap {
+    margin-top: 14px;
+  }
+  .toc a.doc {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .toc a.doc :global(svg) {
+    flex: none;
+    margin-top: 1px;
+    color: var(--text-muted);
+  }
+  .docs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 22px 20px;
+  }
+  .docs p {
+    margin: 0;
+  }
+  .doc-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+  }
+  .doc-row > :global(svg) {
+    flex: none;
+    color: var(--text-muted);
+  }
+  .doc-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .doc-title {
+    font-weight: 600;
   }
   .task {
     display: inline-block;

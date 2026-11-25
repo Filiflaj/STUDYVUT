@@ -247,6 +247,22 @@ pub fn open_submission_file(
         .map_err(CmdError::other)
 }
 
+/// Open a PDF of the study material (`[[document]]` in subject.toml) in the
+/// system's viewer. The window names it by its `file`; the service opens
+/// only documents the subject lists, from a copy in the cache folder.
+#[tauri::command]
+pub fn open_document(
+    app: AppHandle,
+    state: State<'_, AppState>,
+    subject: String,
+    file: String,
+) -> CmdResult<()> {
+    let path = state.service.document_file(&subject, &file)?;
+    app.opener()
+        .open_path(path.display().to_string(), None::<&str>)
+        .map_err(CmdError::other)
+}
+
 /// Show a file of a submission (its copy in the cache folder) in Finder,
 /// Explorer or the file manager.
 #[tauri::command]

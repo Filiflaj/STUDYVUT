@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+### Materiály
+
+- BPC-MPE: pět kvízů k numerickým cvičením (stavba látek, polovodiče,
+  vodiče, magnetické materiály, dielektrika) se 128 otázkami: všech 26
+  příkladů zadání s celým postupem a 37 obměn s jinými čísly. Sady **Test
+  nanečisto**, **Příklady ze zadání** a **Obměny příkladů**.
+- BPC-MPE: v Učivu **Přehled vzorců k numerickým cvičením** v PDF.
+- BPC-FY1: v Učivu **Vzorce k písemce ze cvičení** v PDF k tisku.
+
+### Aplikace
+
+- Učivo ukazuje i dokumenty v PDF. Otevřou se v prohlížeči PDF, kde je
+  můžeš vytisknout nebo uložit.
+- Číselnou odpověď můžeš napsat s mocninou deseti, třeba 2,5e19 nebo
+  2,5·10^19. Velká a malá čísla aplikace ukazuje jako 2,5·10¹⁹.
+
 ## 0.2.1 (2026-11-25)
 
 ### Opravy

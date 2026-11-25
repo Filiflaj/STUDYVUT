@@ -135,6 +135,25 @@ function subject(
     questions,
     due: fresh || !withContent ? 0 : 5,
     submissions: withContent ? WORKS.length : 0,
+    documents: withContent
+      ? [
+          {
+            file: "files/vzorce-k-pisemce.pdf",
+            title: "Vzorce k písemce ze cvičení",
+            description: "vzorce všech šesti úloh a zpracování měření na dvou stranách A4",
+            size: 295_765,
+          },
+        ]
+      : id === "bpc-mpe"
+        ? [
+            {
+              file: "files/vzorce.pdf",
+              title: "Přehled vzorců k numerickým cvičením",
+              description: "vzorce ke všem příkladům zadání podle kapitol, vysvětlivky symbolů, konstanty a převody",
+              size: 115_973,
+            },
+          ]
+        : [],
   };
 }
 
@@ -269,6 +288,7 @@ mockIPC((cmd, args) => {
     case "get_submission":
       return work(String(a.id));
     case "open_submission_file":
+    case "open_document":
     case "reveal_submission_file":
       return null;
     case "save_submission_file":

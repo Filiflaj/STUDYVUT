@@ -1,0 +1,396 @@
+name = 'Dielektrické materiály'
+description = 'kapacita vrstveného a koaxiálního kondenzátoru, deskový kondenzátor s dielektrikem při připojeném a odpojeném zdroji, polarizace a dipólový moment; všechny 4 příklady zadání a jejich obměny'
+
+# ---------- Zadání, příklad 1: drážková izolace
+
+[[question]]
+id = 'DI-01'
+kind = 'numeric'
+topic = 'Kapacita'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Mezi dvě kovové desky 15,0 × 18,0 cm jsou vloženy dvě vrstvy drážkové izolace. Jedna vrstva se skládá z elektrotechnické lepenky tloušťky 0,300 mm ($\varepsilon_r = 2{,}60$) a z PET fólie tloušťky 40,0 µm ($\varepsilon_r = 3{,}80$). Jaká je kapacita? Okrajová pole neuvažujte.
+'''
+value = 9.49e-10
+tolerance = 0.1e-10
+unit = 'F'
+explanation = '''
+Plocha desek: $S = a\cdot b = 0{,}15\cdot0{,}18 = 2{,}7\cdot10^{-2}\ \mathrm{m^2}$.
+
+Každá vrstva je deskový kondenzátor $C = \varepsilon_0\varepsilon_r\frac{S}{h}$:
+
+$$C_1 = 8{,}854\cdot10^{-12}\cdot2{,}6\cdot\frac{2{,}7\cdot10^{-2}}{0{,}3\cdot10^{-3}} = 2{,}07\cdot10^{-9}\ \mathrm{F} \qquad C_2 = 8{,}854\cdot10^{-12}\cdot3{,}8\cdot\frac{2{,}7\cdot10^{-2}}{40\cdot10^{-6}} = 2{,}271\cdot10^{-8}\ \mathrm{F}$$
+
+Dvě vrstvy izolace = 2× lepenka a 2× fólie, všechny nad sebou, tedy v sérii:
+
+$$\frac1C = \frac1{C_1} + \frac1{C_2} + \frac1{C_1} + \frac1{C_2} = \frac2{C_1} + \frac2{C_2} \quad\Rightarrow\quad C = \frac{C_1 C_2}{2(C_1 + C_2)}$$
+
+$$C = \frac{2{,}07\cdot10^{-9}\cdot2{,}271\cdot10^{-8}}{2\,(2{,}07\cdot10^{-9} + 2{,}271\cdot10^{-8})} = 9{,}49\cdot10^{-10}\ \mathrm{F}$$
+
+V sešitu vyšlo $9{,}485\cdot10^{-10}$ F (se zaokrouhleným $C_1$); bez zaokrouhlení $9{,}493\cdot10^{-10}$ F.
+
+**Jak to říct:** „Vrstvy dielektrika leží nad sebou mezi stejnými deskami, prochází jimi stejný tok indukce: chovají se jako kondenzátory v sérii.“
+'''
+warning = '40,0 µm = $40\cdot10^{-6}$ m, 0,300 mm = $0{,}3\cdot10^{-3}$ m.'
+
+[[question]]
+id = 'DI-02'
+topic = 'Kapacita'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Mezi deskami jsou dvě stejné vrstvy izolace, každá z lepenky (kapacita samotné vrstvy lepenky $C_1$) a fólie ($C_2$). Jaká je výsledná kapacita?
+'''
+options = [
+  '$C = 2\,(C_1 + C_2)$',
+  '$C = \dfrac{C_1 C_2}{C_1 + C_2}$',
+  '$C = \dfrac{C_1 C_2}{2\,(C_1 + C_2)}$',
+  '$C = \dfrac{2\,C_1 C_2}{C_1 + C_2}$',
+]
+answer = 2
+layout = 'grid'
+explanation = '''
+Čtyři vrstvy (lepenka, fólie, lepenka, fólie) leží nad sebou, jsou v sérii:
+
+$$\frac1C = \frac2{C_1} + \frac2{C_2} = \frac{2\,(C_1 + C_2)}{C_1 C_2} \quad\Rightarrow\quad C = \frac{C_1 C_2}{2\,(C_1 + C_2)}$$
+'''
+notes = [
+  'To by platilo pro vrstvy vedle sebe (paralelně). Vrstvy nad sebou jsou v sérii.',
+  'To je jen jedna vrstva izolace (lepenka + fólie). Vrstvy izolace jsou dvě.',
+  '',
+  'Dvě stejné série za sebou kapacitu zmenší na polovinu, ne zdvojnásobí.',
+]
+
+# ---------- Zadání, příklad 2: koaxiální kabel
+
+[[question]]
+id = 'DI-03'
+kind = 'numeric'
+topic = 'Kapacita'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Souosý kabel má izolaci z PTFE ($\varepsilon_r = 2{,}1$) tloušťky 1,5 mm, průřez vnitřního vodiče je 0,80 mm², délka kabelu 1,2 m. Jaká je jeho kapacita?
+'''
+value = 1.017e-10
+tolerance = 0.015e-10
+unit = 'F'
+explanation = '''
+Poloměr vnitřního vodiče z průřezu $S_v = \pi r_1^2$:
+
+$$r_1 = \sqrt{\frac{S_v}{\pi}} = \sqrt{\frac{0{,}8\cdot10^{-6}}{\pi}} = 5{,}05\cdot10^{-4}\ \mathrm{m}$$
+
+Indukce ve vzdálenosti $r$ od osy (plášť válce $2\pi r l$) a z ní intenzita:
+
+$$D = \frac{Q}{2\pi r l} = \varepsilon_0\varepsilon_r E \quad\Rightarrow\quad E = \frac{Q}{2\pi\varepsilon_0\varepsilon_r r l}$$
+
+Napětí mezi vodiči je integrál intenzity přes izolaci:
+
+$$U = \int_{r_1}^{r_1 + h} E\,\mathrm{d}r = \frac{Q}{2\pi\varepsilon_0\varepsilon_r l}\ln\frac{r_1 + h}{r_1} \quad\Rightarrow\quad C = \frac{Q}{U} = \frac{2\pi\varepsilon_0\varepsilon_r l}{\ln\frac{r_1 + h}{r_1}}$$
+
+$$C = \frac{2\pi\cdot8{,}854\cdot10^{-12}\cdot2{,}1\cdot1{,}2}{\ln\frac{5{,}05\cdot10^{-4} + 1{,}5\cdot10^{-3}}{5{,}05\cdot10^{-4}}} = \frac{1{,}402\cdot10^{-10}}{1{,}379} = 1{,}017\cdot10^{-10}\ \mathrm{F}$$
+
+**Jak to říct:** „Pole v kabelu není homogenní, slábne s 1/r; proto napětí počítám integrálem a v kapacitě je logaritmus poměru poloměrů.“
+'''
+warning = 'Tloušťka izolace se k poloměru přičítá: vnější poloměr je $r_1 + h$, ne $h$.'
+
+# ---------- Zadání, příklad 3: deskový kondenzátor a slída
+
+[[question]]
+id = 'DI-04'
+kind = 'numeric'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Na elektrody deskového vakuového kondenzátoru (30,0 × 20,0 cm, vzdálenost 4,00 mm) je přiloženo napětí 1 000 V. Jaká je intenzita elektrického pole mezi elektrodami?
+'''
+value = 2.5e5
+tolerance = 0.025e5
+unit = 'V·m⁻¹'
+explanation = '''
+Pole mezi deskami je homogenní:
+
+$$E_0 = \frac{U}{h} = \frac{1\,000}{4\cdot10^{-3}} = 250\ \mathrm{kV\cdot m^{-1}} = 2{,}5\cdot10^{5}\ \mathrm{V\cdot m^{-1}}$$
+
+Rozměry desek k tomu nejsou potřeba.
+'''
+
+[[question]]
+id = 'DI-05'
+kind = 'numeric'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Na elektrody deskového vakuového kondenzátoru (30,0 × 20,0 cm, vzdálenost 4,00 mm) je přiloženo napětí 1 000 V. Jaká je elektrická indukce mezi elektrodami (a tedy i plošná hustota náboje na nich)?
+'''
+value = 2.214e-6
+tolerance = 0.025e-6
+unit = 'C·m⁻²'
+explanation = '''
+$E_0 = \dfrac{U}{h} = 2{,}5\cdot10^{5}\ \mathrm{V\cdot m^{-1}}$:
+
+$$D_0 = \varepsilon_0 E_0 = 8{,}854\cdot10^{-12}\cdot2{,}5\cdot10^{5} = 2{,}214\cdot10^{-6}\ \mathrm{C\cdot m^{-2}}$$
+
+Plošná hustota náboje na elektrodách je rovna indukci: $\sigma_0 = D_0 = 2{,}214\cdot10^{-6}\ \mathrm{C\cdot m^{-2}}$ (v sešitu značeno $\delta$).
+'''
+
+[[question]]
+id = 'DI-06'
+kind = 'numeric'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Deskový kondenzátor (vzdálenost elektrod 4,00 mm) je **připojen** ke zdroji 1 000 V. Mezi elektrody se vloží slídová destička ($\varepsilon_r = 5{,}40$), která vyplní celý prostor. Jaká je teď elektrická indukce mezi elektrodami?
+'''
+value = 1.195e-5
+tolerance = 0.02e-5
+unit = 'C·m⁻²'
+explanation = '''
+Zdroj drží napětí, proto se intenzita nezmění: $E = E_0 = \dfrac{U}{h} = 2{,}5\cdot10^{5}\ \mathrm{V\cdot m^{-1}}$.
+
+$$D = \varepsilon_0\varepsilon_r E = \varepsilon_r D_0 = 8{,}854\cdot10^{-12}\cdot5{,}4\cdot2{,}5\cdot10^{5} = 1{,}195\cdot10^{-5} \doteq 1{,}2\cdot10^{-5}\ \mathrm{C\cdot m^{-2}}$$
+
+Stejně vzroste plošná hustota náboje: $\sigma = D = 1{,}2\cdot10^{-5}\ \mathrm{C\cdot m^{-2}}$; zdroj na desky dodá další náboj.
+'''
+
+[[question]]
+id = 'DI-07'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Deskový kondenzátor zůstává **připojený** ke zdroji a mezi elektrody se vloží slída ($\varepsilon_r = 5{,}40$). Jak se změní intenzita pole $E$, indukce $D$ a plošná hustota náboje $\sigma$?
+'''
+options = [
+  '$E$ klesne 5,4krát, $D$ a $\sigma$ se nezmění',
+  '$E$ se nezmění, $D$ a $\sigma$ vzrostou 5,4krát',
+  '$E$, $D$ i $\sigma$ vzrostou 5,4krát',
+  '$E$ se nezmění, $D$ vzroste 5,4krát, $\sigma$ se nezmění',
+]
+answer = 1
+explanation = '''
+Připojený zdroj drží **napětí**: $E = U/h$ zůstane. Indukce $D = \varepsilon_0\varepsilon_r E$ vzroste $\varepsilon_r$krát a s ní náboj na deskách ($\sigma = D$), který dodá zdroj.
+
+**Jak to říct:** „Zdroj drží napětí, a tedy i intenzitu. Dielektrikum se polarizuje a zdroj musí dodat víc náboje, proto indukce i hustota náboje vzrostou ε_r-krát.“
+'''
+notes = [
+  'To platí pro odpojený kondenzátor, kde se nemění náboj.',
+  '',
+  'Intenzita je dána napětím zdroje a vzdáleností desek, ty se nemění.',
+  'Hustota náboje na elektrodách je rovna indukci, $\sigma = D$, mění se spolu.',
+]
+
+[[question]]
+id = 'DI-08'
+kind = 'numeric'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Deskový vakuový kondenzátor (vzdálenost elektrod 4,00 mm) se nabije na 1 000 V a **odpojí** od zdroje. Pak se mezi elektrody vloží slídová destička ($\varepsilon_r = 5{,}40$), která vyplní celý prostor. Jaká je teď intenzita pole mezi elektrodami?
+'''
+value = 4.63e4
+tolerance = 0.05e4
+unit = 'V·m⁻¹'
+explanation = '''
+Odpojený kondenzátor si drží **náboj**: $\sigma = \sigma_0$, $D = D_0 = 2{,}21\cdot10^{-6}\ \mathrm{C\cdot m^{-2}}$. Intenzita:
+
+$$E = \frac{D}{\varepsilon_0\varepsilon_r} = \frac{E_0}{\varepsilon_r} = \frac{2{,}5\cdot10^{5}}{5{,}4} = 4{,}63\cdot10^{4}\ \mathrm{V\cdot m^{-1}}$$
+
+Napětí mezi deskami klesne stejně: $U = E\cdot h = 185$ V.
+'''
+
+[[question]]
+id = 'DI-09'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Deskový kondenzátor se nabije, **odpojí** od zdroje a pak se mezi elektrody vloží slída ($\varepsilon_r = 5{,}40$). Jak se změní intenzita pole $E$, indukce $D$ a plošná hustota náboje $\sigma$?
+'''
+options = [
+  '$E$ se nezmění, $D$ a $\sigma$ vzrostou 5,4krát',
+  '$E$, $D$ i $\sigma$ klesnou 5,4krát',
+  '$E$ klesne 5,4krát, $D$ a $\sigma$ se nezmění',
+  '$E$ vzroste 5,4krát, $D$ a $\sigma$ se nezmění',
+]
+answer = 2
+explanation = '''
+Odpojený kondenzátor nemá odkud vzít ani kam odvést náboj: $\sigma = \sigma_0$ a $D = \sigma$ se nezmění. Intenzita $E = D/(\varepsilon_0\varepsilon_r)$ klesne $\varepsilon_r$krát, a s ní napětí.
+
+**Jak to říct:** „Náboj na deskách zůstane, tedy i indukce. Vázané náboje polarizovaného dielektrika pole uvnitř zeslabí ε_r-krát.“
+'''
+notes = [
+  'To platí pro kondenzátor připojený ke zdroji, který drží napětí.',
+  'Náboj na odpojených deskách se nemá kam ztratit, $\sigma$ ani $D$ se nezmění.',
+  '',
+  'Polarizované dielektrikum pole zeslabuje, ne zesiluje.',
+]
+
+# ---------- Zadání, příklad 4: elektrolytický kondenzátor
+
+[[question]]
+id = 'DI-10'
+kind = 'numeric'
+topic = 'Polarizace dielektrika'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Elektrolytický kondenzátor z oxidované hliníkové destičky s aktivní plochou 400 cm² má kapacitu 8,00 µF. Napětí mezi destičkou a elektrolytem je 10,0 V, relativní permitivita oxidu $\mathrm{Al_2O_3}$ je 8,00. Jaká je intenzita elektrického pole v oxidové vrstvě?
+'''
+value = 2.824e7
+tolerance = 0.03e7
+unit = 'V·m⁻¹'
+explanation = '''
+Tloušťku vrstvy neznám, ale vyjde z kapacity: $C = \varepsilon_0\varepsilon_r\frac{S}{h}$, tedy $h = \frac{\varepsilon_0\varepsilon_r S}{C}$. Proto:
+
+$$E = \frac{U}{h} = \frac{D}{\varepsilon_0\varepsilon_r} = \frac{Q}{\varepsilon_0\varepsilon_r S} = \frac{C\cdot U}{\varepsilon_0\varepsilon_r S} = \frac{8\cdot10^{-6}\cdot10}{8{,}854\cdot10^{-12}\cdot8\cdot400\cdot10^{-4}} = 2{,}82\cdot10^{7}\ \mathrm{V\cdot m^{-1}}$$
+
+(Tloušťka oxidu $h = 3{,}5\cdot10^{-7}$ m, proto je pole tak silné.)
+'''
+warning = '400 cm² = $400\cdot10^{-4}$ m², 8,00 µF = $8\cdot10^{-6}$ F.'
+
+[[question]]
+id = 'DI-11'
+kind = 'numeric'
+topic = 'Polarizace dielektrika'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Elektrolytický kondenzátor: aktivní plocha 400 cm², kapacita 8,00 µF, napětí 10,0 V, relativní permitivita oxidu $\mathrm{Al_2O_3}$ 8,00. Jaký celkový dipólový moment je indukovaný v oxidové vrstvě?
+'''
+value = 2.479e-11
+tolerance = 0.03e-11
+unit = 'C·m'
+explanation = '''
+Polarizace (dipólový moment jednotky objemu) je rozdíl indukce v dielektriku a ve vakuu:
+
+$$P = D - D_0 = \varepsilon_0\varepsilon_r E - \varepsilon_0 E = \varepsilon_0(\varepsilon_r - 1)E$$
+
+Celkový moment = polarizace × objem vrstvy, $V = S\cdot h$, a $E\cdot h = U$:
+
+$$\mu_\text{cel} = P\cdot V = \varepsilon_0(\varepsilon_r - 1)E\cdot S h = \varepsilon_0(\varepsilon_r - 1)\,U\cdot S$$
+
+$$\mu_\text{cel} = 8{,}854\cdot10^{-12}\cdot(8 - 1)\cdot10\cdot400\cdot10^{-4} = 2{,}48\cdot10^{-11}\ \mathrm{C\cdot m}$$
+
+Kapacita ani tloušťka k tomu nejsou potřeba.
+
+**Jak to říct:** „Polarizace je dipólový moment objemové jednotky; vynásobím ji objemem vrstvy a součin E·h je napětí.“
+'''
+
+# ---------- Obměny
+
+[[question]]
+id = 'DI-12'
+kind = 'numeric'
+topic = 'Kapacita'
+source = 'Obměna příkladu 1'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 1.** Mezi deskami 10,0 × 10,0 cm je **jedna** vrstva izolace: lepenka tloušťky 0,500 mm ($\varepsilon_r = 2{,}60$) a PET fólie tloušťky 50,0 µm ($\varepsilon_r = 3{,}80$). Jaká je kapacita?
+'''
+value = 4.309e-10
+tolerance = 0.05e-10
+unit = 'F'
+explanation = '''
+$S = 0{,}1\cdot0{,}1 = 1\cdot10^{-2}\ \mathrm{m^2}$.
+
+$$C_1 = 8{,}854\cdot10^{-12}\cdot2{,}6\cdot\frac{10^{-2}}{0{,}5\cdot10^{-3}} = 4{,}604\cdot10^{-10}\ \mathrm{F} \qquad C_2 = 8{,}854\cdot10^{-12}\cdot3{,}8\cdot\frac{10^{-2}}{50\cdot10^{-6}} = 6{,}729\cdot10^{-9}\ \mathrm{F}$$
+
+Jedna lepenka a jedna fólie v sérii:
+
+$$C = \frac{C_1 C_2}{C_1 + C_2} = \frac{4{,}604\cdot10^{-10}\cdot6{,}729\cdot10^{-9}}{4{,}604\cdot10^{-10} + 6{,}729\cdot10^{-9}} = 4{,}31\cdot10^{-10}\ \mathrm{F}$$
+'''
+warning = 'Tady je vrstva jen jedna, proto bez dvojky ve jmenovateli.'
+
+[[question]]
+id = 'DI-13'
+kind = 'numeric'
+topic = 'Kapacita'
+source = 'Obměna příkladu 2'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 2.** Souosý kabel má izolaci z polyetylenu ($\varepsilon_r = 2{,}3$) tloušťky 2,0 mm, průřez vnitřního vodiče je 1,50 mm², délka kabelu 5,0 m. Jaká je jeho kapacita?
+'''
+value = 4.706e-10
+tolerance = 0.06e-10
+unit = 'F'
+explanation = '''
+$$r_1 = \sqrt{\frac{S_v}{\pi}} = \sqrt{\frac{1{,}5\cdot10^{-6}}{\pi}} = 6{,}91\cdot10^{-4}\ \mathrm{m}$$
+
+$$C = \frac{2\pi\varepsilon_0\varepsilon_r l}{\ln\frac{r_1 + h}{r_1}} = \frac{2\pi\cdot8{,}854\cdot10^{-12}\cdot2{,}3\cdot5}{\ln\frac{6{,}91\cdot10^{-4} + 2\cdot10^{-3}}{6{,}91\cdot10^{-4}}} = \frac{6{,}398\cdot10^{-10}}{1{,}360} = 4{,}71\cdot10^{-10}\ \mathrm{F}$$
+'''
+
+[[question]]
+id = 'DI-14'
+kind = 'numeric'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Deskový kondenzátor se vzdáleností elektrod 2,00 mm je **připojen** ke zdroji 500 V. Mezi elektrody se vloží skleněná deska ($\varepsilon_r = 7{,}0$), která vyplní celý prostor. Jaká je teď plošná hustota náboje na elektrodách?
+'''
+value = 1.549e-5
+tolerance = 0.02e-5
+unit = 'C·m⁻²'
+explanation = '''
+Zdroj připojen: $E = E_0 = \dfrac{U}{h} = \dfrac{500}{2\cdot10^{-3}} = 2{,}5\cdot10^{5}\ \mathrm{V\cdot m^{-1}}$ se nemění.
+
+$$\sigma = D = \varepsilon_0\varepsilon_r E = 8{,}854\cdot10^{-12}\cdot7\cdot2{,}5\cdot10^{5} = 1{,}55\cdot10^{-5}\ \mathrm{C\cdot m^{-2}}$$
+'''
+
+[[question]]
+id = 'DI-15'
+kind = 'numeric'
+topic = 'Kondenzátor s dielektrikem'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Deskový vakuový kondenzátor se vzdáleností elektrod 2,00 mm se nabije na 500 V a **odpojí** od zdroje. Pak se mezi elektrody vloží skleněná deska ($\varepsilon_r = 7{,}0$), která vyplní celý prostor. Jaká je teď intenzita pole?
+'''
+value = 3.571e4
+tolerance = 0.04e4
+unit = 'V·m⁻¹'
+explanation = '''
+Odpojený: náboj i indukce zůstanou, intenzita klesne $\varepsilon_r$krát.
+
+$$E_0 = \frac{500}{2\cdot10^{-3}} = 2{,}5\cdot10^{5}\ \mathrm{V\cdot m^{-1}} \qquad E = \frac{E_0}{\varepsilon_r} = \frac{2{,}5\cdot10^{5}}{7} = 3{,}57\cdot10^{4}\ \mathrm{V\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'DI-16'
+kind = 'numeric'
+topic = 'Polarizace dielektrika'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** Tantalový elektrolytický kondenzátor s aktivní plochou 100 cm² má kapacitu 10,0 µF při napětí 6,3 V; relativní permitivita oxidu $\mathrm{Ta_2O_5}$ je 27. Jaká je intenzita elektrického pole v oxidové vrstvě?
+'''
+value = 2.635e7
+tolerance = 0.03e7
+unit = 'V·m⁻¹'
+explanation = '''
+$$E = \frac{C\cdot U}{\varepsilon_0\varepsilon_r S} = \frac{10\cdot10^{-6}\cdot6{,}3}{8{,}854\cdot10^{-12}\cdot27\cdot100\cdot10^{-4}} = 2{,}64\cdot10^{7}\ \mathrm{V\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'DI-17'
+kind = 'numeric'
+topic = 'Polarizace dielektrika'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** Tantalový elektrolytický kondenzátor: aktivní plocha 100 cm², kapacita 10,0 µF, napětí 6,3 V, relativní permitivita oxidu $\mathrm{Ta_2O_5}$ 27. Jaký celkový dipólový moment je indukovaný v oxidové vrstvě?
+'''
+value = 1.450e-11
+tolerance = 0.02e-11
+unit = 'C·m'
+explanation = '''
+$$\mu_\text{cel} = \varepsilon_0(\varepsilon_r - 1)\,U\cdot S = 8{,}854\cdot10^{-12}\cdot(27 - 1)\cdot6{,}3\cdot100\cdot10^{-4} = 1{,}45\cdot10^{-11}\ \mathrm{C\cdot m}$$
+
+Kapacita k tomu není potřeba.
+'''

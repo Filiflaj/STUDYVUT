@@ -5,10 +5,10 @@ use std::collections::{BTreeMap, HashMap, HashSet};
 use super::files::Files;
 use super::markdown::{dollars_balanced, first_heading, image_refs, split_front_matter};
 use super::model::{
-    Catalog, Chapter, Program, Question, QuestionKind, Quiz, SetDef, SetRule, Subject,
+    Catalog, Chapter, Document, Program, Question, QuestionKind, Quiz, SetDef, SetRule, Subject,
 };
 use super::raw::{
-    RawFrontMatter, RawKind, RawLayout, RawPrograms, RawQuestion, RawQuiz, RawSubject,
+    RawDocument, RawFrontMatter, RawKind, RawLayout, RawPrograms, RawQuestion, RawQuiz, RawSubject,
 };
 use super::{Problem, Severity, is_image};
 
@@ -21,7 +21,7 @@ pub fn load(files: &dyn Files) -> (Catalog, Vec<Problem>) {
     let mut by_subject: BTreeMap<&str, Vec<&str>> = BTreeMap::new();
     let mut problems = Vec::new();
     for path in &paths {
-        if is_original(path) {
+        if is_original(path) && !is_document(path) {
             problems.push(error(path, ORIGINAL));
             continue;
         }
@@ -108,6 +108,18 @@ const DOCUMENTS: &[&str] = &[
     "pdf", "doc", "docx", "xls", "xlsx", "xlsm", "ppt", "pptx", "odt", "ods", "odp", "zip", "7z",
     "rar",
 ];
+
+/// A PDF in a subject's `files/`: study material the app shows, which the
+/// subject must list as a `[[document]]` (checked with the subject).
+fn is_document(path: &str) -> bool {
+    let mut parts = path.split('/');
+    parts.next().is_some()
+        && parts.next() == Some("files")
+        && parts
+            .next()
+            .is_some_and(|name| name.to_ascii_lowercase().ends_with(".pdf"))
+        && parts.next().is_none()
+}
 
 fn is_original(path: &str) -> bool {
     let name = path.rsplit('/').next().unwrap_or(path);
@@ -204,13 +216,22 @@ impl Ctx<'_> {
                     self.problems
                         .push(warning(path, "not a chapter (chapters/<id>.md)"));
                 }
+            } else if rel.starts_with("files/") {
+                if !raw.documents.iter().any(|d| d.file == rel) {
+                    self.problems.push(error(
+                        path,
+                        "not listed as a [[document]] in subject.toml (only PDFs made for \
+                         the study material go in files/, never originals of the school)",
+                    ));
+                }
             } else if rel != "subject.toml" && !rel.starts_with("images/") {
                 self.problems.push(warning(
                     path,
-                    "unknown file; expected subject.toml, chapters/, quizzes/ or images/",
+                    "unknown file; expected subject.toml, chapters/, quizzes/, images/ or files/",
                 ));
             }
         }
+        let documents = self.documents(&toml_path, raw.documents);
 
         if let Some(year) = raw.year
             && !(1..=6).contains(&year)
@@ -239,6 +260,7 @@ impl Ctx<'_> {
             chapters,
             quizzes,
             sets: Vec::new(),
+            documents,
         };
         subject.sets = self.sets(&toml_path, raw.sets, &subject);
         if let Some(info) = raw.info {
@@ -253,6 +275,36 @@ impl Ctx<'_> {
         }
         self.check_topics(&subject);
         Some(subject)
+    }
+
+    fn documents(&mut self, path: &str, raw: Vec<RawDocument>) -> Vec<Document> {
+        let mut out: Vec<Document> = Vec::new();
+        for d in raw {
+            let at = format!("document {:?}", d.file);
+            let full = format!("{}/{}", self.subject, d.file);
+            if !is_document(&full) {
+                self.problems
+                    .push(error(path, format!("{at}: must be files/<name>.pdf")));
+            } else if !self.paths.contains(full.as_str()) {
+                self.problems
+                    .push(error(path, format!("{at}: {} does not exist", d.file)));
+            } else if d.title.trim().is_empty() {
+                self.problems
+                    .push(error(path, format!("{at}: needs a title")));
+            } else if out.iter().any(|o| o.file == d.file) {
+                self.problems
+                    .push(error(path, format!("{at}: listed twice")));
+            } else {
+                let size = self.files.size(&full).unwrap_or(0);
+                out.push(Document {
+                    file: d.file,
+                    title: d.title,
+                    description: d.description,
+                    size,
+                });
+            }
+        }
+        out
     }
 
     fn sets(&mut self, path: &str, raw: Vec<super::raw::RawSet>, subject: &Subject) -> Vec<SetDef> {
@@ -865,6 +917,43 @@ keep_order = true
             load(&files).0.subject("fy1").is_some(),
             "the rest still loads"
         );
+    }
+
+    #[test]
+    fn listed_pdfs_in_files_are_documents() {
+        let subject = "code = \"X\"\nname = \"X\"\nsemester = \"ZS 2026/2027\"\n\
+            [[document]]\nfile = \"files/vzorce.pdf\"\ntitle = \"Vzorce\"\n\
+            [[document]]\nfile = \"files/chybi.pdf\"\ntitle = \"Chybí\"\n\
+            [[document]]\nfile = \"images/a.pdf\"\ntitle = \"Jinde\"\n";
+        let files = MemFiles::new()
+            .with("s/subject.toml", subject)
+            .with("s/files/vzorce.pdf", "%PDF-1.7")
+            .with("s/files/zadani.pdf", "%PDF")
+            .with("s/files/zadani.docx", "PK")
+            .with("s/images/a.pdf", "%PDF");
+        let (catalog, problems) = load(&files);
+        let docs = &catalog.subjects[0].documents;
+        assert_eq!(docs.len(), 1);
+        assert_eq!(docs[0].file, "files/vzorce.pdf");
+        assert_eq!(docs[0].size, 8);
+        let m: Vec<String> = problems.iter().map(ToString::to_string).collect();
+        let has =
+            |path: &str, needle: &str| m.iter().any(|x| x.contains(path) && x.contains(needle));
+        assert!(
+            has("s/files/zadani.pdf", "not listed as a [[document]]"),
+            "{m:?}"
+        );
+        assert!(has("s/files/zadani.docx", "never go in content/"), "{m:?}");
+        assert!(has("s/images/a.pdf", "never go in content/"), "{m:?}");
+        assert!(
+            has("s/subject.toml", "files/chybi.pdf does not exist"),
+            "{m:?}"
+        );
+        assert!(
+            has("s/subject.toml", "images/a.pdf\": must be files/<name>.pdf"),
+            "{m:?}"
+        );
+        assert_eq!(m.len(), 5, "{m:?}");
     }
 
     #[test]

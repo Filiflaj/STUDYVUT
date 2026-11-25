@@ -12,9 +12,11 @@ Every commit that adds or corrects material adds its line to `CHANGELOG.md`
 under `## Unreleased` ([versioning.md](versioning.md)).
 
 Originals (PDF, slides, photos, protocols) never go in here; a PDF, Office
-file or archive in `content/` is an error. The user's own submitted work is
-the exception: it goes, as submitted, in `submissions/`
-([submissions.md](submissions.md)). They go in
+file or archive in `content/` is an error. Two exceptions: the user's own
+submitted work goes, as submitted, in `submissions/`
+([submissions.md](submissions.md)), and a PDF made *for* the study material
+(a formula sheet written for the subject, never a school original) goes in
+the subject's `files/`, listed as a `[[document]]` (below). They go in
 `inbox/<subject>/`, which git ignores, since this repository is public. See
 [inbox/README.md](../inbox/README.md).
 
@@ -29,6 +31,8 @@ content/
       mechanika.toml           a question bank; also a quiz set of its own
     images/
       tri-kvadry.svg           figures for chapters and questions
+    files/
+      vzorce.pdf               a PDF of the study material, listed in subject.toml
 ```
 
 All texts are in Czech; the format's keys are English, like the code.
@@ -78,7 +82,21 @@ pick = [
 shuffle = true                  # default: true for `pick`, false for `tags`
 ```
 
-A set has either `tags` or `pick`. Every set's best score is remembered.
+A set has either `tags` or `pick`.
+
+```toml
+# PDFs of the study material, optional, shown in Učivo above the chapters
+# and opened in the system's PDF viewer.
+[[document]]
+file = "files/vzorce.pdf"       # files/<name>.pdf; every PDF in files/ must be listed
+title = "Přehled vzorců k numerickým cvičením"
+description = "vzorce ke všem příkladům podle kapitol, konstanty a převody"   # optional
+```
+
+Only a PDF written for the study material belongs here: a formula sheet
+made from the user's notes, a printable version of a chapter. Textbooks,
+instructions, assignments and slides of the school stay in `inbox/`. The
+check reports a PDF elsewhere in the content, or in `files/` and not listed.
 
 Sets the app adds by itself, after the custom ones:
 

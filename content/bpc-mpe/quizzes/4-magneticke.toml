@@ -1,0 +1,505 @@
+name = 'Magnetické materiály'
+description = 'indukce, polarizace, magnetizace, susceptibilita a permeabilita; Curieův zákon; hysterezní ztráty a ztráty vířivými proudy; všechny 4 příklady zadání a jejich obměny'
+
+# ---------- Zadání, příklad 1: B, susceptibilita, permeabilita
+
+[[question]]
+id = 'MG-01'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Magnetická polarizace prostředí je $3{,}00\cdot10^{-6}$ T, působí na něj vnější magnetické pole o intenzitě 10,0 A·m⁻¹. Jaká je magnetická indukce v prostředí?
+'''
+value = 1.557e-5
+tolerance = 0.03e-5
+unit = 'T'
+explanation = '''
+Indukce = příspěvek vakua + polarizace látky:
+
+$$B = \mu_0 H + J_m = 4\pi\cdot10^{-7}\cdot10 + 3\cdot10^{-6} = 1{,}257\cdot10^{-5} + 0{,}300\cdot10^{-5} = 1{,}56\cdot10^{-5}\ \mathrm{T}$$
+
+V sešitu je výsledek zkrácený na $1{,}5\cdot10^{-5}$ T; přesněji je to $1{,}56\cdot10^{-5}$ T.
+
+**Jak to říct:** „Indukce v látce je indukce, kterou by pole vytvořilo ve vakuu, plus magnetická polarizace látky.“
+'''
+
+[[question]]
+id = 'MG-02'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Magnetická polarizace prostředí je $3{,}00\cdot10^{-6}$ T při intenzitě vnějšího pole 10,0 A·m⁻¹. Jaká je magnetická susceptibilita prostředí?
+'''
+value = 0.2387
+tolerance = 0.003
+explanation = '''
+$$J_m = \mu_0 M = \mu_0\chi_m H \quad\Rightarrow\quad \chi_m = \frac{J_m}{\mu_0 H} = \frac{3\cdot10^{-6}}{4\pi\cdot10^{-7}\cdot10} = 0{,}239$$
+
+Stejně vyjde $\chi_m = \dfrac{B - \mu_0 H}{\mu_0 H} = \dfrac{B}{\mu_0 H} - 1$.
+
+V sešitu je zapsáno $2{,}387\cdot10^{-7}$, to je překlep v exponentu: správně $2{,}387\cdot10^{-1} = 0{,}239$. Dál se v sešitu správně počítá s 0,24.
+'''
+
+[[question]]
+id = 'MG-03'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Magnetická polarizace prostředí je $3{,}00\cdot10^{-6}$ T při intenzitě vnějšího pole 10,0 A·m⁻¹. Jaká je relativní permeabilita prostředí?
+'''
+value = 1.239
+tolerance = 0.012
+explanation = '''
+$\chi_m = \dfrac{J_m}{\mu_0 H} = \dfrac{3\cdot10^{-6}}{4\pi\cdot10^{-7}\cdot10} = 0{,}239$:
+
+$$\mu_r = 1 + \chi_m = 1 + 0{,}24 = 1{,}24$$
+
+Kontrola přes indukci: $\mu_r = \dfrac{B}{\mu_0 H} = \dfrac{1{,}557\cdot10^{-5}}{1{,}257\cdot10^{-5}} = 1{,}24$.
+'''
+
+# ---------- Zadání, příklad 2: Fe2O3 při 20 °C a 77,3 K
+
+[[question]]
+id = 'MG-04'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$, vnější pole má intenzitu $10^{6}$ A·m⁻¹. Jaká je magnetická indukce ve vzorku při **20 °C**? (na čtyři platné číslice)
+'''
+value = 1.2584
+tolerance = 0.0008
+unit = 'T'
+explanation = '''
+$$B = \mu_0\mu_r H = \mu_0(1 + \chi_m)H = 4\pi\cdot10^{-7}\cdot(1 + 1{,}4\cdot10^{-3})\cdot10^{6} = 1{,}258\ \mathrm{T}$$
+
+Bez látky by bylo $\mu_0 H = 1{,}2566$ T; paramagnetikum indukci zvětší jen o 0,14 %. Proto je tolerance malá: musí být vidět, že jsi susceptibilitu započítal.
+'''
+
+[[question]]
+id = 'MG-05'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$, vnější pole má intenzitu $10^{6}$ A·m⁻¹. Jaká je magnetizace vzorku při **20 °C**?
+'''
+value = 1400
+tolerance = 15
+unit = 'A·m⁻¹'
+explanation = '''
+$$M = \chi_m\cdot H = 1{,}4\cdot10^{-3}\cdot10^{6} = 1{,}4\cdot10^{3}\ \mathrm{A\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-06'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$, vnější pole má intenzitu $10^{6}$ A·m⁻¹. Jaká je magnetická polarizace vzorku při **20 °C**?
+'''
+value = 1.759e-3
+tolerance = 0.02e-3
+unit = 'T'
+explanation = '''
+$M = \chi_m H = 1{,}4\cdot10^{3}\ \mathrm{A\cdot m^{-1}}$:
+
+$$J_m = \mu_0\cdot M = 4\pi\cdot10^{-7}\cdot1{,}4\cdot10^{3} = 1{,}759\cdot10^{-3}\ \mathrm{T}$$
+'''
+
+[[question]]
+id = 'MG-07'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$. Jaká je jeho susceptibilita při teplotě kapalného dusíku **77,3 K**?
+'''
+value = 5.31e-3
+tolerance = 0.06e-3
+explanation = '''
+Susceptibilita paramagnetika je nepřímo úměrná teplotě (Curieův zákon):
+
+$$\frac{\chi_{m1}}{\chi_{m2}} = \frac{T_2}{T_1} \quad\Rightarrow\quad \chi_{m2} = \chi_{m1}\cdot\frac{T_1}{T_2} = 1{,}4\cdot10^{-3}\cdot\frac{293{,}15}{77{,}3} = 5{,}31\cdot10^{-3}$$
+
+**Jak to říct:** „Tepelný pohyb rozhazuje magnetické momenty; čím je chladněji, tím snáz se natočí do pole, susceptibilita roste jako 1/T.“
+'''
+warning = 'Do Curieova zákona teploty v kelvinech: 20 °C = 293,15 K.'
+
+[[question]]
+id = 'MG-08'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$, vnější pole má intenzitu $10^{6}$ A·m⁻¹. Jaká je magnetická indukce ve vzorku při **77,3 K**? (na čtyři platné číslice)
+'''
+value = 1.2633
+tolerance = 0.0008
+unit = 'T'
+explanation = '''
+$\chi_{m2} = 1{,}4\cdot10^{-3}\cdot\dfrac{293{,}15}{77{,}3} = 5{,}31\cdot10^{-3}$:
+
+$$B_2 = \mu_0(1 + \chi_{m2})H = 4\pi\cdot10^{-7}\cdot(1 + 5{,}31\cdot10^{-3})\cdot10^{6} = 1{,}263\ \mathrm{T}$$
+'''
+
+[[question]]
+id = 'MG-09'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$, vnější pole má intenzitu $10^{6}$ A·m⁻¹. Jaká je magnetizace vzorku při **77,3 K**?
+'''
+value = 5310
+tolerance = 60
+unit = 'A·m⁻¹'
+explanation = '''
+$\chi_{m2} = 1{,}4\cdot10^{-3}\cdot\dfrac{293{,}15}{77{,}3} = 5{,}31\cdot10^{-3}$:
+
+$$M_2 = \chi_{m2}\cdot H = 5{,}31\cdot10^{-3}\cdot10^{6} = 5{,}31\cdot10^{3}\ \mathrm{A\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-10'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Paramagnetický $\mathrm{Fe_2O_3}$ má při 20 °C susceptibilitu $1{,}4\cdot10^{-3}$, vnější pole má intenzitu $10^{6}$ A·m⁻¹. Jaká je magnetická polarizace vzorku při **77,3 K**?
+'''
+value = 6.67e-3
+tolerance = 0.07e-3
+unit = 'T'
+explanation = '''
+$\chi_{m2} = 5{,}31\cdot10^{-3}$, $M_2 = \chi_{m2}H = 5{,}31\cdot10^{3}\ \mathrm{A\cdot m^{-1}}$:
+
+$$J_{m2} = \mu_0\cdot M_2 = 4\pi\cdot10^{-7}\cdot5{,}31\cdot10^{3} = 6{,}67\cdot10^{-3}\ \mathrm{T}$$
+'''
+
+# ---------- Zadání, příklad 3: ztráty dvou plechů při 50, 150 a 400 Hz
+
+[[question]]
+id = 'MG-11'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech tloušťky 0,10 mm má při 50 Hz měrné hysterezní ztráty 1,1 W·kg⁻¹ a měrné ztráty vířivými proudy 0,10 W·kg⁻¹. Jaké jsou jeho celkové měrné ztráty při **50 Hz**?
+'''
+value = 1.2
+tolerance = 0.02
+unit = 'W·kg⁻¹'
+explanation = '''
+$$p_c = p_h + p_v = 1{,}1 + 0{,}1 = 1{,}2\ \mathrm{W\cdot kg^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-12'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech tloušťky 0,35 mm má při 50 Hz měrné hysterezní ztráty 0,50 W·kg⁻¹ a měrné ztráty vířivými proudy 0,30 W·kg⁻¹. Jaké jsou jeho celkové měrné ztráty při **50 Hz**?
+'''
+value = 0.8
+tolerance = 0.015
+unit = 'W·kg⁻¹'
+explanation = '''
+$$p_c = p_h + p_v = 0{,}5 + 0{,}3 = 0{,}8\ \mathrm{W\cdot kg^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-13'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech tloušťky 0,10 mm má při 50 Hz měrné hysterezní ztráty 1,1 W·kg⁻¹ a ztráty vířivými proudy 0,10 W·kg⁻¹. Indukce je sinusová a její amplituda se nemění. Jaké jsou celkové měrné ztráty při **150 Hz**?
+'''
+value = 4.2
+tolerance = 0.05
+unit = 'W·kg⁻¹'
+explanation = '''
+Při stejné amplitudě indukce rostou hysterezní ztráty lineárně s kmitočtem, ztráty vířivými proudy s jeho druhou mocninou:
+
+$$p_c = \frac{f}{f_1}\,p_{h1} + \left(\frac{f}{f_1}\right)^2 p_{v1} = \frac{150}{50}\cdot1{,}1 + \left(\frac{150}{50}\right)^2\cdot0{,}1 = 3{,}3 + 0{,}9 = 4{,}2\ \mathrm{W\cdot kg^{-1}}$$
+
+**Jak to říct:** „Hysterezní ztráta je energie jedné smyčky krát počet smyček za sekundu, tedy ∼ f. Vířivé proudy jsou úměrné indukovanému napětí ∼ f a jejich výkon ∼ f².“
+'''
+
+[[question]]
+id = 'MG-14'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech tloušťky 0,35 mm má při 50 Hz měrné hysterezní ztráty 0,50 W·kg⁻¹ a ztráty vířivými proudy 0,30 W·kg⁻¹. Indukce je sinusová a její amplituda se nemění. Jaké jsou celkové měrné ztráty při **150 Hz**?
+'''
+value = 4.2
+tolerance = 0.05
+unit = 'W·kg⁻¹'
+explanation = '''
+$$p_c = \frac{150}{50}\cdot0{,}5 + \left(\frac{150}{50}\right)^2\cdot0{,}3 = 1{,}5 + 2{,}7 = 4{,}2\ \mathrm{W\cdot kg^{-1}}$$
+
+Při 150 Hz mají oba plechy stejné celkové ztráty.
+'''
+
+[[question]]
+id = 'MG-15'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech tloušťky 0,10 mm má při 50 Hz měrné hysterezní ztráty 1,1 W·kg⁻¹ a ztráty vířivými proudy 0,10 W·kg⁻¹. Indukce je sinusová a její amplituda se nemění. Jaké jsou celkové měrné ztráty při **400 Hz**?
+'''
+value = 15.2
+tolerance = 0.2
+unit = 'W·kg⁻¹'
+explanation = '''
+$$p_c = \frac{400}{50}\cdot1{,}1 + \left(\frac{400}{50}\right)^2\cdot0{,}1 = 8\cdot1{,}1 + 64\cdot0{,}1 = 8{,}8 + 6{,}4 = 15{,}2\ \mathrm{W\cdot kg^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-16'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech tloušťky 0,35 mm má při 50 Hz měrné hysterezní ztráty 0,50 W·kg⁻¹ a ztráty vířivými proudy 0,30 W·kg⁻¹. Indukce je sinusová a její amplituda se nemění. Jaké jsou celkové měrné ztráty při **400 Hz**?
+'''
+value = 23.2
+tolerance = 0.3
+unit = 'W·kg⁻¹'
+explanation = '''
+$$p_c = \frac{400}{50}\cdot0{,}5 + \left(\frac{400}{50}\right)^2\cdot0{,}3 = 8\cdot0{,}5 + 64\cdot0{,}3 = 4 + 19{,}2 = 23{,}2\ \mathrm{W\cdot kg^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-17'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Plech 0,10 mm má celkové měrné ztráty 1,2 W/kg při 50 Hz a 15,2 W/kg při 400 Hz, plech 0,35 mm má 0,8 W/kg při 50 Hz a 23,2 W/kg při 400 Hz. Co z toho plyne?
+'''
+options = [
+  'Tenčí plech je lepší při všech kmitočtech, protože má menší ztráty vířivými proudy.',
+  'Tlustší plech je lepší při všech kmitočtech, protože má menší hysterezní ztráty.',
+  'Oba plechy jsou rovnocenné, protože při 150 Hz mají stejné ztráty.',
+  'Při 50 Hz je lepší tlustší plech, při vyšších kmitočtech tenčí: ztráty vířivými proudy rostou s $f^2$ a v tenkém plechu jsou malé.',
+]
+answer = 3
+explanation = '''
+Při 50 Hz převažují hysterezní ztráty a ty má tlustší plech menší (0,8 proti 1,2 W/kg). S kmitočtem ale ztráty vířivými proudy rostou kvadraticky a tenký plech jich má málo; nad 150 Hz (kde jsou oba stejné) je lepší tenčí plech. Proto se pro vyšší kmitočty používají tenké plechy.
+'''
+notes = [
+  'Při 50 Hz má tenčí plech ztráty 1,2 W/kg, tlustší jen 0,8 W/kg.',
+  'Při 400 Hz má tlustší plech 23,2 W/kg, tenčí jen 15,2 W/kg.',
+  'Stejné jsou jen v jednom bodě (150 Hz); pod ním a nad ním se liší.',
+  '',
+]
+
+# ---------- Zadání, příklad 4: ze dvou měření ztráty při třetím kmitočtu
+
+[[question]]
+id = 'MG-18'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Celkové měrné ztráty oceli jsou při 100 Hz 2,00 W·kg⁻¹ a při 200 Hz 7,00 W·kg⁻¹; indukce je sinusová se stejnou amplitudou. Jaké jsou hysterezní ztráty při 100 Hz?
+'''
+value = 0.5
+tolerance = 0.01
+unit = 'W·kg⁻¹'
+explanation = '''
+Soustava dvou rovnic ($p_{h1}$, $p_{v1}$ jsou složky při $f_1 = 100$ Hz):
+
+$$p_{c1} = p_{h1} + p_{v1} \qquad p_{c2} = \frac{f_2}{f_1}p_{h1} + \left(\frac{f_2}{f_1}\right)^2 p_{v1}$$
+
+$$2 = p_{h1} + p_{v1} \qquad 7 = 2\,p_{h1} + 4\,p_{v1}$$
+
+Z první $p_{v1} = 2 - p_{h1}$, dosadím: $7 = 2p_{h1} + 8 - 4p_{h1}$, tedy $p_{h1} = 0{,}5\ \mathrm{W\cdot kg^{-1}}$ a $p_{v1} = 1{,}5\ \mathrm{W\cdot kg^{-1}}$.
+
+V sešitu je zapsáno $p_{v1} = -p_{h1} - 2$, správně $p_{v1} = 2 - p_{h1}$; výsledky 0,5 a 1,5 sedí.
+'''
+
+[[question]]
+id = 'MG-19'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Celkové měrné ztráty oceli jsou při 100 Hz 2,00 W·kg⁻¹ a při 200 Hz 7,00 W·kg⁻¹; indukce je sinusová se stejnou amplitudou. Jaké jsou celkové měrné ztráty při **400 Hz**?
+'''
+value = 26
+tolerance = 0.3
+unit = 'W·kg⁻¹'
+explanation = '''
+Ze soustavy $2 = p_{h1} + p_{v1}$, $7 = 2p_{h1} + 4p_{v1}$ vyjde $p_{h1} = 0{,}5$ a $p_{v1} = 1{,}5\ \mathrm{W\cdot kg^{-1}}$ (při 100 Hz). Pak:
+
+$$p_{c3} = \frac{f_3}{f_1}p_{h1} + \left(\frac{f_3}{f_1}\right)^2 p_{v1} = \frac{400}{100}\cdot0{,}5 + \left(\frac{400}{100}\right)^2\cdot1{,}5 = 2 + 24 = 26\ \mathrm{W\cdot kg^{-1}}$$
+
+**Jak to říct:** „Z dvou měření rozdělím ztráty na hysterezní a vířivé, protože každá složka roste s kmitočtem jinak, a pak je přepočítám na 400 Hz.“
+'''
+
+[[question]]
+id = 'MG-20'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Zadání, příklady 3 a 4'
+tags = ['zadani']
+text = '''
+Jak závisí měrné hysterezní ztráty $p_h$ a měrné ztráty vířivými proudy $p_v$ na kmitočtu $f$, je-li indukce sinusová se stálou amplitudou?
+'''
+options = [
+  '$p_h \sim f$, $p_v \sim f^2$',
+  '$p_h \sim f^2$, $p_v \sim f$',
+  'obě $\sim f$',
+  '$p_h$ na kmitočtu nezávisí, $p_v \sim f^2$',
+]
+answer = 0
+layout = 'grid'
+explanation = '''
+Energie ztracená v jedné hysterezní smyčce je při stejné amplitudě stejná; smyček je za sekundu $f$, proto $p_h \sim f$. Indukované napětí je úměrné $f$, výkon vířivých proudů $\sim U^2$, proto $p_v \sim f^2$.
+'''
+notes = [
+  '',
+  'Obráceně: kvadraticky rostou vířivé proudy.',
+  'Vířivé proudy rostou s druhou mocninou, proto je tenký plech na vyšší kmitočty lepší.',
+  'Každá smyčka stojí stejnou energii a za sekundu jich proběhne $f$: hysterezní ztráty rostou lineárně.',
+]
+
+# ---------- Obměny
+
+[[question]]
+id = 'MG-21'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Obměna příkladu 1'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 1.** Magnetická polarizace prostředí je $5{,}0\cdot10^{-6}$ T, intenzita vnějšího pole 20,0 A·m⁻¹. Jaká je magnetická indukce v prostředí?
+'''
+value = 3.013e-5
+tolerance = 0.05e-5
+unit = 'T'
+explanation = '''
+$$B = \mu_0 H + J_m = 4\pi\cdot10^{-7}\cdot20 + 5\cdot10^{-6} = 2{,}513\cdot10^{-5} + 0{,}5\cdot10^{-5} = 3{,}01\cdot10^{-5}\ \mathrm{T}$$
+'''
+
+[[question]]
+id = 'MG-22'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Obměna příkladu 1'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 1.** Magnetická polarizace prostředí je $5{,}0\cdot10^{-6}$ T, intenzita vnějšího pole 20,0 A·m⁻¹. Jaká je relativní permeabilita prostředí?
+'''
+value = 1.199
+tolerance = 0.012
+explanation = '''
+$$\chi_m = \frac{J_m}{\mu_0 H} = \frac{5\cdot10^{-6}}{4\pi\cdot10^{-7}\cdot20} = 0{,}199 \qquad \mu_r = 1 + \chi_m = 1{,}199$$
+'''
+
+[[question]]
+id = 'MG-23'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Obměna příkladu 2'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 2.** Paramagnetická látka má při 20 °C susceptibilitu $2{,}5\cdot10^{-4}$. Jaká je její magnetizace při **150 °C** v poli o intenzitě $2{,}0\cdot10^{5}$ A·m⁻¹?
+'''
+value = 34.64
+tolerance = 0.5
+unit = 'A·m⁻¹'
+explanation = '''
+Curieův zákon ($\chi_m \sim 1/T$), teploty v kelvinech: $T_1 = 293{,}15$ K, $T_2 = 423{,}15$ K.
+
+$$\chi_{m2} = \chi_{m1}\cdot\frac{T_1}{T_2} = 2{,}5\cdot10^{-4}\cdot\frac{293{,}15}{423{,}15} = 1{,}732\cdot10^{-4}$$
+
+$$M_2 = \chi_{m2}\cdot H = 1{,}732\cdot10^{-4}\cdot2\cdot10^{5} = 34{,}6\ \mathrm{A\cdot m^{-1}}$$
+
+Při ohřátí susceptibilita paramagnetika klesá.
+'''
+
+[[question]]
+id = 'MG-24'
+kind = 'numeric'
+topic = 'Indukce, magnetizace, polarizace'
+source = 'Obměna příkladu 2'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 2.** Paramagnetická látka má při 20 °C susceptibilitu $2{,}5\cdot10^{-4}$. Jaká je její magnetická polarizace při **150 °C** v poli o intenzitě $2{,}0\cdot10^{5}$ A·m⁻¹?
+'''
+value = 4.353e-5
+tolerance = 0.06e-5
+unit = 'T'
+explanation = '''
+$\chi_{m2} = 2{,}5\cdot10^{-4}\cdot\dfrac{293{,}15}{423{,}15} = 1{,}732\cdot10^{-4}$, $M_2 = \chi_{m2}H = 34{,}6\ \mathrm{A\cdot m^{-1}}$:
+
+$$J_{m2} = \mu_0 M_2 = 4\pi\cdot10^{-7}\cdot34{,}64 = 4{,}35\cdot10^{-5}\ \mathrm{T}$$
+'''
+
+[[question]]
+id = 'MG-25'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Plech má při 50 Hz měrné hysterezní ztráty 0,80 W·kg⁻¹ a ztráty vířivými proudy 0,20 W·kg⁻¹. Indukce je sinusová se stejnou amplitudou. Jaké jsou celkové měrné ztráty při **200 Hz**?
+'''
+value = 6.4
+tolerance = 0.1
+unit = 'W·kg⁻¹'
+explanation = '''
+$$p_c = \frac{200}{50}\cdot0{,}8 + \left(\frac{200}{50}\right)^2\cdot0{,}2 = 4\cdot0{,}8 + 16\cdot0{,}2 = 3{,}2 + 3{,}2 = 6{,}4\ \mathrm{W\cdot kg^{-1}}$$
+'''
+
+[[question]]
+id = 'MG-26'
+kind = 'numeric'
+topic = 'Ztráty v magnetických materiálech'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** Celkové měrné ztráty oceli jsou při 60 Hz 1,50 W·kg⁻¹ a při 180 Hz 7,20 W·kg⁻¹; indukce je sinusová se stejnou amplitudou. Jaké jsou celkové měrné ztráty při **300 Hz**?
+'''
+value = 16.5
+tolerance = 0.2
+unit = 'W·kg⁻¹'
+explanation = '''
+Poměr kmitočtů $180/60 = 3$:
+
+$$1{,}5 = p_{h1} + p_{v1} \qquad 7{,}2 = 3\,p_{h1} + 9\,p_{v1}$$
+
+$p_{h1} = 1{,}5 - p_{v1}$ dosadím: $7{,}2 = 4{,}5 - 3p_{v1} + 9p_{v1}$, tedy $p_{v1} = 0{,}45$ a $p_{h1} = 1{,}05\ \mathrm{W\cdot kg^{-1}}$ (při 60 Hz).
+
+$$p_{c3} = \frac{300}{60}\cdot1{,}05 + \left(\frac{300}{60}\right)^2\cdot0{,}45 = 5{,}25 + 11{,}25 = 16{,}5\ \mathrm{W\cdot kg^{-1}}$$
+'''
+warning = 'Poměry kmitočtů se berou vždy vůči $f_1$, při kterém jsou $p_{h1}$ a $p_{v1}$.'

@@ -2,6 +2,7 @@
 //! the settings, the loaded content, the progress store and the actions on
 //! them. No Tauri dependency.
 
+mod cache;
 pub mod paths;
 pub mod service;
 pub mod settings;

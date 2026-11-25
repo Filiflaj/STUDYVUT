@@ -99,7 +99,7 @@ src/                        Svelte 5 frontend, no router
   lib/changelog.ts          CHANGELOG.md for "Co je nového"
   lib/i18n/                 UI texts in cs and en (the content is Czech either way)
 content/programs.toml       the study programmes; subjects carry `year` and `programs`
-content/<subject>/          the study material (docs/content.md)
+content/<subject>/          the study material (docs/content.md); files/ holds PDFs listed as [[document]]
 submissions/<subject>/<id>/ the user's own submitted work, as submitted (docs/submissions.md), embedded like content/
 inbox/<subject>/            originals to process; git-ignored except README and .gitkeep
 docs/                       content.md, versioning.md, manual/
@@ -114,7 +114,7 @@ docs/                       content.md, versioning.md, manual/
 
 The user drops originals into `inbox/<subject>/` (PDF, slides, photos, notes, protocols) and asks for them to be processed. Turn them into `content/<subject>/` following [docs/content.md](docs/content.md), then run the checker until it reports 0 errors.
 
-- **Public repository.** Never commit originals into `content/`: no textbook or instruction PDFs, figures cropped from them (redraw as SVG), scans with signatures, or personal data. Explain in your own words.
+- **Public repository.** Never commit originals into `content/`: no textbook or instruction PDFs, figures cropped from them (redraw as SVG), scans with signatures, or personal data. Explain in your own words. A PDF made *for* the study material (a formula sheet from the user's notes) may go in `content/<subject>/files/` as a `[[document]]` (docs/content.md) after you have read all of it.
 - **The user's own submitted work is the exception** (decided by the user on 2026-11-21): it goes into `submissions/<subject>/<id>/` as submitted, with a `submission.toml` ([docs/submissions.md](docs/submissions.md), "Adding a submission"). The user's own name and student ID stay. **Every other person's name, student ID and signature is redacted** (truly removed: text deleted and image pixels blanked, then verified with `pdftotext` and by looking at every page), and other people's hidden metadata is stripped. Lab partners and teachers count as other people.
 - **Other people's work** (a classmate's protocol in the inbox) is never published, redacted or not, without their consent.
 - **Calculations** use the standard method taught in class and the numbers exactly as written in the user's worksheet, with intermediate rounding as written; add a short "jak to říct, když se zeptají". Verify every number independently.

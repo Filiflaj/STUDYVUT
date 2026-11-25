@@ -1,0 +1,525 @@
+name = 'Vodivé a odporové materiály'
+description = 'proud a driftová rychlost, rezistivita a její jednotky, pohyblivost elektronů v kovu, teplota vinutí, dotykové a termoelektrické napětí; všech 7 příkladů zadání a jejich obměny'
+
+# ---------- Zadání, příklad 1: proud z koncentrace a driftové rychlosti
+
+[[question]]
+id = 'VO-01'
+kind = 'numeric'
+topic = 'Proud a driftová rychlost'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Kovový vodič má průřez 1,00 mm². Koncentrace volných elektronů je $5{,}00\cdot10^{28}\ \mathrm{m^{-3}}$, jejich střední driftová rychlost $1{,}50\cdot10^{-4}\ \mathrm{m\cdot s^{-1}}$. Jaký proud vodičem prochází?
+'''
+value = 1.20
+tolerance = 0.02
+unit = 'A'
+explanation = '''
+Za čas $t$ projdou průřezem $S$ všechny elektrony z úseku délky $l = v_D t$, tedy z objemu $V = S\cdot l$:
+
+$$I = \frac{Q}{t} = \frac{n\cdot q\cdot V}{t} = \frac{n\cdot q\cdot S\cdot l}{l/v_D} = n\cdot q\cdot S\cdot v_D$$
+
+$$I = 5\cdot10^{28}\cdot1{,}602\cdot10^{-19}\cdot1\cdot10^{-6}\cdot1{,}5\cdot10^{-4} = 1{,}2\ \mathrm{A}$$
+
+**Jak to říct:** „Náboj, který projde průřezem za sekundu, je náboj všech elektronů ve válečku o délce rovné driftové rychlosti.“
+'''
+warning = '1 mm² = $10^{-6}$ m².'
+
+# ---------- Zadání, příklad 2: rezistivita mědi a její jednotky
+
+[[question]]
+id = 'VO-02'
+kind = 'numeric'
+topic = 'Rezistivita'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Měděný vodič o délce 15,0 m a průřezu 0,100 mm² má při 20,0 °C odpor 2,58 Ω. Jaká je rezistivita mědi?
+'''
+value = 1.72e-8
+tolerance = 0.02e-8
+unit = 'Ω·m'
+explanation = '''
+$$R = \rho\frac{l}{S} \quad\Rightarrow\quad \rho = \frac{R\cdot S}{l} = \frac{2{,}58\cdot0{,}1\cdot10^{-6}}{15} = 1{,}72\cdot10^{-8}\ \Omega\cdot\mathrm{m}$$
+'''
+
+[[question]]
+id = 'VO-03'
+kind = 'numeric'
+topic = 'Rezistivita'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Rezistivita mědi je $1{,}72\cdot10^{-8}\ \Omega\cdot\mathrm{m}$. Kolik je to v jednotkách Ω·mm²·m⁻¹?
+'''
+value = 0.0172
+tolerance = 0.0002
+unit = 'Ω·mm²·m⁻¹'
+explanation = '''
+$1\ \mathrm{m^2} = 10^{6}\ \mathrm{mm^2}$, proto $1\ \Omega\cdot\mathrm{m} = 1\ \Omega\cdot\mathrm{m^2}\cdot\mathrm{m^{-1}} = 10^{6}\ \Omega\cdot\mathrm{mm^2}\cdot\mathrm{m^{-1}}$:
+
+$$1{,}72\cdot10^{-8}\ \Omega\cdot\mathrm{m}\cdot10^{6} = 1{,}72\cdot10^{-2}\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}} = 0{,}0172\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}}$$
+
+V praxi: měděný drát 1 m dlouhý o průřezu 1 mm² má odpor 0,0172 Ω.
+'''
+
+[[question]]
+id = 'VO-04'
+kind = 'numeric'
+topic = 'Rezistivita'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Rezistivita mědi je $1{,}72\cdot10^{-8}\ \Omega\cdot\mathrm{m}$. Kolik je to v Ω·cm?
+'''
+value = 1.72e-6
+tolerance = 0.02e-6
+unit = 'Ω·cm'
+explanation = '''
+$1\ \mathrm{m} = 100\ \mathrm{cm}$, proto $1\ \Omega\cdot\mathrm{m} = 10^{2}\ \Omega\cdot\mathrm{cm}$:
+
+$$1{,}72\cdot10^{-8}\ \Omega\cdot\mathrm{m}\cdot10^{2} = 1{,}72\cdot10^{-6}\ \Omega\cdot\mathrm{cm}$$
+
+V sešitu je jen převod na Ω·mm²·m⁻¹; převod na Ω·cm je doplněný.
+'''
+
+[[question]]
+id = 'VO-05'
+topic = 'Rezistivita'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Jaký je převodní vztah mezi jednotkami rezistivity Ω·m, Ω·mm²·m⁻¹ a Ω·cm?
+'''
+options = [
+  '$1\ \Omega\cdot\mathrm{m} = 10^{-6}\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}} = 10^{-2}\ \Omega\cdot\mathrm{cm}$',
+  '$1\ \Omega\cdot\mathrm{m} = 10^{3}\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}} = 10^{2}\ \Omega\cdot\mathrm{cm}$',
+  '$1\ \Omega\cdot\mathrm{m} = 10^{6}\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}} = 10^{2}\ \Omega\cdot\mathrm{cm}$',
+  '$1\ \Omega\cdot\mathrm{m} = 10^{6}\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}} = 10^{4}\ \Omega\cdot\mathrm{cm}$',
+]
+answer = 2
+explanation = '''
+$\Omega\cdot\mathrm{m} = \Omega\cdot\mathrm{m^2}/\mathrm{m}$ a $1\ \mathrm{m^2} = 10^{6}\ \mathrm{mm^2}$, proto $10^{6}$. U Ω·cm se převádí jen délka: $1\ \mathrm{m} = 10^{2}\ \mathrm{cm}$.
+
+$$1\ \Omega\cdot\mathrm{m} = 10^{6}\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}} = 10^{2}\ \Omega\cdot\mathrm{cm}$$
+'''
+notes = [
+  'Obrácené exponenty: menší jednotka znamená větší číslo.',
+  'Plocha se převádí s druhou mocninou: $(10^{3})^2 = 10^{6}$.',
+  '',
+  'V Ω·cm je jen jeden metr, převádí se tedy jen první mocnina délky: $10^{2}$.',
+]
+
+# ---------- Zadání, příklad 3: stříbro
+
+[[question]]
+id = 'VO-06'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Rezistivita stříbra je při 20,0 °C $1{,}54\cdot10^{-8}\ \Omega\cdot\mathrm{m}$, intenzita elektrického pole ve stříbrném vodiči je 100 V·m⁻¹. Jaká je proudová hustota?
+'''
+value = 6.494e9
+tolerance = 0.07e9
+unit = 'A·m⁻²'
+explanation = '''
+Ohmův zákon v diferenciálním tvaru:
+
+$$J = \gamma\cdot E = \frac{1}{\rho}\cdot E = \frac{1}{1{,}54\cdot10^{-8}}\cdot100 = 6{,}49\cdot10^{9}\ \mathrm{A\cdot m^{-2}}$$
+'''
+
+[[question]]
+id = 'VO-07'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Stříbro: rezistivita $1{,}54\cdot10^{-8}\ \Omega\cdot\mathrm{m}$, v 1,00 m³ je $5{,}80\cdot10^{28}$ volných elektronů. Jaká je pohyblivost volných elektronů?
+'''
+value = 6.99e-3
+tolerance = 0.07e-3
+unit = 'm²·V⁻¹·s⁻¹'
+explanation = '''
+V kovu vedou jen elektrony: $\gamma = n\cdot q\cdot\mu$, a $\gamma = 1/\rho$:
+
+$$\frac{1}{\rho} = n\cdot q\cdot\mu \quad\Rightarrow\quad \mu = \frac{1}{n\cdot q\cdot\rho} = \frac{1}{5{,}8\cdot10^{28}\cdot1{,}602\cdot10^{-19}\cdot1{,}54\cdot10^{-8}} = 6{,}99\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$$
+
+**Jak to říct:** „Konduktivita kovu je koncentrace krát náboj krát pohyblivost; vedou jen elektrony, díry v kovu nejsou.“
+'''
+
+[[question]]
+id = 'VO-08'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Stříbro: rezistivita $1{,}54\cdot10^{-8}\ \Omega\cdot\mathrm{m}$, $5{,}80\cdot10^{28}$ volných elektronů v 1,00 m³, intenzita pole ve vodiči 100 V·m⁻¹. Jaká je střední driftová rychlost elektronů?
+'''
+value = 0.699
+tolerance = 0.007
+unit = 'm·s⁻¹'
+explanation = '''
+Pohyblivost: $\mu = \dfrac{1}{n q \rho} = 6{,}99\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$. Pohyblivost je driftová rychlost na jednotku intenzity, $\mu = v_D/E$ (jednotka $\frac{\mathrm{m\cdot s^{-1}}}{\mathrm{V\cdot m^{-1}}} = \mathrm{m^2V^{-1}s^{-1}}$):
+
+$$v_D = \mu\cdot E = 6{,}99\cdot10^{-3}\cdot100 = 0{,}699\ \mathrm{m\cdot s^{-1}}$$
+'''
+
+# ---------- Zadání, příklad 4: měděný vodič 1,5 km
+
+[[question]]
+id = 'VO-09'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Na konce měděného vodiče o délce 1,50 km a průřezu 5,00 mm² je přiloženo napětí 100 V. Rezistivita mědi je $1{,}724\cdot10^{-8}\ \Omega\cdot\mathrm{m}$. Jaká je proudová hustota?
+'''
+value = 3.867e6
+tolerance = 0.04e6
+unit = 'A·m⁻²'
+explanation = '''
+$$J = \frac{I}{S} = \frac{U/R}{S} = \frac{U}{\rho\frac{l}{S}\cdot S} = \frac{U}{\rho\cdot l} = \frac{100}{1{,}724\cdot10^{-8}\cdot1{,}5\cdot10^{3}} = 3{,}87\cdot10^{6}\ \mathrm{A\cdot m^{-2}}$$
+
+Průřez se vykrátí, proudová hustota na něm nezávisí.
+'''
+
+[[question]]
+id = 'VO-10'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Na konce měděného vodiče o délce 1,50 km a průřezu 5,00 mm² je přiloženo napětí 100 V. Jaká je intenzita elektrického pole ve vodiči?
+'''
+value = 0.0667
+tolerance = 0.0007
+unit = 'V·m⁻¹'
+explanation = '''
+Pole ve vodiči je homogenní:
+
+$$E = \frac{U}{l} = \frac{100}{1{,}5\cdot10^{3}} = 6{,}67\cdot10^{-2}\ \mathrm{V\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'VO-11'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Měď: hustota 8 890 kg·m⁻³, molární hmotnost 63,57 kg/kmol, rezistivita $1{,}724\cdot10^{-8}\ \Omega\cdot\mathrm{m}$; na každý atom připadá jeden volný elektron. Jaká je pohyblivost volných elektronů?
+'''
+value = 4.30e-3
+tolerance = 0.05e-3
+unit = 'm²·V⁻¹·s⁻¹'
+explanation = '''
+Koncentrace volných elektronů = koncentrace atomů ($\frac{m}{N} = \frac{M}{N_A}$):
+
+$$n = \frac{\rho_m\cdot V\cdot N_A}{M} = \frac{8\,890\cdot1\cdot6{,}022\cdot10^{26}}{63{,}57} = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$$
+
+$$\mu = \frac{1}{n\cdot q\cdot\rho} = \frac{1}{8{,}42\cdot10^{28}\cdot1{,}602\cdot10^{-19}\cdot1{,}724\cdot10^{-8}} = 4{,}3\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$$
+
+V sešitu je u výsledku jednotka zapsaná jako „m³V⁻¹m⁻¹“, správně $\mathrm{m^2V^{-1}s^{-1}}$.
+'''
+
+[[question]]
+id = 'VO-12'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Měděný vodič 1,50 km, průřez 5,00 mm², napětí 100 V. Měď: hustota 8 890 kg·m⁻³, molární hmotnost 63,57 kg/kmol, rezistivita $1{,}724\cdot10^{-8}\ \Omega\cdot\mathrm{m}$, jeden volný elektron na atom. Jaká je driftová rychlost volných elektronů?
+'''
+value = 2.87e-4
+tolerance = 0.03e-4
+unit = 'm·s⁻¹'
+explanation = '''
+Intenzita: $E = \dfrac{U}{l} = \dfrac{100}{1\,500} = 6{,}67\cdot10^{-2}\ \mathrm{V\cdot m^{-1}}$.
+
+Pohyblivost: $n = \dfrac{8\,890\cdot6{,}022\cdot10^{26}}{63{,}57} = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$, $\mu = \dfrac{1}{n q \rho} = 4{,}3\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$.
+
+$$v_D = \mu\cdot E = 4{,}3\cdot10^{-3}\cdot6{,}67\cdot10^{-2} = 2{,}87\cdot10^{-4}\ \mathrm{m\cdot s^{-1}}$$
+
+Kontrola: $v_D = \dfrac{J}{n q} = \dfrac{3{,}87\cdot10^{6}}{8{,}42\cdot10^{28}\cdot1{,}602\cdot10^{-19}} = 2{,}87\cdot10^{-4}\ \mathrm{m\cdot s^{-1}}$.
+'''
+warning = 'V sešitu jsou u tohoto kroku špatné exponenty ($4{,}3\cdot10^{-8}\cdot6{,}69\cdot10^{-8} = 2{,}87\cdot10^{-9}$). Mantisa sedí, správný řád je $10^{-4}$ m/s.'
+
+# ---------- Zadání, příklad 5: teplota cívky
+
+[[question]]
+id = 'VO-13'
+kind = 'numeric'
+topic = 'Teplotní závislost odporu'
+source = 'Zadání, příklad 5'
+tags = ['zadani']
+text = '''
+Cívka z měděného drátu má při 20,0 °C odpor 41,8 Ω, po delším provozu se zahřátím zvýšil na 49,2 Ω. Teplotní součinitel rezistivity mědi je $3{,}93\cdot10^{-3}\ \mathrm{K^{-1}}$, závislost odporu na teplotě je lineární, roztažnost se neuvažuje. Jaká je průměrná teplota cívky v provozu?
+'''
+value = 65
+tolerance = 1
+unit = '°C'
+explanation = '''
+$$R = R_0\,[1 + \alpha_\rho(\vartheta - \vartheta_0)] \quad\Rightarrow\quad \vartheta = \vartheta_0 + \frac{\frac{R}{R_0} - 1}{\alpha_\rho}$$
+
+$$\vartheta = 20 + \frac{\frac{49{,}2}{41{,}8} - 1}{3{,}93\cdot10^{-3}} = 20 + \frac{0{,}1770}{3{,}93\cdot10^{-3}} = 20 + 45 = 65\ ^\circ\mathrm{C}$$
+
+Odpor celé cívky odpovídá průměrné teplotě vinutí: teplejší závity přidají víc odporu, chladnější méně, a protože je závislost lineární, sečte se to na odpor při průměrné teplotě. Proto 65 °C už **je** průměrná teplota.
+
+**Jak to říct:** „Z naměřeného odporu přes lineární závislost dostanu teplotu, při které by měl celý drát tento odpor, a to je průměrná teplota vinutí.“
+'''
+warning = 'V sešitu je navíc krok $\vartheta_P = (20 + 65)/2 = 42{,}5$ °C. Ten fyzikálně nesedí (průměr počáteční a provozní teploty není průměrná teplota v provozu); pokud ho cvičící výslovně nechtěl, vynech ho.'
+
+# ---------- Zadání, příklad 6: dotykové napětí Cu–Ta
+
+[[question]]
+id = 'VO-14'
+kind = 'numeric'
+topic = 'Dotykové a termoelektrické napětí'
+source = 'Zadání, příklad 6'
+tags = ['zadani']
+text = '''
+Výstupní potenciál elektronů z mědi je 4,29 V, z tantalu 4,14 V. Koncentrace volných elektronů je v mědi $8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$, v tantalu $5{,}53\cdot10^{28}\ \mathrm{m^{-3}}$. Jak velké je dotykové napětí mezi oběma kovy při 20,0 °C (dokonalý vodivý styk)?
+'''
+value = 0.139
+tolerance = 0.002
+unit = 'V'
+explanation = '''
+Kov 1 = tantal, kov 2 = měď. Dotykové napětí (potenciál kovu 1 vůči kovu 2) má dvě části:
+
+$$U_{12} = U_2 - U_1 + \frac{kT}{q}\ln\frac{n_1}{n_2}$$
+
+- $U_2 - U_1$: elektrony přejdou z kovu s menším výstupním potenciálem (Ta) do kovu s větším (Cu), tantal se nabije kladně;
+- $\frac{kT}{q}\ln\frac{n_1}{n_2}$: elektrony difundují z kovu s větší koncentrací (Cu) do kovu s menší (Ta), to nabíjí kladně měď, takže člen je tady záporný.
+
+$\dfrac{kT}{q} = \dfrac{1{,}38\cdot10^{-23}\cdot293{,}15}{1{,}602\cdot10^{-19}} = 0{,}02525\ \mathrm{V}$:
+
+$$U_{12} = 4{,}29 - 4{,}14 + 0{,}02525\cdot\ln\frac{5{,}53\cdot10^{28}}{8{,}42\cdot10^{28}} = 0{,}15 - 0{,}0106 = 0{,}139\ \mathrm{V}$$
+
+Kladný je tantal.
+'''
+warning = 'V sešitu je ve členu s logaritmem $\ln\frac{n_2}{n_1}$ (2 = Cu), takže oba vlivy se sečtou a vyjde 0,161 V. Měď má ale větší výstupní potenciál (nabíjí se záporně) i větší koncentraci elektronů (difuzí se nabíjí kladně): vlivy jdou proti sobě a výsledek musí být menší než 0,15 V. Ověř si u cvičícího, kterou verzi chce.'
+
+[[question]]
+id = 'VO-15'
+topic = 'Dotykové a termoelektrické napětí'
+source = 'Zadání, příklad 6'
+tags = ['zadani']
+text = '''
+Měď (výstupní potenciál 4,29 V, $n = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$) se dotkne tantalu (4,14 V, $n = 5{,}53\cdot10^{28}\ \mathrm{m^{-3}}$). Který kov se nabije kladně a proč?
+'''
+options = [
+  'Měď, protože má větší výstupní potenciál a elektrony z ní odcházejí.',
+  'Měď, protože má větší koncentraci elektronů a ta rozhoduje.',
+  'Tantal, protože má menší výstupní potenciál; difuze elektronů z mědi tento rozdíl jen mírně zmenší.',
+  'Žádný, kovy mají v kontaktu stejný potenciál, protože se vyrovnají Fermiho hladiny.',
+]
+answer = 2
+explanation = '''
+Elektrony přecházejí z kovu, ze kterého se uvolní snáze (menší výstupní potenciál, Ta), do kovu s větším výstupním potenciálem (Cu): Ta se nabije kladně, příspěvek $4{,}29 - 4{,}14 = 0{,}15$ V. Difuze z mědi (víc elektronů) do tantalu působí opačně, ale je to jen $0{,}02525\cdot\ln\frac{8{,}42}{5{,}53} = 0{,}011$ V. Výsledek 0,139 V, kladný tantal.
+'''
+notes = [
+  'Větší výstupní potenciál znamená, že elektrony v kovu drží pevněji: do mědi přicházejí, ne z ní.',
+  'Difuzní člen je jen asi 0,011 V, rozdíl výstupních potenciálů 0,15 V převáží.',
+  '',
+  'Fermiho hladiny se vyrovnají právě tím, že vznikne dotykové napětí mezi kovy.',
+]
+
+# ---------- Zadání, příklad 7: termoelektrické napětí Cu–Ta
+
+[[question]]
+id = 'VO-16'
+kind = 'numeric'
+topic = 'Dotykové a termoelektrické napětí'
+source = 'Zadání, příklad 7'
+tags = ['zadani']
+text = '''
+Termočlánek má větve z mědi ($n = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$, výstupní potenciál 4,29 V) a tantalu ($n = 5{,}53\cdot10^{28}\ \mathrm{m^{-3}}$, 4,14 V). Teplotní rozdíl spojů je 65,0 °C. Jak velké je teoretické termoelektrické napětí?
+'''
+value = 2.354e-3
+tolerance = 0.03e-3
+unit = 'V'
+explanation = '''
+V obvodu jsou dva spoje, teplý ($T_B$) a studený ($T_A$), s opačně orientovanými dotykovými napětími (1 = Ta, 2 = Cu):
+
+$$U_{12}(T_B) = U_2 - U_1 + \frac{kT_B}{q}\ln\frac{n_1}{n_2} \qquad U_{21}(T_A) = U_1 - U_2 + \frac{kT_A}{q}\ln\frac{n_2}{n_1}$$
+
+Při sečtení se výstupní potenciály odečtou a zůstane jen člen s rozdílem teplot:
+
+$$U_t = U_{12}(T_B) + U_{21}(T_A) = \frac{k\,(T_B - T_A)}{q}\ln\frac{n_1}{n_2}$$
+
+Velikost:
+
+$$|U_t| = \frac{1{,}38\cdot10^{-23}\cdot65}{1{,}602\cdot10^{-19}}\cdot\ln\frac{8{,}42\cdot10^{28}}{5{,}53\cdot10^{28}} = 5{,}60\cdot10^{-3}\cdot0{,}420 = 2{,}35\cdot10^{-3}\ \mathrm{V}$$
+
+Rozdíl teplot je v kelvinech stejný jako ve °C. V sešitu je logaritmus obráceně ($\ln\frac{n_2}{n_1}$, viz dotykové napětí), to mění jen znaménko, velikost 2,35 mV ne. V mezikroku je tam i překlep $T_A + T_B$, správně $T_B - T_A$; dosazeno je správně 65.
+
+**Jak to říct:** „Výstupní potenciály jsou v obou spojích stejné a odečtou se; zůstane jen difuzní člen, který závisí na teplotě spoje.“
+'''
+
+# ---------- Obměny
+
+[[question]]
+id = 'VO-17'
+kind = 'numeric'
+topic = 'Proud a driftová rychlost'
+source = 'Obměna příkladu 1'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 1.** Vodič má průřez 2,50 mm², koncentrace volných elektronů je $8{,}50\cdot10^{28}\ \mathrm{m^{-3}}$ a jejich střední driftová rychlost $2{,}00\cdot10^{-4}\ \mathrm{m\cdot s^{-1}}$. Jaký proud vodičem prochází?
+'''
+value = 6.81
+tolerance = 0.08
+unit = 'A'
+explanation = '''
+$$I = n\cdot q\cdot S\cdot v_D = 8{,}5\cdot10^{28}\cdot1{,}602\cdot10^{-19}\cdot2{,}5\cdot10^{-6}\cdot2\cdot10^{-4} = 6{,}81\ \mathrm{A}$$
+'''
+
+[[question]]
+id = 'VO-18'
+kind = 'numeric'
+topic = 'Rezistivita'
+source = 'Obměna příkladu 2'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 2.** Hliníkový vodič o délce 20,0 m a průřezu 0,500 mm² má při 20 °C odpor 1,12 Ω. Jaká je rezistivita hliníku?
+'''
+value = 2.80e-8
+tolerance = 0.03e-8
+unit = 'Ω·m'
+explanation = '''
+$$\rho = \frac{R\cdot S}{l} = \frac{1{,}12\cdot0{,}5\cdot10^{-6}}{20} = 2{,}80\cdot10^{-8}\ \Omega\cdot\mathrm{m} = 0{,}028\ \Omega\cdot\mathrm{mm^2\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'VO-19'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Zlato má rezistivitu $2{,}44\cdot10^{-8}\ \Omega\cdot\mathrm{m}$ a v 1,00 m³ obsahuje $5{,}90\cdot10^{28}$ volných elektronů. Jaká je pohyblivost volných elektronů?
+'''
+value = 4.336e-3
+tolerance = 0.05e-3
+unit = 'm²·V⁻¹·s⁻¹'
+explanation = '''
+$$\mu = \frac{1}{n\cdot q\cdot\rho} = \frac{1}{5{,}9\cdot10^{28}\cdot1{,}602\cdot10^{-19}\cdot2{,}44\cdot10^{-8}} = 4{,}34\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$$
+'''
+
+[[question]]
+id = 'VO-20'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Zlato: rezistivita $2{,}44\cdot10^{-8}\ \Omega\cdot\mathrm{m}$, $5{,}90\cdot10^{28}$ volných elektronů v 1,00 m³, intenzita pole ve vodiči 50,0 V·m⁻¹. Jaká je střední driftová rychlost elektronů?
+'''
+value = 0.2168
+tolerance = 0.003
+unit = 'm·s⁻¹'
+explanation = '''
+$\mu = \dfrac{1}{n q \rho} = 4{,}34\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$.
+
+$$v_D = \mu\cdot E = 4{,}336\cdot10^{-3}\cdot50 = 0{,}217\ \mathrm{m\cdot s^{-1}}$$
+'''
+
+[[question]]
+id = 'VO-21'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** Stříbro má hustotu 10 500 kg·m⁻³ a molární hmotnost 107,87 kg/kmol; na každý atom připadá jeden volný elektron. Jaká je koncentrace volných elektronů?
+'''
+value = 5.862e28
+tolerance = 0.06e28
+unit = 'm⁻³'
+explanation = '''
+$$n = \frac{\rho_m\cdot V\cdot N_A}{M} = \frac{10\,500\cdot1\cdot6{,}022\cdot10^{26}}{107{,}87} = 5{,}86\cdot10^{28}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'VO-22'
+kind = 'numeric'
+topic = 'Pohyblivost a driftová rychlost'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** Na stříbrný drát o délce 2,00 m a průřezu 0,500 mm² je přiloženo napětí 0,100 V. Stříbro: hustota 10 500 kg·m⁻³, molární hmotnost 107,87 kg/kmol, rezistivita $1{,}59\cdot10^{-8}\ \Omega\cdot\mathrm{m}$, jeden volný elektron na atom. Jaká je driftová rychlost elektronů?
+'''
+value = 3.349e-4
+tolerance = 0.04e-4
+unit = 'm·s⁻¹'
+explanation = '''
+$$E = \frac{U}{l} = \frac{0{,}1}{2} = 0{,}05\ \mathrm{V\cdot m^{-1}} \qquad n = \frac{10\,500\cdot6{,}022\cdot10^{26}}{107{,}87} = 5{,}86\cdot10^{28}\ \mathrm{m^{-3}}$$
+
+$$\mu = \frac{1}{n q \rho} = \frac{1}{5{,}86\cdot10^{28}\cdot1{,}602\cdot10^{-19}\cdot1{,}59\cdot10^{-8}} = 6{,}70\cdot10^{-3}\ \mathrm{m^2V^{-1}s^{-1}}$$
+
+$$v_D = \mu\cdot E = 6{,}70\cdot10^{-3}\cdot0{,}05 = 3{,}35\cdot10^{-4}\ \mathrm{m\cdot s^{-1}}$$
+'''
+
+[[question]]
+id = 'VO-23'
+kind = 'numeric'
+topic = 'Teplotní závislost odporu'
+source = 'Obměna příkladu 5'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 5.** Měděné vinutí transformátoru má při 20,0 °C odpor 12,5 Ω, v provozu 15,0 Ω. Teplotní součinitel rezistivity mědi je $3{,}93\cdot10^{-3}\ \mathrm{K^{-1}}$, závislost je lineární. Jaká je průměrná teplota vinutí v provozu?
+'''
+value = 70.9
+tolerance = 1
+unit = '°C'
+explanation = '''
+$$\vartheta = \vartheta_0 + \frac{\frac{R}{R_0} - 1}{\alpha_\rho} = 20 + \frac{\frac{15{,}0}{12{,}5} - 1}{3{,}93\cdot10^{-3}} = 20 + \frac{0{,}2}{3{,}93\cdot10^{-3}} = 20 + 50{,}9 = 70{,}9\ ^\circ\mathrm{C}$$
+'''
+
+[[question]]
+id = 'VO-24'
+kind = 'numeric'
+topic = 'Dotykové a termoelektrické napětí'
+source = 'Obměna příkladu 6'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 6.** Výstupní potenciál elektronů z mědi je 4,29 V, z hliníku 4,08 V. Koncentrace volných elektronů je v mědi $8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$, v hliníku $18{,}1\cdot10^{28}\ \mathrm{m^{-3}}$. Jak velké je dotykové napětí při 20,0 °C?
+'''
+value = 0.2293
+tolerance = 0.003
+unit = 'V'
+explanation = '''
+Kov 1 = hliník, kov 2 = měď:
+
+$$U_{12} = U_2 - U_1 + \frac{kT}{q}\ln\frac{n_1}{n_2} = 4{,}29 - 4{,}08 + 0{,}02525\cdot\ln\frac{18{,}1\cdot10^{28}}{8{,}42\cdot10^{28}} = 0{,}21 + 0{,}0193 = 0{,}229\ \mathrm{V}$$
+
+Hliník má menší výstupní potenciál **i** víc volných elektronů: oba vlivy ho nabíjejí kladně a sečtou se (u dvojice Cu–Ta šly proti sobě).
+'''
+
+[[question]]
+id = 'VO-25'
+kind = 'numeric'
+topic = 'Dotykové a termoelektrické napětí'
+source = 'Obměna příkladu 7'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 7.** Termočlánek z mědi ($n = 8{,}42\cdot10^{28}\ \mathrm{m^{-3}}$) a hliníku ($n = 18{,}1\cdot10^{28}\ \mathrm{m^{-3}}$) má jeden spoj v ledu (0 °C) a druhý ve vroucí vodě (100 °C). Jak velké je teoretické termoelektrické napětí?
+'''
+value = 6.59e-3
+tolerance = 0.07e-3
+unit = 'V'
+explanation = '''
+Kov 1 = hliník, kov 2 = měď, $T_B - T_A = 100$ K:
+
+$$U_t = \frac{k\,(T_B - T_A)}{q}\ln\frac{n_1}{n_2} = \frac{1{,}38\cdot10^{-23}\cdot100}{1{,}602\cdot10^{-19}}\cdot\ln\frac{18{,}1}{8{,}42} = 8{,}61\cdot10^{-3}\cdot0{,}765 = 6{,}59\cdot10^{-3}\ \mathrm{V}$$
+
+Výstupní potenciály se odečtou, nejsou potřeba.
+'''

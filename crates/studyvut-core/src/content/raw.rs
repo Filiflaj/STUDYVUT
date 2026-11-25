@@ -21,6 +21,17 @@ pub struct RawSubject {
     pub info: Option<String>,
     #[serde(default, rename = "set")]
     pub sets: Vec<RawSet>,
+    #[serde(default, rename = "document")]
+    pub documents: Vec<RawDocument>,
+}
+
+/// A PDF of the study material (`[[document]]`), in the subject's `files/`.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct RawDocument {
+    pub file: String,
+    pub title: String,
+    pub description: Option<String>,
 }
 
 #[derive(Debug, Default, Deserialize)]

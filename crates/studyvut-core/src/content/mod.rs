@@ -14,7 +14,8 @@ mod raw;
 pub use files::{DirFiles, Files, MemFiles};
 pub use load::load;
 pub use model::{
-    Catalog, Chapter, Color, Pick, Program, Question, QuestionKind, Quiz, SetDef, SetRule, Subject,
+    Catalog, Chapter, Color, Document, Pick, Program, Question, QuestionKind, Quiz, SetDef,
+    SetRule, Subject,
 };
 
 use serde::Serialize;

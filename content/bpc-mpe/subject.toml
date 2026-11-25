@@ -4,3 +4,33 @@ semester = "ZS 2026/2027"
 year = 1
 programs = ["met"]
 color = "gold"
+
+[[document]]
+file = "files/vzorce.pdf"
+title = "Přehled vzorců k numerickým cvičením"
+description = "vzorce ke všem příkladům zadání podle kapitol, vysvětlivky symbolů, konstanty a převody (7 stran)"
+
+[[set]]
+id = "test"
+name = "Test nanečisto"
+description = "16 náhodných příkladů ze všech pěti kapitol, ze zadání i obměny"
+pick = [
+  { quiz = "1-stavba-latek", count = 3 },
+  { quiz = "2-polovodice", count = 4 },
+  { quiz = "3-vodice", count = 3 },
+  { quiz = "4-magneticke", count = 3 },
+  { quiz = "5-dielektrika", count = 3 },
+]
+
+[[set]]
+id = "zadani"
+name = "Příklady ze zadání"
+description = "všech 26 příkladů zadání krok za krokem, v pořadí zadání"
+tags = ["zadani"]
+
+[[set]]
+id = "obmeny"
+name = "Obměny příkladů"
+description = "37 příkladů s jinými čísly, než má zadání"
+tags = ["obmena"]
+shuffle = true

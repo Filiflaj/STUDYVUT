@@ -47,9 +47,28 @@ pub struct Subject {
     pub quizzes: Vec<Quiz>,
     /// The custom sets of `subject.toml`, in file order.
     pub sets: Vec<SetDef>,
+    /// PDFs of the study material (`[[document]]`), in file order.
+    pub documents: Vec<Document>,
+}
+
+/// A PDF made for the study material (a formula sheet, for example), shown
+/// with the chapters and opened in the system's viewer. Never an original
+/// of the school: those stay in inbox/.
+#[derive(Clone, Debug, PartialEq, Serialize)]
+pub struct Document {
+    /// Path within the subject folder: `files/<name>.pdf`.
+    pub file: String,
+    pub title: String,
+    pub description: Option<String>,
+    /// Bytes.
+    pub size: u64,
 }
 
 impl Subject {
+    pub fn document(&self, file: &str) -> Option<&Document> {
+        self.documents.iter().find(|d| d.file == file)
+    }
+
     pub fn questions(&self) -> impl Iterator<Item = &Question> {
         self.quizzes.iter().flat_map(|q| q.questions.iter())
     }

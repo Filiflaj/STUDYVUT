@@ -1,0 +1,785 @@
+name = 'Polovodičové materiály'
+description = 'koncentrace atomů, vlastní polovodič a jeho konduktivita, Fermiho hladina, polovodič typu N a P; všech 6 příkladů zadání a jejich obměny'
+
+# ---------- Zadání, příklad 1: koncentrace atomů Si a Ge
+
+[[question]]
+id = 'PV-01'
+kind = 'numeric'
+topic = 'Koncentrace atomů'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Křemík má krystalovou strukturu diamantu, hrana jeho elementární buňky je $5{,}43\cdot10^{-10}$ m. Kolik atomů křemíku je v 1,00 m³ při 20,0 °C?
+'''
+value = 4.997e28
+tolerance = 0.05e28
+unit = 'm⁻³'
+explanation = '''
+Struktura diamantu: $N_E = 8\cdot\frac18 + 6\cdot\frac12 + 4 = 8$ atomů v buňce o objemu $V_E = a^3$. Koncentrace v buňce je stejná jako v celém krystalu:
+
+$$\frac{N}{V} = \frac{N_E}{V_E} \quad\Rightarrow\quad N_{Si} = \frac{V\cdot N_E}{V_E} = \frac{1\cdot8}{(5{,}43\cdot10^{-10})^3} = 4{,}997\cdot10^{28} \doteq 5\cdot10^{28}\ \mathrm{m^{-3}}$$
+
+**Jak to říct:** „V jedné buňce je 8 atomů v objemu a³; kolikrát se buňka vejde do metru krychlového, tolikrát víc je tam atomů.“
+'''
+
+[[question]]
+id = 'PV-02'
+kind = 'numeric'
+topic = 'Koncentrace atomů'
+source = 'Zadání, příklad 1'
+tags = ['zadani']
+text = '''
+Germanium má krystalovou strukturu diamantu, hrana jeho elementární buňky je $5{,}62\cdot10^{-10}$ m. Kolik atomů germania je v 1,00 m³ při 20 °C?
+'''
+value = 4.507e28
+tolerance = 0.05e28
+unit = 'm⁻³'
+explanation = '''
+Struktura diamantu: 8 atomů v buňce.
+
+$$N_{Ge} = \frac{V\cdot N_E}{V_E} = \frac{1\cdot8}{(5{,}62\cdot10^{-10})^3} = 4{,}507\cdot10^{28}\ \mathrm{m^{-3}}$$
+
+Tuto hodnotu ($4{,}506\cdot10^{28}$) zadání používá v příkladech 5 a 6.
+'''
+
+# ---------- Zadání, příklad 2: vlastní koncentrace z rezistivity
+
+[[question]]
+id = 'PV-03'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Rezistivita čistého germania je při 20,0 °C rovna 0,470 Ω·m. Pohyblivost elektronů je 0,39 m²·V⁻¹·s⁻¹, děr 0,19 m²·V⁻¹·s⁻¹. Jaká je koncentrace nosičů (elektronů a stejně tak děr) ve vlastním germaniu?
+'''
+value = 2.29e19
+tolerance = 0.03e19
+unit = 'm⁻³'
+explanation = '''
+Ve vlastním polovodiči vedou elektrony i díry a $n = p = n_i$:
+
+$$\gamma = n_i\cdot q\cdot(\mu_n + \mu_p) \qquad \rho = \frac{1}{\gamma} \quad\Rightarrow\quad n_i = \frac{1}{\rho\cdot q\cdot(\mu_n + \mu_p)}$$
+
+$$n_{i,Ge} = \frac{1}{0{,}470\cdot1{,}602\cdot10^{-19}\cdot(0{,}39 + 0{,}19)} = 2{,}29\cdot10^{19}\ \mathrm{m^{-3}}$$
+
+V sešitu je dosazeno $q = 1{,}6\cdot10^{-19}$ C a zapsán výsledek $2{,}28\cdot10^{19}$; s $1{,}602\cdot10^{-19}$ C ze zadání vychází $2{,}29\cdot10^{19}$. Obojí se uznává.
+
+**Jak to říct:** „Rezistivita je převrácená konduktivita a ve vlastním polovodiči vedou oba druhy nosičů se stejnou koncentrací n_i.“
+'''
+
+[[question]]
+id = 'PV-04'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 2'
+tags = ['zadani']
+text = '''
+Rezistivita čistého křemíku je při 20,0 °C rovna 2 350 Ω·m. Pohyblivost elektronů je 0,135 m²·V⁻¹·s⁻¹, děr 0,048 m²·V⁻¹·s⁻¹. Jaká je koncentrace nosičů ve vlastním křemíku?
+'''
+value = 1.452e16
+tolerance = 0.02e16
+unit = 'm⁻³'
+explanation = '''
+$$n_{i,Si} = \frac{1}{\rho\cdot q\cdot(\mu_n + \mu_p)} = \frac{1}{2\,350\cdot1{,}602\cdot10^{-19}\cdot(0{,}135 + 0{,}048)} = 1{,}45\cdot10^{16}\ \mathrm{m^{-3}}$$
+
+Křemík má proti germaniu o tři řády méně nosičů, a proto o tolik větší rezistivitu.
+'''
+
+# ---------- Zadání, příklad 3: vlastní Si a Ge při 20, 100 a 200 °C
+
+[[question]]
+id = 'PV-05'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a stejně tak děr) při **20,0 °C**?
+'''
+value = 4.87e15
+tolerance = 0.07e15
+unit = 'm⁻³'
+explanation = '''
+Koncentrace elektronů a děr: $n = N_C\, e^{-\frac{W_C - W_F}{kT}}$, $p = N_V\, e^{-\frac{W_F - W_V}{kT}}$. Ve vlastním polovodiči leží Fermiho hladina uprostřed zakázaného pásu, $W_C - W_F = W_F - W_V = \frac12 W_g$, a z $n_i^2 = n\cdot p$:
+
+$$n_i^2 = N_C N_V\, e^{-\frac{W_g}{kT}} \quad\Rightarrow\quad n_i = \sqrt{N_C N_V}\cdot e^{-\frac{W_g}{2kT}}$$
+
+$T = 293{,}15$ K, $W_g = 1{,}11\cdot1{,}602\cdot10^{-19} = 1{,}778\cdot10^{-19}$ J:
+
+$$n_i = \sqrt{2{,}8\cdot10^{25}\cdot1{,}04\cdot10^{25}}\cdot e^{-\frac{1{,}778\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot293{,}15}} = 1{,}706\cdot10^{25}\cdot e^{-21{,}98} = 4{,}87\cdot10^{15}\ \mathrm{m^{-3}}$$
+
+**Jak to říct:** „Ve vlastním polovodiči je n = p, Fermiho hladina je uprostřed zakázaného pásu, proto v exponentu vystupuje polovina šířky pásu.“
+'''
+
+[[question]]
+id = 'PV-06'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}135$, $\mu_p = 0{,}048\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **20,0 °C**?
+'''
+value = 1.427e-4
+tolerance = 0.02e-4
+unit = 'S·m⁻¹'
+explanation = '''
+Nejdřív $n_i$ (předchozí krok): $n_i = \sqrt{N_C N_V}\, e^{-\frac{W_g}{2kT}} = 4{,}87\cdot10^{15}\ \mathrm{m^{-3}}$ při 293,15 K.
+
+$$\gamma = n_i\cdot q\cdot(\mu_n + \mu_p) = 4{,}87\cdot10^{15}\cdot1{,}602\cdot10^{-19}\cdot(0{,}135 + 0{,}048) = 1{,}428\cdot10^{-4}\ \mathrm{S\cdot m^{-1}}$$
+
+Pohyblivosti jsou ze zadání (300 K) a pro všechny teploty se berou stejné.
+'''
+
+[[question]]
+id = 'PV-07'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a děr) při **100,0 °C**?
+'''
+value = 5.41e17
+tolerance = 0.08e17
+unit = 'm⁻³'
+explanation = '''
+$T = 100{,}0 + 273{,}15 = 373{,}15$ K, $W_g = 1{,}778\cdot10^{-19}$ J:
+
+$$n_i = \sqrt{N_C N_V}\cdot e^{-\frac{W_g}{2kT}} = 1{,}706\cdot10^{25}\cdot e^{-\frac{1{,}778\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot373{,}15}} = 1{,}706\cdot10^{25}\cdot e^{-17{,}27} = 5{,}41\cdot10^{17}\ \mathrm{m^{-3}}$$
+
+Proti 20 °C zhruba stokrát víc.
+'''
+
+[[question]]
+id = 'PV-08'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}135$, $\mu_p = 0{,}048\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **100,0 °C**?
+'''
+value = 1.587e-2
+tolerance = 0.02e-2
+unit = 'S·m⁻¹'
+explanation = '''
+$n_i = 1{,}706\cdot10^{25}\cdot e^{-17{,}27} = 5{,}41\cdot10^{17}\ \mathrm{m^{-3}}$ při 373,15 K.
+
+$$\gamma = n_i\cdot q\cdot(\mu_n + \mu_p) = 5{,}41\cdot10^{17}\cdot1{,}602\cdot10^{-19}\cdot0{,}183 = 1{,}59\cdot10^{-2}\ \mathrm{S\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'PV-09'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a děr) při **200,0 °C**?
+'''
+value = 2.08e19
+tolerance = 0.03e19
+unit = 'm⁻³'
+explanation = '''
+$T = 200{,}0 + 273{,}15 = 473{,}15$ K:
+
+$$n_i = 1{,}706\cdot10^{25}\cdot e^{-\frac{1{,}778\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot473{,}15}} = 1{,}706\cdot10^{25}\cdot e^{-13{,}62} = 2{,}08\cdot10^{19}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-10'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}135$, $\mu_p = 0{,}048\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **200,0 °C**?
+'''
+value = 0.610
+tolerance = 0.009
+unit = 'S·m⁻¹'
+explanation = '''
+$n_i = 1{,}706\cdot10^{25}\cdot e^{-13{,}62} = 2{,}08\cdot10^{19}\ \mathrm{m^{-3}}$ při 473,15 K.
+
+$$\gamma = 2{,}08\cdot10^{19}\cdot1{,}602\cdot10^{-19}\cdot(0{,}135 + 0{,}048) = 0{,}61\ \mathrm{S\cdot m^{-1}}$$
+
+**Jak to říct:** „U polovodiče konduktivita s teplotou roste, protože exponenciálně přibývá nosičů; u kovu je to naopak.“
+'''
+
+[[question]]
+id = 'PV-11'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Germanium s vlastní vodivostí: $W_g = 0{,}67$ eV, $N_C = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 6{,}0\cdot10^{24}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a děr) při **20,0 °C**?
+'''
+value = 1.369e19
+tolerance = 0.02e19
+unit = 'm⁻³'
+explanation = '''
+$T = 293{,}15$ K, $W_g = 0{,}67\cdot1{,}602\cdot10^{-19} = 1{,}073\cdot10^{-19}$ J, $\sqrt{N_C N_V} = \sqrt{1{,}04\cdot10^{25}\cdot6{,}0\cdot10^{24}} = 7{,}90\cdot10^{24}\ \mathrm{m^{-3}}$:
+
+$$n_i = \sqrt{N_C N_V}\cdot e^{-\frac{W_g}{2kT}} = 7{,}90\cdot10^{24}\cdot e^{-\frac{1{,}073\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot293{,}15}} = 7{,}90\cdot10^{24}\cdot e^{-13{,}27} = 1{,}37\cdot10^{19}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-12'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Germanium s vlastní vodivostí: $W_g = 0{,}67$ eV, $N_C = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 6{,}0\cdot10^{24}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}39$, $\mu_p = 0{,}19\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **20,0 °C**?
+'''
+value = 1.272
+tolerance = 0.02
+unit = 'S·m⁻¹'
+explanation = '''
+$n_i = 7{,}90\cdot10^{24}\cdot e^{-13{,}27} = 1{,}37\cdot10^{19}\ \mathrm{m^{-3}}$ při 293,15 K.
+
+$$\gamma = n_i\cdot q\cdot(\mu_n + \mu_p) = 1{,}37\cdot10^{19}\cdot1{,}602\cdot10^{-19}\cdot(0{,}39 + 0{,}19) = 1{,}27\ \mathrm{S\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'PV-13'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Germanium s vlastní vodivostí: $W_g = 0{,}67$ eV, $N_C = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 6{,}0\cdot10^{24}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a děr) při **100,0 °C**?
+'''
+value = 2.352e20
+tolerance = 0.035e20
+unit = 'm⁻³'
+explanation = '''
+$T = 373{,}15$ K:
+
+$$n_i = 7{,}90\cdot10^{24}\cdot e^{-\frac{1{,}073\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot373{,}15}} = 7{,}90\cdot10^{24}\cdot e^{-10{,}42} = 2{,}35\cdot10^{20}\ \mathrm{m^{-3}}$$
+
+V sešitu je u exponentu zapsáno $10^{10}$, správně je $10^{20}$.
+'''
+
+[[question]]
+id = 'PV-14'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Germanium s vlastní vodivostí: $W_g = 0{,}67$ eV, $N_C = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 6{,}0\cdot10^{24}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}39$, $\mu_p = 0{,}19\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **100,0 °C**?
+'''
+value = 21.85
+tolerance = 0.3
+unit = 'S·m⁻¹'
+explanation = '''
+$n_i = 7{,}90\cdot10^{24}\cdot e^{-10{,}42} = 2{,}35\cdot10^{20}\ \mathrm{m^{-3}}$ při 373,15 K.
+
+$$\gamma = 2{,}35\cdot10^{20}\cdot1{,}602\cdot10^{-19}\cdot0{,}58 = 21{,}8\ \mathrm{S\cdot m^{-1}}$$
+
+V sešitu je zapsáno „2,193 S·m⁻¹“: chybí řád, správně $2{,}19\cdot10^{1} = 21{,}9\ \mathrm{S\cdot m^{-1}}$.
+'''
+
+[[question]]
+id = 'PV-15'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Germanium s vlastní vodivostí: $W_g = 0{,}67$ eV, $N_C = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 6{,}0\cdot10^{24}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a děr) při **200,0 °C**?
+'''
+value = 2.128e21
+tolerance = 0.03e21
+unit = 'm⁻³'
+explanation = '''
+$T = 473{,}15$ K:
+
+$$n_i = 7{,}90\cdot10^{24}\cdot e^{-\frac{1{,}073\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot473{,}15}} = 7{,}90\cdot10^{24}\cdot e^{-8{,}22} = 2{,}13\cdot10^{21}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-16'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Zadání, příklad 3'
+tags = ['zadani']
+text = '''
+Germanium s vlastní vodivostí: $W_g = 0{,}67$ eV, $N_C = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 6{,}0\cdot10^{24}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}39$, $\mu_p = 0{,}19\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **200,0 °C**?
+'''
+value = 197.8
+tolerance = 3
+unit = 'S·m⁻¹'
+explanation = '''
+$n_i = 7{,}90\cdot10^{24}\cdot e^{-8{,}22} = 2{,}13\cdot10^{21}\ \mathrm{m^{-3}}$ při 473,15 K.
+
+$$\gamma = 2{,}13\cdot10^{21}\cdot1{,}602\cdot10^{-19}\cdot0{,}58 = 198\ \mathrm{S\cdot m^{-1}}$$
+
+V sešitu je zapsáno „1,98 S·m⁻¹“: chybí řád, správně $1{,}98\cdot10^{2}\ \mathrm{S\cdot m^{-1}}$.
+'''
+
+# ---------- Zadání, příklad 4: Fermiho hladina ve vlastním křemíku
+
+[[question]]
+id = 'PV-17'
+kind = 'numeric'
+topic = 'Fermiho hladina'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Vlastní křemík, $W_g = 1{,}11$ eV, poměr efektivních hmotností děr a elektronů $m_p^*/m_n^* = 0{,}67$. Kde leží Fermiho hladina při **0 K**? Udejte $W_F - W_V$.
+'''
+value = 0.555
+tolerance = 0.001
+unit = 'eV'
+explanation = '''
+Z rovnosti $n = p$ ve vlastním polovodiči:
+
+$$W_F = \frac12(W_C + W_V) + \frac12 kT\ln\frac{N_V}{N_C}$$
+
+Po dosazení $N_C = 2\left(\frac{2\pi m_n^* kT}{h^2}\right)^{3/2}$, $N_V = 2\left(\frac{2\pi m_p^* kT}{h^2}\right)^{3/2}$ a $W_C = W_V + W_g$ se všechno kromě poměru hmotností zkrátí:
+
+$$W_F = W_V + \frac12 W_g + \frac34 kT\ln\frac{m_p^*}{m_n^*}$$
+
+Při $T = 0$ je druhý člen nulový:
+
+$$W_F = W_V + \frac12\cdot1{,}11\cdot1{,}602\cdot10^{-19} = W_V + 8{,}89\cdot10^{-20}\ \mathrm{J} = W_V + 0{,}555\ \mathrm{eV}$$
+
+**Jak to říct:** „Při nule leží Fermiho hladina přesně uprostřed zakázaného pásu; s teplotou se posouvá podle poměru efektivních hmotností.“
+'''
+
+[[question]]
+id = 'PV-18'
+kind = 'numeric'
+topic = 'Fermiho hladina'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Vlastní křemík, $W_g = 1{,}11$ eV, $m_p^*/m_n^* = 0{,}67$. Kde leží Fermiho hladina při **100 K**? Udejte $W_F - W_V$ na tři desetinná místa.
+'''
+value = 0.5524
+tolerance = 0.001
+unit = 'eV'
+explanation = '''
+$$W_F = W_V + \frac12 W_g + \frac34 kT\ln\frac{m_p^*}{m_n^*}$$
+
+$$W_F - W_V = 8{,}891\cdot10^{-20} + \frac34\cdot1{,}38\cdot10^{-23}\cdot100\cdot\ln0{,}67 = 8{,}891\cdot10^{-20} - 4{,}14\cdot10^{-22} = 8{,}85\cdot10^{-20}\ \mathrm{J}$$
+
+$$\frac{8{,}85\cdot10^{-20}}{1{,}602\cdot10^{-19}} = 0{,}552\ \mathrm{eV}$$
+
+$\ln 0{,}67 < 0$, proto hladina s teplotou klesá k valenčnímu pásu. Rozdíly mezi teplotami jsou jen tisíciny eV, proto se tu uznává jen ±0,001 eV.
+'''
+
+[[question]]
+id = 'PV-19'
+kind = 'numeric'
+topic = 'Fermiho hladina'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Vlastní křemík, $W_g = 1{,}11$ eV, $m_p^*/m_n^* = 0{,}67$. Kde leží Fermiho hladina při **300 K**? Udejte $W_F - W_V$ na tři desetinná místa.
+'''
+value = 0.5472
+tolerance = 0.001
+unit = 'eV'
+explanation = '''
+$$W_F - W_V = \frac12 W_g + \frac34 kT\ln\frac{m_p^*}{m_n^*} = 8{,}891\cdot10^{-20} + \frac34\cdot1{,}38\cdot10^{-23}\cdot300\cdot\ln0{,}67$$
+
+$$W_F - W_V = 8{,}891\cdot10^{-20} - 1{,}24\cdot10^{-21} = 8{,}77\cdot10^{-20}\ \mathrm{J} = 0{,}547\ \mathrm{eV}$$
+'''
+
+[[question]]
+id = 'PV-20'
+kind = 'numeric'
+topic = 'Fermiho hladina'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Vlastní křemík, $W_g = 1{,}11$ eV, $m_p^*/m_n^* = 0{,}67$. Kde leží Fermiho hladina při **500 K**? Udejte $W_F - W_V$ na tři desetinná místa.
+'''
+value = 0.5421
+tolerance = 0.001
+unit = 'eV'
+explanation = '''
+$$W_F - W_V = 8{,}891\cdot10^{-20} + \frac34\cdot1{,}38\cdot10^{-23}\cdot500\cdot\ln0{,}67 = 8{,}891\cdot10^{-20} - 2{,}07\cdot10^{-21} = 8{,}68\cdot10^{-20}\ \mathrm{J}$$
+
+$$\frac{8{,}68\cdot10^{-20}}{1{,}602\cdot10^{-19}} = 0{,}542\ \mathrm{eV}$$
+'''
+
+[[question]]
+id = 'PV-21'
+topic = 'Fermiho hladina'
+source = 'Zadání, příklad 4'
+tags = ['zadani']
+text = '''
+Efektivní hmotnost děr v křemíku je menší než efektivní hmotnost elektronů ($m_p^*/m_n^* = 0{,}67$). Co se děje s Fermiho hladinou vlastního křemíku, když roste teplota?
+'''
+options = [
+  'Zůstává přesně uprostřed zakázaného pásu, protože $n = p$ při každé teplotě.',
+  'Posouvá se nahoru k vodivostnímu pásu, protože přibývá elektronů.',
+  'Mírně klesá k valenčnímu pásu, protože $\ln(m_p^*/m_n^*) < 0$.',
+  'Posouvá se do valenčního pásu, polovodič se stane vodičem typu P.',
+]
+answer = 2
+explanation = '''
+$$W_F = W_V + \frac12 W_g + \frac34 kT\ln\frac{m_p^*}{m_n^*}$$
+
+Při $m_p^* < m_n^*$ je logaritmus záporný a člen roste s $T$: hladina klesá k valenčnímu pásu, ale jen o tisíciny až setiny eV (0,555 eV při 0 K, 0,542 eV při 500 K).
+'''
+notes = [
+  'Uprostřed je jen při 0 K nebo při stejných efektivních hmotnostech. $n = p$ platí, ale hustoty stavů $N_C$ a $N_V$ se liší.',
+  'Elektronů i děr přibývá stejně ($n = p$). Směr posunu určuje znaménko $\ln(m_p^*/m_n^*)$, a to je záporné.',
+  '',
+  'Posun je jen o setiny eV, hladina zůstane hluboko v zakázaném pásu a polovodič zůstává vlastní.',
+]
+
+# ---------- Zadání, příklad 5: germanium s antimonem (typ N)
+
+[[question]]
+id = 'PV-22'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklad 5'
+tags = ['zadani']
+text = '''
+Germanium obsahuje 0,0100 atomových % antimonu; při 20,0 °C jsou všechny atomy antimonu ionizované. V 1,00 m³ germania je $4{,}506\cdot10^{28}$ atomů. Jaká je koncentrace elektronů $n_n$?
+'''
+value = 4.506e24
+tolerance = 0.045e24
+unit = 'm⁻³'
+explanation = '''
+Antimon je z 5. skupiny, v germaniu je donor: každý ionizovaný atom dá jeden volný elektron. Vlastní elektrony ($2{,}33\cdot10^{19}$) jsou proti tomu zanedbatelné.
+
+$$n_n \approx N_{Sb} = \frac{0{,}01}{100}\cdot N_{Ge} = 1\cdot10^{-4}\cdot4{,}506\cdot10^{28} = 4{,}506\cdot10^{24}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-23'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklad 5'
+tags = ['zadani']
+text = '''
+Germanium s 0,0100 at. % antimonu (všechen ionizovaný) při 20,0 °C; $N_{Ge} = 4{,}506\cdot10^{28}\ \mathrm{m^{-3}}$, vlastní koncentrace $n_i = 2{,}33\cdot10^{19}\ \mathrm{m^{-3}}$. Jaká je koncentrace děr $p_n$?
+'''
+value = 1.205e14
+tolerance = 0.015e14
+unit = 'm⁻³'
+explanation = '''
+$n_n = 1\cdot10^{-4}\cdot4{,}506\cdot10^{28} = 4{,}506\cdot10^{24}\ \mathrm{m^{-3}}$. Zákon působících hmot platí i v příměsovém polovodiči, $n_i^2 = n_n\cdot p_n$:
+
+$$p_n = \frac{n_i^2}{n_n} = \frac{(2{,}33\cdot10^{19})^2}{4{,}506\cdot10^{24}} = 1{,}205\cdot10^{14}\ \mathrm{m^{-3}}$$
+
+**Jak to říct:** „Součin n·p závisí jen na materiálu a teplotě. Když donory zvýší koncentraci elektronů, díry se se stejným poměrem sníží.“
+'''
+
+[[question]]
+id = 'PV-24'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklad 5'
+tags = ['zadani']
+text = '''
+Germanium s 0,0100 at. % antimonu (všechen ionizovaný) při 20,0 °C; $N_{Ge} = 4{,}506\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 2{,}33\cdot10^{19}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}39$, $\mu_p = 0{,}19\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je konduktivita polovodiče?
+'''
+value = 2.815e5
+tolerance = 0.03e5
+unit = 'S·m⁻¹'
+explanation = '''
+$n_n = 4{,}506\cdot10^{24}\ \mathrm{m^{-3}}$, $p_n = \dfrac{n_i^2}{n_n} = 1{,}205\cdot10^{14}\ \mathrm{m^{-3}}$.
+
+$$\gamma = q\,(n_n\mu_n + p_n\mu_p) = 1{,}602\cdot10^{-19}\cdot(4{,}506\cdot10^{24}\cdot0{,}39 + 1{,}205\cdot10^{14}\cdot0{,}19) = 2{,}815\cdot10^{5}\ \mathrm{S\cdot m^{-1}}$$
+
+Člen děr ($2{,}3\cdot10^{13}$) je proti členu elektronů ($1{,}76\cdot10^{24}$) zanedbatelný.
+'''
+
+# ---------- Zadání, příklad 6: germanium s borem (typ P)
+
+[[question]]
+id = 'PV-25'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklad 6'
+tags = ['zadani']
+text = '''
+Germanium obsahuje 0,0010 atomových % boru; při 20,0 °C jsou všechny atomy příměsi ionizované. $N_{Ge} = 4{,}506\cdot10^{28}\ \mathrm{m^{-3}}$. Jaká je koncentrace děr $p_p$?
+'''
+value = 4.506e23
+tolerance = 0.045e23
+unit = 'm⁻³'
+explanation = '''
+Bor je z 3. skupiny, v germaniu je akceptor: každý ionizovaný atom zachytí elektron a vytvoří díru.
+
+$$p_p \approx N_B = \frac{0{,}001}{100}\cdot N_{Ge} = 1\cdot10^{-5}\cdot4{,}506\cdot10^{28} = 4{,}506\cdot10^{23}\ \mathrm{m^{-3}}$$
+'''
+warning = '0,0010 % je $10^{-5}$, ne $10^{-3}$: procenta ještě dělíš stem.'
+
+[[question]]
+id = 'PV-26'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklad 6'
+tags = ['zadani']
+text = '''
+Germanium s 0,0010 at. % boru (všechen ionizovaný) při 20,0 °C; $N_{Ge} = 4{,}506\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 2{,}33\cdot10^{19}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů $n_p$?
+'''
+value = 1.205e15
+tolerance = 0.015e15
+unit = 'm⁻³'
+explanation = '''
+$p_p = 1\cdot10^{-5}\cdot4{,}506\cdot10^{28} = 4{,}506\cdot10^{23}\ \mathrm{m^{-3}}$, a z $n_i^2 = p_p\cdot n_p$:
+
+$$n_p = \frac{n_i^2}{p_p} = \frac{(2{,}33\cdot10^{19})^2}{4{,}506\cdot10^{23}} = 1{,}205\cdot10^{15}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-27'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklad 6'
+tags = ['zadani']
+text = '''
+Germanium s 0,0010 at. % boru (všechen ionizovaný) při 20,0 °C; $N_{Ge} = 4{,}506\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 2{,}33\cdot10^{19}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}39$, $\mu_p = 0{,}19\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je konduktivita polovodiče?
+'''
+value = 1.372e4
+tolerance = 0.02e4
+unit = 'S·m⁻¹'
+explanation = '''
+$p_p = 4{,}506\cdot10^{23}\ \mathrm{m^{-3}}$, $n_p = 1{,}205\cdot10^{15}\ \mathrm{m^{-3}}$.
+
+$$\gamma = q\,(p_p\mu_p + n_p\mu_n) = 1{,}602\cdot10^{-19}\cdot(4{,}506\cdot10^{23}\cdot0{,}19 + 1{,}205\cdot10^{15}\cdot0{,}39) = 1{,}372\cdot10^{4}\ \mathrm{S\cdot m^{-1}}$$
+
+Majoritní díry mají pohyblivost $\mu_p = 0{,}19$, ne $\mu_n$.
+'''
+
+[[question]]
+id = 'PV-28'
+topic = 'Příměsový polovodič'
+source = 'Zadání, příklady 5 a 6'
+tags = ['zadani']
+text = '''
+Do germania se přidá antimon (prvek 5. skupiny). Co z toho platí?
+'''
+options = [
+  'Antimon je akceptor, vznikne polovodič typu P, majoritní jsou díry.',
+  'Antimon je donor, vznikne polovodič typu N, majoritní jsou elektrony.',
+  'Antimon je donor, vznikne polovodič typu P, protože po odevzdání elektronu zůstane kladný iont.',
+  'Antimon vodivost nezmění, protože má stejný počet valenčních elektronů jako germanium.',
+]
+answer = 1
+explanation = '''
+Germanium je čtyřmocné. Antimon má 5 valenčních elektronů: čtyři se zapojí do vazeb, pátý se snadno uvolní. Antimon je **donor**, vznikne polovodič **typu N** a majoritními nosiči jsou elektrony ($n_n \approx N_{Sb}$). Bor (3. skupina) je naopak akceptor, typ P.
+'''
+notes = [
+  'Akceptor je prvek 3. skupiny, například bor (příklad 6).',
+  '',
+  'Kladný iont donoru je pevně v mřížce a nevede. Typ určují volné nosiče, a to jsou elektrony: typ N.',
+  'Germanium má 4 valenční elektrony, antimon 5. Právě ten pátý je volný elektron.',
+]
+
+# ---------- Obměny
+
+[[question]]
+id = 'PV-29'
+kind = 'numeric'
+topic = 'Koncentrace atomů'
+source = 'Obměna příkladu 1'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 1.** Uhlík ve formě diamantu má hranu elementární buňky $3{,}567\cdot10^{-10}$ m. Kolik atomů uhlíku je v 1,00 m³ diamantu?
+'''
+value = 1.763e29
+tolerance = 0.02e29
+unit = 'm⁻³'
+explanation = '''
+Struktura diamantu: 8 atomů v buňce.
+
+$$N_C = \frac{V\cdot N_E}{V_E} = \frac{1\cdot8}{(3{,}567\cdot10^{-10})^3} = 1{,}763\cdot10^{29}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-30'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Obměna příkladu 2'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 2.** Vzorek čistého germania má rezistivitu 0,600 Ω·m. Pohyblivost elektronů je 0,39 m²·V⁻¹·s⁻¹, děr 0,19 m²·V⁻¹·s⁻¹. Jaká je vlastní koncentrace nosičů?
+'''
+value = 1.794e19
+tolerance = 0.025e19
+unit = 'm⁻³'
+explanation = '''
+$$n_i = \frac{1}{\rho\cdot q\cdot(\mu_n + \mu_p)} = \frac{1}{0{,}600\cdot1{,}602\cdot10^{-19}\cdot0{,}58} = 1{,}79\cdot10^{19}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-31'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů (a děr) při **150 °C**?
+'''
+value = 4.165e18
+tolerance = 0.06e18
+unit = 'm⁻³'
+explanation = '''
+$T = 150 + 273{,}15 = 423{,}15$ K:
+
+$$n_i = \sqrt{N_C N_V}\cdot e^{-\frac{W_g}{2kT}} = 1{,}706\cdot10^{25}\cdot e^{-\frac{1{,}778\cdot10^{-19}}{2\cdot1{,}38\cdot10^{-23}\cdot423{,}15}} = 1{,}706\cdot10^{25}\cdot e^{-15{,}23} = 4{,}16\cdot10^{18}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-32'
+kind = 'numeric'
+topic = 'Vlastní polovodič'
+source = 'Obměna příkladu 3'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 3.** Křemík s vlastní vodivostí: $W_g = 1{,}11$ eV, $N_C = 2{,}8\cdot10^{25}\ \mathrm{m^{-3}}$, $N_V = 1{,}04\cdot10^{25}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}135$, $\mu_p = 0{,}048\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je jeho konduktivita při **150 °C**?
+'''
+value = 0.1221
+tolerance = 0.002
+unit = 'S·m⁻¹'
+explanation = '''
+$n_i = 1{,}706\cdot10^{25}\cdot e^{-15{,}23} = 4{,}16\cdot10^{18}\ \mathrm{m^{-3}}$ při 423,15 K.
+
+$$\gamma = n_i\cdot q\cdot(\mu_n + \mu_p) = 4{,}16\cdot10^{18}\cdot1{,}602\cdot10^{-19}\cdot0{,}183 = 0{,}122\ \mathrm{S\cdot m^{-1}}$$
+'''
+
+[[question]]
+id = 'PV-33'
+kind = 'numeric'
+topic = 'Fermiho hladina'
+source = 'Obměna příkladu 4'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 4.** Vlastní germanium, $W_g = 0{,}67$ eV, poměr efektivních hmotností děr a elektronů $m_p^*/m_n^* = 0{,}53$. Kde leží Fermiho hladina při **400 K**? Udejte $W_F - W_V$ na tři desetinná místa.
+'''
+value = 0.3186
+tolerance = 0.001
+unit = 'eV'
+explanation = '''
+$$W_F - W_V = \frac12 W_g + \frac34 kT\ln\frac{m_p^*}{m_n^*} = \frac12\cdot0{,}67\cdot1{,}602\cdot10^{-19} + \frac34\cdot1{,}38\cdot10^{-23}\cdot400\cdot\ln0{,}53$$
+
+$$W_F - W_V = 5{,}367\cdot10^{-20} - 2{,}63\cdot10^{-21} = 5{,}104\cdot10^{-20}\ \mathrm{J} = 0{,}319\ \mathrm{eV}$$
+'''
+
+[[question]]
+id = 'PV-34'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Obměna příkladu 5'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 5.** Křemík obsahuje 0,000100 atomových % fosforu, při 300 K je všechen ionizovaný. V 1,00 m³ křemíku je $5{,}0\cdot10^{28}$ atomů. Jaká je koncentrace elektronů $n_n$?
+'''
+value = 5.0e22
+tolerance = 0.05e22
+unit = 'm⁻³'
+explanation = '''
+Fosfor je z 5. skupiny, donor: typ N.
+
+$$n_n \approx N_P = \frac{0{,}0001}{100}\cdot N_{Si} = 1\cdot10^{-6}\cdot5{,}0\cdot10^{28} = 5{,}0\cdot10^{22}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-35'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Obměna příkladu 5'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 5.** Křemík s 0,000100 at. % fosforu (všechen ionizovaný) při 300 K; $N_{Si} = 5{,}0\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 9{,}65\cdot10^{15}\ \mathrm{m^{-3}}$. Jaká je koncentrace děr $p_n$?
+'''
+value = 1.862e9
+tolerance = 0.025e9
+unit = 'm⁻³'
+explanation = '''
+$n_n = 1\cdot10^{-6}\cdot5{,}0\cdot10^{28} = 5{,}0\cdot10^{22}\ \mathrm{m^{-3}}$.
+
+$$p_n = \frac{n_i^2}{n_n} = \frac{(9{,}65\cdot10^{15})^2}{5{,}0\cdot10^{22}} = 1{,}86\cdot10^{9}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-36'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Obměna příkladu 5'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 5.** Křemík s 0,000100 at. % fosforu (všechen ionizovaný) při 300 K; $N_{Si} = 5{,}0\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 9{,}65\cdot10^{15}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}135$, $\mu_p = 0{,}048\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je konduktivita?
+'''
+value = 1081
+tolerance = 15
+unit = 'S·m⁻¹'
+explanation = '''
+$n_n = 5{,}0\cdot10^{22}\ \mathrm{m^{-3}}$, $p_n = 1{,}86\cdot10^{9}\ \mathrm{m^{-3}}$.
+
+$$\gamma = q\,(n_n\mu_n + p_n\mu_p) = 1{,}602\cdot10^{-19}\cdot(5{,}0\cdot10^{22}\cdot0{,}135 + 1{,}86\cdot10^{9}\cdot0{,}048) = 1\,081\ \mathrm{S\cdot m^{-1}}$$
+
+Proti vlastnímu křemíku (asi $2\cdot10^{-4}$ S/m) je to víc než o sedm řádů.
+'''
+
+[[question]]
+id = 'PV-37'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Obměna příkladu 6'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 6.** Křemík obsahuje 0,000200 atomových % boru, při 300 K je všechen ionizovaný; $N_{Si} = 5{,}0\cdot10^{28}\ \mathrm{m^{-3}}$. Jaká je koncentrace děr $p_p$?
+'''
+value = 1.0e23
+tolerance = 0.01e23
+unit = 'm⁻³'
+explanation = '''
+Bor je akceptor: typ P.
+
+$$p_p \approx N_B = \frac{0{,}0002}{100}\cdot5{,}0\cdot10^{28} = 2\cdot10^{-6}\cdot5{,}0\cdot10^{28} = 1{,}0\cdot10^{23}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-38'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Obměna příkladu 6'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 6.** Křemík s 0,000200 at. % boru (všechen ionizovaný) při 300 K; $N_{Si} = 5{,}0\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 9{,}65\cdot10^{15}\ \mathrm{m^{-3}}$. Jaká je koncentrace elektronů $n_p$?
+'''
+value = 9.31e8
+tolerance = 0.13e8
+unit = 'm⁻³'
+explanation = '''
+$p_p = 1{,}0\cdot10^{23}\ \mathrm{m^{-3}}$.
+
+$$n_p = \frac{n_i^2}{p_p} = \frac{(9{,}65\cdot10^{15})^2}{1{,}0\cdot10^{23}} = 9{,}31\cdot10^{8}\ \mathrm{m^{-3}}$$
+'''
+
+[[question]]
+id = 'PV-39'
+kind = 'numeric'
+topic = 'Příměsový polovodič'
+source = 'Obměna příkladu 6'
+tags = ['obmena']
+text = '''
+**Obměna příkladu 6.** Křemík s 0,000200 at. % boru (všechen ionizovaný) při 300 K; $N_{Si} = 5{,}0\cdot10^{28}\ \mathrm{m^{-3}}$, $n_i = 9{,}65\cdot10^{15}\ \mathrm{m^{-3}}$, $\mu_n = 0{,}135$, $\mu_p = 0{,}048\ \mathrm{m^2V^{-1}s^{-1}}$. Jaká je konduktivita?
+'''
+value = 769
+tolerance = 11
+unit = 'S·m⁻¹'
+explanation = '''
+$p_p = 1{,}0\cdot10^{23}\ \mathrm{m^{-3}}$, $n_p = 9{,}31\cdot10^{8}\ \mathrm{m^{-3}}$.
+
+$$\gamma = q\,(p_p\mu_p + n_p\mu_n) = 1{,}602\cdot10^{-19}\cdot(1{,}0\cdot10^{23}\cdot0{,}048 + 9{,}31\cdot10^{8}\cdot0{,}135) = 769\ \mathrm{S\cdot m^{-1}}$$
+
+Majoritní jsou díry, proto pohyblivost děr $\mu_p = 0{,}048$.
+'''

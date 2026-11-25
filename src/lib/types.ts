@@ -94,6 +94,17 @@ export interface SubjectView {
   due: number;
   /** Submitted work of the subject (submissions/), shown on the Study page. */
   submissions: number;
+  /** PDFs of the study material (a formula sheet…), listed with the chapters. */
+  documents: DocumentView[];
+}
+
+/** A PDF of the study material (`[[document]]` in subject.toml). */
+export interface DocumentView {
+  /** Path within the subject folder, `files/<name>.pdf`; names it for `openDocument`. */
+  file: string;
+  title: string;
+  description: string | null;
+  size: number;
 }
 
 export interface SessionRow {

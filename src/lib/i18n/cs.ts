@@ -65,6 +65,7 @@ export const cs: Messages = {
     infoHint: "zápočet, zkouška a body",
     works: "Odevzdané práce",
     worksHint: p({ one: "{n} práce", few: "{n} práce", many: "{n} práce", other: "{n} prací" }),
+    documentsHint: p({ one: "{n} dokument", few: "{n} dokumenty", many: "{n} dokumentu", other: "{n} dokumentů" }),
     none: "Zatím nic",
     due: p({
       one: "Dnes čeká {n} otázka na opakování",
@@ -86,6 +87,10 @@ export const cs: Messages = {
     empty: "Zatím tu není žádné učivo.",
     emptyHint: "Podklady dej do inbox/{id} a požádej Clauda, ať je zpracuje.",
     loadFailed: "Kapitolu se nepodařilo načíst: {error}",
+    documents: "Dokumenty",
+    documentsIntro: "Dokumenty v PDF se otevřou v prohlížeči PDF, kde je můžeš i vytisknout nebo uložit.",
+    openDocument: "Otevřít PDF",
+    openFailed: "Dokument se nepodařilo otevřít: {error}",
   },
   submissions: {
     title: "Odevzdané práce",
@@ -123,7 +128,7 @@ export const cs: Messages = {
     showResult: "Zobrazit výsledek",
     keysHint: "Klávesy a–{last} vyberou odpověď.",
     enterHint: "Potvrď klávesou Enter.",
-    numericLabel: "Odpověď (desetinná čárka i tečka fungují):",
+    numericLabel: "Odpověď (desetinná čárka i tečka fungují, mocniny deseti jako 2,5e19 nebo 2,5·10^19):",
     check: "Zkontrolovat",
     enterNumber: "Zadej číslo.",
     signOnly: "Číselně to sedí, ale chybí znaménko.",

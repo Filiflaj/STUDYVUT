@@ -154,16 +154,7 @@ pub(crate) fn materialize(
         .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::NotFound, s.file_path(f)))?;
     let mut path = cache.join(&s.subject).join(&s.id);
     path.extend(f.path.split('/'));
-    if std::fs::read(&path).ok().as_deref() == Some(bytes.as_slice()) {
-        return Ok(path);
-    }
-    if let Some(parent) = path.parent() {
-        std::fs::create_dir_all(parent)?;
-    }
-    let tmp = path.with_extension(format!("part-{}", std::process::id()));
-    std::fs::write(&tmp, &bytes)?;
-    std::fs::rename(&tmp, &path)?;
-    Ok(path)
+    crate::cache::copy(&path, &bytes)
 }
 
 #[cfg(test)]

@@ -13,8 +13,16 @@ function cached<T extends Intl.NumberFormat | Intl.DateTimeFormat>(key: string, 
   return f;
 }
 
-/** A number in the UI language (decimal comma in Czech). */
+/**
+ * A number in the UI language (decimal comma in Czech). Very big and very
+ * small ones in powers of ten, `2,5·10¹⁹`, as materials science needs them.
+ */
 export function fmtNumber(n: number, maxDigits = 6): string {
+  const abs = Math.abs(n);
+  if (n !== 0 && Number.isFinite(n) && (abs >= 1e6 || abs < 1e-4)) {
+    const [mantissa, exponent] = n.toExponential(5).split("e");
+    return `${fmtNumber(Number(mantissa), 5)}·10${superscript(String(Number(exponent)))}`;
+  }
   return cached(`n${maxDigits}`, () => new Intl.NumberFormat(i18n.locale, { maximumFractionDigits: maxDigits })).format(n);
 }
 
@@ -47,16 +55,21 @@ export function fmtToday(): string {
 
 /**
  * A typed number: decimal comma or point, a Unicode minus, spaces as
- * thousands separators. NaN when it is no number.
+ * thousands separators, and powers of ten as `2,5e19`, `2,5·10^19`,
+ * `2,5*10^-19`, `2,5×10¹⁹` or `10^19`. NaN when it is no number.
  */
 export function parseNumber(input: string): number {
   const s = input
     .trim()
     .replace(/[\s  ]/g, "")
     .replace(/[−–]/g, "-")
-    .replace(",", ".");
-  if (!/^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(s)) return NaN;
-  return Number(s);
+    .replace(",", ".")
+    .replace(/10(⁻?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)$/, (_, p: string) => `10^${[...p].map((c) => PLAIN[c] ?? c).join("")}`);
+  if (/^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(s)) return Number(s);
+  const power = /^(?:([+-]?(?:\d+\.?\d*|\.\d+))[·⋅*×x]|([+-]?))10\^\(?([+-]?\d+)\)?$/i.exec(s);
+  if (!power) return NaN;
+  const mantissa = power[1] !== undefined ? Number(power[1]) : power[2] === "-" ? -1 : 1;
+  return mantissa * 10 ** Number(power[3]);
 }
 
 /** The option letter: 0 → "a". */
@@ -72,6 +85,7 @@ const SUPERSCRIPT: Record<string, string> = {
   "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻",
 };
 const superscript = (s: string) => [...s].map((c) => SUPERSCRIPT[c] ?? c).join("");
+const PLAIN: Record<string, string> = Object.fromEntries(Object.entries(SUPERSCRIPT).map(([p, s]) => [s, p]));
 
 /** LaTeX math as readable plain text: \frac{a}{b} → a/b, \mathrm{nC} → nC, \pi → π. */
 export function texToText(tex: string): string {
