@@ -3729,7 +3729,7 @@ checksum = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
 
 [[package]]
 name = "studyvut"
-version = "0.2.2"
+version = "0.2.3"
 dependencies = [
  "anyhow",
  "include_dir",
@@ -3752,7 +3752,7 @@ dependencies = [
 
 [[package]]
 name = "studyvut-cli"
-version = "0.2.2"
+version = "0.2.3"
 dependencies = [
  "anyhow",
  "clap",
@@ -3763,7 +3763,7 @@ dependencies = [
 
 [[package]]
 name = "studyvut-core"
-version = "0.2.2"
+version = "0.2.3"
 dependencies = [
  "fastrand",
  "rusqlite",
@@ -3776,7 +3776,7 @@ dependencies = [
 
 [[package]]
 name = "studyvut-service"
-version = "0.2.2"
+version = "0.2.3"
 dependencies = [
  "dirs",
  "fastrand",

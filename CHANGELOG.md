@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.3 (2026-11-26)
+
 ### Opravy
 
 - Spuštěný kvíz se ukáže hned pod nadpisem, nad seznamem sad. Na menších
