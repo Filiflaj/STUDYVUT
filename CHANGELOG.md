@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Opravy
+
+- Spuštěný kvíz se ukáže hned pod nadpisem, nad seznamem sad. Na menších
+  obrazovkách (třeba notebook s Windows) byla otázka pod sadami mimo okno,
+  takže to vypadalo, že se kvíz vůbec nespustil.
+
 ## 0.2.2 (2026-11-25)
 
 ### Materiály

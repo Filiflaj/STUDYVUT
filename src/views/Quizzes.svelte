@@ -40,6 +40,18 @@
     quiz.missed.map((id) => quiz.payload?.questions.find((q) => q.id === id)).filter((q) => q !== undefined),
   );
 
+  // The running quiz sits right under the heading, above the sets: with
+  // many sets it used to land below the window's edge, so starting a quiz
+  // seemed to do nothing (a classmate on a Windows laptop, 2026-11-26).
+  // A new quiz, the next question and the result start at the top.
+  let page = $state<HTMLElement>();
+  $effect(() => {
+    void quiz.payload?.id;
+    void quiz.index;
+    void quiz.result;
+    if (mine) page?.closest("main")?.scrollTo({ top: 0 });
+  });
+
   function onkeydown(e: KeyboardEvent) {
     if (e.metaKey || e.ctrlKey || e.altKey || !mine || quiz.done) return;
     const tag = (e.target as HTMLElement | null)?.tagName?.toLowerCase() ?? "";
@@ -64,7 +76,7 @@
 
 <svelte:window {onkeydown} />
 
-<div class="view">
+<div class="view" bind:this={page}>
   {#if subject}
     <button class="back" onclick={() => subject && nav.open(subject.id)}>
       <Icon name="chevron-left" size={14} />
@@ -92,24 +104,28 @@
       <p class="muted small">{fill(t().overview.noContentHint, { id: subject.id })}</p>
     </div>
   {:else}
-    <section>
-      <h2 class="section-title">{t().quiz.sets}</h2>
-      <div class="sets">
-        {#each sets as set (set.key)}
-          <button
-            class="set"
-            class:on={mine && quiz.payload?.key === set.key}
-            disabled={set.count === 0 || quiz.busy}
-            onclick={() => start(set)}
-          >
-            <span class="name">{setName(subject, set.key)}</span>
-            <span class="desc">
-              {plural(t().quiz.questions, set.count)}{#if setDescription(set)}&nbsp;· {setDescription(set)}{/if}
-            </span>
-          </button>
-        {/each}
-      </div>
-    </section>
+    {#snippet setList(s: NonNullable<typeof subject>)}
+      <section>
+        <h2 class="section-title">{t().quiz.sets}</h2>
+        <div class="sets">
+          {#each sets as set (set.key)}
+            <button
+              class="set"
+              class:on={mine && quiz.payload?.key === set.key}
+              disabled={set.count === 0 || quiz.busy}
+              onclick={() => start(set)}
+            >
+              <span class="name">{setName(s, set.key)}</span>
+              <span class="desc">
+                {plural(t().quiz.questions, set.count)}{#if setDescription(set)}&nbsp;· {setDescription(set)}{/if}
+              </span>
+            </button>
+          {/each}
+        </div>
+      </section>
+    {/snippet}
+
+    {#if !mine}{@render setList(subject)}{/if}
 
     {#if quiz.error === "empty_set"}
       <div class="card empty">{t().quiz.emptySet}</div>
@@ -152,6 +168,8 @@
     {:else if !quiz.error}
       <p class="muted hint">{t().quiz.pickSet}</p>
     {/if}
+
+    {#if mine}{@render setList(subject)}{/if}
   {/if}
 </div>
 

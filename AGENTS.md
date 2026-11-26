@@ -171,6 +171,12 @@ One version, `X.Y.Z`, for the app and the study material; the policy is in
 
 ## Key learnings
 
+- 2026-11-26. A classmate on a Windows laptop reported that quizzes "do not
+  start": the question rendered below 28 set cards, out of a smaller window,
+  and the sets greying out while the session started looked like a flicker.
+  The running quiz now renders above the sets and the page scrolls to the
+  top. Check new pages with the real number of items at a small window
+  (about 1100 × 600), not only with the preview's few mock sets.
 - 2026-11-25. Content written by agents put the right option first: 71 % of
   all choice questions (100 % in EL1, ELS and PC1M) had it under a), and the
   user noticed in a mock test. The app now shuffles options on screen; the
